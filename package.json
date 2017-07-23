@@ -1,0 +1,43 @@
+{
+  "name": "nextshopnshare",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "bootstrap-social": "^5.1.1",
+    "firebase": "^4.1.2",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^2.4.7",
+    "next-redux-wrapper": "^1.2.0",
+    "omise": "^0.5.3",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.1",
+    "react-dom": "^15.6.1",
+    "react-dropzone": "^3.13.3",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "redux-form": "^6.8.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "semantic-ui-react": "^0.71.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^2.8.2",
+    "eslint": "^4.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "jest": "^20.0.4",
+    "jest-enzyme": "^3.2.0",
+    "react-scripts": "1.0.7",
+    "react-test-renderer": "^15.6.1",
+    "redux-devtools": "^3.4.0"
+  },
+  "scripts": {
+    "dev": "next"
+  }
+}
