@@ -12,7 +12,7 @@ class Login extends React.Component {
     async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		const { user, getUserProducts } = this.props
-		await auth.onAuthStateChanged( user => this.props.saveUser(user)) 
+		await auth.onAuthStateChanged( user => saveUser(user)) 
 	}
 
     render() {
@@ -31,7 +31,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch =>
 bindActionCreators({
-    saveUser
 }, dispatch)
 
 

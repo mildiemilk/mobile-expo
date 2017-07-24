@@ -114,7 +114,7 @@ export default ({onCheckOut})=>
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column>
-							<Button bsStyle="primary" bsSize="large" block onClick={onCheckOut}>
+							<Button onClick={onCheckOut}>
 								Pay Now
 							</Button>
 						</Grid.Column>
