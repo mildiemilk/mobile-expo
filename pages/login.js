@@ -34,5 +34,4 @@ bindActionCreators({
     saveUser
 }, dispatch)
 
-
- export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Login)
+export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Login)

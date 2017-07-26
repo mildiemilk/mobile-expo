@@ -2,10 +2,8 @@ import React from 'react'
 import { Image } from 'react-bootstrap'
 import { Button, Icon, Grid, Form, Segment, Divider } from 'semantic-ui-react'
 import Head from './DefaultHead'
-// import template from '../asset/img/thumbnaildiv.png'
-// import plus from '../asset/img/plus.png'
+import Header from './Header'
 import { TextInput } from '../components/Form'
-// import '../components/css/product.css'
 import { FieldArray } from 'redux-form'
 import ProductDescriptionPreview from '../components/ProductDescription'
 import ProductDescriptionForm from '../components/ProductDescriptionForm'
@@ -13,6 +11,7 @@ import ProductDescriptionForm from '../components/ProductDescriptionForm'
 export default ({addProductDescription, productDescription, handleSubmit}) => 
 <div>
 	<Head/>
+	<Header/>
 	<Grid>
 		<Form>
 			<Grid.Row>

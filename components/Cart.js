@@ -1,9 +1,9 @@
 import { Button } from 'semantic-ui-react'
 
 
-export const AddItem = ({quantity=0}) => 
+export const AddItem = ({onClickMinus, onClickAdd,productUid, productQuantity}) => 
 <Button.Group>
-	<Button labelPosition='left' icon='left chevron' />
-	<Button content={quantity} />
-	<Button labelPosition='right' icon='right chevron'/>
+	<Button labelPosition='left' icon='left chevron' onClick={()=>onClickMinus(productUid)} />
+	<Button content={productQuantity} />
+	<Button labelPosition='right' icon='right chevron' onClick={()=>onClickAdd(productUid)}/>
 </Button.Group>

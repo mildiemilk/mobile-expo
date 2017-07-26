@@ -3,37 +3,47 @@ import ProductView from '../containers/Product'
 import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
-import { getProductFromID } from '../lib/handlers/product'
+import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { saveSharedUser } from '../lib/actions/sharedUser'
+import { addQuantity, minusQuantity } from '../lib/handlers/cart'
+import loadFirebase from '../lib/database'
+import { saveUser } from '../lib/actions/user'
 
-
+const productUid = '-KnsCsR5R74tTF0oT1j4'
+const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
-
 	async componentDidMount() {
-		await getProductFromID('-KnsCsR5R74tTF0oT1j4')
-		this.props.saveSharedUser('8anL3Kh8MudfQyZr7ZyBxrl34zg2')
-		this.props.addItemToCart('-KnsCsR5R74tTF0oT1j4')
+		await getProductFromID(productUid)
+		await getUserProducts(userUid)
 	}
 
+	// componentWillReceiveProps(nextProps) {
+	// 	nextProps.user.uid !== this.props.user.uid? 
+	// 	getUserProducts(nextProps.user.uid) :null
+	// }
+
 	render(){
-		const { product, url, minusQuantity, addQuantity } = this.props
+		const { product, url, minusQuantity, addQuantity, cart } = this.props
 		const productID = url.product || null 
 		const userID = url.user || null
 		return( <ProductView 
 			product={product} 
-			onClickMinus={minusQuantity} onClickAdd={addQuantity}/>)
+			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={productUid} productQuantity={cart.quantityById[productUid] || 0 }/>)
 	}
 }
 
 const mapStateToProps = state => ({
 	product: state.product,
-	cart : state.cart
+	cart : state.cart,
+	user : state.user
 })
 
 const mapDispatchToProps = dispatch => 
 bindActionCreators({
-	saveSharedUser
+	saveSharedUser,
+	addQuantity,
+	minusQuantity
 }, dispatch)
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Product)
