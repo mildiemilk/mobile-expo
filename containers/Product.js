@@ -2,6 +2,7 @@ import { Card, Button, Form, Icon } from 'semantic-ui-react'
 import Head from './DefaultHead'
 import Header from './Header'
 import ProductDescription from '../components/ProductDescription'
+import { AddItem } from '../components/Cart'
 
 export default ({product}) => <div>
 	<Head/>
@@ -22,4 +23,5 @@ export default ({product}) => <div>
 		<image alt="template"/>
 	<h2>Description</h2>
 	<ProductDescription productDescription={product.productDescription} />
+	<AddItem />
 </div>
