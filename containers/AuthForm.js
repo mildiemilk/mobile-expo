@@ -26,16 +26,20 @@ export default ({onSubmit, error, clearError, formValue, onClickGoogle, onClickF
 					</Grid.Column>
 				</Grid.Row>
 				<Grid.Row>
+					<Grid.Column>					
 					{
 						page !== 'login' ?
 							renderPasswordConfirm(formValue && formValue.values ? formValue.values.password : null, formValue && formValue.values ? formValue.values.passwordConfirm : null)
 						:null
 					}
+					</Grid.Column>
 				</Grid.Row>
 				<Grid.Row>
-				<Button size='medium' primary onClick={()=>onSubmit()}>
-					<Icon name='user'></Icon> {page === 'login' ? <span>Sign in</span> : <span>Register</span>}
-				</Button>
+					<Grid.Column>
+						<Button size='medium' primary onClick={()=>onSubmit()}>
+							<Icon name='user'></Icon> {page === 'login' ? <span>Sign in</span> : <span>Register</span>}
+						</Button>
+					</Grid.Column>
 				</Grid.Row>
 				<Divider horizontal>Or</Divider>
 				<Grid.Row>

@@ -11,8 +11,9 @@ import loadFirebase from '../lib/database'
 class Profile extends Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		const { user, getUserProducts } = this.props
+		const { user } = this.props
 		await auth.onAuthStateChanged( user => this.props.saveUser(user)) 
+		console.log('useruid', this.props.user.uid)
 		await getUserProducts(this.props.user.uid)
 	}
 
@@ -34,8 +35,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => 
 	bindActionCreators({
 		saveUser: saveUser,
-		getUserProductsPending,
-		getUserProducts
 	}, dispatch)
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)
