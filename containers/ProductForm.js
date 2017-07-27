@@ -36,7 +36,7 @@ export default ({addProductDescription, productDescription, handleSubmit}) =>
 				</Grid.Column>
 			</Grid.Row>
 			<Grid.Row>
-				<Grid.Column sm={4} md={4} lg={4}>
+				<Grid.Column>
 				<TextInput
 					name="price"
 					type="text"
@@ -52,7 +52,7 @@ export default ({addProductDescription, productDescription, handleSubmit}) =>
 						label="comissionPercent"
 					/>
 				</Grid.Column>
-				<Grid.Column xs={6} sm={4} md={4} lg={4}>
+				<Grid.Column>
 				<TextInput
 					name="comissionCash"
 					type="text"
@@ -65,7 +65,7 @@ export default ({addProductDescription, productDescription, handleSubmit}) =>
 				<FieldArray name="productDescription" component={ProductDescriptionForm} productDescription={productDescription}/>
 			</Grid.Row>
 			<Grid.Row>
-				<Button onClick={()=>handleSubmit(productDescription)} bsStyle="success">Submit</Button>
+				<Button onClick={()=>handleSubmit(productDescription)}>Submit</Button>
 			</Grid.Row>
 			<Grid.Row>
 				<h4>Preview</h4>
@@ -77,7 +77,7 @@ export default ({addProductDescription, productDescription, handleSubmit}) =>
 				<h3>image</h3>
 			</Grid.Row>
 			<Grid.Row>
-				<Grid.Column xs={6} md={4} className="image-col">
+				<Grid.Column>
 					<div className="image-wrapper">
 						<i className="overlay-image fa fa-pencil" />
 						<image alt="template" />

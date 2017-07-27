@@ -12,7 +12,7 @@ export default ({changePage, user}) =>
     <p>แอพลิเคชั่นที่จะเปลี่ยนลูกค้าทุกคนของคุณเป็นตัวแทนจำหนาย และ</p>
     <p>
       <Link href="/about">
-      <Button bsStyle="primary">Learn more</Button>
+      <Button color="blue">Learn more</Button>
       </Link>
     </p>
   </div>

@@ -9,7 +9,7 @@ export default ({onSubmit, error, clearError, formValue, onClickGoogle, onClickF
 	<Header/>
 	<Segment padded>
 		<Form>
-			<Grid column={2} divided>
+			<Grid divided>
 				<Grid.Row>
 					<Grid.Column>
 						{ page === 'login'? <h2>Login</h2>:<h2>Registration</h2>}
