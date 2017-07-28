@@ -18,6 +18,7 @@ class Home extends Component {
 		return <HomeView />
 	}
 }
+
 const mapDispatchToProps = {
 	saveUser
 }

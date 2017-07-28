@@ -6,18 +6,22 @@ import store from '../lib/store'
 import loadFirebase from '../lib/database'
 import { saveUser } from '../lib/actions/user'
 import LoginForm from '../containers/AuthForm'
-import { signinWithFacebook, signinWithGoogle} from '../lib/handlers/authenticator'
+import { signinWithFacebook, signinWithGoogle, signOut} from '../lib/handlers/authenticator'
 
 class Login extends React.Component {
     async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		const { user, getUserProducts } = this.props
-		await auth.onAuthStateChanged( user => this.props.saveUser(user)) 
 	}
 
     render() {
         return (
-            <LoginForm page="login" onClickFacebook={signinWithFacebook} onClickGoogle={signinWithGoogle}/>
+            <LoginForm 
+                page="login" 
+                onClickFacebook={signinWithFacebook} 
+                onClickGoogle={signinWithGoogle}
+                signOut={signOut}
+            />
         )
     }
 }

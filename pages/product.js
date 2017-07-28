@@ -15,13 +15,7 @@ const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 class Product extends React.Component{
 	async componentDidMount() {
 		await getProductFromID(productUid)
-		await getUserProducts(userUid)
 	}
-
-	// componentWillReceiveProps(nextProps) {
-	// 	nextProps.user.uid !== this.props.user.uid? 
-	// 	getUserProducts(nextProps.user.uid) :null
-	// }
 
 	render(){
 		const { product, url, minusQuantity, addQuantity, cart } = this.props

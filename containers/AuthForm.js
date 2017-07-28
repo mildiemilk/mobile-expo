@@ -3,7 +3,16 @@ import { Button, Icon, Grid, Form, Segment, Divider } from 'semantic-ui-react'
 import { renderEmail, renderPassword, renderPasswordConfirm } from '../components/Form'
 import Header from './Header'
 
-export default ({onSubmit, error, clearError, formValue, onClickGoogle, onClickFacebook, page}) => 
+export default ({
+	onSubmit, 
+	error, 
+	clearError, 
+	formValue, 
+	onClickGoogle, 
+	onClickFacebook,
+	signOut, 
+	page
+}) => 
 <div>
 	<Head />
 	<Header/>
@@ -47,6 +56,12 @@ export default ({onSubmit, error, clearError, formValue, onClickGoogle, onClickF
 						<Button size='medium' color='facebook' onClick={()=>onClickFacebook()}><Icon name='facebook' /> Sign in with facebook</Button>
 				<Divider horizontal>Or</Divider>					
 						<Button size='medium' color='google plus'  onClick={()=>onClickGoogle()}><Icon name='google plus' /> Sign in with google</Button>
+					</Grid.Column>
+				</Grid.Row>
+				<Divider horizontal />
+				<Grid.Row>
+					<Grid.Column>
+						<Button size='medium' color='red' onClick={()=>signOut()}><Icon name='user' /> Sign out</Button>
 					</Grid.Column>
 				</Grid.Row>
 			</Grid>
