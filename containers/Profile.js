@@ -49,13 +49,15 @@ export default ({user, userProducts}) => <div>
 		<Grid.Row>
 			<Card.Group>
 				{ userProducts ? 
-					Object.keys(userProducts).map( userProductKey => 
-						<ItemCard 
-							key={userProductKey} 
+					Object.keys(userProducts).map( userProductKey => {
+						return (<ItemCard 
+							userProductKey={userProductKey} 
 							userUid={user.uid} 
 							userProduct={userProducts[userProductKey]} 
-						/>
-					) : null
+							productKey={userProductKey}
+							key={userProductKey}
+						/>)
+					}) : null
 				}
 			</Card.Group>
 		</Grid.Row>

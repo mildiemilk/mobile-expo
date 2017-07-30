@@ -11,9 +11,14 @@ import { saveUser } from '../lib/actions/user'
 class Profile extends Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		await auth.onAuthStateChanged( fetchedUser => this.props.saveUser(fetchedUser)) 
-		const { user } = this.props
-		await getUserProducts(user.uid)
+		await auth.onAuthStateChanged( user => user ? this.props.saveUser(user) : null) 
+		getUserProducts(this.props.user.uid)
+	}
+
+	async componentWillReceiveProps(nextProps) {
+		nextProps.user !== this.props.user ?
+			await getUserProducts(nextProps.user.uid)
+			: null
 	}
 
 	render() {

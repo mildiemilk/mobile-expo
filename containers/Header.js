@@ -10,5 +10,5 @@ export default () =>	<Menu>
 		<Menu.Item><Link prefetch href='/payment'><a>payment </a></Link></Menu.Item>
 		<Menu.Item><Link prefetch href='/about'><a>about</a></Link></Menu.Item>
 		<Menu.Item><Link prefetch href='/register'><a>register</a></Link></Menu.Item>
-		<Menu.Item><Link prefetch href='/product'><a>product</a></Link></Menu.Item>
+		<Menu.Item><Link href='/product'><a>product</a></Link></Menu.Item>
 	</Menu>

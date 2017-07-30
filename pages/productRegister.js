@@ -14,7 +14,7 @@ class ProductRegister extends Component{
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		const { user, getUserProducts } = this.props
-		await auth.onAuthStateChanged( user => this.props.saveUser(user)) 
+		await auth.onAuthStateChanged( user => user ? this.props.saveUser(user) : null) 
 	}
 
 	render(){
