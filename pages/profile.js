@@ -12,13 +12,7 @@ class Profile extends Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => user ? this.props.saveUser(user) : null) 
-		getUserProducts(this.props.user.uid)
-	}
-
-	async componentWillReceiveProps(nextProps) {
-		nextProps.user !== this.props.user ?
-			await getUserProducts(nextProps.user.uid)
-			: null
+		await getUserProducts(this.props.user.uid)
 	}
 
 	render() {
@@ -32,7 +26,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-	saveUser
+	saveUser,
+	getUserProducts
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)
