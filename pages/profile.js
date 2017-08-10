@@ -1,18 +1,26 @@
 import React, { Component } from 'react'
 import store from '../lib/store'
 import withRedux from "next-redux-wrapper"
-import { setUserProducts } from '../lib/actions/product'
+import { setUserProducts, setUserProductsPending } from '../lib/actions/product'
 import ProfileView from '../containers/Profile'
 import { getUserProducts, getUserProductsPending } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
-import { saveUser } from '../lib/actions/user'
+import { saveUser, saveUserPending } from '../lib/actions/user'
 
 
 class Profile extends Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		await auth.onAuthStateChanged( user => user ? this.props.saveUser(user) : null) 
-		await getUserProducts(this.props.user.uid)
+		const user = await auth.onAuthStateChanged( user => {
+			this.props.saveUserPending()
+			user ? this.props.saveUser(user) : null
+		})
+		await	getUserProducts(this.props.user.uid).then(
+				products => {
+					this.props.setUserProductsPending()
+					this.props.setUserProducts(products)
+				}
+			)
 	}
 
 	render() {
@@ -27,7 +35,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	saveUser,
-	getUserProducts
+	setUserProducts,
+	saveUserPending,
+	setUserProductsPending
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)
