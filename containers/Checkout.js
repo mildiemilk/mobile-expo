@@ -20,7 +20,7 @@ export default ({cart = {}, products={}}) => <div>
       {cart.addedIds.map( (key, count) =>{
       total += cart.quantityById[key] * products[key].price
       return (
-        <Table.Row>
+        <Table.Row key={key}>
           <Table.Cell>{count+1}</Table.Cell>
           <Table.Cell>{products[key].productName}</Table.Cell>
           <Table.Cell>{cart.quantityById[key]}</Table.Cell>

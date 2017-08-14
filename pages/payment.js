@@ -5,13 +5,7 @@ import store from '../lib/store'
 import { reduxForm } from 'redux-form'
 import { createPayment } from '../lib/handlers/payment'
 
-class Payment extends React.Component{
-
-	render() {
-		const { cardDetail } = this.props
-		return(<PaymentView onCheckOut={()=>createPayment()} />)
-	}
-}
+var Payment = ({cardDetail}) => <PaymentView onCheckOut={()=>createPayment()} />
 
 Payment = reduxForm({
 	form: 'payment'

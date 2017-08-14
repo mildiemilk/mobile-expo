@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import store from '../lib/store'
 import withRedux from "next-redux-wrapper"
-import { setUserProducts, setUserProductsPending } from '../lib/actions/product'
 import ProfileView from '../containers/Profile'
-import { getUserProducts, getUserProductsPending } from '../lib/handlers/product'
+import { getUserProducts } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 
@@ -36,9 +35,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	saveUser,
-	setUserProducts,
-	saveUserPending,
-	setUserProductsPending
+	saveUserPending
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)
