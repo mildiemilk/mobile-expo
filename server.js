@@ -2,7 +2,6 @@ const express = require('express')
 const next = require('next')
 const cors = require('express-cors')
 const bodyParser = require('body-parser')
-const timeout = require('connect-timeout')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -14,7 +13,6 @@ app.prepare()
 
   server.use(bodyParser.json())
   server.use(bodyParser.urlencoded({extended: true}))
-  server.user(timeout('3s'))
 
   server.post('/api/charges', (req,res) => {
     const omise = require('omise')({
@@ -29,8 +27,7 @@ app.prepare()
       'card': req.body.card
     }), function(err, resp) {
       if(resp.paid) {
-        res.setHeader('Content-Type', 'application/json')
-        res.send(JSON.stringify(resp))
+        res.status(00).send('success')
       } else {
         res.send('error')
       }
