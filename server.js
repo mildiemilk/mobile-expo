@@ -2,10 +2,13 @@ const express = require('express')
 const next = require('next')
 const cors = require('express-cors')
 const bodyParser = require('body-parser')
+const axios = require('axios')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const SECRET_KEY = 'skey_test_56u0cmouwglb4b9etxp'
+const EXPIRY_DATE = '2015-09-10'
 
 app.prepare()
 .then(() => {
@@ -15,23 +18,22 @@ app.prepare()
   server.use(bodyParser.urlencoded({extended: true}))
 
   server.post('/api/charges', (req,res) => {
-    const omise = require('omise')({
-      'secretKey': 'skey_test_56u0cmouwglb4b9etxp',
-      'omiseVersion': '2015-09-10'
-    })
-    omise.charges.create({
-      'description': req.body.description,
-      'amount': req.body.amount,
-      'currency': req.body.currency,
-      'capture': req.body.capture,
-      'card': req.body.card
-    }), function(err, resp) {
-      if(resp.paid) {
-        res.status(00).send('success')
-      } else {
-        res.send('error')
+    axios.post({
+      url:'https://api.omise.co/charges',
+      method: 'post',
+      auth: {
+        username: SECRET_KEY
+      },
+      data: {
+        description: req.body.description,
+        amount: req.body.amount,
+        currency: req.body.currency,
+        capture: req.body.capture,
+        card: req.body.card
       }
-    }
+    }).then( function(response) {
+      console.log(response)
+    })
   })
 
   server.get('/p/edit/:product_id/:user_id', (req, res) => {
