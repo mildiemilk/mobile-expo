@@ -112,6 +112,8 @@ export default ({onCheckOut})=>
 							</TextInput>
 						</Grid.Column>
 					</Grid.Row>
+				</Form>
+			</Card>
 					<Grid.Row>
 						<Grid.Column>
 							<Button onClick={onCheckOut}>
@@ -119,8 +121,6 @@ export default ({onCheckOut})=>
 							</Button>
 						</Grid.Column>
 					</Grid.Row>
-				</Form>
-			</Card>
 			</Grid.Column>
 		</Grid.Row>
 	</Grid>

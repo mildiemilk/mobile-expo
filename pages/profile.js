@@ -1,24 +1,26 @@
 import React, { Component } from 'react'
 import store from '../lib/store'
 import withRedux from "next-redux-wrapper"
-import { bindActionCreators } from 'redux'
-import { saveUser } from '../lib/actions/user'
-import { setUserProducts } from '../lib/actions/product'
 import ProfileView from '../containers/Profile'
-import { getUserProducts, getUserProductsPending } from '../lib/handlers/product'
+import { getUserProducts } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
+import { saveUser, saveUserPending } from '../lib/actions/user'
+
 
 class Profile extends Component {
+
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		const { user } = this.props
-		await auth.onAuthStateChanged( user => this.props.saveUser(user)) 
-		getUserProducts(this.props.user.uid)
+		const user = await auth.onAuthStateChanged( user => {
+			this.props.saveUserPending()
+			user ? this.props.saveUser(user) : null
+		})
+		await	getUserProducts(this.props.user.uid)
 	}
 
-	componentWillReceiveProps(nextProps) {
-		nextProps.user.uid !== this.props.user.uid? 
-		getUserProducts(nextProps.user.uid) :null
+	async componentWillReceiveProps(nextProps){
+		nextProps.user !== this.props.user? 
+				await	getUserProducts(this.props.user.uid): null
 	}
 
 	render() {
@@ -31,10 +33,9 @@ const mapStateToProps = state => ({
 	userProducts: state.userProducts
 })
 
-const mapDispatchToProps = dispatch => 
-	bindActionCreators({
-		saveUser,
-		getUserProductsPending,
-	}, dispatch)
+const mapDispatchToProps = {
+	saveUser,
+	saveUserPending
+}
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)

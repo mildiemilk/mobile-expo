@@ -65,7 +65,7 @@ export default ({addProductDescription, productDescription, handleSubmit}) =>
 				<FieldArray name="productDescription" component={ProductDescriptionForm} productDescription={productDescription}/>
 			</Grid.Row>
 			<Grid.Row>
-				<Button onClick={()=>handleSubmit(productDescription)} color="blue">Submit</Button>
+				<Button onClick={()=>handleSubmit(productDescription)}>Submit</Button>
 			</Grid.Row>
 			<Grid.Row>
 				<h4>Preview</h4>
