@@ -1,10 +1,8 @@
 const express = require('express')
 const next = require('next')
 const cors = require('express-cors')
-const omise = require('omise')({
-  'secretKey': 'skey_test_56u0cmouwglb4b9etxp',
-  'omiseVersion': '2015-09-10'
-})
+const bodyParser = require('body-parser')
+const timeout = require('connect-timeout')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -14,29 +12,29 @@ app.prepare()
 .then(() => {
   const server = express()
 
-  server.use(cors({
-    allowedOrigins: [
-      'https://www.omise.co/',
-      'http://localhost:3000/payment',
-      'https://api.omise.co/charges'
-    ]
-  }))
+  server.use(bodyParser.json())
+  server.use(bodyParser.urlencoded({extended: true}))
+  server.user(timeout('3s'))
 
-  server.get('/pay', (req,res) => {
-    console.log('server side')
+  server.post('/api/charges', (req,res) => {
+    const omise = require('omise')({
+      'secretKey': 'skey_test_56u0cmouwglb4b9etxp',
+      'omiseVersion': '2015-09-10'
+    })
     omise.charges.create({
-      'description': req.params.description,
-      'amount': req.params.amount,
-      'currency': req.params.currency,
-      'capture': req.params.capture
+      'description': req.body.description,
+      'amount': req.body.amount,
+      'currency': req.body.currency,
+      'capture': req.body.capture,
+      'card': req.body.card
     }), function(err, resp) {
       if(resp.paid) {
-        console.log('success', resp)
+        res.setHeader('Content-Type', 'application/json')
+        res.send(JSON.stringify(resp))
       } else {
-        console.log('eror', resp.failure_code)
+        res.send('error')
       }
     }
-    app.render(req, res, '/pay', req.params)
   })
 
   server.get('/p/edit/:product_id/:user_id', (req, res) => {
