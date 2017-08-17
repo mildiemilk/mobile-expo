@@ -26,12 +26,19 @@ app.prepare()
 		}))
 
 		server.post('/api/charges', (req, res) => {
-			return omise.charges.create({
-				'description': req.body.description,
-				'amount': req.body.amount,
-				'currency': req.body.currency,
-				'capture': req.body.capture,
-				'card': req.body.card
+			return omise.customers.create({
+				email: 'john.doe@example.com',
+				description: 'John Doe (id:30)',
+				card: req.body.card
+			}).then( function(customer){
+				console.log(customer)
+				return omise.charges.create({
+					description: req.body.description,
+					amount: req.body.amount,
+					currency: req.body.currency,
+					capture: req.body.capture,
+					customer: customer.id 
+				})
 			}).then(function (charge) {
 				console.log('charge:', charge)
 				res.status(200).send(JSON.stringify(charge))
