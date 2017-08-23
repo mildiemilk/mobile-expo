@@ -61,8 +61,6 @@ export const renderPassword = (password) => {
 		name="password"
 		label="password"
 		placeholder="password"
-		status={status}
-		helpTextArray ={password ? helpTextArray : []}
 	/>
 }
 
@@ -74,7 +72,6 @@ export const renderPasswordConfirm = (password, passwordConfirm) => {
 		name="passwordConfirm"
 		status={passwordConfirm ? status : null}
 		label="Password Confirmation"
-		helpTextArray={password !== null ? helpTextArray : []}
 	/>
 }
 
