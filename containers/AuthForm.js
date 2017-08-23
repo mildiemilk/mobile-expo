@@ -1,6 +1,6 @@
 import Head from './DefaultHead'
-import { Button, Icon, Grid, Form, Segment, Divider } from 'semantic-ui-react'
-import { renderEmail, renderPassword, renderPasswordConfirm } from '../components/Form'
+import { Button, Icon, Grid, Form, Segment, Divider, Message } from 'semantic-ui-react'
+import { TextInput } from '../components/Form'
 import Header from './Header'
 
 export default ({
@@ -15,6 +15,18 @@ export default ({
 	<Head />
 	<Header/>
 	<Segment padded>
+		<Message
+			error
+			header="test"
+		/>
+		<Message
+			warning 
+			header="test"
+		/>
+		<Message
+			success 
+			header="test"
+		/>
 		<Form>
 			<Grid divided>
 				{ !loggedIn ?
@@ -26,22 +38,40 @@ export default ({
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column>
-							{renderEmail()}
+						<TextInput
+							type="email"
+							name="email"
+							label="email"
+							placeholder="example@example.com"
+						/>
 						</Grid.Column>
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column>
-							{renderPassword()}
+							<TextInput
+								type="password"
+								name="password"
+								label="password"
+								placeholder="password"
+							/>
 						</Grid.Column>
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column>					
 						{
 							page !== 'login' ?
-								renderPasswordConfirm(formValue && formValue.values ? formValue.values.password : null, formValue && formValue.values ? formValue.values.passwordConfirm : null)
+							<TextInput
+								type="password"
+								name="passwordConfirm"
+								label="Password Confirmation"
+								placeholder="password confirmation"
+							/>
 							:null
 						}
 						</Grid.Column>
+					</Grid.Row>
+					<Grid.Row>
+						<Grid.Column><br/></Grid.Column>
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column>
