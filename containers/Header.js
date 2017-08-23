@@ -1,14 +1,108 @@
+import React from 'react'
 import Link from 'next/link'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Dropdown, Button, Icon } from 'semantic-ui-react'
+import MediaQuery from 'react-responsive'
+import Sidebar from 'react-sidebar';
 
-export default () =>	<Menu>
-		<Menu.Item><Link prefetch href='/'><a>Home </a></Link></Menu.Item>
-		<Menu.Item><Link prefetch href='/login'><a>Log in </a></Link></Menu.Item>
-		<Menu.Item><Link prefetch href='/productRegister'><a>product register</a></Link></Menu.Item>
-		<Menu.Item><Link prefetch href='/profile'><a>profile </a></Link></Menu.Item>
-		<Menu.Item><Link prefetch href='/checkout'><a>checkout </a></Link></Menu.Item>
-		<Menu.Item><Link prefetch href='/payment'><a>payment </a></Link></Menu.Item>
-		<Menu.Item><Link prefetch href='/about'><a>about</a></Link></Menu.Item>
-		<Menu.Item><Link prefetch href='/register'><a>register</a></Link></Menu.Item>
-		<Menu.Item><Link href='/product'><a>product</a></Link></Menu.Item>
-	</Menu>
+class Header extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sidebarOpen: false
+    }
+
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+  }
+
+  onSetSidebarOpen(open) {
+    this.setState({sidebarOpen: open});
+  }
+
+	render(){
+		return(
+		<div className='header-container'>
+			<MediaQuery query='(min-device-width: 600px)'>
+				<Menu stackable>
+					{
+						menu.map( ({link, text}, key) => <Menu.Item key={key}><Link href={link}><a>{text}</a></Link></Menu.Item> )
+					}
+					<style jsx global>{`
+							.ui.menu {
+								font-size: calc(24px+1rem);
+							}
+							.header-container{
+								margin-bottom: 15px;
+							}
+						`}
+					</style>
+				</Menu>
+			</MediaQuery>
+			<MediaQuery query='(max-device-width: 600px)'>
+				<Sidebar sidebar={sidebarContent}
+					open={this.state.sidebarOpen}
+					onSetOpen={this.onSetSidebarOpen}>
+					<div></div>
+				</Sidebar>
+				<Button basic onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></Button>
+			</MediaQuery>
+		</div>)
+	
+	}
+}
+
+
+const menu = [
+	{
+		link: '/',
+		text:'Home'
+	},
+	{
+		link: '/login',
+		text:'Log in'
+	},
+	{
+		link:'/productRegister',
+		text: 'Product Register'
+	},
+	{
+		link:'/profile',
+		text:'Profile'
+	},
+	{
+		link:'/checkout',
+		text:'Check Out'
+	},
+	{
+		link:'/payment',
+		text:'Payment'
+	},
+	{
+		link:'/about',
+		text: 'About'
+	},
+	{
+		link: '/register',
+		text: 'Register'
+	},
+	{
+		link: '/product',
+		text: 'Product'
+	}
+]
+
+const sidebarContent = 	<Menu>
+		<div>
+		{
+			menu.map( ({link, text}, key) => <Menu.Item key={key}><Link href={link}><a>{text}</a></Link></Menu.Item> )
+		}
+		<style jsx global>{`
+					.ui.menu {
+							font-size: 24px;
+					}
+				`}
+		</style>
+		</div>
+</Menu>
+export default Header
