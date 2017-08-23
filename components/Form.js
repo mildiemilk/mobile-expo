@@ -44,8 +44,6 @@ export const renderEmail = (email) => {
 		name="email"
 		label="email"
 		placeholder="example@example.com"
-		status={status}
-		helpTextArray ={helpTextArray}
 	/>
 }
 
@@ -85,8 +83,6 @@ export const TextInput = (
 		type,
 		name, 
 		placeholder, 
-		helpTextArray,
-		status, 
 		label,
 		value
 	}
@@ -104,16 +100,6 @@ export const TextInput = (
 	</Field>
 </div>
 
-export const SemanticInput = field => 
-<div>
-	{console.log(field)}
-	<Head />
-	<Form.Field name={field.name}>
-		<label>{field.label}</label>
-		<input placeholder={field.placeholder} />
-	</Form.Field>
-</div>
-
 TextInput.defaultProps = {
 	type: "text",
 	helpTextArray: [],
@@ -125,8 +111,6 @@ TextInput.propTypes = {
 	name : PropTypes.string.isRequired, 
 	label : PropTypes.string.isRequired, 
 	placeholder : PropTypes.string, 
-	helpTextArray : PropTypes.array,
-	status: PropTypes.string 
 }
 
 validateEmail.propTypes = {
