@@ -11,19 +11,48 @@ const validateRule = (noCondition, warningCondition, errorCondition) => noCondit
 
 const validateLength = (inputLength, warningLength, errorLength) => validateRule(inputLength === null, inputLength < warningLength, inputLength < errorLength )
 
-const validateEmail = (email) => {
+const validateEmailRegex = (email) => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return email === null ? null : re.test(email) ? SUCCESS: ERROR
 }
 
-const validatePassword = (password) => {
+export const validateEmail = ( email ) => {
+	var validateLengthResult = email? validateLength(email? email.length : null, 10, 10) : null
+	var validateEmailResult = validateEmailRegex(email)
+	var status = email? computeStatus([validateLengthResult, validateEmailResult]) : null 
+	var errorText = []
+	errorText = 
+		validateLengthResult === 'error' ? [ ...errorText, "length must be more than 10"] : errorText
+	errorText =
+		validateEmailResult === 'error' ? [...errorText, "must be in email format"] : errorText
+	return ({status,errorText})
+}
+
+export const validatePassword = ( password ) => {
+	var validateLengthResult = validateLength(password? password.length : null, 8, 8)
+	var validatePasswordResult = validatePasswordRegex(password)
+	var status = password ? computeStatus([validateLengthResult]) : null
+	var errorText = []
+	errorText =
+		validateLengthResult === 'error' ? [...errorText, 'password must be more that 8 characters'] : errorText
+	errorText =
+		validatePasswordResult === 'error' ? [...errorText, 'password must have capital and small letter and number'] : errorText
+	return({status,errorText})
+}
+
+export const validatePasswordConfirmation = ( password, passwordConfirm ) => {
+	var status = password === passwordConfirm ? SUCCESS : ERROR
+	var errorText = status === ERROR ? ["password confirmation has to match password"] : []
+	return({status,errorText})
+}
+
+const validatePasswordRegex = (password) => {
 	const re = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
 	return password === null ? null : re.test(password) ? SUCCESS : ERROR
 }
 
 const computeStatus=(validateArray) => {
 	var status 
-
 	validateArray.forEach( validation => 
 		status = validation === ERROR ? ERROR : SUCCESS
 	)
@@ -31,14 +60,6 @@ const computeStatus=(validateArray) => {
 }
 
 export const renderEmail = (email) => {
-	var validateLengthResult = email? validateLength(email? email.length : null, 10, 10) : null
-	var validateEmailResult = validateEmail(email)
-	var status = email? computeStatus([validateLengthResult, validateEmailResult]) : null 
-	var helpTextArray = []
-	helpTextArray = 
-		validateLengthResult === 'error' ? [ ...helpTextArray, "length must be more than 10"] : helpTextArray
-	helpTextArray =
-		validateEmailResult === 'error' ? [...helpTextArray, "must be in email format"] : helpTextArray
 	return <TextInput
 		type="email"
 		name="email"
@@ -48,14 +69,6 @@ export const renderEmail = (email) => {
 }
 
 export const renderPassword = (password) => { 
-	var validateLengthResult = validateLength(password? password.length : null, 8, 8)
-	var validatePasswordResult = validatePassword(password)
-	var status = password ? computeStatus([validateLengthResult]) : null
-	var helpTextArray = []
-	helpTextArray =
-		validateLengthResult === 'error' ? [...helpTextArray, 'password must be more that 8 characters'] : helpTextArray
-	helpTextArray =
-		validatePasswordResult === 'error' ? [...helpTextArray, 'password must have capital and small letter and number'] : helpTextArray
 	return <TextInput
 		type="password"
 		name="password"
@@ -65,13 +78,12 @@ export const renderPassword = (password) => {
 }
 
 export const renderPasswordConfirm = (password, passwordConfirm) => {
-	var status = password === passwordConfirm ? SUCCESS : ERROR
-	var helpTextArray = status === ERROR ? ["password confirmation has to match password"] : []
 	return <TextInput
 		type="password"
 		name="passwordConfirm"
 		status={passwordConfirm ? status : null}
 		label="Password Confirmation"
+		placeholder="password confirmation"
 	/>
 }
 
@@ -110,7 +122,7 @@ TextInput.propTypes = {
 	placeholder : PropTypes.string, 
 }
 
-validateEmail.propTypes = {
+validateEmailRegex.propTypes = {
 	email: PropTypes.string.isRequired
 }
 
