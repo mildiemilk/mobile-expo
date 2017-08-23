@@ -1,43 +1,44 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
-import withRedux from "next-redux-wrapper"
 import { reduxForm } from 'redux-form'
-import RegisterView from '../containers/AuthForm'
+import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
-import { registerSuccess, registerPending,registerFailed } from '../lib/actions/user'
-import { registerWithEmail, signinWithFacebook, signinWithGoogle } from '../lib/handlers/authenticator'
+import loadFirebase from '../lib/database'
+import LoginForm from '../containers/AuthForm'
+import { signinWithFacebook, signinWithGoogle, signOut} from '../lib/handlers/authenticator'
+import { saveUser } from '../lib/actions/user'
 
-let Register = ({register, registerSuccess, registerPending, registerFailed, user, clearError}) => 
-<RegisterView 
-	onSubmit={() => registerWithEmail(
-		{
-			email: register.values.email, 
-			password: register.values.password,
-			registerSuccess: registerSuccess,
-			registerPending: registerPending,
-			registerFailed: registerFailed
-		}
-	)}
-	onClickGoogle={()=> signinWithGoogle()}
-	onClickFacebook={()=>signinWithFacebook()}
-	error={user.error}
-	clearError={clearError}
-	formValue={register}
-/>
+class Login extends React.Component {
+    async componentDidMount() {
+        const auth = await loadFirebase('auth')
+        await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
+    }
 
-Register = reduxForm({
-	form: 'register'
-})(Register)
+    render() {
+        const { user, loginValues } = this.props
+        return (
+            <LoginForm 
+                page="register" 
+                onClickFacebook={signinWithFacebook} 
+                onClickGoogle={signinWithGoogle}
+                signOut={signOut}
+                loggedIn={user.signedIn}
+								formValue={loginValues}
+            />
+        )
+    }
+}
+Login = reduxForm({
+    form: 'login'
+})(Login)
 
 const mapStateToProps = state => ({
-	register: state.form.register,
-	user: state.user
+    loginValues : state.form.login ? state.form.login.values : null,
+    user: state.user
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({ 
-	registerSuccess,
-	registerPending,
-	registerFailed
-}, dispatch)
+const mapDispatchToProps = {
+	saveUser
+}
 
-export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Register)
+export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Login)

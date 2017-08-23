@@ -8,7 +8,8 @@ export default ({
 	onClickFacebook,
 	signOut, 
 	page,
-	loggedIn
+	loggedIn,
+	formValue
 }) => 
 <div>
 	<Head />
