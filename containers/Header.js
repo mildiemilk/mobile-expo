@@ -23,7 +23,7 @@ class Header extends React.Component {
 	render(){
 		return(
 		<div className='header-container'>
-			<MediaQuery query='(min-device-width: 600px)'>
+			<MediaQuery minDeviceWidth={1224} values={{deviceWidth: 1600}}>
 				<Menu stackable>
 					{
 						menu.map( ({link, text}, key) => <Menu.Item key={key}><Link href={link}><a>{text}</a></Link></Menu.Item> )
@@ -39,7 +39,7 @@ class Header extends React.Component {
 					</style>
 				</Menu>
 			</MediaQuery>
-			<MediaQuery query='(max-device-width: 600px)'>
+			<MediaQuery  maxWidth={1224}>
 				<Sidebar sidebar={sidebarContent}
 					open={this.state.sidebarOpen}
 					onSetOpen={this.onSetSidebarOpen}>
@@ -63,6 +63,10 @@ const menu = [
 		text:'Log in'
 	},
 	{
+		link: '/register',
+		text: 'Register'
+	},
+	{
 		link:'/productRegister',
 		text: 'Product Register'
 	},
@@ -81,10 +85,6 @@ const menu = [
 	{
 		link:'/about',
 		text: 'About'
-	},
-	{
-		link: '/register',
-		text: 'Register'
 	},
 	{
 		link: '/product',

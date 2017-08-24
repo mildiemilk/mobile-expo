@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react'
 
 export default ({changePage, user}) => 
 <div>
-  <Head/>
+  <Head title="Home"/>
   <Header />
 	<div>
     <h1>Shop 'n Share</h1>
