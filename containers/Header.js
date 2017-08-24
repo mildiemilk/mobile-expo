@@ -23,23 +23,14 @@ class Header extends React.Component {
 	render(){
 		return(
 		<div className='header-container'>
-			<MediaQuery minDeviceWidth={1224} values={{deviceWidth: 1600}}>
+			<MediaQuery minDeviceWidth={800} values={{deviceWidth: 1600}}>
 				<Menu stackable>
 					{
 						menu.map( ({link, text}, key) => <Menu.Item key={key}><Link href={link}><a>{text}</a></Link></Menu.Item> )
 					}
-					<style jsx global>{`
-							.ui.menu {
-								font-size: calc(24px+1rem);
-							}
-							.header-container{
-								margin-bottom: 15px;
-							}
-						`}
-					</style>
 				</Menu>
 			</MediaQuery>
-			<MediaQuery  maxWidth={1224}>
+			<MediaQuery  maxWidth={800}>
 				<Sidebar sidebar={sidebarContent}
 					open={this.state.sidebarOpen}
 					onSetOpen={this.onSetSidebarOpen}>
