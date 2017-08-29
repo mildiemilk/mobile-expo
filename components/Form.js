@@ -3,14 +3,7 @@ import { Form } from 'semantic-ui-react'
 import { Field } from 'redux-form'
 import PropTypes from 'prop-types'
 
-export const TextInput = (
-	{
-		type,
-		name, 
-		placeholder, 
-		label
-	}
-) =>
+export const TextInput = ({type,name, placeholder, label, value, normalizer}) =>
 <div>
 	<label>{label}</label>
 	<Field 
@@ -20,8 +13,8 @@ export const TextInput = (
 		component="input"
 		placeholder={placeholder}
 		type={type} 
-	>
-	</Field>
+		normalize={normalizer}
+	/>
 </div>
 
 TextInput.defaultProps = {
@@ -34,4 +27,3 @@ TextInput.propTypes = {
 	label : PropTypes.string.isRequired, 
 	placeholder : PropTypes.string, 
 }
-

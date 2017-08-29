@@ -1,8 +1,11 @@
 import React from 'react'
-import Link from 'next/link'
-import { Menu, Dropdown, Button, Icon } from 'semantic-ui-react'
+import Router from 'next/router'
+import { Dropdown, Button, Icon } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive'
 import Sidebar from 'react-sidebar';
+import menu from '../asset/const/menu.json'
+import { Item, Menu } from '../components/Styled'
+
 
 class Header extends React.Component {
 
@@ -24,9 +27,9 @@ class Header extends React.Component {
 		return(
 		<div className='header-container'>
 			<MediaQuery minDeviceWidth={800} values={{deviceWidth: 1600}}>
-				<Menu stackable>
+				<Menu>
 					{
-						menu.map( ({link, text}, key) => <Menu.Item key={key}><Link href={link}><a>{text}</a></Link></Menu.Item> )
+						menu.map( ({link, text}, key) => <Item key={key} onClick={()=>Router.push(link)}>{text}</Item> )
 					}
 				</Menu>
 			</MediaQuery>
@@ -36,64 +39,19 @@ class Header extends React.Component {
 					onSetOpen={this.onSetSidebarOpen}>
 					<div></div>
 				</Sidebar>
-				<Button basic onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></Button>
+				<Button onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></Button>
 			</MediaQuery>
 		</div>)
 	
 	}
 }
 
-
-const menu = [
-	{
-		link: '/',
-		text:'Home'
-	},
-	{
-		link: '/login',
-		text:'Log in'
-	},
-	{
-		link: '/register',
-		text: 'Register'
-	},
-	{
-		link:'/productRegister',
-		text: 'Product Register'
-	},
-	{
-		link:'/profile',
-		text:'Profile'
-	},
-	{
-		link:'/checkout',
-		text:'Check Out'
-	},
-	{
-		link:'/payment',
-		text:'Payment'
-	},
-	{
-		link:'/about',
-		text: 'About'
-	},
-	{
-		link: '/product',
-		text: 'Product'
-	}
-]
-
 const sidebarContent = 	<Menu>
-		<div>
-		{
-			menu.map( ({link, text}, key) => <Menu.Item key={key}><Link href={link}><a>{text}</a></Link></Menu.Item> )
-		}
-		<style jsx global>{`
-					.ui.menu {
-							font-size: 24px;
-					}
-				`}
-		</style>
-		</div>
+<div>
+{
+	menu.map( ({link, text}, key) => <Item key={key} onClick={()=>Router.push(link)}>{text}</Item> )
+}
+</div>
 </Menu>
+
 export default Header

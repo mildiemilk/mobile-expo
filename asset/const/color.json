@@ -1,7 +1,5 @@
 {
-	"main": "#2084c3",
-	"dark": "#191919",
-	"error": "#ff1945",
-	"success": "#25cb16",
-	"warning": "#ffc903"
+	"darkPrimary":"#2f413c",
+	"lightPrimary": "#6fec8a",
+	"contrastPrimary": "#ffe852"
 }
