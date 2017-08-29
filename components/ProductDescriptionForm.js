@@ -3,10 +3,11 @@ import DropZoneInput from './DropZoneInput'
 import { Button, Form, Icon } from 'semantic-ui-react'
 import { Field } from 'redux-form'
 import { SemanticInput } from './Form'
+import { LightButton, ExitButton, FloatRight, SubSegment, FloatLeft } from './Styled'
+import styled from 'styled-components'
 
 export default ({ fields, productDescription }) => <div> 
-	<li>		
-		<Button onClick={()=> fields.push({})}><i className="fa fa-plus" aria-hidden="true"></i> Add Description </Button>
+	<div>		
 		{fields.map((member, index) => {
 			let returnInput 
 			const { tag } = productDescription[index]
@@ -49,14 +50,17 @@ export default ({ fields, productDescription }) => <div>
 				break
 			}
 			return (
-      <li key={index}>
-        <Button
-				 	color="red"
-          onClick={() => fields.remove(index)}
-        >
-				<Icon name="remove" aria-hidden="true" />
-				</Button>
-        <h4>{index + 1}.</h4>
+      <SubSegment key={index}>
+				<FloatLeft>
+					<span>{index + 1}.</span>
+				</FloatLeft>
+				<FloatRight>
+					<ExitButton
+						onClick={() => fields.remove(index)}
+					>
+					<Icon name="remove" aria-hidden="true" />
+					</ExitButton>
+				</FloatRight>
  				<Field defaultValue='p' name={`${member}.tag`} component="select" className="form-control">
 					<option key="p" value="p">text</option>
 					<option key="h1" value="h1">big header</option>
@@ -64,8 +68,9 @@ export default ({ fields, productDescription }) => <div>
 					<option key="image" value="image">image</option>
 				</Field>
 				{returnInput}
-      </li>
+      </SubSegment>
     )}
 	)}
-	</li>
+	</div>
+	<LightButton onClick={()=> fields.push({})}><i className="fa fa-plus" aria-hidden="true"></i> Add Description </LightButton>
 </div>

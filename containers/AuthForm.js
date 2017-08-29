@@ -1,7 +1,8 @@
 import Head from './DefaultHead'
-import { Button, Icon, Grid, Form, Segment, Divider, Message } from 'semantic-ui-react'
+import { Button, Icon, Grid, Form, Divider, Message } from 'semantic-ui-react'
 import { TextInput } from '../components/Form'
 import Header from './Header'
+import { Segment } from '../components/Styled'
 
 export default ({
 	onClickGoogle, 
@@ -31,13 +32,7 @@ export default ({
 					warning 
 					header="test"
 					content={displayText}					
-				/>: 
-				status === 'success' ? 
-				<Message
-					success 
-					header="test"
-					content={displayText}					
-				/> : null
+				/>: null
 			}
 			<Form>
 				<Grid divided>
