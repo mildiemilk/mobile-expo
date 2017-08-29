@@ -1,10 +1,10 @@
 import React from 'react'
 import Router from 'next/router'
-import { Dropdown, Button, Icon } from 'semantic-ui-react'
+import { Dropdown, Icon } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive'
 import Sidebar from 'react-sidebar';
 import menu from '../asset/const/menu.json'
-import { Item, Menu } from '../components/Styled'
+import { Item, Menu, MenuButton } from '../components/Styled'
 
 
 class Header extends React.Component {
@@ -39,7 +39,7 @@ class Header extends React.Component {
 					onSetOpen={this.onSetSidebarOpen}>
 					<div></div>
 				</Sidebar>
-				<Button onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></Button>
+				<MenuButton onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></MenuButton>
 			</MediaQuery>
 		</div>)
 	
