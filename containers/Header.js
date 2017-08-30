@@ -33,10 +33,11 @@ class Header extends React.Component {
 					}
 				</Menu>
 			</MediaQuery>
-			<MediaQuery  maxWidth={800}>
+			<MediaQuery  maxDeviceWidth={800}>
 				<Sidebar sidebar={sidebarContent}
 					open={this.state.sidebarOpen}
-					onSetOpen={this.onSetSidebarOpen}>
+					onSetOpen={this.onSetSidebarOpen}
+				>
 					<div></div>
 				</Sidebar>
 				<MenuButton onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></MenuButton>

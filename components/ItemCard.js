@@ -1,7 +1,20 @@
-import { Card, Button, Icon } from 'semantic-ui-react'
+import { Card as SemanticCard, Button, Icon } from 'semantic-ui-react'
 import Link from 'next/link'
 import copy from 'copy-to-clipboard';
+import styled from 'styled-components'
 
+const Card = styled(SemanticCard)`
+	width: auto !important;
+	margin: 10pt !important;
+`
+
+const Header = styled(SemanticCard.Header)`
+	width: auto;
+`
+
+const Content = styled(SemanticCard.Content)`
+	width: auto;
+`
 
 export default ({ userUid, userProduct, productKey }) => {
 const { brandName, comissionCash, comissionPercent, price, priductDescription, productName} = userProduct
@@ -9,10 +22,10 @@ const { brandName, comissionCash, comissionPercent, price, priductDescription, p
 return(
 	<Card>
 		<img alt="242x200" />
-		<Card.Header>
+		<Header>
 			<p>NAME: {productName} </p>
-		</Card.Header>
-		<Card.Content>
+		</Header>
+		<Content>
 			<p>PRICE : {userProduct.price} baht </p>
 			<p>{userUid === userProduct.userUid ? 'product owner' : 'product seller'} </p>
 			<p>COMISSION : {comissionPercent} % & {comissionCash} BAHT (if owner can edit ) </p>
@@ -22,7 +35,7 @@ return(
 				<Button basic color='teal' onClick={()=>copy(`${window.location.hostname}:${window.location.port}/p/${productKey}/${userUid}`)}>GetLink</Button>
 				<Button basic color='violet'>Share <i className="fa fa-share" aria-hidden="true"></i></Button>
 			</Button.Group>
-		</Card.Content>
+		</Content>
 	</Card>
 )
 }

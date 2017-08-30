@@ -1,6 +1,5 @@
 import React from 'react'
 import ProductView from '../containers/Product'
-import { bindActionCreators } from 'redux'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import { getProductFromID, getUserProducts } from '../lib/handlers/product'
@@ -13,7 +12,11 @@ const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
 	async componentDidMount() {
-		await getProductFromID(this.props.url.query.productID)
+		getProductFromID(this.props.url.query.productID)
+	}
+
+	async componentWillReceiveProps(nextProps) {
+		nextProps.product !== this.props.product ? await getUserProducts( nextProps.product.userUid ) : null
 	}
 
 	render(){
@@ -30,11 +33,10 @@ const mapStateToProps = state => ({
 	user : state.user
 })
 
-const mapDispatchToProps = dispatch => 
-bindActionCreators({
+const mapDispatchToProps = {
 	saveSharedUser,
 	addQuantity,
 	minusQuantity
-}, dispatch)
+}
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Product)

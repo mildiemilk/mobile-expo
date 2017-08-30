@@ -26,6 +26,7 @@ export default ({user, userProducts}) => <div>
 			</Grid.Column>
 		</Grid.Row>
 		<Grid.Row>
+			<Grid.Column>
 			<Card.Group>
 				{ userProducts ? 
 					Object.keys(userProducts).map( userProductKey => {
@@ -39,6 +40,7 @@ export default ({user, userProducts}) => <div>
 					}) : null
 				}
 			</Card.Group>
+			</Grid.Column>
 		</Grid.Row>
 	</Grid>
 </div>

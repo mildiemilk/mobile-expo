@@ -2,7 +2,7 @@ import React from 'react'
 import DropZoneInput from './DropZoneInput'
 import { Button, Form, Icon } from 'semantic-ui-react'
 import { Field } from 'redux-form'
-import { SemanticInput } from './Form'
+import { SemanticInput, H1Input } from './Form'
 import { LightButton, ExitButton, FloatRight, SubSegment, FloatLeft } from './Styled'
 import styled from 'styled-components'
 
@@ -28,6 +28,14 @@ export default ({ fields, productDescription }) => <div>
 				/>
 				break
 				case 'h1':
+				returnInput =
+				<Field
+					className="form-control"
+					name={`${member}.context`}
+					component={H1Input}
+					type="text"
+					placeholder="type your description here"
+        />
 				case 'h3':
 				returnInput =
 				<Field
@@ -72,5 +80,5 @@ export default ({ fields, productDescription }) => <div>
     )}
 	)}
 	</div>
-	<LightButton onClick={()=> fields.push({})}><i className="fa fa-plus" aria-hidden="true"></i> Add Description </LightButton>
+	<LightButton onClick={()=> fields.push({})}><Icon name="plus"></Icon> Add Description </LightButton>
 </div>
