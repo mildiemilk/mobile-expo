@@ -31,7 +31,6 @@ app.prepare()
 				description: 'John Doe (id:30)',
 				card: req.body.card
 			}).then( function(customer){
-				console.log(customer)
 				return omise.charges.create({
 					description: req.body.description,
 					amount: req.body.amount,
@@ -40,7 +39,6 @@ app.prepare()
 					customer: customer.id 
 				})
 			}).then(function (charge) {
-				console.log('charge:', charge)
 				res.status(200).send(JSON.stringify(charge))
 			}).error(function (err) {
 				console.log('error:', err)
