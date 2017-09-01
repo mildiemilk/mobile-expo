@@ -16,8 +16,8 @@ class Checkout extends React.Component{
 	}
 
 	render() {
-		const { cart, products, product } = this.props
-		return <CheckoutView cart={cart} products={products} product={product}/>
+		const { cart, products, product, payment } = this.props
+		return <CheckoutView cart={cart} products={products} product={product} total={payment.total}/>
 	}
 } 
 
@@ -25,7 +25,8 @@ class Checkout extends React.Component{
 const mapStateToProps = state => ({
 	cart: state.cart,
 	products: state.userProducts,
-	product: state.product
+	product: state.product,
+	payment: state.payment
 })
 
 const mapDispatchToProps = {

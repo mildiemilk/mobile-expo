@@ -6,12 +6,13 @@ import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { saveSharedUser } from '../lib/actions/sharedUser'
 import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
-import { saveUser } from '../lib/actions/user'
+import { saveUser, setSeller } from '../lib/actions/user'
 
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
 	async componentDidMount() {
+		this.props.setSeller(this.props.url.query.userID)
 		getProductFromID(this.props.url.query.productID)
 	}
 
@@ -36,7 +37,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
 	saveSharedUser,
 	addQuantity,
-	minusQuantity
+	minusQuantity,
+	setSeller
 }
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Product)
