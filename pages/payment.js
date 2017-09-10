@@ -23,15 +23,22 @@ class Payment extends React.Component{
 					sellerUid: sharedUser.sharedUserUid,
 					ownerUid:product.userUid,
 					buyerUid:user.uid,
-					productUid:id
+					productId:id
 				})
 			});
 		} 
 
 	render() { 
-		const {cardDetail, total, sharedUser} = this.props
+		const card = {
+			name : 'john doe', 
+			cardNumber : '4242424242424242', 
+			securityCode:'123', 
+			expiryMonth:'7', 
+			expiryYear:'2019'
+		}
+		const {cardDetail, total, sharedUser, transaction} = this.props
 		return <PaymentView 
-				onCheckOut={()=>createPayment(total, sharedUser.sharedUserUid)}
+				onCheckOut={()=>createPayment(total, card ,transaction)}
 			/>
 	}
 }
