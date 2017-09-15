@@ -11,6 +11,11 @@ export const H1 = styled.h1`
 	color: ${color.darkPrimary};
 `
 
+export const H3 = styled.h3`
+	font-size: 26pt;
+	color: ${color.darkPrimary};
+`
+
 export const Item = styled(SemanticMenu.Item)`
 	background: ${color.darkPrimary} !important;
 	color: ${color.lightPrimary} !important;

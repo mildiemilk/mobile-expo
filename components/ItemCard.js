@@ -6,6 +6,7 @@ import styled from 'styled-components'
 const Card = styled(SemanticCard)`
 	width: auto !important;
 	margin: 10pt !important;
+	min-width: 320px !important;
 `
 
 const Header = styled(SemanticCard.Header)`
