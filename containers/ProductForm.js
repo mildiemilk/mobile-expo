@@ -14,13 +14,19 @@ const MainImage = styled.img`
 	display: inline-block;
 	min-width:400px;
 	min-height:400px;
+	margin: 2px;
+	flex-grow: 1;
 `
 
 const SubImage = styled.img`
 	display: inline-block;
-	min-width:76px;
-	min-height:76px;
+	width:76px;
+	height:76px;
 	margin: 0px 2px 0px 2px;
+`
+
+const MainImageWrap = styled.div`
+	position: relative;
 `
 
 const ImageWrap = styled.div`
@@ -59,14 +65,14 @@ export default ({addProductDescription, productDescription, handleSubmit}) =>
 		<ImportantInfoWrap>
 			<ImageWrap>
 				<div>
-					<MainImage />
+				<MainImage src='/static/img/noimg.png'/>
 				</div>
 				<div>
-					<SubImage/>
-					<SubImage/>
-					<SubImage/>
-					<SubImage/>
-					<SubImage/>									
+					<SubImage src='/static/img/noimg.png'/>
+					<SubImage src='/static/img/noimg.png'/>
+					<SubImage src='/static/img/noimg.png'/>
+					<SubImage src='/static/img/noimg.png'/>
+					<SubImage src='/static/img/noimg.png'/>									
 				</div>
 			</ImageWrap>
 			<InfoWrap>
