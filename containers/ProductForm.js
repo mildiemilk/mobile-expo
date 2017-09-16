@@ -5,115 +5,114 @@ import Head from './DefaultHead'
 import Header from './Header'
 import { TextInput, NumberInput } from '../components/Form'
 import { FieldArray } from 'redux-form'
-import { Segment, Button, H1 } from '../components/Styled'
+import { Button, H1 } from '../components/Styled'
 import ProductDescriptionPreview from '../components/ProductDescription'
 import ProductDescriptionForm from '../components/ProductDescriptionForm'
+import styled from 'styled-components'
+
+const MainImage = styled.img`
+	display: inline-block;
+	min-width:400px;
+	min-height:400px;
+`
+
+const SubImage = styled.img`
+	display: inline-block;
+	min-width:76px;
+	min-height:76px;
+	margin: 0px 2px 0px 2px;
+`
+
+const ImageWrap = styled.div`
+	display: flex;
+	flex-direction: column;
+`
+
+const Segment = styled.div`
+	width: 100%;
+	padding: 2px 0px 2px 2px;
+`
+
+const InfoWrap = styled.div`
+	border: 1px solid #ccc; 
+	min-height: 320px; 
+	min-width: 320px;
+	width: 100%;
+	max-width: 800px;
+	flex: 1 1 auto;
+	margin: 0px 4px 0px 2px;
+`
+const ImportantInfoWrap = styled.div`
+	display: flex;
+	flex-flow: row wrap;
+`
+
+const PriceWrap = styled.div`
+	padding-left:7px;
+`
 
 export default ({addProductDescription, productDescription, handleSubmit}) => 
 <div>
 	<Head/>
 	<Header/>
 	<Segment>
-		<Form>
-			<Grid>
-				<Grid.Row>
-					<Grid.Column>
-						<H1>Register Product</H1>
-					</Grid.Column>
-				</Grid.Row>
-				<Grid.Row>
-					<Grid.Column>
-						<TextInput
-							name="productName"
-							type="text"
-							placeholder="product name"
-							label="product name"
-						/>
-					</Grid.Column>
-				</Grid.Row>
-				<Grid.Row>
-					<Grid.Column>			
-						<TextInput
+		<ImportantInfoWrap>
+			<ImageWrap>
+				<div>
+					<MainImage />
+				</div>
+				<div>
+					<SubImage/>
+					<SubImage/>
+					<SubImage/>
+					<SubImage/>
+					<SubImage/>									
+				</div>
+			</ImageWrap>
+			<InfoWrap>
+				<Form>
+					<TextInput
+						name="productName"
+						type="text"
+						placeholder="product name"
+					/>
+					<TextInput
 							name="brandName"
-							label="brand name"
 							type="text"
 							placeholder="brand name"
 						/>
-					</Grid.Column>
-				</Grid.Row>
-				<Grid.Row>
-					<Grid.Column>
-						<Form.Group>
-							<TextInput
-								name="price"
-								type="number"
-								placeholder="00.00 baht"
-								label="price"
-								width="2"
-							/>
-							<TextInput
-								name="comissionPercent"
-								type="number"
-								placeholder="00%"
-								label="seller get %"
-								normalizer={value => value >= 75 ? 75 : value}
-								width="2"
-							/>
-							<TextInput
-								name="comissionCash"
-								type="number"
-								placeholder="00 baht"
-								label="seller get cash"
-								normalizer={
-									(value, previousValue, allValues) => 
-									(value > (0.75 - allValues['comissionPercent']/100) * allValues['price'] ? (0.75 - allValues['comissionPercent']/100) * allValues['price']: value )
-									}
-								width="2"
-							/>
-						</Form.Group>
-					</Grid.Column>
-				</Grid.Row>
-				<Grid.Row>
-					<Grid.Column>
+						<PriceWrap>
+							<Form.Group  widths='equal'>
+								<TextInput
+									name="price"
+									type="number"
+									placeholder="price = 00.00 baht"
+									width="2"
+								/>
+								<TextInput
+									name="comissionPercent"
+									type="number"
+									placeholder="comission 00%"
+									normalizer={value => value >= 75 ? 75 : value}
+									width="1"
+								/>
+								<TextInput
+									name="comissionCash"
+									type="number"
+									placeholder="comission 00 baht"
+									normalizer={
+										(value, previousValue, allValues) => 
+										(value > (0.75 - allValues['comissionPercent']/100) * allValues['price'] ? (0.75 - allValues['comissionPercent']/100) * allValues['price']: value )
+										}
+									width="1"
+								/>
+							</Form.Group>
+						</PriceWrap>
 						<FieldArray name="productDescription" component={ProductDescriptionForm} productDescription={productDescription}/>
-					</Grid.Column>
-				</Grid.Row>
-				<Grid.Row>
-					<Grid.Column>
-						<Button onClick={()=>handleSubmit(productDescription)}>Submit</Button>
-					</Grid.Column>
-				</Grid.Row>
-				<Segment>
-					<Grid.Row>
-						<Grid.Column>
-								<h4>Preview</h4>
-						</Grid.Column>
-					</Grid.Row>
-					<Grid.Row>
-						<Grid.Column>
-							<ProductDescriptionPreview productDescription={productDescription} />
-						</Grid.Column>
-					</Grid.Row>
-				</Segment>
-				<Grid.Row>
-					<Grid.Column>
-					<h3>image</h3>
-					</Grid.Column>
-				</Grid.Row>
-				<Grid.Row>
-					<Grid.Column>
-						<div className="image-wrapper">
-							<i className="overlay-image fa fa-pencil" />
-							<image alt="template" />
-						</div>
-						<image alt="template"/>
-						<image alt="template"/>
-						<image alt="template"/>
-						<image alt="template"/>
-						<image alt="plus" />
-					</Grid.Column>
-				</Grid.Row>
-			</Grid>
-		</Form>
+						<Button fluid size='big' onClick={()=>handleSubmit(productDescription)}>Submit</Button>
+				</Form>
+			</InfoWrap>
+		</ImportantInfoWrap>
 	</Segment>
+	<ProductDescriptionPreview productDescription={productDescription} />
 </div>

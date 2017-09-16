@@ -80,5 +80,5 @@ export default ({ fields, productDescription }) => <div>
     )}
 	)}
 	</div>
-	<LightButton onClick={()=> fields.push({})}><Icon name="plus"></Icon> Add Description </LightButton>
+	<LightButton fluid onClick={()=> fields.push({})}><Icon name="plus"></Icon> Add Description </LightButton>
 </div>

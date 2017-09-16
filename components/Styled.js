@@ -53,15 +53,14 @@ export const Segment = styled(SemanticSegment)`
 }
 `
 export const Button = styled(SemanticButton)`
-	background: ${color.darkPrimary} !important;
-	color: ${color.lightPrimary} !important;
-	&:hover {
-		-webkit-transform: scale(1.1); 
-		background: ${color.contrastPrimary} !important;
+background: ${color.contrastPrimary} !important;
+color: ${color.darkPrimary} !important;
+&:hover {
+		background: ${color.lightPrimary} !important;
 		color: ${color.darkPrimary} !important;
+		transition: 0.3s;
 		z-index:10;
 		font-weight: bold !important;
-		border: 0.1rem solid ${color.darkPrimary};
 	}
 `
 export const LightButton = styled(SemanticButton)`
@@ -70,10 +69,10 @@ export const LightButton = styled(SemanticButton)`
 	color: ${color.lightPrimary} !important;
 	border: 0.1rem solid ${color.lightPrimary} !important;	
 	&:hover {
-		-webkit-transform: scale(1.1); 
 		z-index:10;
 		font-weight: bold !important;
-		border: 0.1rem solid ${color.darkPrimary};
+		background: ${color.lightPrimary} !important;
+		color: ${color.darkPrimary} !important;
 	}
 `
 
