@@ -144,7 +144,8 @@ cursor:pointer;
 `
 
 const StyledDropZone = styled(Dropzone)`
-
+width: -webkit-fill-available;
+height: -webkit-fill-available;
 `
 
 export const SubImage = () =>	
@@ -158,27 +159,26 @@ export const SubImage = () =>
 </SubImageWrap>
 
 
+
+const MainImageWrap = styled.div`
+max-width:400px;
+max-height: 406px;
+width: 100%;
+`
+
+const MainImageArea = styled.div`
+position: relative;
+width: 100%;
+height: -webkit-fill-available;
+`
+
 const MainImg = styled.img`
 margin: 2px;
 flex-grow: 1;
 cursor:pointer;
 position: absolute;
 z-index: -1;
-width: -webkit-fill-available;
-height: -webkit-fill-available;
-`
-
-const MainImageArea = styled.div`
-position: relative;
-width: -webkit-fill-available;
-height: -webkit-fill-available;
-`
-
-const MainImageWrap = styled.div`
-max-width:400px;
-max-height: 406px;
-width: -webkit-fill-available;
-height: -webkit-fill-available;
+width: 100%;
 `
 
 const HoveredImage = styled.div`
@@ -211,10 +211,9 @@ ${MainImageArea}: hover & {
 }
 `
 
-
-export const MainImage = () =>
+export const MainImage = ({setProductImage}) =>
 <MainImageWrap>
-	<StyledDropZone>
+	<StyledDropZone onDrop={setProductImage}>
 		<MainImageArea>
 			<MainImg src='/static/img/noimg.png' title="add main image"/>
 				<HoveredImage><HoveredImageText>add image</HoveredImageText></HoveredImage>

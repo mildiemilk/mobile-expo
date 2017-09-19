@@ -14,10 +14,11 @@ import styled from 'styled-components'
 const ImageSection = styled.div`
 	display: flex;
 	flex-direction: column;
+	width: 100%;
+	max-width:400px;
 `
 
 const Segment = styled.div`
-	width: 100%;
 	padding: 2px 0px 2px 2px;
 `
 
@@ -49,14 +50,14 @@ const calcComissionCash = (value, previousValue, allValues) =>
 
 const calcComissionPercent = value => value >= 75 ? 75 : value
 
-export default ({addProductDescription, productDescription, handleSubmit}) => 
+export default ({addProductDescription, productDescription, handleSubmit, setProductImage}) => 
 <div>
 	<Head/>
 	<Header/>
 	<Segment>
 		<ImportantInfoWrap>
 			<ImageSection>
-				<MainImage/>
+				<MainImage setProductImage={setProductImage}/>
 				<SubImageSection>
 					<SubImage/>
 					<SubImage/>
