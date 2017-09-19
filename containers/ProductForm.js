@@ -5,31 +5,13 @@ import Head from './DefaultHead'
 import Header from './Header'
 import { TextInput, NumberInput } from '../components/Form'
 import { FieldArray } from 'redux-form'
-import { Button, H1 } from '../components/Styled'
+import { Button, H1, SubImage, MainImage } from '../components/Styled'
 import ProductDescriptionPreview from '../components/ProductDescription'
 import ProductDescriptionForm from '../components/ProductDescriptionForm'
 import styled from 'styled-components'
 
-const MainImage = styled.img`
-	display: inline-block;
-	min-width:400px;
-	min-height:400px;
-	margin: 2px;
-	flex-grow: 1;
-`
 
-const SubImage = styled.img`
-	display: inline-block;
-	width:76px;
-	height:76px;
-	margin: 0px 2px 0px 2px;
-`
-
-const MainImageWrap = styled.div`
-	position: relative;
-`
-
-const ImageWrap = styled.div`
+const ImageSection = styled.div`
 	display: flex;
 	flex-direction: column;
 `
@@ -37,6 +19,11 @@ const ImageWrap = styled.div`
 const Segment = styled.div`
 	width: 100%;
 	padding: 2px 0px 2px 2px;
+`
+
+const SubImageSection = styled.div`
+display: flex;
+justify-content: space-between;
 `
 
 const InfoWrap = styled.div`
@@ -57,63 +44,50 @@ const PriceWrap = styled.div`
 	padding-left:7px;
 `
 
+const calcComissionCash = (value, previousValue, allValues) => 
+(value > (0.75 - allValues['comissionPercent']/100) * allValues['price'] ? (0.75 - allValues['comissionPercent']/100) * allValues['price']: value )
+
+const calcComissionPercent = value => value >= 75 ? 75 : value
+
 export default ({addProductDescription, productDescription, handleSubmit}) => 
 <div>
 	<Head/>
 	<Header/>
 	<Segment>
 		<ImportantInfoWrap>
-			<ImageWrap>
-				<div>
-				<MainImage src='/static/img/noimg.png'/>
-				</div>
-				<div>
-					<SubImage src='/static/img/noimg.png'/>
-					<SubImage src='/static/img/noimg.png'/>
-					<SubImage src='/static/img/noimg.png'/>
-					<SubImage src='/static/img/noimg.png'/>
-					<SubImage src='/static/img/noimg.png'/>									
-				</div>
-			</ImageWrap>
+			<ImageSection>
+				<MainImage/>
+				<SubImageSection>
+					<SubImage/>
+					<SubImage/>
+					<SubImage/>
+					<SubImage/>
+					<SubImage/>					
+				</SubImageSection>
+			</ImageSection>
 			<InfoWrap>
 				<Form>
-					<TextInput
-						name="productName"
-						type="text"
-						placeholder="product name"
-					/>
-					<TextInput
-							name="brandName"
-							type="text"
-							placeholder="brand name"
-						/>
-						<PriceWrap>
-							<Form.Group  widths='equal'>
-								<TextInput
-									name="price"
-									type="number"
-									placeholder="price = 00.00 baht"
-									width="2"
-								/>
-								<TextInput
-									name="comissionPercent"
-									type="number"
-									placeholder="comission 00%"
-									normalizer={value => value >= 75 ? 75 : value}
-									width="1"
-								/>
-								<TextInput
-									name="comissionCash"
-									type="number"
-									placeholder="comission 00 baht"
-									normalizer={
-										(value, previousValue, allValues) => 
-										(value > (0.75 - allValues['comissionPercent']/100) * allValues['price'] ? (0.75 - allValues['comissionPercent']/100) * allValues['price']: value )
-										}
-									width="1"
-								/>
-							</Form.Group>
-						</PriceWrap>
+					<TextInput name="productName" type="text" placeholder="product name"/>
+					<TextInput name="brandName" type="text" placeholder="brand name" />
+					<PriceWrap>
+						<Form.Group  widths='equal'>
+							<TextInput name="price" type="number" placeholder="price = 00.00 baht" width="2" />
+							<TextInput
+								name="comissionPercent"
+								type="number"
+								placeholder="comission 00%"
+								normalizer={calcComissionPercent}
+								width="1"
+							/>
+							<TextInput
+								name="comissionCash"
+								type="number"
+								placeholder="comission 00 baht"
+								normalizer={calcComissionCash}
+								width="1"
+							/>
+						</Form.Group>
+					</PriceWrap>
 						<FieldArray name="productDescription" component={ProductDescriptionForm} productDescription={productDescription}/>
 						<Button fluid size='big' onClick={()=>handleSubmit(productDescription)}>Submit</Button>
 				</Form>

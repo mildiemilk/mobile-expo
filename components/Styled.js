@@ -4,6 +4,7 @@ import {
 	Button as SemanticButton, 
 	Segment as SemanticSegment 
 } from 'semantic-ui-react'
+import Dropzone from 'react-dropzone'
 import color from '../asset/const/color.json'
 
 export const H1 = styled.h1`
@@ -22,7 +23,8 @@ export const Item = styled(SemanticMenu.Item)`
 	flex-grow: 1;
 	font-size: 15px;
 	&:hover {
-		-webkit-transform: scale(1.1); 
+		transition-timing-function: ease-in;
+		transition: 0.25s;
 		background: ${color.contrastPrimary} !important;
 		color: ${color.darkPrimary} !important;
 		z-index:10;
@@ -92,3 +94,130 @@ export const FloatLeft = styled.div`
 export const SubSegment = styled(SemanticSegment) `
 	margin-bottom: 1rem !important;
 `
+
+const SubImageWrap = styled.div`
+width: 76px;
+height: 76px;
+margin: 6px 2px 0px 2px;
+`
+
+const SubImageArea = styled.div`
+position: relative;
+`
+
+const SubImg = styled.img`
+display: inline-block;
+width:76px;
+height:76px;
+cursor:pointer;
+position: absolute;
+z-index: -1;
+`
+
+const HoveredSubImage = styled.div`
+color: black;
+display: none;
+width: 100%;
+height: 0px;
+border: dashed 3pt #ccc;
+z-index:1;
+${SubImageWrap}:hover & {
+display:block;
+height: 76px;
+cursor:pointer;
+}
+`
+
+const HoveredSubImageText = styled.div`
+position: absolute;
+display: none;
+z-index:1;
+color: #ccc;
+top: 35%;
+left: 35%;
+font-size: 35pt; 
+${SubImageWrap}:hover & {
+display:block;
+height: 76px;
+cursor:pointer;
+}
+`
+
+const StyledDropZone = styled(Dropzone)`
+
+`
+
+export const SubImage = () =>	
+<SubImageWrap>
+	<StyledDropZone>
+		<SubImageArea>
+			<SubImg src='/static/img/noimg.png' title="add sub image 1"/>
+			<HoveredSubImage><HoveredSubImageText>+</HoveredSubImageText></HoveredSubImage>
+		</SubImageArea>
+	</StyledDropZone>
+</SubImageWrap>
+
+
+const MainImg = styled.img`
+margin: 2px;
+flex-grow: 1;
+cursor:pointer;
+position: absolute;
+z-index: -1;
+width: -webkit-fill-available;
+height: -webkit-fill-available;
+`
+
+const MainImageArea = styled.div`
+position: relative;
+width: -webkit-fill-available;
+height: -webkit-fill-available;
+`
+
+const MainImageWrap = styled.div`
+max-width:400px;
+max-height: 406px;
+width: -webkit-fill-available;
+height: -webkit-fill-available;
+`
+
+const HoveredImage = styled.div`
+display: none;
+width: 100%;
+height: 0px;
+border: dashed 5pt #ccc;
+z-index:1;
+${MainImageArea}:hover & {
+	display:block;
+	height: -webkit-fill-available;
+	cursor:pointer;
+}
+`
+
+const HoveredImageText = styled.div`
+display: none;
+white-space: nowrap; 
+color: white;
+font-size: 50px;
+position: absolute;
+color: #ccc;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+${MainImageArea}: hover & {
+	display: block;
+	cursor:pointer;
+}
+`
+
+
+export const MainImage = () =>
+<MainImageWrap>
+	<StyledDropZone>
+		<MainImageArea>
+			<MainImg src='/static/img/noimg.png' title="add main image"/>
+				<HoveredImage><HoveredImageText>add image</HoveredImageText></HoveredImage>
+		</MainImageArea>
+	</StyledDropZone>
+</MainImageWrap>
