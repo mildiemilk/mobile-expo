@@ -212,7 +212,7 @@ ${MainImageArea}: hover & {
 
 export const MainImage = ({setProductImage, image}) =>
 <MainImageWrap>
-	<StyledDropZone onDrop={setProductImage}>
+	<StyledDropZone onDrop={droppedImage => setProductImage(0, droppedImage)}>
 		<MainImageArea>
 			<MainImg src={image || '/static/img/noimg.png'} title="add main image"/>
 				<HoveredImage><HoveredImageText>add image</HoveredImageText></HoveredImage>

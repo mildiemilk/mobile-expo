@@ -4,7 +4,7 @@ import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import ProductFormView from '../containers/ProductForm'
 import { addProductDescription } from '../lib/actions/product'
-import { registerProduct, setProductImage ,setSubImage } from '../lib/handlers/product'
+import { registerProduct,setProductImage } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser } from '../lib/actions/user'
 import { bindActionCreators } from 'redux'
@@ -35,9 +35,8 @@ class ProductRegister extends Component{
 		return (<ProductFormView 
 			productDescription={productDescription} 
 			addProductDescription={addProductDescription} 
-			setProductImage = {setProductImage}
 			productImages = {productImages}
-			setSubImage = {setSubImage}
+			setSubImage = {setProductImage}
 			handleSubmit={()=> registerProduct({
 				productName, 
 				brandName, 

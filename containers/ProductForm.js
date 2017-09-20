@@ -50,7 +50,7 @@ const calcComissionCash = (value, previousValue, allValues) =>
 
 const calcComissionPercent = value => value >= 75 ? 75 : value
 
-export default ({addProductDescription, productDescription, handleSubmit, setProductImage, productImages, setSubImage}) => 
+export default ({addProductDescription, productDescription, handleSubmit, productImages, setProductImage}) => 
 <div>
 	<Head/>
 	<Header/>
@@ -60,7 +60,7 @@ export default ({addProductDescription, productDescription, handleSubmit, setPro
 				<MainImage setProductImage={setProductImage} image={productImages[0]}/>
 				<SubImageSection>
 					{
-						[1,2,3,4,5].map( number => 	<SubImage number={number} setSubImage={setSubImage} image={productImages[number]}/>	)
+						[1,2,3,4,5].map( number => 	<SubImage key={number} number={number} setProductImage={setProductImage} image={productImages[number]}/>	)
 					}
 				</SubImageSection>
 			</ImageSection>
