@@ -179,6 +179,7 @@ cursor:pointer;
 position: absolute;
 z-index: -1;
 width: 100%;
+height: -webkit-fill-available;
 `
 
 const HoveredImage = styled.div`
@@ -211,11 +212,11 @@ ${MainImageArea}: hover & {
 }
 `
 
-export const MainImage = ({setProductImage}) =>
+export const MainImage = ({setProductImage, image}) =>
 <MainImageWrap>
 	<StyledDropZone onDrop={setProductImage}>
 		<MainImageArea>
-			<MainImg src='/static/img/noimg.png' title="add main image"/>
+			<MainImg src={image || '/static/img/noimg.png'} title="add main image"/>
 				<HoveredImage><HoveredImageText>add image</HoveredImageText></HoveredImage>
 		</MainImageArea>
 	</StyledDropZone>

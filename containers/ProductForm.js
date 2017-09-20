@@ -50,14 +50,14 @@ const calcComissionCash = (value, previousValue, allValues) =>
 
 const calcComissionPercent = value => value >= 75 ? 75 : value
 
-export default ({addProductDescription, productDescription, handleSubmit, setProductImage}) => 
+export default ({addProductDescription, productDescription, handleSubmit, setProductImage, productImages}) => 
 <div>
 	<Head/>
 	<Header/>
 	<Segment>
 		<ImportantInfoWrap>
 			<ImageSection>
-				<MainImage setProductImage={setProductImage}/>
+				<MainImage setProductImage={setProductImage} image={productImages[0]}/>
 				<SubImageSection>
 					<SubImage/>
 					<SubImage/>
