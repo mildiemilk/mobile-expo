@@ -29,14 +29,19 @@ class ProductRegister extends Component{
 			comissionCash,
 			userUid,
 			userEmail,
-			productImages
+			productImages,
+			shortDescription
 		} = this.props
 		
 		return (<ProductFormView 
 			productDescription={productDescription} 
+			brandName={brandName}
 			addProductDescription={addProductDescription} 
 			productImages = {productImages}
+			shortDescription={shortDescription}
 			setSubImage = {setProductImage}
+			productName = {productName}
+			price = {price}
 			handleSubmit={()=> registerProduct({
 				productName, 
 				brandName, 
@@ -46,7 +51,8 @@ class ProductRegister extends Component{
 				comissionPercent,
 				comissionCash,
 				productDescription,
-				productImages
+				productImages,
+				shortDescription
 			})} 
 		/>)
 	}
@@ -65,6 +71,7 @@ const mapStateToProps = state => ({
 	comissionPercent: selector(state, 'comissionPercent'),
 	comissionCash: selector(state, 'comissionCash'),
 	productDescription: selector(state,'productDescription'),
+	shortDescription: selector(state,'shortDescription'),
 	userUid: state.user.uid,
 	userEmail: state.user.email,
 	productImages: state.productImages

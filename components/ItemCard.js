@@ -31,11 +31,13 @@ const copyLink = (productKey, userUid)=>{
 }
 
 export default ({ userUid, userProduct, productKey }) => {
-const { brandName, comissionCash, comissionPercent, price, priductDescription, productName} = userProduct
+const { brandName, comissionCash, comissionPercent, price, priductDescription, productName, productImages} = userProduct
 
 return(
 	<Card>
-		<Img alt="242x200" />
+		<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
+			<Img alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'}/>
+		</Link>
 		<Header>
 			<h2>{productName} </h2>
 		</Header>

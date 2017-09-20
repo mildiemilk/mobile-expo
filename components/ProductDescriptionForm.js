@@ -8,6 +8,12 @@ import styled from 'styled-components'
 
 export default ({ fields, productDescription }) => <div> 
 	<div>		
+			<Field
+			className="form-control"
+			name='shortDescription'
+			component="textarea"
+			placeholder="short description here"
+		/>
 		{fields.map((member, index) => {
 			let returnInput 
 			const { tag } = productDescription[index]

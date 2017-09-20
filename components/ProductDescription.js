@@ -1,4 +1,8 @@
-export default ({productDescription}) => <div>
+export default ({productName, brandName, price, shortDescription, productDescription, productImages}) => <div>
+	<h1>{productName || 'Title'}</h1>
+	<h3>{brandName || 'brand name'}</h3>
+	<h4>{price || '00.00'} baht</h4>
+	<p>{shortDescription || 'short description'}</p>
 	{productDescription ? productDescription.map((eachDescription, key) =>{ 
 		const { tag, context} = eachDescription
 		switch(tag) {

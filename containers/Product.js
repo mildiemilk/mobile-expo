@@ -8,20 +8,14 @@ import { AddItem } from '../components/Cart'
 export default ({product, minusQuantity, addQuantity, productUid, productQuantity}) => <div>
 	<Head/>
 	<Header/>
-	<h1>Description</h1>
 	<h1>{product.productName}</h1>
 	<h2>
 		Brand Name: {product.brandName}
 	</h2>
-	<h3>image</h3>
-		<div className="image-wrapper">
-			<i className="overlay-image fa fa-pencil" />
-			<image alt="template" />
-		</div>
-		<image alt="template"/>
-		<image alt="template"/>
-		<image alt="template"/>
-		<image alt="template"/>
+	<div className="image-wrapper">
+		<i className="overlay-image fa fa-pencil" />
+		<image alt="template" />
+	</div>
 	<h2>Description</h2>
 	<ProductDescription productDescription={product.productDescription} />
 	<AddItem onClickMinus={minusQuantity} onClickAdd={addQuantity} productUid={productUid} productQuantity={productQuantity}/>

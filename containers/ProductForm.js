@@ -50,7 +50,7 @@ const calcComissionCash = (value, previousValue, allValues) =>
 
 const calcComissionPercent = value => value >= 75 ? 75 : value
 
-export default ({addProductDescription, productDescription, handleSubmit, productImages, setProductImage}) => 
+export default ({addProductDescription, productDescription, handleSubmit, productImages, setProductImage, productName, price, brandName, shortDescription}) => 
 <div>
 	<Head/>
 	<Header/>
@@ -93,5 +93,9 @@ export default ({addProductDescription, productDescription, handleSubmit, produc
 			</InfoWrap>
 		</ImportantInfoWrap>
 	</Segment>
-	<ProductDescriptionPreview productDescription={productDescription} />
+	<Segment>
+		<InfoWrap>
+			<ProductDescriptionPreview productName={productName} brandName={brandName} price={price} shortDescription={shortDescription} productDescription={productDescription} productImages={productImages}/>
+		</InfoWrap>
+	</Segment>
 </div>
