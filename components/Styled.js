@@ -148,17 +148,15 @@ width: -webkit-fill-available;
 height: -webkit-fill-available;
 `
 
-export const SubImage = () =>	
+export const SubImage = ({number, setSubImage, image}) =>
 <SubImageWrap>
-	<StyledDropZone>
+	<StyledDropZone onDrop={droppedImage => setSubImage(number,droppedImage)}>
 		<SubImageArea>
-			<SubImg src='/static/img/noimg.png' title="add sub image 1"/>
+			<SubImg src={image||'/static/img/noimg.png'} title="add sub image 1"/>
 			<HoveredSubImage><HoveredSubImageText>+</HoveredSubImageText></HoveredSubImage>
 		</SubImageArea>
 	</StyledDropZone>
 </SubImageWrap>
-
-
 
 const MainImageWrap = styled.div`
 max-width:400px;
