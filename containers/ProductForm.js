@@ -5,7 +5,7 @@ import Head from './DefaultHead'
 import Header from './Header'
 import { TextInput, NumberInput } from '../components/Form'
 import { FieldArray } from 'redux-form'
-import { Button, H1, SubImage, MainImage } from '../components/Styled'
+import { Button, H1, SubImage, MainImage, SubImageSection } from '../components/Styled'
 import ProductDescriptionPreview from '../components/ProductDescription'
 import ProductDescriptionForm from '../components/ProductDescriptionForm'
 import styled from 'styled-components'
@@ -22,10 +22,6 @@ const Segment = styled.div`
 	padding: 2px 0px 2px 2px;
 `
 
-const SubImageSection = styled.div`
-display: flex;
-justify-content: space-between;
-`
 
 const InfoWrap = styled.div`
 	border: 1px solid #ccc; 

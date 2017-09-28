@@ -148,14 +148,26 @@ width: -webkit-fill-available;
 height: -webkit-fill-available;
 `
 
-export const SubImage = ({number, setSubImage, image}) =>
+export const SubImageSection = styled.div`
+display: flex;
+justify-content: space-between;
+`
+
+
+export const SubImage = ({number, setSubImage, image, preview}) =>
 <SubImageWrap>
-	<StyledDropZone onDrop={droppedImage => setSubImage(number,droppedImage)}>
 		<SubImageArea>
 			<SubImg src={image||'/static/img/noimg.png'} title="add sub image 1"/>
-			<HoveredSubImage><HoveredSubImageText>+</HoveredSubImageText></HoveredSubImage>
+			{
+				preview? 
+				null:
+				<HoveredSubImage>
+					<StyledDropZone onDrop={droppedImage => setSubImage(number,droppedImage)}>
+						<HoveredSubImageText>+</HoveredSubImageText>
+					</StyledDropZone>
+				</HoveredSubImage>
+			}
 		</SubImageArea>
-	</StyledDropZone>
 </SubImageWrap>
 
 const MainImageWrap = styled.div`
@@ -215,7 +227,9 @@ export const MainImage = ({setProductImage, image}) =>
 	<StyledDropZone onDrop={droppedImage => setProductImage(0, droppedImage)}>
 		<MainImageArea>
 			<MainImg src={image || '/static/img/noimg.png'} title="add main image"/>
-				<HoveredImage><HoveredImageText>add image</HoveredImageText></HoveredImage>
+				<HoveredImage>
+					<HoveredImageText>add image</HoveredImageText>
+				</HoveredImage>
 		</MainImageArea>
 	</StyledDropZone>
 </MainImageWrap>
