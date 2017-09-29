@@ -23,8 +23,9 @@ const ImageWrap = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-item: center;
+	justify-content: spread-between;
 	&:last-child {
-		justify-content: flex-end;
+		align-self: flex-end;
 		width: 500px;
 	}
 	`
@@ -34,21 +35,33 @@ const MainContentWrap = styled.div`
 	height: 400px;
 	border: 2px solid grey;
 	min-width:320px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around; 
+	@media (max-width: 700px) {
+		justify-content: flex-start;
+	}
 `
 
 const CheckoutWrap = styled.div`
 	width: -webkit-fill-available;
-	border: 2px solid blue;
 	max-width: 400px;
 	display: flex; 
 	flex-flow: column nowrap;
+	@media (max-width: 700px) {
+		background: palevioletred;
+		position: fixed;
+		bottom: 0px;
+		max-width: 100%;
+		width: 100vw;
+	}
 `
+
 
 export default ({product, minusQuantity, addQuantity, productUid, productQuantity}) => {
 	const images = product
 	return(<div>
 	<Head/>
-	<Header/>
 	<Page>
 		<ImageWrap>
 			<img src={product.productImages ? product.productImages[0] : '/static/img/noimg.png'} />			
@@ -61,13 +74,19 @@ export default ({product, minusQuantity, addQuantity, productUid, productQuantit
 			</SubImageSection>
 		</ImageWrap>
 		<MainContentWrap>
-		<h1>{product.productName}</h1>
-		<h2>Brand Name: {product.brandName}</h2>
-		<h3>{product.price}</h3>
-		<CheckoutWrap>
-			<AddItem onClickMinus={minusQuantity} onClickAdd={addQuantity} productUid={productUid} productQuantity={productQuantity}/>
-			<Link href='/checkout'><Button>Check out </Button></Link>
-		</CheckoutWrap>
+			<div>
+				<h1>{product.productName}</h1>
+			</div>
+			<div>
+				<i>{product.brandName}</i>
+			</div>
+			<div>
+				<h3>{product.price} BAHT</h3>
+			</div>
+			<CheckoutWrap>
+				<AddItem onClickMinus={minusQuantity} onClickAdd={addQuantity} productUid={productUid} productQuantity={productQuantity}/>
+				<Link href='/checkout'><Button color='orange'>สั่งเลย</Button></Link>
+			</CheckoutWrap>
 		</MainContentWrap>
 	</Page>
 </div>)

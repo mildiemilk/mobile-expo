@@ -43,7 +43,7 @@ return(
 		</Header>
 		<Content>
 			<p>Price: {userProduct.price} baht </p>
-			<p>Comission: {comissionPercent} % & {comissionCash} BAHT (if owner can edit ) </p>
+			<p>Comission: {comissionPercent} % & {comissionCash || '0.00'} BAHT (if owner can edit ) </p>
 			<Button.Group>
 				{userUid === userProduct.userUid ?
 				<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}><Button basic color='blue'>Edit</Button></Link>
