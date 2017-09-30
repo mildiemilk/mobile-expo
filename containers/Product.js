@@ -62,6 +62,7 @@ export default ({product, minusQuantity, addQuantity, productUid, productQuantit
 	const images = product
 	return(<div>
 	<Head/>
+	<Header/>
 	<Page>
 		<ImageWrap>
 			<img src={product.productImages ? product.productImages[0] : '/static/img/noimg.png'} />			
