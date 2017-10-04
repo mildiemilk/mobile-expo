@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import store from '../lib/store'
 import withRedux from "next-redux-wrapper"
-import ProfileView from '../containers/Profile'
+import ProfileView from '../view/environment/Profile'
 import { getUserProducts } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'

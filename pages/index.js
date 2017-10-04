@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import withRedux from 'next-redux-wrapper'
 import { bindActionCreators } from 'redux'
-import HomeView from '../containers/Home'
+import HomeView from '../view/environment/Home'
 import store from '../lib/store'
 import { saveUser } from '../lib/actions/user'
 import loadFirebase from '../lib/database'

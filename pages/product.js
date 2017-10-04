@@ -1,5 +1,5 @@
 import React from 'react'
-import ProductView from '../containers/Product'
+import ProductView from '../view/environment/Product'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import { getProductFromID, getUserProducts } from '../lib/handlers/product'

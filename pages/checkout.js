@@ -1,5 +1,5 @@
 import React from 'react'
-import CheckoutView from '../containers/Checkout'
+import CheckoutView from '../view/environment/Checkout'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { setTotal } from '../lib/actions/payment'

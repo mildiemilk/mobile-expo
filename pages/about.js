@@ -1,5 +1,5 @@
-import Head from '../containers/DefaultHead'
-import Header from '../containers/Header'
+import Head from '../view/environment/DefaultHead'
+import Header from '../view/environment/Header'
 
 export default () => <div>
 	<Head/>

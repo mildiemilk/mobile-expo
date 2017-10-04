@@ -1,5 +1,5 @@
 import React from 'react'
-import PaymentView from '../containers/Payment.js'
+import PaymentView from '../view/environment/Payment.js'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { reduxForm } from 'redux-form'

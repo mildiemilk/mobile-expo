@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import loadFirebase from '../lib/database'
-import LoginForm from '../containers/AuthForm'
+import LoginForm from '../view/environment/AuthForm'
 import { signinWithFacebook, signinWithGoogle, signOut, registerWithEmail } from '../lib/handlers/authenticator'
 import { saveUser } from '../lib/actions/user'
 import { validateEmail, validatePassword, validatePasswordConfirmation } from '../helpers/formvalidation'
