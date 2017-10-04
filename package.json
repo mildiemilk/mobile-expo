@@ -45,9 +45,14 @@
     "jest-enzyme": "^3.2.0",
     "react-scripts": "1.0.7",
     "react-test-renderer": "^15.6.1",
-    "redux-devtools": "^3.4.0"
+    "redux-devtools": "^3.4.0",
+    "@storybook/react": "^3.2.12",
+    "@storybook/addon-actions": "^3.2.12",
+    "@storybook/addon-links": "^3.2.12"
   },
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook"
   }
 }
