@@ -1,0 +1,14 @@
+hr.or-line {
+	border-top: 1px solid black;
+	text-align: center;
+}
+hr.or-line:after {
+	content: 'or';
+	display: inline-block;
+	position: relative;
+	top: -14px;
+	padding: 0 10px;
+	background: #f5f5f5;
+	color: black;
+	font-size: 18px;
+}

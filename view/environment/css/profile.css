@@ -1,0 +1,10 @@
+.item-well {
+	height: inherit;
+}
+
+.item-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+}
