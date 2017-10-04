@@ -5,7 +5,7 @@ import Head from './DefaultHead'
 import Header from './Header'
 import { H3 } from '../components/Styled'
 import styled from 'styled-components'
-import color from '../asset/const/color.json'
+import color from '../static/const/color.json'
 
 const Container = styled.div`
 	display: flex;

@@ -5,7 +5,7 @@ import {
 	Segment as SemanticSegment 
 } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
-import color from '../asset/const/color.json'
+import color from '../static/const/color.json'
 
 export const H1 = styled.h1`
 	font-size: calc(35pt);

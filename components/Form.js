@@ -3,7 +3,7 @@ import { Form } from 'semantic-ui-react'
 import { Field as ReduxField } from 'redux-form'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import color from '../asset/const/color.json'
+import color from '../static/const/color.json'
 
 export const Label = styled.label`
 	color: {color.dardPrimary};

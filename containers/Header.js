@@ -3,7 +3,7 @@ import Router from 'next/router'
 import { Dropdown, Icon } from 'semantic-ui-react'
 import MediaQuery from 'react-responsive'
 import Sidebar from 'react-sidebar';
-import menu from '../asset/const/menu.json'
+import menu from '../static/const/menu.json'
 import { Item, Menu, MenuButton } from '../components/Styled'
 
 
