@@ -176,12 +176,6 @@ max-height: 406px;
 width: 100%;
 `
 
-const MainImageArea = styled.div`
-position: relative;
-width: 100%;
-height: -webkit-fill-available;
-`
-
 const MainImg = styled.img`
 margin: 2px;
 flex-grow: 1;

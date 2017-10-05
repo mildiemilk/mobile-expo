@@ -1,5 +1,5 @@
 import React from 'react'
-import DropZoneInput from './DropZoneInput'
+import DropZoneInput from '../organisms/DropZoneInput'
 import { Button, Form, Icon } from 'semantic-ui-react'
 import { Field } from 'redux-form'
 import { SemanticInput, H1Input } from './Form'
