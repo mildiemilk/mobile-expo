@@ -1,6 +1,6 @@
 import Head from './DefaultHead'
 import { Button, Icon, Grid, Form, Divider, Message } from 'semantic-ui-react'
-import { TextInput } from '../ecosystems/Form'
+import TextInput from '../molecules/TextInput'
 import Header from './Header'
 import { Segment } from '../ecosystems/Styled'
 
