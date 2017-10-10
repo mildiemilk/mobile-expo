@@ -2,8 +2,11 @@ import React from 'react'
 import DropZoneInput from '../organisms/DropZoneInput'
 import { Button, Form, Icon } from 'semantic-ui-react'
 import { Field } from 'redux-form'
-import { SemanticInput, H1Input } from './Form'
-import { LightButton, ExitButton, FloatRight, SubSegment, FloatLeft } from './Styled'
+import  LightButton from '../atoms/LightButton'
+import	ExitButton from '../atoms/ExitButton'
+import	FloatRight from '../atoms/FloatRight'
+import	SubSegment from '../atoms/SubSegment' 
+import	FloatLeft from '../atoms/FloatLeft'
 import styled from 'styled-components'
 
 export default ({ fields, productDescription }) => <div> 
@@ -38,7 +41,7 @@ export default ({ fields, productDescription }) => <div>
 				<Field
 					className="form-control"
 					name={`${member}.context`}
-					component={H1Input}
+					component="input"
 					type="text"
 					placeholder="type your description here"
         />

@@ -1,4 +1,5 @@
-
+import Dropzone from '../atoms/Dropzone'
+import SubImageArea from '../'
 
 export default ({number, setSubImage, image, preview}) =>
 <SubImageWrap>
@@ -8,9 +9,9 @@ export default ({number, setSubImage, image, preview}) =>
 				preview? 
 				null:
 				<HoveredSubImage>
-					<StyledDropZone onDrop={droppedImage => setSubImage(number,droppedImage)}>
+					<DropZone onDrop={droppedImage => setSubImage(number,droppedImage)}>
 						<HoveredSubImageText>+</HoveredSubImageText>
-					</StyledDropZone>
+					</DropZone>
 				</HoveredSubImage>
 			}
 		</SubImageArea>

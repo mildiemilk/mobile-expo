@@ -1,8 +1,8 @@
 import MainImageWrap from '../atoms/MainImageWrap'
 import MainImageArea from '../atoms/MainImageArea'
 import MainImg from '../atoms/MainImg'
-import HoveredImage from '../atoms/HoveredImage'
-import HoveredImageText from '../atoms/HoveredImageText'
+import HoveredImage from '../molecules/HoveredImage'
+import HoveredImageText from '../molecules/HoveredImageText'
 
 export default ({setProductImage, image}) =>
 <MainImageWrap>

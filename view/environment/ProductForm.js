@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Image } from 'react-bootstrap'
 import { Icon, Grid, Form, Divider } from 'semantic-ui-react'
 import Head from './DefaultHead'
@@ -6,14 +7,12 @@ import Header from './Header'
 import TextInput from '../molecules/TextInput'
 import { FieldArray } from 'redux-form'
 import MainImage from '../molecules/MainImage'
-import Button from '../molecules/Button'
-import H1 from '../molecules/H1'
+import Button from '../atoms/Button'
+import H1 from '../atoms/H1'
 import ProductDescriptionPreview from '../ecosystems/ProductDescription'
 import ProductDescriptionForm from '../ecosystems/ProductDescriptionForm'
 import SubImage from '../molecules/SubImage'
 import SubImageSection from '../atoms/SubImageSection'
-import styled from 'styled-components'
-
 
 const ImageSection = styled.div`
 	display: flex;
@@ -25,7 +24,6 @@ const ImageSection = styled.div`
 const Segment = styled.div`
 	padding: 2px 0px 2px 2px;
 `
-
 
 const InfoWrap = styled.div`
 	border: 1px solid #ccc; 

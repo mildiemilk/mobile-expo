@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Button as SemanticButton } from 'semantic-ui-react'
+import color from '../../static/json/color.json'
 
 export const LightButton = styled(SemanticButton)`
 font-size: 20pt !important;

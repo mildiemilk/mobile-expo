@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import MainImageArea from '../atoms/MainImageArea'
 
 export default styled.div`
 display: none;
