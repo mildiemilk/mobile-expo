@@ -1,13 +1,13 @@
 import styled from 'styled-components'
+import SubImageWrap from '../atoms/SubImageWrap'
 
 export default styled.div`
-position: absolute;
+color: black;
 display: none;
+width: 100%;
+height: 0px;
+border: dashed 3pt #ccc;
 z-index:1;
-color: #ccc;
-top: 35%;
-left: 35%;
-font-size: 35pt; 
 ${SubImageWrap}:hover & {
 display:block;
 height: 76px;

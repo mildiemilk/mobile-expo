@@ -9,7 +9,9 @@ import	SubSegment from '../atoms/SubSegment'
 import	FloatLeft from '../atoms/FloatLeft'
 import styled from 'styled-components'
 
-export default ({ fields, productDescription }) => <div> 
+
+export default ({ fields, productDescription }) => 
+<div> 
 	<div>		
 			<Field
 			className="form-control"

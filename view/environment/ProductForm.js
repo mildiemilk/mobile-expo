@@ -11,18 +11,15 @@ import Button from '../atoms/Button'
 import H1 from '../atoms/H1'
 import ProductDescriptionPreview from '../ecosystems/ProductDescription'
 import ProductDescriptionForm from '../ecosystems/ProductDescriptionForm'
-import SubImage from '../molecules/SubImage'
+import SubImage from '../organisms/SubImage'
 import SubImageSection from '../atoms/SubImageSection'
+import Segment from '../atoms/Segment'
 
 const ImageSection = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	max-width:400px;
-`
-
-const Segment = styled.div`
-	padding: 2px 0px 2px 2px;
 `
 
 const InfoWrap = styled.div`
@@ -85,8 +82,8 @@ export default ({addProductDescription, productDescription, handleSubmit, produc
 							/>
 						</Form.Group>
 					</PriceWrap>
-						<FieldArray name="productDescription" component={ProductDescriptionForm} productDescription={productDescription}/>
-						<Button fluid size='big' onClick={()=>handleSubmit(productDescription)}>Submit</Button>
+					<FieldArray name="productDescription" component={ProductDescriptionForm} productDescription={productDescription}/>					
+					<Button fluid size='big' onClick={()=>handleSubmit(productDescription)}>Submit</Button>
 				</Form>
 			</InfoWrap>
 		</ImportantInfoWrap>
