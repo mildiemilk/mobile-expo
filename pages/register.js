@@ -7,7 +7,7 @@ import loadFirebase from '../lib/database'
 import LoginForm from '../view/environment/AuthForm'
 import { signinWithFacebook, signinWithGoogle, signOut, registerWithEmail } from '../lib/handlers/authenticator'
 import { saveUser } from '../lib/actions/user'
-import { validateEmail, validatePassword, validatePasswordConfirmation } from '../helpers/formvalidation'
+import { validateEmail, validatePassword, validatePasswordConfirmation } from '../lib/helpers/formvalidation'
 
 class Login extends React.Component {
     async componentDidMount() {
