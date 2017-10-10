@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Grid, Card, Form } from 'semantic-ui-react'
-import { TextInput } from '../ecosystems/Form'
+import TextInput from '../molecules/TextInput'
 import Header from './Header'
 import Head from './DefaultHead'
 

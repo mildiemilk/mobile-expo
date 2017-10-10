@@ -82,7 +82,6 @@ export default ({addProductDescription, productDescription, handleSubmit, produc
 							/>
 						</Form.Group>
 					</PriceWrap>
-					<FieldArray name="productDescription" component={ProductDescriptionForm} productDescription={productDescription}/>					
 					<Button fluid size='big' onClick={()=>handleSubmit(productDescription)}>Submit</Button>
 				</Form>
 			</InfoWrap>

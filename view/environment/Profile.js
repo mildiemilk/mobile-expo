@@ -3,9 +3,9 @@ import ItemCard from '../ecosystems/ItemCard'
 import Link from 'next/link'
 import Head from './DefaultHead'
 import Header from './Header'
-import { H3 } from '../ecosystems/Styled'
+import H3 from '../atoms/H3'
 import styled from 'styled-components'
-import color from '../../static/const/color.json'
+import color from '../../static/json/color.json'
 
 const Container = styled.div`
 	display: flex;
