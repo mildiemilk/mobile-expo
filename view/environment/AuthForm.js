@@ -2,7 +2,7 @@ import Head from './DefaultHead'
 import { Button, Icon, Grid, Form, Divider, Message } from 'semantic-ui-react'
 import TextInput from '../molecules/TextInput'
 import Header from './Header'
-import { Segment } from '../ecosystems/Styled'
+import Segment from '../atoms/Segment'
 
 export default ({
 	onClickGoogle, 

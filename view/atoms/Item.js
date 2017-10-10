@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import { Menu as SemanticMenu } from 'semantic-ui-react'
+import { Menu  } from 'semantic-ui-react'
+import color from '../../static/json/color.json'
 
-export const Item = styled(SemanticMenu.Item)`
+export default styled(Menu.Item)`
 background: ${color.darkPrimary} !important;
 color: ${color.lightPrimary} !important;
 flex-grow: 1;

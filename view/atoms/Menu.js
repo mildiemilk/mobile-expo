@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Menu as SemanticMenu } from 'semantic-ui-react'
+import { Menu  } from 'semantic-ui-react'
 
-export default styled(SemanticMenu)`
+export default styled(Menu)`
 display: flex;
 justify-content:  flex-end;
 width: max-content;

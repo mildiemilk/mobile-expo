@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Field from '../atom/Field'
-import Label from '../atom/Label'
+import Field from '../atoms/Field'
+import Label from '../atoms/Label'
 
 export default ({type,name, placeholder, label, value, normalizer, width}) =>
 <div>
