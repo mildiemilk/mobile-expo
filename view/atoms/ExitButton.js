@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { Button as SemanticButton } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import color from '../../static/json/color.json'
 
-export default styled(SemanticButton) `
+export default styled(Button) `
 background: white !important;
 color: ${color.darkPrimary} !important;
 `
