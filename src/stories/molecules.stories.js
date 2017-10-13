@@ -7,3 +7,4 @@ storiesOf('MainImage', module)
 .add('mainImage no image set', ()=> (
 	<AddImageSection />
 ))
+
