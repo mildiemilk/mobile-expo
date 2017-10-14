@@ -9,5 +9,7 @@ width: ${props => props.size || '400px'};
 height: ${props => props.size || '400px'};
     &:hover {
         border: 2px solid ${color.lightPrimary};
+        background-color: white;
+        z-index: 10;
     }
 `
