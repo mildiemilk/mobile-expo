@@ -5,11 +5,8 @@ import color from '../../static/json/color.json'
 export default styled(Dropzone).attrs({
     size: props => props.size || '400px'
 })`
-width: ${props => props.size || '400px'};
-height: ${props => props.size || '400px'};
-    &:hover {
-        border: 2px solid ${color.lightPrimary};
-        background-color: white;
-        z-index: 10;
-    }
+max-width: ${props => props.size || '400px'};
+max-height: ${props => props.size || '400px'};
+width: 100%;
+height:auto;
 `

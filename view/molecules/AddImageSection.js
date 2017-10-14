@@ -12,23 +12,28 @@ const ImageHideWhenHovered = Image.extend`
 `
 
 const AddImage = styled(AddImg).attrs({
-	src: props=> props.src || ''
+	src: props=> props.src || '',
+	subimg: props => props.subimg || false
 })`
-	
+	max-width: 100vw;
+	max-height: -webkit-fill-available;
 	display: ${props => props.src ? 'none' :'unset' };
 	${Dropzone}:hover & {
 		display:unset;
+		background: #F2F2F2;
+	}
+	@media (max-width: 600px) {
+		 max-width: ${props => props.subimg ? '20vw' : '100vw'};
 	}
 `
 
-export default ({src, size}) => 
-<SquareWrapper maxSize={size}>
+export default ({src, size, subimg}) => <SquareWrapper maxSize={size}>
 	<Dropzone size={size} >
 			{
 				src ? 
 				<ImageHideWhenHovered src={src} size={size || '400px'}/>
 				: null
 			}
-				<AddImage src={src} style={{width: "100%", height: "100%"}}/>
+				<AddImage src={src} subimg={subimg || false}/>
 	</Dropzone>
 </SquareWrapper>

@@ -6,6 +6,8 @@ export default styled.div.attrs({
 	max-width: ${props => props.maxSize};
 	max-height: ${props => props.maxSize};
 	width: ${props => props.maxSize};
-	height:  ${props => props.maxSize};
-	min-height: 300px;
+	height:  auto;
+	@media (max-width: 600px) {
+		 max-width: 100vw;
+	}
 `
