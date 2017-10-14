@@ -4,10 +4,10 @@ import color from '../../static/json/color.json'
 
 export default styled.label`
 color: {color.darkPrimary};
-@media screen and (max-width: 700px){
-	font-size: 16pt;
-}
-@media screen and (min-width: 700px) {
-	font-size: 20pt;
-}
+font-family: 'Kanit', sans-serif;
+font-size: 1.2em;
+margin-top:10px;
+padding-top: 10px;
+padding-left: 5px;
+padding-bottom: 0px;
 `

@@ -7,6 +7,7 @@ import Dropzone from '../../view/atoms/Dropzone'
 import Input from '../../view/atoms/InputText'
 import Image from '../../view/atoms/Image'
 import SquareWrapper from '../../view/atoms/SquareWrapper'
+import Label from '../../view/atoms/Label'
 import AddImg from '../../static/img/addimg.svg'
 
 storiesOf('Button', module)
@@ -43,6 +44,12 @@ storiesOf('Input', module)
 .add('input with name div wrap', () => (
 	<div style={{height: '400px', width: '400px', border: '1px black solid'}} >
 		<span style={{margin: '4px'}}>input name</span><Input />
+	</div>
+))
+.add('input with name div wrap with placebholer', () => (
+	<div style={{height: '400px', width: '400px', border: '1px black solid'}} >
+		<span style={{margin: '4px'}}>input name</span>
+		<Input placeholder="testing"/>
 	</div>
 ))
 
@@ -114,3 +121,8 @@ storiesOf('SVG', module)
 .add('svg', () =>   <div className='container' style={{width:'600px'}}>
 <AddImg />
 </div>)
+
+storiesOf('Label', module)
+.add('label', ()=> 
+	<Label>Hello, World สวัสดี</Label>
+)
