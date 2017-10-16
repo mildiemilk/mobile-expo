@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import AddImageSection from '../molecules/AddImageSection'
 
 const Wrapper = styled.div`
-    max-width: 400px;
+    max-width: ${props => props.bigScreenWidth || '400px'};
     width: 100%;
     height: auto;
     display: flex;

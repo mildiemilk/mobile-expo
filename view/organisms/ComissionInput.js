@@ -1,16 +1,10 @@
-import styled from 'styled-components'
 import Input from '../molecules/InputWithLabel'
+import Wrapper from '../atoms/Wrapper'
 import H3 from '../atoms/H3'
 
-const Wrapper = styled.div`
-    border: 2px solid #94002a;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-`
 
 export default () => 
-<Wrapper>
+<Wrapper bigScreenWidth="100%">
     <H3>คอมมิสชั่นสำหรับลูกค้าที่แชร์สินค้า</H3>
     <Input placeholder="10">
         คอมมิสชั่นเป็นเงินสด

@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
+import Dropzone from 'react-dropzone'
 
-import Dropzone from 'react-dropzone';
-
-export const FILE_FIELD_NAME = 'files';
+export const FILE_FIELD_NAME = 'files'
 
 export default (field) => {
   const files = field.input.value;

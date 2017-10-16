@@ -14,6 +14,14 @@ cursor: pointer;
 white-space: nowrap;
 background: ${color.contrastPrimary};
 color: ${color.darkPrimary};
+${props => props.fullWidth ? 
+'width:100%;' : null}
+${props => props.big ?
+'padding:20px;' :null
+}
+@media (max-width: 700px){
+	${props => props.mobileFixedButtom ? "position:fixed;width:100%vw;bottom:0px":null}
+}
 &:hover {
 		background: ${color.lightPrimary};
 		color: ${color.darkPrimary};

@@ -11,8 +11,11 @@ export default styled.input`
 	border-radius: 5px;
 	outline: none;
 	&:focus{
-		transition: .5s ease;
 		box-shadow: -1px 1px 2px #8f8d8b;
+		border: 2px solid #94002a;
+	}
+	&:not:focus{
+		padding-top:2px;
 	}
 	&::placeholder {
 		color: #a8a8a8;
