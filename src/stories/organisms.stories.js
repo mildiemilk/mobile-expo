@@ -5,6 +5,8 @@ import AddedImages from '../../view/organisms/AddedImages'
 import ProductRegisterText from '../../view/organisms/ProductRegisterText'
 import ComissionInput from '../../view/organisms/ComissionInput'
 import ItemCard from '../../view/organisms/ItemCard'
+import UserProfile from '../../view/organisms/UserProfile'
+import AddressForm from '../../view/organisms/AddressForm'
 
 storiesOf('AddedImages', module)
 	.add('no image', ()=> (
@@ -44,3 +46,9 @@ storiesOf('ItemCard', module)
 	.add('user is seller', ()=>(
 		<ItemCard userProduct={userProduct} userUid='xx' productKey='1'/>
 	))
+
+storiesOf('User Profile', module)
+	.add('default', ()=><UserProfile name="Peak" shop="Blue Shirt Shop" rating="3"/>)
+
+storiesOf('Address Form', module)
+	.add('default', ()=> <AddressForm/>)

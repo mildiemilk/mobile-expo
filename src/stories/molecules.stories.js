@@ -6,6 +6,7 @@ import InputWithLabel from '../../view/molecules/InputWithLabel'
 import AddStock from '../../view/molecules/AddStock'
 import OrderTable from '../../view/molecules/OrderTable'
 import BalancePanel from '../../view/molecules/BalancePanel'
+import StarRating from '../../view/molecules/StarRating'
 
 storiesOf('MainImage', module)
 .add('mainImage no image set', ()=> (
@@ -62,3 +63,10 @@ storiesOf('Order Table', module)
 
 storiesOf('Balance Panel', module)
 	.add('default', ()=><BalancePanel balance={2000}/>)
+
+storiesOf('Star Rating', module)
+	.add('score = 1', ()=><StarRating score="1" maxScore="5"/>)
+	.add('score = 2', ()=><StarRating score="2" maxScore="5"/>)
+	.add('score = 3', ()=><StarRating score="3" maxScore="5"/>)
+	.add('score = 4', ()=><StarRating score="4" maxScore="5"/>)
+	.add('score = 5', ()=><StarRating score="5" maxScore="5"/>)

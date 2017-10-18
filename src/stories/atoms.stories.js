@@ -1,6 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
+import AddImg from '../../static/img/addimg.svg'
 import Button from '../../view/atoms/Button'
 import ExitButton from '../../view/atoms/ExitButton'
 import Dropzone from '../../view/atoms/Dropzone'
@@ -9,7 +10,8 @@ import Image from '../../view/atoms/Image'
 import SquareWrapper from '../../view/atoms/SquareWrapper'
 import Label from '../../view/atoms/Label'
 import Table from '../../view/atoms/Table'
-import AddImg from '../../static/img/addimg.svg'
+import Icon from '../../view/atoms/Icon'
+
 
 storiesOf('Button', module)
 	.add('with text', ()=> (
@@ -214,3 +216,6 @@ storiesOf('Table', module)
 	</tbody>
 </Table>
 )
+
+storiesOf('Icon', module)
+	.add('default', () => <Icon />)

@@ -12,4 +12,7 @@ export default () =>
     <Input placeholder="36000.00 บาท">
         ราคา
     </Input>
+    <Input placeholder="100">
+        จำนวนสต๊อก
+    </Input>
 </Wrapper>
