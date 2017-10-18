@@ -2,7 +2,12 @@ import H3 from '../atoms/H3'
 import InputText from '../atoms/InputText'
 import Wrapper from '../atoms/Wrapper'
 
-export default () => <Wrapper>
+export default () => 
+<Wrapper>
+    <H3>ชื่อ</H3>
+    <InputText/>
+    <H3>เบอร์</H3>
+    <InputText/>
     <H3>บ้านเลขที่</H3>
     <InputText/>
     <H3>คอนโด/หมู่บ้าน</H3>

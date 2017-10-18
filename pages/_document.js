@@ -11,6 +11,8 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           {styleTags}
+          <link rel="stylesheet" href="static/fonts/font-awesome.min.css"/>
+          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"/>
         </Head>
 
         <body>
