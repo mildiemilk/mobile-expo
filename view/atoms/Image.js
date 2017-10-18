@@ -4,8 +4,11 @@ export default styled.img.attrs({
 	size: props => props.size || '400px'
 })`
 	max-width: 100vw;
-	height: auto;
-	width: ${props => props.size}
+	height: 100vw;
+	width: ${props => props.size};
 	object-fit:scale-down;
-	max-height: -webkit-fill-available;
+	max-height: ${props => props.maxHeight||'-webkit-fill-available'};
+	@media (max-width: 700px) {
+		${props => props.smallScreen || null}
+	}
 `

@@ -5,4 +5,5 @@ export default styled.div`
     flex-direction: ${props => props.direction};
     flex-wrap: wrap;
     ${props => props.center ? 'justify-content:center;':null}
+    ${props => props.width ? 'width:'+props.width+';':null}
 `

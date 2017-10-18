@@ -1,5 +1,5 @@
 import { Grid } from 'semantic-ui-react'
-import ItemCard from '../ecosystems/ItemCard'
+import ItemCard from '../organisms/ItemCard'
 import Link from 'next/link'
 import Head from './DefaultHead'
 import Header from './Header'

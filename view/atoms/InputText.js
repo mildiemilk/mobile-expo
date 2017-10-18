@@ -10,6 +10,7 @@ export default styled.input`
 	border-top: 1px solid #f1f1f1;
 	border-radius: 5px;
 	outline: none;
+	${props => props.width? 'width:'+props.width +';' : null}
 	&:focus{
 		box-shadow: -1px 1px 2px #8f8d8b;
 		border: 2px solid #94002a;

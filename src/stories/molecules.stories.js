@@ -3,6 +3,9 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import AddImageSection from '../../view/molecules/AddImageSection'
 import InputWithLabel from '../../view/molecules/InputWithLabel'
+import AddStock from '../../view/molecules/AddStock'
+import OrderTable from '../../view/molecules/OrderTable'
+import BalancePanel from '../../view/molecules/BalancePanel'
 
 storiesOf('MainImage', module)
 .add('mainImage no image set', ()=> (
@@ -29,3 +32,33 @@ storiesOf('Input with Label', module)
 	</InputWithLabel>
 </div>
 ))
+
+storiesOf('Add Stock', module)
+	.add('default', ()=><AddStock/>)
+
+const orders = [
+	{
+		name: "Peak",
+		quantity:1,
+		status: "pending",
+		date:"2017-10-16 00:00:00"
+	},
+	{
+		name: "Bank",
+		quantity:3,
+		status: "pending",
+		date:"2017-10-10 00:00:00"
+	},
+	{
+		name:"Gift",
+		quantity: 10,
+		status: "pending",
+		date:"2017-1-10 00:00:00"
+	}
+]
+
+storiesOf('Order Table', module)
+	.add('default', ()=><OrderTable orders={orders}/>)
+
+storiesOf('Balance Panel', module)
+	.add('default', ()=><BalancePanel balance={2000}/>)

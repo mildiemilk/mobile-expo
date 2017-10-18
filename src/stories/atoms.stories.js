@@ -8,6 +8,7 @@ import Input from '../../view/atoms/InputText'
 import Image from '../../view/atoms/Image'
 import SquareWrapper from '../../view/atoms/SquareWrapper'
 import Label from '../../view/atoms/Label'
+import Table from '../../view/atoms/Table'
 import AddImg from '../../static/img/addimg.svg'
 
 storiesOf('Button', module)
@@ -125,4 +126,91 @@ storiesOf('SVG', module)
 storiesOf('Label', module)
 .add('label', ()=> 
 	<Label>Hello, World สวัสดี</Label>
+)
+
+storiesOf('Table', module)
+.add('no input', ()=> 
+<Table />
+)
+.add('3 input', ()=> 
+<Table> 
+	<thead>
+		<tr rowspan="4">
+			Order
+		</tr>
+		<tr>
+			<th>No.</th>
+			<th>Name </th>
+			<th>Quantity</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Blue shirt</td>
+			<td>1</td>
+			<td>Sent</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Blue shirt</td>
+			<td>1</td>
+			<td>Sent</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Blue shirt</td>
+			<td>1</td>
+			<td>Sent</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Blue shirt</td>
+			<td>1</td>
+			<td>Sent</td>
+		</tr>
+	</tbody>
+</Table>
+)
+.add('max Width 200px', ()=> 
+<Table maxWidth="200px" maxHeight="200px"> 
+	<thead>
+		<tr rowspan="4">
+			Order
+		</tr>
+		<tr>
+			<th>No.</th>
+			<th>Name </th>
+			<th>Quantity</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Blue shirt</td>
+			<td>1</td>
+			<td>Sent</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Blue shirt</td>
+			<td>1</td>
+			<td>Sent</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Blue shirt</td>
+			<td>1</td>
+			<td>Sent</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Blue shirt</td>
+			<td>1</td>
+			<td>Sent</td>
+		</tr>
+	</tbody>
+</Table>
 )
