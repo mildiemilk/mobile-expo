@@ -1,5 +1,4 @@
 import Table from '../atoms/Table.js'
-import styled from 'styled-components'
 import TimeAgo from 'react-timeago'
 import thaiStrings from 'react-timeago/lib/language-strings/th'
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'

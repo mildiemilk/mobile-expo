@@ -7,6 +7,9 @@ import AddStock from '../../view/molecules/AddStock'
 import OrderTable from '../../view/molecules/OrderTable'
 import BalancePanel from '../../view/molecules/BalancePanel'
 import StarRating from '../../view/molecules/StarRating'
+import ContactInformation from '../../view/molecules/ContactInformation'
+import DeliveryDetail from '../../view/molecules/DeliveryDetail'
+import {orders} from './const'
 
 storiesOf('MainImage', module)
 .add('mainImage no image set', ()=> (
@@ -37,27 +40,6 @@ storiesOf('Input with Label', module)
 storiesOf('Add Stock', module)
 	.add('default', ()=><AddStock/>)
 
-const orders = [
-	{
-		name: "Peak",
-		quantity:1,
-		status: "pending",
-		date:"2017-10-16 00:00:00"
-	},
-	{
-		name: "Bank",
-		quantity:3,
-		status: "pending",
-		date:"2017-10-10 00:00:00"
-	},
-	{
-		name:"Gift",
-		quantity: 10,
-		status: "pending",
-		date:"2017-1-10 00:00:00"
-	}
-]
-
 storiesOf('Order Table', module)
 	.add('default', ()=><OrderTable orders={orders}/>)
 
@@ -70,3 +52,9 @@ storiesOf('Star Rating', module)
 	.add('score = 3', ()=><StarRating score="3" maxScore="5"/>)
 	.add('score = 4', ()=><StarRating score="4" maxScore="5"/>)
 	.add('score = 5', ()=><StarRating score="5" maxScore="5"/>)
+
+storiesOf('Contact Information', module)
+	.add('default', ()=><ContactInformation phone="094434991" address="149/18, chongnontri, yanawa, 10120, bkk, thailand" shop="peak shop" email="peak@test.com" />)
+
+storiesOf('DeliveryDetail', module)
+	.add('default', ()=><DeliveryDetail order={orders[0]} />)

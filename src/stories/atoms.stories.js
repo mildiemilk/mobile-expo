@@ -11,6 +11,7 @@ import SquareWrapper from '../../view/atoms/SquareWrapper'
 import Label from '../../view/atoms/Label'
 import Table from '../../view/atoms/Table'
 import Icon from '../../view/atoms/Icon'
+import BlackOut from '../../view/atoms/BlackOut'
 
 
 storiesOf('Button', module)
@@ -219,3 +220,12 @@ storiesOf('Table', module)
 
 storiesOf('Icon', module)
 	.add('default', () => <Icon />)
+
+storiesOf('BlackOut', module)
+	.add('default', () => <BlackOut/>)
+	.add('with something', () => <div>
+		<div>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/2/21/EverestfromKalarPatarcrop.JPG" />
+		</div>
+		<BlackOut></BlackOut>
+	</div> )
