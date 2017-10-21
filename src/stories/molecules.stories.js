@@ -9,6 +9,7 @@ import BalancePanel from '../../view/molecules/BalancePanel'
 import StarRating from '../../view/molecules/StarRating'
 import ContactInformation from '../../view/molecules/ContactInformation'
 import DeliveryDetail from '../../view/molecules/DeliveryDetail'
+import Modal from '../../view/molecules/Modal'
 import {orders} from './const'
 
 storiesOf('MainImage', module)
@@ -58,3 +59,13 @@ storiesOf('Contact Information', module)
 
 storiesOf('DeliveryDetail', module)
 	.add('default', ()=><DeliveryDetail order={orders[0]} />)
+
+const context = <div>
+	<h2>this is a text context</h2>
+	<input />
+	<p>This is so great </p>
+</div>
+
+storiesOf('Modal', module)
+	.add('default', ()=> <Modal/>)
+	.add('with Context and modal link', ()=> <Modal context={context}><a href="#">This is the Text</a></Modal>)

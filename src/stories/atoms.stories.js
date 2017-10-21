@@ -227,5 +227,8 @@ storiesOf('BlackOut', module)
 		<div>
 			<img src="https://upload.wikimedia.org/wikipedia/commons/2/21/EverestfromKalarPatarcrop.JPG" />
 		</div>
-		<BlackOut></BlackOut>
+		<BlackOut>
+			<div style={{width:"50vw", height: "80vh", backgroundColor: "white", top: "200px", right:"200px", opacity:"100"}}>
+			</div>
+		</BlackOut>
 	</div> )

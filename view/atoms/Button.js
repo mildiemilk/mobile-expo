@@ -31,6 +31,7 @@ ${props => props.round? 'border-radius: 5px;': null}
 		transition: 0.3s;
 		z-index:10;
 	}
+${props => props.modalClose? 'position: fixed;right: 10%;': null}	
 `
 
 export const ButtonGroup = styled.div`
