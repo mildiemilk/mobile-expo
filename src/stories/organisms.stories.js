@@ -12,6 +12,7 @@ storiesOf('AddedImages', module)
 	.add('no image', ()=> (
 		<AddedImages />
 	))
+	.add('display Mode', () =><AddedImages />)
 
 storiesOf('ProductRegisterText', module)
 	.add('default', () => (

@@ -23,12 +23,12 @@ const SubImage = styled(AddImageSection)`
 `
 
 
-export default () => <Wrapper>
-    <AddImageSection/>
+export default ({previewMode}) => <Wrapper>
+    <AddImageSection previewMode={previewMode}/>
     <SubImageWrapper>
-        <SubImage size="100px" subimg/>
-        <SubImage size="100px" subimg/>
-        <SubImage size="100px" subimg/>
-        <SubImage size="100px" subimg/>
+        <SubImage previewMode={previewMode} size="100px" subimg/>
+        <SubImage previewMode={previewMode} size="100px" subimg/>
+        <SubImage previewMode={previewMode} size="100px" subimg/>
+        <SubImage previewMode={previewMode} size="100px" subimg/>
     </SubImageWrapper>
 </Wrapper>

@@ -28,7 +28,7 @@ const AddImage = styled(AddImg).attrs({
 `
 
 export default ({src, size, subimg}) => <SquareWrapper maxSize={size}>
-	<Dropzone size={size} >
+	<Dropzone size={size}>
 			{
 				src ? 
 				<ImageHideWhenHovered src={src} size={size || '400px'}/>
