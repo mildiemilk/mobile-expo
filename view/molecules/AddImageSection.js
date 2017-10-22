@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import SquareWrapper from '../../view/atoms/SquareWrapper'
-import Image from '../../view/atoms/Image'
-import Dropzone from '../../view/atoms/Dropzone'
+import SquareWrapper from '../atoms/SquareWrapper'
+import Image from '../atoms/Image'
+import Dropzone from '../atoms/Dropzone'
 import AddImg from '../../static/img/addimg.svg'
 
 const ImageHideWhenHovered = Image.extend`
@@ -27,7 +27,8 @@ const AddImage = styled(AddImg).attrs({
 	}
 `
 
-export default ({src, size, subimg}) => <SquareWrapper maxSize={size}>
+export default ({src, size, subimg}) => 
+<SquareWrapper maxSize={size}>
 	<Dropzone size={size}>
 			{
 				src ? 

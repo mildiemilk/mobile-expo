@@ -7,6 +7,7 @@ import ComissionInput from '../../view/organisms/ComissionInput'
 import ItemCard from '../../view/organisms/ItemCard'
 import UserProfile from '../../view/organisms/UserProfile'
 import AddressForm from '../../view/organisms/AddressForm'
+import DisplayImages from '../../view/organisms/DisplayImages'
 
 storiesOf('AddedImages', module)
 	.add('no image', ()=> (
@@ -53,3 +54,6 @@ storiesOf('User Profile', module)
 
 storiesOf('Address Form', module)
 	.add('default', ()=> <AddressForm/>)
+
+storiesOf('Display Images', module)
+	.add('default', ()=><DisplayImages/>)

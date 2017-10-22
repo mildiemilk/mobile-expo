@@ -2,6 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import AddImageSection from '../../view/molecules/AddImageSection'
+import ImageDisplay from '../../view/molecules/ImageDisplay'
 import InputWithLabel from '../../view/molecules/InputWithLabel'
 import AddStock from '../../view/molecules/AddStock'
 import OrderTable from '../../view/molecules/OrderTable'
@@ -24,6 +25,14 @@ storiesOf('MainImage', module)
 ))
 .add('mainImage image set size set', ()=> (
 	<AddImageSection size="100px" src="https://www.w3schools.com/w3images/fjords.jpg"/>
+))
+
+storiesOf('Image for display on shops screen', module)
+.add('sub display to buyer', ()=> (
+	<ImageDisplay size="100px" src="https://www.w3schools.com/w3images/fjords.jpg"  />
+))
+.add('imge display to buyer', ()=>(
+	<ImageDisplay src="https://www.w3schools.com/w3images/fjords.jpg"/>
 ))
 
 storiesOf('Input with Label', module)
