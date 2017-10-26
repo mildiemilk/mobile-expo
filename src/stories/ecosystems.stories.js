@@ -2,6 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import ProductRegisterMain from '../../view/ecosystems/ProductRegisterMain'
+import ProductDisplay from '../../view/ecosystems/ProductDisplay'
 import User from '../../view/ecosystems/User'
 import {orders} from './const'
 
@@ -21,3 +22,13 @@ storiesOf('User', module)
         balance="10000"
         orders={orders}
     />)
+
+storiesOf('ProductDisplayMain', module)
+    .add('default', ()=>
+    <ProductDisplay
+        productName="blue shirt"
+        shopName="peak shop"
+        price="1000"
+
+    />
+    )

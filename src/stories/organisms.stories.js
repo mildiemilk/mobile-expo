@@ -8,6 +8,7 @@ import ItemCard from '../../view/organisms/ItemCard'
 import UserProfile from '../../view/organisms/UserProfile'
 import AddressForm from '../../view/organisms/AddressForm'
 import DisplayImages from '../../view/organisms/DisplayImages'
+import DisplayProductText from '../../view/organisms/DisplayProductText'
 
 storiesOf('AddedImages', module)
 	.add('no image', ()=> (
@@ -57,3 +58,6 @@ storiesOf('Address Form', module)
 
 storiesOf('Display Images', module)
 	.add('default', ()=><DisplayImages/>)
+
+storiesOf('Display Product Text', module)
+	.add('default', ()=><DisplayProductText productName="Blue Shirt" shopName="Peak shop" price="100.00"/>)

@@ -3,7 +3,7 @@ import SubImage from '../molecules/SubImage'
 import Wrapper from '../atoms/ImageAtoms/ImageSectionWrapper'
 import SubImageWrapper from '../atoms/ImageAtoms/SubImageWrapper'
 
-export default () => <Wrapper>
+export default ({images}) => <Wrapper>
     <AddImageSection/>
     <SubImageWrapper>
         <SubImage size="100px" subimg/>
