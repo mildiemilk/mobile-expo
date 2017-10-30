@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { reduxForm, formValueSelector, formValues } from 'redux-form'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
-import ProductFormView from '../view/environment/ProductForm'
+import ProductForm from '../view/environment/ProductForm'
 import { addProductDescription } from '../lib/actions/product'
 import { registerProduct,setProductImage } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
@@ -28,18 +28,18 @@ class ProductRegister extends Component{
 			comissionPercent,
 			comissionCash,
 			userUid,
+			setProductImage,
 			userEmail,
 			productImages,
 			shortDescription
 		} = this.props
-		
-		return (<ProductFormView 
+		return (<ProductForm 
 			productDescription={productDescription} 
 			brandName={brandName}
 			addProductDescription={addProductDescription} 
 			productImages = {productImages}
 			shortDescription={shortDescription}
-			setSubImage = {setProductImage}
+			setProductImage = {setProductImage}
 			productName = {productName}
 			price = {price}
 			handleSubmit={()=> registerProduct({
@@ -80,7 +80,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
 	bindActionCreators({
 		addProductDescription: addProductDescription,
-		saveUser: saveUser
+		saveUser: saveUser,
+		setProductImage: setProductImage
 	}, dispatch)
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(ProductRegister)

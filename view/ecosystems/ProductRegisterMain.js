@@ -4,9 +4,9 @@ import ComissionInput from '../organisms/ComissionInput'
 import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
 
-export default () => 
+export default ({productImages, setProductImage}) => 
 <Flex direction='row'>
-    <AddedImages/>
+    <AddedImages productImages={productImages} setProductImage={setProductImage} />
     <Flex direction='column' verticleCenter>
         <ProductRegisterText/>
         <ComissionInput/>

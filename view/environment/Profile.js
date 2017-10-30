@@ -7,6 +7,7 @@ import H3 from '../atoms/H3'
 import styled from 'styled-components'
 import color from '../../static/json/color.json'
 import Wrapper from '../atoms/Wrapper'
+import Button from '../atoms/Button'
 
 export default ({user, userProducts}) => <div>
 	<Head/>
@@ -26,7 +27,7 @@ export default ({user, userProducts}) => <div>
 					/>)
 				}) : null
 				}
-				<Link href="/productRegister"><Card><span>+</span></Card></Link>
+				<Link href="/productRegister"><Button><span>+</span></Button></Link>
 		</Wrapper>
 	</div>
 </div>

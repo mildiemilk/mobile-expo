@@ -14,6 +14,7 @@ import ProductDescriptionForm from '../ecosystems/ProductDescriptionForm'
 import SubImage from '../organisms/SubImage'
 import SubImageSection from '../atoms/SubImageSection'
 import Segment from '../atoms/Segment'
+import ProductRegisterMain from '../ecosystems/ProductRegisterMain'
 
 const ImageSection = styled.div`
 	display: flex;
@@ -49,6 +50,7 @@ export default ({addProductDescription, productDescription, handleSubmit, produc
 <div>
 	<Head/>
 	<Header/>
+	<ProductRegisterMain productImages={productImages} setProductImage={setProductImage}/>
 	<Segment>
 		<ImportantInfoWrap>
 			<ImageSection>

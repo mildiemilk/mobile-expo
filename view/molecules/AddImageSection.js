@@ -11,10 +11,7 @@ const ImageHideWhenHovered = Image.extend`
 	}
 `
 
-const AddImage = styled(AddImg).attrs({
-	src: props=> props.src || '',
-	subimg: props => props.subimg || false
-})`
+const AddImage = styled(AddImg)`
 	max-width: 100vw;
 	max-height: -webkit-fill-available;
 	display: ${props => props.src ? 'none' :'unset' };
@@ -27,9 +24,9 @@ const AddImage = styled(AddImg).attrs({
 	}
 `
 
-export default ({src, size, subimg}) => 
+export default ({src, size, subimg, setProductImage, number}) => 
 <SquareWrapper maxSize={size}>
-	<Dropzone size={size}>
+	<Dropzone size={size} onDrop={droppedImage => setProductImage(number, droppedImage)}>
 			{
 				src ? 
 				<ImageHideWhenHovered src={src} size={size || '400px'}/>
