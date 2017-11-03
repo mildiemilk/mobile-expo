@@ -12,6 +12,10 @@ import ContactInformation from '../../view/molecules/ContactInformation'
 import DeliveryDetail from '../../view/molecules/DeliveryDetail'
 import Modal from '../../view/molecules/Modal'
 import {orders} from './const'
+import Form from './Form'
+import {Provider} from 'react-redux'
+import store from './store'
+
 
 storiesOf('MainImage', module)
 .add('mainImage no image set', ()=> (
@@ -36,6 +40,11 @@ storiesOf('Image for display on shops screen', module)
 ))
 
 storiesOf('Input with Label', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
 .add('input with label', ()=>(
 <div>
 	<InputWithLabel>

@@ -1,5 +1,4 @@
 import { storiesOf } from '@storybook/react'
-import ReduxFormMock from './ReduxFormMock'
 import Input from '../../view/atoms/InputText'
 import Form from './Form'
 import {Provider} from 'react-redux'

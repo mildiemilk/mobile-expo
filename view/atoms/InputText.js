@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 import { Field } from 'redux-form'
 
-export default styled(Field)`
+export default styled(Field).attrs({
+	component: 'input',
+	type:"text"
+})`
 	width: -webkit-fill-available;
 	margin: 1%;
 	padding: 10px;

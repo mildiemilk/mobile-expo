@@ -9,6 +9,9 @@ import UserProfile from '../../view/organisms/UserProfile'
 import AddressForm from '../../view/organisms/AddressForm'
 import DisplayImages from '../../view/organisms/DisplayImages'
 import DisplayProductText from '../../view/organisms/DisplayProductText'
+import Form from './Form'
+import {Provider} from 'react-redux'
+import store from './store'
 
 storiesOf('AddedImages', module)
 	.add('no image', ()=> (
@@ -17,12 +20,22 @@ storiesOf('AddedImages', module)
 	.add('display Mode', () =><AddedImages />)
 
 storiesOf('ProductRegisterText', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
 	.add('default', () => (
 		<ProductRegisterText />
 	))
 
 
 storiesOf('ComissionInput', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
 	.add('default', () => (
 		<ComissionInput />
 	))
@@ -54,6 +67,11 @@ storiesOf('User Profile', module)
 	.add('default', ()=><UserProfile name="Peak" shop="Blue Shirt Shop" rating="3"/>)
 
 storiesOf('Address Form', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
 	.add('default', ()=> <AddressForm/>)
 
 storiesOf('Display Images', module)

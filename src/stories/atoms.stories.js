@@ -12,6 +12,9 @@ import Label from '../../view/atoms/Label'
 import Table from '../../view/atoms/Table'
 import Icon from '../../view/atoms/Icon'
 import BlackOut from '../../view/atoms/BlackOut'
+import Form from './Form'
+import {Provider} from 'react-redux'
+import store from './store'
 
 
 storiesOf('Button', module)
@@ -37,8 +40,13 @@ storiesOf('Dropzone', module)
 ))
 
 storiesOf('Input', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
 .add('input', () => (
-	<Input />
+	<Input />  
 ))
 .add('input with div wrap', () => (
 	<div style={{height: '400px', width: '400px', border: '1px black solid'}} >
