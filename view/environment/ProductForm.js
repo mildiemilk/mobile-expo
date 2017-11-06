@@ -16,31 +16,6 @@ import SubImageSection from '../atoms/SubImageSection'
 import Segment from '../atoms/Segment'
 import ProductRegisterMain from '../ecosystems/ProductRegisterMain'
 
-const ImageSection = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	max-width:400px;
-`
-
-const InfoWrap = styled.div`
-	border: 1px solid #ccc; 
-	min-height: 320px; 
-	min-width: 320px;
-	width: 100%;
-	max-width: 800px;
-	flex: 1 1 auto;
-	margin: 0px 4px 0px 2px;
-`
-const ImportantInfoWrap = styled.div`
-	display: flex;
-	flex-flow: row wrap;
-`
-
-const PriceWrap = styled.div`
-	padding-left:7px;
-`
-
 const calcComissionCash = (value, previousValue, allValues) => 
 (value > (0.75 - allValues['comissionPercent']/100) * allValues['price'] ? (0.75 - allValues['comissionPercent']/100) * allValues['price']: value )
 
@@ -51,47 +26,4 @@ export default ({addProductDescription, productDescription, handleSubmit, produc
 	<Head/>
 	<Header/>
 	<ProductRegisterMain productImages={productImages} setProductImage={setProductImage}/>
-	<Segment>
-		<ImportantInfoWrap>
-			<ImageSection>
-				<MainImage setProductImage={setProductImage} image={productImages[0]}/>
-				<SubImageSection>
-					{
-						[1,2,3,4,5].map( number => 	<SubImage key={number} number={number} setProductImage={setProductImage} image={productImages[number]}/>	)
-					}
-				</SubImageSection>
-			</ImageSection>
-			<InfoWrap>
-				<Form>
-					<TextInput name="productName" type="text" placeholder="product name"/>
-					<TextInput name="brandName" type="text" placeholder="brand name" />
-					<PriceWrap>
-						<Form.Group  widths='equal'>
-							<TextInput name="price" type="number" placeholder="price = 00.00 baht" width="2" />
-							<TextInput
-								name="comissionPercent"
-								type="number"
-								placeholder="comission 00%"
-								normalizer={calcComissionPercent}
-								width="1"
-							/>
-							<TextInput
-								name="comissionCash"
-								type="number"
-								placeholder="comission 00 baht"
-								normalizer={calcComissionCash}
-								width="1"
-							/>
-						</Form.Group>
-					</PriceWrap>
-					<Button fluid size='big' onClick={()=>handleSubmit(productDescription)}>Submit</Button>
-				</Form>
-			</InfoWrap>
-		</ImportantInfoWrap>
-	</Segment>
-	<Segment>
-		<InfoWrap>
-			<ProductDescriptionPreview productName={productName} brandName={brandName} price={price} shortDescription={shortDescription} productDescription={productDescription} productImages={productImages}/>
-		</InfoWrap>
-	</Segment>
 </div>
