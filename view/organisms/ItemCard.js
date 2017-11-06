@@ -4,7 +4,7 @@ import copy from 'copy-to-clipboard'
 import styled from 'styled-components'
 import Image from '../atoms/Image'
 import Header from '../atoms/H3'
-import Card from '../atoms/Wrapper'
+import Wrapper from '../atoms/Wrapper'
 import AddStock from '../molecules/AddStock'
 import Button, { ButtonGroup } from '../atoms/Button'
 
@@ -17,7 +17,7 @@ export default ({ userUid, userProduct, productKey }) => {
 const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = userProduct
 
 return(
-	<Card bigScreenWidth="max-content">
+	<Wrapper bigScreenWidth="max-content">
 		<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
 			<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px"/>
 		</Link>
@@ -34,7 +34,7 @@ return(
 				</tr>
 				<tr>
 					<td style={{textAlign:'right'}}>Comission:</td>
-					<td>{comissionPercent} % & {comissionCash || '0.00'} BAHT }</td>
+					<td>{comissionPercent} % & {comissionCash || '0.00'} บาท </td>
 					<td>{userUid === userProduct.userUid ?<Button round>edit</Button>:null}</td>
 				</tr>
 				<tr>
@@ -54,6 +54,6 @@ return(
 				<Button basic color='#3f87a6'>Share <i className="fa fa-share" aria-hidden="true"></i></Button>
 			</ButtonGroup>
 		</div>
-	</Card>
+	</Wrapper>
 )
 }
