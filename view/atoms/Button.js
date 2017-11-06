@@ -27,8 +27,8 @@ ${props => props.round? 'border-radius: 5px;': null}
 &:hover {
 		background:${props => props.color? props.color:color.lightPrimary};
 		color: white;
-		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
-		transition: 0.3s;
+		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
+		transition: 0.1s;
 		z-index:10;
 	}
 ${props => props.modalClose? 'position: fixed;right: 10%;': null}	

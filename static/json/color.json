@@ -1,5 +1,6 @@
 {
 	"darkPrimary":"#2f413c",
-	"lightPrimary": "#6fec8a",
-	"contrastPrimary": "#ffe852"
+	"lightPrimary": "#40AAB8",
+	"contrastPrimary": "#F87089",
+	"darkText": "#363435"
 }
