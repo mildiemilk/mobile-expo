@@ -8,6 +8,11 @@ class Modal extends React.Component {
     super(props);
     this.state = {display: false}
     }
+
+    closeModal(){
+        this.setState({display: false})
+    }
+
     render() {
         const{ buttonText, children, context} = this.props
         return(

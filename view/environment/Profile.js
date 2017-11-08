@@ -8,6 +8,7 @@ import color from '../../static/json/color.json'
 import Wrapper from '../atoms/Wrapper'
 import Button from '../atoms/Button'
 import AddProduct from '../organisms/AddProduct'
+import Flex from '../atoms/Flex'
 
 export default ({user, userProducts}) => <div>
 	<Head/>
@@ -15,7 +16,7 @@ export default ({user, userProducts}) => <div>
 	{user.name}
 	<div>
 		<h2>{user.email}</h2>
-		<Wrapper>
+		<Flex>
 			{ userProducts ? 
 				Object.keys(userProducts).map( userProductKey => {
 					return (<ItemCard 
@@ -28,6 +29,6 @@ export default ({user, userProducts}) => <div>
 				}) : null
 				}
 				<AddProduct/>
-		</Wrapper>
+		</Flex>
 	</div>
 </div>

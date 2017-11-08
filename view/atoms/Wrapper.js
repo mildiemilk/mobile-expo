@@ -6,8 +6,8 @@ padding: 10px;
 margin: 10px;
 border-radius: 10px;
 border: 0.5px solid ${color.lightPrimary};
+${props => props.width? `width: ${props.width};`: null}
 ${props => props.centerAll ? 'display: flex;justify-content: center;align-items: center;': null}
-${props => props.width? props.width: null}
 ${props => props.height? `height: ${props.height};`: null}
 ${props => props.minWidth? `min-width: ${props.minWidth};`: null}
 ${props => props.minHeight? `min-height: ${props.minHeight};`: null}

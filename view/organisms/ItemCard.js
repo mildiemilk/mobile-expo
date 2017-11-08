@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Image from '../atoms/Image'
 import Header from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
-import AddStock from '../molecules/AddStock'
+import AddStock from '../molecules/AddStocksButton'
 import Button, { ButtonGroup } from '../atoms/Button'
 
 const copyLink = (productKey, userUid)=>{
@@ -35,7 +35,6 @@ return(
 				<tr>
 					<td style={{textAlign:'right'}}>Comission:</td>
 					<td>{comissionPercent} % & {comissionCash || '0.00'} บาท </td>
-					<td>{userUid === userProduct.userUid ?<Button round>edit</Button>:null}</td>
 				</tr>
 				<tr>
 					<td style={{textAlign:'right'}}>Stock: </td>

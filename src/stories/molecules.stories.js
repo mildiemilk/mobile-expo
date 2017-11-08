@@ -4,7 +4,8 @@ import { action } from '@storybook/addon-actions'
 import AddImageSection from '../../view/molecules/AddImageSection'
 import ImageDisplay from '../../view/molecules/ImageDisplay'
 import InputWithLabel from '../../view/molecules/InputWithLabel'
-import AddStock from '../../view/molecules/AddStock'
+import AddStocksButton from '../../view/molecules/AddStocksButton'
+import AddStocksInput from '../../view/molecules/AddStocksInput'
 import OrderTable from '../../view/molecules/OrderTable'
 import BalancePanel from '../../view/molecules/BalancePanel'
 import StarRating from '../../view/molecules/StarRating'
@@ -57,7 +58,10 @@ storiesOf('Input with Label', module)
 ))
 
 storiesOf('Add Stock', module)
-	.add('default', ()=><AddStock/>)
+	.add('default', ()=><AddStocksButton/>)
+
+storiesOf('Add Stock Input', module)
+	.add('default', ()=><AddStocksInput/>)
 
 storiesOf('Order Table', module)
 	.add('default', ()=><OrderTable orders={orders}/>)

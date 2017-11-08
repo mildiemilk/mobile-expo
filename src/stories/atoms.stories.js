@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import AddImg from '../../static/img/addimg.svg'
 import Button from '../../view/atoms/Button'
-import ExitButton from '../../view/atoms/ExitButton'
 import Dropzone from '../../view/atoms/Dropzone'
 import Input from '../../view/atoms/InputText'
 import Image from '../../view/atoms/Image'
@@ -21,11 +20,6 @@ storiesOf('Button', module)
 	.add('with text', ()=> (
 		<Button onClick={action('clicked')}>Hello </Button>
 	))
-
-storiesOf('ExitButton', module)
-.add('with text', ()=> (
-	<ExitButton onClick={action('clicked')}>x</ExitButton>
-))
 
 storiesOf('Dropzone', module)
 .add('div', ()=> (

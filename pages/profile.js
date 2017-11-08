@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import store from '../lib/store'
 import withRedux from "next-redux-wrapper"
 import ProfileView from '../view/environment/Profile'
-import { getUserProducts } from '../lib/handlers/product'
+import { getUserProducts, setProductStock } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 
@@ -24,7 +24,11 @@ class Profile extends Component {
 	}
 
 	render() {
-		return <ProfileView user={this.props.user} userProducts={this.props.userProducts} />
+		const {user, userProducts, setProductStock} = this.props
+		return <ProfileView 
+			user={user} 
+			userProducts={userProducts} 
+			setProductStock={setProductStock}/>
 	}
 }  
 
@@ -35,7 +39,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	saveUser,
-	saveUserPending
+	saveUserPending,
+	setProductStock
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)
