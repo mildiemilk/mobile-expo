@@ -7,9 +7,7 @@ export default ({productImages, setProductImage}) => <Wrapper>
     <AddImageSection src={productImages} number={0} setProductImage={setProductImage}/>
     <SubImageWrapper>
         {
-            productImages?
-            [1,2,3,4,5].map( number => 	<SubImage size="100px" subimg number={number} setProductImage={setProductImage} src={productImages[number]}/>	)
-            : null
+            [1,2,3,4,5].map( number => 	<SubImage size="100px" subimg number={number} setProductImage={setProductImage} src={productImages? productImages[number] : ''}/>	)
 		}
     </SubImageWrapper>
 </Wrapper>
