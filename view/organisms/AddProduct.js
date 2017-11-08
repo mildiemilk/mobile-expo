@@ -1,14 +1,9 @@
 import Wrapper from '../atoms/Wrapper'
 import styled from 'styled-components'
+import H1 from '../atoms/H1'
+import color from '../../static/json/color.json'
 
-const PlusSign = styled.div`
-	min-width: 300px;
-	min-height: 300px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`
-
-export default () => <Wrapper  bigScreenWidth="max-content"> 
-	<PlusSign><h1>+add-item</h1></PlusSign>
+export default () => 
+<Wrapper centerAll minWidth='320px' minHeight='300px'  bigScreenWidth="max-content"> 
+	<H1>+add-item</H1>
 </Wrapper> 

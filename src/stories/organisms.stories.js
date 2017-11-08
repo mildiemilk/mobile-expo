@@ -66,7 +66,12 @@ storiesOf('ItemCard', module)
 
 storiesOf('AddProduct', module)
 	.add('add product', ()=> <AddProduct/>)
-
+	.add('add product next to item card', ()=> <div style={{display:"flex", flexDirection: "row"}}> 
+			<ItemCard userProduct={userProduct} userUid='xxxx' productKey='1'/>
+			<ItemCard userProduct={userProduct} userUid='xx' productKey='1'/>
+			<AddProduct/>
+		</div>
+		)
 storiesOf('User Profile', module)
 	.add('default', ()=><UserProfile name="Peak" shop="Blue Shirt Shop" rating="3"/>)
 
