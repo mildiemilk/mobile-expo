@@ -1,6 +1,5 @@
 import { Grid } from 'semantic-ui-react'
 import ItemCard from '../organisms/ItemCard'
-import Link from 'next/link'
 import Head from './DefaultHead'
 import Header from './Header'
 import H3 from '../atoms/H3'
@@ -8,6 +7,7 @@ import styled from 'styled-components'
 import color from '../../static/json/color.json'
 import Wrapper from '../atoms/Wrapper'
 import Button from '../atoms/Button'
+import AddProduct from '../organisms/AddProduct'
 
 export default ({user, userProducts}) => <div>
 	<Head/>
@@ -27,7 +27,7 @@ export default ({user, userProducts}) => <div>
 					/>)
 				}) : null
 				}
-				<Link href="/productRegister"><Button><span>+</span></Button></Link>
+				<AddProduct/>
 		</Wrapper>
 	</div>
 </div>

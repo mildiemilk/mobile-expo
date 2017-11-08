@@ -15,4 +15,6 @@ ${props => props.flexGrow ? 'flex-grow: 1;':null}
 @media (min-width: 700px) {
         width: ${props => props.bigScreenWidth || 'unset'};
 }
+${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
+
 `
