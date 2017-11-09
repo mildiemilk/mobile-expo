@@ -13,12 +13,12 @@ class AddStocksButton extends React.Component {
 	}
 
 	render() {
-		const { addStock, productID, currentStock } = this.props
+		const { setProductStock, productKey, stock } = this.props
 		return (
 			<Modal 
-				context={<AddStocksInput handleSubmit={()=>console.log('click')} />}
+				context={<AddStocksInput setProductStock={setProductStock} productKey={productKey} currentStock={stock}/>}
 			>
-					<Button onClick={addStock}>Add Stock</Button>
+					<Button>Add Stock</Button>
 			</Modal>
 		)
 	}

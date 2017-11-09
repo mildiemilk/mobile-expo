@@ -10,7 +10,7 @@ import Button from '../atoms/Button'
 import AddProduct from '../organisms/AddProduct'
 import Flex from '../atoms/Flex'
 
-export default ({user, userProducts}) => <div>
+export default ({user, userProducts, setProductStock}) => <div>
 	<Head/>
 	<Header/>
 	{user.name}
@@ -24,7 +24,7 @@ export default ({user, userProducts}) => <div>
 						userUid={user.uid} 
 						userProduct={userProducts[userProductKey]} 
 						productKey={userProductKey}
-						key={userProductKey}
+						setProductStock={setProductStock}
 					/>)
 				}) : null
 				}

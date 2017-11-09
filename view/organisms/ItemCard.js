@@ -13,9 +13,8 @@ const copyLink = (productKey, userUid)=>{
 	alert('the link has been copied')
 }
 
-export default ({ userUid, userProduct, productKey }) => {
+export default ({ userUid, userProduct, productKey, setProductStock }) => {
 const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = userProduct
-
 return(
 	<Wrapper bigScreenWidth="max-content">
 		<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
@@ -39,7 +38,7 @@ return(
 				<tr>
 					<td style={{textAlign:'right'}}>Stock: </td>
 					<td>{stock}</td>
-					<td>{userUid === userProduct.userUid ? <AddStock round/>: null }</td>
+					<td>{userUid === userProduct.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>
 				</tr>
 				</tbody>
 			</table>

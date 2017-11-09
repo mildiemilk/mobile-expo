@@ -33,17 +33,13 @@ class AddStockInput extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			stock: 0
+			stock: this.props.currentStock
 		}
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	handleChange(event) {
-		this.setState({stock: event.target.stock});
-	}
-
-	handleSubmit(event) {
-		this.props.handleSubmit()
-		event.preventDefault();
+		this.setState({stock: event.target.value});
 	}
 	
 	render(){
@@ -51,7 +47,7 @@ class AddStockInput extends React.Component {
 			<Wrapper width="250px !important">
 				<h3>Add Stock </h3>
 				<Input width="100px" value={this.state.stock} onChange={this.handleChange}/>
-				<Button onClick={()=>this.props.handleSubmit()}>Add</Button>
+				<Button onClick={()=>this.props.setProductStock(this.props.productKey, this.state.stock)}>Add</Button>
 			</Wrapper>
 		)
 	}

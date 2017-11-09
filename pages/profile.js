@@ -24,7 +24,7 @@ class Profile extends Component {
 	}
 
 	render() {
-		const {user, userProducts, setProductStock} = this.props
+		const {user, userProducts} = this.props
 		return <ProfileView 
 			user={user} 
 			userProducts={userProducts} 
@@ -39,8 +39,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	saveUser,
-	saveUserPending,
-	setProductStock
+	saveUserPending
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)
