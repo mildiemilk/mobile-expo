@@ -3,16 +3,16 @@ import Input from '../molecules/InputWithLabel'
 
 export default () => 
 <Wrapper bigScreenWidth="100%">
-    <Input placeholder="iPhone 8 สีแดง 64GB">
+    <Input name="productName" placeholder="iPhone 8 สีแดง 64GB">
         ชื่อสินค้า
     </Input>
-    <Input placeholder="Apple">
+    <Input name="brandName" placeholder="Apple">
         ชื่อแบรนด์
     </Input>
-    <Input placeholder="36000.00 บาท">
+    <Input name="price" placeholder="36000.00 บาท">
         ราคา
     </Input>
-    <Input placeholder="100">
+    <Input name="stock" placeholder="100">
         จำนวนสต๊อก
     </Input>
 </Wrapper>

@@ -1,8 +1,6 @@
 import DropZoneInput from '../organisms/DropZoneInput'
 import { Button, Form, Icon } from 'semantic-ui-react'
 import { Field } from 'redux-form'
-import  LightButton from '../atoms/LightButton'
-import	ExitButton from '../atoms/ExitButton'
 import	FloatRight from '../atoms/FloatRight'
 import	SubSegment from '../atoms/SubSegment' 
 import	FloatLeft from '../atoms/FloatLeft'
@@ -73,11 +71,11 @@ export default ({ fields, productDescription }) =>
 					<span>{index + 1}.</span>
 				</FloatLeft>
 				<FloatRight>
-					<ExitButton
+					<Button
 						onClick={() => fields.remove(index)}
 					>
 					<Icon name="remove" aria-hidden="true" />
-					</ExitButton>
+					</Button>
 				</FloatRight>
  				<Field defaultValue='p' name={`${member}.tag`} component="select" className="form-control">
 					<option key="p" value="p">text</option>
@@ -90,5 +88,5 @@ export default ({ fields, productDescription }) =>
     )}
 	)}
 	</div>
-	<LightButton fluid onClick={()=> fields.push({})}><Icon name="plus"></Icon> Add Description </LightButton>
+	<Button fluid onClick={()=> fields.push({})}><Icon name="plus"></Icon> Add Description </Button>
 </div>
