@@ -4,7 +4,8 @@ import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import ProductForm from '../view/environment/ProductForm'
 import { addProductDescription } from '../lib/actions/product'
-import { registerProduct,setProductImage } from '../lib/handlers/product'
+import { registerProduct,setProductImage, updateProduct } from '../lib/handlers/product'
+import { getProductFromID } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser } from '../lib/actions/user'
 import { bindActionCreators } from 'redux'
@@ -13,11 +14,18 @@ class ProductRegister extends Component{
 	
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
+		const productID = this.props.url.query.productID
 		const { user, getUserProducts } = this.props
-		await auth.onAuthStateChanged( user => user ? this.props.saveUser(user) : null) 
-		this.props.url.query.productId?
-		await getProductFromID(this.props.url.query.productID)
+		productID?
+		getProductFromID(productID)
 		: null
+		await auth.onAuthStateChanged( user => user ? this.props.saveUser(user) : null) 
+	}
+
+	async componentWillReceiveProps(nextProps){
+		await nextProps.url.query.productID  ?
+		getProductFromID(nextProps.url.query.productID): null
+
 	}
 
 	render(){
@@ -36,6 +44,7 @@ class ProductRegister extends Component{
 			productImages,
 			shortDescription
 		} = this.props
+		const productID =  this.props.url.query.productID
 		return (<ProductForm 
 			productDescription={productDescription} 
 			brandName={brandName}
@@ -45,7 +54,20 @@ class ProductRegister extends Component{
 			setProductImage = {setProductImage}
 			productName = {productName}
 			price = {price}
-			handleSubmit={()=> registerProduct({
+			handleSubmit={()=> productID === '' ? registerProduct({
+				productName, 
+				brandName, 
+				userUid,
+				userEmail,
+				price, 
+				comissionPercent,
+				comissionCash,
+				productDescription,
+				productImages,
+				shortDescription
+			})
+			: updateProduct(productID,
+				{
 				productName, 
 				brandName, 
 				userUid,
@@ -68,6 +90,7 @@ ProductRegister = reduxForm({
 const selector = formValueSelector('product')
 
 const mapStateToProps = state => ({
+	initialValues: state.product,
 	productName: selector(state, 'productName'),
 	brandName: selector(state, 'brandName'),
 	price: selector(state, 'price'),
