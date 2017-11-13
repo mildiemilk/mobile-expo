@@ -1,5 +1,5 @@
 import React from 'react'
-import InputText from '../atoms/InputText'
+import InputText from '../atoms/TextField'
 import Button from '../atoms/Button'
 import Flex from '../atoms/Flex'
 import H3 from '../atoms/H3'

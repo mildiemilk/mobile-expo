@@ -34,7 +34,6 @@ export default ({onCheckOut})=>
 							controlId="credit-card"
 							value="12345678910111213"
 							placeholder="xxxx xxxx xxxx xxxx"
-							onChange={()=>{}}
 							helptext="16card number"
 						>
 							card number
@@ -51,7 +50,6 @@ export default ({onCheckOut})=>
 								controlId="name-card"
 								value="steve jobs"
 								placeholder="steve jobs"
-								onChange={()=>{}}
 								helptext="name on card"
 							>
 								Name on Card
@@ -73,7 +71,6 @@ export default ({onCheckOut})=>
 								controlId="month"
 								value="12"
 								placeholder="01"
-								onChange={()=>{}}
 								helptext="month"
 							>
 								month
@@ -88,7 +85,6 @@ export default ({onCheckOut})=>
 								controlId="year"
 								value="18"
 								placeholder="18"
-								onChange={()=>{}}
 								helptext="year"
 							>
 								Year
@@ -105,7 +101,6 @@ export default ({onCheckOut})=>
 								controlId="cvv"
 								value="123"
 								placeholder="123"
-								onChange={()=>{}}
 								helptext="cvv"
 							>
 								Cvv

@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import Field from '../atoms/Field'
+import InputText from '../atoms/TextField'
 import Label from '../atoms/Label'
 
 export default ({type,name, placeholder, label, value, normalizer, width}) =>
 <div>
 	<Label>{label}</Label>
-	<Field 
+	<InputText 
 		width={width}
 		className="form-control"
 		id="formBasicText" 

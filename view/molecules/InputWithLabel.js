@@ -1,5 +1,5 @@
 import Label from '../atoms/Label'
-import Input from '../atoms/InputText'
+import Input from '../atoms/TextField'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`

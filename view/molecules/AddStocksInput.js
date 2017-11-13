@@ -1,5 +1,5 @@
 import React from 'react'
-// import InputRedux from '../atoms/InputText'
+// import InputRedux from '../atoms/TextField'
 import Button from '../atoms/Button'
 import Wrapper from '../atoms/Wrapper'
 import styled from 'styled-components'

@@ -4,12 +4,13 @@ import { action } from '@storybook/addon-actions'
 import AddImg from '../../static/img/addimg.svg'
 import Button from '../../view/atoms/Button'
 import Dropzone from '../../view/atoms/Dropzone'
-import Input from '../../view/atoms/InputText'
+import Input from '../../view/atoms/TextField'
 import Image from '../../view/atoms/Image'
 import SquareWrapper from '../../view/atoms/SquareWrapper'
 import Label from '../../view/atoms/Label'
 import Table from '../../view/atoms/Table'
 import Icon from '../../view/atoms/Icon'
+import CardNumberInput from '../../view/atoms/CardNumberInput'
 import BlackOut from '../../view/atoms/BlackOut'
 import Form from './Form'
 import {Provider} from 'react-redux'
@@ -58,6 +59,15 @@ storiesOf('Input', module)
 		<Input placeholder="testing"/>
 	</div>
 ))
+
+storiesOf('Card Number Input', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
+.add('input', ()=> <CardNumberInput />)
+
 
 storiesOf('Image', module)
 .add('image square', () => (

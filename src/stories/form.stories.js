@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react'
-import Input from '../../view/atoms/InputText'
+import Input from '../../view/atoms/TextField'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'

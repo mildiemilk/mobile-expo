@@ -1,5 +1,5 @@
 import H3 from '../atoms/H3'
-import InputText from '../atoms/InputText'
+import InputText from '../atoms/TextField'
 import Wrapper from '../atoms/Wrapper'
 
 export default () => 

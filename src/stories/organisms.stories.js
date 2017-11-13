@@ -10,6 +10,7 @@ import UserProfile from '../../view/organisms/UserProfile'
 import AddressForm from '../../view/organisms/AddressForm'
 import DisplayImages from '../../view/organisms/DisplayImages'
 import DisplayProductText from '../../view/organisms/DisplayProductText'
+import CreditCard from '../../view/organisms/CreditCard'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
@@ -88,3 +89,11 @@ storiesOf('Display Images', module)
 
 storiesOf('Display Product Text', module)
 	.add('default', ()=><DisplayProductText productName="Blue Shirt" shopName="Peak shop" price="100.00"/>)
+
+storiesOf('Credit Card', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
+	.add('default', ()=><CreditCard />)
