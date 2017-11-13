@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Table, Button } from 'semantic-ui-react'
+import Table from '../atoms/Table'
+import Button from '../atoms/Button'
 import Head from './DefaultHead'
 import Header from './Header'
 let total = 0
@@ -7,7 +8,7 @@ export default ({cart = {}, products={}, total=0}) => <div>
   <Head/>
   <Header/>
   <Table celled>
-    <Table.Header>
+    <thead>
       <tr>
         <th>#</th>
         <th>Product Name</th>
@@ -15,29 +16,29 @@ export default ({cart = {}, products={}, total=0}) => <div>
         <th>Price</th>
         <th>SubTotal</th>
       </tr>
-    </Table.Header>
-    <Table.Body>
+    </thead>
+    <tbody>
       {cart.addedIds.map( (key, count) =>
-        <Table.Row key={key}>
-          <Table.Cell>{count+1}</Table.Cell>
-          <Table.Cell>{products[key].productName}</Table.Cell>
-          <Table.Cell>{cart.quantityById[key]}</Table.Cell>
-          <Table.Cell>{products[key].price}</Table.Cell>
-          <Table.Cell>{cart.quantityById[key] * products[key].price}</Table.Cell>
-        </Table.Row>
+        <tr key={key}>
+          <td>{count+1}</td>
+          <td>{products[key].productName}</td>
+          <td>{cart.quantityById[key]}</td>
+          <td>{products[key].price}</td>
+          <td>{cart.quantityById[key] * products[key].price}</td>
+        </tr>
       )}
-      <Table.Row>
-        <Table.Cell/>
-        <Table.Cell/>
-        <Table.Cell/>
-        <Table.Cell>
+      <tr>
+        <td/>
+        <td/>
+        <td/>
+        <td>
           <h3>Total</h3>
-        </Table.Cell>
-        <Table.Cell>
+        </td>
+        <td>
           <h3>{total}</h3>
-        </Table.Cell>
-      </Table.Row>
-    </Table.Body>
+        </td>
+      </tr>
+    </tbody>
   </Table>	
   <Link href='/payment'><Button>proceed to payment</Button></Link>
 </div>
