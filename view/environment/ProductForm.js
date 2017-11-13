@@ -21,9 +21,9 @@ const calcComissionCash = (value, previousValue, allValues) =>
 
 const calcComissionPercent = value => value >= 75 ? 75 : value
 
-export default ({addProductDescription, productDescription, handleSubmit, productImages, setProductImage, productName, price, brandName, shortDescription}) => 
+export default props => 
 <div>
-	<Head/>
+	<Head />
 	<Header/>
-	<ProductRegisterMain productImages={productImages} setProductImage={setProductImage}/>
+	<ProductRegisterMain {...props} />
 </div>

@@ -12,6 +12,7 @@ import StarRating from '../../view/molecules/StarRating'
 import ContactInformation from '../../view/molecules/ContactInformation'
 import DeliveryDetail from '../../view/molecules/DeliveryDetail'
 import Modal from '../../view/molecules/Modal'
+import SocialShare from '../../view/molecules/SocialShare'
 import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
@@ -91,3 +92,6 @@ const context = <div>
 storiesOf('Modal', module)
 	.add('default', ()=> <Modal/>)
 	.add('with Context and modal link', ()=> <Modal context={context}><a href="#">This is the Text</a></Modal>)
+
+storiesOf('Social share', module)
+	.add('default', ()=><SocialShare link="www.google.com" />)

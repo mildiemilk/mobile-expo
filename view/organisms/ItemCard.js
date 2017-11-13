@@ -9,7 +9,7 @@ import AddStock from '../molecules/AddStocksButton'
 import Button, { ButtonGroup } from '../atoms/Button'
 
 const copyLink = (productKey, userUid)=>{
-	copy(`${window.location.hostname}:${window.location.port}/p/${productKey}/${userUid}`)
+	copy(`${window.location.hostname}${window.location.port?`:${window.location.port}`:null}/p/${productKey}/${userUid}`)
 	alert('the link has been copied')
 }
 
