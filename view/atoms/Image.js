@@ -5,7 +5,7 @@ export default styled.img.attrs({
 })`
 	max-width: ${props => props.size};
 	width: inherit;
-	height:300px;
+	height: -webkit-fill-available;
 	object-fit:scale-down;
 	max-height: ${props => props.maxHeight||'-webkit-fill-available'};
 	@media (max-width: 700px) {
