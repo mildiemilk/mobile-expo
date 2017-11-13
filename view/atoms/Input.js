@@ -26,6 +26,7 @@ ${props => props.width? 'width:'+props.width +';' : null}
 
 
 export default field => {
+	console.log(field)
 	return(
 	<div className="input-row">
 		<Input {...field.input} type="text" />
