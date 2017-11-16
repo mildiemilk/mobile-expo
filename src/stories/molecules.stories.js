@@ -13,6 +13,10 @@ import ContactInformation from '../../view/molecules/ContactInformation'
 import DeliveryDetail from '../../view/molecules/DeliveryDetail'
 import Modal from '../../view/molecules/Modal'
 import SocialShare from '../../view/molecules/SocialShare'
+import CardNumberInput from '../../view/molecules/CardNumberInput'
+import CreditCardMonth from '../../view/molecules/CreditCardMonth'
+import CreditCardYear from '../../view/molecules/CreditCardYear'
+import CvvInput from '../../view/molecules/CvvInput'
 import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
@@ -95,3 +99,27 @@ storiesOf('Modal', module)
 
 storiesOf('Social share', module)
 	.add('default', ()=><SocialShare link="www.google.com" />)
+
+storiesOf('Credit Card Exp', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
+	.add('default', () => <div style={{display:"flex", flexDirection:"row"}}><CreditCardMonth name="month"/><CreditCardYear name="year"/></div>)
+
+storiesOf('Card Number Input', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
+.add('input', ()=> <CardNumberInput />)
+
+storiesOf('Cvv Input', module)
+.addDecorator(story => <Provider store={store}>
+	<Form onSubmit={() => console.log("click")}>
+			{story()}
+	</Form>
+	</Provider>)
+.add('input', ()=> <CvvInput />)

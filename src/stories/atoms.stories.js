@@ -10,7 +10,7 @@ import SquareWrapper from '../../view/atoms/SquareWrapper'
 import Label from '../../view/atoms/Label'
 import Table from '../../view/atoms/Table'
 import Icon from '../../view/atoms/Icon'
-import CardNumberInput from '../../view/atoms/CardNumberInput'
+import CreditCardBg from '../../view/atoms/CreditCardBg'
 import BlackOut from '../../view/atoms/BlackOut'
 import Form from './Form'
 import {Provider} from 'react-redux'
@@ -59,15 +59,6 @@ storiesOf('Input', module)
 		<Input placeholder="testing"/>
 	</div>
 ))
-
-storiesOf('Card Number Input', module)
-.addDecorator(story => <Provider store={store}>
-	<Form onSubmit={() => console.log("click")}>
-			{story()}
-	</Form>
-	</Provider>)
-.add('input', ()=> <CardNumberInput />)
-
 
 storiesOf('Image', module)
 .add('image square', () => (
@@ -244,3 +235,6 @@ storiesOf('BlackOut', module)
 			</div>
 		</BlackOut>
 	</div> )
+
+storiesOf('Credit Card Bg', module)
+	.add('default', () => <CreditCardBg />)

@@ -5,5 +5,7 @@ import Input from '../atoms/Input'
 
 export default props => <Field
 {...props} component={Input}
+fontSize="30px" 
+placeholder="steve jobs"
 />
 
