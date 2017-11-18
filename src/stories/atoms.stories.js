@@ -11,11 +11,22 @@ import Label from '../../view/atoms/Label'
 import Table from '../../view/atoms/Table'
 import Icon from '../../view/atoms/Icon'
 import CreditCardBg from '../../view/atoms/CreditCardBg'
+import H1 from '../../view/atoms/H1'
+import H3 from '../../view/atoms/H3'
+import H5 from '../../view/atoms/H5'
 import BlackOut from '../../view/atoms/BlackOut'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
 
+storiesOf('Headers', module)
+	.add('H1 H3 H5', () => (
+		<div>
+			<H1>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</H1>
+			<H3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</H3>
+			<H5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</H5>
+		</div>
+	))
 
 storiesOf('Button', module)
 	.add('with text', ()=> (

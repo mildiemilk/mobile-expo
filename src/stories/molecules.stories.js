@@ -16,6 +16,7 @@ import SocialShare from '../../view/molecules/SocialShare'
 import CardNumberInput from '../../view/molecules/CardNumberInput'
 import CreditCardMonth from '../../view/molecules/CreditCardMonth'
 import CreditCardYear from '../../view/molecules/CreditCardYear'
+import BankAccount from '../../view/molecules/BankAccount'
 import CvvInput from '../../view/molecules/CvvInput'
 import {orders} from './const'
 import Form from './Form'
@@ -123,3 +124,9 @@ storiesOf('Cvv Input', module)
 	</Form>
 	</Provider>)
 .add('input', ()=> <CvvInput />)
+
+storiesOf('Bank Account', module)
+	.add('Bangkok Bank', ()=> <BankAccount backgroundImage="linear-gradient(342deg, #3023ae, #4f91f4 92%, #53a0fd)" bankName="ธนาคารกรุงเทพ" accountNumber="1234567890" accountName="ปิยภูมิ ศรไพศาล" />)
+	.add('Kasikorn Bank', ()=> <BankAccount backgroundImage="linear-gradient(135deg, #5ed130, #429321)" bankName="ธนาคารกสิกร" accountNumber="1234567890" accountName="ปิยภูมิ ศรไพศาล" />)
+	.add('SCB Bank', ()=> <BankAccount backgroundImage="radial-gradient(circle at 0 0, #8662ba, #4e3384)" bankName="ธนาคารไทยพานิชย์" accountNumber="1234567890" accountName="ปิยภูมิ ศรไพศาล" />)
+	
