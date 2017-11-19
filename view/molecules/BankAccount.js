@@ -14,8 +14,11 @@ export default ({backgroundImage, accountNumber, accountName, bankName}) =>
     width="100%"
     height="auto"  
     boxShadow="4px 4px 6px 0 rgba(0, 0, 0, 0.5)"  
+    noMargin
     noBorder
+    noBorderRadius
 >
+    {console.log('account Number = ', accountNumber)}
     <H3 color="white">{bankName}</H3>
     <H1 color="white" textShadow="2px 2px 2px rgba(0, 0, 0, 0.5)">เลขบัญชี: {accountNumberFormat(accountNumber)}</H1>
     <H3 color="white">ชื่อ {accountName}</H3>

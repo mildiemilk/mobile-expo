@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 export default styled.div`
     max-width: 100%;
-    width:516px;
+    max-width:516px;
+    width:100%;
+    padding:20px;
     height:322px;
     min-width: 258px;
     min-height: 161px;

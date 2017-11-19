@@ -3,10 +3,11 @@ import color from '../../static/json/color.json'
 
 export default styled.div`
 padding: 10px;
-margin: 10px;
-border-radius: 10px;
+${props => !props.noMargin? 'margin: 10px;' : null }
+${props => !props.noBorderRadius?'border-radius: 10px;':null}
 ${props => !props.noBorder ?`border: 0.5px solid ${color.lightPrimary};`: null}
 ${props => props.width? `width: ${props.width};`: null}
+${props => props.maxWidth? `max-width: ${props.maxWidth};`: null}
 ${props => props.centerAll ? 'display: flex;justify-content: center;align-items: center;': null}
 ${props => props.height? `height: ${props.height};`: null}
 ${props => props.minWidth? `min-width: ${props.minWidth};`: null}

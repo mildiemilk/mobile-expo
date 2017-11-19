@@ -6,5 +6,5 @@ import Input from '../atoms/Input'
 const formatValue = value => value ? value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim().slice(0,19) : null
 
 export default props => <Field
-	{...props} component={Input} format={formatValue} width="320px" fontSize="30px" placeholder="xxxx xxxx xxxx xxxx"
+	{...props} component={Input} format={formatValue} width="100%" maxWidth="200px" fontSize="1.4em" placeholder="xxxx xxxx xxxx xxxx"
 />

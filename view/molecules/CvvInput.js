@@ -9,7 +9,7 @@ export default props => <Field
 component={Input} 
 format={formatValue} 
 width="65px" 
-fontSize="30px" 
+fontSize="1.4em" 
 type="password"
 placeholder="123"
 />

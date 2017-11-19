@@ -18,8 +18,9 @@ outline: none;
 border-radius: 3px;
 background-color: #ffffff;
 box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.33);
-${props => props.fontSize? 'font-size:'+props.fontSize +';' : null}
-${props => props.width? 'width:'+props.width +';' : null}
+${props => props.fontSize? `font-size:${props.fontSize};` : null}
+${props => props.width? `width:${props.width};` : null}
+${props => props.maxWidth? `max-width:${props.maxWidth};`:null}
 &:focus{
 	transition:0.5s;
 	box-shadow:inset -1px -1px 1px 1px 	rgba(0, 0, 0, 0.33);

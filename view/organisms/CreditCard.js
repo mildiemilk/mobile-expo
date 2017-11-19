@@ -25,7 +25,7 @@ export default ()=>
 			</tr>
 			<tr>
 				<td align="right"><CardLabel>Name</CardLabel></td>
-				<td><TextField name="name"/></td>
+				<td><TextField name="name"  width="100%" maxWidth="200px" fontSize="1.2em"/></td>
 			</tr>
 			<tr>
 				<td align="right"><CardLabel>Expiry Date</CardLabel></td>
