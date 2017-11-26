@@ -3,6 +3,8 @@ import Table from '../atoms/Table'
 import Button from '../atoms/Button'
 import Head from './DefaultHead'
 import Header from './Header'
+import AddressForm from '../organisms/AddressForm'
+
 let total = 0
 export default ({cart = {}, products={}, total=0}) => <div>
   <Head/>
@@ -40,5 +42,6 @@ export default ({cart = {}, products={}, total=0}) => <div>
       </tr>
     </tbody>
   </Table>	
+  <AddressForm/>
   <Link href='/payment'><Button>proceed to payment</Button></Link>
 </div>

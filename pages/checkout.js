@@ -2,6 +2,7 @@ import React from 'react'
 import CheckoutView from '../view/environment/Checkout'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
+import { reduxForm } from 'redux-form'
 import { setTotal } from '../lib/actions/payment'
 
 class Checkout extends React.Component{
@@ -21,6 +22,9 @@ class Checkout extends React.Component{
 	}
 } 
 
+Checkout = reduxForm({
+	form:'address'
+})(Checkout)
 
 const mapStateToProps = state => ({
 	cart: state.cart,

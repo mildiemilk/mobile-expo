@@ -3,7 +3,7 @@ import PaymentView from '../view/environment/Payment.js'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { reduxForm } from 'redux-form'
-import { createPayment } from '../lib/handlers/payment'
+import { createPayment, savePaymentImage } from '../lib/handlers/payment'
 import { addTransaction } from '../lib/actions/transaction'
 import { calculateComissionSeller } from '../lib/handlers/transaction'
 

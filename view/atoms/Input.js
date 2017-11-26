@@ -21,6 +21,7 @@ box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.33);
 ${props => props.fontSize? `font-size:${props.fontSize};` : null}
 ${props => props.width? `width:${props.width};` : null}
 ${props => props.maxWidth? `max-width:${props.maxWidth};`:null}
+${props => props.flexGrow? `flexgrow:1;`:null}
 &:focus{
 	transition:0.5s;
 	box-shadow:inset -1px -1px 1px 1px 	rgba(0, 0, 0, 0.33);
@@ -37,9 +38,9 @@ ${props => props.maxWidth? `max-width:${props.maxWidth};`:null}
 export default field => {
 	console.log(field)
 	return(
-	<div className="input-row">
+	<span className="input-row">
 		<Input {...field.input} width={field.width} fontSize={field.fontSize} type={field.type || "text"} min={field.min} max={field.max} placeholder={field.placeholder ||""}/>
 		{field.meta.touched && field.meta.error && 
 		 <span className="error">{field.meta.error}</span>}
-	</div>)
+	</span>)
 }

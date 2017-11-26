@@ -4,10 +4,19 @@ import H5 from '../atoms/H5'
 import StarRating from '../molecules/StarRating'
 import BalancePanel from '../molecules/BalancePanel'
 
-export default ({name,shop,rating, balance}) => 
+export default ({profileImage, name,shop,rating, balance, email}) => 
 <Wrapper bigScreenWidth="400px">
     <H3>{name}</H3>
     <H5>{shop}</H5>
-    Rating: <StarRating score={rating}/>
-    <BalancePanel balance={balance}/>
+    <H5>{email}</H5>
+    {rating? 
+    <div>
+        <span>Rating: </span><StarRating score={rating}/> 
+    </div>
+    :null
+    }
+    {
+        balance?
+    <BalancePanel balance={balance}/> : null
+    }
 </Wrapper>

@@ -3,9 +3,11 @@ import { Field } from 'redux-form'
 import color from '../../static/json/color.json'
 import Input from '../atoms/Input'
 
-export default props => <Field
+
+export default props => <div>
+    <span>{props.label}</span><Field
 {...props} component={Input}
 fontSize="1.2em" 
-placeholder="steve jobs"
-/>
+placeholder={props.placeholder}
+/></div>
 

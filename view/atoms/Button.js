@@ -12,20 +12,21 @@ text-decoration: none;
 text-align: center;
 cursor: pointer;
 white-space: nowrap;
-background: ${color.contrastPrimary};
-color: ${color.darkPrimary};
+background: ${props => props.background? props.background : color.contrastPrimary};
+${props => props.border ?`border: ${props.border};` : null}
+color: ${props => props.textColor? props.textColor: color.darkPrimary};
 ${props => props.fullWidth ? 
 'width:100%;' : null}
 ${props => props.big ?
 'padding:20px;' :null
 }
-${props => props.color? 'border: 1px solid '+ props.color+';background:none;':null}
+${props => props.color? 'border: 1px solid '+ props.color+';':null}
 @media (max-width: 700px){
 	${props => props.mobileFixedButtom ? "position:fixed;width:100%vw;bottom:0px":null}
 }
-${props => props.round? 'border-radius: 5px;': null}
+${props => props.round? 'border-radius: 18px;': null}
 &:hover {
-		background:${props => props.color? props.color:color.lightPrimary};
+		background:${props => props.hoverBg? props.hoverBg:color.lightPrimary};
 		color: white;
 		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
 		transition: 0.1s;
