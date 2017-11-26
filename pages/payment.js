@@ -39,6 +39,7 @@ class Payment extends React.Component{
 		const {cardDetail, total, sharedUser, transaction} = this.props
 		return <PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
+				savePaymentImage={savePaymentImage}
 			/>
 	}
 }

@@ -5,13 +5,13 @@ import CreditCard from '../organisms/CreditCard'
 import BankAccountsForTransfer from '../ecosystems/BankAccountsForTransfer'
 import Wrapper from '../atoms/Wrapper'
 
-export default ({onCheckOut})=> 
+export default ({onCheckOut, savePaymentImage})=> 
 <div>
 	<Head/>
 	<Header />
-	<BankAccountsForTransfer/>
+	<BankAccountsForTransfer savePaymentImage={savePaymentImage} onCheckOut={onCheckOut}/>
 	<Wrapper maxWidth="516px" width="100%">
-		<CreditCard />
+		<CreditCard onCheckOut={onCheckOut} />
 	</Wrapper>
 	<Button onClick={onCheckOut}>
 		Pay Now
