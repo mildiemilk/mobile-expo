@@ -7,6 +7,7 @@ import Header from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
 import AddStock from '../molecules/AddStocksButton'
 import Button, { ButtonGroup } from '../atoms/Button'
+import color from '../../static/json/color.json'
 
 const copyLink = (productKey, userUid)=>{
 	copy(`${window.location.hostname}${window.location.port?`:${window.location.port}`:null}/p/${productKey}/${userUid}`)
@@ -44,12 +45,12 @@ return(
 			</table>
 			<ButtonGroup>
 				{userUid === userProduct.userUid ?
-				<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}><Button background="none"  basic color='#52BE80'>Edit</Button></Link>
+				<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}><Button background="none" textColor={color.darkText} basic color='#52BE80'>Edit</Button></Link>
 				:null
 				}
-				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}><Button background="none"  basic color='#45B39D'>Preview</Button></Link>
-				<Button background="none" basic color='teal' onClick={()=>copyLink(productKey, userUid)}>GetLink</Button>
-				<Button background="none" basic color='#3f87a6'>Share <i className="fa fa-share" aria-hidden="true"></i></Button>
+				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}><Button background="none" textColor={color.darkText} basic color='#45B39D'>Preview</Button></Link>
+				<Button background="none" basic color='teal' onClick={()=>copyLink(productKey, userUid)}  textColor={color.darkText} >GetLink</Button>
+				<Button background="none" basic color='#3f87a6'  textColor={color.darkText} >Share <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
 			</ButtonGroup>
 		</div>
 	</Wrapper>

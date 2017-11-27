@@ -26,7 +26,7 @@ ${props => props.color? 'border: 1px solid '+ props.color+';':null}
 }
 ${props => props.round? 'border-radius: 18px;': null}
 &:hover {
-		background:${props => props.hoverBg? props.hoverBg:color.lightPrimary};
+		background:${props => props.hoverBg? props.hoverBg:color.primary1};
 		color: white;
 		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
 		transition: 0.1s;
