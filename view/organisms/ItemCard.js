@@ -44,12 +44,12 @@ return(
 			</table>
 			<ButtonGroup>
 				{userUid === userProduct.userUid ?
-				<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}><Button basic color='#52BE80'>Edit</Button></Link>
+				<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}><Button background="none"  basic color='#52BE80'>Edit</Button></Link>
 				:null
 				}
-				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}><Button basic color='#45B39D'>Preview</Button></Link>
-				<Button basic color='teal' onClick={()=>copyLink(productKey, userUid)}>GetLink</Button>
-				<Button basic color='#3f87a6'>Share <i className="fa fa-share" aria-hidden="true"></i></Button>
+				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}><Button background="none"  basic color='#45B39D'>Preview</Button></Link>
+				<Button background="none" basic color='teal' onClick={()=>copyLink(productKey, userUid)}>GetLink</Button>
+				<Button background="none" basic color='#3f87a6'>Share <i className="fa fa-share" aria-hidden="true"></i></Button>
 			</ButtonGroup>
 		</div>
 	</Wrapper>

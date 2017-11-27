@@ -14,7 +14,7 @@ cursor: pointer;
 white-space: nowrap;
 background: ${props => props.background? props.background : color.contrastPrimary};
 ${props => props.border ?`border: ${props.border};` : null}
-color: ${props => props.textColor? props.textColor: color.darkPrimary};
+color: ${props => props.textColor? props.textColor: color.lightPrimary};
 ${props => props.fullWidth ? 
 'width:100%;' : null}
 ${props => props.big ?

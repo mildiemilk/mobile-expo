@@ -9,16 +9,16 @@ import color from '../../static/const/color.json'
 
 export const H1 = styled.h1`
 	font-size: calc(35pt);
-	color: ${color.darkPrimary};
+	color: ${color.primary1};
 `
 
 export const H3 = styled.h3`
 	font-size: 26pt;
-	color: ${color.darkPrimary};
+	color: ${color.primary1};
 `
 
 export const Item = styled(SemanticMenu.Item)`
-	background: ${color.darkPrimary} !important;
+	background: ${color.primary1} !important;
 	color: ${color.lightPrimary} !important;
 	flex-grow: 1;
 	font-size: 15px;
@@ -26,7 +26,7 @@ export const Item = styled(SemanticMenu.Item)`
 		transition-timing-function: ease-in;
 		transition: 0.25s;
 		background: ${color.contrastPrimary} !important;
-		color: ${color.darkPrimary} !important;
+		color: ${color.primary1} !important;
 		z-index:10;
 		font-weight: bold !important;
 	}
@@ -40,10 +40,10 @@ export const Menu = styled(SemanticMenu)`
 
 export const MenuButton = styled(SemanticButton)`
 	background: ${color.contrastPrimary} !important;
-	color: ${color.darkPrimary} !important;
+	color: ${color.primary1} !important;
 	padding: 0.1rem 0.5rem 0rem 0.5rem;
 	margin: 5px;
-	border: 0.1rem solid ${color.darkPrimary};
+	border: 0.1rem solid ${color.primary1};
 	min-width: 10vw;
 	min-height: 80px !important;
 `
@@ -56,10 +56,10 @@ export const Segment = styled(SemanticSegment)`
 `
 export const Button = styled(SemanticButton)`
 background: ${color.contrastPrimary} !important;
-color: ${color.darkPrimary} !important;
+color: ${color.primary1} !important;
 &:hover {
 		background: ${color.lightPrimary} !important;
-		color: ${color.darkPrimary} !important;
+		color: ${color.primary1} !important;
 		transition: 0.3s;
 		z-index:10;
 		font-weight: bold !important;
@@ -74,13 +74,13 @@ export const LightButton = styled(SemanticButton)`
 		z-index:10;
 		font-weight: bold !important;
 		background: ${color.lightPrimary} !important;
-		color: ${color.darkPrimary} !important;
+		color: ${color.primary1} !important;
 	}
 `
 
 export const ExitButton = styled(SemanticButton) `
 	background: white !important;
-	color: ${color.darkPrimary} !important;
+	color: ${color.primary1} !important;
 `
 
 export const FloatRight = styled.div`
