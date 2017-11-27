@@ -13,7 +13,4 @@ export default ({onCheckOut, savePaymentImage})=>
 	<Wrapper maxWidth="516px" width="100%">
 		<CreditCard onCheckOut={onCheckOut} />
 	</Wrapper>
-	<Button onClick={onCheckOut}>
-		Pay Now
-	</Button>
 </div>

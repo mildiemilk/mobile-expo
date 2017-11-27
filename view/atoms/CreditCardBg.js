@@ -9,7 +9,7 @@ export default styled.div`
     min-width: 258px;
     min-height: 161px;
     border-radius: 15px;
-    background-color: #597dbc;
+    background-color: #000000;
     box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
     display:flex;
     align-items:center;

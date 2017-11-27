@@ -14,6 +14,7 @@ import CreditCardBg from '../../view/atoms/CreditCardBg'
 import H1 from '../../view/atoms/H1'
 import H3 from '../../view/atoms/H3'
 import H5 from '../../view/atoms/H5'
+import ExpandTab from '../../view/atoms/ExpandTab'
 import BlackOut from '../../view/atoms/BlackOut'
 import Form from './Form'
 import {Provider} from 'react-redux'
@@ -249,3 +250,6 @@ storiesOf('BlackOut', module)
 
 storiesOf('Credit Card Bg', module)
 	.add('default', () => <CreditCardBg />)
+
+storiesOf('Expand Tab', module)
+	.add('default', ()=><ExpandTab/>)

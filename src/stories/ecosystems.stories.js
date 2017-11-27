@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions'
 import ProductRegisterMain from '../../view/ecosystems/ProductRegisterMain'
 import ProductDisplay from '../../view/ecosystems/ProductDisplay'
 import User from '../../view/ecosystems/User'
+import BankAccountsForTransfer from '../../view/ecosystems/BankAccountsForTransfer'
 import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
@@ -41,3 +42,9 @@ storiesOf('ProductDisplayMain', module)
 
     />
     )
+
+
+storiesOf('BankAccountForTransfer', module)
+    .add('default', ()=>
+    <BankAccountsForTransfer />
+)
