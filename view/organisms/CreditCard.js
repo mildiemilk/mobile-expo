@@ -6,6 +6,7 @@ import Cvv from '../molecules/CvvInput'
 import TextField from '../atoms/TextField'
 import Flex from '../atoms/Flex'
 import styled from 'styled-components'
+import Button from '../atoms/Button'
 
 const CardLabel = styled.span`
 font-family: Avenir;
@@ -15,7 +16,7 @@ text-align: center;
 color: #ffffff;
 `
 
-export default ()=>
+export default props =>
 <CreditCardBg>
 	<table>
 		<tbody>
@@ -34,6 +35,9 @@ export default ()=>
 			<tr>
 				<td align="right"><CardLabel>CVV</CardLabel></td>
 				<td><Cvv name="cvv"/></td>
+			</tr>
+			<tr>
+				<td><Button>จ่ายเลย</Button></td>
 			</tr>
 		</tbody>
 	</table>

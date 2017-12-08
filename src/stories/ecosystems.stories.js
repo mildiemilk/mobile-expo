@@ -5,6 +5,7 @@ import ProductRegisterMain from '../../view/ecosystems/ProductRegisterMain'
 import ProductDisplay from '../../view/ecosystems/ProductDisplay'
 import User from '../../view/ecosystems/User'
 import BankAccountsForTransfer from '../../view/ecosystems/BankAccountsForTransfer'
+import CreditCardExpandButton from '../../view/ecosystems/CreditCardExpandButton'
 import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
@@ -43,8 +44,15 @@ storiesOf('ProductDisplayMain', module)
     />
     )
 
-
 storiesOf('BankAccountForTransfer', module)
     .add('default', ()=>
     <BankAccountsForTransfer />
 )
+
+storiesOf('CreditCardExpandButton', module)
+    .addDecorator(story => <Provider store={store}>
+        <Form onSubmit={() => console.log("click")}>
+                {story()}
+        </Form>
+        </Provider>)
+    .add('default', ()=> <CreditCardExpandButton />)

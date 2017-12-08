@@ -1,16 +1,16 @@
 import Header from './Header'
-import Button from '../atoms/Button'
 import Head from './DefaultHead'
-import CreditCard from '../organisms/CreditCard'
 import BankAccountsForTransfer from '../ecosystems/BankAccountsForTransfer'
+import CreditCardExpandButton from '../ecosystems/CreditCardExpandButton'
 import Wrapper from '../atoms/Wrapper'
+import Flex from '../atoms/Flex'
 
 export default ({onCheckOut, savePaymentImage})=> 
 <div>
 	<Head/>
 	<Header />
-	<BankAccountsForTransfer savePaymentImage={savePaymentImage} onCheckOut={onCheckOut}/>
-	<Wrapper maxWidth="516px" width="100%">
-		<CreditCard onCheckOut={onCheckOut} />
-	</Wrapper>
+	<Flex justifyContent="space" verticleCenter height="400px">
+		<BankAccountsForTransfer savePaymentImage={savePaymentImage} onCheckOut={onCheckOut}/>
+		<CreditCardExpandButton onCheckOut={onCheckOut}/>
+	</Flex>
 </div>

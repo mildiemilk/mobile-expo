@@ -5,7 +5,7 @@ import Button from '../atoms/Button'
 import Wrapper from '../atoms/Wrapper'
 import ExpandTab from '../atoms/ExpandTab'
 
-const ControllerButton = props => <Button {...props} >โอนเงินผ่านบัญชีธนาคาร</Button>
+const ControllerButton = props => <Button margin="10px" {...props} >โอนเงินผ่านบัญชีธนาคาร</Button>
 
 const InnerDisplay = ({savePaymentImage}) => 
 <Wrapper width="100%" maxWidth="512px">

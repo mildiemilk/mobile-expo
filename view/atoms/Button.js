@@ -12,6 +12,7 @@ text-decoration: none;
 text-align: center;
 cursor: pointer;
 white-space: nowrap;
+${props=> props.margin? `margin:${props.margin};`:null}
 background: ${props => props.background? props.background : color.contrastPrimary};
 ${props => props.border ?`border: ${props.border};` : null}
 color: ${props => props.textColor? props.textColor: color.lightPrimary};
