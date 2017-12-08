@@ -100,7 +100,7 @@ const mapStateToProps = state => ({
 	shortDescription: selector(state,'shortDescription'),
 	userUid: state.user.uid,
 	userEmail: state.user.email,
-	productImages: state.productImages
+	productImages: state.product.productImages
 })
 
 const mapDispatchToProps = dispatch =>
