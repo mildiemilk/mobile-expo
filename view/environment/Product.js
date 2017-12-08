@@ -1,18 +1,8 @@
-import { Card, Button, Form, Icon } from 'semantic-ui-react'
-import Link from 'next/link'
 import Head from './DefaultHead'
 import Header from './Header'
-import AddItem from '../molecules/AddItem'
-import SubImage from '../organisms/SubImage'
-import SubImageSection from '../atoms/SubImageSection'
-import styled from 'styled-components'
-import ImageGallery from 'react-image-gallery'
-import Image from '../atoms/Image'
 import ProductDisplay from '../ecosystems/ProductDisplay'
 
-export default ({product, minusQuantity, addQuantity, productUid, productQuantity}) => {
-	const images = product
-	return(<div>
+export default ({product, minusQuantity, addQuantity, productUid, productQuantity}) => <div>
 	<Head/>
 	<Header/>
 	<ProductDisplay 
@@ -26,5 +16,4 @@ export default ({product, minusQuantity, addQuantity, productUid, productQuantit
 		productUid={productUid} 
 		productQuantity={productQuantity}
 	/>
-</div>)
-}
+</div>
