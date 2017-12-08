@@ -5,12 +5,12 @@ import CreditCardExpandButton from '../ecosystems/CreditCardExpandButton'
 import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 
-export default ({onCheckOut, savePaymentImage})=> 
+export default props=> 
 <div>
 	<Head/>
 	<Header />
-	<Flex justifyContent="space" verticleCenter height="400px">
-		<BankAccountsForTransfer savePaymentImage={savePaymentImage} onCheckOut={onCheckOut}/>
-		<CreditCardExpandButton onCheckOut={onCheckOut}/>
+	<Flex justifyContent="space" center verticleCenter width="-webkit-fill-available">
+		<BankAccountsForTransfer {...props}/>
+		<CreditCardExpandButton {...props}/>
 	</Flex>
 </div>

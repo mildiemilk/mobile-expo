@@ -2,10 +2,11 @@ import React from 'react'
 import PaymentView from '../view/environment/Payment.js'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
-import { reduxForm } from 'redux-form'
+import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import { createPayment, savePaymentImage } from '../lib/handlers/payment'
 import { addTransaction } from '../lib/actions/transaction'
 import { calculateComissionSeller } from '../lib/handlers/transaction'
+import { validateCreditCard } from '../lib/helpers/formvalidation'
 
 class Payment extends React.Component{
 	componentDidMount() {
@@ -36,10 +37,11 @@ class Payment extends React.Component{
 			expiryMonth:'7', 
 			expiryYear:'2019'
 		}
-		const {cardDetail, total, sharedUser, transaction} = this.props
+		const {cardDetail, total, sharedUser, transaction, validateCreditCard} = this.props
 		return <PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
+				validateCreditCard={validateCreditCard}
 			/>
 	}
 }
@@ -47,14 +49,16 @@ class Payment extends React.Component{
 
 Payment = reduxForm({form: 'payment'})(Payment)
 
-const mapStateToProps = state => ({
+const selector = formValueSelector('payment')
+const mapStateToProps = state =>({
 	cardDetail : state.form.payment ? state.form.payment.values : null,
 	total : state.payment.total,
 	sharedUser: state.sharedUser,
 	products: state.userProducts,
 	cart : state.cart,
 	user: state.user,
-	transaction: state.transaction
+	transaction: state.transaction,
+	validateCreditCard: validateCreditCard(selector(state, 'cardNumber'), selector(state, 'month'), selector(state,'year'))
 })
 
 const mapDispatchToProps = {

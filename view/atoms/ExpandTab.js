@@ -6,6 +6,14 @@ const InnerWrapper = styled.div`
     transition: 0.5;
 `
 
+const OuterWrapper = styled.div`
+width: -webkit-fill-available;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+`
+
 class ExpandTab extends React.Component {
     constructor(props) {
         super(props);
@@ -13,13 +21,13 @@ class ExpandTab extends React.Component {
     }
     render(){
         return(
-            <div>
-                <span onClick={()=>this.setState({display: !this.state.display})}>{this.props.controlComponent || "control component"}</span>
+            <OuterWrapper>
+                <OuterWrapper onClick={()=>this.setState({display: !this.state.display})}>{this.props.controlComponent || "control component"}</OuterWrapper>
                 {
                     this.state.display?
                     <InnerWrapper>{this.props.innerComponent || "inner tab"}</InnerWrapper> : null
                 }
-            </div>
+            </OuterWrapper>
         )
     }
 }

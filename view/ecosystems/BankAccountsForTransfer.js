@@ -5,10 +5,10 @@ import Button from '../atoms/Button'
 import Wrapper from '../atoms/Wrapper'
 import ExpandTab from '../atoms/ExpandTab'
 
-const ControllerButton = props => <Button margin="10px" {...props} >โอนเงินผ่านบัญชีธนาคาร</Button>
+const ControllerButton = props => <Button margin="10px" {...props} fullWidth maxWidth="300px">โอนเงินผ่านบัญชีธนาคาร</Button>
 
 const InnerDisplay = ({savePaymentImage}) => 
-<Wrapper width="100%" maxWidth="512px">
+<Wrapper width="-webkit-fill-available">
     <BankAccountBkk accountNumber="1234567890" savePaymentImage={savePaymentImage}/>
     <BankAccountKbank accountNumber="1234567890" savePaymentImage={savePaymentImage}/>
     <BankAccountScb accountNumber="1234567890" savePaymentImage={savePaymentImage}/>
