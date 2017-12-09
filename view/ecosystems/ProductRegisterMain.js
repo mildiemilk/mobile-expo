@@ -4,13 +4,13 @@ import ComissionInput from '../organisms/ComissionInput'
 import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
 
-export default ({productImages, setProductImage, handleSubmit}) => 
+export default props=> 
 <Flex direction='row'>
-    <AddedImages productImages={productImages} setProductImage={setProductImage} />
+    <AddedImages {...props} />
     <Flex direction='column' verticleCenter>
-        <ProductRegisterText/>
-        <ComissionInput/>
-        <Button fullWidth big mobileFixedButtom onClick={handleSubmit}>ลงขาย</Button>
+        <ProductRegisterText {...props}/>
+        <ComissionInput {...props}/>
+        <Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth big mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>
     </Flex>
     <br/>
     <br/>

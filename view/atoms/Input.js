@@ -30,7 +30,7 @@ ${props => props.flexGrow? `flexgrow:1;`:null}
 	padding-top:2px;
 }
 &::placeholder {
-	color: #a8a8a8;
+	color: #e4e4e4;
 }
 `
 

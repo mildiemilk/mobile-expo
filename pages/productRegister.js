@@ -45,6 +45,8 @@ class ProductRegister extends Component{
 			shortDescription
 		} = this.props
 		const productID =  this.props.url.query.productID
+		let comissionWithinLimit = parseInt(price) * 0.7 > parseInt(price) * parseInt(comissionPercent || 0) / 100 + parseInt(comissionCash || 0)
+
 		return (<ProductForm 
 			productDescription={productDescription} 
 			brandName={brandName}
@@ -54,6 +56,9 @@ class ProductRegister extends Component{
 			setProductImage = {setProductImage}
 			productName = {productName}
 			price = {price}
+			comissionCash = {comissionCash}
+			comissionPercent = {comissionPercent}
+			comissionWithinLimit = {comissionWithinLimit}
 			handleSubmit={()=> productID === '' ? registerProduct({
 				productName, 
 				brandName, 

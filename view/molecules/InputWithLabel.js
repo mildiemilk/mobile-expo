@@ -6,8 +6,8 @@ const Wrapper = styled.div`
     margin-bottom: 20px;
 `
 
-export default ({children, placeholder, name}) => 
+export default ({children, placeholder, name, format}) => 
 <Wrapper>
     <Label>{children}</Label>
-    <Input name={name} placeholder={placeholder}/>
+    <Input name={name} placeholder={placeholder} format={format}/>
 </Wrapper>
