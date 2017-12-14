@@ -1,6 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
+import Form from './Form'
+import {Provider} from 'react-redux'
+import store from './store'
 import AddedImages from '../../view/organisms/AddedImages'
 import ProductRegisterText from '../../view/organisms/ProductRegisterText'
 import ComissionInput from '../../view/organisms/ComissionInput'
@@ -11,9 +14,7 @@ import AddressForm from '../../view/organisms/AddressForm'
 import DisplayImages from '../../view/organisms/DisplayImages'
 import DisplayProductText from '../../view/organisms/DisplayProductText'
 import CreditCard from '../../view/organisms/CreditCard'
-import Form from './Form'
-import {Provider} from 'react-redux'
-import store from './store'
+import JsonTable from '../../view/organisms/JsonTable'
 
 storiesOf('AddedImages', module)
 	.add('no image', ()=> (
@@ -98,3 +99,39 @@ storiesOf('Credit Card', module)
 	</Provider>)
 	.add('default', ()=><CreditCard />)
 
+const headerJSON = {
+	number : 'No.',
+	name: 'Name',
+	product: 'Product',
+	total: 'Total',
+	status: 'Status'
+}
+const products = [
+	{
+		number: 1,
+		name: 'Manassanan',
+		// product: {
+		// 	name: 'hamburger',
+		// 	quantity: 4,
+		// 	price: 115
+		// }
+		product: 'hamburger',
+		quantity: 4,
+		price: 500,
+		id:'12345',
+		status: 'pending'
+	},
+	{
+		number: 1,
+		name: 'Peak',
+		product: 'blue shirt',
+		quantity: 400,
+		price: 500,
+		id:'12345',
+		status: 'success'
+	}
+]
+
+storiesOf('JSON Table', module)
+	.add('no data', ()=> <JsonTable />)
+	.add('default', ()=><JsonTable headerJson={headerJSON} bodyJsonArray={products}/>)
