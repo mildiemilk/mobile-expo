@@ -6,6 +6,7 @@ import ProductDisplay from '../../view/ecosystems/ProductDisplay'
 import User from '../../view/ecosystems/User'
 import BankAccountsForTransfer from '../../view/ecosystems/BankAccountsForTransfer'
 import CreditCardExpandButton from '../../view/ecosystems/CreditCardExpandButton'
+import OrderTable from '../../view/ecosystems/OrderTable'
 import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
@@ -56,3 +57,8 @@ storiesOf('CreditCardExpandButton', module)
         </Form>
         </Provider>)
     .add('default', ()=> <CreditCardExpandButton />)
+
+
+storiesOf('OrderTable', module)
+        .add('default', ()=> <OrderTable />)
+        .add('with values', ()=> <OrderTable orders={orders} />)

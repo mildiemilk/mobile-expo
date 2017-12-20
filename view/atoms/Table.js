@@ -3,7 +3,10 @@ import styled from 'styled-components'
 export default styled.table `
 	text-align: left;
 	border-radius: 25px;
+	border-spacing: 0;
+	border-collapse: collapse;
 	width: 100%;
+	overflow-x:auto;
 	th {
 		background: #89C4F4;
 		padding: 10px;

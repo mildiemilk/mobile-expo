@@ -15,6 +15,7 @@ import DisplayImages from '../../view/organisms/DisplayImages'
 import DisplayProductText from '../../view/organisms/DisplayProductText'
 import CreditCard from '../../view/organisms/CreditCard'
 import JsonTable from '../../view/organisms/JsonTable'
+import OrderStatusButton from '../../view/organisms/OrderStatusButton'
 
 storiesOf('AddedImages', module)
 	.add('no image', ()=> (
@@ -133,3 +134,9 @@ const products = [
 storiesOf('JSON Table', module)
 	.add('no data', ()=> <JsonTable />)
 	.add('default', ()=><JsonTable headerJson={headerJSON} bodyJsonArray={products}/>)
+
+storiesOf('OrderStatusButton', module)
+	.add('default', ()=><OrderStatusButton  />)
+	.add('pending', ()=><OrderStatusButton status='pending'/>)
+	.add('success', ()=><OrderStatusButton status='success'/>)
+	.add('delivered', ()=><OrderStatusButton status='delivered'/>)

@@ -2,5 +2,8 @@
 	"primary1":"#4AD9DF",
 	"lightPrimary": "white",
 	"contrastPrimary": "#FF8700",
-	"darkText": "#379FA4"
+	"darkText": "#379FA4",
+	"warning": "#f2af00",
+	"success": "#00ba4c",
+	"disabled": "#C4BCB7"
 }
