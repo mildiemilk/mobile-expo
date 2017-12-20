@@ -1,5 +1,4 @@
 import Table from '../atoms/Table'
-import Wrapper from '../atoms/Wrapper'
 
 export default ({headerJson, bodyJsonArray}) => 
     <Table>
@@ -19,16 +18,7 @@ export default ({headerJson, bodyJsonArray}) =>
                 bodyJsonArray ? 
                 bodyJsonArray.map( bodyJson => 
                 <tr>
-                    {Object.keys(headerJson).map(
-                        key => {
-                            switch(key){
-                                case 'total':
-                                return <td>{bodyJson.price * bodyJson.quantity}</td>
-                                default:
-                                return <td>{bodyJson[key]}</td>
-                            }
-                        }
-                    )}
+                    {Object.keys(headerJson).map( key => <td>{bodyJson[key]}</td>)}
                 </tr>
                 )
                 :null

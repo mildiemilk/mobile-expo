@@ -116,8 +116,7 @@ const products = [
 		// 	price: 115
 		// }
 		product: 'hamburger',
-		quantity: 4,
-		price: 500,
+		total: 500,
 		id:'12345',
 		status: 'pending'
 	},
@@ -125,8 +124,7 @@ const products = [
 		number: 1,
 		name: 'Peak',
 		product: 'blue shirt',
-		quantity: 400,
-		price: 500,
+		total:200,
 		id:'12345',
 		status: 'success'
 	}
