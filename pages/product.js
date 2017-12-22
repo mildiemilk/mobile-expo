@@ -18,7 +18,7 @@ class Product extends React.Component{
 
 	async componentWillReceiveProps(nextProps) {
 		const {productName, comissionCash, comissionPc, price, userUid} = this.props.product
-			nextProps.product.productId !== this.props.product.productId? this.props.addProductDetail(nextProps.url.query.productID, comissionPc, comissionCash, price, userUid) : null
+
 		nextProps.product !== this.props.product ? await getUserProducts( nextProps.product.userUid ) : null
 	}
 

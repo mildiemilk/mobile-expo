@@ -13,14 +13,14 @@ class Profile extends Component {
 		const auth = await loadFirebase('auth')
 		const user = await auth.onAuthStateChanged( user => {
 			this.props.saveUserPending()
-			user ? this.props.saveUser(user) : null
+			return user ? this.props.saveUser(user) : null
 		})
-		await	getUserProducts(this.props.user.uid)
+		this.props.user? this.props.user.uid ? getUserProducts(this.props.user.uid) : null : null
 	}
 
 	async componentWillReceiveProps(nextProps){
 		nextProps.user !== this.props.user? 
-				await	getUserProducts(this.props.user.uid): null
+				await	getUserProducts(this.props.user.uid): null			
 	}
 
 	render() {
