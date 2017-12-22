@@ -5,7 +5,7 @@ import CreditCardExpandButton from '../ecosystems/CreditCardExpandButton'
 import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 
-export default props=> 
+export default props => 
 <div>
 	<Head/>
 	<Header />

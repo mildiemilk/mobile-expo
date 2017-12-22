@@ -22,7 +22,7 @@ export default ({backgroundImage, accountNumber, accountName, bankName, savePaym
     <H3 color="white">{bankName}</H3>
     <H1 color="white" textShadow="2px 2px 2px rgba(0, 0, 0, 0.5)">เลขบัญชี: {accountNumberFormat(accountNumber)}</H1>
     <H3 color="white">ชื่อ {accountName}</H3>
-    <Modal context={<DropZone><Image src='/static/img/bankTransfer.svg'/></DropZone>}>
+    <Modal context={<DropZone onDrop={savePaymentImage}><Image src='/static/img/bankTransfer.svg'/></DropZone>}>
         <Button background="none" textColor="white" round border="2px solid white" hoverBg="black">ส่งหลักฐานการโอน</Button>
     </Modal>
 </Wrapper>

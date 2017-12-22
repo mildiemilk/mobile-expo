@@ -1,27 +1,27 @@
 import React from 'react'
-import PaymentView from '../view/environment/Payment.js'
+import PaymentView from '../view/environment/Payment'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import { createPayment, savePaymentImage } from '../lib/handlers/payment'
-import { addTransaction } from '../lib/actions/transaction'
-import { calculateComissionSeller } from '../lib/handlers/transaction'
+import { addProductTransaction } from '../lib/actions/transaction'
+import { calculateComission } from '../lib/handlers/transaction'
 import { validateCreditCard } from '../lib/helpers/formvalidation'
 
 class Payment extends React.Component{
 	componentDidMount() {
-			const { cart, products, user, addTransaction } = this.props
+			const { cart, products, user, addProductTransaction } = this.props
 			cart.addedIds.forEach( id => {
 				let product = products[id]
 				let quantity = cart.quantityById[id]
 				let price = product.price
-				let comission = calculateComissionSeller(price, product.comissionCash, product.comissionPercent)
-				addTransaction({
+				let comission = calculateComission(price, product.comissionCash, product.comissionPercent)
+				addProductTransaction({
 					price,
 					quantity,
-					comissionSeller:comission.seller * quantity,
-					comissionOwner: comission.owner * quantity,
-					ownerUid:product.userUid,
+					comissionSponsor:comission.sponsor * quantity,
+					comissionSeller: comission.seller * quantity,
+					sellerUid:product.userUid,
 					buyerUid:user.uid,
 					productId:id
 				})
@@ -45,7 +45,6 @@ class Payment extends React.Component{
 	}
 }
 
-
 Payment = reduxForm({form: 'payment'})(Payment)
 
 const selector = formValueSelector('payment')
@@ -59,8 +58,6 @@ const mapStateToProps = state =>({
 	validateCreditCard: validateCreditCard(selector(state, 'cardNumber'), selector(state, 'month'), selector(state,'year'))
 })
 
-const mapDispatchToProps = {
-	addTransaction
-}
+const mapDispatchToProps = {addProductTransaction}
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Payment)
