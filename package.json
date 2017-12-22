@@ -57,7 +57,8 @@
     "jest-enzyme": "^4.0.1",
     "react-scripts": "1.0.17",
     "react-test-renderer": "^16.2.0",
-    "redux-devtools": "^3.4.1"
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-extension": "^2.13.2"
   },
   "scripts": {
     "dev": "node server.js",

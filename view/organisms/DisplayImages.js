@@ -3,7 +3,7 @@ import ImageDisplay from '../molecules/ImageDisplay'
 import SubImageWrapper from '../atoms/ImageAtoms/SubImageWrapper'
 import DisplaySubImage from '../molecules/DisplaySubImage'
 
-export default ({images})=> 
+export default ({images = []})=> 
 <Wrapper>
     <ImageDisplay src={images[0]} />
     <SubImageWrapper>
@@ -13,3 +13,4 @@ export default ({images})=>
         <DisplaySubImage src={images[4]} size="100px" subimg />
     </SubImageWrapper>
 </Wrapper>
+

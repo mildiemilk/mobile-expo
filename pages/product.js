@@ -6,16 +6,19 @@ import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
+import { addProductDetail, addSponsorId} from '../lib/actions/transaction'
 
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
 	async componentDidMount() {
-		this.props.setSeller(this.props.url.query.userID)
+		this.props.addSponsorId(this.props.url.query.userID)
 		getProductFromID(this.props.url.query.productID)
 	}
 
 	async componentWillReceiveProps(nextProps) {
+		const {productName, comissionCash, comissionPc, price, userUid} = this.props.product
+			nextProps.product.productId !== this.props.product.productId? this.props.addProductDetail(nextProps.url.query.productID, comissionPc, comissionCash, price, userUid) : null
 		nextProps.product !== this.props.product ? await getUserProducts( nextProps.product.userUid ) : null
 	}
 
@@ -30,11 +33,13 @@ class Product extends React.Component{
 const mapStateToProps = state => ({
 	product: state.product,
 	cart : state.cart,
-	user : state.user
+	user : state.user,
+	transaction : state.transaction
 })
 
 const mapDispatchToProps = {
-	saveSharedUser,
+	addProductDetail,
+	addSponsorId,
 	addQuantity,
 	minusQuantity,
 	setSeller

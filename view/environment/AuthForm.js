@@ -23,7 +23,6 @@ export default ({
 		<Head />
 		<Header/>
 		<Segment padded>
-			<ErrorDisplay status={status} displayText={displayText} />
 				<Grid divided>
 					{ !loggedIn ?
 						<SignInForm 	
@@ -40,6 +39,7 @@ export default ({
 					}
 				</Grid>
 		</Segment>
+		<ErrorDisplay status={status} displayText={displayText} />				
 	</div>
 	)
 }
