@@ -1,0 +1,1858 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'babel-cli' ]
+2 info using npm@1.3.21
+3 info using node@v8.6.0
+4 warn package.json nextshopnshare@1.0.0 No description
+5 warn package.json nextshopnshare@1.0.0 No repository field.
+6 warn package.json nextshopnshare@1.0.0 No README data
+7 warn package.json browser-resolve@1.11.2 No README data
+8 warn package.json camel-case@3.0.0 No README data
+9 warn package.json chain-function@1.0.0 No README data
+10 warn package.json dom-serializer@0.1.0 No README data
+11 warn package.json eslint-module-utils@2.1.1 No README data
+12 warn package.json estraverse@4.2.0 No README data
+13 warn package.json jest-config@20.0.4 No description
+14 warn package.json jest-config@20.0.4 No README data
+15 warn package.json jest-diff@20.0.3 No description
+16 warn package.json jest-diff@20.0.3 No README data
+17 warn package.json jest-docblock@20.0.3 No description
+18 warn package.json jest-docblock@20.0.3 No README data
+19 warn package.json jest-environment-jsdom@20.0.3 No description
+20 warn package.json jest-environment-jsdom@20.0.3 No README data
+21 warn package.json jest-environment-node@20.0.3 No description
+22 warn package.json jest-environment-node@20.0.3 No README data
+23 warn package.json jest-jasmine2@20.0.4 No description
+24 warn package.json jest-jasmine2@20.0.4 No README data
+25 warn package.json jest-haste-map@20.0.5 No description
+26 warn package.json jest-haste-map@20.0.5 No README data
+27 warn package.json jest-matchers@20.0.3 No description
+28 warn package.json jest-matchers@20.0.3 No README data
+29 warn package.json jest-matcher-utils@20.0.3 No README data
+30 warn package.json jest-regex-util@20.0.3 No description
+31 warn package.json jest-regex-util@20.0.3 No README data
+32 warn package.json jest-message-util@20.0.3 No description
+33 warn package.json jest-message-util@20.0.3 No README data
+34 warn package.json jest-resolve@20.0.4 No description
+35 warn package.json jest-resolve@20.0.4 No README data
+36 warn package.json jest-snapshot@20.0.3 No description
+37 warn package.json jest-snapshot@20.0.3 No README data
+38 warn package.json jest-util@20.0.3 No description
+39 warn package.json jest-util@20.0.3 No README data
+40 warn package.json jest-resolve-dependencies@20.0.3 No description
+41 warn package.json jest-resolve-dependencies@20.0.3 No README data
+42 warn package.json jest-runtime@20.0.4 No description
+43 warn package.json jest-runtime@20.0.4 No README data
+44 warn package.json jsesc@1.3.0 No README data
+45 warn package.json loader-fs-cache@1.0.1 No repository field.
+46 warn package.json loader-fs-cache@1.0.1 No README data
+47 warn package.json object.assign@4.0.4 No README data
+48 warn package.json obuf@1.1.1 No description
+49 warn package.json obuf@1.1.1 No README data
+50 warn package.json path-is-inside@1.0.2 No README data
+51 warn package.json react-transition-group@1.2.1 No README data
+52 warn package.json setimmediate@1.0.5 No README data
+53 warn package.json shallowequal@0.2.2 No README data
+54 warn package.json tr46@0.0.3 No README data
+55 warn package.json whatwg-encoding@1.0.1 No README data
+56 warn package.json assert@1.4.1 assert is also the name of a node core module.
+57 warn package.json bcrypt-pbkdf@1.0.1 No repository field.
+58 warn package.json buffer@5.0.8 buffer is also the name of a node core module.
+59 warn package.json create-error-class@3.0.2 keywords should be an array of strings
+60 warn package.json events@1.1.1 events is also the name of a node core module.
+61 warn package.json express-cors@v0.0.3 No repository field.
+62 warn package.json http-proxy@1.16.2 script values must be string commands
+63 warn package.json indexof@0.0.1 No repository field.
+64 warn package.json is-retry-allowed@1.1.0 keywords should be an array of strings
+65 warn package.json punycode@1.3.2 punycode is also the name of a node core module.
+66 warn package.json querystring@0.2.0 querystring is also the name of a node core module.
+67 warn package.json require-from-string@1.2.1 keywords should be an array of strings
+68 warn package.json string_decoder@0.10.31 string_decoder is also the name of a node core module.
+69 warn package.json url@0.11.0 url is also the name of a node core module.
+70 warn package.json util@0.10.3 util is also the name of a node core module.
+71 verbose readDependencies using package.json deps
+72 verbose cache add [ 'babel-cli', null ]
+73 verbose cache add name=undefined spec="babel-cli" args=["babel-cli",null]
+74 verbose parsed url Url {
+74 verbose parsed url   protocol: null,
+74 verbose parsed url   slashes: null,
+74 verbose parsed url   auth: null,
+74 verbose parsed url   host: null,
+74 verbose parsed url   port: null,
+74 verbose parsed url   hostname: null,
+74 verbose parsed url   hash: null,
+74 verbose parsed url   search: null,
+74 verbose parsed url   query: null,
+74 verbose parsed url   pathname: 'babel-cli',
+74 verbose parsed url   path: 'babel-cli',
+74 verbose parsed url   href: 'babel-cli' }
+75 silly lockFile a7787cd8-babel-cli babel-cli
+76 verbose lock babel-cli C:\Users\DELL\AppData\Roaming\npm-cache\a7787cd8-babel-cli.lock
+77 silly lockFile a7787cd8-babel-cli babel-cli
+78 silly lockFile a7787cd8-babel-cli babel-cli
+79 verbose addNamed [ 'babel-cli', '' ]
+80 verbose addNamed [ null, '*' ]
+81 silly lockFile eb0cb740-babel-cli babel-cli@
+82 verbose lock babel-cli@ C:\Users\DELL\AppData\Roaming\npm-cache\eb0cb740-babel-cli.lock
+83 silly addNameRange { name: 'babel-cli', range: '*', hasData: false }
+84 verbose url raw babel-cli
+85 verbose url resolving [ 'https://registry.npmjs.org/', './babel-cli' ]
+86 verbose url resolved https://registry.npmjs.org/babel-cli
+87 info trying registry request attempt 1 at 14:20:57
+88 http GET https://registry.npmjs.org/babel-cli
+89 http 200 https://registry.npmjs.org/babel-cli
+90 silly registry.get cb [ 200,
+90 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+90 silly registry.get     server: 'UploadServer',
+90 silly registry.get     'cache-control': 'max-age=300',
+90 silly registry.get     'last-modified': 'Wed, 13 Dec 2017 18:53:30 GMT',
+90 silly registry.get     etag: '"5a31772a-201d1"',
+90 silly registry.get     'content-length': '131537',
+90 silly registry.get     'accept-ranges': 'bytes',
+90 silly registry.get     date: 'Thu, 21 Dec 2017 07:17:00 GMT',
+90 silly registry.get     via: '1.1 varnish',
+90 silly registry.get     age: '0',
+90 silly registry.get     connection: 'close',
+90 silly registry.get     'x-served-by': 'cache-sin18023-SIN',
+90 silly registry.get     'x-cache': 'MISS',
+90 silly registry.get     'x-cache-hits': '0',
+90 silly registry.get     'x-timer': 'S1513840620.895592,VS0,VE265',
+90 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+91 silly addNameRange number 2 { name: 'babel-cli', range: '*', hasData: true }
+92 silly addNameRange versions [ 'babel-cli',
+92 silly addNameRange   [ '6.0.0',
+92 silly addNameRange     '6.0.2',
+92 silly addNameRange     '6.0.12',
+92 silly addNameRange     '6.0.14',
+92 silly addNameRange     '6.0.15',
+92 silly addNameRange     '6.1.0',
+92 silly addNameRange     '6.1.1',
+92 silly addNameRange     '6.1.2',
+92 silly addNameRange     '6.1.4',
+92 silly addNameRange     '6.1.5',
+92 silly addNameRange     '6.1.6',
+92 silly addNameRange     '6.1.7',
+92 silly addNameRange     '6.1.8',
+92 silly addNameRange     '6.1.9',
+92 silly addNameRange     '6.1.10',
+92 silly addNameRange     '6.1.11',
+92 silly addNameRange     '6.1.12',
+92 silly addNameRange     '6.1.13',
+92 silly addNameRange     '6.1.14',
+92 silly addNameRange     '6.1.15',
+92 silly addNameRange     '6.1.16',
+92 silly addNameRange     '6.1.17',
+92 silly addNameRange     '6.1.18',
+92 silly addNameRange     '6.2.0',
+92 silly addNameRange     '6.2.4',
+92 silly addNameRange     '6.3.13',
+92 silly addNameRange     '6.3.15',
+92 silly addNameRange     '6.3.17',
+92 silly addNameRange     '6.4.0',
+92 silly addNameRange     '6.4.5',
+92 silly addNameRange     '6.5.0',
+92 silly addNameRange     '6.5.0-1',
+92 silly addNameRange     '6.5.1',
+92 silly addNameRange     '6.6.0',
+92 silly addNameRange     '6.6.4',
+92 silly addNameRange     '6.6.5',
+92 silly addNameRange     '6.7.5',
+92 silly addNameRange     '6.7.7',
+92 silly addNameRange     '6.8.0',
+92 silly addNameRange     '6.9.0',
+92 silly addNameRange     '6.10.0',
+92 silly addNameRange     '6.10.1',
+92 silly addNameRange     '6.11.4',
+92 silly addNameRange     '6.14.0',
+92 silly addNameRange     '6.16.0',
+92 silly addNameRange     '6.18.0',
+92 silly addNameRange     '6.22.0',
+92 silly addNameRange     '6.22.1',
+92 silly addNameRange     '6.22.2',
+92 silly addNameRange     '6.23.0',
+92 silly addNameRange     '7.0.0-alpha.1',
+92 silly addNameRange     '7.0.0-alpha.2',
+92 silly addNameRange     '6.24.0',
+92 silly addNameRange     '7.0.0-alpha.3',
+92 silly addNameRange     '7.0.0-alpha.4',
+92 silly addNameRange     '7.0.0-alpha.6',
+92 silly addNameRange     '7.0.0-alpha.7',
+92 silly addNameRange     '6.24.1',
+92 silly addNameRange     '7.0.0-alpha.8',
+92 silly addNameRange     '7.0.0-alpha.9',
+92 silly addNameRange     '7.0.0-alpha.10',
+92 silly addNameRange     '7.0.0-alpha.11',
+92 silly addNameRange     '7.0.0-alpha.12',
+92 silly addNameRange     '7.0.0-alpha.14',
+92 silly addNameRange     '7.0.0-alpha.15',
+92 silly addNameRange     '7.0.0-alpha.16',
+92 silly addNameRange     '7.0.0-alpha.17',
+92 silly addNameRange     '7.0.0-alpha.18',
+92 silly addNameRange     '7.0.0-alpha.19',
+92 silly addNameRange     '6.26.0',
+92 silly addNameRange     '7.0.0-alpha.20',
+92 silly addNameRange     '7.0.0-beta.0',
+92 silly addNameRange     '7.0.0-beta.1',
+92 silly addNameRange     '7.0.0-beta.2',
+92 silly addNameRange     '7.0.0-beta.3' ] ]
+93 verbose addNamed [ 'babel-cli', '6.26.0' ]
+94 verbose addNamed [ '6.26.0', '6.26.0' ]
+95 silly lockFile 145967c6-babel-cli-6-26-0 babel-cli@6.26.0
+96 verbose lock babel-cli@6.26.0 C:\Users\DELL\AppData\Roaming\npm-cache\145967c6-babel-cli-6-26-0.lock
+97 silly lockFile 363fa3c6-g-babel-cli-babel-cli-6-26-0-tgz https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz
+98 verbose lock https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz C:\Users\DELL\AppData\Roaming\npm-cache\363fa3c6-g-babel-cli-babel-cli-6-26-0-tgz.lock
+99 verbose addRemoteTarball [ 'https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz',
+99 verbose addRemoteTarball   '502ab54874d7db88ad00b887a06383ce03d002f1' ]
+100 info retry fetch attempt 1 at 14:20:57
+101 verbose fetch to= C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\tmp.tgz
+102 http GET https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz
+103 http 200 https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz
+104 verbose tar unpack C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\tmp.tgz
+105 silly lockFile 4919ab25-7726-0-08380469356135833-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package
+106 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package C:\Users\DELL\AppData\Roaming\npm-cache\4919ab25-7726-0-08380469356135833-package.lock
+107 silly lockFile 4de9ac15-7726-0-08380469356135833-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\tmp.tgz
+108 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\tmp.tgz C:\Users\DELL\AppData\Roaming\npm-cache\4de9ac15-7726-0-08380469356135833-tmp-tgz.lock
+109 silly gunzTarPerm modes [ '755', '644' ]
+110 silly gunzTarPerm extractEntry package.json
+111 silly gunzTarPerm extractEntry .npmignore
+112 silly gunzTarPerm extractEntry README.md
+113 silly gunzTarPerm extractEntry index.js
+114 silly gunzTarPerm extractEntry lib/_babel-node.js
+115 silly gunzTarPerm extractEntry lib/babel-external-helpers.js
+116 silly gunzTarPerm extractEntry lib/babel-node.js
+117 silly gunzTarPerm extractEntry lib/babel/dir.js
+118 silly gunzTarPerm extractEntry lib/babel/file.js
+119 silly gunzTarPerm extractEntry lib/babel/index.js
+120 silly gunzTarPerm extractEntry lib/babel/util.js
+121 silly gunzTarPerm extractEntry bin/babel-doctor.js
+122 silly gunzTarPerm extractEntry bin/babel-external-helpers.js
+123 silly gunzTarPerm extractEntry bin/babel-node.js
+124 silly gunzTarPerm extractEntry bin/babel.js
+125 silly gunzTarPerm extractEntry package-lock.json
+126 silly gunzTarPerm extractEntry scripts/bootstrap.sh
+127 silly lockFile 4919ab25-7726-0-08380469356135833-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package
+128 silly lockFile 4919ab25-7726-0-08380469356135833-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package
+129 silly lockFile 4de9ac15-7726-0-08380469356135833-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\tmp.tgz
+130 silly lockFile 4de9ac15-7726-0-08380469356135833-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\tmp.tgz
+131 verbose tar pack [ 'C:\\Users\\DELL\\AppData\\Roaming\\npm-cache\\babel-cli\\6.26.0\\package.tgz',
+131 verbose tar pack   'C:\\Users\\DELL\\AppData\\Local\\Temp\\npm-38936-RczLBq-U\\1513840857726-0.08380469356135833\\package' ]
+132 verbose tarball C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+133 verbose folder C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package
+134 silly lockFile 4919ab25-7726-0-08380469356135833-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package
+135 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package C:\Users\DELL\AppData\Roaming\npm-cache\4919ab25-7726-0-08380469356135833-package.lock
+136 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+137 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\57428453-che-babel-cli-6-26-0-package-tgz.lock
+138 silly lockFile 4919ab25-7726-0-08380469356135833-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package
+139 silly lockFile 4919ab25-7726-0-08380469356135833-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840857726-0.08380469356135833\package
+140 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+141 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+142 silly lockFile 18716557-m-cache-babel-cli-6-26-0-package C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package
+143 verbose lock C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package C:\Users\DELL\AppData\Roaming\npm-cache\18716557-m-cache-babel-cli-6-26-0-package.lock
+144 silly lockFile 18716557-m-cache-babel-cli-6-26-0-package C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package
+145 silly lockFile 18716557-m-cache-babel-cli-6-26-0-package C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package
+146 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+147 silly lockFile c8fbc503-m-cache-babel-cli-6-26-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package
+148 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package C:\Users\DELL\AppData\Roaming\npm-cache\c8fbc503-m-cache-babel-cli-6-26-0-package.lock
+149 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+150 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\57428453-che-babel-cli-6-26-0-package-tgz.lock
+151 silly gunzTarPerm modes [ '755', '644' ]
+152 silly gunzTarPerm extractEntry package.json
+153 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+154 silly gunzTarPerm extractEntry .npmignore
+155 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+156 silly gunzTarPerm extractEntry README.md
+157 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+158 silly gunzTarPerm extractEntry index.js
+159 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+160 silly gunzTarPerm extractEntry bin/babel-doctor.js
+161 silly gunzTarPerm modified mode [ 'bin/babel-doctor.js', 438, 420 ]
+162 silly gunzTarPerm extractEntry bin/babel-external-helpers.js
+163 silly gunzTarPerm modified mode [ 'bin/babel-external-helpers.js', 438, 420 ]
+164 silly gunzTarPerm extractEntry bin/babel-node.js
+165 silly gunzTarPerm modified mode [ 'bin/babel-node.js', 438, 420 ]
+166 silly gunzTarPerm extractEntry bin/babel.js
+167 silly gunzTarPerm modified mode [ 'bin/babel.js', 438, 420 ]
+168 silly gunzTarPerm extractEntry lib/babel-external-helpers.js
+169 silly gunzTarPerm modified mode [ 'lib/babel-external-helpers.js', 438, 420 ]
+170 silly gunzTarPerm extractEntry lib/babel-node.js
+171 silly gunzTarPerm modified mode [ 'lib/babel-node.js', 438, 420 ]
+172 silly gunzTarPerm extractEntry lib/_babel-node.js
+173 silly gunzTarPerm modified mode [ 'lib/_babel-node.js', 438, 420 ]
+174 silly gunzTarPerm extractEntry lib/babel/dir.js
+175 silly gunzTarPerm modified mode [ 'lib/babel/dir.js', 438, 420 ]
+176 silly gunzTarPerm extractEntry lib/babel/file.js
+177 silly gunzTarPerm modified mode [ 'lib/babel/file.js', 438, 420 ]
+178 silly gunzTarPerm extractEntry lib/babel/index.js
+179 silly gunzTarPerm modified mode [ 'lib/babel/index.js', 438, 420 ]
+180 silly gunzTarPerm extractEntry lib/babel/util.js
+181 silly gunzTarPerm modified mode [ 'lib/babel/util.js', 438, 420 ]
+182 silly gunzTarPerm extractEntry package-lock.json
+183 silly gunzTarPerm modified mode [ 'package-lock.json', 438, 420 ]
+184 silly gunzTarPerm extractEntry scripts/bootstrap.sh
+185 silly gunzTarPerm modified mode [ 'scripts/bootstrap.sh', 438, 420 ]
+186 silly lockFile c8fbc503-m-cache-babel-cli-6-26-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package
+187 silly lockFile c8fbc503-m-cache-babel-cli-6-26-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package
+188 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+189 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+190 verbose chmod C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz 644
+191 silly chown skipping for windows C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+192 silly lockFile 363fa3c6-g-babel-cli-babel-cli-6-26-0-tgz https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz
+193 silly lockFile 363fa3c6-g-babel-cli-babel-cli-6-26-0-tgz https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz
+194 silly lockFile 145967c6-babel-cli-6-26-0 babel-cli@6.26.0
+195 silly lockFile 145967c6-babel-cli-6-26-0 babel-cli@6.26.0
+196 silly lockFile eb0cb740-babel-cli babel-cli@
+197 silly lockFile eb0cb740-babel-cli babel-cli@
+198 silly resolved [ { name: 'babel-cli',
+198 silly resolved     version: '6.26.0',
+198 silly resolved     description: 'Babel command line.',
+198 silly resolved     author: { name: 'Sebastian McKenzie', email: 'sebmck@gmail.com' },
+198 silly resolved     homepage: 'https://babeljs.io/',
+198 silly resolved     license: 'MIT',
+198 silly resolved     repository:
+198 silly resolved      { type: 'git',
+198 silly resolved        url: 'https://github.com/babel/babel/tree/master/packages/babel-cli' },
+198 silly resolved     keywords:
+198 silly resolved      [ '6to5',
+198 silly resolved        'babel',
+198 silly resolved        'es6',
+198 silly resolved        'transpile',
+198 silly resolved        'transpiler',
+198 silly resolved        'babel-cli',
+198 silly resolved        'compiler' ],
+198 silly resolved     dependencies:
+198 silly resolved      { 'babel-core': '^6.26.0',
+198 silly resolved        'babel-polyfill': '^6.26.0',
+198 silly resolved        'babel-register': '^6.26.0',
+198 silly resolved        'babel-runtime': '^6.26.0',
+198 silly resolved        commander: '^2.11.0',
+198 silly resolved        'convert-source-map': '^1.5.0',
+198 silly resolved        'fs-readdir-recursive': '^1.0.0',
+198 silly resolved        glob: '^7.1.2',
+198 silly resolved        lodash: '^4.17.4',
+198 silly resolved        'output-file-sync': '^1.1.2',
+198 silly resolved        'path-is-absolute': '^1.0.1',
+198 silly resolved        slash: '^1.0.0',
+198 silly resolved        'source-map': '^0.5.6',
+198 silly resolved        v8flags: '^2.1.1',
+198 silly resolved        chokidar: '^1.6.1' },
+198 silly resolved     optionalDependencies: { chokidar: '^1.6.1' },
+198 silly resolved     devDependencies: { 'babel-helper-fixtures': '^6.26.0' },
+198 silly resolved     bin:
+198 silly resolved      { 'babel-doctor': './bin/babel-doctor.js',
+198 silly resolved        babel: './bin/babel.js',
+198 silly resolved        'babel-node': './bin/babel-node.js',
+198 silly resolved        'babel-external-helpers': './bin/babel-external-helpers.js' },
+198 silly resolved     readme: '# babel-cli\n\n> Babel command line.\n \nIn addition, various entry point scripts live in the top-level package at `babel-cli/bin`.\n\nThere are some shell-executable utility scripts, `babel-external-helpers.js` and `babel-node.js`, and the main Babel cli script, `babel.js`.\n\n## Install\n\n```sh\nnpm install --save-dev babel-cli\n```\n\n## Usage \n\n```sh\nbabel script.js\n```\n\nFor more in depth documentation see: http://babeljs.io/docs/usage/cli/\n',
+198 silly resolved     readmeFilename: 'README.md',
+198 silly resolved     _id: 'babel-cli@6.26.0',
+198 silly resolved     dist: { shasum: '0ef7437dbba8345e61c31d8dcf5ce05bee7fe995' },
+198 silly resolved     _from: 'babel-cli@',
+198 silly resolved     _resolved: 'https://registry.npmjs.org/babel-cli/-/babel-cli-6.26.0.tgz' } ]
+199 info install babel-cli@6.26.0 into D:\Projects\nextshopnshare
+200 info installOne babel-cli@6.26.0
+201 info D:\Projects\nextshopnshare\node_modules\babel-cli unbuild
+202 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+203 silly lockFile 8d8b0a18-hopnshare-node-modules-babel-cli tar://D:\Projects\nextshopnshare\node_modules\babel-cli
+204 verbose lock tar://D:\Projects\nextshopnshare\node_modules\babel-cli C:\Users\DELL\AppData\Roaming\npm-cache\8d8b0a18-hopnshare-node-modules-babel-cli.lock
+205 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+206 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\57428453-che-babel-cli-6-26-0-package-tgz.lock
+207 silly gunzTarPerm modes [ '755', '644' ]
+208 silly gunzTarPerm extractEntry package.json
+209 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+210 silly gunzTarPerm extractEntry .npmignore
+211 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+212 silly gunzTarPerm extractEntry README.md
+213 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+214 silly gunzTarPerm extractEntry index.js
+215 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+216 silly gunzTarPerm extractEntry bin/babel-doctor.js
+217 silly gunzTarPerm modified mode [ 'bin/babel-doctor.js', 438, 420 ]
+218 silly gunzTarPerm extractEntry bin/babel-external-helpers.js
+219 silly gunzTarPerm modified mode [ 'bin/babel-external-helpers.js', 438, 420 ]
+220 silly gunzTarPerm extractEntry bin/babel-node.js
+221 silly gunzTarPerm modified mode [ 'bin/babel-node.js', 438, 420 ]
+222 silly gunzTarPerm extractEntry bin/babel.js
+223 silly gunzTarPerm modified mode [ 'bin/babel.js', 438, 420 ]
+224 silly gunzTarPerm extractEntry lib/babel-external-helpers.js
+225 silly gunzTarPerm modified mode [ 'lib/babel-external-helpers.js', 438, 420 ]
+226 silly gunzTarPerm extractEntry lib/babel-node.js
+227 silly gunzTarPerm modified mode [ 'lib/babel-node.js', 438, 420 ]
+228 silly gunzTarPerm extractEntry lib/_babel-node.js
+229 silly gunzTarPerm modified mode [ 'lib/_babel-node.js', 438, 420 ]
+230 silly gunzTarPerm extractEntry lib/babel/dir.js
+231 silly gunzTarPerm modified mode [ 'lib/babel/dir.js', 438, 420 ]
+232 silly gunzTarPerm extractEntry lib/babel/file.js
+233 silly gunzTarPerm modified mode [ 'lib/babel/file.js', 438, 420 ]
+234 silly gunzTarPerm extractEntry lib/babel/index.js
+235 silly gunzTarPerm modified mode [ 'lib/babel/index.js', 438, 420 ]
+236 silly gunzTarPerm extractEntry lib/babel/util.js
+237 silly gunzTarPerm modified mode [ 'lib/babel/util.js', 438, 420 ]
+238 silly gunzTarPerm extractEntry package-lock.json
+239 silly gunzTarPerm modified mode [ 'package-lock.json', 438, 420 ]
+240 silly gunzTarPerm extractEntry scripts/bootstrap.sh
+241 silly gunzTarPerm modified mode [ 'scripts/bootstrap.sh', 438, 420 ]
+242 silly lockFile 8d8b0a18-hopnshare-node-modules-babel-cli tar://D:\Projects\nextshopnshare\node_modules\babel-cli
+243 silly lockFile 8d8b0a18-hopnshare-node-modules-babel-cli tar://D:\Projects\nextshopnshare\node_modules\babel-cli
+244 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+245 silly lockFile 57428453-che-babel-cli-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-cli\6.26.0\package.tgz
+246 info preinstall babel-cli@6.26.0
+247 verbose readDependencies using package.json deps
+248 verbose readDependencies using package.json deps
+249 verbose cache add [ 'fs-readdir-recursive@^1.0.0', null ]
+250 verbose cache add name=undefined spec="fs-readdir-recursive@^1.0.0" args=["fs-readdir-recursive@^1.0.0",null]
+251 verbose parsed url Url {
+251 verbose parsed url   protocol: null,
+251 verbose parsed url   slashes: null,
+251 verbose parsed url   auth: null,
+251 verbose parsed url   host: null,
+251 verbose parsed url   port: null,
+251 verbose parsed url   hostname: null,
+251 verbose parsed url   hash: null,
+251 verbose parsed url   search: null,
+251 verbose parsed url   query: null,
+251 verbose parsed url   pathname: 'fs-readdir-recursive@%5E1.0.0',
+251 verbose parsed url   path: 'fs-readdir-recursive@%5E1.0.0',
+251 verbose parsed url   href: 'fs-readdir-recursive@%5E1.0.0' }
+252 verbose cache add name="fs-readdir-recursive" spec="^1.0.0" args=["fs-readdir-recursive","^1.0.0"]
+253 verbose parsed url Url {
+253 verbose parsed url   protocol: null,
+253 verbose parsed url   slashes: null,
+253 verbose parsed url   auth: null,
+253 verbose parsed url   host: null,
+253 verbose parsed url   port: null,
+253 verbose parsed url   hostname: null,
+253 verbose parsed url   hash: null,
+253 verbose parsed url   search: null,
+253 verbose parsed url   query: null,
+253 verbose parsed url   pathname: '%5E1.0.0',
+253 verbose parsed url   path: '%5E1.0.0',
+253 verbose parsed url   href: '%5E1.0.0' }
+254 verbose addNamed [ 'fs-readdir-recursive', '^1.0.0' ]
+255 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
+256 silly lockFile f74f1485-fs-readdir-recursive-1-0-0 fs-readdir-recursive@^1.0.0
+257 verbose lock fs-readdir-recursive@^1.0.0 C:\Users\DELL\AppData\Roaming\npm-cache\f74f1485-fs-readdir-recursive-1-0-0.lock
+258 verbose cache add [ 'output-file-sync@^1.1.2', null ]
+259 verbose cache add name=undefined spec="output-file-sync@^1.1.2" args=["output-file-sync@^1.1.2",null]
+260 verbose parsed url Url {
+260 verbose parsed url   protocol: null,
+260 verbose parsed url   slashes: null,
+260 verbose parsed url   auth: null,
+260 verbose parsed url   host: null,
+260 verbose parsed url   port: null,
+260 verbose parsed url   hostname: null,
+260 verbose parsed url   hash: null,
+260 verbose parsed url   search: null,
+260 verbose parsed url   query: null,
+260 verbose parsed url   pathname: 'output-file-sync@%5E1.1.2',
+260 verbose parsed url   path: 'output-file-sync@%5E1.1.2',
+260 verbose parsed url   href: 'output-file-sync@%5E1.1.2' }
+261 verbose cache add name="output-file-sync" spec="^1.1.2" args=["output-file-sync","^1.1.2"]
+262 verbose parsed url Url {
+262 verbose parsed url   protocol: null,
+262 verbose parsed url   slashes: null,
+262 verbose parsed url   auth: null,
+262 verbose parsed url   host: null,
+262 verbose parsed url   port: null,
+262 verbose parsed url   hostname: null,
+262 verbose parsed url   hash: null,
+262 verbose parsed url   search: null,
+262 verbose parsed url   query: null,
+262 verbose parsed url   pathname: '%5E1.1.2',
+262 verbose parsed url   path: '%5E1.1.2',
+262 verbose parsed url   href: '%5E1.1.2' }
+263 verbose addNamed [ 'output-file-sync', '^1.1.2' ]
+264 verbose addNamed [ null, '>=1.1.2-0 <2.0.0-0' ]
+265 silly lockFile 5be2f10a-output-file-sync-1-1-2 output-file-sync@^1.1.2
+266 verbose lock output-file-sync@^1.1.2 C:\Users\DELL\AppData\Roaming\npm-cache\5be2f10a-output-file-sync-1-1-2.lock
+267 verbose cache add [ 'v8flags@^2.1.1', null ]
+268 verbose cache add name=undefined spec="v8flags@^2.1.1" args=["v8flags@^2.1.1",null]
+269 verbose parsed url Url {
+269 verbose parsed url   protocol: null,
+269 verbose parsed url   slashes: null,
+269 verbose parsed url   auth: null,
+269 verbose parsed url   host: null,
+269 verbose parsed url   port: null,
+269 verbose parsed url   hostname: null,
+269 verbose parsed url   hash: null,
+269 verbose parsed url   search: null,
+269 verbose parsed url   query: null,
+269 verbose parsed url   pathname: 'v8flags@%5E2.1.1',
+269 verbose parsed url   path: 'v8flags@%5E2.1.1',
+269 verbose parsed url   href: 'v8flags@%5E2.1.1' }
+270 verbose cache add name="v8flags" spec="^2.1.1" args=["v8flags","^2.1.1"]
+271 verbose parsed url Url {
+271 verbose parsed url   protocol: null,
+271 verbose parsed url   slashes: null,
+271 verbose parsed url   auth: null,
+271 verbose parsed url   host: null,
+271 verbose parsed url   port: null,
+271 verbose parsed url   hostname: null,
+271 verbose parsed url   hash: null,
+271 verbose parsed url   search: null,
+271 verbose parsed url   query: null,
+271 verbose parsed url   pathname: '%5E2.1.1',
+271 verbose parsed url   path: '%5E2.1.1',
+271 verbose parsed url   href: '%5E2.1.1' }
+272 verbose addNamed [ 'v8flags', '^2.1.1' ]
+273 verbose addNamed [ null, '>=2.1.1-0 <3.0.0-0' ]
+274 silly lockFile 84e62344-v8flags-2-1-1 v8flags@^2.1.1
+275 verbose lock v8flags@^2.1.1 C:\Users\DELL\AppData\Roaming\npm-cache\84e62344-v8flags-2-1-1.lock
+276 silly addNameRange { name: 'fs-readdir-recursive',
+276 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
+276 silly addNameRange   hasData: false }
+277 silly addNameRange { name: 'output-file-sync',
+277 silly addNameRange   range: '>=1.1.2-0 <2.0.0-0',
+277 silly addNameRange   hasData: false }
+278 verbose cache add [ 'babel-core@^6.26.0', null ]
+279 verbose cache add name=undefined spec="babel-core@^6.26.0" args=["babel-core@^6.26.0",null]
+280 verbose parsed url Url {
+280 verbose parsed url   protocol: null,
+280 verbose parsed url   slashes: null,
+280 verbose parsed url   auth: null,
+280 verbose parsed url   host: null,
+280 verbose parsed url   port: null,
+280 verbose parsed url   hostname: null,
+280 verbose parsed url   hash: null,
+280 verbose parsed url   search: null,
+280 verbose parsed url   query: null,
+280 verbose parsed url   pathname: 'babel-core@%5E6.26.0',
+280 verbose parsed url   path: 'babel-core@%5E6.26.0',
+280 verbose parsed url   href: 'babel-core@%5E6.26.0' }
+281 verbose cache add name="babel-core" spec="^6.26.0" args=["babel-core","^6.26.0"]
+282 verbose parsed url Url {
+282 verbose parsed url   protocol: null,
+282 verbose parsed url   slashes: null,
+282 verbose parsed url   auth: null,
+282 verbose parsed url   host: null,
+282 verbose parsed url   port: null,
+282 verbose parsed url   hostname: null,
+282 verbose parsed url   hash: null,
+282 verbose parsed url   search: null,
+282 verbose parsed url   query: null,
+282 verbose parsed url   pathname: '%5E6.26.0',
+282 verbose parsed url   path: '%5E6.26.0',
+282 verbose parsed url   href: '%5E6.26.0' }
+283 verbose addNamed [ 'babel-core', '^6.26.0' ]
+284 verbose addNamed [ null, '>=6.26.0-0 <7.0.0-0' ]
+285 silly lockFile 538dc80e-babel-core-6-26-0 babel-core@^6.26.0
+286 verbose lock babel-core@^6.26.0 C:\Users\DELL\AppData\Roaming\npm-cache\538dc80e-babel-core-6-26-0.lock
+287 verbose url raw fs-readdir-recursive
+288 verbose url resolving [ 'https://registry.npmjs.org/', './fs-readdir-recursive' ]
+289 verbose url resolved https://registry.npmjs.org/fs-readdir-recursive
+290 info trying registry request attempt 1 at 14:20:58
+291 http GET https://registry.npmjs.org/fs-readdir-recursive
+292 silly addNameRange { name: 'v8flags', range: '>=2.1.1-0 <3.0.0-0', hasData: false }
+293 verbose cache add [ 'babel-polyfill@^6.26.0', null ]
+294 verbose cache add name=undefined spec="babel-polyfill@^6.26.0" args=["babel-polyfill@^6.26.0",null]
+295 verbose parsed url Url {
+295 verbose parsed url   protocol: null,
+295 verbose parsed url   slashes: null,
+295 verbose parsed url   auth: null,
+295 verbose parsed url   host: null,
+295 verbose parsed url   port: null,
+295 verbose parsed url   hostname: null,
+295 verbose parsed url   hash: null,
+295 verbose parsed url   search: null,
+295 verbose parsed url   query: null,
+295 verbose parsed url   pathname: 'babel-polyfill@%5E6.26.0',
+295 verbose parsed url   path: 'babel-polyfill@%5E6.26.0',
+295 verbose parsed url   href: 'babel-polyfill@%5E6.26.0' }
+296 verbose cache add name="babel-polyfill" spec="^6.26.0" args=["babel-polyfill","^6.26.0"]
+297 verbose parsed url Url {
+297 verbose parsed url   protocol: null,
+297 verbose parsed url   slashes: null,
+297 verbose parsed url   auth: null,
+297 verbose parsed url   host: null,
+297 verbose parsed url   port: null,
+297 verbose parsed url   hostname: null,
+297 verbose parsed url   hash: null,
+297 verbose parsed url   search: null,
+297 verbose parsed url   query: null,
+297 verbose parsed url   pathname: '%5E6.26.0',
+297 verbose parsed url   path: '%5E6.26.0',
+297 verbose parsed url   href: '%5E6.26.0' }
+298 verbose addNamed [ 'babel-polyfill', '^6.26.0' ]
+299 verbose addNamed [ null, '>=6.26.0-0 <7.0.0-0' ]
+300 silly lockFile db98293b-babel-polyfill-6-26-0 babel-polyfill@^6.26.0
+301 verbose lock babel-polyfill@^6.26.0 C:\Users\DELL\AppData\Roaming\npm-cache\db98293b-babel-polyfill-6-26-0.lock
+302 verbose url raw output-file-sync
+303 verbose url resolving [ 'https://registry.npmjs.org/', './output-file-sync' ]
+304 verbose url resolved https://registry.npmjs.org/output-file-sync
+305 info trying registry request attempt 1 at 14:20:58
+306 http GET https://registry.npmjs.org/output-file-sync
+307 verbose url raw v8flags
+308 verbose url resolving [ 'https://registry.npmjs.org/', './v8flags' ]
+309 verbose url resolved https://registry.npmjs.org/v8flags
+310 info trying registry request attempt 1 at 14:20:58
+311 http GET https://registry.npmjs.org/v8flags
+312 silly addNameRange { name: 'babel-core',
+312 silly addNameRange   range: '>=6.26.0-0 <7.0.0-0',
+312 silly addNameRange   hasData: false }
+313 silly addNameRange { name: 'babel-polyfill',
+313 silly addNameRange   range: '>=6.26.0-0 <7.0.0-0',
+313 silly addNameRange   hasData: false }
+314 verbose url raw babel-polyfill
+315 verbose url resolving [ 'https://registry.npmjs.org/', './babel-polyfill' ]
+316 verbose url resolved https://registry.npmjs.org/babel-polyfill
+317 info trying registry request attempt 1 at 14:20:58
+318 http GET https://registry.npmjs.org/babel-polyfill
+319 verbose url raw babel-core
+320 verbose url resolving [ 'https://registry.npmjs.org/', './babel-core' ]
+321 verbose url resolved https://registry.npmjs.org/babel-core
+322 info trying registry request attempt 1 at 14:20:58
+323 http GET https://registry.npmjs.org/babel-core
+324 http 200 https://registry.npmjs.org/v8flags
+325 silly registry.get cb [ 200,
+325 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+325 silly registry.get     server: 'UploadServer',
+325 silly registry.get     'cache-control': 'max-age=300',
+325 silly registry.get     'last-modified': 'Mon, 25 Sep 2017 5:05:08 GMT',
+325 silly registry.get     etag: '"59c88e84-8fd9"',
+325 silly registry.get     'content-length': '36825',
+325 silly registry.get     'accept-ranges': 'bytes',
+325 silly registry.get     date: 'Thu, 21 Dec 2017 07:17:00 GMT',
+325 silly registry.get     via: '1.1 varnish',
+325 silly registry.get     age: '4295',
+325 silly registry.get     connection: 'close',
+325 silly registry.get     'x-served-by': 'cache-sin18029-SIN',
+325 silly registry.get     'x-cache': 'HIT',
+325 silly registry.get     'x-cache-hits': '2',
+325 silly registry.get     'x-timer': 'S1513840621.977829,VS0,VE0',
+325 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+326 silly addNameRange number 2 { name: 'v8flags', range: '>=2.1.1-0 <3.0.0-0', hasData: true }
+327 silly addNameRange versions [ 'v8flags',
+327 silly addNameRange   [ '0.1.0',
+327 silly addNameRange     '0.2.0',
+327 silly addNameRange     '0.3.0',
+327 silly addNameRange     '1.0.0',
+327 silly addNameRange     '1.0.1',
+327 silly addNameRange     '1.0.2',
+327 silly addNameRange     '1.0.3',
+327 silly addNameRange     '1.0.4',
+327 silly addNameRange     '1.0.5',
+327 silly addNameRange     '1.0.6',
+327 silly addNameRange     '1.0.7',
+327 silly addNameRange     '1.0.8',
+327 silly addNameRange     '2.0.0',
+327 silly addNameRange     '2.0.2',
+327 silly addNameRange     '2.0.3',
+327 silly addNameRange     '2.0.4',
+327 silly addNameRange     '2.0.5',
+327 silly addNameRange     '2.0.6',
+327 silly addNameRange     '2.0.7',
+327 silly addNameRange     '2.0.8',
+327 silly addNameRange     '2.0.9',
+327 silly addNameRange     '2.0.10',
+327 silly addNameRange     '2.0.11',
+327 silly addNameRange     '2.0.12',
+327 silly addNameRange     '2.1.0',
+327 silly addNameRange     '2.1.1',
+327 silly addNameRange     '3.0.0',
+327 silly addNameRange     '3.0.1' ] ]
+328 verbose addNamed [ 'v8flags', '2.1.1' ]
+329 verbose addNamed [ '2.1.1', '2.1.1' ]
+330 silly lockFile 4db9fe00-v8flags-2-1-1 v8flags@2.1.1
+331 verbose lock v8flags@2.1.1 C:\Users\DELL\AppData\Roaming\npm-cache\4db9fe00-v8flags-2-1-1.lock
+332 silly lockFile ea1d98d5-js-org-v8flags-v8flags-2-1-1-tgz https://registry.npmjs.org/v8flags/-/v8flags-2.1.1.tgz
+333 verbose lock https://registry.npmjs.org/v8flags/-/v8flags-2.1.1.tgz C:\Users\DELL\AppData\Roaming\npm-cache\ea1d98d5-js-org-v8flags-v8flags-2-1-1-tgz.lock
+334 verbose addRemoteTarball [ 'https://registry.npmjs.org/v8flags/-/v8flags-2.1.1.tgz',
+334 verbose addRemoteTarball   'aab1a1fa30d45f88dd321148875ac02c0b55e5b4' ]
+335 info retry fetch attempt 1 at 14:20:58
+336 verbose fetch to= C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\tmp.tgz
+337 http GET https://registry.npmjs.org/v8flags/-/v8flags-2.1.1.tgz
+338 http 200 https://registry.npmjs.org/babel-polyfill
+339 silly registry.get cb [ 200,
+339 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+339 silly registry.get     server: 'UploadServer',
+339 silly registry.get     'cache-control': 'max-age=300',
+339 silly registry.get     'last-modified': 'Sun, 17 Dec 2017 12:19:16 GMT',
+339 silly registry.get     etag: '"5a3660c4-cd2f"',
+339 silly registry.get     'content-length': '52527',
+339 silly registry.get     'accept-ranges': 'bytes',
+339 silly registry.get     date: 'Thu, 21 Dec 2017 07:17:00 GMT',
+339 silly registry.get     via: '1.1 varnish',
+339 silly registry.get     age: '4349',
+339 silly registry.get     connection: 'close',
+339 silly registry.get     'x-served-by': 'cache-sin18023-SIN',
+339 silly registry.get     'x-cache': 'HIT',
+339 silly registry.get     'x-cache-hits': '2',
+339 silly registry.get     'x-timer': 'S1513840621.984934,VS0,VE0',
+339 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+340 silly addNameRange number 2 { name: 'babel-polyfill',
+340 silly addNameRange   range: '>=6.26.0-0 <7.0.0-0',
+340 silly addNameRange   hasData: true }
+341 silly addNameRange versions [ 'babel-polyfill',
+341 silly addNameRange   [ '6.0.2',
+341 silly addNameRange     '6.0.14',
+341 silly addNameRange     '6.0.16',
+341 silly addNameRange     '6.1.4',
+341 silly addNameRange     '6.1.17',
+341 silly addNameRange     '6.1.18',
+341 silly addNameRange     '6.1.19',
+341 silly addNameRange     '6.2.0',
+341 silly addNameRange     '6.2.4',
+341 silly addNameRange     '6.3.13',
+341 silly addNameRange     '6.3.14',
+341 silly addNameRange     '6.5.0',
+341 silly addNameRange     '6.5.0-1',
+341 silly addNameRange     '6.6.0',
+341 silly addNameRange     '6.6.1',
+341 silly addNameRange     '6.7.2',
+341 silly addNameRange     '6.7.4',
+341 silly addNameRange     '6.8.0',
+341 silly addNameRange     '6.9.0',
+341 silly addNameRange     '6.9.1',
+341 silly addNameRange     '6.13.0',
+341 silly addNameRange     '6.16.0',
+341 silly addNameRange     '6.20.0',
+341 silly addNameRange     '6.22.0',
+341 silly addNameRange     '6.23.0',
+341 silly addNameRange     '7.0.0-alpha.1',
+341 silly addNameRange     '7.0.0-alpha.3',
+341 silly addNameRange     '7.0.0-alpha.7',
+341 silly addNameRange     '7.0.0-alpha.9',
+341 silly addNameRange     '7.0.0-alpha.12',
+341 silly addNameRange     '7.0.0-alpha.14',
+341 silly addNameRange     '7.0.0-alpha.15',
+341 silly addNameRange     '7.0.0-alpha.16',
+341 silly addNameRange     '7.0.0-alpha.17',
+341 silly addNameRange     '7.0.0-alpha.18',
+341 silly addNameRange     '7.0.0-alpha.19',
+341 silly addNameRange     '6.26.0',
+341 silly addNameRange     '7.0.0-alpha.20',
+341 silly addNameRange     '7.0.0-beta.0',
+341 silly addNameRange     '7.0.0-beta.1',
+341 silly addNameRange     '7.0.0-beta.2',
+341 silly addNameRange     '7.0.0-beta.3' ] ]
+342 verbose addNamed [ 'babel-polyfill', '6.26.0' ]
+343 verbose addNamed [ '6.26.0', '6.26.0' ]
+344 silly lockFile a81e80b0-babel-polyfill-6-26-0 babel-polyfill@6.26.0
+345 verbose lock babel-polyfill@6.26.0 C:\Users\DELL\AppData\Roaming\npm-cache\a81e80b0-babel-polyfill-6-26-0.lock
+346 silly lockFile 012d4fad-lyfill-babel-polyfill-6-26-0-tgz https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz
+347 verbose lock https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz C:\Users\DELL\AppData\Roaming\npm-cache\012d4fad-lyfill-babel-polyfill-6-26-0-tgz.lock
+348 verbose addRemoteTarball [ 'https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz',
+348 verbose addRemoteTarball   '379937abc67d7895970adc621f284cd966cf2153' ]
+349 info retry fetch attempt 1 at 14:20:58
+350 verbose fetch to= C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\tmp.tgz
+351 http GET https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz
+352 http 200 https://registry.npmjs.org/fs-readdir-recursive
+353 silly registry.get cb [ 200,
+353 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+353 silly registry.get     server: 'UploadServer',
+353 silly registry.get     'cache-control': 'max-age=300',
+353 silly registry.get     'last-modified': 'Fri, 10 Nov 2017 15:48:10 GMT',
+353 silly registry.get     etag: '"5a05ca3a-33c3"',
+353 silly registry.get     'content-length': '13251',
+353 silly registry.get     'accept-ranges': 'bytes',
+353 silly registry.get     date: 'Thu, 21 Dec 2017 07:17:01 GMT',
+353 silly registry.get     via: '1.1 varnish',
+353 silly registry.get     age: '0',
+353 silly registry.get     connection: 'close',
+353 silly registry.get     'x-served-by': 'cache-sin18028-SIN',
+353 silly registry.get     'x-cache': 'MISS',
+353 silly registry.get     'x-cache-hits': '0',
+353 silly registry.get     'x-timer': 'S1513840621.956148,VS0,VE245',
+353 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+354 http 200 https://registry.npmjs.org/v8flags/-/v8flags-2.1.1.tgz
+355 verbose tar unpack C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\tmp.tgz
+356 silly lockFile 5989ee91-58457-0-7481408236066318-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package
+357 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package C:\Users\DELL\AppData\Roaming\npm-cache\5989ee91-58457-0-7481408236066318-package.lock
+358 silly lockFile e17a77d1-58457-0-7481408236066318-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\tmp.tgz
+359 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\tmp.tgz C:\Users\DELL\AppData\Roaming\npm-cache\e17a77d1-58457-0-7481408236066318-tmp-tgz.lock
+360 silly addNameRange number 2 { name: 'fs-readdir-recursive',
+360 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
+360 silly addNameRange   hasData: true }
+361 silly addNameRange versions [ 'fs-readdir-recursive',
+361 silly addNameRange   [ '0.0.1', '0.0.2', '0.1.0', '0.1.1', '0.1.2', '1.0.0', '1.1.0' ] ]
+362 verbose addNamed [ 'fs-readdir-recursive', '1.1.0' ]
+363 verbose addNamed [ '1.1.0', '1.1.0' ]
+364 silly lockFile 7896dc8b-fs-readdir-recursive-1-1-0 fs-readdir-recursive@1.1.0
+365 verbose lock fs-readdir-recursive@1.1.0 C:\Users\DELL\AppData\Roaming\npm-cache\7896dc8b-fs-readdir-recursive-1-1-0.lock
+366 silly gunzTarPerm modes [ '755', '644' ]
+367 silly lockFile 98c70f90-e-fs-readdir-recursive-1-1-0-tgz https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz
+368 verbose lock https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz C:\Users\DELL\AppData\Roaming\npm-cache\98c70f90-e-fs-readdir-recursive-1-1-0-tgz.lock
+369 verbose addRemoteTarball [ 'https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz',
+369 verbose addRemoteTarball   'e32fc030a2ccee44a6b5371308da54be0b397d27' ]
+370 silly gunzTarPerm extractEntry package.json
+371 info retry fetch attempt 1 at 14:20:58
+372 verbose fetch to= C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\tmp.tgz
+373 http GET https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz
+374 http 200 https://registry.npmjs.org/output-file-sync
+375 silly registry.get cb [ 200,
+375 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+375 silly registry.get     server: 'UploadServer',
+375 silly registry.get     'cache-control': 'max-age=300',
+375 silly registry.get     'last-modified': 'Tue, 6 Jun 2017 10:51:28 GMT',
+375 silly registry.get     etag: '"59368930-3342"',
+375 silly registry.get     'content-length': '13122',
+375 silly registry.get     'accept-ranges': 'bytes',
+375 silly registry.get     date: 'Thu, 21 Dec 2017 07:17:01 GMT',
+375 silly registry.get     via: '1.1 varnish',
+375 silly registry.get     age: '0',
+375 silly registry.get     connection: 'close',
+375 silly registry.get     'x-served-by': 'cache-sin18030-SIN',
+375 silly registry.get     'x-cache': 'MISS',
+375 silly registry.get     'x-cache-hits': '0',
+375 silly registry.get     'x-timer': 'S1513840621.987563,VS0,VE227',
+375 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+376 silly gunzTarPerm extractEntry .npmignore
+377 silly gunzTarPerm extractEntry README.md
+378 silly addNameRange number 2 { name: 'output-file-sync',
+378 silly addNameRange   range: '>=1.1.2-0 <2.0.0-0',
+378 silly addNameRange   hasData: true }
+379 silly addNameRange versions [ 'output-file-sync',
+379 silly addNameRange   [ '1.0.0', '1.1.0', '1.1.1', '1.1.2', '2.0.0' ] ]
+380 verbose addNamed [ 'output-file-sync', '1.1.2' ]
+381 verbose addNamed [ '1.1.2', '1.1.2' ]
+382 silly lockFile 79688bd3-output-file-sync-1-1-2 output-file-sync@1.1.2
+383 verbose lock output-file-sync@1.1.2 C:\Users\DELL\AppData\Roaming\npm-cache\79688bd3-output-file-sync-1-1-2.lock
+384 silly gunzTarPerm extractEntry LICENSE
+385 silly gunzTarPerm extractEntry index.js
+386 silly lockFile 5989ee91-58457-0-7481408236066318-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package
+387 silly lockFile 5989ee91-58457-0-7481408236066318-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package
+388 silly lockFile e17a77d1-58457-0-7481408236066318-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\tmp.tgz
+389 silly lockFile e17a77d1-58457-0-7481408236066318-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\tmp.tgz
+390 verbose tar pack [ 'C:\\Users\\DELL\\AppData\\Roaming\\npm-cache\\v8flags\\2.1.1\\package.tgz',
+390 verbose tar pack   'C:\\Users\\DELL\\AppData\\Local\\Temp\\npm-38936-RczLBq-U\\1513840858457-0.7481408236066318\\package' ]
+391 verbose tarball C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+392 verbose folder C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package
+393 silly lockFile 5989ee91-58457-0-7481408236066318-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package
+394 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package C:\Users\DELL\AppData\Roaming\npm-cache\5989ee91-58457-0-7481408236066318-package.lock
+395 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+396 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\e77c0f09--cache-v8flags-2-1-1-package-tgz.lock
+397 silly lockFile 79688bd3-output-file-sync-1-1-2 output-file-sync@1.1.2
+398 silly lockFile 79688bd3-output-file-sync-1-1-2 output-file-sync@1.1.2
+399 http 200 https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz
+400 silly lockFile 5be2f10a-output-file-sync-1-1-2 output-file-sync@^1.1.2
+401 silly lockFile 5be2f10a-output-file-sync-1-1-2 output-file-sync@^1.1.2
+402 silly lockFile 5989ee91-58457-0-7481408236066318-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package
+403 silly lockFile 5989ee91-58457-0-7481408236066318-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858457-0.7481408236066318\package
+404 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+405 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+406 silly lockFile 19599fa4--npm-cache-v8flags-2-1-1-package C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package
+407 verbose lock C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package C:\Users\DELL\AppData\Roaming\npm-cache\19599fa4--npm-cache-v8flags-2-1-1-package.lock
+408 silly lockFile 19599fa4--npm-cache-v8flags-2-1-1-package C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package
+409 silly lockFile 19599fa4--npm-cache-v8flags-2-1-1-package C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package
+410 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+411 silly lockFile a3383a1c--npm-cache-v8flags-2-1-1-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package
+412 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package C:\Users\DELL\AppData\Roaming\npm-cache\a3383a1c--npm-cache-v8flags-2-1-1-package.lock
+413 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+414 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\e77c0f09--cache-v8flags-2-1-1-package-tgz.lock
+415 silly gunzTarPerm modes [ '755', '644' ]
+416 silly gunzTarPerm extractEntry package.json
+417 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+418 silly gunzTarPerm extractEntry .npmignore
+419 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+420 silly gunzTarPerm extractEntry README.md
+421 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+422 silly gunzTarPerm extractEntry index.js
+423 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+424 silly lockFile a3383a1c--npm-cache-v8flags-2-1-1-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package
+425 silly lockFile a3383a1c--npm-cache-v8flags-2-1-1-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package
+426 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+427 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+428 verbose chmod C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz 644
+429 silly chown skipping for windows C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+430 silly lockFile ea1d98d5-js-org-v8flags-v8flags-2-1-1-tgz https://registry.npmjs.org/v8flags/-/v8flags-2.1.1.tgz
+431 silly lockFile ea1d98d5-js-org-v8flags-v8flags-2-1-1-tgz https://registry.npmjs.org/v8flags/-/v8flags-2.1.1.tgz
+432 silly lockFile 4db9fe00-v8flags-2-1-1 v8flags@2.1.1
+433 silly lockFile 4db9fe00-v8flags-2-1-1 v8flags@2.1.1
+434 silly lockFile 84e62344-v8flags-2-1-1 v8flags@^2.1.1
+435 silly lockFile 84e62344-v8flags-2-1-1 v8flags@^2.1.1
+436 http 200 https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz
+437 verbose tar unpack C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\tmp.tgz
+438 silly lockFile c27d047b-8610-0-44871086615045797-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package
+439 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package C:\Users\DELL\AppData\Roaming\npm-cache\c27d047b-8610-0-44871086615045797-package.lock
+440 silly lockFile 5c3844ff-8610-0-44871086615045797-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\tmp.tgz
+441 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\tmp.tgz C:\Users\DELL\AppData\Roaming\npm-cache\5c3844ff-8610-0-44871086615045797-tmp-tgz.lock
+442 silly gunzTarPerm modes [ '755', '644' ]
+443 silly gunzTarPerm extractEntry package.json
+444 silly gunzTarPerm extractEntry index.js
+445 silly gunzTarPerm extractEntry LICENSE
+446 silly gunzTarPerm extractEntry README.md
+447 silly lockFile c27d047b-8610-0-44871086615045797-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package
+448 silly lockFile c27d047b-8610-0-44871086615045797-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package
+449 silly lockFile 5c3844ff-8610-0-44871086615045797-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\tmp.tgz
+450 silly lockFile 5c3844ff-8610-0-44871086615045797-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\tmp.tgz
+451 verbose tar pack [ 'C:\\Users\\DELL\\AppData\\Roaming\\npm-cache\\fs-readdir-recursive\\1.1.0\\package.tgz',
+451 verbose tar pack   'C:\\Users\\DELL\\AppData\\Local\\Temp\\npm-38936-RczLBq-U\\1513840858610-0.44871086615045797\\package' ]
+452 verbose tarball C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+453 verbose folder C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package
+454 silly lockFile c27d047b-8610-0-44871086615045797-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package
+455 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package C:\Users\DELL\AppData\Roaming\npm-cache\c27d047b-8610-0-44871086615045797-package.lock
+456 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+457 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\2044d8ed-ddir-recursive-1-1-0-package-tgz.lock
+458 silly lockFile c27d047b-8610-0-44871086615045797-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package
+459 silly lockFile c27d047b-8610-0-44871086615045797-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858610-0.44871086615045797\package
+460 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+461 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+462 silly lockFile c31251f7--readdir-recursive-1-1-0-package C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package
+463 verbose lock C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package C:\Users\DELL\AppData\Roaming\npm-cache\c31251f7--readdir-recursive-1-1-0-package.lock
+464 silly lockFile c31251f7--readdir-recursive-1-1-0-package C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package
+465 silly lockFile c31251f7--readdir-recursive-1-1-0-package C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package
+466 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+467 silly lockFile 09dd5fc8--readdir-recursive-1-1-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package
+468 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package C:\Users\DELL\AppData\Roaming\npm-cache\09dd5fc8--readdir-recursive-1-1-0-package.lock
+469 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+470 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\2044d8ed-ddir-recursive-1-1-0-package-tgz.lock
+471 silly gunzTarPerm modes [ '755', '644' ]
+472 silly gunzTarPerm extractEntry package.json
+473 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+474 silly gunzTarPerm extractEntry README.md
+475 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+476 silly gunzTarPerm extractEntry index.js
+477 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+478 silly lockFile 09dd5fc8--readdir-recursive-1-1-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package
+479 silly lockFile 09dd5fc8--readdir-recursive-1-1-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package
+480 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+481 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+482 verbose chmod C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz 644
+483 silly chown skipping for windows C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+484 silly lockFile 98c70f90-e-fs-readdir-recursive-1-1-0-tgz https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz
+485 silly lockFile 98c70f90-e-fs-readdir-recursive-1-1-0-tgz https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz
+486 silly lockFile 7896dc8b-fs-readdir-recursive-1-1-0 fs-readdir-recursive@1.1.0
+487 silly lockFile 7896dc8b-fs-readdir-recursive-1-1-0 fs-readdir-recursive@1.1.0
+488 silly lockFile f74f1485-fs-readdir-recursive-1-0-0 fs-readdir-recursive@^1.0.0
+489 silly lockFile f74f1485-fs-readdir-recursive-1-0-0 fs-readdir-recursive@^1.0.0
+490 verbose tar unpack C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\tmp.tgz
+491 silly lockFile f047da33-58501-0-7610500916614595-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package
+492 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package C:\Users\DELL\AppData\Roaming\npm-cache\f047da33-58501-0-7610500916614595-package.lock
+493 silly lockFile 94b0dbdc-58501-0-7610500916614595-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\tmp.tgz
+494 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\tmp.tgz C:\Users\DELL\AppData\Roaming\npm-cache\94b0dbdc-58501-0-7610500916614595-tmp-tgz.lock
+495 silly gunzTarPerm modes [ '755', '644' ]
+496 silly gunzTarPerm extractEntry package.json
+497 silly gunzTarPerm extractEntry .npmignore
+498 silly gunzTarPerm extractEntry README.md
+499 silly gunzTarPerm extractEntry browser.js
+500 silly gunzTarPerm extractEntry lib/index.js
+501 silly gunzTarPerm extractEntry scripts/postpublish.js
+502 silly gunzTarPerm extractEntry scripts/prepublish.js
+503 silly gunzTarPerm extractEntry scripts/build-dist.sh
+504 silly gunzTarPerm extractEntry package-lock.json
+505 silly gunzTarPerm extractEntry dist/polyfill.js
+506 silly gunzTarPerm extractEntry dist/polyfill.min.js
+507 silly lockFile f047da33-58501-0-7610500916614595-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package
+508 silly lockFile f047da33-58501-0-7610500916614595-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package
+509 silly lockFile 94b0dbdc-58501-0-7610500916614595-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\tmp.tgz
+510 silly lockFile 94b0dbdc-58501-0-7610500916614595-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\tmp.tgz
+511 verbose tar pack [ 'C:\\Users\\DELL\\AppData\\Roaming\\npm-cache\\babel-polyfill\\6.26.0\\package.tgz',
+511 verbose tar pack   'C:\\Users\\DELL\\AppData\\Local\\Temp\\npm-38936-RczLBq-U\\1513840858501-0.7610500916614595\\package' ]
+512 verbose tarball C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+513 verbose folder C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package
+514 silly lockFile f047da33-58501-0-7610500916614595-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package
+515 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package C:\Users\DELL\AppData\Roaming\npm-cache\f047da33-58501-0-7610500916614595-package.lock
+516 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+517 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\99a25c46-abel-polyfill-6-26-0-package-tgz.lock
+518 silly lockFile f047da33-58501-0-7610500916614595-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package
+519 silly lockFile f047da33-58501-0-7610500916614595-package tar://C:\Users\DELL\AppData\Local\Temp\npm-38936-RczLBq-U\1513840858501-0.7610500916614595\package
+520 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+521 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+522 silly lockFile d3a2cfae-he-babel-polyfill-6-26-0-package C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package
+523 verbose lock C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package C:\Users\DELL\AppData\Roaming\npm-cache\d3a2cfae-he-babel-polyfill-6-26-0-package.lock
+524 silly lockFile d3a2cfae-he-babel-polyfill-6-26-0-package C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package
+525 silly lockFile d3a2cfae-he-babel-polyfill-6-26-0-package C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package
+526 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+527 silly lockFile a0ddf7b1-he-babel-polyfill-6-26-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package
+528 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package C:\Users\DELL\AppData\Roaming\npm-cache\a0ddf7b1-he-babel-polyfill-6-26-0-package.lock
+529 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+530 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\99a25c46-abel-polyfill-6-26-0-package-tgz.lock
+531 silly gunzTarPerm modes [ '755', '644' ]
+532 silly gunzTarPerm extractEntry package.json
+533 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+534 silly gunzTarPerm extractEntry .npmignore
+535 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+536 silly gunzTarPerm extractEntry README.md
+537 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+538 silly gunzTarPerm extractEntry browser.js
+539 silly gunzTarPerm modified mode [ 'browser.js', 438, 420 ]
+540 silly gunzTarPerm extractEntry dist/polyfill.js
+541 silly gunzTarPerm modified mode [ 'dist/polyfill.js', 438, 420 ]
+542 silly gunzTarPerm extractEntry dist/polyfill.min.js
+543 silly gunzTarPerm modified mode [ 'dist/polyfill.min.js', 438, 420 ]
+544 silly gunzTarPerm extractEntry lib/index.js
+545 silly gunzTarPerm modified mode [ 'lib/index.js', 438, 420 ]
+546 silly gunzTarPerm extractEntry package-lock.json
+547 silly gunzTarPerm modified mode [ 'package-lock.json', 438, 420 ]
+548 silly gunzTarPerm extractEntry scripts/postpublish.js
+549 silly gunzTarPerm modified mode [ 'scripts/postpublish.js', 438, 420 ]
+550 silly gunzTarPerm extractEntry scripts/prepublish.js
+551 silly gunzTarPerm modified mode [ 'scripts/prepublish.js', 438, 420 ]
+552 silly gunzTarPerm extractEntry scripts/build-dist.sh
+553 silly gunzTarPerm modified mode [ 'scripts/build-dist.sh', 438, 420 ]
+554 silly lockFile a0ddf7b1-he-babel-polyfill-6-26-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package
+555 silly lockFile a0ddf7b1-he-babel-polyfill-6-26-0-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package
+556 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+557 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+558 verbose chmod C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz 644
+559 silly chown skipping for windows C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+560 silly lockFile 012d4fad-lyfill-babel-polyfill-6-26-0-tgz https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz
+561 silly lockFile 012d4fad-lyfill-babel-polyfill-6-26-0-tgz https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz
+562 silly lockFile a81e80b0-babel-polyfill-6-26-0 babel-polyfill@6.26.0
+563 silly lockFile a81e80b0-babel-polyfill-6-26-0 babel-polyfill@6.26.0
+564 silly lockFile db98293b-babel-polyfill-6-26-0 babel-polyfill@^6.26.0
+565 silly lockFile db98293b-babel-polyfill-6-26-0 babel-polyfill@^6.26.0
+566 http 200 https://registry.npmjs.org/babel-core
+567 silly registry.get cb [ 200,
+567 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+567 silly registry.get     server: 'UploadServer',
+567 silly registry.get     'cache-control': 'max-age=300',
+567 silly registry.get     'last-modified': 'Wed, 13 Dec 2017 18:54:15 GMT',
+567 silly registry.get     etag: '"5a317757-815f9"',
+567 silly registry.get     'content-length': '529913',
+567 silly registry.get     'accept-ranges': 'bytes',
+567 silly registry.get     date: 'Thu, 21 Dec 2017 07:17:01 GMT',
+567 silly registry.get     via: '1.1 varnish',
+567 silly registry.get     age: '0',
+567 silly registry.get     connection: 'close',
+567 silly registry.get     'x-served-by': 'cache-sin18024-SIN',
+567 silly registry.get     'x-cache': 'MISS',
+567 silly registry.get     'x-cache-hits': '0',
+567 silly registry.get     'x-timer': 'S1513840621.008917,VS0,VE270',
+567 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+568 silly addNameRange number 2 { name: 'babel-core',
+568 silly addNameRange   range: '>=6.26.0-0 <7.0.0-0',
+568 silly addNameRange   hasData: true }
+569 silly addNameRange versions [ 'babel-core',
+569 silly addNameRange   [ '4.0.1',
+569 silly addNameRange     '4.0.2',
+569 silly addNameRange     '4.1.1',
+569 silly addNameRange     '4.2.0',
+569 silly addNameRange     '4.2.1',
+569 silly addNameRange     '4.3.0',
+569 silly addNameRange     '4.4.1',
+569 silly addNameRange     '4.4.2',
+569 silly addNameRange     '4.4.3',
+569 silly addNameRange     '4.4.4',
+569 silly addNameRange     '4.4.5',
+569 silly addNameRange     '4.4.6',
+569 silly addNameRange     '4.5.0',
+569 silly addNameRange     '4.5.1',
+569 silly addNameRange     '4.5.2',
+569 silly addNameRange     '4.5.3',
+569 silly addNameRange     '4.5.4',
+569 silly addNameRange     '4.5.5',
+569 silly addNameRange     '4.6.0',
+569 silly addNameRange     '4.6.1',
+569 silly addNameRange     '4.6.3',
+569 silly addNameRange     '4.6.4',
+569 silly addNameRange     '4.6.5',
+569 silly addNameRange     '4.6.6',
+569 silly addNameRange     '4.7.0',
+569 silly addNameRange     '4.7.1',
+569 silly addNameRange     '4.7.2',
+569 silly addNameRange     '4.7.3',
+569 silly addNameRange     '4.7.4',
+569 silly addNameRange     '4.7.5',
+569 silly addNameRange     '4.7.6',
+569 silly addNameRange     '4.7.7',
+569 silly addNameRange     '4.7.8',
+569 silly addNameRange     '4.7.9',
+569 silly addNameRange     '4.7.10',
+569 silly addNameRange     '4.7.11',
+569 silly addNameRange     '4.7.12',
+569 silly addNameRange     '4.7.13',
+569 silly addNameRange     '4.7.14',
+569 silly addNameRange     '4.7.15',
+569 silly addNameRange     '4.7.16',
+569 silly addNameRange     '5.0.0-beta2',
+569 silly addNameRange     '5.0.0-beta3',
+569 silly addNameRange     '5.0.0-beta4',
+569 silly addNameRange     '5.0.0',
+569 silly addNameRange     '5.0.1',
+569 silly addNameRange     '5.0.2',
+569 silly addNameRange     '5.0.3',
+569 silly addNameRange     '5.0.4',
+569 silly addNameRange     '5.0.5',
+569 silly addNameRange     '5.0.6',
+569 silly addNameRange     '5.0.7',
+569 silly addNameRange     '5.0.8',
+569 silly addNameRange     '5.0.9',
+569 silly addNameRange     '5.0.10',
+569 silly addNameRange     '5.0.11',
+569 silly addNameRange     '5.0.12',
+569 silly addNameRange     '5.0.13',
+569 silly addNameRange     '5.1.0',
+569 silly addNameRange     '5.1.1',
+569 silly addNameRange     '5.1.2',
+569 silly addNameRange     '5.1.3',
+569 silly addNameRange     '5.1.4',
+569 silly addNameRange     '5.1.5',
+569 silly addNameRange     '5.1.6',
+569 silly addNameRange     '5.1.7',
+569 silly addNameRange     '5.1.8',
+569 silly addNameRange     '5.1.9',
+569 silly addNameRange     '5.1.10',
+569 silly addNameRange     '5.1.11',
+569 silly addNameRange     '5.1.12',
+569 silly addNameRange     '5.1.13',
+569 silly addNameRange     '5.2.0',
+569 silly addNameRange     '5.2.1',
+569 silly addNameRange     '5.2.2',
+569 silly addNameRange     '5.2.3',
+569 silly addNameRange     '5.2.4',
+569 silly addNameRange     '5.2.5',
+569 silly addNameRange     '5.2.6',
+569 silly addNameRange     '5.2.7',
+569 silly addNameRange     '5.2.9',
+569 silly addNameRange     '5.2.10',
+569 silly addNameRange     '5.2.11',
+569 silly addNameRange     '5.2.12',
+569 silly addNameRange     '5.2.13',
+569 silly addNameRange     '5.2.14',
+569 silly addNameRange     '5.2.15',
+569 silly addNameRange     '5.2.16',
+569 silly addNameRange     '5.2.17',
+569 silly addNameRange     '5.3.0',
+569 silly addNameRange     '5.3.1',
+569 silly addNameRange     '5.3.2',
+569 silly addNameRange     '5.3.3',
+569 silly addNameRange     '5.4.0',
+569 silly addNameRange     '5.4.1',
+569 silly addNameRange     '5.4.2',
+569 silly addNameRange     '5.4.3',
+569 silly addNameRange     '5.4.4',
+569 silly addNameRange     '5.4.5',
+569 silly addNameRange     '5.4.6',
+569 silly addNameRange     ... 155 more items ] ]
+570 verbose addNamed [ 'babel-core', '6.26.0' ]
+571 verbose addNamed [ '6.26.0', '6.26.0' ]
+572 silly lockFile ccbca098-babel-core-6-26-0 babel-core@6.26.0
+573 verbose lock babel-core@6.26.0 C:\Users\DELL\AppData\Roaming\npm-cache\ccbca098-babel-core-6-26-0.lock
+574 silly lockFile ccbca098-babel-core-6-26-0 babel-core@6.26.0
+575 silly lockFile ccbca098-babel-core-6-26-0 babel-core@6.26.0
+576 silly lockFile 538dc80e-babel-core-6-26-0 babel-core@^6.26.0
+577 silly lockFile 538dc80e-babel-core-6-26-0 babel-core@^6.26.0
+578 silly resolved [ { name: 'output-file-sync',
+578 silly resolved     version: '1.1.2',
+578 silly resolved     description: 'Synchronously write a file and create its ancestor directories if needed',
+578 silly resolved     repository:
+578 silly resolved      { type: 'git',
+578 silly resolved        url: 'git+https://github.com/shinnn/output-file-sync.git' },
+578 silly resolved     author:
+578 silly resolved      { name: 'Shinnosuke Watanabe',
+578 silly resolved        url: 'https://github.com/shinnn' },
+578 silly resolved     scripts:
+578 silly resolved      { pretest: 'eslint --fix --config @shinnn/node-legacy index.js test.js',
+578 silly resolved        test: 'node --strong_mode --throw-deprecation --track-heap-objects test.js | tap-spec',
+578 silly resolved        coverage: 'node --strong_mode --throw-deprecation --track-heap-objects node_modules/.bin/istanbul cover test.js' },
+578 silly resolved     license: 'MIT',
+578 silly resolved     files: [ 'index.js' ],
+578 silly resolved     keywords:
+578 silly resolved      [ 'fs',
+578 silly resolved        'write',
+578 silly resolved        'sync',
+578 silly resolved        'synchronous',
+578 silly resolved        'output',
+578 silly resolved        'create',
+578 silly resolved        'file',
+578 silly resolved        'mkdir',
+578 silly resolved        'mkdirp' ],
+578 silly resolved     dependencies:
+578 silly resolved      { 'graceful-fs': '^4.1.4',
+578 silly resolved        mkdirp: '^0.5.1',
+578 silly resolved        'object-assign': '^4.1.0' },
+578 silly resolved     devDependencies:
+578 silly resolved      { '@shinnn/eslint-config-node-legacy': '^2.0.0',
+578 silly resolved        eslint: '^2.13.0',
+578 silly resolved        istanbul: '^0.4.3',
+578 silly resolved        'read-remove-file': '^3.0.0',
+578 silly resolved        'tap-spec': '^4.1.1',
+578 silly resolved        tape: '^4.5.1' },
+578 silly resolved     gitHead: '42d4b6792bbaee919805b2cb9afc95233addb239',
+578 silly resolved     bugs: { url: 'https://github.com/shinnn/output-file-sync/issues' },
+578 silly resolved     homepage: 'https://github.com/shinnn/output-file-sync#readme',
+578 silly resolved     _id: 'output-file-sync@1.1.2',
+578 silly resolved     _shasum: 'd0a33eefe61a205facb90092e826598d5245ce76',
+578 silly resolved     _from: 'output-file-sync@^1.1.2',
+578 silly resolved     _npmVersion: '3.9.6',
+578 silly resolved     _nodeVersion: '6.2.1',
+578 silly resolved     _npmUser: { name: 'shinnn', email: 'snnskwtnb@gmail.com' },
+578 silly resolved     maintainers: [ [Object] ],
+578 silly resolved     dist:
+578 silly resolved      { shasum: 'd0a33eefe61a205facb90092e826598d5245ce76',
+578 silly resolved        tarball: 'https://registry.npmjs.org/output-file-sync/-/output-file-sync-1.1.2.tgz' },
+578 silly resolved     _npmOperationalInternal:
+578 silly resolved      { host: 'packages-12-west.internal.npmjs.com',
+578 silly resolved        tmp: 'tmp/output-file-sync-1.1.2.tgz_1466355133680_0.8832209098618478' },
+578 silly resolved     directories: {},
+578 silly resolved     _resolved: 'https://registry.npmjs.org/output-file-sync/-/output-file-sync-1.1.2.tgz',
+578 silly resolved     readme: 'ERROR: No README data found!' },
+578 silly resolved   { name: 'v8flags',
+578 silly resolved     description: 'Get available v8 flags.',
+578 silly resolved     version: '2.1.1',
+578 silly resolved     homepage: 'https://github.com/tkellen/node-v8flags',
+578 silly resolved     author: { name: 'Tyler Kellen', url: 'http://goingslowly.com/' },
+578 silly resolved     repository:
+578 silly resolved      { type: 'git',
+578 silly resolved        url: 'git://github.com/tkellen/node-v8flags.git' },
+578 silly resolved     bugs: { url: 'https://github.com/tkellen/node-v8flags/issues' },
+578 silly resolved     licenses: [ [Object] ],
+578 silly resolved     scripts: { test: '_mocha -R spec test.js' },
+578 silly resolved     main: 'index.js',
+578 silly resolved     engines: { node: '>= 0.10.0' },
+578 silly resolved     keywords: [ 'v8 flags', 'harmony flags' ],
+578 silly resolved     devDependencies: { async: '^0.9.0', chai: '~1.9.1', mocha: '~1.21.4' },
+578 silly resolved     dependencies: { 'user-home': '^1.1.1' },
+578 silly resolved     readme: '# v8flags [![Build Status](https://secure.travis-ci.org/js-cli/js-v8flags.png)](http://travis-ci.org/js-cli/js-v8flags) [![Build status](https://ci.appveyor.com/api/projects/status/9psgmwayx9kpol1a?svg=true)](https://ci.appveyor.com/project/js-cli/js-v8flags)\n> Get available v8 flags.\n\n[![NPM](https://nodei.co/npm/v8flags.png)](https://nodei.co/npm/v8flags/)\n\n## Example\n```js\nconst v8flags = require(\'v8flags\');\n\nv8flags(function (err, results) {\n  console.log(results);  // [ \'--use_strict\',\n                         //   \'--es5_readonly\',\n                         //   \'--es52_globals\',\n                         //   \'--harmony_typeof\',\n                         //   \'--harmony_scoping\',\n                         //   \'--harmony_modules\',\n                         //   \'--harmony_proxies\',\n                         //   \'--harmony_collections\',\n                         //   \'--harmony\',\n                         // ...\n});\n```\n\n## Release History\n\n* 2017-04-18 - v2.1.0 - hash username to support invalid path characters\n* 2017-03-31 - v2.0.12 - don\'t pollute global namespace\n* 2015-12-07 - v2.0.11 - cache to temp directory if home is present but unwritable\n* 2015-07-28 - v2.0.10 - don\'t throw for electron runtime, just call back with empty array\n* 2015-06-25 - v2.0.9 - call back with flags even if cache file can\'t be written\n* 2015-06-15 - v2.0.7 - revert to 2.0.5 behavior.\n* 2015-06-15 - v2.0.6 - store cache file in ~/.cache or ~/AppData/Local depending on platform\n* 2015-04-18 - v2.0.5 - attempt to require config file, if this throws for any reason, fopen w+ and re-create\n* 2015-04-16 - v2.0.4 - when concurrent processes are run and no config exists, don\'t append to the cached config.\n* 2015-03-31 - v2.0.3 - prefer to store config files in user home over tmp\n* 2015-01-18 - v2.0.2 - keep his dark tentacles contained\n* 2015-01-15 - v2.0.1 - store temp file in `os.tmpdir()`, drop support for node 0.8\n* 2015-01-15 - v2.0.0 - make the stupid thing async\n* 2014-12-22 - v1.0.8 - exclude `--help` flag\n* 2014-12-20 - v1.0.7 - pre-cache flags for every version of node from 0.8 to 0.11\n* 2014-12-09 - v1.0.6 - revert to 1.0.0 behavior\n* 2014-11-26 - v1.0.5 - get node executable from `process.execPath`\n* 2014-11-18 - v1.0.4 - wrap node executable path in quotes\n* 2014-11-17 - v1.0.3 - get node executable during npm install via `process.env.NODE`\n* 2014-11-17 - v1.0.2 - get node executable from `process.env._`\n* 2014-09-03 - v1.0.0 - first major version release\n* 2014-09-02 - v0.3.0 - keep -- in flag names\n* 2014-09-02 - v0.2.0 - cache flags\n* 2014-05-09 - v0.1.0 - initial release\n',
+578 silly resolved     readmeFilename: 'README.md',
+578 silly resolved     _id: 'v8flags@2.1.1',
+578 silly resolved     dist: { shasum: '9539b02878aff36bf59d107277815b78f6383e67' },
+578 silly resolved     _from: 'v8flags@^2.1.1',
+578 silly resolved     _resolved: 'https://registry.npmjs.org/v8flags/-/v8flags-2.1.1.tgz' },
+578 silly resolved   { name: 'fs-readdir-recursive',
+578 silly resolved     description: 'Recursively read a directory',
+578 silly resolved     version: '1.1.0',
+578 silly resolved     scripts:
+578 silly resolved      { test: 'mocha --reporter spec',
+578 silly resolved        'test-cov': 'istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot',
+578 silly resolved        'test-travis': 'istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter dot' },
+578 silly resolved     devDependencies: { istanbul: '0', mocha: '3', should: '*' },
+578 silly resolved     author:
+578 silly resolved      { name: 'Jonathan Ong',
+578 silly resolved        email: 'me@jongleberry.com',
+578 silly resolved        url: 'http://jongleberry.com' },
+578 silly resolved     repository:
+578 silly resolved      { type: 'git',
+578 silly resolved        url: 'git://github.com/fs-utils/fs-readdir-recursive' },
+578 silly resolved     files: [ 'index.js' ],
+578 silly resolved     license: 'MIT',
+578 silly resolved     readme: '# fs.readdirSyncRecursive\n\n[![NPM version][npm-image]][npm-url]\n[![Build status][travis-image]][travis-url]\n[![Test coverage][coveralls-image]][coveralls-url]\n[![Dependency Status][david-image]][david-url]\n[![License][license-image]][license-url]\n[![Downloads][downloads-image]][downloads-url]\n[![Gittip][gittip-image]][gittip-url]\n\nRead a directory recursively.\n\n## Install\n\n```bash\nnpm install fs-readdir-recursive\n```\n\n## Example\n\n```js\nvar read = require(\'fs-readdir-recursive\')\nread(__dirname) === [\n  \'test/test.js\',\n  \'index.js\',\n  \'LICENSE\',\n  \'package.json\',\n  \'README.md\'\n]\n```\n\n## API\n\n### read(root [, filter])\n\n`root` is the directory you wish to scan. `filter` is an optional filter for the files with three params(name, index, dir). By default, filter is:\n\n```js\nfunction (name) {\n  return name[0] !== \'.\'\n}\n```\n\nWhich basically just ignores `.` files.\n\n[npm-image]: https://img.shields.io/npm/v/fs-readdir-recursive.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/fs-readdir-recursive\n[github-tag]: http://img.shields.io/github/tag/fs-utils/fs-readdir-recursive.svg?style=flat-square\n[github-url]: https://github.com/fs-utils/fs-readdir-recursive/tags\n[travis-image]: https://img.shields.io/travis/fs-utils/fs-readdir-recursive.svg?style=flat-square\n[travis-url]: https://travis-ci.org/fs-utils/fs-readdir-recursive\n[coveralls-image]: https://img.shields.io/coveralls/fs-utils/fs-readdir-recursive.svg?style=flat-square\n[coveralls-url]: https://coveralls.io/r/fs-utils/fs-readdir-recursive\n[david-image]: http://img.shields.io/david/fs-utils/fs-readdir-recursive.svg?style=flat-square\n[david-url]: https://david-dm.org/fs-utils/fs-readdir-recursive\n[license-image]: http://img.shields.io/npm/l/fs-readdir-recursive.svg?style=flat-square\n[license-url]: LICENSE\n[downloads-image]: http://img.shields.io/npm/dm/fs-readdir-recursive.svg?style=flat-square\n[downloads-url]: https://npmjs.org/package/fs-readdir-recursive\n[gittip-image]: https://img.shields.io/gratipay/jonathanong.svg?style=flat-square\n[gittip-url]: https://gratipay.com/jonathanong/\n',
+578 silly resolved     readmeFilename: 'README.md',
+578 silly resolved     bugs:
+578 silly resolved      { url: 'https://github.com/fs-utils/fs-readdir-recursive/issues' },
+578 silly resolved     homepage: 'https://github.com/fs-utils/fs-readdir-recursive',
+578 silly resolved     _id: 'fs-readdir-recursive@1.1.0',
+578 silly resolved     dist: { shasum: '68cb32a5b1c58cdb4b432519570213a1ccc2cd68' },
+578 silly resolved     _from: 'fs-readdir-recursive@^1.0.0',
+578 silly resolved     _resolved: 'https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz' },
+578 silly resolved   { name: 'babel-polyfill',
+578 silly resolved     version: '6.26.0',
+578 silly resolved     description: 'Provides polyfills necessary for a full ES2015+ environment',
+578 silly resolved     author: { name: 'Sebastian McKenzie', email: 'sebmck@gmail.com' },
+578 silly resolved     homepage: 'https://babeljs.io/',
+578 silly resolved     license: 'MIT',
+578 silly resolved     repository:
+578 silly resolved      { type: 'git',
+578 silly resolved        url: 'https://github.com/babel/babel/tree/master/packages/babel-polyfill' },
+578 silly resolved     main: 'lib/index.js',
+578 silly resolved     dependencies:
+578 silly resolved      { 'babel-runtime': '^6.26.0',
+578 silly resolved        'core-js': '^2.5.0',
+578 silly resolved        'regenerator-runtime': '^0.10.5' },
+578 silly resolved     readme: '# babel-polyfill\n\n',
+578 silly resolved     readmeFilename: 'README.md',
+578 silly resolved     _id: 'babel-polyfill@6.26.0',
+578 silly resolved     dist: { shasum: '8197f5d4823791cee22a468b53fdd1b8d18a090e' },
+578 silly resolved     _from: 'babel-polyfill@^6.26.0',
+578 silly resolved     _resolved: 'https://registry.npmjs.org/babel-polyfill/-/babel-polyfill-6.26.0.tgz' },
+578 silly resolved   { name: 'babel-core',
+578 silly resolved     version: '6.26.0',
+578 silly resolved     description: 'Babel compiler core.',
+578 silly resolved     author: { name: 'Sebastian McKenzie', email: 'sebmck@gmail.com' },
+578 silly resolved     homepage: 'https://babeljs.io/',
+578 silly resolved     license: 'MIT',
+578 silly resolved     repository:
+578 silly resolved      { type: 'git',
+578 silly resolved        url: 'https://github.com/babel/babel/tree/master/packages/babel-core' },
+578 silly resolved     keywords:
+578 silly resolved      [ '6to5',
+578 silly resolved        'babel',
+578 silly resolved        'classes',
+578 silly resolved        'const',
+578 silly resolved        'es6',
+578 silly resolved        'harmony',
+578 silly resolved        'let',
+578 silly resolved        'modules',
+578 silly resolved        'transpile',
+578 silly resolved        'transpiler',
+578 silly resolved        'var',
+578 silly resolved        'babel-core',
+578 silly resolved        'compiler' ],
+578 silly resolved     scripts: { bench: 'make bench', test: 'make test' },
+578 silly resolved     dependencies:
+578 silly resolved      { 'babel-code-frame': '^6.26.0',
+578 silly resolved        'babel-generator': '^6.26.0',
+578 silly resolved        'babel-helpers': '^6.24.1',
+578 silly resolved        'babel-messages': '^6.23.0',
+578 silly resolved        'babel-register': '^6.26.0',
+578 silly resolved        'babel-runtime': '^6.26.0',
+578 silly resolved        'babel-template': '^6.26.0',
+578 silly resolved        'babel-traverse': '^6.26.0',
+578 silly resolved        'babel-types': '^6.26.0',
+578 silly resolved        babylon: '^6.18.0',
+578 silly resolved        'convert-source-map': '^1.5.0',
+578 silly resolved        debug: '^2.6.8',
+578 silly resolved        json5: '^0.5.1',
+578 silly resolved        lodash: '^4.17.4',
+578 silly resolved        minimatch: '^3.0.4',
+578 silly resolved        'path-is-absolute': '^1.0.1',
+578 silly resolved        private: '^0.1.7',
+578 silly resolved        slash: '^1.0.0',
+578 silly resolved        'source-map': '^0.5.6' },
+578 silly resolved     devDependencies:
+578 silly resolved      { 'babel-helper-fixtures': '^6.26.0',
+578 silly resolved        'babel-helper-transform-fixture-test-runner': '^6.26.0',
+578 silly resolved        'babel-polyfill': '^6.26.0' },
+578 silly resolved     _id: 'babel-core@6.26.0',
+578 silly resolved     _shasum: 'af32f78b31a6fcef119c87b0fd8d9753f03a0bb8',
+578 silly resolved     _from: 'babel-core@^6.26.0',
+578 silly resolved     _npmVersion: '4.6.1',
+578 silly resolved     _nodeVersion: '6.9.0',
+578 silly resolved     _npmUser: { name: 'hzoo', email: 'hi@henryzoo.com' },
+578 silly resolved     dist:
+578 silly resolved      { shasum: 'af32f78b31a6fcef119c87b0fd8d9753f03a0bb8',
+578 silly resolved        tarball: 'https://registry.npmjs.org/babel-core/-/babel-core-6.26.0.tgz' },
+578 silly resolved     maintainers: [ [Object], [Object], [Object], [Object], [Object] ],
+578 silly resolved     _npmOperationalInternal:
+578 silly resolved      { host: 's3://npm-registry-packages',
+578 silly resolved        tmp: 'tmp/babel-core-6.26.0.tgz_1502898861183_0.43529116874560714' },
+578 silly resolved     directories: {},
+578 silly resolved     _resolved: 'https://registry.npmjs.org/babel-core/-/babel-core-6.26.0.tgz',
+578 silly resolved     readme: 'ERROR: No README data found!' } ]
+579 info install output-file-sync@1.1.2 into D:\Projects\nextshopnshare\node_modules\babel-cli
+580 info install v8flags@2.1.1 into D:\Projects\nextshopnshare\node_modules\babel-cli
+581 info install fs-readdir-recursive@1.1.0 into D:\Projects\nextshopnshare\node_modules\babel-cli
+582 info install babel-polyfill@6.26.0 into D:\Projects\nextshopnshare\node_modules\babel-cli
+583 info install babel-core@6.26.0 into D:\Projects\nextshopnshare\node_modules\babel-cli
+584 info installOne output-file-sync@1.1.2
+585 info installOne v8flags@2.1.1
+586 info installOne fs-readdir-recursive@1.1.0
+587 info installOne babel-polyfill@6.26.0
+588 info installOne babel-core@6.26.0
+589 info D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\output-file-sync unbuild
+590 info D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags unbuild
+591 info D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\fs-readdir-recursive unbuild
+592 info D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill unbuild
+593 info D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-core unbuild
+594 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\output-file-sync\1.1.2\package.tgz
+595 silly lockFile de76001d-li-node-modules-output-file-sync tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\output-file-sync
+596 verbose lock tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\output-file-sync C:\Users\DELL\AppData\Roaming\npm-cache\de76001d-li-node-modules-output-file-sync.lock
+597 silly lockFile 2602aad2-tput-file-sync-1-1-2-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\output-file-sync\1.1.2\package.tgz
+598 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\output-file-sync\1.1.2\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\2602aad2-tput-file-sync-1-1-2-package-tgz.lock
+599 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+600 silly lockFile b6674385-ode-modules-fs-readdir-recursive tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\fs-readdir-recursive
+601 verbose lock tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\fs-readdir-recursive C:\Users\DELL\AppData\Roaming\npm-cache\b6674385-ode-modules-fs-readdir-recursive.lock
+602 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+603 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\2044d8ed-ddir-recursive-1-1-0-package-tgz.lock
+604 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+605 silly lockFile a40f00f5-s-babel-cli-node-modules-v8flags tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags
+606 verbose lock tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags C:\Users\DELL\AppData\Roaming\npm-cache\a40f00f5-s-babel-cli-node-modules-v8flags.lock
+607 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+608 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\e77c0f09--cache-v8flags-2-1-1-package-tgz.lock
+609 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+610 silly lockFile df7dd011--cli-node-modules-babel-polyfill tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill
+611 verbose lock tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill C:\Users\DELL\AppData\Roaming\npm-cache\df7dd011--cli-node-modules-babel-polyfill.lock
+612 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+613 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\99a25c46-abel-polyfill-6-26-0-package-tgz.lock
+614 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\babel-core\6.26.0\package.tgz
+615 silly lockFile 7d2edbf2-abel-cli-node-modules-babel-core tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-core
+616 verbose lock tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-core C:\Users\DELL\AppData\Roaming\npm-cache\7d2edbf2-abel-cli-node-modules-babel-core.lock
+617 silly lockFile b2faa820-he-babel-core-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-core\6.26.0\package.tgz
+618 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-core\6.26.0\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\b2faa820-he-babel-core-6-26-0-package-tgz.lock
+619 silly gunzTarPerm modes [ '755', '644' ]
+620 silly gunzTarPerm modes [ '755', '644' ]
+621 silly gunzTarPerm modes [ '755', '644' ]
+622 silly gunzTarPerm modes [ '755', '644' ]
+623 silly gunzTarPerm modes [ '755', '644' ]
+624 silly gunzTarPerm extractEntry package.json
+625 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+626 silly gunzTarPerm extractEntry package.json
+627 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+628 silly gunzTarPerm extractEntry package.json
+629 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+630 silly gunzTarPerm extractEntry README.md
+631 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+632 silly gunzTarPerm extractEntry index.js
+633 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+634 silly gunzTarPerm extractEntry .npmignore
+635 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+636 silly gunzTarPerm extractEntry README.md
+637 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+638 silly gunzTarPerm extractEntry .npmignore
+639 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+640 silly gunzTarPerm extractEntry README.md
+641 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+642 silly gunzTarPerm extractEntry browser.js
+643 silly gunzTarPerm modified mode [ 'browser.js', 438, 420 ]
+644 silly gunzTarPerm extractEntry index.js
+645 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+646 silly gunzTarPerm extractEntry dist/polyfill.js
+647 silly gunzTarPerm modified mode [ 'dist/polyfill.js', 438, 420 ]
+648 silly gunzTarPerm extractEntry dist/polyfill.min.js
+649 silly gunzTarPerm modified mode [ 'dist/polyfill.min.js', 438, 420 ]
+650 silly gunzTarPerm extractEntry package.json
+651 silly gunzTarPerm extractEntry LICENSE
+652 silly gunzTarPerm extractEntry index.js
+653 silly gunzTarPerm extractEntry lib/index.js
+654 silly gunzTarPerm modified mode [ 'lib/index.js', 438, 420 ]
+655 silly lockFile b6674385-ode-modules-fs-readdir-recursive tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\fs-readdir-recursive
+656 silly lockFile b6674385-ode-modules-fs-readdir-recursive tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\fs-readdir-recursive
+657 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+658 silly lockFile 2044d8ed-ddir-recursive-1-1-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs-readdir-recursive\1.1.0\package.tgz
+659 silly gunzTarPerm extractEntry package.json
+660 silly gunzTarPerm extractEntry README.md
+661 silly gunzTarPerm extractEntry index.js
+662 info preinstall fs-readdir-recursive@1.1.0
+663 silly gunzTarPerm extractEntry package-lock.json
+664 silly gunzTarPerm modified mode [ 'package-lock.json', 438, 420 ]
+665 silly gunzTarPerm extractEntry scripts/postpublish.js
+666 silly gunzTarPerm modified mode [ 'scripts/postpublish.js', 438, 420 ]
+667 verbose readDependencies using package.json deps
+668 verbose readDependencies using package.json deps
+669 silly resolved []
+670 verbose about to build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\fs-readdir-recursive
+671 info build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\fs-readdir-recursive
+672 verbose linkStuff [ false,
+672 verbose linkStuff   false,
+672 verbose linkStuff   false,
+672 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules\\babel-cli\\node_modules' ]
+673 info linkStuff fs-readdir-recursive@1.1.0
+674 verbose linkBins fs-readdir-recursive@1.1.0
+675 verbose linkMans fs-readdir-recursive@1.1.0
+676 verbose rebuildBundles fs-readdir-recursive@1.1.0
+677 silly lockFile a40f00f5-s-babel-cli-node-modules-v8flags tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags
+678 silly lockFile a40f00f5-s-babel-cli-node-modules-v8flags tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags
+679 info install fs-readdir-recursive@1.1.0
+680 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+681 silly lockFile e77c0f09--cache-v8flags-2-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\v8flags\2.1.1\package.tgz
+682 info postinstall fs-readdir-recursive@1.1.0
+683 silly gunzTarPerm extractEntry register.js
+684 silly gunzTarPerm extractEntry package-lock.json
+685 info preinstall v8flags@2.1.1
+686 verbose readDependencies using package.json deps
+687 verbose readDependencies using package.json deps
+688 silly gunzTarPerm extractEntry scripts/prepublish.js
+689 silly gunzTarPerm modified mode [ 'scripts/prepublish.js', 438, 420 ]
+690 silly gunzTarPerm extractEntry scripts/build-dist.sh
+691 silly gunzTarPerm modified mode [ 'scripts/build-dist.sh', 438, 420 ]
+692 verbose cache add [ 'user-home@^1.1.1', null ]
+693 verbose cache add name=undefined spec="user-home@^1.1.1" args=["user-home@^1.1.1",null]
+694 verbose parsed url Url {
+694 verbose parsed url   protocol: null,
+694 verbose parsed url   slashes: null,
+694 verbose parsed url   auth: null,
+694 verbose parsed url   host: null,
+694 verbose parsed url   port: null,
+694 verbose parsed url   hostname: null,
+694 verbose parsed url   hash: null,
+694 verbose parsed url   search: null,
+694 verbose parsed url   query: null,
+694 verbose parsed url   pathname: 'user-home@%5E1.1.1',
+694 verbose parsed url   path: 'user-home@%5E1.1.1',
+694 verbose parsed url   href: 'user-home@%5E1.1.1' }
+695 verbose cache add name="user-home" spec="^1.1.1" args=["user-home","^1.1.1"]
+696 verbose parsed url Url {
+696 verbose parsed url   protocol: null,
+696 verbose parsed url   slashes: null,
+696 verbose parsed url   auth: null,
+696 verbose parsed url   host: null,
+696 verbose parsed url   port: null,
+696 verbose parsed url   hostname: null,
+696 verbose parsed url   hash: null,
+696 verbose parsed url   search: null,
+696 verbose parsed url   query: null,
+696 verbose parsed url   pathname: '%5E1.1.1',
+696 verbose parsed url   path: '%5E1.1.1',
+696 verbose parsed url   href: '%5E1.1.1' }
+697 verbose addNamed [ 'user-home', '^1.1.1' ]
+698 verbose addNamed [ null, '>=1.1.1-0 <2.0.0-0' ]
+699 silly lockFile d8d27d25-user-home-1-1-1 user-home@^1.1.1
+700 verbose lock user-home@^1.1.1 C:\Users\DELL\AppData\Roaming\npm-cache\d8d27d25-user-home-1-1-1.lock
+701 silly lockFile de76001d-li-node-modules-output-file-sync tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\output-file-sync
+702 silly lockFile de76001d-li-node-modules-output-file-sync tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\output-file-sync
+703 silly addNameRange { name: 'user-home',
+703 silly addNameRange   range: '>=1.1.1-0 <2.0.0-0',
+703 silly addNameRange   hasData: false }
+704 silly lockFile 2602aad2-tput-file-sync-1-1-2-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\output-file-sync\1.1.2\package.tgz
+705 silly lockFile 2602aad2-tput-file-sync-1-1-2-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\output-file-sync\1.1.2\package.tgz
+706 silly gunzTarPerm extractEntry lib/store.js
+707 verbose url raw user-home
+708 verbose url resolving [ 'https://registry.npmjs.org/', './user-home' ]
+709 verbose url resolved https://registry.npmjs.org/user-home
+710 info trying registry request attempt 1 at 14:20:59
+711 http GET https://registry.npmjs.org/user-home
+712 info preinstall output-file-sync@1.1.2
+713 silly gunzTarPerm extractEntry lib/util.js
+714 silly gunzTarPerm extractEntry lib/api/browser.js
+715 verbose readDependencies using package.json deps
+716 verbose readDependencies using package.json deps
+717 silly resolved []
+718 verbose about to build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\output-file-sync
+719 info build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\output-file-sync
+720 verbose linkStuff [ false,
+720 verbose linkStuff   false,
+720 verbose linkStuff   false,
+720 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules\\babel-cli\\node_modules' ]
+721 info linkStuff output-file-sync@1.1.2
+722 verbose linkBins output-file-sync@1.1.2
+723 verbose linkMans output-file-sync@1.1.2
+724 verbose rebuildBundles output-file-sync@1.1.2
+725 info install output-file-sync@1.1.2
+726 info postinstall output-file-sync@1.1.2
+727 silly gunzTarPerm extractEntry lib/api/node.js
+728 silly gunzTarPerm extractEntry lib/helpers/get-possible-plugin-names.js
+729 silly gunzTarPerm extractEntry lib/helpers/get-possible-preset-names.js
+730 silly gunzTarPerm extractEntry lib/helpers/merge.js
+731 silly gunzTarPerm extractEntry lib/helpers/normalize-ast.js
+732 silly gunzTarPerm extractEntry lib/helpers/resolve-from-possible-names.js
+733 silly gunzTarPerm extractEntry lib/helpers/resolve-plugin.js
+734 silly gunzTarPerm extractEntry lib/helpers/resolve-preset.js
+735 silly lockFile df7dd011--cli-node-modules-babel-polyfill tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill
+736 silly lockFile df7dd011--cli-node-modules-babel-polyfill tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill
+737 silly gunzTarPerm extractEntry lib/helpers/resolve.js
+738 silly gunzTarPerm extractEntry lib/tools/build-external-helpers.js
+739 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+740 silly lockFile 99a25c46-abel-polyfill-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-polyfill\6.26.0\package.tgz
+741 info preinstall babel-polyfill@6.26.0
+742 verbose readDependencies using package.json deps
+743 verbose readDependencies using package.json deps
+744 verbose cache add [ 'regenerator-runtime@^0.10.5', null ]
+745 verbose cache add name=undefined spec="regenerator-runtime@^0.10.5" args=["regenerator-runtime@^0.10.5",null]
+746 verbose parsed url Url {
+746 verbose parsed url   protocol: null,
+746 verbose parsed url   slashes: null,
+746 verbose parsed url   auth: null,
+746 verbose parsed url   host: null,
+746 verbose parsed url   port: null,
+746 verbose parsed url   hostname: null,
+746 verbose parsed url   hash: null,
+746 verbose parsed url   search: null,
+746 verbose parsed url   query: null,
+746 verbose parsed url   pathname: 'regenerator-runtime@%5E0.10.5',
+746 verbose parsed url   path: 'regenerator-runtime@%5E0.10.5',
+746 verbose parsed url   href: 'regenerator-runtime@%5E0.10.5' }
+747 verbose cache add name="regenerator-runtime" spec="^0.10.5" args=["regenerator-runtime","^0.10.5"]
+748 verbose parsed url Url {
+748 verbose parsed url   protocol: null,
+748 verbose parsed url   slashes: null,
+748 verbose parsed url   auth: null,
+748 verbose parsed url   host: null,
+748 verbose parsed url   port: null,
+748 verbose parsed url   hostname: null,
+748 verbose parsed url   hash: null,
+748 verbose parsed url   search: null,
+748 verbose parsed url   query: null,
+748 verbose parsed url   pathname: '%5E0.10.5',
+748 verbose parsed url   path: '%5E0.10.5',
+748 verbose parsed url   href: '%5E0.10.5' }
+749 verbose addNamed [ 'regenerator-runtime', '^0.10.5' ]
+750 verbose addNamed [ null, '>=0.10.5-0 <0.11.0-0' ]
+751 silly lockFile a39230d9-regenerator-runtime-0-10-5 regenerator-runtime@^0.10.5
+752 verbose lock regenerator-runtime@^0.10.5 C:\Users\DELL\AppData\Roaming\npm-cache\a39230d9-regenerator-runtime-0-10-5.lock
+753 silly gunzTarPerm extractEntry lib/transformation/pipeline.js
+754 silly gunzTarPerm extractEntry lib/transformation/plugin-pass.js
+755 silly addNameRange { name: 'regenerator-runtime',
+755 silly addNameRange   range: '>=0.10.5-0 <0.11.0-0',
+755 silly addNameRange   hasData: false }
+756 silly gunzTarPerm extractEntry lib/transformation/plugin.js
+757 silly gunzTarPerm extractEntry lib/transformation/file/index.js
+758 silly gunzTarPerm extractEntry lib/transformation/file/logger.js
+759 silly gunzTarPerm extractEntry lib/transformation/file/metadata.js
+760 silly gunzTarPerm extractEntry lib/transformation/file/options/build-config-chain.js
+761 silly gunzTarPerm extractEntry lib/transformation/file/options/config.js
+762 silly gunzTarPerm extractEntry lib/transformation/file/options/index.js
+763 silly gunzTarPerm extractEntry lib/transformation/file/options/option-manager.js
+764 silly gunzTarPerm extractEntry lib/transformation/file/options/parsers.js
+765 silly gunzTarPerm extractEntry lib/transformation/file/options/removed.js
+766 silly gunzTarPerm extractEntry lib/transformation/internal-plugins/block-hoist.js
+767 silly gunzTarPerm extractEntry lib/transformation/internal-plugins/shadow-functions.js
+768 verbose url raw regenerator-runtime
+769 verbose url resolving [ 'https://registry.npmjs.org/', './regenerator-runtime' ]
+770 verbose url resolved https://registry.npmjs.org/regenerator-runtime
+771 info trying registry request attempt 1 at 14:20:59
+772 http GET https://registry.npmjs.org/regenerator-runtime
+773 silly lockFile 7d2edbf2-abel-cli-node-modules-babel-core tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-core
+774 silly lockFile 7d2edbf2-abel-cli-node-modules-babel-core tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-core
+775 silly lockFile b2faa820-he-babel-core-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-core\6.26.0\package.tgz
+776 silly lockFile b2faa820-he-babel-core-6-26-0-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\babel-core\6.26.0\package.tgz
+777 info preinstall babel-core@6.26.0
+778 verbose readDependencies using package.json deps
+779 verbose readDependencies using package.json deps
+780 silly resolved []
+781 verbose about to build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-core
+782 info build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-core
+783 verbose linkStuff [ false,
+783 verbose linkStuff   false,
+783 verbose linkStuff   false,
+783 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules\\babel-cli\\node_modules' ]
+784 info linkStuff babel-core@6.26.0
+785 verbose linkBins babel-core@6.26.0
+786 verbose linkMans babel-core@6.26.0
+787 verbose rebuildBundles babel-core@6.26.0
+788 info install babel-core@6.26.0
+789 info postinstall babel-core@6.26.0
+790 http 200 https://registry.npmjs.org/user-home
+791 silly registry.get cb [ 200,
+791 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+791 silly registry.get     server: 'UploadServer',
+791 silly registry.get     'cache-control': 'max-age=300',
+791 silly registry.get     'last-modified': 'Thu, 14 Dec 2017 17:12:36 GMT',
+791 silly registry.get     etag: '"5a32b104-19d2"',
+791 silly registry.get     'content-length': '6610',
+791 silly registry.get     'accept-ranges': 'bytes',
+791 silly registry.get     date: 'Thu, 21 Dec 2017 07:17:01 GMT',
+791 silly registry.get     via: '1.1 varnish',
+791 silly registry.get     age: '4292',
+791 silly registry.get     connection: 'close',
+791 silly registry.get     'x-served-by': 'cache-sin18029-SIN',
+791 silly registry.get     'x-cache': 'HIT',
+791 silly registry.get     'x-cache-hits': '2',
+791 silly registry.get     'x-timer': 'S1513840622.971013,VS0,VE0',
+791 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+792 silly addNameRange number 2 { name: 'user-home', range: '>=1.1.1-0 <2.0.0-0', hasData: true }
+793 silly addNameRange versions [ 'user-home', [ '1.0.0', '1.1.0', '1.1.1', '2.0.0' ] ]
+794 verbose addNamed [ 'user-home', '1.1.1' ]
+795 verbose addNamed [ '1.1.1', '1.1.1' ]
+796 silly lockFile 8f7ecde5-user-home-1-1-1 user-home@1.1.1
+797 verbose lock user-home@1.1.1 C:\Users\DELL\AppData\Roaming\npm-cache\8f7ecde5-user-home-1-1-1.lock
+798 silly lockFile 8f7ecde5-user-home-1-1-1 user-home@1.1.1
+799 silly lockFile 8f7ecde5-user-home-1-1-1 user-home@1.1.1
+800 silly lockFile d8d27d25-user-home-1-1-1 user-home@^1.1.1
+801 silly lockFile d8d27d25-user-home-1-1-1 user-home@^1.1.1
+802 silly resolved [ { name: 'user-home',
+802 silly resolved     version: '1.1.1',
+802 silly resolved     description: 'Get the path to the user home directory',
+802 silly resolved     license: 'MIT',
+802 silly resolved     repository:
+802 silly resolved      { type: 'git',
+802 silly resolved        url: 'git+https://github.com/sindresorhus/user-home.git' },
+802 silly resolved     bin: { 'user-home': 'cli.js' },
+802 silly resolved     author:
+802 silly resolved      { name: 'Sindre Sorhus',
+802 silly resolved        email: 'sindresorhus@gmail.com',
+802 silly resolved        url: 'http://sindresorhus.com' },
+802 silly resolved     engines: { node: '>=0.10.0' },
+802 silly resolved     scripts: { test: 'node test.js' },
+802 silly resolved     files: [ 'index.js', 'cli.js' ],
+802 silly resolved     keywords:
+802 silly resolved      [ 'cli',
+802 silly resolved        'bin',
+802 silly resolved        'user',
+802 silly resolved        'home',
+802 silly resolved        'homedir',
+802 silly resolved        'dir',
+802 silly resolved        'directory',
+802 silly resolved        'folder',
+802 silly resolved        'path' ],
+802 silly resolved     devDependencies: { ava: '0.0.3' },
+802 silly resolved     gitHead: 'cf6ba885d3e6bf625fb3c15ad0334fa623968481',
+802 silly resolved     bugs: { url: 'https://github.com/sindresorhus/user-home/issues' },
+802 silly resolved     homepage: 'https://github.com/sindresorhus/user-home',
+802 silly resolved     _id: 'user-home@1.1.1',
+802 silly resolved     _shasum: '2b5be23a32b63a7c9deb8d0f28d485724a3df190',
+802 silly resolved     _from: 'user-home@^1.1.1',
+802 silly resolved     _npmVersion: '2.1.16',
+802 silly resolved     _nodeVersion: '0.10.32',
+802 silly resolved     _npmUser: { name: 'sindresorhus', email: 'sindresorhus@gmail.com' },
+802 silly resolved     maintainers: [ [Object] ],
+802 silly resolved     dist:
+802 silly resolved      { shasum: '2b5be23a32b63a7c9deb8d0f28d485724a3df190',
+802 silly resolved        tarball: 'https://registry.npmjs.org/user-home/-/user-home-1.1.1.tgz' },
+802 silly resolved     directories: {},
+802 silly resolved     _resolved: 'https://registry.npmjs.org/user-home/-/user-home-1.1.1.tgz',
+802 silly resolved     readme: 'ERROR: No README data found!' } ]
+803 info install user-home@1.1.1 into D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags
+804 info installOne user-home@1.1.1
+805 info D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags\node_modules\user-home unbuild
+806 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\user-home\1.1.1\package.tgz
+807 silly lockFile d222d5f0-s-v8flags-node-modules-user-home tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags\node_modules\user-home
+808 verbose lock tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags\node_modules\user-home C:\Users\DELL\AppData\Roaming\npm-cache\d222d5f0-s-v8flags-node-modules-user-home.lock
+809 silly lockFile 277d37be-ache-user-home-1-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\user-home\1.1.1\package.tgz
+810 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\user-home\1.1.1\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\277d37be-ache-user-home-1-1-1-package-tgz.lock
+811 silly gunzTarPerm modes [ '755', '644' ]
+812 silly gunzTarPerm extractEntry package.json
+813 silly gunzTarPerm extractEntry index.js
+814 silly gunzTarPerm extractEntry cli.js
+815 silly gunzTarPerm extractEntry license
+816 silly gunzTarPerm extractEntry readme.md
+817 silly lockFile d222d5f0-s-v8flags-node-modules-user-home tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags\node_modules\user-home
+818 silly lockFile d222d5f0-s-v8flags-node-modules-user-home tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags\node_modules\user-home
+819 silly lockFile 277d37be-ache-user-home-1-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\user-home\1.1.1\package.tgz
+820 silly lockFile 277d37be-ache-user-home-1-1-1-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\user-home\1.1.1\package.tgz
+821 info preinstall user-home@1.1.1
+822 verbose readDependencies using package.json deps
+823 verbose readDependencies using package.json deps
+824 silly resolved []
+825 verbose about to build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags\node_modules\user-home
+826 info build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags\node_modules\user-home
+827 verbose linkStuff [ false,
+827 verbose linkStuff   false,
+827 verbose linkStuff   false,
+827 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules\\babel-cli\\node_modules\\v8flags\\node_modules' ]
+828 info linkStuff user-home@1.1.1
+829 verbose linkBins user-home@1.1.1
+830 verbose link bins [ { 'user-home': 'cli.js' },
+830 verbose link bins   'D:\\Projects\\nextshopnshare\\node_modules\\babel-cli\\node_modules\\v8flags\\node_modules\\.bin',
+830 verbose link bins   false ]
+831 verbose linkMans user-home@1.1.1
+832 verbose rebuildBundles user-home@1.1.1
+833 info install user-home@1.1.1
+834 info postinstall user-home@1.1.1
+835 verbose about to build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags
+836 info build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\v8flags
+837 verbose linkStuff [ false,
+837 verbose linkStuff   false,
+837 verbose linkStuff   false,
+837 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules\\babel-cli\\node_modules' ]
+838 info linkStuff v8flags@2.1.1
+839 verbose linkBins v8flags@2.1.1
+840 verbose linkMans v8flags@2.1.1
+841 verbose rebuildBundles v8flags@2.1.1
+842 verbose rebuildBundles [ '.bin', 'user-home' ]
+843 info install v8flags@2.1.1
+844 info postinstall v8flags@2.1.1
+845 http 200 https://registry.npmjs.org/regenerator-runtime
+846 silly registry.get cb [ 200,
+846 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+846 silly registry.get     server: 'UploadServer',
+846 silly registry.get     'cache-control': 'max-age=300',
+846 silly registry.get     'last-modified': 'Thu, 7 Dec 2017 19:36:07 GMT',
+846 silly registry.get     etag: '"5a299827-43cb"',
+846 silly registry.get     'content-length': '17355',
+846 silly registry.get     'accept-ranges': 'bytes',
+846 silly registry.get     date: 'Thu, 21 Dec 2017 07:17:02 GMT',
+846 silly registry.get     via: '1.1 varnish',
+846 silly registry.get     age: '0',
+846 silly registry.get     connection: 'close',
+846 silly registry.get     'x-served-by': 'cache-sin18022-SIN',
+846 silly registry.get     'x-cache': 'MISS',
+846 silly registry.get     'x-cache-hits': '0',
+846 silly registry.get     'x-timer': 'S1513840622.031305,VS0,VE271',
+846 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+847 silly addNameRange number 2 { name: 'regenerator-runtime',
+847 silly addNameRange   range: '>=0.10.5-0 <0.11.0-0',
+847 silly addNameRange   hasData: true }
+848 silly addNameRange versions [ 'regenerator-runtime',
+848 silly addNameRange   [ '0.9.0',
+848 silly addNameRange     '0.9.1',
+848 silly addNameRange     '0.9.2',
+848 silly addNameRange     '0.9.3',
+848 silly addNameRange     '0.9.4',
+848 silly addNameRange     '0.9.5',
+848 silly addNameRange     '0.9.6',
+848 silly addNameRange     '0.10.0',
+848 silly addNameRange     '0.10.1',
+848 silly addNameRange     '0.10.2',
+848 silly addNameRange     '0.10.3',
+848 silly addNameRange     '0.10.4',
+848 silly addNameRange     '0.10.5',
+848 silly addNameRange     '0.11.0',
+848 silly addNameRange     '0.11.1' ] ]
+849 verbose addNamed [ 'regenerator-runtime', '0.10.5' ]
+850 verbose addNamed [ '0.10.5', '0.10.5' ]
+851 silly lockFile ed1eef08-regenerator-runtime-0-10-5 regenerator-runtime@0.10.5
+852 verbose lock regenerator-runtime@0.10.5 C:\Users\DELL\AppData\Roaming\npm-cache\ed1eef08-regenerator-runtime-0-10-5.lock
+853 silly lockFile ed1eef08-regenerator-runtime-0-10-5 regenerator-runtime@0.10.5
+854 silly lockFile ed1eef08-regenerator-runtime-0-10-5 regenerator-runtime@0.10.5
+855 silly lockFile a39230d9-regenerator-runtime-0-10-5 regenerator-runtime@^0.10.5
+856 silly lockFile a39230d9-regenerator-runtime-0-10-5 regenerator-runtime@^0.10.5
+857 silly resolved [ { name: 'regenerator-runtime',
+857 silly resolved     author: { name: 'Ben Newman', email: 'bn@cs.stanford.edu' },
+857 silly resolved     description: 'Runtime for Regenerator-compiled generator and async functions.',
+857 silly resolved     version: '0.10.5',
+857 silly resolved     main: 'runtime-module.js',
+857 silly resolved     keywords: [ 'regenerator', 'runtime', 'generator', 'async' ],
+857 silly resolved     repository:
+857 silly resolved      { type: 'git',
+857 silly resolved        url: 'https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime' },
+857 silly resolved     license: 'MIT',
+857 silly resolved     _id: 'regenerator-runtime@0.10.5',
+857 silly resolved     scripts: {},
+857 silly resolved     _shasum: '336c3efc1220adcedda2c9fab67b5a7955a33658',
+857 silly resolved     _from: 'regenerator-runtime@^0.10.5',
+857 silly resolved     _npmVersion: '4.1.2',
+857 silly resolved     _nodeVersion: '7.7.4',
+857 silly resolved     _npmUser: { name: 'benjamn', email: 'bn@cs.stanford.edu' },
+857 silly resolved     maintainers: [ [Object] ],
+857 silly resolved     dist:
+857 silly resolved      { shasum: '336c3efc1220adcedda2c9fab67b5a7955a33658',
+857 silly resolved        tarball: 'https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz' },
+857 silly resolved     _npmOperationalInternal:
+857 silly resolved      { host: 'packages-18-east.internal.npmjs.com',
+857 silly resolved        tmp: 'tmp/regenerator-runtime-0.10.5.tgz_1493390833247_0.5373470620252192' },
+857 silly resolved     directories: {},
+857 silly resolved     _resolved: 'https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz',
+857 silly resolved     readme: 'ERROR: No README data found!' } ]
+858 info install regenerator-runtime@0.10.5 into D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill
+859 info installOne regenerator-runtime@0.10.5
+860 info D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill\node_modules\regenerator-runtime unbuild
+861 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\regenerator-runtime\0.10.5\package.tgz
+862 silly lockFile b41ba189-node-modules-regenerator-runtime tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill\node_modules\regenerator-runtime
+863 verbose lock tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill\node_modules\regenerator-runtime C:\Users\DELL\AppData\Roaming\npm-cache\b41ba189-node-modules-regenerator-runtime.lock
+864 silly lockFile 44aa6054-rator-runtime-0-10-5-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\regenerator-runtime\0.10.5\package.tgz
+865 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\regenerator-runtime\0.10.5\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\44aa6054-rator-runtime-0-10-5-package-tgz.lock
+866 silly gunzTarPerm modes [ '755', '644' ]
+867 silly gunzTarPerm extractEntry package.json
+868 silly gunzTarPerm extractEntry .npmignore
+869 silly gunzTarPerm extractEntry README.md
+870 silly gunzTarPerm extractEntry path.js
+871 silly gunzTarPerm extractEntry runtime-module.js
+872 silly gunzTarPerm extractEntry runtime.js
+873 silly lockFile b41ba189-node-modules-regenerator-runtime tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill\node_modules\regenerator-runtime
+874 silly lockFile b41ba189-node-modules-regenerator-runtime tar://D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill\node_modules\regenerator-runtime
+875 silly lockFile 44aa6054-rator-runtime-0-10-5-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\regenerator-runtime\0.10.5\package.tgz
+876 silly lockFile 44aa6054-rator-runtime-0-10-5-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\regenerator-runtime\0.10.5\package.tgz
+877 info preinstall regenerator-runtime@0.10.5
+878 verbose readDependencies using package.json deps
+879 verbose readDependencies using package.json deps
+880 silly resolved []
+881 verbose about to build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill\node_modules\regenerator-runtime
+882 info build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill\node_modules\regenerator-runtime
+883 verbose linkStuff [ false,
+883 verbose linkStuff   false,
+883 verbose linkStuff   false,
+883 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules\\babel-cli\\node_modules\\babel-polyfill\\node_modules' ]
+884 info linkStuff regenerator-runtime@0.10.5
+885 verbose linkBins regenerator-runtime@0.10.5
+886 verbose linkMans regenerator-runtime@0.10.5
+887 verbose rebuildBundles regenerator-runtime@0.10.5
+888 info install regenerator-runtime@0.10.5
+889 info postinstall regenerator-runtime@0.10.5
+890 verbose about to build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill
+891 info build D:\Projects\nextshopnshare\node_modules\babel-cli\node_modules\babel-polyfill
+892 verbose linkStuff [ false,
+892 verbose linkStuff   false,
+892 verbose linkStuff   false,
+892 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules\\babel-cli\\node_modules' ]
+893 info linkStuff babel-polyfill@6.26.0
+894 verbose linkBins babel-polyfill@6.26.0
+895 verbose linkMans babel-polyfill@6.26.0
+896 verbose rebuildBundles babel-polyfill@6.26.0
+897 verbose rebuildBundles [ 'regenerator-runtime' ]
+898 info install babel-polyfill@6.26.0
+899 info postinstall babel-polyfill@6.26.0
+900 verbose about to build D:\Projects\nextshopnshare\node_modules\babel-cli
+901 info build D:\Projects\nextshopnshare\node_modules\babel-cli
+902 verbose linkStuff [ false,
+902 verbose linkStuff   false,
+902 verbose linkStuff   false,
+902 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules' ]
+903 info linkStuff babel-cli@6.26.0
+904 verbose linkBins babel-cli@6.26.0
+905 verbose link bins [ { 'babel-doctor': './bin/babel-doctor.js',
+905 verbose link bins     babel: './bin/babel.js',
+905 verbose link bins     'babel-node': './bin/babel-node.js',
+905 verbose link bins     'babel-external-helpers': './bin/babel-external-helpers.js' },
+905 verbose link bins   'D:\\Projects\\nextshopnshare\\node_modules\\.bin',
+905 verbose link bins   false ]
+906 verbose linkMans babel-cli@6.26.0
+907 verbose rebuildBundles babel-cli@6.26.0
+908 verbose rebuildBundles [ 'babel-core',
+908 verbose rebuildBundles   'babel-polyfill',
+908 verbose rebuildBundles   'fs-readdir-recursive',
+908 verbose rebuildBundles   'output-file-sync',
+908 verbose rebuildBundles   'v8flags' ]
+909 info install babel-cli@6.26.0
+910 info postinstall babel-cli@6.26.0
+911 error peerinvalid The package webpack does not satisfy its siblings' peerDependencies requirements!
+911 error peerinvalid Peer babel-loader@7.0.0 wants webpack@2
+911 error peerinvalid Peer webpack-dev-middleware@1.10.2 wants webpack@1 || ^2.1.0-beta || ^2.2.0-rc.0
+912 error System Windows_NT 10.0.16299
+913 error command "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "babel-cli"
+914 error cwd D:\Projects\nextshopnshare
+915 error node -v v8.6.0
+916 error npm -v 1.3.21
+917 error code EPEERINVALID
+918 verbose exit [ 1, true ]

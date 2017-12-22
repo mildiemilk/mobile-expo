@@ -10,7 +10,7 @@ import { validateCreditCard } from '../lib/helpers/formvalidation'
 
 class Payment extends React.Component{
 	componentDidMount() {
-			const { cart, products,  sharedUser, user, addTransaction } = this.props
+			const { cart, products, user, addTransaction } = this.props
 			cart.addedIds.forEach( id => {
 				let product = products[id]
 				let quantity = cart.quantityById[id]
@@ -21,7 +21,6 @@ class Payment extends React.Component{
 					quantity,
 					comissionSeller:comission.seller * quantity,
 					comissionOwner: comission.owner * quantity,
-					sellerUid: sharedUser.sharedUserUid,
 					ownerUid:product.userUid,
 					buyerUid:user.uid,
 					productId:id
@@ -37,7 +36,7 @@ class Payment extends React.Component{
 			expiryMonth:'7', 
 			expiryYear:'2019'
 		}
-		const {cardDetail, total, sharedUser, transaction, validateCreditCard} = this.props
+		const {cardDetail, total, transaction, validateCreditCard} = this.props
 		return <PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
@@ -53,7 +52,6 @@ const selector = formValueSelector('payment')
 const mapStateToProps = state =>({
 	cardDetail : state.form.payment ? state.form.payment.values : null,
 	total : state.payment.total,
-	sharedUser: state.sharedUser,
 	products: state.userProducts,
 	cart : state.cart,
 	user: state.user,
