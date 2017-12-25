@@ -17,10 +17,7 @@ class Payment extends React.Component{
 				let price = product.price
 				let comission = calculateComission(price, product.comissionCash, product.comissionPercent)
 				addProductTransaction({
-					price,
 					quantity,
-					comissionSponsor:comission.sponsor * quantity,
-					comissionSeller: comission.seller * quantity,
 					sellerUid:product.userUid,
 					buyerUid:user.uid,
 					productId:id
@@ -46,6 +43,7 @@ class Payment extends React.Component{
 }
 
 Payment = reduxForm({form: 'payment'})(Payment)
+
 
 const selector = formValueSelector('payment')
 const mapStateToProps = state =>({

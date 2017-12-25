@@ -6,7 +6,7 @@ import Header from './Header'
 import AddressForm from '../organisms/AddressForm'
 
 let total = 0
-export default ({cart = {}, products={}, total=0}) => <div>
+export default ({cart = {}, products={}, total=0, saveAddress, addDeliveryDetail}) => <div>
   <Head/>
   <Header/>
   <Table celled>
@@ -43,5 +43,5 @@ export default ({cart = {}, products={}, total=0}) => <div>
     </tbody>
   </Table>	
   <AddressForm/>
-  <Link href='/payment'><Button>proceed to payment</Button></Link>
+  <Button onClick={addDeliveryDetail}>proceed to payment</Button>
 </div>

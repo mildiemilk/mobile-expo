@@ -4,6 +4,7 @@ import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import { setTotal } from '../lib/actions/payment'
+import { addDeliveryDetail } from '../lib/actions/transaction'
 
 class Checkout extends React.Component{
 
@@ -17,8 +18,8 @@ class Checkout extends React.Component{
 	}
 
 	render() {
-		const { cart, products, product, payment } = this.props
-		return <CheckoutView cart={cart} products={products} product={product} total={payment.total}/>
+		const { cart, products, product, payment, addDeliveryDetail, name, address1, address2, province, postalCode, phoneNumber} = this.props
+		return <CheckoutView cart={cart} products={products} product={product} total={payment.total} addDeliveryDetail={()=>this.props.addDeliveryDetail(name, phoneNumber, address1, address2, province, postalCode)}/>
 	}
 } 
 
@@ -42,7 +43,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-	setTotal
+	setTotal,
+	addDeliveryDetail
 }
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Checkout)
