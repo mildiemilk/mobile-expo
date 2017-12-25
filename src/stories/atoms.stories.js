@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-import AddImg from '../../static/img/addimg.svg'
+// import AddImg from '../../static/img/addimg.svg'
 import Button from '../../view/atoms/Button'
 import Dropzone from '../../view/atoms/Dropzone'
 import Input from '../../view/atoms/TextField'
@@ -136,10 +136,10 @@ storiesOf('SquareWrapper', module)
 </div>
 )
 
-storiesOf('SVG', module)
-.add('svg', () =>   <div className='container' style={{width:'600px'}}>
-<AddImg />
-</div>)
+// storiesOf('SVG', module)
+// .add('svg', () =>   <div className='container' style={{width:'600px'}}>
+// <AddImg />
+// </div>)
 
 storiesOf('Label', module)
 .add('label', ()=> 

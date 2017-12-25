@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
-import AddedImages from '../../view/organisms/AddedImages'
+// import AddedImages from '../../view/organisms/AddedImages'
 import ProductRegisterText from '../../view/organisms/ProductRegisterText'
 import ComissionInput from '../../view/organisms/ComissionInput'
 import ItemCard from '../../view/organisms/ItemCard'
@@ -17,11 +17,11 @@ import CreditCard from '../../view/organisms/CreditCard'
 import JsonTable from '../../view/organisms/JsonTable'
 import OrderStatusButton from '../../view/organisms/OrderStatusButton'
 
-storiesOf('AddedImages', module)
-	.add('no image', ()=> (
-		<AddedImages />
-	))
-	.add('display Mode', () =><AddedImages />)
+// storiesOf('AddedImages', module)
+// 	.add('no image', ()=> (
+// 		<AddedImages />
+// 	))
+// 	.add('display Mode', () =><AddedImages />)
 
 storiesOf('ProductRegisterText', module)
 .addDecorator(story => <Provider store={store}>
