@@ -1,6 +1,15 @@
 import styled from 'styled-components'
-import AddImage from '../../static/img/addimg.svg'
+import AddImg from '../../static/img/addimg.svg'
 
-const SvgWrapper = styled.div.attrs({
-	
-})
+export default styled(AddImg)`
+	max-width: 100vw;
+	max-height: -webkit-fill-available;
+	display: ${props => props.src ? 'none' :'unset' };
+	${Dropzone}:hover & {
+		display:unset;
+		background: #F2F2F2;
+	}
+	@media (max-width: 600px) {
+		 max-width: ${props => props.subimg ? '20vw' : '100vw'};
+	}
+`
