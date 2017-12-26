@@ -14,6 +14,7 @@ cursor: pointer;
 white-space: nowrap;
 flex-grow: 1;
 ${props=> props.maxWidth? `max-width:${props.maxWidth};`:null}
+${props=> props.minWidth? `min-width:${props.minWidth};`:null}
 ${props=> props.margin? `margin:${props.margin};`:null}
 background: ${props => props.background? props.background : color.contrastPrimary};
 ${props => props.border ?`border: ${props.border};` : null}

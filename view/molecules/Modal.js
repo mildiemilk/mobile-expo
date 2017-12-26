@@ -17,7 +17,7 @@ class Modal extends React.Component {
         const{ buttonText, children, context} = this.props
         return(
         <div>
-            <div style={{width:"fit-content"}} onClick={()=> this.setState({display:true})}>{children || <Button>modal</Button>}</div>
+            <div onClick={()=> this.setState({display:true})}>{children || <Button>modal</Button>}</div>
             <BlackOut display={this.state.display} >
                 <WhiteDiv>
                     <Button onClick={()=> this.setState({display:false})} modalClose >x</Button>
