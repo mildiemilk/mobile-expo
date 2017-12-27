@@ -6,6 +6,7 @@ import Modal from '../molecules/Modal'
 import H1 from '../atoms/H1'
 import H3 from '../atoms/H3'
 import H5 from '../atoms/H5'
+import Flex from '../atoms/Flex'
 import Label from '../atoms/Label'
 import Wrapper from '../atoms/Wrapper'
 import color from "../../static/json/color.json"
@@ -48,7 +49,7 @@ const colorStatus = (status, current) => {
 	else return color.disabled
 }
 export default ({status, setOrderStatus, orderId}) => (
-	<ButtonGroup>
+	<div>
 		{buttonJson(status).map(button=>
 			<Button small background={button.background} 
 				onClick={()=>setOrderStatus
@@ -67,30 +68,32 @@ export default ({status, setOrderStatus, orderId}) => (
 						</Wrapper>
 						</Grid.Column>
 						<Grid.Column>
-							<Wrapper >
+							<Wrapper paddingLeft="5vh">
 								<H1 color="black" left>ที่อยู่การจัดส่ง</H1>
-								<H5 color="black" left>{transactionInfo.PhoneNumber}</H5>
 								<H5 color="black" left>{transactionInfo.Name}</H5>
+								<H5 color="black" left>{transactionInfo.PhoneNumber}</H5>
 								<H5 color="black" left>{transactionInfo.Address1}</H5>
 								<H5 color="black" left>{transactionInfo.Address2}</H5>
 								<H5 color="black" left>{transactionInfo.Province} {transactionInfo.PostalCode} </H5>
-								<Button big color="orange"><H1 color="white">พิมพ์</H1></Button>
-								<H1 color="black" left>สถานะ:</H1>
-								{status==='pending'
-								? console.log('status', status, button.background)
-								:console.log('status', status, button.background)
-								}
-								<Table>
-									<tr>
-										<Button minWidth="200px" background={colorStatus(status,'pending')} >รอดำเนินการ</Button>
-									</tr>
-									<tr>
-										<Button minWidth="200px" background={colorStatus(status,'sent')} >จัดส่งแล้ว</Button>
-									</tr>
-									<tr>
-										<Button  minWidth="200px" background={colorStatus(status,'delivered')} >ยกเลิก</Button>
-									</tr>
-								</Table>
+								<Button color="orange"><H1 color="white">พิมพ์</H1></Button>
+								<Flex direction="inherit" wrap="nowrap">
+									<H1 color="black" left>สถานะ:</H1>
+									{status==='pending'
+									? console.log('status', status, button.background)
+									:console.log('status', status, button.background)
+									}
+									<Table textAlign="center" marginTop="10px">
+										<tr>
+											<Button minWidth="200px" background={colorStatus(status,'pending')} >รอดำเนินการ</Button>
+										</tr>
+										<tr>
+											<Button minWidth="200px" background={colorStatus(status,'sent')} >จัดส่งแล้ว</Button>
+										</tr>
+										<tr>
+											<Button  minWidth="200px" background={colorStatus(status,'delivered')} >ยกเลิก</Button>
+										</tr>
+									</Table>
+								</Flex>
 							</Wrapper>
 						</Grid.Column>
 					</Grid.Row>
@@ -104,5 +107,5 @@ export default ({status, setOrderStatus, orderId}) => (
 		</Button>
 		)}
 		
-	</ButtonGroup> 
+	</div> 
 )

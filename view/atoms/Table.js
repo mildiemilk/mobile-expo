@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export default styled.table `
 	text-align: left;
+	${props => props.textAlign? `text-align: ${props.textAlign};`: 'left'}
+	${props => props.marginTop? `margin-top: ${props.marginTop};`: null}
 	border-radius: 25px;
 	border-spacing: 0;
 	border-collapse: collapse;

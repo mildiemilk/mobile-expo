@@ -4,6 +4,7 @@ import color from '../../static/json/color.json'
 export default styled.div`
 padding: 10px;
 ${props => !props.noMargin? 'margin: 10px;' : null }
+${props => props.paddingLeft? `padding-left: ${props.paddingLeft};`: null}
 ${props => !props.noBorderRadius?'border-radius: 10px;':null}
 ${props => !props.noBorder ?`border: 2px solid ${color.primary1};`: null}
 ${props => props.width? `width: ${props.width};`: null}

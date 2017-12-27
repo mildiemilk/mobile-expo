@@ -1,5 +1,6 @@
 import React from 'react'
 import JsonTable from '../organisms/JsonTable'
+import Table from '../atoms/Table'
 
 
 const headerJson = {
@@ -23,8 +24,27 @@ class DetailTable extends React.Component {
     })):null
     return transactionJsonArray
   }
+  TotalPrice = () => {
+    const total = []
+    const transactionInfo = this.props.transactionInfo.Products
+    transactionInfo ? transactionInfo.map( transaction => {
+      total.push({
+        totalPrice:transaction.Quantity * transaction.Price
+      })
+    }):null
+    const totalTransaction = total.map(item => item.totalPrice).reduce((a, b) => a + b, 0)
+    return totalTransaction
+  }
   render() {
-    return <JsonTable headerJson={headerJson} bodyJsonArray={this.transactionJsonArray()}/>
+    return <div>
+      <JsonTable headerJson={headerJson} bodyJsonArray={this.transactionJsonArray()}/>
+      <Table>
+        <td>ราคาสุทธิ</td>
+        <td />
+        <td />
+        <td style={{textAlign:"center"}}>{this.TotalPrice()}</td>
+      </Table>
+      </div>
   }
 }
 export default DetailTable
