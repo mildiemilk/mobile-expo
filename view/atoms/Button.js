@@ -37,9 +37,14 @@ ${props => props.fullWidth ?
 		transition: 0.1s;
 		z-index:10;
 	}
-${props => props.modalClose? 'position: fixed;right: 10%;': null}	
+${props => props.modalClose? 'position: absolute;': null}	
 `
+export const DivButton = styled.div`
+	height: 32px;
+	display: flex;
+	justify-content: flex-end;
 
+`
 export const ButtonGroup = styled.div`
 	display:flex;
 	justify-content: center;

@@ -1,6 +1,6 @@
-import { Grid } from 'semantic-ui-react'
+import { Grid, Menu } from 'semantic-ui-react'
 import DetailTable from '../molecules/DetailTable'
-import Button, {ButtonGroup} from '../atoms/Button'
+import Button  from '../atoms/Button'
 import Table from '../atoms/Table'
 import Modal from '../molecules/Modal'
 import H1 from '../atoms/H1'
@@ -58,11 +58,13 @@ export default ({status, setOrderStatus, orderId}) => (
 			>
 			{button.name === 'View'
 			?<Modal
+			height='null'
+			minWidth='820px'
+			minHeight='100vh'
 				context={
-					<Grid divided='vertically'>
-					<Grid.Row columns={2}>
+					<Grid reversed='mobile' columns='equal' stackable>
 						<Grid.Column>
-							<Wrapper width="100%" color="black">
+							<Wrapper color="black">
 							<H3 color="black" left>รายละเอียดการสั่งซื้อ</H3>
 								{<DetailTable transactionInfo={transactionInfo} />}
 						</Wrapper>
@@ -78,10 +80,6 @@ export default ({status, setOrderStatus, orderId}) => (
 								<Button color="orange"><H1 color="white">พิมพ์</H1></Button>
 								<Flex direction="inherit" wrap="nowrap">
 									<H1 color="black" left>สถานะ:</H1>
-									{status==='pending'
-									? console.log('status', status, button.background)
-									:console.log('status', status, button.background)
-									}
 									<Table textAlign="center" marginTop="10px">
 										<tr>
 											<Button minWidth="200px" background={colorStatus(status,'pending')} >รอดำเนินการ</Button>
@@ -96,7 +94,6 @@ export default ({status, setOrderStatus, orderId}) => (
 								</Flex>
 							</Wrapper>
 						</Grid.Column>
-					</Grid.Row>
 				</Grid> 
 				}
 				children={button.name}
