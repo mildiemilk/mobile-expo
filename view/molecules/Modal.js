@@ -19,12 +19,12 @@ class Modal extends React.Component {
         <div>
             <div onClick={()=> this.setState({display:true})}>{children || <Button>modal</Button>}</div>
             <BlackOut display={this.state.display} height={height} minHeight={minHeight}>
-                <WhiteDiv padding={padding} minWidth={minWidth} >
+                <WhiteDiv padding={padding} minWidth={minWidth}>
                     <DivButton>
                         <Button onClick={()=> this.setState({display:false})} modalClose>x</Button>
                     </DivButton>
                     
-                    <div style={{padding:"0px 30px 30px 30px"}}>
+                    <div style={{padding:"0px 10px 30px 10px"}}>
                         {context || 'put some context'}
                     </div>
                 </WhiteDiv>

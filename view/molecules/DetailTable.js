@@ -18,10 +18,15 @@ const totalPrice = products => transactionJsonArray(products).map(item => item.t
 export default ({transactionInfo}) => <div>
 <JsonTable headerJson={headerJson} bodyJsonArray={transactionJsonArray(transactionInfo.Products)}/>
 <Table>
-  <td>ราคาสุทธิ</td>
-  <td />
-  <td />
-  <td style={{textAlign:"center"}}>{totalPrice(transactionInfo.Products)}</td>
+  <tbody>
+    <tr>
+      <td><b>ราคาสุทธิ</b></td>
+      <td />
+      <td />
+      <td >{totalPrice(transactionInfo.Products)}</td> 
+  </tr>
+  </tbody>
+  
 </Table>
 </div>
 

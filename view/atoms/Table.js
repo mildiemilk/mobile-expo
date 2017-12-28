@@ -8,16 +8,19 @@ export default styled.table `
 	border-spacing: 0;
 	border-collapse: collapse;
 	width: 100%;
-	overflow-x:auto;
 	th {
 		background: #89C4F4;
 		padding: 10px;
+	
 	}
 	td{
 		background: #e7f3fc;
 		padding: 10px;
+		width: 8vw;
+		min-width: 70px;
 	}
 	td:hover {background-color: #b8dbf8}
+	overflow-x: scroll;
 	${props => props.maxWidth
 		? 'max-width:' + props.maxWidth + ';'
 		: null}

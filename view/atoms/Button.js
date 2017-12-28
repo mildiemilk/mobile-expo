@@ -28,6 +28,7 @@ ${props => props.fullWidth ?
 	${props => props.color? 'border: 1px solid '+ props.color+';':null}
 	@media (max-width: 700px){
 		${props => props.mobileFixedButtom ? "position:fixed;width:100%vw;bottom:0px":null}
+		${props => props.fixedSize ? "min-width: 30vw;":null}
 	}
 	${props => props.round? 'border-radius: 18px;': null}
 	&:hover {

@@ -8,5 +8,6 @@ export default styled.div`
     z-index:100;
     @media (max-width: 700px) {
         min-width: 500px;
+        padding-left: 50px;
 }
 `

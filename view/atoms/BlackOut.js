@@ -13,4 +13,5 @@ export default styled.div`
     display: ${props => props.display ? 'flex':'none'};
     justify-content: center;
     align-items: center;
+    overflow-x: scroll;
 `

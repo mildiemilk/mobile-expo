@@ -1,6 +1,6 @@
 import Table from '../atoms/Table'
 
-export default ({headerJson, bodyJsonArray}) => 
+export default ({headerJson, bodyJsonArray, width, display, height}) => 
     <Table>
         <thead>
             <tr>

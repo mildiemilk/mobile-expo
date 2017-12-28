@@ -1,4 +1,4 @@
-import { Grid, Menu } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import DetailTable from '../molecules/DetailTable'
 import Button  from '../atoms/Button'
 import Table from '../atoms/Table'
@@ -50,7 +50,8 @@ const colorStatus = (status, current) => {
 export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 	<div>
 		{buttonJson(status).map(button=>
-			<Button small background={button.background} 
+			<Button fixedSize small background={button.background}
+			 	minWidth="40px" 
 				onClick={()=>setOrderStatus
 				?setOrderStatus(orderId, button.value)
 				:null}
@@ -60,6 +61,7 @@ export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 			height='null'
 			minWidth='820px'
 			minHeight='100vh'
+			padding="0px"
 				context={
 					<Grid reversed='mobile' columns='equal' stackable>
 						<Grid.Column>
@@ -69,7 +71,7 @@ export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 						</Wrapper>
 						</Grid.Column>
 						<Grid.Column>
-							<Wrapper paddingLeft="5vh">
+							<Wrapper padding="10px 5vh">
 								<H1 color="black" left>ที่อยู่การจัดส่ง</H1>
 								<H5 color="black" left>{transactionInfo.Name}</H5>
 								<H5 color="black" left>{transactionInfo.PhoneNumber}</H5>
