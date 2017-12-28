@@ -10,7 +10,6 @@ import Flex from '../atoms/Flex'
 import Label from '../atoms/Label'
 import Wrapper from '../atoms/Wrapper'
 import color from "../../static/json/color.json"
-import { transactionInfo } from '../../src/stories/transactionInfo'
 
 const buttonJson = status => [
 	{
@@ -48,13 +47,13 @@ const colorStatus = (status, current) => {
 	}
 	else return color.disabled
 }
-export default ({status, setOrderStatus, orderId}) => (
+export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 	<div>
 		{buttonJson(status).map(button=>
 			<Button small background={button.background} 
 				onClick={()=>setOrderStatus
 				?setOrderStatus(orderId, button.value)
-				:console.log(button.value)}
+				:null}
 			>
 			{button.name === 'View'
 			?<Modal

@@ -11,7 +11,7 @@ import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
-
+import { transactionInfo } from './transactionInfo'
 
 storiesOf('ProductRegisterMain', module)
 .addDecorator(story => <Provider store={store}>
@@ -61,4 +61,4 @@ storiesOf('CreditCardExpandButton', module)
 
 storiesOf('OrderTable', module)
         .add('default', ()=> <OrderTable />)
-        .add('with values', ()=> <OrderTable orders={orders} />)
+        .add('with values', ()=> <OrderTable orders={orders} transactionInfo={transactionInfo}/>)
