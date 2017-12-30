@@ -14,6 +14,7 @@ cursor: pointer;
 white-space: nowrap;
 flex-grow: 1;
 ${props=> props.maxWidth? `max-width:${props.maxWidth};`:null}
+${props=> props.minWidth? `min-width:${props.minWidth};`:null}
 ${props=> props.margin? `margin:${props.margin};`:null}
 background: ${props => props.background? props.background : color.contrastPrimary};
 ${props => props.border ?`border: ${props.border};` : null}
@@ -27,6 +28,7 @@ ${props => props.fullWidth ?
 	${props => props.color? 'border: 1px solid '+ props.color+';':null}
 	@media (max-width: 700px){
 		${props => props.mobileFixedButtom ? "position:fixed;width:100%vw;bottom:0px":null}
+		${props => props.fixedSize ? "min-width: 30vw;":null}
 	}
 	${props => props.round? 'border-radius: 18px;': null}
 	&:hover {
@@ -36,9 +38,14 @@ ${props => props.fullWidth ?
 		transition: 0.1s;
 		z-index:10;
 	}
-${props => props.modalClose? 'position: fixed;right: 10%;': null}	
+${props => props.modalClose? 'position: absolute;': null}	
 `
+export const DivButton = styled.div`
+	height: 32px;
+	display: flex;
+	justify-content: flex-end;
 
+`
 export const ButtonGroup = styled.div`
 	display:flex;
 	justify-content: center;

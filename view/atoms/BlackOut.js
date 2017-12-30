@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export default styled.div`
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    ${props => props.height ? `height: ${props.height};` : 'height: 100vh'}
+    ${props => props.minHeight ? `min-height: ${props.minHeight};` : null}
     background-color: rgba(0,0,0,0.7);
     top: 0;
     left: 0;
@@ -12,4 +13,5 @@ export default styled.div`
     display: ${props => props.display ? 'flex':'none'};
     justify-content: center;
     align-items: center;
+    overflow-x: scroll;
 `
