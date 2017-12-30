@@ -19,12 +19,12 @@ const buttonJson = status => [
 	},
 	{
 		name:'Sent',
-		background: status==='sent'? color.success : color.disabled,
+		background: status==='sent'? color.primary : color.disabled,
 		value: 'sent'
 	},
 	{
 		name:'Delivered',
-		background: status==='delivered'? color.primary : color.disabled,
+		background: status==='delivered'? color.success : color.disabled,
 		value: 'delivered'
 	},
 	{
@@ -39,10 +39,10 @@ const colorStatus = (status, current) => {
 			return color.warning
 		}
 		else if (current ==='sent'){
-			return color.success
+			return color.primary
 		}
 		else if (current ==='delivered'){
-			return color.primary
+			return color.success
 		}
 	}
 	else return color.disabled
@@ -59,7 +59,6 @@ export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 			{button.name === 'View'
 			?<Modal
 			height='null'
-			minWidth='820px'
 			minHeight='100vh'
 			padding="0px"
 				context={
@@ -79,18 +78,20 @@ export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 								<H5 color="black" left>{transactionInfo.Address2}</H5>
 								<H5 color="black" left>{transactionInfo.Province} {transactionInfo.PostalCode} </H5>
 								<Button color="orange"><H1 color="white">พิมพ์</H1></Button>
+								<H1 color="black" left padding="0" margin="0">สถานะ:</H1>
 								<Flex direction="inherit" wrap="nowrap">
-									<H1 color="black" left>สถานะ:</H1>
 									<Table textAlign="center" marginTop="10px">
-										<tr>
-											<Button minWidth="200px" background={colorStatus(status,'pending')} >รอดำเนินการ</Button>
-										</tr>
-										<tr>
-											<Button minWidth="200px" background={colorStatus(status,'sent')} >จัดส่งแล้ว</Button>
-										</tr>
-										<tr>
-											<Button  minWidth="200px" background={colorStatus(status,'delivered')} >ยกเลิก</Button>
-										</tr>
+										<tbody>
+											<tr>
+												<Button minWidth="110px" background={colorStatus(status,'pending')} >รอดำเนินการ</Button>
+											</tr>
+											<tr>
+												<Button minWidth="110px" background={colorStatus(status,'sent')} >จัดส่งแล้ว</Button>
+											</tr>
+											<tr>
+												<Button  minWidth="110px" background={colorStatus(status,'delivered')} >สำเร็จ</Button>
+											</tr>
+										</tbody>
 									</Table>
 								</Flex>
 							</Wrapper>

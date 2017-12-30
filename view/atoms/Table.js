@@ -8,6 +8,7 @@ export default styled.table `
 	border-spacing: 0;
 	border-collapse: collapse;
 	width: 100%;
+	table-layout: fixed;
 	th {
 		background: #89C4F4;
 		padding: 10px;
