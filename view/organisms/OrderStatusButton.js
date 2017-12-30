@@ -51,7 +51,8 @@ export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 	<div>
 		{buttonJson(status).map(button=>
 			<Button fixedSize small background={button.background}
-			 	minWidth="40px" 
+				minWidth="93px" 
+				
 				onClick={()=>setOrderStatus
 				?setOrderStatus(orderId, button.value)
 				:null}

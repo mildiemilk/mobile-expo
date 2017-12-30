@@ -16,7 +16,7 @@ export default styled.table `
 	}
 	td{
 		background: #e7f3fc;
-		padding: 10px;
+		padding: 0px 0px 10px;
 		width: 8vw;
 		min-width: 70px;
 	}
