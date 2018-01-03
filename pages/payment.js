@@ -5,7 +5,7 @@ import store from '../lib/store'
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import { createPayment, savePaymentImage } from '../lib/handlers/payment'
 import { addProductTransaction } from '../lib/actions/transaction'
-import { calculateComission } from '../lib/handlers/transaction'
+import { calculateComission, addPayment } from '../lib/handlers/transaction'
 import { validateCreditCard } from '../lib/helpers/formvalidation'
 
 class Payment extends React.Component{
@@ -38,6 +38,7 @@ class Payment extends React.Component{
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
 				validateCreditCard={validateCreditCard}
+				addPayment={addPayment}
 			/>
 	}
 }

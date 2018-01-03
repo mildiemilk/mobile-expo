@@ -8,7 +8,7 @@ import DropZone from '../atoms/Dropzone'
 
 const accountNumberFormat = accountNumber => `${accountNumber.slice(0,3)}-${accountNumber.slice(3,4)}-${accountNumber.slice(4,9)}-${accountNumber.slice(9,10)}`
 
-export default ({backgroundImage, accountNumber, accountName, bankName, savePaymentImage}) =>
+export default ({backgroundImage, accountNumber, accountName, bankName, bankNameEng, savePaymentImage, addPayment}) =>
 <Wrapper 
     backgroundImage={backgroundImage}
     maxWidth="530px"
@@ -23,6 +23,6 @@ export default ({backgroundImage, accountNumber, accountName, bankName, savePaym
     <H1 color="white" textShadow="2px 2px 2px rgba(0, 0, 0, 0.5)">เลขบัญชี: {accountNumberFormat(accountNumber)}</H1>
     <H3 color="white">ชื่อ {accountName}</H3>
     <Modal context={<DropZone onDrop={savePaymentImage}><Image src='/static/img/bankTransfer.svg'/></DropZone>}>
-        <Button background="none" textColor="white" round border="2px solid white" hoverBg="black">ส่งหลักฐานการโอน</Button>
+        <Button background="none" textColor="white" round border="2px solid white" hoverBg="black" onClick={() => addPayment('bankTransfer', bankNameEng)}>ส่งหลักฐานการโอน</Button>
     </Modal>
 </Wrapper>
