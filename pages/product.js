@@ -6,7 +6,7 @@ import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
-import { addProductDetail, addSponsorId} from '../lib/actions/transaction'
+import { addProductDetail, addSponsorId, addProductTransaction} from '../lib/actions/transaction'
 
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
@@ -23,10 +23,12 @@ class Product extends React.Component{
 	}
 
 	render(){
-		const { product, url, minusQuantity, addQuantity, cart } = this.props
+		const { product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
 		return( <ProductView 
 			product={product} 
-			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 0 }/>)
+			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 0 }
+			addProductTransaction={addProductTransaction}
+			/>)
 	}
 }
 
@@ -40,6 +42,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
 	addProductDetail,
 	addSponsorId,
+	addProductTransaction,
 	addQuantity,
 	minusQuantity,
 	setSeller

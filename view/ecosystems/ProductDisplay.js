@@ -3,7 +3,7 @@ import DisplayImages from '../organisms/DisplayImages'
 import DisplayProductText from '../organisms/DisplayProductText'
 import { addQuantity } from '../../lib/handlers/cart';
 
-export default ({images, product, productQuantity, productUid, addQuantity, minusQuantity}) =>
+export default ({images, product, productQuantity, productUid, addQuantity, minusQuantity, addProductTransaction}) =>
 <Flex direction='row'>
     <DisplayImages images={images}/>
     <DisplayProductText 
@@ -14,5 +14,6 @@ export default ({images, product, productQuantity, productUid, addQuantity, minu
         addQuantity={addQuantity} 
         productUid={productUid} 
         productQuantity={productQuantity}
+        addProductTransaction={addProductTransaction}
     />
 </Flex>
