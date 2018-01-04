@@ -6,7 +6,7 @@ import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
-import { addProductDetail, addSponsorId} from '../lib/actions/transaction'
+import { addProductDetail, addSponsorId, addSellerId, addProductId } from '../lib/actions/transaction'
 import { addProductTransaction } from '../lib/handlers/transaction'
 
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
@@ -14,6 +14,7 @@ const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 class Product extends React.Component{
 	async componentDidMount() {
 		this.props.addSponsorId(this.props.url.query.userID)
+		this.props.addProductId(this.props.url.query.productID)
 		getProductFromID(this.props.url.query.productID)
 	}
 
@@ -21,6 +22,7 @@ class Product extends React.Component{
 		const {productName, comissionCash, comissionPc, price, userUid} = this.props.product
 
 		nextProps.product !== this.props.product ? await getUserProducts( nextProps.product.userUid ) : null
+		nextProps.product.userUid !== userUid ? this.props.addSellerId(nextProps.product.userUid) : null
 	}
 
 	render(){
@@ -46,7 +48,9 @@ const mapDispatchToProps = {
 	addProductTransaction,
 	addQuantity,
 	minusQuantity,
-	setSeller
+	setSeller,
+	addSellerId,
+	addProductId
 }
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Product)
