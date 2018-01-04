@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Table from '../atoms/Table'
 import Button from '../atoms/Button'
 import Head from './DefaultHead'
@@ -43,5 +42,5 @@ export default ({cart = {}, products={}, total=0, saveAddress, addDeliveryDetail
     </tbody>
   </Table>	
   <AddressForm/>
-  <Link href='/payment'><Button onClick={addDeliveryDetail}>proceed to payment</Button></Link>
+  <Button onClick={addDeliveryDetail}>proceed to payment</Button>
 </div>

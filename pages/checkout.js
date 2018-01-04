@@ -4,7 +4,7 @@ import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import { setTotal } from '../lib/actions/payment'
-import { addDeliveryDetail } from '../lib/actions/transaction'
+import { addDeliveryDetail } from '../lib/handlers/transaction'
 
 class Checkout extends React.Component{
 

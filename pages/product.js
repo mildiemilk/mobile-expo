@@ -6,7 +6,8 @@ import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
-import { addProductDetail, addSponsorId, addProductTransaction} from '../lib/actions/transaction'
+import { addProductDetail, addSponsorId} from '../lib/actions/transaction'
+import { addProductTransaction } from '../lib/handlers/transaction'
 
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
