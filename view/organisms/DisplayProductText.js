@@ -5,7 +5,7 @@ import H5 from '../atoms/H5'
 import Button from '../atoms/Button'
 import AddToCart from '../organisms/AddToCart'
 
-export default ({productName, shopName, price, minusQuantity, addQuantity, productUid, productQuantity, addProductTransaction}) =>
+export default ({productName, shopName, price, minusQuantity, addQuantity, productUid, productQuantity, addProductTransaction, sellerId}) =>
 <Wrapper flexGrow>
     <H1>{productName}</H1>
     <H3>{shopName}</H3>
@@ -13,6 +13,7 @@ export default ({productName, shopName, price, minusQuantity, addQuantity, produ
     <AddToCart
         minusQuantity = {minusQuantity}
         addQuantity = {addQuantity}
+        sellerId={sellerId}
         productUid = {productUid}
         productQuantity = {productQuantity}
         addProductTransaction={addProductTransaction}

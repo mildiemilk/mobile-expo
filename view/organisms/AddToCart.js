@@ -16,8 +16,8 @@ flex-flow: column nowrap;
 	width: 100vw;
 }
 `
-export default ({minusQuantity, addQuantity, productUid, productQuantity, addProductTransaction}) => 
+export default ({minusQuantity, addQuantity, productUid, productQuantity, addProductTransaction, sellerId}) => 
 <CheckoutWrap>
 <AddItem onClickMinus={minusQuantity} onClickAdd={addQuantity} productUid={productUid} productQuantity={productQuantity}/>
-<Button onClick={()=>addProductTransaction({productQuantity, productUid})} color='orange'>สั่งเลย</Button>
+<Button onClick={()=>addProductTransaction({productQuantity, productUid, sellerId})} color='orange'>สั่งเลย</Button>
 </CheckoutWrap>

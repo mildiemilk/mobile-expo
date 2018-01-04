@@ -16,12 +16,12 @@ class Payment extends React.Component{
 				let quantity = cart.quantityById[id]
 				let price = product.price
 				let comission = calculateComission(price, product.comissionCash, product.comissionPercent)
-				addProductTransaction({
-					quantity,
-					sellerUid:product.userUid,
-					buyerUid:user.uid,
-					productId:id
-				})
+				// addProductTransaction({
+				// 	quantity,
+				// 	sellerUid:product.userUid,
+				// 	buyerUid:user.uid,
+				// 	productId:id
+				// })
 			});
 		} 
 

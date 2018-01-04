@@ -10,6 +10,7 @@ export default ({images, product, productQuantity, productUid, addQuantity, minu
         productName={product.productName} 
         shopName={product.brandName} 
         price={product.price}
+        sellerId={product.userUid}
         minusQuantity={minusQuantity} 
         addQuantity={addQuantity} 
         productUid={productUid} 
