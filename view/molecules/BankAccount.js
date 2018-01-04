@@ -33,7 +33,6 @@ export default ({backgroundImage, accountNumber, accountName, bankName, bankName
 						</Grid.Column>
 						<Grid.Column>
 							<img alt="" src={imageUpload}  />
-							{imageUpload?<Link href="/"><Button>Upload</Button></Link>:null}
 						</Grid.Column>
 					</Grid.Row>
 				</Grid>
