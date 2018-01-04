@@ -34,11 +34,13 @@ class Payment extends React.Component{
 			expiryYear:'2019'
 		}
 		const {cardDetail, total, transaction, validateCreditCard} = this.props
+		console.log('tran', transaction);
 		return <PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
 				validateCreditCard={validateCreditCard}
 				addPayment={addPayment}
+				imageUpload={transaction.payment.paymentDetail}
 			/>
 	}
 }
