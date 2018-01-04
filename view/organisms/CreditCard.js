@@ -37,7 +37,7 @@ export default props =>
 				<td><Cvv name="cvv"/></td>
 			</tr>
 			<tr>
-				<td><Button disabled={!props.validateCreditCard} buttonDisabled={!props.validateCreditCard}>จ่ายเลย</Button></td>
+				<td><Button disabled={!props.validateCreditCard} buttonDisabled={!props.validateCreditCard} onClick={props.onCheckOut}>จ่ายเลย</Button></td>
 			</tr>
 		</tbody>
 	</table>
