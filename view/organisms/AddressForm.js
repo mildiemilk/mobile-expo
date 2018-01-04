@@ -11,7 +11,7 @@ export default () =>
     <InputText label="อีเมล" placeholder="อีเมล" name="email" maxWidth="120px" width="166px" />
     <InputText label="เบอร์" placeholder="xxx-xxx-xxxx" name="phoneNumber" maxWidth="120px" width="166px" />
     <InputText label="ที่อยู่1" placeholder="11/111" maxWidth="100px" name="address1"/>
-    <InputText label="ที่อยู่2" placeholder="เย็นอากาศ" maxWidth="100px" name="address2"/>    
+    <InputText label="ที่อยู่2" placeholder="เย็นอากาศ" maxWidth="100px" name="address2" value=" "/>    
     <InputText label="จังหวัด" placeholder="จังหวัด" name="province" maxWidth="300px"/>    
     <InputText label="รหัสไปรษณีย์"  placeholder="รหัสไปรษณีย์" name="postalCode" maxWidth="50px"/>
     </Flex>
