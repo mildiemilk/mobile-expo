@@ -17,6 +17,7 @@ class Product extends React.Component{
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		this.props.addSponsorId(this.props.url.query.userID)
 		this.props.addProductId(this.props.url.query.productID)
+		this.props.addQuantity(this.props.url.query.productID)
 		getProductFromID(this.props.url.query.productID)
 	}
 
