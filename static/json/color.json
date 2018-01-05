@@ -1,9 +1,12 @@
 {
-	"primary1":"#4AD9DF",
+	"primary1":"#A8D0E6",
 	"lightPrimary": "white",
-	"contrastPrimary": "#FF8700",
-	"darkText": "#379FA4",
-	"warning": "#f2af00",
+	"contrastPrimary": "#374785",
+	"darkText": "#24305E",
+	"warning": "#F79E02",
+	"error":"#F76C6C",
+	"contrast":"#F76C6C",
 	"success": "#00ba4c",
-	"disabled": "#C4BCB7"
+	"disabled": "#C4BCB7",
+	"gray": "#ced0da"
 }

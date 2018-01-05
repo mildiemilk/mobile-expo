@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
-// import AddImg from '../../static/img/addimg.svg'
+import AddImg from '../../static/img/addimg.svg'
 import Button from '../../view/atoms/Button'
 import Dropzone from '../../view/atoms/Dropzone'
 import Input from '../../view/atoms/TextField'
@@ -16,9 +16,14 @@ import H3 from '../../view/atoms/H3'
 import H5 from '../../view/atoms/H5'
 import ExpandTab from '../../view/atoms/ExpandTab'
 import BlackOut from '../../view/atoms/BlackOut'
+import Wrapper from '../../view/atoms/Wrapper'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
+
+storiesOf('Wrapper', module)
+	.add('default', ()=><Wrapper/>)
+	.add('width square', ()=><Wrapper><div style={{width:'100px', height:'100px', background:'black'}}></div></Wrapper>)
 
 storiesOf('Headers', module)
 	.add('H1 H3 H5', () => (
@@ -136,10 +141,10 @@ storiesOf('SquareWrapper', module)
 </div>
 )
 
-// storiesOf('SVG', module)
-// .add('svg', () =>   <div className='container' style={{width:'600px'}}>
-// <AddImg />
-// </div>)
+storiesOf('SVG', module)
+.add('svg', () =>   <div className='container' style={{width:'600px'}}>
+<AddImg />
+</div>)
 
 storiesOf('Label', module)
 .add('label', ()=> 

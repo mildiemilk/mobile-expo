@@ -9,28 +9,26 @@ const Input = styled.input`
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+border: 1px solid ${color.disabled};
 color:${color.darkText};
-border: none;
 width: -webkit-fill-available;
 margin: 10px;
 padding: 5px;
 outline: none;
 border-radius: 3px;
 background-color: #ffffff;
-box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.33);
 ${props => props.fontSize? `font-size:${props.fontSize};` : null}
 ${props => props.width? `width:${props.width};` : null}
 ${props => props.maxWidth? `max-width:${props.maxWidth};`:null}
 ${props => props.flexGrow? `flexgrow:1;`:null}
 &:focus{
-	transition:0.5s;
-	box-shadow:inset -1px -1px 1px 1px 	rgba(0, 0, 0, 0.33);
+	border: 1px solid ${color.primary1};
 }
 &:not:focus{
 	padding-top:2px;
 }
 &::placeholder {
-	color: #e4e4e4;
+	color: #e6e6e6;
 }
 `
 

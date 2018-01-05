@@ -13,23 +13,23 @@ import color from "../../static/json/color.json"
 
 const buttonJson = status => [
 	{
-		name:'Pending',
+		name:'รอส่ง',
 		background: status==='pending'? color.warning : color.disabled,
 		value: 'pending'
 	},
 	{
-		name:'Sent',
+		name:'ส่งแล้ว',
 		background: status==='sent'? color.primary : color.disabled,
 		value: 'sent'
 	},
 	{
-		name:'Delivered',
-		background: status==='delivered'? color.success : color.disabled,
-		value: 'delivered'
+		name:'รับแล้ว',
+		background: status==='received'? color.success : color.disabled,
+		value: 'received'
 	},
 	{
-		name:'View',
-		background: color.primary1,
+		name:'ดู',
+		background: color.darkText,
 		value:'view'
 	}
 ]
@@ -41,7 +41,7 @@ const colorStatus = (status, current) => {
 		else if (current ==='sent'){
 			return color.primary
 		}
-		else if (current ==='delivered'){
+		else if (current ==='received'){
 			return color.success
 		}
 	}
@@ -57,7 +57,7 @@ export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 				?setOrderStatus(orderId, button.value)
 				:null}
 			>
-			{button.name === 'View'
+			{button.value === 'view'
 			?<Modal
 			height='null'
 			minHeight='100vh'
@@ -90,7 +90,7 @@ export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 												<Button minWidth="110px" background={colorStatus(status,'sent')} >จัดส่งแล้ว</Button>
 											</tr>
 											<tr>
-												<Button  minWidth="110px" background={colorStatus(status,'delivered')} >สำเร็จ</Button>
+												<Button  minWidth="110px" background={colorStatus(status,'received')} >ได้รับแล้ว</Button>
 											</tr>
 										</tbody>
 									</Table>

@@ -13,7 +13,7 @@ export const orders = [
 		productName:"cereal",
 		price: 1430,
 		quantity:3,
-		status: "delivered",
+		status: "received",
 		date:"2017-10-10 00:00:00",
         address:"149/18, chongnontri, yanawa, 10120, bkk, thailand"
 	},
