@@ -16,12 +16,6 @@ class Payment extends React.Component{
 				let quantity = cart.quantityById[id]
 				let price = product.price
 				let comission = calculateComission(price, product.comissionCash, product.comissionPercent)
-				// addProductTransaction({
-				// 	quantity,
-				// 	sellerUid:product.userUid,
-				// 	buyerUid:user.uid,
-				// 	productId:id
-				// })
 			});
 		} 
 
@@ -34,7 +28,6 @@ class Payment extends React.Component{
 			expiryYear:'2019'
 		}
 		const {cardDetail, total, transaction, validateCreditCard} = this.props
-		console.log('tran', transaction);
 		return <PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
