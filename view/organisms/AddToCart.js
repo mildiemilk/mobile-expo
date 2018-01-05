@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import AddItem from '../molecules/AddItem'
-import Link from 'next/link'
+import Router from 'next/link'
 import Button from '../atoms/Button'
 
 const CheckoutWrap = styled.div`
@@ -16,8 +16,8 @@ flex-flow: column nowrap;
 	width: 100vw;
 }
 `
-export default ({minusQuantity, addQuantity, productUid, productQuantity}) => 
+export default ({minusQuantity, addQuantity, productUid, productQuantity, addProductTransaction, sellerId}) => 
 <CheckoutWrap>
 <AddItem onClickMinus={minusQuantity} onClickAdd={addQuantity} productUid={productUid} productQuantity={productQuantity}/>
-<Link href='/checkout'><Button color='orange'>สั่งเลย</Button></Link>
+<Button onClick={()=>addProductTransaction({productQuantity, productUid, sellerId})} color='orange'>สั่งเลย</Button>
 </CheckoutWrap>

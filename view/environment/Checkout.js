@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Table from '../atoms/Table'
 import Button from '../atoms/Button'
 import Head from './DefaultHead'

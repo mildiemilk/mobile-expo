@@ -6,27 +6,36 @@ import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
-import { addProductDetail, addSponsorId} from '../lib/actions/transaction'
+import { addProductDetail, addSponsorId, addSellerId, addProductId, addBuyerId } from '../lib/actions/transaction'
+import { addProductTransaction } from '../lib/handlers/transaction'
 
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
 	async componentDidMount() {
+		const auth = await loadFirebase('auth')
+		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		this.props.addSponsorId(this.props.url.query.userID)
+		this.props.addProductId(this.props.url.query.productID)
 		getProductFromID(this.props.url.query.productID)
 	}
 
 	async componentWillReceiveProps(nextProps) {
 		const {productName, comissionCash, comissionPc, price, userUid} = this.props.product
+		const {uid} = this.props.user
 
 		nextProps.product !== this.props.product ? await getUserProducts( nextProps.product.userUid ) : null
+		nextProps.product.userUid !== userUid ? this.props.addSellerId(nextProps.product.userUid) : null
+		nextProps.user.uid !== uid ? this.props.addBuyerId(nextProps.user.uid) : null
 	}
 
 	render(){
-		const { product, url, minusQuantity, addQuantity, cart } = this.props
+		const { product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
 		return( <ProductView 
 			product={product} 
-			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 0 }/>)
+			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 1 }
+			addProductTransaction={addProductTransaction}
+			/>)
 	}
 }
 
@@ -40,9 +49,14 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
 	addProductDetail,
 	addSponsorId,
+	addProductTransaction,
 	addQuantity,
 	minusQuantity,
-	setSeller
+	setSeller,
+	addSellerId,
+	addProductId,
+	addBuyerId,
+	saveUser
 }
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Product)
