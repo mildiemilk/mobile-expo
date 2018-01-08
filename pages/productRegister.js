@@ -39,7 +39,6 @@ class ProductRegister extends Component{
 			comissionPercent,
 			comissionCash,
 			userUid,
-			setProductImage,
 			userEmail,
 			productImages,
 			shortDescription
@@ -108,11 +107,9 @@ const mapStateToProps = state => ({
 	productImages: state.product.productImages
 })
 
-const mapDispatchToProps = dispatch =>
-	bindActionCreators({
+const mapDispatchToProps = {
 		addProductDescription: addProductDescription,
-		saveUser: saveUser,
-		setProductImage: setProductImage
-	}, dispatch)
+		saveUser: saveUser
+	}
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(ProductRegister)

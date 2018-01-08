@@ -11,13 +11,14 @@ export default styled.table `
 	table-layout: fixed;
 	th {
 		background: ${color.contrastPrimary};
-		color: ${color.gray};
+		color: ${color.white};
 		padding: 10px;
 	
 	}
 	td{
 		background: ${color.primary1};
 		padding: 0px 0px 10px;
+		color: ${color.white};
 		width: 8vw;
 		min-width: 70px;
 	}

@@ -1,5 +1,5 @@
 {
-	"primary1":"#A8D0E6",
+	"primary1":"#333333",
 	"lightPrimary": "white",
 	"contrastPrimary": "#374785",
 	"darkText": "#24305E",
@@ -8,5 +8,6 @@
 	"contrast":"#F76C6C",
 	"success": "#00ba4c",
 	"disabled": "#C4BCB7",
-	"gray": "#ced0da"
+	"gray": "#ced0da",
+	"white": "white"
 }
