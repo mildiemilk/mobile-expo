@@ -22,7 +22,9 @@ class Multitab extends React.Component {
 						{
 							this.props.tabs.map( 
 								(tab, index) =>
-									<Button key={index} margin='1px' onClick={()=>this.changeDisplay(index)}>{tab.buttonLabal}{index}</Button>
+									<Button key={index} margin='1px' buttonDisabled={index === this.state.display ? false:true} onClick={()=>this.changeDisplay(index)}>			
+										{tab.buttonLabal}
+									</Button>
 							)
 						}
 					</ButtonGroup>
