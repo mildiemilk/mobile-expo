@@ -9,8 +9,19 @@ class Admin extends React.Component{
 	}
 
 	render() {
+		const disputeTransaction = {
+			userUid: '',
+			amount: 0,
+			bankAccountNumber: '',
+			bankName: '',
+			DateAndTime: ''
+		}
 		return(
-			<div> Admin Page </div>
+			<div>
+				<div> Admin Page </div>
+				<h1>Transaction Table </h1>
+				<h1>Dispute Transactions</h1>
+			</div>
 		)
 	}
 }
