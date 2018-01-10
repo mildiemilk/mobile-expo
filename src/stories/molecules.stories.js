@@ -6,7 +6,6 @@ import ImageDisplay from '../../view/molecules/ImageDisplay'
 import InputWithLabel from '../../view/molecules/InputWithLabel'
 import AddStocksButton from '../../view/molecules/AddStocksButton'
 import AddStocksInput from '../../view/molecules/AddStocksInput'
-import OrderTable from '../../view/molecules/OrderTable'
 import BalancePanel from '../../view/molecules/BalancePanel'
 import StarRating from '../../view/molecules/StarRating'
 import ContactInformation from '../../view/molecules/ContactInformation'
@@ -18,11 +17,30 @@ import CreditCardMonth from '../../view/molecules/CreditCardMonth'
 import CreditCardYear from '../../view/molecules/CreditCardYear'
 import BankAccount from '../../view/molecules/BankAccount'
 import CvvInput from '../../view/molecules/CvvInput'
+import MultiTab from '../../view/molecules/Multitab'
 import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
 
+storiesOf('MultiTab', module)
+.add('default', ()=> <MultiTab/>)
+.add('1Tab', ()=> <MultiTab tabs={[
+	{
+		buttonLabal: 'hello',
+		component: <div style={{backgroundColor: 'salmon', height:'300px', width:'300px'}}>hello</div>
+	}
+]}/>)
+	.add('2Tab', ()=> <MultiTab tabs={[
+		{
+			buttonLabal: 'hello',
+			component: <div style={{backgroundColor: 'salmon', height:'300px', width:'300px'}}>hello</div>
+		},
+		{
+			buttonLabal: 'hello2',
+			component: <div style={{backgroundColor: 'blue', height:'300px', width:'300px'}}>hello2</div>
+		}
+	]}/>)
 
 storiesOf('MainImage', module)
 .add('mainImage no image set', ()=> (
