@@ -41,12 +41,14 @@ class ProductRegister extends Component{
 			userUid,
 			userEmail,
 			productImages,
-			shortDescription
+			shortDescription,
+			nextDescription
 		} = this.props
 		const productID =  this.props.url.query.productID
 		let comissionWithinLimit = parseInt(price) * 0.7 > parseInt(price) * parseInt(comissionPercent || 0) / 100 + parseInt(comissionCash || 0)
 
 		return (<ProductForm 
+			nextDescription={nextDescription}
 			productDescription={productDescription} 
 			brandName={brandName}
 			addProductDescription={addProductDescription} 
@@ -102,6 +104,7 @@ const mapStateToProps = state => ({
 	comissionCash: selector(state, 'comissionCash'),
 	productDescription: selector(state,'productDescription'),
 	shortDescription: selector(state,'shortDescription'),
+	nextDescription: selector(state, 'nextDescription'),
 	userUid: state.user.uid,
 	userEmail: state.user.email,
 	productImages: state.product.productImages

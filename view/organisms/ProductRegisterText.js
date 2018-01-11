@@ -2,7 +2,7 @@ import Wrapper from '../atoms/Wrapper'
 import Input from '../molecules/InputWithLabel'
 
 export default () => 
-<Wrapper bigScreenWidth="100%">
+<div style={{marginTop:'10px'}}>
     <Input name="productName" placeholder="iPhone 8 สีแดง 64GB">
         ชื่อสินค้า
     </Input>
@@ -15,4 +15,4 @@ export default () =>
     <Input name="stock" placeholder="100">
         จำนวนสต๊อก
     </Input>
-</Wrapper>
+</div>

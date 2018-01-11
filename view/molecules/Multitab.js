@@ -15,7 +15,7 @@ class Multitab extends React.Component {
 
 	render(){
 		return(
-			<Wrapper width='max-content' bigScreenWidth='max-content'>
+			<Wrapper width='max-content' bigScreenWidth='max-content' minWidth='320px'>
 			{this.props.tabs?
 				<Flex center verticleCenter >
 					<ButtonGroup>
