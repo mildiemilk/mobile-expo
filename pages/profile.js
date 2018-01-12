@@ -15,13 +15,7 @@ import { setOrderStatus } from '../lib/handlers/transaction'
 
 
 class Profile extends Component {
-	constructor(props){
-		super(props)
-		this.state = {
-			table: []
-		}
-	}
-	
+
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		const user = await auth.onAuthStateChanged( user => {
@@ -42,29 +36,11 @@ class Profile extends Component {
 				getTable(this.props.profile.transactionIds)
 			}
 		}
-		// if(JSON.stringify(profile) !== JSON.stringify(nextProps.profile) ){
-		// 		getTable(profile.transactionIds)
-		// 		console.log('willRecieve===>', nextProps.profile)
-		// }
-		// console.log('New', nextProps.table)
-		const {table} = this.state
-		if(nextProps.table !== undefined && nextProps.table.length>=1) {
-			if(table.length<1){
-				this.setState({table: nextProps.table})
-			}
-			else if(nextProps.table.length>=1){
-				const A = table?table.filter(item => nextProps.table.map(e => e.status !== item.status).indexOf(true) !== -1):null
-				console.log('A props', A, nextProps.table, table)
-				if(A) {
-					this.setState({table: nextProps.table})
-				}		
-			}	
-		}
+		
 	}
 
 	render() {
-		const {user, userProducts, profile} = this.props
-		const {table} = this.state
+		const {user, userProducts, profile, table} = this.props
 
 		return <div>
 			<Head/>

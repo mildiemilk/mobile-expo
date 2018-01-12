@@ -5,7 +5,7 @@ import ItemCard from '../organisms/ItemCard'
 import UserProfile from '../organisms/UserProfile'
 
 export default ({user, userProducts, setProductStock}) => <div>
-	<UserProfile name={user.name} shop={user.shop} email={user.email} />
+
 	<Flex>
 		{ userProducts ? 
 			Object.keys(userProducts).map( userProductKey => {
