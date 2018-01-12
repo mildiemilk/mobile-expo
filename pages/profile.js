@@ -5,8 +5,6 @@ import Header from '../view/environment/Header'
 import store from '../lib/store'
 import withRedux from "next-redux-wrapper"
 import ProfileView from '../view/environment/Profile'
-import ProfileTable from '../view/environment/ProfileTable'
-import ProfileDetail from '../view/environment/ProfileDetail'
 import { getUserProducts, setProductStock } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
@@ -45,30 +43,21 @@ class Profile extends Component {
 		return <div>
 			<Head/>
 			<Header/>
-			<Grid>
-				<Grid.Column width={4}>
-					<ProfileDetail
-						user={profile}
-					/>
-				</Grid.Column>
-				<Grid.Column width={10}>
-					<ProfileTable
-						table={table}
-						userUid={user.uid}
-						setOrderStatus={setOrderStatus}
-					/>
-					<ProfileView 
-						user={user} 
-						userProducts={userProducts} 
-						setProductStock={setProductStock}/>
-				</Grid.Column>
-			</Grid>
+				<ProfileView
+					profile={profile}
+					setOrderStatus={setOrderStatus}
+					userUid={user.uid} 
+					table={table}
+					user={user} 
+					userProducts={userProducts} 
+					setProductStock={setProductStock}
+				/>
 			</div>
 	}
 }  
 
 const mapStateToProps = state => ({
-	user : state.user,
+	user: state.user,
 	userProducts: state.userProducts,
 	profile: state.profile,
 	table: state.profile.transactionIds,
@@ -76,7 +65,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
 	saveUser,
-	saveUserPending,
+	saveUserPending
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)
