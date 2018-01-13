@@ -1,15 +1,23 @@
 import { Grid } from 'semantic-ui-react'
-import Head from './DefaultHead'
-import Header from './Header'
 import AddProduct from '../organisms/AddProduct'
 import Flex from '../atoms/Flex'
 import ItemCard from '../organisms/ItemCard'
 import UserProfile from '../organisms/UserProfile'
+import ProfileTable from '../environment/ProfileTable'
+import ProfileDetail from '../environment/ProfileDetail'
 
-export default ({user, userProducts, setProductStock}) => <div>
-	<Head/>
-	<Header/>
-	<UserProfile name={user.name} shop={user.shop} email={user.email} />
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile}) =><Grid>
+	<Grid.Column width={4}>
+		<ProfileDetail
+			profile={profile}
+		/>
+	</Grid.Column>
+	<Grid.Column width={10}>
+		<ProfileTable
+			table={table}
+			userUid={user.uid}
+			setOrderStatus={setOrderStatus}
+		/>
 	<Flex>
 		{ userProducts ? 
 			Object.keys(userProducts).map( userProductKey => {
@@ -24,4 +32,6 @@ export default ({user, userProducts, setProductStock}) => <div>
 			}
 			<AddProduct/>
 	</Flex>
-</div>
+	</Grid.Column>
+	</Grid>
+
