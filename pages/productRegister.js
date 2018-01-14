@@ -37,9 +37,10 @@ class ProductRegister extends Component {
             userUid,
             userEmail,
             productImages,
-            shortDescription
+            shortDescription,
+            stock
         } = this.props
-        const productID = this.props.url.query.productID
+        const productID = this.props.url.query.productID || ''
         let comissionWithinLimit =
             parseInt(price) * 0.7 >
             parseInt(price) * parseInt(comissionPercent || 0) / 100 + parseInt(comissionCash || 0)
@@ -57,6 +58,7 @@ class ProductRegister extends Component {
                 comissionCash={comissionCash}
                 comissionPercent={comissionPercent}
                 comissionWithinLimit={comissionWithinLimit}
+                stock={stock}
                 handleSubmit={() =>
                     productID === ''
                         ? registerProduct({
@@ -69,7 +71,8 @@ class ProductRegister extends Component {
                               comissionCash,
                               productDescription,
                               productImages,
-                              shortDescription
+                              shortDescription,
+                              stock
                           })
                         : updateProduct(productID, {
                               productName,
@@ -104,6 +107,7 @@ const mapStateToProps = state => ({
     comissionCash: selector(state, 'comissionCash'),
     productDescription: selector(state, 'productDescription'),
     shortDescription: selector(state, 'shortDescription'),
+    stock: selector(state, 'stock'),
     userUid: state.user.uid,
     userEmail: state.user.email,
     productImages: state.productImages
