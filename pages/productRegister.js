@@ -84,7 +84,8 @@ class ProductRegister extends Component {
                               comissionCash,
                               productDescription,
                               productImages,
-                              shortDescription
+                              shortDescription,
+                              stock
                           })
                 }
             />
@@ -93,7 +94,8 @@ class ProductRegister extends Component {
 }
 
 ProductRegister = reduxForm({
-    form: 'product'
+    form: 'product',
+    enableReinitialize: true
 })(ProductRegister)
 
 const selector = formValueSelector('product')
