@@ -8,6 +8,7 @@ import Wrapper from '../atoms/Wrapper'
 import AddStock from '../molecules/AddStocksButton'
 import Button, { ButtonGroup } from '../atoms/Button'
 import color from '../../static/json/color.json'
+import FacebookProvider, { Share } from 'react-facebook'
 
 const copyLink = (productKey, userUid)=>{
 	copy(`${window.location.hostname}${window.location.port?`:${window.location.port}`:null}/p/${productKey}/${userUid}`)
@@ -49,8 +50,13 @@ return(
 				:null
 				}
 				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}><Button background="none" textColor={color.darkText} basic color='#45B39D'>Preview</Button></Link>
-				<Button background="none" basic color='teal' onClick={()=>copyLink(productKey, userUid)}  textColor={color.darkText} >GetLink</Button>
-				<Button background="none" basic color='#3f87a6'  textColor={color.darkText} >Share <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
+				<Button background="none" basic color='teal' onClick={()=>copyLink(productKey, userUid)}  textColor={color.darkText} >GetLink</Button>	
+				<FacebookProvider appId="1896997733708019"> {/* TODO: change appId to your appId */}
+        			{/* <Share href={`${window.location.hostname}${window.location.port?`:${window.location.port}`:null}/p/${productKey}/${userUid}`}> */}
+        			<Share href="www.google.com">
+						<Button background="none" basic color='#3f87a6'  textColor={color.darkText} >Share <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
+					</Share>
+      			</FacebookProvider>
 			</ButtonGroup>
 		</div>
 	</Wrapper>
