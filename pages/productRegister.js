@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { reduxForm, formValueSelector, formValues } from 'redux-form'
+import { reduxForm, formValueSelector } from 'redux-form'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import ProductForm from '../view/environment/ProductForm'
@@ -95,6 +95,7 @@ ProductRegister = reduxForm({
 
 const selector = formValueSelector('product')
 
+
 const mapStateToProps = state => ({
 	initialValues: state.product,
 	productName: selector(state, 'productName'),
@@ -111,8 +112,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-		addProductDescription: addProductDescription,
-		saveUser: saveUser
+		addProductDescription,
+		saveUser
 	}
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(ProductRegister)

@@ -1,15 +1,52 @@
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import DescriptionOption from '../molecules/DescriptionOption'
+import Dropzone from '../atoms/Dropzone'
+import saveImage from '../../lib/handlers/product'
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
-  <div>
-    <p>{label}</p>
-    <div>
-      <input {...input} type={type} placeholder={label} />
-      {touched && error && <span>{error}</span>}
-    </div>
-  </div>
-)
+
+const renderField = ({index, fields, input, type, meta: { touched, error } }) => {
+	var returnComponent
+		switch (type) {
+			case 'image':
+				returnComponent = 
+					<div>
+						<Dropzone onDrop={droppedImage=>
+							saveImage(droppedImage)
+						}>
+							<button>add image</button>	
+						</Dropzone>
+					</div>
+				break
+			case 'header':
+				returnComponent = 
+				<div>
+					<div>
+						<input {...input} type={type} placeholder='หัวข้อ' />
+						{touched && error && <span>{error}</span>}
+					</div>
+				</div>
+				break
+			case 'paragraph':
+				returnComponent = 
+				<div>
+					<div>
+						<input {...input} type={type} placeholder='ข้อความดึงดูดลูกค้า' />
+						{touched && error && <span>{error}</span>}
+					</div>
+				</div>
+				break
+			default:
+				returnComponent=
+					<div>
+						<div>
+							<input {...input} type={type} placeholder='ข้อความดึงดูดลูกค้า' />
+							{touched && error && <span>{error}</span>}
+						</div>
+					</div>
+				break
+		}
+	return returnComponent
+}
 
 
 const renderMembers = props => <div>
@@ -22,14 +59,15 @@ const renderMembers = props => <div>
 	<DescriptionOption {...props}/>
 	{
 		props.fields.map((member,index) => (
-			<div>
+			<div key={index}>
 				<div onClick={()=>props.fields.remove(index)}>delete</div>
 				<p>add member{index}</p>
-				<Field name={`${member}.context`} type="text" component={renderField} label={member.type}/>
-				<Field name={`${member}.type`} type="hidden" value={member.type} component={()=><div></div>}/>
+				<Field index={index} name={`${member}.context`} type="text" component={renderField} type={props.fields.getAll()[index].type} fields={props.fields}/>
 			</div>
 		))
 	}
 </div>
 
-export default props => <FieldArray {...props} name="productDecription" component={renderMembers}/>
+export default props =>{
+	return <FieldArray {...props} name="productDecription" component={renderMembers}/>
+} 
