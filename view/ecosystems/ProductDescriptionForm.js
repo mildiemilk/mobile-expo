@@ -1,17 +1,16 @@
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import DescriptionOption from '../molecules/DescriptionOption'
 import Dropzone from '../atoms/Dropzone'
-import saveImage from '../../lib/handlers/product'
+import { saveProductDescriptionImage } from '../../lib/handlers/product'
 
-
-const renderField = ({index, fields, input, type, meta: { touched, error } }) => {
+const renderField = ({ index, fields, input, type, meta: { touched, error } }) => {
 	var returnComponent
 		switch (type) {
 			case 'image':
 				returnComponent = 
 					<div>
 						<Dropzone onDrop={droppedImage=>
-							saveImage(droppedImage)
+							saveProductDescriptionImage(droppedImage, fields, index)
 						}>
 							<button>add image</button>	
 						</Dropzone>
@@ -50,7 +49,9 @@ const renderField = ({index, fields, input, type, meta: { touched, error } }) =>
 
 
 const renderMembers = props => <div>
-	<button onClick={() => {props.fields.push({
+	<button onClick={() => {
+		console.log('next Desc', props.nextDescription)
+		props.fields.push({
 		type:props.nextDescription,
 		context: ''
 	})}}> 
