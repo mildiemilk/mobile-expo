@@ -8,7 +8,7 @@ import Wrapper from '../atoms/Wrapper'
 import AddStock from '../molecules/AddStocksButton'
 import Button, { ButtonGroup } from '../atoms/Button'
 import color from '../../static/json/color.json'
-import FacebookProvider, { Share } from 'react-facebook';
+import FacebookProvider, { Share } from 'react-facebook'
 
 const copyLink = (productKey, userUid)=>{
 	copy(`${window.location.hostname}${window.location.port?`:${window.location.port}`:null}/p/${productKey}/${userUid}`)
