@@ -9,11 +9,12 @@ import UserProfile from '../organisms/UserProfile'
 export default ({user, userProducts, setProductStock}) => <div>
 	<Head/>
 	<Header/>
-	<UserProfile name={user.name} shop={user.shop} email={user.email} />
+	<UserProfile name={user.name} tel={user.phone} shop={user.shop} email={user.email} balance={user.wallet} userUid={user.uid} />
 	<Flex>
 		{ userProducts ? 
 			Object.keys(userProducts).map( userProductKey => {
 				return (<ItemCard 
+					key={userProductKey}
 					userProductKey={userProductKey} 
 					userUid={user.uid} 
 					userProduct={userProducts[userProductKey]} 

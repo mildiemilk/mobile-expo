@@ -10,7 +10,7 @@ export default styled.div`
     left: 0;
     z-index: 10;
     transition: 1s;
-    display: ${props => props.display ? 'flex':'none'};
+    display: ${props => props.display!==false ? 'flex':'none'};
     justify-content: center;
     align-items: center;
     overflow-x: scroll;
