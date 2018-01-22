@@ -47,14 +47,14 @@ const colorStatus = (status, current) => {
 	}
 	else return color.disabled
 }
-export default ({status, setOrderStatus, orderId, transactionInfo}) => (
+export default ({status, setOrderStatus, transactionInfo}) => (
 	<div>
 		{buttonJson(status).map(button=>
 			<Button fixedSize small background={button.background}
 				minWidth="93px" 
 				
-				onClick={()=>setOrderStatus
-				?setOrderStatus(orderId, button.value)
+				onClick={setOrderStatus
+				?()=>setOrderStatus(transactionInfo.transactionId, button.value)
 				:null}
 			>
 			{button.value === 'view'
@@ -67,17 +67,17 @@ export default ({status, setOrderStatus, orderId, transactionInfo}) => (
 						<Grid.Column>
 							<Wrapper color="black">
 							<H3 color="black" left>รายละเอียดการสั่งซื้อ</H3>
-								{<DetailTable transactionInfo={transactionInfo} />}
+								{<DetailTable transactionInfo={[transactionInfo]} />}
 						</Wrapper>
 						</Grid.Column>
 						<Grid.Column>
 							<Wrapper padding="10px 5vh">
 								<H1 color="black" left>ที่อยู่การจัดส่ง</H1>
-								<H5 color="black" left>{transactionInfo.Name}</H5>
-								<H5 color="black" left>{transactionInfo.PhoneNumber}</H5>
-								<H5 color="black" left>{transactionInfo.Address1}</H5>
-								<H5 color="black" left>{transactionInfo.Address2}</H5>
-								<H5 color="black" left>{transactionInfo.Province} {transactionInfo.PostalCode} </H5>
+								<H5 color="black" left>{transactionInfo.name}</H5>
+								<H5 color="black" left>{transactionInfo.phoneNumber}</H5>
+								<H5 color="black" left>{transactionInfo.address1}</H5>
+								<H5 color="black" left>{transactionInfo.address2}</H5>
+								<H5 color="black" left>{transactionInfo.province} {transactionInfo.postalCode} </H5>
 								<Button color="orange"><H1 color="white">พิมพ์</H1></Button>
 								<H1 color="black" left padding="0" margin="0">สถานะ:</H1>
 								<Flex direction="inherit" wrap="nowrap">

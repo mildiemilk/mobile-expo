@@ -1,13 +1,12 @@
 import OrderStatusButton from '../organisms/OrderStatusButton'
 import JsonTable from '../organisms/JsonTable'
 
-export default ({orders, setOrderStatus, transactionInfo}) => {
-	
+export default ({orders, setOrderStatus}) => {
 	var orderJsonArray = orders? orders.map( (order, key )=> ({
-		buyerName: order.buyerName,
+		buyerName: order.name,
 		productName: order.productName,
 		total: order.quantity * order.price,
-		status: <OrderStatusButton status={order.status} setOrderStatus={setOrderStatus} transactionInfo={transactionInfo}/>,
+		status: <OrderStatusButton status={order.status} setOrderStatus={setOrderStatus} transactionInfo={order}/>,
 		key: key
 	})):null
 

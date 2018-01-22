@@ -17,7 +17,7 @@ export default styled.table `
 	}
 	td{
 		background: ${color.primary1};
-		padding: 0px 0px 10px;
+		padding: 0px 0px 10px 10px;
 		color: ${color.white};
 		width: 8vw;
 		min-width: 70px;

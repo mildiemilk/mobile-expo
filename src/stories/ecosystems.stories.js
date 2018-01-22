@@ -61,4 +61,4 @@ storiesOf('CreditCardExpandButton', module)
 
 storiesOf('OrderTable', module)
         .add('default', ()=> <OrderTable />)
-        .add('with values', ()=> <OrderTable orders={orders} transactionInfo={transactionInfo}/>)
+        .add('with values', ()=> <OrderTable orders={orders}/>)

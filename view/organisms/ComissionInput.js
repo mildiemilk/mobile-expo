@@ -2,8 +2,22 @@ import Input from '../molecules/InputWithLabel'
 import Wrapper from '../atoms/Wrapper'
 import H3 from '../atoms/H3'
 
-const formatInt = value => value ? value.replace(/[^\d]/g, '') : null
-const formatPercent = value => value ? formatLessThanSeventy( value.replace(/[^\d]/g, '').slice(0,2) ): null
+const formatInt = value => {
+    if(value) {
+        if(typeof value === 'number')
+            value = value.toString()
+        return value.replace(/[^\d]/g, '')
+    }
+    else return null
+}
+const formatPercent = value => {
+    if(value) {
+        if(typeof value === 'number')
+            value = value.toString()
+        return formatLessThanSeventy( value.replace(/[^\d]/g, '').slice(0,2) )
+    }
+    else return null
+}
 const formatLessThanSeventy = value => parseInt(value) > 70? 70 :value
 
 export default ({comissionWithinLimit}) => 
