@@ -12,7 +12,7 @@ text-decoration: none;
 text-align: center;
 cursor: pointer;
 white-space: nowrap;
-flex-grow: 1;
+${props=> props.noFlexGlow? `flex-grow:inherit;`:`flex-grow: 1;`}
 ${props=> props.maxWidth? `max-width:${props.maxWidth};`:null}
 ${props=> props.minWidth? `min-width:${props.minWidth};`:null}
 ${props=> props.margin? `margin:${props.margin};`:null}

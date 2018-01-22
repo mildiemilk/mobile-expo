@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
 import { Grid } from 'semantic-ui-react'
-import Head from '../view/environment/DefaultHead'
-import Header from '../view/environment/Header'
-import store from '../lib/store'
 import withRedux from "next-redux-wrapper"
+import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
 import { getUserProducts, setProductStock } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
-import { getProfile, getTable } from '../lib/handlers/profile'
+import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
 import { setOrderStatus } from '../lib/handlers/transaction'
-
+import Head from '../view/environment/DefaultHead'
+import Header from '../view/environment/Header'
+import store from '../lib/store'
 
 class Profile extends Component {
+	
+	constructor(props){
+		super(props)
+		this.state = {
+			isEdit : false
+		}
+	}
 
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
@@ -36,14 +43,42 @@ class Profile extends Component {
 		}
 		
 	}
+	handleImageChange = e => {
+    e.preventDefault();
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    reader.onloadend = () => {
+			addProfileImage(file)
+    };
 
+    reader.readAsDataURL(file);
+  }
+	handleSave = async(detail) => {
+		const userUid = this.props.user.uid
+		const { profileImage } = this.props.profile
+		const profileDetail = {...detail, profileImage}
+		addProfileDetail(profileDetail, userUid)
+		this.setState({isEdit:false})
+		await getProfile(this.props.user.uid)
+		await getTable(this.props.profile.transactionIds)
+		
+	}
+	handleEdit = () => {
+		this.setState({isEdit:true})
+	}
 	render() {
-		const {user, userProducts, profile, table} = this.props
-
+		const {user, userProducts, profile, table, detail} = this.props
+		const {isEdit} = this.state
 		return <div>
 			<Head/>
 			<Header/>
 				<ProfileView
+					handleImageChange={this.handleImageChange}
+					profileImage={profile.profileImage}
+					handleSave={() => this.handleSave(detail)}
+					detail={detail}
+					isEdit={isEdit}
+					handleEdit={this.handleEdit}
 					profile={profile}
 					setOrderStatus={setOrderStatus}
 					userUid={user.uid} 
@@ -55,12 +90,20 @@ class Profile extends Component {
 			</div>
 	}
 }  
+Profile = reduxForm({
+	form:'profileDetail',
+	enableReinitialize: true
+})(Profile)
+
+const selector = formValueSelector('profileDetail')
 
 const mapStateToProps = state => ({
+	initialValues: state.profile,
 	user: state.user,
 	userProducts: state.userProducts,
 	profile: state.profile,
-	table: state.profile.transactionIds,
+	detail: selector(state,'address', 'email', 'phone', 'image'),
+	table: state.profile.transactionIds
 })
 
 const mapDispatchToProps = {
