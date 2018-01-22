@@ -5,6 +5,7 @@ import H3 from '../atoms/H3'
 import WhiteDiv from '../atoms/WhiteDiv'
 import BlackOut from '../atoms/BlackOut'
 import Wrapper from '../atoms/Wrapper'
+import Modal from '../molecules/Modal'
 import { saveDispute } from '../../lib/handlers/dispute'
 import { subUserWallet } from '../../lib/handlers/user'
 
@@ -41,11 +42,7 @@ class BalanceMadal extends React.Component {
     componentWillUnmount() {
         window.removeEventListener('resize', this.resizeComponent);
     }
-    handleChangeBankName = (event) => {
-        // let {dispute} = this.state
-        // let disputeObj = dispute
-        // disputeObj.bankName = event.target.value
-        // console.log(disputeObj)
+    handleChangeBankName = event => {
         this.setState({
             dispute: {
                 ...this.state.dispute,
@@ -54,7 +51,7 @@ class BalanceMadal extends React.Component {
         })
     }
 
-    handleCheckAmount = (event) => {
+    handleCheckAmount = event => {
         if (event.target.value >= this.props.balance) {
             this.setState({
                 dispute: {
@@ -68,7 +65,7 @@ class BalanceMadal extends React.Component {
             event.target.value = 0
         }
     }
-    handleDisputeCallback = (res) => {
+    handleDisputeCallback = res => {
         if (res === 'success') {
             alert('Dispute Success');
             this.setState({
@@ -97,9 +94,9 @@ class BalanceMadal extends React.Component {
         })
     }
     render() {
-        return <Flex bigScreenWidth="150px">
+        return <Flex direction="row" >
             <p>Balance: {this.props.balance.toLocaleString()}</p>
-            <Button onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
+            <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
             <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} style={{
                 position: 'fixed'
             }}  >

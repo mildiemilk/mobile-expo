@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export default styled.div`
-    position: absolute;
+    position: fixed;
     width: 100%;
-    ${props => props.height ? `height: ${props.height};` : 'height: 100vh'}
+    height: 100vh;
     @media (min-width: 1000px) {
         ${props => props.minHeight ? `min-height: ${props.minHeight};` : null}
 }
@@ -11,6 +11,8 @@ export default styled.div`
     left: 0;
     z-index: 10;
     transition: 1s;
+    background-color: rgba(0,0,0,0.7);
+
     display: ${props => props.display!==false ? 'flex':'none'};
     justify-content: center;
     align-items: center;

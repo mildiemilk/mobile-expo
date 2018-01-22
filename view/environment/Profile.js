@@ -10,6 +10,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 	<Grid.Column width={4}>
 		<ProfileDetail
 			profile={profile}
+			balance={user.wallet}
+			userUid={user.uid}
 		/>
 	</Grid.Column>
 	<Grid.Column width={10}>

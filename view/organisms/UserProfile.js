@@ -16,8 +16,5 @@ export default ({profileImage, name,shop,rating, balance, email,tel,userUid}) =>
     </div>
     :null
     }
-    {
-        balance?
-    <BalanceMadal balance={balance} userUid={userUid}/> : null
-    }
+
 </Wrapper>
