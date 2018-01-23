@@ -17,6 +17,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 			isEdit={isEdit}
 			profile={profile}
 			handleEdit={handleEdit}
+			balance={user.wallet}
+			userUid={user.uid}
 		/>
 	</Grid.Column>
 	<Grid.Column width={10}>
@@ -29,6 +31,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 		{ userProducts ? 
 			Object.keys(userProducts).map( userProductKey => {
 				return (<ItemCard 
+					key={userProductKey}
 					userProductKey={userProductKey} 
 					userUid={user.uid} 
 					userProduct={userProducts[userProductKey]} 

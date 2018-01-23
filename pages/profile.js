@@ -6,7 +6,12 @@ import ProfileView from '../view/environment/Profile'
 import { getUserProducts, setProductStock } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
+<<<<<<< HEAD
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
+=======
+import { getUserbyUid } from '../lib/handlers/user'
+import { getProfile, getTable } from '../lib/handlers/profile'
+>>>>>>> master
 import { setOrderStatus } from '../lib/handlers/transaction'
 import Head from '../view/environment/DefaultHead'
 import Header from '../view/environment/Header'
@@ -23,8 +28,9 @@ class Profile extends Component {
 
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		const user = await auth.onAuthStateChanged( user => {
+		const user = await auth.onAuthStateChanged(user => {
 			this.props.saveUserPending()
+			getUserbyUid(user.uid);
 			return user ? this.props.saveUser(user) : null
 		})
 		this.props.user? this.props.user.uid ? getUserProducts(this.props.user.uid) : null : null
@@ -89,6 +95,7 @@ class Profile extends Component {
 				/>
 			</div>
 	}
+<<<<<<< HEAD
 }  
 Profile = reduxForm({
 	form:'profileDetail',
@@ -96,6 +103,9 @@ Profile = reduxForm({
 })(Profile)
 
 const selector = formValueSelector('profileDetail')
+=======
+}
+>>>>>>> master
 
 const mapStateToProps = state => ({
 	initialValues: state.profile,
@@ -111,4 +121,4 @@ const mapDispatchToProps = {
 	saveUserPending
 }
 
-export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Profile)
+export default withRedux(() => store, mapStateToProps, mapDispatchToProps)(Profile)

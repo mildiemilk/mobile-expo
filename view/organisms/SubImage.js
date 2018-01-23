@@ -8,7 +8,7 @@ import HoveredSubImageText from '../molecules/HoveredSubImageText'
 export default ({number, setSubImage, image, preview}) =>
 <SubImageWrap>
 		<SubImageSection>
-			<SubImg src={image||'/static/img/noimg.png'} title="add sub image 1"/>
+			<SubImg src={image.split('.jpg').join('_s.jpg') ||'/static/img/noimg.png'} title="add sub image 1"/>
 			{
 				preview? 
 				null:
