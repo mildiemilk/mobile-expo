@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { reduxForm, formValueSelector, formValues } from 'redux-form'
+import { reduxForm, formValueSelector } from 'redux-form'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import ProductForm from '../view/environment/ProductForm'
 import { addProductDescription } from '../lib/actions/product'
-import { registerProduct, setProductImage, updateProduct } from '../lib/handlers/product'
+import { registerProduct,setProductImage, updateProduct, saveProductDescriptionImage } from '../lib/handlers/product'
 import { getProductFromID } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser } from '../lib/actions/user'
@@ -25,73 +25,68 @@ class ProductRegister extends Component {
             : null
     }
 
-    render() {
-        const {
-            productName,
-            addProductDescription,
-            productDescription,
-            brandName,
-            price,
-            comissionPercent,
-            comissionCash,
-            userUid,
-            userEmail,
-            productImages,
-            shortDescription,
-            stock
-        } = this.props
-        const productID = this.props.url.query.productID || ''
-        let comissionWithinLimit =
-            parseInt(price) * 0.7 >
-            parseInt(price) * parseInt(comissionPercent || 0) / 100 + parseInt(comissionCash || 0)
 
-        return (
-            <ProductForm
-                productDescription={productDescription}
-                brandName={brandName}
-                addProductDescription={addProductDescription}
-                productImages={productImages}
-                shortDescription={shortDescription}
-                setProductImage={setProductImage}
-                productName={productName}
-                price={price}
-                comissionCash={comissionCash}
-                comissionPercent={comissionPercent}
-                comissionWithinLimit={comissionWithinLimit}
-                stock={stock}
-                handleSubmit={() =>
-                    productID === ''
-                        ? registerProduct({
-                              productName,
-                              brandName,
-                              userUid,
-                              userEmail,
-                              price,
-                              comissionPercent,
-                              comissionCash,
-                              productDescription,
-                              productImages,
-                              shortDescription,
-                              stock
-                          })
-                        : updateProduct(productID, {
-                              productName,
-                              brandName,
-                              userUid,
-                              userEmail,
-                              price,
-                              comissionPercent,
-                              comissionCash,
-                              productDescription,
-                              productImages,
-                              shortDescription,
-                              stock
-                          })
-                }
-            />
-        )
-    }
-}
+	render(){
+		const 
+		{
+			productName, 
+			addProductDescription, 
+			productDescription, 
+			brandName, 
+			price, 
+			comissionPercent,
+			comissionCash,
+			userUid,
+			userEmail,
+			productImages,
+			shortDescription,
+			nextDescription
+		} = this.props
+		const productID =  this.props.url.query.productID
+		let comissionWithinLimit = parseInt(price) * 0.7 > parseInt(price) * parseInt(comissionPercent || 0) / 100 + parseInt(comissionCash || 0)
+
+		return (<ProductForm 
+			nextDescription={nextDescription}
+			productDescription={productDescription} 
+			brandName={brandName}
+			saveProductDescriptionImage={saveProductDescriptionImage}
+			addProductDescription={addProductDescription} 
+			productImages = {productImages}
+			shortDescription={shortDescription}
+			setProductImage = {setProductImage}
+			productName = {productName}
+			price = {price}
+			comissionCash = {comissionCash}
+			comissionPercent = {comissionPercent}
+			comissionWithinLimit = {comissionWithinLimit}
+			handleSubmit={()=> productID === '' ? registerProduct({
+				productName, 
+				brandName, 
+				userUid,
+				userEmail,
+				price, 
+				comissionPercent,
+				comissionCash,
+				productDescription,
+				productImages,
+				shortDescription
+			})
+			: updateProduct(productID,
+				{
+				productName, 
+				brandName, 
+				userUid,
+				userEmail,
+				price, 
+				comissionPercent,
+				comissionCash,
+				productDescription,
+				productImages,
+				shortDescription
+			})} 
+		/>)
+	}
+}	
 
 ProductRegister = reduxForm({
     form: 'product',
@@ -99,6 +94,7 @@ ProductRegister = reduxForm({
 })(ProductRegister)
 
 const selector = formValueSelector('product')
+
 
 const mapStateToProps = state => ({
     initialValues: state.product,
@@ -116,8 +112,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-    addProductDescription: addProductDescription,
-    saveUser: saveUser
-}
+		addProductDescription,
+		saveUser
+	}
 
 export default withRedux(() => store, mapStateToProps, mapDispatchToProps)(ProductRegister)
