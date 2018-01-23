@@ -2,6 +2,7 @@ import React from 'react'
 import Button, { DivButton } from '../atoms/Button'
 import Flex from '../atoms/Flex'
 import H3 from '../atoms/H3'
+import H5 from '../atoms/H5'
 import WhiteDiv from '../atoms/WhiteDiv'
 import BlackOut from '../atoms/BlackOut'
 import Wrapper from '../atoms/Wrapper'
@@ -95,7 +96,7 @@ class BalanceMadal extends React.Component {
     }
     render() {
         return <Flex direction="row" >
-            <p>Balance: {this.props.balance.toLocaleString()}</p>
+            <H5>Balance: {this.props.balance.toLocaleString()}</H5>
             <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
             <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} style={{
                 position: 'fixed'
