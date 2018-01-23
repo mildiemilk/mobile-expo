@@ -14,6 +14,10 @@ const Detail = props => [
     {
         buttonLabal: 'ข้อมูลสินค้า',
         component: <ProductDescriptionForm {...props} />
+    },
+    {
+        buttonLabal: 'preview',
+        component: <div {...props}> Display produce </div>
     }
 
 ]

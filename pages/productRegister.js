@@ -55,7 +55,7 @@ class ProductRegister extends Component {
 			shortDescription={shortDescription}
 			setProductImage = {setProductImage}
 			productName = {productName}
-			price = {price}
+            price = {price}
 			comissionCash = {comissionCash}
 			comissionPercent = {comissionPercent}
 			comissionWithinLimit = {comissionWithinLimit}
@@ -103,9 +103,10 @@ const mapStateToProps = state => ({
     price: selector(state, 'price'),
     comissionPercent: selector(state, 'comissionPercent'),
     comissionCash: selector(state, 'comissionCash'),
-    productDescription: selector(state, 'productDescription'),
+    productDescription: selector(state, 'productDecription'),
     shortDescription: selector(state, 'shortDescription'),
     stock: selector(state, 'stock'),
+    nextDescription: selector(state,'nextDescription'),
     userUid: state.user.uid,
     userEmail: state.user.email,
     productImages: state.productImages

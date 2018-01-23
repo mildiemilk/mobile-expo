@@ -57,6 +57,7 @@ const renderMembers = props => <div>
 	})}}> 
 		add
 	</button>
+	{console.log('props.productDescription', props.productDescription)}
 	<DescriptionOption {...props}/>
 	{
 		props.fields.map((member,index) => (
