@@ -10,7 +10,7 @@ import Modal from '../molecules/Modal'
 import { saveDispute } from '../../lib/handlers/dispute'
 import { subUserWallet } from '../../lib/handlers/user'
 
-class BalanceMadal extends React.Component {
+class BalanceModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -153,4 +153,4 @@ class BalanceMadal extends React.Component {
     }
 }
 
-export default BalanceMadal
+export default BalanceModal

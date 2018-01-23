@@ -7,7 +7,7 @@ import Wrapper from '../atoms/Wrapper'
 import InputText from '../atoms/TextField'
 import DivImage from '../atoms/DivImage'
 import Label from '../atoms/LabelImage'
-import BalanceMadal from '../molecules/BalanceMadal'
+import BalanceModal from '../molecules/BalanceModal'
 
 
 export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid}) => <Wrapper  padding="20px" margin="25px">
@@ -26,7 +26,7 @@ export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageCha
   </div>
   :<div>
     <Image block margin="auto" size="150px" maxHeight="150px" src={profileImage?profileImage:'https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png'} />
-    <BalanceMadal balance={balance} userUid={userUid} />
+    <BalanceModal balance={balance} userUid={userUid} />
     <H5>Address: {profile.address}</H5>
     <H5>Email: {profile.email}</H5>
     <H5>Phone: {profile.phone}</H5>
