@@ -9,8 +9,10 @@ const headerJson = {
 }
 
 const transactionJsonArray = products => products ? products.map( product => ({
-  ...product,
-  total: product.Quantity * product.Price
+  productName: product.productName,
+  price: product.price,
+  quantity: product.quantity,
+  total: product.quantity * product.price
 })):null
 
 const totalPrice = products => transactionJsonArray(products).map(item => item.total).reduce((a, b) => a + b, 0)
@@ -18,10 +20,10 @@ const totalPrice = products => transactionJsonArray(products).map(item => item.t
 export default ({transactionInfo}) => <div>
 <JsonTable headerJson={headerJson} 
 bodyJsonArray={
-  [ ...transactionJsonArray(transactionInfo.Products), 
+  [ ...transactionJsonArray(transactionInfo), 
     {
       productName: 'ราคารวม',
-      total: totalPrice(transactionInfo.Products)
+      total: totalPrice(transactionInfo)
     }
   ]}/>
 </div>

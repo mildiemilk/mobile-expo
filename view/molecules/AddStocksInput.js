@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '../atoms/Button'
 import Wrapper from '../atoms/Wrapper'
+import Flex from '../atoms/Flex'
 import styled from 'styled-components'
 import color from '../../static/json/color.json'
 
@@ -43,12 +44,13 @@ class AddStockInput extends React.Component {
 	
 	render(){
 		return(
-			<Wrapper width="250px !important">
+			<Flex center verticleCenter>
 				<h3>Add Stock </h3>
 				<Input width="100px" value={this.state.stock} onChange={this.handleChange}/>
 				<Button onClick={()=>this.props.setProductStock(this.props.productKey, this.state.stock)}>Add</Button>
-			</Wrapper>
+			</Flex>
 		)
+
 	}
 }
 

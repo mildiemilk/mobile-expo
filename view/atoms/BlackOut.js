@@ -1,17 +1,23 @@
 import styled from 'styled-components'
 
 export default styled.div`
-    position: absolute;
-    width: 100vw;
-    ${props => props.height ? `height: ${props.height};` : 'height: 100vh'}
-    ${props => props.minHeight ? `min-height: ${props.minHeight};` : null}
-    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    @media (min-width: 1000px) {
+        ${props => props.minHeight ? `min-height: ${props.minHeight};` : null}
+}
     top: 0;
     left: 0;
     z-index: 10;
     transition: 1s;
-    display: ${props => props.display ? 'flex':'none'};
+    background-color: rgba(0,0,0,0.7);
+
+    display: ${props => props.display!==false ? 'flex':'none'};
     justify-content: center;
     align-items: center;
     overflow-x: scroll;
+    @media (max-width: 400px) {
+        min-height: 40vh;
+}
 `
