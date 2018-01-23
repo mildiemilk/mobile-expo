@@ -2,7 +2,7 @@ import Wrapper from '../atoms/Wrapper'
 import H3 from '../atoms/H3'
 import H5 from '../atoms/H5'
 import StarRating from '../molecules/StarRating'
-import BalanceMadal from '../molecules/BalanceMadal'
+import BalanceModal from '../molecules/BalanceModal'
 
 export default ({profileImage, name,shop,rating, balance, email,tel,userUid}) => 
 <Wrapper bigScreenWidth="400px">
