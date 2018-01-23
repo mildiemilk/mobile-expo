@@ -6,12 +6,8 @@ import ProfileView from '../view/environment/Profile'
 import { getUserProducts, setProductStock } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
-<<<<<<< HEAD
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
-=======
 import { getUserbyUid } from '../lib/handlers/user'
-import { getProfile, getTable } from '../lib/handlers/profile'
->>>>>>> master
 import { setOrderStatus } from '../lib/handlers/transaction'
 import Head from '../view/environment/DefaultHead'
 import Header from '../view/environment/Header'
@@ -95,7 +91,6 @@ class Profile extends Component {
 				/>
 			</div>
 	}
-<<<<<<< HEAD
 }  
 Profile = reduxForm({
 	form:'profileDetail',
@@ -103,9 +98,6 @@ Profile = reduxForm({
 })(Profile)
 
 const selector = formValueSelector('profileDetail')
-=======
-}
->>>>>>> master
 
 const mapStateToProps = state => ({
 	initialValues: state.profile,
