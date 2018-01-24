@@ -23,26 +23,10 @@ class BalanceModal extends React.Component {
                 bankAccountName: '',
                 bankName: 'bangkokbank',
                 DateAndTime: ''
-            },
-            ww: window.innerWidth,
-            wh: window.innerHeight
+            }
         }
     }
-    resizeComponent = () => {   
-        this.setState({
-            ww: window.innerWidth,
-            wh: window.innerHeight,
-        });
-    }
-    componentWillMount = () => {
-        window.addEventListener('resize', this.resizeComponent);
-        this.setState({
-            balanceDisplay:this.props.balance
-        })
-    }
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.resizeComponent);
-    }
+
     handleChangeBankName = event => {
         this.setState({
             dispute: {
@@ -96,7 +80,7 @@ class BalanceModal extends React.Component {
     }
     render() {
         return <Flex direction="row" >
-            <H5>Balance: {this.props.balance.toLocaleString()}</H5>
+            <H5>Balance: {this.props.balance}</H5>
             <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
             <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} style={{
                 position: 'fixed'
