@@ -103,7 +103,7 @@ const mapStateToProps = state => ({
     price: selector(state, 'price'),
     comissionPercent: selector(state, 'comissionPercent'),
     comissionCash: selector(state, 'comissionCash'),
-    productDescription: selector(state, 'productDecription'),
+    productDescription: selector(state, 'productDescription'),
     shortDescription: selector(state, 'shortDescription'),
     stock: selector(state, 'stock'),
     nextDescription: selector(state,'nextDescription'),

@@ -71,5 +71,5 @@ const renderMembers = props => <div>
 </div>
 
 export default props =>{
-	return <FieldArray {...props} name="productDecription" component={renderMembers}/>
+	return <FieldArray {...props} name="productDescription" component={renderMembers}/>
 } 
