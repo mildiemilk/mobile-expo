@@ -6,7 +6,7 @@ export default styled(Menu.Item)`
 background: ${color.primary1} !important;
 color: ${color.lightPrimary} !important;
 flex-grow: 1;
-font-size: 15px;
+font-size: 2rem;
 &:hover {
 	transition-timing-function: ease-in;
 	transition: 0.25s;
