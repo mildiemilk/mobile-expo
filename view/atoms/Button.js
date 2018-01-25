@@ -17,7 +17,7 @@ ${props=> props.width? `width:${props.width};` :null}
 ${props=> props.maxWidth? `max-width:${props.maxWidth};`:null}
 ${props=> props.minWidth? `min-width:${props.minWidth};`:null}
 ${props=> props.margin? `margin:${props.margin};`:null}
-background: ${props => props.background? props.background : color.contrastPrimary};
+background: ${props => props.background? props.background : color.contrast};
 ${props => props.border ?`border: ${props.border};` : null}
 color: ${props => props.textColor? props.textColor: color.lightPrimary};
 ${props=> props.buttonDisabled ? `background:darkgray !important;`:null}
@@ -33,7 +33,6 @@ ${props => props.fullWidth ?
 	}
 	${props => props.round? 'border-radius: 18px;': null}
 	&:hover {
-		color: white;
 		filter: brightness(110%);
 		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.19);
 		transition: 0.1s;
