@@ -33,12 +33,9 @@ ${props => props.flexGrow? `flexgrow:1;`:null}
 `
 
 
-export default field => {
-	console.log(field)
-	return(
+export default field => 
 	<span className="input-row">
 		<Input {...field.input} width={field.width} fontSize={field.fontSize} type={field.type || "text"} min={field.min} max={field.max} placeholder={field.placeholder ||""}/>
 		{field.meta.touched && field.meta.error && 
 		 <span className="error">{field.meta.error}</span>}
-	</span>)
-}
+	</span>

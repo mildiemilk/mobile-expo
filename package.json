@@ -66,6 +66,6 @@
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook",
     "build": "next build",
-    "start": "next start -p 9000"
+    "start": "NODE_ENV=production node server.js"
   }
 }
