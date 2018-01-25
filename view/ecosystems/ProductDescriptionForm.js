@@ -1,7 +1,7 @@
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import DescriptionOption from '../molecules/DescriptionOption'
 import Dropzone from '../atoms/Dropzone'
-import { saveProductDescriptionImage } from '../../lib/handlers/product'
+import { saveProductDescriptionImage, saveProductDescriptionVideo } from '../../lib/handlers/product'
 
 const renderField = ({ index, fields, input, type, meta: { touched, error } }) => {
 	var returnComponent
@@ -33,6 +33,16 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 						{touched && error && <span>{error}</span>}
 					</div>
 				</div>
+				break
+			case 'video':
+				returnComponent = 
+					<div>
+						<Dropzone onDrop={droppedVideo=>
+							saveProductDescriptionVideo(droppedVideo, fields, index)
+						}>
+							<button>add video</button>	
+						</Dropzone>
+					</div>
 				break
 			default:
 				returnComponent=
