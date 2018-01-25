@@ -1,6 +1,6 @@
 {
 	"primary1":"#25282A",
-	"lightPrimary": "white",
+	"lightPrimary": "#dddfe2",
 	"contrastPrimary": "#E10600",
 	"darkText": "#25282A",
 	"warning": "#F79E02",

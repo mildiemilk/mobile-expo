@@ -2,11 +2,14 @@ import styled from 'styled-components'
 import color from '../../static/json/color.json'
 
 export default styled.div`
+background-color: white;
+border: 1px solid #dddfe2;
+border-radius: 3px;
 ${props => !props.noMargin? 'margin: 10px;' : null }
 margin: ${props => props.margin};
 ${props => props.padding? `padding: ${props.padding};`: 'padding: 10px;'}
-${props => !props.noBorderRadius?'border-radius: 10px;':null}
-${props => !props.noBorder ?`border: 1px solid ${color.primary1};`: null}
+${props => !props.noBorderRadius?'border-radius: 3px;':null}
+${props => !props.noBorder ?`border: 1px solid ${color.lightPrimary};`: null}
 ${props => props.width? `width: ${props.width};`: null}
 ${props => props.color? `color: ${props.color};`: null}
 ${props => props.maxWidth? `max-width: ${props.maxWidth};`: null}
