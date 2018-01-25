@@ -11,7 +11,7 @@ import color from '../../static/json/color.json'
 import FacebookProvider, { Share } from 'react-facebook'
 
 const copyLink = (productKey, userUid)=>{
-	copy(`http://${window.location.hostname}${window.location.port || ''?`:${window.location.port}`:null}/p/${productKey}/${userUid}`)
+	copy(`http://${window.location.hostname}${window.location.port?`:${window.location.port}`:''}/p/${productKey}/${userUid}`)
 	alert('the link has been copied')
 }
 
