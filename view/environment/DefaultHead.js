@@ -2,9 +2,10 @@ import Head from 'next/head'
 
 export default ({children, title, url, image, type, description}) =>   
 <Head>
-	<title>{title || 'shareit'}</title>
+	<title>{title || 'redsnappy'}</title>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
 	<link href="https://fonts.googleapis.com/css?family=Kanit|Prompt" rel="stylesheet" />
+	<link rel="icon" type="image/png" sizes="512x512" href="../../static/img/logo.png" />
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
 	{
 		url?

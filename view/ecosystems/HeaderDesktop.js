@@ -11,7 +11,12 @@ export default () =>
 <Nav>
 	<Menu>
 		{
-			menu.map( ({link, text}, key) => <Item key={key} onClick={()=>Router.push(link)}>{text}</Item> )
+			menu.map( ({link, text}, key) => 
+			{text==="logo"
+			?<img src="../../static/img/logo.png" />
+			:<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
+			}
+		)
 		}
 	</Menu>
 </Nav>
