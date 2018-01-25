@@ -7,4 +7,5 @@ background: ${color.primary1} !important;
 width: 100%;
 display: flex;
 justify-content: space-evenly;
+${props=> props.height? `height: ${props.height};`:null}
 `
