@@ -8,3 +8,4 @@ export default ({changePage, user}) =>
   <Header />
   <CompanyExplained/>
 </div>
+ 
