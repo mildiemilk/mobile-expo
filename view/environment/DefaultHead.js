@@ -6,6 +6,8 @@ export default ({children, title, url, image, type, description}) =>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
 	<link href="https://fonts.googleapis.com/css?family=Kanit|Prompt" rel="stylesheet" />
 	<link rel="icon" type="image/png" sizes="512x512" href="../../static/img/logo.png" />
+	<meta property="og:video:width" content="320px" />
+	<meta property="og:video:width" content="240px" />
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
 	{
 		url?
@@ -18,6 +20,14 @@ export default ({children, title, url, image, type, description}) =>
 	{
 		type?
 		<meta property="og:type" content={type} /> : null
+	}
+	{
+		videoType?
+		<meta property="og:video:type" content={videoType} /> :null
+	}
+	{
+		video?
+		<meta property="og:video" content={video} /> :null
 	}
 	{
 		title?
