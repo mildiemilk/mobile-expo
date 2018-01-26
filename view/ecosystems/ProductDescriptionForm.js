@@ -44,6 +44,17 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 						</Dropzone>
 					</div>
 				break
+			case 'youtube':
+				returnComponent = 
+				<div>
+					<div>
+						<input {...input} type={type} placeholder='link youtube' />
+						{touched && error && <span>{error}</span>}
+						{input.value && (!input.value.includes('www.youtube.com') && !input.value.includes('youtu.be')) ?
+						<div style={{color: 'red'}}>error: please check youtube link format</div> : null}
+					</div>
+				</div>
+				break
 			default:
 				returnComponent=
 					<div>
@@ -67,7 +78,6 @@ const renderMembers = props => <div>
 	})}}> 
 		add
 	</button>
-	{console.log('props.productDescription', props.productDescription)}
 	<DescriptionOption {...props}/>
 	{
 		props.fields.map((member,index) => (

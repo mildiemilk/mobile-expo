@@ -5,6 +5,7 @@ import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
 import Multitab from '../molecules/Multitab'
 import ProductDescriptionForm from './ProductDescriptionForm'
+import ProductDescriptionPreview from './ProductDescriptionPreview'
 
 const Detail = props => [
     {
@@ -17,7 +18,7 @@ const Detail = props => [
     },
     {
         buttonLabal: 'preview',
-        component: <div {...props}> Display produce </div>
+        component: <ProductDescriptionPreview {...props} />
     }
 
 ]
