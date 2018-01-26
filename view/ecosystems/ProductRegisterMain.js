@@ -5,9 +5,9 @@ import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
 
 export default props=> 
-<Flex direction='row'>
+<Flex direction='row' center>
     <AddedImages {...props} />
-    <Flex direction='column' verticleCenter>
+    <Flex minWidth='320px' direction='column' verticleCenter>
         <ProductRegisterText {...props}/>
         <ComissionInput {...props}/>
         <Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth big mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>

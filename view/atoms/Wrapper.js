@@ -22,7 +22,8 @@ ${props => props.backgroundColor? `background-color: ${props.backgroundColor};`:
 ${props => props.backgroundImage? `background-image: ${props.backgroundImage};`: null}
 ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 @media (min-width: 700px) {
-        width: ${props => props.bigScreenWidth || 'unset'};
+        ${props => props.bigScreenWidth || 'unset'};
+        min-width: 340px;
 }
 ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 

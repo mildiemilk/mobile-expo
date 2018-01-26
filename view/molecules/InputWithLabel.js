@@ -1,13 +1,10 @@
 import Label from '../atoms/Label'
 import Input from '../atoms/TextField'
 import styled from 'styled-components'
-
-const Wrapper = styled.div`
-    margin-bottom: 20px;
-`
+import Flex from '../atoms/Flex'
 
 export default ({children, placeholder, name, format}) => 
-<Wrapper>
+<Flex >
     <Label>{children}</Label>
     <Input name={name} placeholder={placeholder} format={format}/>
-</Wrapper>
+</Flex>

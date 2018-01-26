@@ -8,4 +8,9 @@ export default styled.div`
     ${props => props.verticleCenter ? 'align-items:center;':null}
     ${props => props.width ? 'width:'+props.width+';':null}
     ${props => props.height ? `height: ${props.height};`: null}
+    ${
+        props => 
+            props.minWidth? 
+            `min-width:${props.minWidth};`:null
+    }
 `
