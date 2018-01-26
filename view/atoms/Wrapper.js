@@ -20,11 +20,16 @@ ${props => props.minHeight? `min-height: ${props.minHeight};`: null}
 ${props => props.flexGrow ? 'flex-grow: 1;':null}
 ${props => props.backgroundColor? `background-color: ${props.backgroundColor};`: null}
 ${props => props.backgroundImage? `background-image: ${props.backgroundImage};`: null}
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 @media (min-width: 700px) {
         ${props => props.bigScreenWidth || 'unset'};
         min-width: 340px;
 }
-${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 
+${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
+&:hover{
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        transition:1;
+}
 `
