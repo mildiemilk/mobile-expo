@@ -10,7 +10,10 @@ import Label from '../atoms/LabelImage'
 import BalanceModal from '../molecules/BalanceModal'
 
 
-export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid}) => <Wrapper  padding="20px" margin="25px">
+export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid}) => <Wrapper  padding="20px" margin="25px"
+maxWidth="320px"
+flexGrow="1"
+>
   {isEdit ? null:<DivButton TextAlign="right"><Button onClick={handleEdit}>Edit</Button></DivButton>}
   <H5 center>{profile.name}</H5>
   {isEdit 

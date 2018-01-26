@@ -16,9 +16,9 @@ export default styled.table `
 	
 	}
 	td{
-		background: ${color.primary1};
+		background: ${color.lightPrimary};
 		padding: 0px 0px 10px 10px;
-		color: ${color.white};
+		color: ${color.primary1};
 		width: 8vw;
 		min-width: 70px;
 	}
