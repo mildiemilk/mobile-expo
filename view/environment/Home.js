@@ -4,7 +4,7 @@ import CompanyExplained from '../ecosystems/CompanyExplained'
 
 export default ({changePage, user}) => 
 <div>
-  <Head title="Home" image="../../static/img/logo.png" images="../../static/img/plus.png" description="แอพลิเคชั่นที่จะเปลี่ยนลูกค้าทุกคนของคุณเป็นตัวแทนจำหน่าย"/>
+  <Head title="Home" description="แอพลิเคชั่นที่จะเปลี่ยนลูกค้าทุกคนของคุณเป็นตัวแทนจำหน่าย"/>
   <Header />
   <CompanyExplained/>
 </div>
