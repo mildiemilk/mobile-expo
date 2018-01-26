@@ -12,7 +12,7 @@ import { addProductTransaction } from '../lib/handlers/transaction'
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
-	async componentDidMount() {
+	async componentWillMount() {
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		this.props.addSponsorId(this.props.url.query.userID)
