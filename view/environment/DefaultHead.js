@@ -23,5 +23,9 @@ export default ({children, title, url, image, type, description}) =>
 		title?
 		<meta property="og:title" content={title} /> : null
 	}
+		{
+		description?
+		<meta property="og:description" content={description} /> : null
+	}
 	{children}
 </Head>
