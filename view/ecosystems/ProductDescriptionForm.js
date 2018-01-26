@@ -14,6 +14,8 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 						}>
 							<button>add image</button>	
 						</Dropzone>
+						{fields.get(index).context ? 
+						<span style={{color: 'green'}}>done!</span> : null}
 					</div>
 				break
 			case 'header':
@@ -40,8 +42,10 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 						<Dropzone onDrop={droppedVideo=>
 							saveProductDescriptionVideo(droppedVideo, fields, index)
 						}>
-							<button>add video</button>	
+							<button>add videeeeeo</button>
 						</Dropzone>
+						{fields.get(index).context ? 
+						<span style={{color: 'green'}}>done!</span> : null}
 					</div>
 				break
 			case 'youtube':
@@ -71,7 +75,6 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 
 const renderMembers = props => <div>
 	<button onClick={() => {
-		console.log('next Desc', props.nextDescription)
 		props.fields.push({
 		type:props.nextDescription,
 		context: ''
