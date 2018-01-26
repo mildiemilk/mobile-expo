@@ -3,7 +3,7 @@ import Header from './Header'
 import ProductDisplay from '../ecosystems/ProductDisplay'
 
 export default props => <div>
-	<Head/>
+	<Head title={props.product.productName} image={props.product.productImages[0]} description={props.product.brandName} />
 	<Header/>
 	<ProductDisplay 
 		{...props}
