@@ -31,7 +31,7 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 				returnComponent = 
 				<div>
 					<div>
-						<input {...input} type={type} placeholder='ข้อความดึงดูดลูกค้า' />
+						<textarea {...input} type={type} placeholder='ข้อความดึงดูดลูกค้า' />
 						{touched && error && <span>{error}</span>}
 					</div>
 				</div>
