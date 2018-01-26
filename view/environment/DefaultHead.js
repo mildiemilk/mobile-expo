@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-export default ({children, title, url, image, type, description}) =>   
+export default ({children, title, url, image, type, description, video}) =>   
 <Head>
 	<title>{title || 'redsnappy'}</title>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
@@ -21,10 +21,10 @@ export default ({children, title, url, image, type, description}) =>
 		type?
 		<meta property="og:type" content={type} /> : null
 	}
-	{
+	{/* {
 		videoType?
 		<meta property="og:video:type" content={videoType} /> :null
-	}
+	} */}
 	{
 		video?
 		<meta property="og:video" content={video} /> :null
