@@ -21,10 +21,6 @@ export default ({children, title, url, image, type, description, video}) =>
 		type?
 		<meta property="og:type" content={type} /> : null
 	}
-	{/* {
-		videoType?
-		<meta property="og:video:type" content={videoType} /> :null
-	} */}
 	{
 		video?
 		<meta property="og:video" content={video} /> :null
