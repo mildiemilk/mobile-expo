@@ -1,7 +1,9 @@
 import React from 'react'
 import ProductView from '../view/environment/Product'
 import withRedux from 'next-redux-wrapper'
+// import {createStore} from 'redux'
 import store from '../lib/store'
+// import reducer from '../lib/reducers/product'
 import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
@@ -13,10 +15,18 @@ const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
 
-	async getInitialProps(query) {
-		console.log('getInitialProps--->',query.productID)
-		const product = await getProductFromID(query.productID)
-		return {product}
+	static async getInitialProps(ctx) {
+		const { query, store } = ctx
+		const database = await loadFirebase('database')
+		const productSSR = await database
+			.ref("products/"+ query.productID)
+			.once('value')
+			.then(snapshot => snapshot.val())
+		// const product = await getProductFromID(query.productID)
+		return {productSSR}
+	}
+	async componentWillMount() {
+		getProductFromID(this.props.url.query.productID)
 	}
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
@@ -24,8 +34,8 @@ class Product extends React.Component{
 		this.props.addSponsorId(this.props.url.query.userID)
 		this.props.addProductId(this.props.url.query.productID)
 		this.props.addQuantity(this.props.url.query.productID)
-		getProductFromID(this.props.url.query.productID)
 	}
+
 
 	async componentWillReceiveProps(nextProps) {
 		const {productName, comissionCash, comissionPc, price, userUid} = this.props.product
@@ -37,10 +47,11 @@ class Product extends React.Component{
 	}
 
 	render(){
-		const { product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
-		{console.log('product-->', product)}
+		const { productSSR, product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
+		console.log('product-->', product)
+		console.log('cart-->', cart)
 		return( <ProductView 
-			product={product} 
+			product={productSSR?productSSR:product} 
 			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 1 }
 			addProductTransaction={addProductTransaction}
 			/>)
@@ -66,5 +77,11 @@ const mapDispatchToProps = {
 	addBuyerId,
 	saveUser
 }
+
+// const makeStore = (initialState, options) => {
+// 	return createStore(reducer, initialState);
+// };
+
+// export default withRedux(makeStore, mapStateToProps, mapDispatchToProps)(Product)
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Product)
