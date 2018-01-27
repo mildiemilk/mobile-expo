@@ -4,7 +4,7 @@ import CompanyExplained from '../ecosystems/CompanyExplained'
 
 export default ({changePage, user}) => 
 <div>
-  <Head type="video" videoType="video/mp4" video="http://vjs.zencdn.net/v/oceans.mp4"/>
+  <Head title="Home" type="video" videoType="video/mp4" video="http://vjs.zencdn.net/v/oceans.mp4" description="แอพลิเคชั่นที่จะเปลี่ยนลูกค้าทุกคนของคุณเป็นตัวแทนจำหน่าย"/>
   <Header />
   <CompanyExplained/>
 </div>

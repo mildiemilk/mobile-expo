@@ -9,6 +9,7 @@ export default ({children, title, url, image, type, description, video, videoTyp
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
 	<meta property="og:video:width" content="400" />
 	<meta property="og:video:height" content="300" />
+	<meta property="fb:app_id" content="1896997733708019" />
 	{
 		url?
 		<meta property="og:url" content={url} /> : null
