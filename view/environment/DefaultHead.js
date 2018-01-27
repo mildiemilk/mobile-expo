@@ -7,9 +7,6 @@ export default ({children, title, url, image, type, description, video, videoTyp
 	<link href="https://fonts.googleapis.com/css?family=Kanit|Prompt" rel="stylesheet" />
 	<link rel="icon" type="image/png" sizes="512x512" href="../../static/img/logo.png" />
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
-	<meta property="og:video:width" content="400" />
-	<meta property="og:video:height" content="300" />
-	<meta property="fb:app_id" content="1896997733708019" />
 	{
 		url?
 		<meta property="og:url" content={url} /> : null
