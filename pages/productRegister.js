@@ -60,7 +60,7 @@ class ProductRegister extends Component {
 			comissionCash = {comissionCash}
 			comissionPercent = {comissionPercent}
 			comissionWithinLimit = {comissionWithinLimit}
-			handleSubmit={()=> productID === '' ? registerProduct({
+			handleSubmit={()=> !productID ? registerProduct({
 				productName, 
 				brandName, 
 				userUid,
