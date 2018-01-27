@@ -2,6 +2,7 @@ import React from 'react'
 import Button, { DivButton } from '../atoms/Button'
 import Flex from '../atoms/Flex'
 import H3 from '../atoms/H3'
+import H5 from '../atoms/H5'
 import WhiteDiv from '../atoms/WhiteDiv'
 import BlackOut from '../atoms/BlackOut'
 import Wrapper from '../atoms/Wrapper'
@@ -9,7 +10,7 @@ import Modal from '../molecules/Modal'
 import { saveDispute } from '../../lib/handlers/dispute'
 import { subUserWallet } from '../../lib/handlers/user'
 
-class BalanceMadal extends React.Component {
+class BalanceModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,26 +23,10 @@ class BalanceMadal extends React.Component {
                 bankAccountName: '',
                 bankName: 'bangkokbank',
                 DateAndTime: ''
-            },
-            ww: window.innerWidth,
-            wh: window.innerHeight
+            }
         }
     }
-    resizeComponent = () => {   
-        this.setState({
-            ww: window.innerWidth,
-            wh: window.innerHeight,
-        });
-    }
-    componentWillMount = () => {
-        window.addEventListener('resize', this.resizeComponent);
-        this.setState({
-            balanceDisplay:this.props.balance
-        })
-    }
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.resizeComponent);
-    }
+
     handleChangeBankName = event => {
         this.setState({
             dispute: {
@@ -95,7 +80,7 @@ class BalanceMadal extends React.Component {
     }
     render() {
         return <Flex direction="row" >
-            <p>Balance: {this.props.balance.toLocaleString()}</p>
+            <H5>Balance: {this.props.balance}</H5>
             <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
             <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} style={{
                 position: 'fixed'
@@ -152,4 +137,4 @@ class BalanceMadal extends React.Component {
     }
 }
 
-export default BalanceMadal
+export default BalanceModal
