@@ -32,6 +32,7 @@ class Product extends React.Component{
 
 	render(){
 		const { product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
+		{console.log('product-->', product)}
 		return( <ProductView 
 			product={product} 
 			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 1 }
