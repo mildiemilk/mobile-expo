@@ -15,6 +15,9 @@ class Product extends React.Component{
 	async componentWillMount() {
 		await getProductFromID(this.props.url.query.productID)
 	}
+	async getInitialProps() {
+		await getProductFromID(this.props.url.query.productID)
+	}
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
