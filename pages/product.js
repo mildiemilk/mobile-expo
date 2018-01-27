@@ -13,9 +13,9 @@ const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
 
-	async getInitialProps() {
-		console.log('getInitialProps--->',this.props.url.query.productID)
-		const product = await getProductFromID(this.props.url.query.productID)
+	async getInitialProps(query) {
+		console.log('getInitialProps--->',query.productID)
+		const product = await getProductFromID(query.productID)
 		return {product}
 	}
 	async componentDidMount() {
