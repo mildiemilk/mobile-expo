@@ -13,12 +13,14 @@ const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
 	async componentWillMount() {
+		getProductFromID(this.props.url.query.productID)
+	}
+	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		this.props.addSponsorId(this.props.url.query.userID)
 		this.props.addProductId(this.props.url.query.productID)
 		this.props.addQuantity(this.props.url.query.productID)
-		getProductFromID(this.props.url.query.productID)
 	}
 
 	async componentWillReceiveProps(nextProps) {
