@@ -1,9 +1,7 @@
 import React from 'react'
 import ProductView from '../view/environment/Product'
 import withRedux from 'next-redux-wrapper'
-// import {createStore} from 'redux'
 import store from '../lib/store'
-// import reducer from '../lib/reducers/product'
 import { getProductFromID, getUserProducts } from '../lib/handlers/product'
 import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
@@ -22,7 +20,6 @@ class Product extends React.Component{
 			.ref("products/"+ query.productID)
 			.once('value')
 			.then(snapshot => snapshot.val())
-		// const product = await getProductFromID(query.productID)
 		return {productSSR}
 	}
 	async componentWillMount() {
@@ -48,10 +45,8 @@ class Product extends React.Component{
 
 	render(){
 		const { productSSR, product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
-		console.log('product-->', product)
-		console.log('cart-->', cart)
 		return( <ProductView 
-			product={productSSR?productSSR:product} 
+			product={productSSR||product} 
 			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 1 }
 			addProductTransaction={addProductTransaction}
 			/>)
@@ -77,11 +72,5 @@ const mapDispatchToProps = {
 	addBuyerId,
 	saveUser
 }
-
-// const makeStore = (initialState, options) => {
-// 	return createStore(reducer, initialState);
-// };
-
-// export default withRedux(makeStore, mapStateToProps, mapDispatchToProps)(Product)
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Product)
