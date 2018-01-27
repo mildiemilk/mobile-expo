@@ -12,11 +12,11 @@ import { addProductTransaction } from '../lib/handlers/transaction'
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
-	async componentWillMount() {
-		await getProductFromID(this.props.url.query.productID)
-	}
+
 	async getInitialProps() {
-		await getProductFromID(this.props.url.query.productID)
+		console.log('getInitialProps--->',this.props.url.query.productID)
+		const product = await getProductFromID(this.props.url.query.productID)
+		return {product}
 	}
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
@@ -24,6 +24,7 @@ class Product extends React.Component{
 		this.props.addSponsorId(this.props.url.query.userID)
 		this.props.addProductId(this.props.url.query.productID)
 		this.props.addQuantity(this.props.url.query.productID)
+		getProductFromID(this.props.url.query.productID)
 	}
 
 	async componentWillReceiveProps(nextProps) {
