@@ -6,11 +6,14 @@ import DisplaySubImage from '../molecules/DisplaySubImage'
 export default ({images = []})=> 
 <Wrapper>
     <ImageDisplay src={images[0]} />
-    <SubImageWrapper>
+    {images.length>1
+    ?<SubImageWrapper>
         <DisplaySubImage src={images[1]} size="100px" subimg />
         <DisplaySubImage src={images[2]} size="100px" subimg />
         <DisplaySubImage src={images[3]} size="100px" subimg />
         <DisplaySubImage src={images[4]} size="100px" subimg />
     </SubImageWrapper>
+    : null
+    }
 </Wrapper>
 
