@@ -16,24 +16,24 @@ flexGrow="1"
 height= "max-content"
 >
   {isEdit ? null:<DivButton TextAlign="right"><Button onClick={handleEdit}>Edit</Button></DivButton>}
-  <H5 center>{profile.name}</H5>
+  <H5 margin="20px 0px" center>{profile.name}</H5>
   {isEdit 
   ?<div><DivImage center>
     {profileImage ?<Image src={profileImage?profileImage:'/static/img/noimg.png'} />:<Button noFlexGlow>Upload</Button>}
     <Label for="buttonImg"><input style={{display:"none"}} name="image" onChange={e => handleImageChange(e)} id="buttonImg" type="file" /></Label>
     </DivImage>
-    <H5>Wallet: {profile.wallet} บาท</H5> 
-    <H5>Address: <InputText name="address" maxWidth="300px" width="300px"/></H5>
-    <H5>Email: <InputText name="email" maxWidth="300px" width="300px"/></H5>
-    <H5>Phone: <InputText name="phone" maxWidth="300px" width="300px"/></H5>
+    <H5 lineHeight="20px">Wallet: {profile.wallet} บาท</H5> 
+    <H5 lineHeight="20px">Address: <InputText name="address" maxWidth="300px" width="300px"/></H5>
+    <H5 lineHeight="20px">Email: <InputText name="email" maxWidth="300px" width="300px"/></H5>
+    <H5 lineHeight="20px">Phone: <InputText name="phone" maxWidth="300px" width="300px"/></H5>
     <DivButton TextAlign="right"><Button onClick={handleSave}>Save</Button></DivButton>
   </div>
   :<div>
     <Image block margin="auto" size="150px" maxHeight="150px" src={profileImage?profileImage:'https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png'} />
     <BalanceModal balance={balance} userUid={userUid} />
-    <H5>Address: {profile.address}</H5>
-    <H5>Email: {profile.email}</H5>
-    <H5>Phone: {profile.phone}</H5>
+    <H5 lineHeight="32px">Address: {profile.address}</H5>
+    <H5 lineHeight="32px">Email: {profile.email}</H5>
+    <H5 lineHeight="32px">Phone: {profile.phone}</H5>
   </div>
   }
 </Wrapper>

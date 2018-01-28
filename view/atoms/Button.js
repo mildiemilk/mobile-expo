@@ -15,6 +15,7 @@ cursor: pointer;
 white-space: nowrap;
 ${props=> props.noFlexGlow? `flex-grow:inherit;`:`flex-grow: 1;`}
 ${props=> props.width? `width:${props.width};` :null}
+${props=> props.height? `height:${props.height};` :null}
 ${props=> props.maxWidth? `max-width:${props.maxWidth};`:null}
 ${props=> props.minWidth? `min-width:${props.minWidth};`:null}
 ${props=> props.margin? `margin:${props.margin};`:null}

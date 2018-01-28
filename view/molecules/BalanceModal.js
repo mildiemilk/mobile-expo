@@ -80,8 +80,8 @@ class BalanceModal extends React.Component {
     }
     render() {
         return <Flex direction="row" >
-            <H5>Balance: {this.props.balance}</H5>
-            <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
+            <H5 margin="0px 10px 0px 0px" lineHeight="32px">Balance: {this.props.balance}</H5>
+            <Button round maxWidth="76px" height="32px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
             <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} style={{
                 position: 'fixed'
             }}  >
