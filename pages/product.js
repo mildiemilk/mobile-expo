@@ -14,7 +14,7 @@ const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 class Product extends React.Component{
 
 	static async getInitialProps(ctx) {
-		const { query, store } = ctx
+		const { query } = ctx
 		const database = await loadFirebase('database')
 		const productSSR = await database
 			.ref("products/"+ query.productID)
