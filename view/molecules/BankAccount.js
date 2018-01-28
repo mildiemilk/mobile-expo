@@ -22,16 +22,14 @@ export default ({backgroundColor, accountNumber, accountName, bankName, bankName
     noBorderRadius
     position="relative"
 >
-    <Flex direction="row">
-        <H3 color="white">{bankName}</H3>
-        <img style={{width:'80px', height:'80px', position:'absolute', top:'0', right:'0'}} src={logo || ""} alt="bank image" />
-    </Flex>
-    <H3 color="white">เลขบัญชี: {accountNumberFormat(accountNumber)}</H3>
+    <H3 color="white">{bankName}</H3>
+    <img style={{width:'80px', height:'80px', position:'absolute', top:'0', right:'0'}} src={logo || ""} alt="bank image" />
+    <H3 color="white" zIndex="10">{accountNumberFormat(accountNumber)}</H3>
     <H3 color="white">ชื่อ {accountName}</H3>
     <Modal context={
 			<DropZone onDrop={savePaymentImage} size="100%" marginTop="15px">
                 <Wrapper centerAll>
-							<img src='/static/img/bankTransfer.svg'/>
+							<img style={{width:'100%'}} src='/static/img/bankTransfer.svg'/>
 							<img alt="" src={imageUpload}  />
                 </Wrapper>
 			</DropZone>}>
