@@ -29,7 +29,7 @@ export default ({backgroundColor, accountNumber, accountName, bankName, bankName
     <Modal context={
 			<DropZone onDrop={savePaymentImage} size="100%" marginTop="15px">
                 <Wrapper centerAll>
-							<img src='/static/img/bankTransfer.svg'/>
+							<img style={{width:'100%'}} src='/static/img/bankTransfer.svg'/>
 							<img alt="" src={imageUpload}  />
                 </Wrapper>
 			</DropZone>}>
