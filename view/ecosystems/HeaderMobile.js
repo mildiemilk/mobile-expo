@@ -15,12 +15,10 @@ class HeaderMobile extends React.Component{
     this.state = {
       sidebarOpen: false
     }
-
-    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
 
 
-	onSetSidebarOpen(open) {
+	onSetSidebarOpen = open => {
 		this.setState({sidebarOpen: open});
 	}
 
@@ -32,7 +30,7 @@ class HeaderMobile extends React.Component{
 					open={this.state.sidebarOpen}
 					onSetOpen={this.onSetSidebarOpen}
 				>
-					<div></div>
+
 				</Sidebar>
 				<MenuButton onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></MenuButton>
 			</MediaQuery>
@@ -41,7 +39,8 @@ class HeaderMobile extends React.Component{
 }
 
 const sidebarContent = 	
-<Menu>
+<Menu height="100%">
+<img src="../../static/img/logo.png" width="50" height="50" />
 	<div>
 		{
 			menu.map( ({link, text}, key) => <Item key={key} onClick={()=>Router.push(link)}>{text}</Item> )
