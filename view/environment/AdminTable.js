@@ -47,7 +47,6 @@ export default (props) => {
 
     const ViewTransaction = ({transaction}) => 
     <ul>
-        {console.log('transactionlength', transaction)}
         {
             Object.keys(transaction).map( key => 
                 {

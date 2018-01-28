@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { Menu  } from 'semantic-ui-react'
+import color from '../../static/json/color.json'
 
 export default styled(Menu)`
-background: #333333 !important;
+background: ${color.contrast} !important;
 width: 100%;
 display: flex;
 justify-content: space-evenly;
-
 `

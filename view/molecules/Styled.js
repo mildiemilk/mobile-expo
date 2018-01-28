@@ -25,7 +25,7 @@ export const Item = styled(SemanticMenu.Item)`
 	&:hover {
 		transition-timing-function: ease-in;
 		transition: 0.25s;
-		background: ${color.contrastPrimary} !important;
+		background: ${color.contrast} !important;
 		color: ${color.primary1} !important;
 		z-index:10;
 		font-weight: bold !important;
@@ -39,7 +39,7 @@ export const Menu = styled(SemanticMenu)`
 `
 
 export const MenuButton = styled(SemanticButton)`
-	background: ${color.contrastPrimary} !important;
+	background: ${color.contrast} !important;
 	color: ${color.primary1} !important;
 	padding: 0.1rem 0.5rem 0rem 0.5rem;
 	margin: 5px;
@@ -55,7 +55,7 @@ export const Segment = styled(SemanticSegment)`
 }
 `
 export const Button = styled(SemanticButton)`
-background: ${color.contrastPrimary} !important;
+background: ${color.contrast} !important;
 color: ${color.primary1} !important;
 &:hover {
 		background: ${color.lightPrimary} !important;
