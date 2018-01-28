@@ -12,14 +12,27 @@ import { addProductTransaction } from '../lib/handlers/transaction'
 const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
 
 class Product extends React.Component{
+
+	static async getInitialProps(ctx) {
+		const { query } = ctx
+		const database = await loadFirebase('database')
+		const productSSR = await database
+			.ref("products/"+ query.productID)
+			.once('value')
+			.then(snapshot => snapshot.val())
+		return {productSSR}
+	}
+	async componentWillMount() {
+		getProductFromID(this.props.url.query.productID)
+	}
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		this.props.addSponsorId(this.props.url.query.userID)
 		this.props.addProductId(this.props.url.query.productID)
 		this.props.addQuantity(this.props.url.query.productID)
-		getProductFromID(this.props.url.query.productID)
 	}
+
 
 	async componentWillReceiveProps(nextProps) {
 		const {productName, comissionCash, comissionPc, price, userUid} = this.props.product
@@ -31,9 +44,9 @@ class Product extends React.Component{
 	}
 
 	render(){
-		const { product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
+		const { productSSR, product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
 		return( <ProductView 
-			product={product} 
+			product={productSSR||product} 
 			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 1 }
 			addProductTransaction={addProductTransaction}
 			/>)

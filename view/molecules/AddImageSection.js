@@ -5,12 +5,6 @@ import Image from '../atoms/Image'
 import Dropzone from '../atoms/Dropzone'
 import AddImg from '../../static/img/addimg.svg'
 
-// const ImageHideWhenHovered = Image.extend`
-//   ${Dropzone}:hover & {
-//     display: none;
-//   }
-// `;
-
 const AddImage = styled(AddImg)`
     max-width: 100vw;
     max-height: -webkit-fill-available;
