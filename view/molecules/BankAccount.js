@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Wrapper from '../atoms/Wrapper'
 import H1 from '../atoms/H1'
 import H3 from '../atoms/H3'
+import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
 import Modal from '../molecules/Modal'
 import Image from '../atoms/Image'
@@ -10,34 +11,30 @@ import DropZone from '../atoms/Dropzone'
 
 const accountNumberFormat = accountNumber => `${accountNumber.slice(0,3)}-${accountNumber.slice(3,4)}-${accountNumber.slice(4,9)}-${accountNumber.slice(9,10)}`
 
-export default ({backgroundImage, accountNumber, accountName, bankName, bankNameEng, savePaymentImage, addPayment, imageUpload}) =>
+export default ({backgroundColor, accountNumber, accountName, bankName, bankNameEng, savePaymentImage, addPayment, imageUpload, logo}) =>
 <Wrapper 
-    backgroundImage={backgroundImage}
+    backgroundColor={backgroundColor}
     maxWidth="530px"
     width="-webkit-fill-available"
     height="auto"  
-    boxShadow="4px 4px 6px 0 rgba(0, 0, 0, 0.5)"  
     noMargin
     noBorder
     noBorderRadius
+    position="relative"
 >
-    <H3 color="white">{bankName}</H3>
-    <H1 color="white" textShadow="2px 2px 2px rgba(0, 0, 0, 0.5)">เลขบัญชี: {accountNumberFormat(accountNumber)}</H1>
+    <Flex direction="row">
+        <H3 color="white">{bankName}</H3>
+        <img style={{width:'80px', height:'80px', position:'absolute', top:'0', right:'0'}} src={logo || ""} alt="bank image" />
+    </Flex>
+    <H3 color="white">เลขบัญชี: {accountNumberFormat(accountNumber)}</H3>
     <H3 color="white">ชื่อ {accountName}</H3>
     <Modal context={
 			<DropZone onDrop={savePaymentImage} size="100%" marginTop="15px">
-				<Grid divided='vertically'>
-					<Grid.Row columns={2}>
-						<Grid.Column>
+                <Wrapper centerAll>
 							<img src='/static/img/bankTransfer.svg'/>
-						</Grid.Column>
-						<Grid.Column>
 							<img alt="" src={imageUpload}  />
-						</Grid.Column>
-					</Grid.Row>
-				</Grid>
-				{/* <img src='/static/img/bankTransfer.svg'/> */}
+                </Wrapper>
 			</DropZone>}>
-        <Button background="none" textColor="white" round border="2px solid white" hoverBg="black" onClick={() => addPayment('bankTransfer', bankNameEng)}>ส่งหลักฐานการโอน</Button>
+        <Button background="none" textColor="white" border="2px solid white" hoverBg="black" onClick={() => addPayment('bankTransfer', bankNameEng)}>ส่งหลักฐานการโอน</Button>
     </Modal>
 </Wrapper>

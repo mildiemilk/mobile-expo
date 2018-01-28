@@ -10,7 +10,6 @@ class Header extends React.Component {
 		return(
 		<div>
 			<HeaderDesktop/>
-			<HeaderMobile/>
 		</div>)
 	
 	}

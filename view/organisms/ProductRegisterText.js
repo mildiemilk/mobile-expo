@@ -2,7 +2,7 @@ import Wrapper from '../atoms/Wrapper'
 import Input from '../molecules/InputWithLabel'
 
 export default () => 
-<div style={{marginTop:'10px'}}>
+<div width='100%' minWidth='320px'>
     <Input name="productName" placeholder="iPhone 8 สีแดง 64GB">
         ชื่อสินค้า
     </Input>
