@@ -4,9 +4,9 @@ import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 
 export default () => 
-<Wrapper>
+<Wrapper padding="25px 30px 10px 20px" margin="25px 15px">
     <H3>ที่อยู่จัดส่ง</H3>
-    <Flex direction="column">
+    <Flex margin="10px 0px" direction="column">
     <InputText label="ชื่อ" placeholder="steve jobs" name="name" maxWidth="300px" width="300px"/>
     <InputText label="อีเมล" placeholder="อีเมล" name="email" maxWidth="120px" width="166px" />
     <InputText label="เบอร์" placeholder="xxx-xxx-xxxx" name="phoneNumber" maxWidth="120px" width="166px" />
