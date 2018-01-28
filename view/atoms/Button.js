@@ -6,6 +6,7 @@ border: none;
 display: inline-block;
 outline: 0;
 padding: 8px 16px;
+max-height: 50px;
 vertical-align: middle;
 overflow: hidden;
 text-decoration: none;

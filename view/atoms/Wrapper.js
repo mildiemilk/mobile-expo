@@ -5,6 +5,7 @@ export default styled.div`
 background-color: white;
 border: 1px solid #dddfe2;
 border-radius: 3px;
+${props => props.position? `position: ${props.position};`:null}
 ${props => !props.noMargin? 'margin: 10px;' : null }
 margin: ${props => props.margin};
 ${props => props.padding? `padding: ${props.padding};`: 'padding: 10px;'}
