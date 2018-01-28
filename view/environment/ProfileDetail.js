@@ -22,7 +22,7 @@ height= "max-content"
     {profileImage ?<Image src={profileImage?profileImage:'/static/img/noimg.png'} />:<Button noFlexGlow>Upload</Button>}
     <Label for="buttonImg"><input style={{display:"none"}} name="image" onChange={e => handleImageChange(e)} id="buttonImg" type="file" /></Label>
     </DivImage>
-    <H5 lineHeight="20px">Wallet: {profile.wallet} บาท</H5> 
+    <H5 margin="15px 0px" lineHeight="20px">Balance: {profile.wallet} บาท</H5> 
     <H5 lineHeight="20px">Address: <InputText name="address" maxWidth="300px" width="300px"/></H5>
     <H5 lineHeight="20px">Email: <InputText name="email" maxWidth="300px" width="300px"/></H5>
     <H5 lineHeight="20px">Phone: <InputText name="phone" maxWidth="300px" width="300px"/></H5>
