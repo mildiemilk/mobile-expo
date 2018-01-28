@@ -21,7 +21,7 @@ const formatPercent = value => {
 const formatLessThanSeventy = value => parseInt(value) > 70? 70 :value
 
 export default ({comissionWithinLimit}) => 
-<Wrapper bigScreenWidth="100%">
+<Wrapper width='100%' minWidth='320px'>
     <H3>คอมมิสชั่นสำหรับลูกค้าที่แชร์สินค้า</H3>
     <Input format={formatInt} name="comissionCash" placeholder="10">
         คอมมิสชั่นเป็นเงินสด

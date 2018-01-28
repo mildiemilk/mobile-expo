@@ -1,7 +1,15 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import flush from 'styled-jsx/server'
 
 export default class MyDocument extends Document {
+
+  static getInitialProps({ renderPage }) {
+    const { html, head, errorHtml, chunks } = renderPage()
+    const styles = flush()
+    return { html, head, errorHtml, chunks, styles }
+  }
+
   render() {
     const sheet = new ServerStyleSheet()
     const main = sheet.collectStyles(<Main />)
@@ -11,15 +19,16 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           {styleTags}
-          <link rel="stylesheet" href="static/fonts/font-awesome.min.css"/>
-          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"/>
+          <style jsx global>{`
+            body { 
+              background: #E9EBEE;
+            }
+          `}</style>
+          
         </Head>
-
-        <body>
-          <div className="root">
-            {main}
-          </div>
-
+        <body className="custom_class">
+          {this.props.customValue}
+          <Main />
           <NextScript />
         </body>
       </html>

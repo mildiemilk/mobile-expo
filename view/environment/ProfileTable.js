@@ -7,10 +7,15 @@ import OrderTable from '../ecosystems/OrderTable'
 export default ({table, userUid, setOrderStatus}) => {
   const sellTable = table!==undefined&&table.length>=1? table.filter(item => item.sellerId === userUid):null
   const sponsorTable = table!==undefined&&table.length>=1? table.filter(item => item.sponsorId === userUid):null
-  return (<Wrapper noBorder>
-  <h2>คำสั่งซื้อในฐานะผู้ขาย</h2>
-  <OrderTable orders={sellTable} setOrderStatus={setOrderStatus}/>
-  <h2>คำสั่งซื้อในฐานะผู้แนะนำ</h2>
-  <OrderTable orders={sponsorTable} setOrderStatus={setOrderStatus}/>
-</Wrapper>)
+  return (
+  <div style={{flexGrow:"2", maxWidth:"1000px"}}>
+    <Wrapper>
+      <h2>คำสั่งซื้อในฐานะผู้ขาย</h2>
+      <OrderTable orders={sellTable} setOrderStatus={setOrderStatus}/>
+    </Wrapper>
+    <Wrapper>
+      <h2>คำสั่งซื้อในฐานะผู้แนะนำ</h2>
+      <OrderTable orders={sponsorTable} setOrderStatus={setOrderStatus}/>
+    </Wrapper>
+</div>)
 }

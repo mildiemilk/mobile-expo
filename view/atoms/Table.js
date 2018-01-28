@@ -10,15 +10,15 @@ export default styled.table `
 	width: 100%;
 	table-layout: fixed;
 	th {
-		background: ${color.contrastPrimary};
+		background: ${color.contrast};
 		color: ${color.white};
 		padding: 10px;
 	
 	}
 	td{
-		background: ${color.primary1};
+		background: ${color.lightPrimary};
 		padding: 0px 0px 10px 10px;
-		color: ${color.white};
+		color: ${color.primary1};
 		width: 8vw;
 		min-width: 70px;
 	}

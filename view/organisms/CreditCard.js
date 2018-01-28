@@ -13,7 +13,6 @@ font-family: Avenir;
 font-size: 12px;
 font-weight: 300;
 text-align: center;
-color: #ffffff;
 `
 
 export default props =>
@@ -36,9 +35,7 @@ export default props =>
 				<td align="right"><CardLabel>CVV</CardLabel></td>
 				<td><Cvv name="cvv"/></td>
 			</tr>
-			<tr>
-				<td><Button disabled={!props.validateCreditCard} buttonDisabled={!props.validateCreditCard} onClick={props.onCheckOut}>จ่ายเลย</Button></td>
-			</tr>
 		</tbody>
 	</table>
+	<Button fullWidth disabled={!props.validateCreditCard} buttonDisabled={!props.validateCreditCard} onClick={props.onCheckOut}>จ่ายเลย</Button>
 </CreditCardBg>

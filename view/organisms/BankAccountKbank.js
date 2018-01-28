@@ -1,2 +1,7 @@
 import BankAccount from '../molecules/BankAccount'
-export default props=> <BankAccount backgroundImage="linear-gradient(135deg, #5ed130, #429321)" bankName="ธนาคารกสิกร" bankNameEng="Kasikorn" {...props} />
+export default props=> <BankAccount 
+    logo="http://www.smhthailand.com/wp-content/uploads/2017/02/k-bank-icon-1-300x295.jpg" 
+    bankName="ธนาคารกสิกร" 
+    bankNameEng="Kasikorn" {...props} 
+    backgroundColor="#128426"
+    />
