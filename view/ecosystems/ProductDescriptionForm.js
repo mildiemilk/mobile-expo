@@ -73,7 +73,7 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 }
 
 
-const renderMembers = props => <div>
+const renderMembers = props => <div style={{width:'100%', minWidth:'320px'}}>
 	<button onClick={() => {
 		props.fields.push({
 		type:props.nextDescription,

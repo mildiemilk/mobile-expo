@@ -69,7 +69,7 @@ const renderContent= ({type, context}) => {
 }
 
 export default props =>{
-	return <div>
+	return <div style={{width:'100%', minWidth:'320px'}}>
 		{
 			props.productDescription.map((member,index) => (
 				<div key={index}>

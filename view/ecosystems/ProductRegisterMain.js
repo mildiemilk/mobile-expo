@@ -24,13 +24,11 @@ const Detail = props => [
 ]
 
 export default props=> 
-<Flex direction='row' center>
+<Flex direction='row' width='100%'>
     <AddedImages {...props} />
-    <Flex minWidth='320px' direction='column' verticleCenter>
         <Multitab tabs={Detail(props)} />
         <ComissionInput {...props}/>
         <Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>
-    </Flex>
     <br/>
     <br/>
 </Flex>

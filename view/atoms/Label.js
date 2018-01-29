@@ -8,6 +8,6 @@ font-family: 'Kanit', sans-serif;
 font-size: 1.2em;
 margin-top:10px;
 padding-top: 10px;
-padding-left: 5px;
+padding-left: 10px;
 padding-bottom: 0px;
 `
