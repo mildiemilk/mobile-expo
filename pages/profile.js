@@ -69,7 +69,7 @@ class Profile extends Component {
 		this.setState({isEdit:true})
 	}
 	render() {
-		const {user, userProducts, profile, table, detail} = this.props
+		const {user, userProducts, profile, table, detail, sponsorEmail} = this.props
 		const {isEdit} = this.state
 		return <div>
 			<Head/>
@@ -88,6 +88,7 @@ class Profile extends Component {
 					user={user} 
 					userProducts={userProducts} 
 					setProductStock={setProductStock}
+					sponsorEmail={sponsorEmail}
 				/>
 			</div>
 	}
@@ -105,6 +106,7 @@ const mapStateToProps = state => ({
 	userProducts: state.userProducts,
 	profile: state.profile,
 	detail: selector(state,'address', 'email', 'phone', 'image'),
+	sponsorEmail: selector(state, 'sponsorEmail'),
 	table: state.profile.transactionIds
 })
 
