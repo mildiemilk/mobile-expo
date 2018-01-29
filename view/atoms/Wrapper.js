@@ -24,7 +24,7 @@ ${props => props.backgroundImage? `background-image: ${props.backgroundImage};`:
 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 @media (min-width: 700px) {
-        ${props => props.bigScreenWidth || 'unset'};
+        ${props => props.bigScreenWidth? `width: ${props.bigScreenWidth};`:null};
         min-width: 340px;
 }
 

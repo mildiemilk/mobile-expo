@@ -1,10 +1,11 @@
 import Head from './DefaultHead'
 import { Button, Icon, Grid, Form, Divider } from 'semantic-ui-react'
 import Header from './Header'
-import Segment from '../atoms/Segment'
 import SignInForm from '../organisms/SignInForm'
 import SignOut from '../organisms/SignOut'
 import ErrorDisplay from '../organisms/ErrorDisplay'
+import Wrapper from '../atoms/Wrapper'
+import Flex from '../atoms/Flex'
 
 export default ({
 	onClickGoogle, 
@@ -22,8 +23,8 @@ export default ({
 	return (<div>
 		<Head />
 		<Header/>
-		<Segment padded>
-				<Grid divided>
+		<Flex center width="100vw" direction="row"> 
+		<Wrapper padding="25px 40px 25px 25px" maxWidth="400px">
 					{ !loggedIn ?
 						<SignInForm 	
 							onClickGoogle={onClickGoogle}
@@ -37,9 +38,9 @@ export default ({
 							signOut={signOut}
 						/>
 					}
-				</Grid>
-		</Segment>
+		</Wrapper>
 		<ErrorDisplay status={status} displayText={displayText} />				
+		</Flex>
 	</div>
 	)
 }
