@@ -42,5 +42,5 @@ export default ({cart = {}, products={}, total=0, saveAddress, addDeliveryDetail
     </tbody>
   </Table>	
   <AddressForm/>
-  <Button onClick={addDeliveryDetail}>proceed to payment</Button>
+  <Button margin="0px 15px"onClick={addDeliveryDetail}>proceed to payment</Button>
 </div>

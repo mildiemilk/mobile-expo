@@ -1,8 +1,12 @@
 import styled from 'styled-components'
+import color from '../../static/json/color.json'
 
 export default styled.div`
-  background: #333333;
+  background: ${color.contrast};
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  @media (max-width: 700px){
+    display:none;
+  }
 `
