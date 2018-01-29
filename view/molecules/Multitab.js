@@ -28,7 +28,7 @@ class Multitab extends React.Component {
 							)
 						}
 					</ButtonGroup>
-					<Wrapper width="100%">
+					<Wrapper width="100%"  boxShadow='none'>
 						{
 							this.props.tabs[this.state.display].component
 						}

@@ -1,10 +1,10 @@
 import { Button, Icon, Divider, Form } from 'semantic-ui-react'
-import TextInput from '../molecules/TextInput'
+import TextField from '../atoms/TextField'
 
 export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) =>
 <form>
 		<h2 style={{marginLeft:'10px'}}>{ page === 'login'? 'Login':'Registration'}</h2>
-		<TextInput
+		<TextField
 			type="email"
 			name="email"
 			label="email"
@@ -12,7 +12,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 			width="100%"
 		/>
 
-			<TextInput
+			<TextField
 				type="password"
 				name="password"
 				label="password"
@@ -22,7 +22,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 			
 		{
 			page !== 'login' ?
-			<TextInput
+			<TextField
 				type="password"
 				name="passwordConfirm"
 				label="password confirmation"

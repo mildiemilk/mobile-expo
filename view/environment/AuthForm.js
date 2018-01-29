@@ -24,7 +24,7 @@ export default ({
 		<Head />
 		<Header/>
 		<Flex center width="100vw" direction="row"> 
-		<Wrapper padding="25px 40px 25px 25px" maxWidth="400px">
+		<Wrapper minWidth="" padding="25px 40px 25px 50px" maxWidth="400px">
 					{ !loggedIn ?
 						<SignInForm 	
 							onClickGoogle={onClickGoogle}
