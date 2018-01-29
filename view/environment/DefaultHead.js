@@ -3,6 +3,7 @@ import Head from 'next/head'
 export default ({children, title, url, image, type, description, video, videoType}) =>   
 <Head>
 	<title>{title || 'redsnappy'}</title>
+	<meta name="viewport" content="width=device-width" />
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
 	<link href="https://fonts.googleapis.com/css?family=Kanit|Prompt" rel="stylesheet" />
