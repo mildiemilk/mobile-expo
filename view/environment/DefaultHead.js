@@ -3,10 +3,10 @@ import Head from 'next/head'
 export default ({children, title, url, image, type, description, video, videoType}) =>   
 <Head>
 	<title>{title || 'redsnappy'}</title>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
 	<link href="https://fonts.googleapis.com/css?family=Kanit|Prompt" rel="stylesheet" />
 	<link rel="icon" type="image/png" sizes="512x512" href="../../static/img/logo.png" />
-	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"/>
 	{
 		url?
 		<meta property="og:url" content={url} /> : null

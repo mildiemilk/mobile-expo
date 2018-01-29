@@ -7,7 +7,7 @@ color: ${color.white} !important;
 flex-grow: 1;
 font-size: 1.2rem;
 @media(max-width: 500px) {
-	font-size:2rem !important;
+	font-size:1.2rem !important;
 }
 &:hover {
 	transition-timing-function: ease-in;
