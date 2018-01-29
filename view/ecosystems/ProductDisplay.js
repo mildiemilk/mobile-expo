@@ -4,7 +4,7 @@ import DisplayProductText from '../organisms/DisplayProductText'
 import { addQuantity } from '../../lib/handlers/cart';
 
 export default ({images, product, productQuantity, productUid, addQuantity, minusQuantity, addProductTransaction}) =>
-<Flex direction='row'>
+<Flex direction='row' center>
     <DisplayImages images={images}/>
     <DisplayProductText 
         productName={product.productName} 

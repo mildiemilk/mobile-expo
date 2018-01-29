@@ -6,7 +6,7 @@ import Button from '../atoms/Button'
 import AddToCart from '../organisms/AddToCart'
 
 export default ({productName, shopName, price, minusQuantity, addQuantity, productUid, productQuantity, addProductTransaction, sellerId}) =>
-<Wrapper flexGrow>
+<Wrapper flexGrow minHeight="350px">
     <H1>{productName}</H1>
     <H3>{shopName}</H3>
     <H3>{price}</H3>

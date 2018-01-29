@@ -2,18 +2,17 @@ import Wrapper from '../atoms/ImageAtoms/ImageSectionWrapper'
 import ImageDisplay from '../molecules/ImageDisplay'
 import SubImageWrapper from '../atoms/ImageAtoms/SubImageWrapper'
 import DisplaySubImage from '../molecules/DisplaySubImage'
+import Flex from '../atoms/Flex'
 
-export default ({images = []})=> 
-<Wrapper>
-    <ImageDisplay src={images[0]} />
-    {images.length>1
-    ?<SubImageWrapper>
-        <DisplaySubImage src={images[1]} size="100px" subimg />
-        <DisplaySubImage src={images[2]} size="100px" subimg />
-        <DisplaySubImage src={images[3]} size="100px" subimg />
-        <DisplaySubImage src={images[4]} size="100px" subimg />
-    </SubImageWrapper>
-    : null
-    }
-</Wrapper>
+export default ({images = []}) => {
+    return (<Wrapper>
+        <ImageDisplay src={images[0]} />
+        <SubImageWrapper>
+        <Flex width="100%" justContent="center" direction="row" margin="25px 0px">
+            {images.slice(1).map(image => <DisplaySubImage src={image} size="100px" subimg />)}
+        </Flex>
+        </SubImageWrapper>
+    </Wrapper>)
+}
+
 
