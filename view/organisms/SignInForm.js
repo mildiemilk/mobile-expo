@@ -2,7 +2,7 @@ import { Button, Icon, Divider, Form } from 'semantic-ui-react'
 import TextField from '../atoms/TextField'
 
 export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) =>
-<form>
+<div>
 		<h2 style={{marginLeft:'10px'}}>{ page === 'login'? 'Login':'Registration'}</h2>
 		<TextField
 			type="email"
@@ -54,4 +54,4 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 				<Icon name='google plus' /> 
 				Sign in with google
 			</Button>
-</form>
+</div>
