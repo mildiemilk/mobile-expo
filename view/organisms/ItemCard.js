@@ -9,6 +9,7 @@ import AddStock from '../molecules/AddStocksButton'
 import Button, { ButtonGroup } from '../atoms/Button'
 import color from '../../static/json/color.json'
 import FacebookProvider, { Share } from 'react-facebook'
+import AddSponsorModal from '../molecules/AddSponsorModal'
 
 const link = (productKey, userUid) => `http://${window.location.hostname}${window.location.port?`:${window.location.port}`:''}/p/${productKey}/${userUid}`
 
@@ -17,7 +18,7 @@ const copyLink = (productKey, userUid)=>{
 	alert('the link has been copied')
 }
 
-export default ({ userUid, userProduct, productKey, setProductStock }) => {
+export default ({ userUid, userProduct, productKey, setProductStock, sponsorEmail, setProductSponsor }) => {
 const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = userProduct
 return(
 	<Wrapper bigScreenWidth="max-content">
@@ -43,6 +44,11 @@ return(
 					<td style={{textAlign:'right'}}>Stock: </td>
 					<td>{stock}</td>
 					<td>{userUid === userProduct.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>
+				</tr>
+				<tr>
+					<td style={{textAlign:'right'}}>Number of distributor: </td>
+					<td> xxx </td>
+					<td>{userUid === userProduct.userUid ? <AddSponsorModal productKey={productKey} sponsorEmail={sponsorEmail} setProductSponsor={setProductSponsor} round/>: null }</td>
 				</tr>
 				</tbody>
 			</table>

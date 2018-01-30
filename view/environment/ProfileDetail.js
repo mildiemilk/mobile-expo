@@ -8,7 +8,6 @@ import InputText from '../atoms/TextField'
 import DivImage from '../atoms/DivImage'
 import Label from '../atoms/LabelImage'
 import BalanceModal from '../molecules/BalanceModal'
-import AddSponsorModal from '../molecules/AddSponsorModal'
 
 
 export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail}) => <Wrapper padding="20px"
@@ -35,7 +34,6 @@ height= "max-content"
     <H5 lineHeight="32px">Address: {profile.address}</H5>
     <H5 lineHeight="32px">Email: {profile.email}</H5>
     <H5 lineHeight="32px">Phone: {profile.phone}</H5>
-    <AddSponsorModal sponsorEmail={sponsorEmail}/>
   </div>
   }
 </Wrapper>
