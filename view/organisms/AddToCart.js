@@ -10,10 +10,10 @@ display: flex;
 flex-flow: column nowrap;
 @media (max-width: 700px) {
 	background: palevioletred;
-	position: fixed;
-	bottom: 0px;
+	position: absolute;
+	bottom: 10px;
 	max-width: 100%;
-	width: 100vw;
+	width: 88vw;
 }
 `
 export default ({minusQuantity, addQuantity, productUid, productQuantity, addProductTransaction, sellerId}) => 
