@@ -34,6 +34,6 @@ ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
         transition:1;
 }
 @media (max-width: 700px) {
-	position: relative
+	width: 100%;
 }
 `
