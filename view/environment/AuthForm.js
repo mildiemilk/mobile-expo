@@ -18,8 +18,6 @@ export default ({
 	status,
 	helperText
 }) => {
-	let displayText
-	helperText.map( text =>{ displayText += text + " <br/> "})
 	return (<div>
 		<Head />
 		<Header/>
@@ -39,7 +37,7 @@ export default ({
 						/>
 					}
 		</Wrapper>
-		<ErrorDisplay status={status} displayText={displayText} />				
+		<ErrorDisplay status={status} displayText={helperText} />				
 		</Flex>
 	</div>
 	)
