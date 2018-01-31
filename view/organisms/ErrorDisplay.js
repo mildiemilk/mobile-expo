@@ -4,12 +4,12 @@ export default ({status, displayText}) =>
 status === 'error' ?
 <Message
 	error
-	header="test"
-	content={displayText}
+	header="Error"
+	list={displayText}
 />: 
 status === 'warning' ?
 <Message
 	warning 
-	header="test"
-	content={displayText}					
+	header="Warning"
+	list={displayText}					
 />: null
