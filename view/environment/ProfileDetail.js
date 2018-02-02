@@ -10,7 +10,7 @@ import Label from '../atoms/LabelImage'
 import BalanceModal from '../molecules/BalanceModal'
 
 
-export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid}) => <Wrapper padding="20px"
+export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail}) => <Wrapper padding="20px"
 maxWidth="320px"
 flexGrow="1"
 height= "max-content"

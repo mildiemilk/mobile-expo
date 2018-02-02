@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
-import { getUserProducts, setProductStock } from '../lib/handlers/product'
+import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
@@ -69,7 +69,7 @@ class Profile extends Component {
 		this.setState({isEdit:true})
 	}
 	render() {
-		const {user, userProducts, profile, table, detail} = this.props
+		const {user, userProducts, profile, table, detail, sponsorEmail} = this.props
 		const {isEdit} = this.state
 		return <div>
 			<Head/>
@@ -88,6 +88,9 @@ class Profile extends Component {
 					user={user} 
 					userProducts={userProducts} 
 					setProductStock={setProductStock}
+					setProductSponsor={setProductSponsor}
+					getProductSponsor={getProductSponsor}
+					sponsorEmail={sponsorEmail}
 				/>
 			</div>
 	}
@@ -105,6 +108,7 @@ const mapStateToProps = state => ({
 	userProducts: state.userProducts,
 	profile: state.profile,
 	detail: selector(state,'address', 'email', 'phone', 'image'),
+	sponsorEmail: selector(state, 'sponsorEmail'),
 	table: state.profile.transactionIds
 })
 

@@ -20,7 +20,7 @@ class Login extends React.Component {
         let validateEmailResult = validateEmail(loginValues ? loginValues.email : null)
         let validatePasswordResult = validatePassword(loginValues ? loginValues.password : null)
         let statusArray = [validateEmailResult.status, validatePasswordResult.status]
-        let status = statusArray.indexOf('error') > 0 ? 'error' : statusArray.indexOf('warning') > 0 ? 'warning' : 'success'
+        let status = statusArray.indexOf('error') >= 0 ? 'error' : statusArray.indexOf('warning') >= 0 ? 'warning' : 'success'
         return (
             <LoginForm 
                 page="login" 

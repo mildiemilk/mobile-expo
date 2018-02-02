@@ -8,7 +8,7 @@ import productimages from '../../lib/reducers/productimages';
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper';
 
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor}) =>
 <Flex direction="row" >
 	<ProfileDetail
 		profileImage={profileImage}
@@ -38,6 +38,9 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 						userProduct={userProducts[userProductKey]} 
 						productKey={userProductKey}
 						setProductStock={setProductStock}
+						sponsorEmail={sponsorEmail}
+						setProductSponsor={setProductSponsor}
+						getProductSponsor={getProductSponsor}
 					/>)
 				}) : null
 				}
