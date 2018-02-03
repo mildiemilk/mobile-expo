@@ -8,5 +8,6 @@ export default styled.div`
     flex-direction: column;
     @media (max-width: 600px) {
 		 max-width: 100vw;
-	}
+    }
+    ${props => props.center ? "justify-content: center;align-items: center;":null}
 `
