@@ -33,7 +33,7 @@ class ItemCard extends React.Component {
 	link = (productKey, userUid) => `http://${window.location.hostname}${window.location.port?`:${window.location.port}`:''}/p/${productKey}/${userUid}`
 	
 	copyLink = (productKey, userUid) => {
-		copy(link(productKey,userUid))
+		copy(this.link(productKey,userUid))
 		alert('the link has been copied')
 	}
 
