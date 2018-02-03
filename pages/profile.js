@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
-import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor } from '../lib/handlers/product'
+import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
@@ -30,12 +30,15 @@ class Profile extends Component {
 			return user ? this.props.saveUser(user) : null
 		})
 		this.props.user? this.props.user.uid ? getUserProducts(this.props.user.uid) : null : null
+		// this.props.user? this.props.user.uid ? getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null : null
+		console.log('user,',this.props.user)
 	
 	}
 
 	async componentWillReceiveProps(nextProps){
 		if(nextProps.user !== this.props.user){
 				await	getUserProducts(this.props.user.uid)
+				await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
 				await getProfile(this.props.user.uid)
 		}		
 		if(this.props.profile.transactionIds.length>=1 && (JSON.stringify(this.props.profile) !== JSON.stringify(nextProps.profile))){
@@ -63,14 +66,15 @@ class Profile extends Component {
 		this.setState({isEdit:false})
 		await getProfile(this.props.user.uid)
 		await getTable(this.props.profile.transactionIds)
-		
 	}
 	handleEdit = () => {
 		this.setState({isEdit:true})
 	}
 	render() {
-		const {user, userProducts, profile, table, detail, sponsorEmail} = this.props
+		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
 		const {isEdit} = this.state
+		console.log('userProduct', userProducts)
+		console.log('sponsor', sponsorProducts)
 		return <div>
 			<Head/>
 			<Header/>
@@ -87,6 +91,7 @@ class Profile extends Component {
 					table={table}
 					user={user} 
 					userProducts={userProducts} 
+					sponsorProducts={sponsorProducts}
 					setProductStock={setProductStock}
 					setProductSponsor={setProductSponsor}
 					getProductSponsor={getProductSponsor}
@@ -106,6 +111,7 @@ const mapStateToProps = state => ({
 	initialValues: state.profile,
 	user: state.user,
 	userProducts: state.userProducts,
+	sponsorProducts: state.sponsorProducts,
 	profile: state.profile,
 	detail: selector(state,'address', 'email', 'phone', 'image'),
 	sponsorEmail: selector(state, 'sponsorEmail'),

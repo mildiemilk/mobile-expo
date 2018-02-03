@@ -8,7 +8,7 @@ import productimages from '../../lib/reducers/productimages';
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper';
 
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts}) =>
 <Flex direction="row" >
 	<ProfileDetail
 		profileImage={profileImage}
@@ -26,6 +26,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 		userUid={user.uid}
 		setOrderStatus={setOrderStatus}
 	/>
+	{console.log('UserID==>',user.uid)}
 	<Wrapper>
 		<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
 		<Flex flexGrow="1" direction="row">
@@ -33,18 +34,36 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 				Object.keys(userProducts).map( userProductKey => {
 					return (<ItemCard 
 						key={userProductKey}
-						userProductKey={userProductKey} 
 						userUid={user.uid} 
-						userProduct={userProducts[userProductKey]} 
+						Product={userProducts[userProductKey]} 
 						productKey={userProductKey}
 						setProductStock={setProductStock}
 						sponsorEmail={sponsorEmail}
 						setProductSponsor={setProductSponsor}
 						getProductSponsor={getProductSponsor}
+						isSponsor={false}
 					/>)
 				}) : null
 				}
 				<AddProduct/>
+		</Flex>
+	</Wrapper>
+	<Wrapper>
+		<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
+		<Flex flexGrow="1" direction="row">
+		{console.log('sponsorProduct==>', sponsorProducts)}
+			{ sponsorProducts ? 
+				Object.keys(sponsorProducts).map( sponsorProductKey => {
+					{console.log('sponsorProductKey', sponsorProducts[sponsorProductKey])}
+					return (<ItemCard 
+						key={sponsorProductKey}
+						isSponsor={true}
+						userUid={user.uid}
+						Product={sponsorProducts[sponsorProductKey]} 
+						productKey={sponsorProductKey}
+					/>)
+				}) : null
+				}
 		</Flex>
 	</Wrapper>
 </Flex>
