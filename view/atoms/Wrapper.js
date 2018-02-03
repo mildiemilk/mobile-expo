@@ -29,10 +29,7 @@ ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 }
 
 ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
-&:hover{
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        transition:1;
-}
+
 @media (max-width: 700px) {
 	width: 100%;
 }
