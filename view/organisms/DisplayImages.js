@@ -4,6 +4,7 @@ import ImageDisplay from '../molecules/ImageDisplay'
 import SubImageWrapper from '../atoms/ImageAtoms/SubImageWrapper'
 import DisplaySubImage from '../molecules/DisplaySubImage'
 import Flex from '../atoms/Flex'
+import ImageWrap from '../atoms/ImageWrap'
 
 class DisplayImages extends React.Component {
 	constructor(props){
@@ -18,8 +19,10 @@ class DisplayImages extends React.Component {
     render() {
         const { images = [] } = this.props
         const { imageIndex } = this.state
-        return (<Wrapper>
-            <ImageDisplay src={images[imageIndex]} />
+        return (<Wrapper center>
+            <ImageWrap minSize="375px">
+                <ImageDisplay size="100%" src={images[imageIndex]} />
+            </ImageWrap>            
             <SubImageWrapper>
             <Flex width="100%" justContent="center" direction="row" margin="25px 0px">
                 {images.slice(1).map((image, index) => <DisplaySubImage 
