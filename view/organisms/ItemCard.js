@@ -52,9 +52,6 @@ class ItemCard extends React.Component {
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
-		console.log('PROPS', this.props)
-		{console.log('UserID==>',userUid, Product.userUid)}
-		console.log('sponItem', sponsorProduct)
 		return(
 			<Wrapper bigScreenWidth="max-content">
 				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>

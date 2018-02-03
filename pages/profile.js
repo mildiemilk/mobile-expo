@@ -30,8 +30,7 @@ class Profile extends Component {
 			return user ? this.props.saveUser(user) : null
 		})
 		this.props.user? this.props.user.uid ? getUserProducts(this.props.user.uid) : null : null
-		// this.props.user? this.props.user.uid ? getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null : null
-		console.log('user,',this.props.user)
+		this.props.user? this.props.user.uid ? getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null : null
 	
 	}
 
@@ -73,8 +72,6 @@ class Profile extends Component {
 	render() {
 		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
 		const {isEdit} = this.state
-		console.log('userProduct', userProducts)
-		console.log('sponsor', sponsorProducts)
 		return <div>
 			<Head/>
 			<Header/>
