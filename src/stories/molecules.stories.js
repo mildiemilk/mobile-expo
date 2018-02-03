@@ -27,17 +27,17 @@ storiesOf('MultiTab', module)
 .add('default', ()=> <MultiTab/>)
 .add('1Tab', ()=> <MultiTab tabs={[
 	{
-		buttonLabal: 'hello',
+		buttonLabel: 'hello',
 		component: <div style={{backgroundColor: 'salmon', height:'300px', width:'300px'}}>hello</div>
 	}
 ]}/>)
 	.add('2Tab', ()=> <MultiTab tabs={[
 		{
-			buttonLabal: 'hello',
+			buttonLabel: 'hello',
 			component: <div style={{backgroundColor: 'salmon', height:'300px', width:'300px'}}>hello</div>
 		},
 		{
-			buttonLabal: 'hello2',
+			buttonLabel: 'hello2',
 			component: <div style={{backgroundColor: 'blue', height:'300px', width:'300px'}}>hello2</div>
 		}
 	]}/>)

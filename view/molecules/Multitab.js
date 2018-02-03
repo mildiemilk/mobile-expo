@@ -23,14 +23,19 @@ class Multitab extends React.Component {
 							this.props.tabs.map( 
 								(tab, index) =>
 									<Button key={index} margin='1px' buttonDisabled={index === this.state.display ? false:true} onClick={()=>this.changeDisplay(index)}>			
-										{tab.buttonLabal}
+										{tab.buttonLabel}
 									</Button>
 							)
 						}
 					</ButtonGroup>
 					<Wrapper width="100%"  boxShadow='none'>
+						<div style={{minHeight:'320px'}}>
 						{
 							this.props.tabs[this.state.display].component
+						}
+						</div>
+						{
+							this.props.footer
 						}
 					</Wrapper>
 				</Flex>
