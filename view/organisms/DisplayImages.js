@@ -19,7 +19,7 @@ class DisplayImages extends React.Component {
         const { images = [] } = this.props
         const { imageIndex } = this.state
         return (<Wrapper>
-            <ImageDisplay src={images[imageIndex]} />
+            <ImageDisplay src={images[imageIndex]} size={'275px'}/>
             <SubImageWrapper>
             <Flex width="100%" justContent="center" direction="row" margin="25px 0px">
                 {images.slice(1).map((image, index) => <DisplaySubImage 

@@ -7,11 +7,11 @@ import CreditCard from '../organisms/CreditCard'
 
 export const Tabs = props =>  [
 	{
-		buttonLabal:'โอนผ่านธนาคาร',
+		buttonLabel:'โอนผ่านธนาคาร',
 		component:<BankAccountsForTransfer {...props}/>
 	},
 	{
-		buttonLabal: 'จ่ายผ่านบัตรเครดิต/เดบิต',
+		buttonLabel: 'จ่ายผ่านบัตรเครดิต/เดบิต',
 		component: <CreditCard {...props}/>
 	}
 ]

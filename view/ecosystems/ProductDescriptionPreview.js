@@ -71,12 +71,14 @@ const renderContent= ({type, context}) => {
 export default props =>{
 	return <div style={{width:'100%', minWidth:'320px'}}>
 		{
+			props.productDescription?
 			props.productDescription.map((member,index) => (
 				<div key={index}>
 					{member.context ?
 					renderContent(member) : null}
 				</div>
 			))
+			:null
 		}
 	</div>
 } 
