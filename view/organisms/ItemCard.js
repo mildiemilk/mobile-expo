@@ -26,7 +26,9 @@ class ItemCard extends React.Component {
 
 	async componentWillReceiveProps(nextProps){
 		const { productKey, getProductSponsor } = nextProps
-		await getProductSponsor(productKey).then(res => res? this.setState({sponsors: res}): null)
+		{getProductSponsor ?
+			await getProductSponsor(productKey).then(res => res? this.setState({sponsors: res}):null)
+			:null}
 		this.setState({ status: false })
 	}
 
@@ -45,8 +47,8 @@ class ItemCard extends React.Component {
 	}
 
 	render() {
-		const { userUid, userProduct, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor } = this.props
-		const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = userProduct
+		const { userUid, Product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor } = this.props
+		const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = Product
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
@@ -63,7 +65,7 @@ class ItemCard extends React.Component {
 						<tbody>
 						<tr>
 							<td style={{textAlign:'right'}}>Price:</td>
-							<td>{userProduct.price} baht</td>
+							<td>{price} baht</td>
 							<td></td>
 						</tr>
 						<tr>
@@ -73,12 +75,12 @@ class ItemCard extends React.Component {
 						<tr>
 							<td style={{textAlign:'right'}}>Stock: </td>
 							<td>{stock}</td>
-							<td>{userUid === userProduct.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>
+							{!isSponsor?<td>{userUid === Product.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>:null}
 						</tr>
-						<tr>
+						{!isSponsor?<tr>
 							<td style={{textAlign:'right'}}>Number of distributor: </td>
 							<td>{Object.keys(sponsors).length}</td>
-							<td>{userUid === userProduct.userUid ? 
+							<td>{userUid === Product.userUid ? 
 								<AddSponsorModal 
 									productKey={productKey} 
 									sponsors={sponsors} 
@@ -91,14 +93,14 @@ class ItemCard extends React.Component {
 									isEmailExist={isEmailExist}
 									round />
 								: null }</td>
-						</tr>
+						</tr>:null}
 						</tbody>
 					</table>
 					<ButtonGroup>
-						{userUid === userProduct.userUid ?
+						{!isSponsor?
+							userUid === Product.userUid ?
 						<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}><Button background="none" textColor={color.darkText} basic color='#52BE80'>Edit</Button></Link>
-						:null
-						}
+						:null:null}
 						<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}><Button background="none" textColor={color.darkText} basic color='#45B39D'>Preview</Button></Link>
 						<Button background="none" basic color='teal' onClick={()=>this.copyLink(productKey, userUid)}  textColor={color.darkText} >GetLink</Button>	
 						<FacebookProvider appId="139659809933718"> {/* TODO: change appId to your appId */}
