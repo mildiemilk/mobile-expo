@@ -49,7 +49,7 @@ class Select extends Component {
                     padding='8px 26px 8px 8px'
                     margin='0 5px 0 0'                    
                 >
-                    {this.props.nextDescription||'เพิ่มข้อมูลสินค้า'}
+                    {this.props.items[this.props.nextDescription]||'เพิ่มข้อมูลสินค้า'}
                     <Triangle/>
                 </Button>
                 {

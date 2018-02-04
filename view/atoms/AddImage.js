@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import AddImg from '../../static/img/addimg.svg'
 
 export default styled(AddImg)`
-	max-width: 100vw;
+	max-width: 100%;
 	max-height: -webkit-fill-available;
 	display: ${props => props.src ? 'none' :'unset' };
 	${Dropzone}:hover & {

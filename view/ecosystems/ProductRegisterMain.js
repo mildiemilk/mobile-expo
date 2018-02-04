@@ -27,12 +27,29 @@ const Detail = props => [
 
 ]
 
+const DetailMobile = props => [
+    {
+        buttonLabel: 'รูปภาพ',
+        component: <AddedImages {...props} />
+    },
+    ...Detail(props)
+]
+
 export default props=> 
-<Flex direction='row' width='100%'>
-    <AddedImages {...props} />
-    <Multitab tabs={Detail(props)}
-    footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-    />
-    <br/>
-    <br/>
-</Flex>
+<div>
+    <Flex direction='row' width='100%' onlyDesktop>
+        <AddedImages {...props} />
+        <Multitab tabs={Detail(props)}
+        footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+        />
+        <br/>
+        <br/>
+    </Flex>
+    <Flex direction='row' width='100%' onlyMobile>
+        <Multitab tabs={DetailMobile(props)}
+        footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+        />
+        <br/>
+        <br/>
+    </Flex>
+</div>
