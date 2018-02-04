@@ -47,13 +47,14 @@ class ItemCard extends React.Component {
 	}
 
 	render() {
-		const { userUid, Product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor } = this.props
+		const { userUid, Product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive } = this.props
 		const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = Product
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
 		return(
 			<Wrapper bigScreenWidth="max-content">
+				{ !isSponsor? <div><input type="checkbox" name="active" checked={Product.active} onClick={() => setProductActive(!Product.active, productKey)}/></div> : null }
 				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
 					<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px"/>
 				</Link>
@@ -72,11 +73,18 @@ class ItemCard extends React.Component {
 							<td style={{textAlign:'right'}}>Comission:</td>
 							<td>{comissionPercent} % & {comissionCash || '0.00'} บาท </td>
 						</tr>
+						{!isSponsor? 
 						<tr>
 							<td style={{textAlign:'right'}}>Stock: </td>
 							<td>{stock}</td>
-							{!isSponsor?<td>{userUid === Product.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>:null}
+							<td>{userUid === Product.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>
 						</tr>
+						: <tr>
+							<td style={{textAlign:'right'}}>Stock: </td>
+							<td>{!Product.active? 'Out of stock': stock}</td>
+						</tr>
+						}
+						
 						{!isSponsor?<tr>
 							<td style={{textAlign:'right'}}>Number of distributor: </td>
 							<td>{Object.keys(sponsors).length}</td>
@@ -96,17 +104,21 @@ class ItemCard extends React.Component {
 						</tr>:null}
 						</tbody>
 					</table>
-					<ButtonGroup>
+					<ButtonGroup disabled={!Product.active && isSponsor}>
 						{!isSponsor?
 							userUid === Product.userUid ?
-						<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}><Button background="none" textColor={color.darkText} basic color='#52BE80'>Edit</Button></Link>
+						<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}>
+							<Button buttonDisabled={!Product.active && isSponsor} background="none" textColor={color.darkText} basic color='#52BE80'>Edit</Button>
+						</Link>
 						:null:null}
-						<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}><Button background="none" textColor={color.darkText} basic color='#45B39D'>Preview</Button></Link>
-						<Button background="none" basic color='teal' onClick={()=>this.copyLink(productKey, userUid)}  textColor={color.darkText} >GetLink</Button>	
+						<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
+							<Button buttonDisabled={!Product.active && isSponsor} background="none" textColor={color.darkText} basic color='#45B39D'>Preview</Button>
+						</Link>
+						<Button buttonDisabled={!Product.active && isSponsor} background="none" basic color='teal' onClick={()=>this.copyLink(productKey, userUid)}  textColor={color.darkText} >GetLink</Button>	
 						<FacebookProvider appId="139659809933718"> {/* TODO: change appId to your appId */}
 							{/* <Share href={`${window.location.hostname}${window.location.port?`:${window.location.port}`:null}/p/${productKey}/${userUid}`}> */}
 							<Share href={this.link(productKey, userUid)}>
-								<Button background="none" basic color='#3f87a6'  textColor={color.darkText} >Share <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
+								<Button buttonDisabled={!Product.active && isSponsor} background="none" basic color='#3f87a6'  textColor={color.darkText} >Share <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
 							</Share>
 						</FacebookProvider>
 					</ButtonGroup>

@@ -60,4 +60,5 @@ export const ButtonGroup = styled.div`
 	button: last-child {
 		border-radius: 0px 5px 5px 0px;
 	}
+	${props => props.disabled? 'pointer-events: none;': null}
 `

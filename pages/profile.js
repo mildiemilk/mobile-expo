@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
-import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable } from '../lib/handlers/product'
+import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
@@ -45,7 +45,9 @@ class Profile extends Component {
 				getTable(this.props.profile.transactionIds)
 			}
 		}
-		
+		if(nextProps.userProducts !== this.props.userProducts) {
+			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
+		}
 	}
 	handleImageChange = e => {
     e.preventDefault();
@@ -93,6 +95,7 @@ class Profile extends Component {
 					setProductSponsor={setProductSponsor}
 					getProductSponsor={getProductSponsor}
 					sponsorEmail={sponsorEmail}
+					setProductActive={setProductActive}
 				/>
 			</div>
 	}
