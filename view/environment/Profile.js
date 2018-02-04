@@ -1,3 +1,4 @@
+import { Grid } from 'semantic-ui-react'
 import AddProduct from '../organisms/AddProduct'
 import Flex from '../atoms/Flex'
 import ItemCard from '../organisms/ItemCard'
@@ -10,22 +11,28 @@ import Wrapper from '../atoms/Wrapper';
 
 export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor}) =>
 <Flex direction="row" >
-	<ProfileDetail
-		profileImage={profileImage}
-		handleImageChange={handleImageChange}
-		handleSave={handleSave}
-		detail={detail}
-		isEdit={isEdit}
-		profile={profile}
-		handleEdit={handleEdit}
-		balance={user.wallet}
-		userUid={user.uid}
-	/>
-	<ProfileTable
-		table={table}
-		userUid={user.uid}
-		setOrderStatus={setOrderStatus}
-	/>
+	<Grid>
+		<Grid.Column mobile={16} tablet={16} computer={4}>
+			<ProfileDetail
+				profileImage={profileImage}
+				handleImageChange={handleImageChange}
+				handleSave={handleSave}
+				detail={detail}
+				isEdit={isEdit}
+				profile={profile}
+				handleEdit={handleEdit}
+				balance={user.wallet}
+				userUid={user.uid}
+			/>
+		</Grid.Column>
+		<Grid.Column mobile={16} tablet={16} computer={12}>
+			<ProfileTable
+				table={table}
+				userUid={user.uid}
+				setOrderStatus={setOrderStatus}
+			/>
+		</Grid.Column>
+	</Grid>
 	<Wrapper>
 		<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
 		<Flex flexGrow="1" direction="row">

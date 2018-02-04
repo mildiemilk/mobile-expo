@@ -47,6 +47,7 @@ export const DivButton = styled.div`
 	justify-content: flex-end;
 
 `
+
 export const ButtonGroup = styled.div`
 	display:flex;
 	justify-content: center;

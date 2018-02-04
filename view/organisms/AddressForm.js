@@ -4,7 +4,7 @@ import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 
 export default () => 
-<Wrapper padding="25px 30px 10px 20px" margin="25px 15px">
+<Wrapper padding="25px 30px 10px 20px" margin="25px 0px">
     <H3>ที่อยู่จัดส่ง</H3>
     <Flex margin="10px 0px" direction="column">
     <InputText label="ชื่อ:" placeholder="steve jobs" name="name" maxWidth="300px" />
