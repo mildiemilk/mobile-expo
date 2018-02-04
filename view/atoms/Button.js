@@ -4,16 +4,19 @@ import color from '../../static/json/color.json'
 export default styled.button`
 border: none;
 display: inline-block;
+${props=> props.topRight? 'position:absolute;top:0;right:0;': null}
+${props=> props.relative? 'position:relative;': null}
 outline: 0;
-padding: 8px 16px;
+padding: ${props => props.padding? props.padding:'8px 16px'};
 max-height: 50px;
 vertical-align: middle;
 overflow: hidden;
 text-decoration: none;
-text-align: center;
+text-align: ${props=> props.textAlign? props.textAlign:'center'};
 cursor: pointer;
 white-space: nowrap;
-${props=> props.noFlexGlow? `flex-grow:inherit;`:`flex-grow: 1;`}
+${props=> props.noFlexGrow? `flex-grow:inherit;`:`flex-grow: 1;`}
+${props=> props.zIndex? `z-index:${props.zIndex};`:null}
 ${props=> props.width? `width:${props.width};` :null}
 ${props=> props.height? `height:${props.height};` :null}
 ${props=> props.maxWidth? `max-width:${props.maxWidth};`:null}
@@ -30,7 +33,7 @@ ${props => props.fullWidth ?
 	}
 	${props => props.color? 'border: 1px solid '+ props.color+';':null}
 	@media (max-width: 700px){
-		${props => props.mobileFixedButtom ? "position:fixed;width:100%vw;bottom:0px":null}
+		${props => props.mobileFixedButtom ? "position:fixed;width:100vw;bottom:0;left:0;":null}
 	}
 	${props => props.round? 'border-radius: 18px;': null}
 	&:hover {
