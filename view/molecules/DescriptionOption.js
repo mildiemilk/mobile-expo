@@ -1,11 +1,10 @@
 import { Field } from 'redux-form'
 
 export default props => <Field name="nextDescription" component="select">
-	<option />
-	<option value="header">Header</option>
-	<option value="paragraph">Paragraph</option>
-	<option value="bold">Bold</option>
-	<option value="image">Image</option>
-	<option value="video">Video</option>
-	<option value="youtube">YouTube Link </option>
+	<option value="header">หัวข้อ</option>
+	<option value="paragraph">ข้อความ</option>
+	<option value="bold">ตัวหนา</option>
+	<option value="image">รูปภาพ</option>
+	<option value="video">วิดีโด</option>
+	<option value="youtube">YouTube url</option>
 </Field>

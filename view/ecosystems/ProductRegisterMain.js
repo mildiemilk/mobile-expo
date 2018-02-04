@@ -17,8 +17,12 @@ const Detail = props => [
         component: <ProductDescriptionForm {...props} />
     },
     {
-        buttonLabel: 'preview',
+        buttonLabel: 'ตัวอย่างข้อมูลสินค้า',
         component: <ProductDescriptionPreview {...props} />
+    },
+    {
+        buttonLabel: 'คอมมิสชั่น',
+        component: <ComissionInput {...props}/>
     }
 
 ]
@@ -26,9 +30,9 @@ const Detail = props => [
 export default props=> 
 <Flex direction='row' width='100%'>
     <AddedImages {...props} />
-    <Multitab tabs={Detail(props)} />
-    <ComissionInput {...props}/>
-    <Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>
+    <Multitab tabs={Detail(props)}
+    footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+    />
     <br/>
     <br/>
 </Flex>

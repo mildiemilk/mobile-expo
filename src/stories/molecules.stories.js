@@ -18,10 +18,24 @@ import CreditCardYear from '../../view/molecules/CreditCardYear'
 import BankAccount from '../../view/molecules/BankAccount'
 import CvvInput from '../../view/molecules/CvvInput'
 import MultiTab from '../../view/molecules/Multitab'
+import Select from '../../view/molecules/Select'
 import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
+
+const items = {
+	paragraph: 'ข้อความ',
+	header:'หัวข้อ',
+	bold: 'ตัวหนา',
+	image: 'รูปภาพ',
+	video: 'วิดีโอ',
+	youtube: 'ลิงค์ youtube'
+}
+
+storiesOf('Select', module)
+.add('default', ()=> <Select/>)
+.add('with item', ()=> <Select items={items}/>)
 
 storiesOf('MultiTab', module)
 .add('default', ()=> <MultiTab/>)
