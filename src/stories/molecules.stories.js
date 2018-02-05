@@ -23,6 +23,10 @@ import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
+import WebExplainCard from '../../view/molecules/WebExplainCard'
+
+storiesOf('WebExplainCard',module)
+	.add('default', ()=> <WebExplainCard/>)
 
 const items = {
 	paragraph: 'ข้อความ',
