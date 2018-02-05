@@ -81,7 +81,7 @@ class ItemCard extends React.Component {
 						</tr>
 						: <tr>
 							<td style={{textAlign:'right'}}>Stock: </td>
-							<td>{!Product.active? 'Out of stock': stock}</td>
+							{!Product.active? <td style={{color:'red'}}>Out of stock</td>: <td>{stock}</td>}
 						</tr>
 						}
 						
