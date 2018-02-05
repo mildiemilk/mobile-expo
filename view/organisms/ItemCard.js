@@ -54,7 +54,7 @@ class ItemCard extends React.Component {
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
 		return(
 			<Wrapper bigScreenWidth="max-content">
-				{ !isSponsor? <div><input type="checkbox" name="active" checked={Product.active} onClick={() => setProductActive(!Product.active, productKey)}/></div> : null }
+
 				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
 					<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px"/>
 				</Link>
@@ -64,6 +64,12 @@ class ItemCard extends React.Component {
 				<div>
 					<table>
 						<tbody>
+						{ !isSponsor? 
+						<tr>
+							<td style={{textAlign:'right'}}>Active:</td>
+							<td><input type="checkbox" name="active" checked={Product.active} onClick={() => setProductActive(!Product.active, productKey)}/>
+							</td>
+						</tr> : null }
 						<tr>
 							<td style={{textAlign:'right'}}>Price:</td>
 							<td>{price} baht</td>
