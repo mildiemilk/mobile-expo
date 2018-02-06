@@ -4,6 +4,7 @@ import H3 from '../atoms/H3'
 import WebExplainFooter from './WebExplainFooter'
 import color from '../../static/json/color'
 import Button from '../atoms/Button'
+import Link from 'next/link'
 
 export default props => <Wrapper margin='20px 0' padding='0' minWidth='320px' maxWidth='700px'>
 	<div style={{height:'300px'}}>
@@ -12,7 +13,9 @@ export default props => <Wrapper margin='20px 0' padding='0' minWidth='320px' ma
 	<WebExplainFooter>
 		<H3 color={color.lightPrimary}>{props.header}</H3>
 		<p style={{color:color.lightPrimary}}>{props.description}</p>
-		<Button>สมัครเลย</Button>
+		<Link href='register'>
+			<Button>สมัครเลย</Button>
+		</Link>
 	</WebExplainFooter>
 </Wrapper>
 	
