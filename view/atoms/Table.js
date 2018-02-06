@@ -12,7 +12,7 @@ export default styled.table `
 	th {
 		background: ${color.contrast};
 		color: ${color.white};
-		padding: 10px;
+		padding: 10px 6px;
 	
 	}
 	td{
