@@ -23,6 +23,12 @@ import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
+import Jumbotron from '../../view/molecules/Jumbotron'
+
+storiesOf('Jumbotron', module)
+.add('default', ()=> <div style={{backgroundColor:'#F7F7F7', width:'100vw', height:'100vh', display:'relative'}}>
+	<Jumbotron/>
+</div>)
 
 const items = {
 	paragraph: 'ข้อความ',
