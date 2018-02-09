@@ -7,7 +7,7 @@ background: ${color.contrast} !important;
 color: ${color.white} !important;
 padding: 0.1rem 0.5rem 0rem 0.5rem;
 margin: 5px;
-border: 0.1rem solid ${color.primary1};
+border: 0.1rem solid ${color.primary};
 min-width: 30px;
 min-height: 30px !important;
 `
