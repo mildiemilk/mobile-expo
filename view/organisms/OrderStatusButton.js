@@ -48,11 +48,10 @@ const colorStatus = (status, current) => {
 	else return color.disabled
 }
 export default ({status, setOrderStatus, transactionInfo}) => (
-	<div>
+	<div style={{display:'flex', flexDirection:'column', alignItems:'flex-end'}}>
 		{buttonJson(status).map(button=>
 			<Button fixedSize small background={button.background}
-				minWidth="93px" 
-				
+				width="100%"
 				onClick={setOrderStatus
 				?()=>setOrderStatus(transactionInfo.transactionId, button.value)
 				:null}

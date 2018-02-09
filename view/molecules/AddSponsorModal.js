@@ -24,6 +24,6 @@ return (<Modal context={
 					return <H5 lineHeight="20px">{sponsors[sponsorKey].email}</H5>
 				}) : null}
         </div>}>
-    <Button>Add</Button>
+    <Button fullWidth>Add</Button>
 </Modal>)
 }
