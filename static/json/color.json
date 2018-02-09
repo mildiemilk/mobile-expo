@@ -1,8 +1,7 @@
 {
-	"primary1":"#25282A",
-	"lightPrimary": "#dddfe2",
-	"contrast": "#4468B0",
-	"contrastHighlight": "#3d5d9e",
+	"primary":"#25282A",
+	"lightPrimary": "#fbfbfc",
+	"contrast": "#FE5000",
 	"darkText": "#25282A",
 	"warning": "#F79E02",
 	"error":"#F76C6C",

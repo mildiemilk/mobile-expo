@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="485px" height="485px" viewBox="0 0 485 485" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-56.8%" y="-9.0%" width="259.1%" height="125.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="10" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M274,256.42816 C206.708391,266.12485 155,324.023854 155,394 C155,402.185286 155.707504,410.205325 157.064693,418.002301 C147.431512,399.090026 142,377.679312 142,355 C142,280.579798 200.484755,219.819442 274,216.173198 L274,188 L374,234.5 L274,281 L274,256.42816 Z" id="path-2"></path>
+        <filter x="-10.8%" y="-10.9%" width="130.2%" height="130.4%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="10" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-4" points="330 263 374 242 374 390 330 390"></polygon>
+        <filter x="-56.8%" y="-16.9%" width="259.1%" height="147.3%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="10" dy="10" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FE5000" cx="242.5" cy="242.5" r="242.5"></circle>
+        <g id="Group" filter="url(#filter-1)" transform="translate(137.000000, 74.000000)" fill="#F5A623">
+            <path d="M43.5,175.674066 C16.7126652,200.607906 0,235.915203 0,275.063745 C0,276.380267 0.0189003905,277.692445 0.056448722,279.000031 L0,279.000015 L0,32 L43.5,32 L43.5,175.674066 Z" id="Combined-Shape"></path>
+            <path d="M43.5,143.674066 C16.7126652,168.607906 0,203.915203 0,243.063745 C0,244.380267 0.0189003905,245.692445 0.056448722,247.000031 L0,247.000015 L0,0 L43.5,0 L43.5,143.674066 Z" id="Combined-Shape"></path>
+        </g>
+        <g id="Combined-Shape">
+            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+            <use fill="#F5A623" fill-rule="evenodd" xlink:href="#path-2"></use>
+        </g>
+        <g id="Rectangle-3">
+            <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+            <use fill="#F5A623" fill-rule="evenodd" xlink:href="#path-4"></use>
+        </g>
+    </g>
+</svg>

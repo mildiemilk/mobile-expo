@@ -3,7 +3,7 @@ import color from '../../static/json/color.json'
 
 
 export default styled.label`
-color: {color.primary1};
+color: {color.primary};
 font-family: 'Kanit', sans-serif;
 font-size: 1.2em;
 margin-top:10px;

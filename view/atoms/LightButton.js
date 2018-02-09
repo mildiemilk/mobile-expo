@@ -11,6 +11,6 @@ border: 0.1rem solid ${color.lightPrimary} !important;
 	z-index:10;
 	font-weight: bold !important;
 	background: ${color.lightPrimary} !important;
-	color: ${color.primary1} !important;
+	color: ${color.primary} !important;
 }
 `

@@ -29,6 +29,10 @@ storiesOf('Jumbotron', module)
 .add('default', ()=> <div style={{backgroundColor:'#F7F7F7', width:'100vw', height:'100vh', display:'relative'}}>
 	<Jumbotron/>
 </div>)
+import WebExplainCard from '../../view/molecules/WebExplainCard'
+
+storiesOf('WebExplainCard',module)
+	.add('default', ()=> <WebExplainCard/>)
 
 const items = {
 	paragraph: 'ข้อความ',

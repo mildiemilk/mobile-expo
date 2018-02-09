@@ -3,7 +3,7 @@ import color from '../../static/json/color.json'
 
 export default styled.h1`
 font-size: 1.5em;
-color: ${props=>props.color? props.color :color.primary1};
+color: ${props=>props.color? props.color :color.primary};
 ${props=> props.textShadow? `text-shadow:${props.textShadow};`:null}
 text-align: ${props => props.left? 'left': null};
 ${props=> props.padding? `padding: ${props.padding};`:null}
