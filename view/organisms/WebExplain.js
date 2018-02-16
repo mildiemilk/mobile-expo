@@ -1,11 +1,11 @@
-import WebExplainCard from "../molecules/WebExplainCard";
+import WebExplainCard from "../molecules/WebExplainCard"
 import WebImage01 from '../../static/img/webexplain/01.svg'
 import WebImage02 from '../../static/img/webexplain/02.svg'
 import WebImage03 from '../../static/img/webexplain/03.svg'
 import WebImage04 from '../../static/img/webexplain/04.svg'
 import WebImage05 from '../../static/img/webexplain/05.svg'
 import WebImage06 from '../../static/img/webexplain/06.svg'
-import WebImage07 from '../../static/img/webexplain/07.svg'
+import Flex from '../atoms/Flex'
 
 const styleImg={
 	height: '100%',
@@ -38,8 +38,8 @@ const webExplain = [{
 	description:'เพียงแค่สมัครครั้งเดียวคุณสามารถเป็นผู้แนะนำสินค้าได้อย่างไม่จะกัด!'
 }]
 
-export default () => <div>
+export default () => <Flex verticleCenter>
 	{
 		webExplain.map((content, index)=><WebExplainCard img={content.img} header={content.header} description={content.description}/>)
 	}
-</div>
+</Flex>
