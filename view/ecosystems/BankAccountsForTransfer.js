@@ -6,10 +6,10 @@ import Wrapper from '../atoms/Wrapper'
 
 const ControllerButton = props => <Button margin="10px" {...props} fullWidth maxWidth="300px">โอนเงินผ่านบัญชีธนาคาร</Button>
 
-export default ({savePaymentImage, addPayment, imageUpload}) => 
+export default props => 
 <div width="-webkit-fill-available">
-    <BankAccountBkk accountNumber="1234567890" savePaymentImage={savePaymentImage} addPayment={addPayment} imageUpload={imageUpload} />
-    <BankAccountKbank accountNumber="1234567890" savePaymentImage={savePaymentImage} addPayment={addPayment} imageUpload={imageUpload}/>
-    <BankAccountScb accountNumber="1234567890" savePaymentImage={savePaymentImage} addPayment={addPayment} imageUpload={imageUpload}/>
+    <BankAccountBkk {...props} accountNumber="1234567890" />
+    <BankAccountKbank {...props} accountNumber="1234567890"/>
+    <BankAccountScb {...props} accountNumber="1234567890"/>
 </div>
 

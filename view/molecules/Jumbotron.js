@@ -2,7 +2,7 @@ import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
 
-export default ()=><div style={{width:'100%', height:'100%', display:'flex', justifyContent:'center', backgroundColor:'white !important'}}>
+export default ()=><div style={{width:'100%', height:'100%', display:'flex', justifyContent:'center'}}>
 <Wrapper position='relative' noBorderRadius noBorder boxShadow='0 10px 20px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05)' width='80%' maxWidth='700px' height='400px'>
 	<Flex direction='row' position='relative'>
 		<div style={{position:'relative',width:'60%',textAlign:'right'}}>
