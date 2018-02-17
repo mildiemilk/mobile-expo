@@ -1,3 +1,4 @@
+import React from 'react'
 import WebExplainCard from "../molecules/WebExplainCard"
 import WebImage01 from '../../static/img/webexplain/01.svg'
 import WebImage02 from '../../static/img/webexplain/02.svg'

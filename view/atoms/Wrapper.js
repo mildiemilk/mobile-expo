@@ -33,8 +33,12 @@ ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 }
 
 ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
-
-@media (max-width: 700px) {
+@media (max-width: 480px) {
+        width: 99%;
+        padding:5px;
+        margin:5px
+}
+@media (min-width: 481px) AND (max-width: 700px) {
 	width: 100%;
 }
 `
