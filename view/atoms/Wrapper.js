@@ -34,9 +34,17 @@ ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 
 ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 @media (max-width: 480px) {
-        width: 99%;
-        padding:5px;
-        margin:5px
+        width: 98%;
+        ${props => props.padding? `padding: ${props.padding};`: 'padding: 5px 5px;'}
+        margin:5px auto;
+        .wraper-modal{
+            width: 96.5%;
+            margin:5px 0;
+        }
+        .wraper-modal-item{
+            width: 100%;
+            min-width:0
+        }
 }
 @media (min-width: 481px) AND (max-width: 700px) {
 	width: 100%;
