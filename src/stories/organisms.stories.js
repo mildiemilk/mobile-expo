@@ -16,6 +16,7 @@ import DisplayProductText from '../../view/organisms/DisplayProductText'
 import CreditCard from '../../view/organisms/CreditCard'
 import JsonTable from '../../view/organisms/JsonTable'
 import OrderStatusButton from '../../view/organisms/OrderStatusButton'
+import WebExplain from '../../view/organisms/WebExplain';
 
 storiesOf('AddedImages', module)
 	.add('no image', ()=> (
@@ -140,3 +141,6 @@ storiesOf('OrderStatusButton', module)
 	.add('pending', ()=><OrderStatusButton status='pending'/>)
 	.add('success', ()=><OrderStatusButton status='success'/>)
 	.add('delivered', ()=><OrderStatusButton status='delivered'/>)
+
+storiesOf('WebExplain', module)
+	.add('default', ()=><WebExplain/>)

@@ -5,12 +5,17 @@ export default styled.div`
 background-color: white;
 border: 1px solid #dddfe2;
 border-radius: 3px;
+align-self:stretch;
 ${props => props.position? `position: ${props.position};`:null}
 ${props => !props.noMargin? 'margin: 10px;' : null }
 margin: ${props => props.margin};
 ${props => props.padding? `padding: ${props.padding};`: 'padding: 10px;'}
-${props => !props.noBorderRadius?'border-radius: 3px;':null}
-${props => !props.noBorder ?`border: 1px solid ${color.lightPrimary};`: null}
+${props => props.top? `top: ${props.top};`: null}
+${props => props.bottom? `bottom: ${props.bottom};`: null}
+${props => props.left? `left: ${props.left};`: null}
+${props => props.right? `right: ${props.right};`: null}
+${props => !props.noBorderRadius?'border-radius: 3px;':'border-radius: 0;'}
+${props => !props.noBorder ?`border: 1px solid ${color.lightPrimary};`: 'border: 0;'}
 ${props => props.width? `width: ${props.width};`: null}
 ${props => props.color? `color: ${props.color};`: null}
 ${props => props.maxWidth? `max-width: ${props.maxWidth};`: null}
@@ -28,8 +33,12 @@ ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 }
 
 ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
-
-@media (max-width: 700px) {
+@media (max-width: 480px) {
+        width: 99%;
+        padding:5px;
+        margin:5px
+}
+@media (min-width: 481px) AND (max-width: 700px) {
 	width: 100%;
 }
 `
