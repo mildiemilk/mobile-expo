@@ -1,4 +1,4 @@
 node_modules
 .next
 yarn.lock
-env-config.js
+.env.production

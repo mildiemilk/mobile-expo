@@ -121,8 +121,7 @@ class ItemCard extends React.Component {
 							<Button buttonDisabled={!Product.active && isSponsor} background="none" textColor={color.darkText} basic color='#45B39D'>Preview</Button>
 						</Link>
 						<Button buttonDisabled={!Product.active && isSponsor} background="none" basic color='teal' onClick={()=>this.copyLink(productKey, userUid)}  textColor={color.darkText} >GetLink</Button>	
-						<FacebookProvider appId="139659809933718"> {/* TODO: change appId to your appId */}
-							{/* <Share href={`${window.location.hostname}${window.location.port?`:${window.location.port}`:null}/p/${productKey}/${userUid}`}> */}
+						<FacebookProvider appId={process.env.FACEBOOK_APP_ID}> 
 							<Share href={this.link(productKey, userUid)}>
 								<Button buttonDisabled={!Product.active && isSponsor} background="none" basic color='#3f87a6'  textColor={color.darkText} >Share <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
 							</Share>
