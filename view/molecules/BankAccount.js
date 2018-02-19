@@ -13,7 +13,7 @@ import WebExplain from '../organisms/WebExplain'
 const accountNumberFormat = accountNumber => `${accountNumber.slice(0,3)}-${accountNumber.slice(3,4)}-${accountNumber.slice(4,9)}-${accountNumber.slice(9,10)}`
 
 const ModalContext = ({savePaymentImage, pending, startedUploadImage, image}) => 
-<Wrapper centerAll>
+<Wrapper>
 	{!startedUploadImage?
 	<DropZone onDrop={savePaymentImage} size="100%" marginTop="15px">
 		<img style={{width:'100%'}} src='/static/img/bankTransfer.svg'/>
@@ -23,7 +23,7 @@ const ModalContext = ({savePaymentImage, pending, startedUploadImage, image}) =>
 			<WebExplain/>
 			{
 				!pending?
-					<img alt="" src={image} style={{width:'320px', height:'auto'}}  />:null
+					<img alt="" src={image} style={{width:'100%', height:'auto'}}  />:null
 			}
 		</div>}
 </Wrapper>
