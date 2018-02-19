@@ -20,14 +20,14 @@ class Payment extends React.Component{
 		} 
 
 	render() { 
-		const card = {
-			name : 'john doe', 
-			cardNumber : '4242424242424242', 
-			securityCode:'123', 
-			expiryMonth:'7', 
-			expiryYear:'2019'
-		}
 		const {validateCreditCard, startedUploadImage, pending, transaction, image} = this.props
+		const card = {
+			name : process.env.NODE_ENV === 'production'? '' :'john doe', 
+			cardNumber : process.env.NODE_ENV === 'production'? '' :'4242424242424242', 
+			securityCode:process.env.NODE_ENV === 'production'? '' :'123', 
+			expiryMonth:process.env.NODE_ENV === 'production'? '' :'7', 
+			expiryYear:process.env.NODE_ENV === 'production'? '' :'2019'
+		}
 		return <PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
