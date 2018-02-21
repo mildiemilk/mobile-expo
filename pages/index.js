@@ -7,8 +7,10 @@ import { saveUser } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 
 class Home extends Component {
-	static async getInitialProps({req}){
-		console.log('context', req)
+
+	static async getInitialProps (props) {
+		const { query } = props;
+		console.log('query', query)
 	}
 
 	async componentDidMount() {
