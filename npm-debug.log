@@ -1,0 +1,284 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'fs' ]
+2 info using npm@1.3.21
+3 info using node@v8.6.0
+4 warn package.json nextshopnshare@1.0.0 No repository field.
+5 warn package.json browser-resolve@1.11.2 No README data
+6 warn package.json camel-case@3.0.0 No README data
+7 warn package.json can-use-dom@0.1.0 No README data
+8 warn package.json chain-function@1.0.0 No README data
+9 warn package.json dom-serializer@0.1.0 No README data
+10 warn package.json enzyme@3.2.0 No README data
+11 warn package.json eslint-module-utils@2.1.1 No README data
+12 warn package.json estraverse@4.2.0 No README data
+13 warn package.json expect@22.0.3 No description
+14 warn package.json expect@22.0.3 No README data
+15 warn package.json jest-environment-jsdom@20.0.3 No description
+16 warn package.json jest-environment-jsdom@20.0.3 No README data
+17 warn package.json jest-docblock@20.0.3 No description
+18 warn package.json jest-docblock@20.0.3 No README data
+19 warn package.json jest-config@22.0.3 No description
+20 warn package.json jest-config@22.0.3 No README data
+21 warn package.json jest-environment-node@22.0.3 No description
+22 warn package.json jest-environment-node@22.0.3 No README data
+23 warn package.json jest-diff@20.0.3 No description
+24 warn package.json jest-diff@20.0.3 No README data
+25 warn package.json jest-haste-map@22.0.3 No description
+26 warn package.json jest-haste-map@22.0.3 No README data
+27 warn package.json jest-get-type@22.0.3 No README data
+28 warn package.json jest-jasmine2@20.0.4 No description
+29 warn package.json jest-jasmine2@20.0.4 No README data
+30 warn package.json jest-matchers@20.0.3 No description
+31 warn package.json jest-matchers@20.0.3 No README data
+32 warn package.json jest-matcher-utils@20.0.3 No README data
+33 warn package.json jest-regex-util@20.0.3 No description
+34 warn package.json jest-regex-util@20.0.3 No README data
+35 warn package.json jest-message-util@22.0.3 No description
+36 warn package.json jest-message-util@22.0.3 No README data
+37 warn package.json jest-resolve-dependencies@22.0.3 No description
+38 warn package.json jest-resolve-dependencies@22.0.3 No README data
+39 warn package.json jest-resolve@20.0.4 No description
+40 warn package.json jest-resolve@20.0.4 No README data
+41 warn package.json jest-util@22.0.3 No description
+42 warn package.json jest-util@22.0.3 No README data
+43 warn package.json jest-runner@22.0.3 No description
+44 warn package.json jest-runner@22.0.3 No README data
+45 warn package.json jest-snapshot@20.0.3 No description
+46 warn package.json jest-snapshot@20.0.3 No README data
+47 warn package.json jest-runtime@22.0.3 No description
+48 warn package.json jest-runtime@22.0.3 No README data
+49 warn package.json jsesc@1.3.0 No README data
+50 warn package.json loader-fs-cache@1.0.1 No repository field.
+51 warn package.json loader-fs-cache@1.0.1 No README data
+52 warn package.json obuf@1.1.1 No description
+53 warn package.json obuf@1.1.1 No README data
+54 warn package.json path-is-inside@1.0.2 No README data
+55 warn package.json react-transition-group@1.2.1 No README data
+56 warn package.json setimmediate@1.0.5 No README data
+57 warn package.json shallowequal@0.2.2 No README data
+58 warn package.json tr46@0.0.3 No README data
+59 warn package.json assert@1.4.1 assert is also the name of a node core module.
+60 warn package.json bcrypt-pbkdf@1.0.1 No repository field.
+61 warn package.json buffer@5.0.8 buffer is also the name of a node core module.
+62 warn package.json create-error-class@3.0.2 keywords should be an array of strings
+63 warn package.json events@1.1.1 events is also the name of a node core module.
+64 warn package.json express-cors@v0.0.3 No repository field.
+65 warn package.json http-proxy@1.16.2 script values must be string commands
+66 warn package.json indexof@0.0.1 No repository field.
+67 warn package.json is-retry-allowed@1.1.0 keywords should be an array of strings
+68 warn package.json punycode@1.4.1 punycode is also the name of a node core module.
+69 warn package.json querystring@0.2.0 querystring is also the name of a node core module.
+70 warn package.json redux-persist@5.4.0 No repository field.
+71 warn package.json require-from-string@1.2.1 keywords should be an array of strings
+72 warn package.json stack-utils@1.0.1 keywords should be an array of strings
+73 warn package.json string_decoder@1.0.3 string_decoder is also the name of a node core module.
+74 warn package.json url@0.11.0 url is also the name of a node core module.
+75 warn package.json util@0.10.3 util is also the name of a node core module.
+76 verbose readDependencies using package.json deps
+77 verbose cache add [ 'fs', null ]
+78 verbose cache add name=undefined spec="fs" args=["fs",null]
+79 verbose parsed url Url {
+79 verbose parsed url   protocol: null,
+79 verbose parsed url   slashes: null,
+79 verbose parsed url   auth: null,
+79 verbose parsed url   host: null,
+79 verbose parsed url   port: null,
+79 verbose parsed url   hostname: null,
+79 verbose parsed url   hash: null,
+79 verbose parsed url   search: null,
+79 verbose parsed url   query: null,
+79 verbose parsed url   pathname: 'fs',
+79 verbose parsed url   path: 'fs',
+79 verbose parsed url   href: 'fs' }
+80 silly lockFile 3f4bb586-fs fs
+81 verbose lock fs C:\Users\DELL\AppData\Roaming\npm-cache\3f4bb586-fs.lock
+82 silly lockFile 3f4bb586-fs fs
+83 silly lockFile 3f4bb586-fs fs
+84 verbose addNamed [ 'fs', '' ]
+85 verbose addNamed [ null, '*' ]
+86 silly lockFile a107b96b-fs fs@
+87 verbose lock fs@ C:\Users\DELL\AppData\Roaming\npm-cache\a107b96b-fs.lock
+88 silly addNameRange { name: 'fs', range: '*', hasData: false }
+89 verbose url raw fs
+90 verbose url resolving [ 'https://registry.npmjs.org/', './fs' ]
+91 verbose url resolved https://registry.npmjs.org/fs
+92 info trying registry request attempt 1 at 17:18:44
+93 http GET https://registry.npmjs.org/fs
+94 http 200 https://registry.npmjs.org/fs
+95 silly registry.get cb [ 200,
+95 silly registry.get   { 'content-type': 'application/json; charset=UTF-8',
+95 silly registry.get     server: 'UploadServer',
+95 silly registry.get     'cache-control': 'max-age=300',
+95 silly registry.get     'last-modified': 'Thu, 25 Jan 2018 10:09:07 GMT',
+95 silly registry.get     etag: '"5a69acc3-df5"',
+95 silly registry.get     'x-npm-region': 'South-Africa',
+95 silly registry.get     'content-length': '3573',
+95 silly registry.get     'accept-ranges': 'bytes',
+95 silly registry.get     date: 'Wed, 21 Feb 2018 10:18:47 GMT',
+95 silly registry.get     via: '1.1 varnish',
+95 silly registry.get     age: '0',
+95 silly registry.get     connection: 'close',
+95 silly registry.get     'x-served-by': 'cache-jnb7522-JNB',
+95 silly registry.get     'x-cache': 'MISS',
+95 silly registry.get     'x-cache-hits': '0',
+95 silly registry.get     'x-timer': 'S1519208327.795808,VS0,VE394',
+95 silly registry.get     vary: 'Accept-Encoding, Accept' } ]
+96 silly addNameRange number 2 { name: 'fs', range: '*', hasData: true }
+97 silly addNameRange versions [ 'fs', [ '0.0.1-security', '0.0.0', '0.0.2' ] ]
+98 verbose addNamed [ 'fs', '0.0.1-security' ]
+99 verbose addNamed [ '0.0.1-security', '0.0.1-security' ]
+100 silly lockFile 3c8687c2-fs-0-0-1-security fs@0.0.1-security
+101 verbose lock fs@0.0.1-security C:\Users\DELL\AppData\Roaming\npm-cache\3c8687c2-fs-0-0-1-security.lock
+102 silly lockFile 490705b8-mjs-org-fs-fs-0-0-1-security-tgz https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz
+103 verbose lock https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz C:\Users\DELL\AppData\Roaming\npm-cache\490705b8-mjs-org-fs-fs-0-0-1-security-tgz.lock
+104 verbose addRemoteTarball [ 'https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz',
+104 verbose addRemoteTarball   '8a7bd37186b6dddf3813f23858b57ecaaf5e41d4' ]
+105 info retry fetch attempt 1 at 17:18:47
+106 verbose fetch to= C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\tmp.tgz
+107 http GET https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz
+108 http 200 https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz
+109 verbose tar unpack C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\tmp.tgz
+110 silly lockFile 6962d957-7740-0-41451115724058285-package tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package
+111 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package C:\Users\DELL\AppData\Roaming\npm-cache\6962d957-7740-0-41451115724058285-package.lock
+112 silly lockFile b51eedaf-7740-0-41451115724058285-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\tmp.tgz
+113 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\tmp.tgz C:\Users\DELL\AppData\Roaming\npm-cache\b51eedaf-7740-0-41451115724058285-tmp-tgz.lock
+114 silly gunzTarPerm modes [ '755', '644' ]
+115 silly gunzTarPerm extractEntry package.json
+116 silly gunzTarPerm extractEntry README.md
+117 silly lockFile 6962d957-7740-0-41451115724058285-package tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package
+118 silly lockFile 6962d957-7740-0-41451115724058285-package tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package
+119 silly lockFile b51eedaf-7740-0-41451115724058285-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\tmp.tgz
+120 silly lockFile b51eedaf-7740-0-41451115724058285-tmp-tgz tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\tmp.tgz
+121 verbose tar pack [ 'C:\\Users\\DELL\\AppData\\Roaming\\npm-cache\\fs\\0.0.1-security\\package.tgz',
+121 verbose tar pack   'C:\\Users\\DELL\\AppData\\Local\\Temp\\npm-28140-jRQBoUNi\\1519208327740-0.41451115724058285\\package' ]
+122 verbose tarball C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+123 verbose folder C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package
+124 silly lockFile 6962d957-7740-0-41451115724058285-package tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package
+125 verbose lock tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package C:\Users\DELL\AppData\Roaming\npm-cache\6962d957-7740-0-41451115724058285-package.lock
+126 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+127 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\14046785-he-fs-0-0-1-security-package-tgz.lock
+128 silly lockFile 6962d957-7740-0-41451115724058285-package tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package
+129 silly lockFile 6962d957-7740-0-41451115724058285-package tar://C:\Users\DELL\AppData\Local\Temp\npm-28140-jRQBoUNi\1519208327740-0.41451115724058285\package
+130 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+131 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+132 silly lockFile b17b75c7--cache-fs-0-0-1-security-package C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package
+133 verbose lock C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package C:\Users\DELL\AppData\Roaming\npm-cache\b17b75c7--cache-fs-0-0-1-security-package.lock
+134 silly lockFile b17b75c7--cache-fs-0-0-1-security-package C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package
+135 silly lockFile b17b75c7--cache-fs-0-0-1-security-package C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package
+136 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+137 silly lockFile 8380dcf4--cache-fs-0-0-1-security-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package
+138 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package C:\Users\DELL\AppData\Roaming\npm-cache\8380dcf4--cache-fs-0-0-1-security-package.lock
+139 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+140 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\14046785-he-fs-0-0-1-security-package-tgz.lock
+141 silly gunzTarPerm modes [ '755', '644' ]
+142 silly gunzTarPerm extractEntry package.json
+143 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+144 silly gunzTarPerm extractEntry README.md
+145 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+146 silly lockFile 8380dcf4--cache-fs-0-0-1-security-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package
+147 silly lockFile 8380dcf4--cache-fs-0-0-1-security-package tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package
+148 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+149 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+150 verbose chmod C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz 644
+151 silly chown skipping for windows C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+152 silly lockFile 490705b8-mjs-org-fs-fs-0-0-1-security-tgz https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz
+153 silly lockFile 490705b8-mjs-org-fs-fs-0-0-1-security-tgz https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz
+154 silly lockFile 3c8687c2-fs-0-0-1-security fs@0.0.1-security
+155 silly lockFile 3c8687c2-fs-0-0-1-security fs@0.0.1-security
+156 silly lockFile a107b96b-fs fs@
+157 silly lockFile a107b96b-fs fs@
+158 silly resolved [ { name: 'fs',
+158 silly resolved     version: '0.0.1-security',
+158 silly resolved     description: 'This package name is not currently in use, but was formerly occupied by another package. To avoid malicious use, npm is hanging on to the package name, but loosely, and we\'ll probably give it to you if you want it.',
+158 silly resolved     main: 'index.js',
+158 silly resolved     scripts: { test: 'echo "Error: no test specified" && exit 1' },
+158 silly resolved     repository:
+158 silly resolved      { type: 'git',
+158 silly resolved        url: 'git+https://github.com/npm/security-holder.git' },
+158 silly resolved     keywords: [],
+158 silly resolved     author: '',
+158 silly resolved     license: 'ISC',
+158 silly resolved     bugs: { url: 'https://github.com/npm/security-holder/issues' },
+158 silly resolved     homepage: 'https://github.com/npm/security-holder#readme',
+158 silly resolved     readme: '# Security holding package\n\nThis package name is not currently in use, but was formerly occupied\nby another package. To avoid malicious use, npm is hanging on to the\npackage name, but loosely, and we\'ll probably give it to you if you\nwant it.\n\nYou may adopt this package by contacting support@npmjs.com and\nrequesting the name.\n',
+158 silly resolved     readmeFilename: 'README.md',
+158 silly resolved     _id: 'fs@0.0.1-security',
+158 silly resolved     dist: { shasum: 'b14186050bfa7165b69d791804557137dc84b2eb' },
+158 silly resolved     _from: 'fs@',
+158 silly resolved     _resolved: 'https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz' } ]
+159 info install fs@0.0.1-security into D:\Projects\nextshopnshare
+160 info installOne fs@0.0.1-security
+161 info D:\Projects\nextshopnshare\node_modules\fs unbuild
+162 verbose tar unpack C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+163 silly lockFile d11a3f45-s-nextshopnshare-node-modules-fs tar://D:\Projects\nextshopnshare\node_modules\fs
+164 verbose lock tar://D:\Projects\nextshopnshare\node_modules\fs C:\Users\DELL\AppData\Roaming\npm-cache\d11a3f45-s-nextshopnshare-node-modules-fs.lock
+165 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+166 verbose lock tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz C:\Users\DELL\AppData\Roaming\npm-cache\14046785-he-fs-0-0-1-security-package-tgz.lock
+167 silly gunzTarPerm modes [ '755', '644' ]
+168 silly gunzTarPerm extractEntry package.json
+169 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+170 silly gunzTarPerm extractEntry README.md
+171 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+172 silly lockFile d11a3f45-s-nextshopnshare-node-modules-fs tar://D:\Projects\nextshopnshare\node_modules\fs
+173 silly lockFile d11a3f45-s-nextshopnshare-node-modules-fs tar://D:\Projects\nextshopnshare\node_modules\fs
+174 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+175 silly lockFile 14046785-he-fs-0-0-1-security-package-tgz tar://C:\Users\DELL\AppData\Roaming\npm-cache\fs\0.0.1-security\package.tgz
+176 info preinstall fs@0.0.1-security
+177 verbose readDependencies using package.json deps
+178 verbose readDependencies using package.json deps
+179 silly resolved []
+180 verbose about to build D:\Projects\nextshopnshare\node_modules\fs
+181 info build D:\Projects\nextshopnshare\node_modules\fs
+182 verbose linkStuff [ false,
+182 verbose linkStuff   false,
+182 verbose linkStuff   false,
+182 verbose linkStuff   'D:\\Projects\\nextshopnshare\\node_modules' ]
+183 info linkStuff fs@0.0.1-security
+184 verbose linkBins fs@0.0.1-security
+185 verbose linkMans fs@0.0.1-security
+186 verbose rebuildBundles fs@0.0.1-security
+187 info install fs@0.0.1-security
+188 info postinstall fs@0.0.1-security
+189 error peerinvalid The package react does not satisfy its siblings' peerDependencies requirements!
+189 error peerinvalid Peer next@4.2.1 wants react@^16.0.0
+189 error peerinvalid Peer next-redux-wrapper@1.3.5 wants react@*
+189 error peerinvalid Peer react-bootstrap@0.31.5 wants react@^0.14.9 || >=15.3.0
+189 error peerinvalid Peer react-dom@16.2.0 wants react@^16.0.0
+189 error peerinvalid Peer react-dropzone@4.2.3 wants react@>=0.14.0
+189 error peerinvalid Peer react-fa@5.0.0 wants react@>= 0.13.0 <17.0.0
+189 error peerinvalid Peer react-facebook@4.2.1 wants react@15.x || 16.x
+189 error peerinvalid Peer react-redux@5.0.6 wants react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0
+189 error peerinvalid Peer react-responsive@4.0.3 wants react@^16.0.0
+189 error peerinvalid Peer react-sidebar@2.3.2 wants react@>=0.14.0
+189 error peerinvalid Peer react-timeago@3.4.3 wants react@^15.0.0
+189 error peerinvalid Peer redux-form@7.2.0 wants react@^15.0.0-0 || ^16.0.0-0
+189 error peerinvalid Peer semantic-ui-react@0.77.1 wants react@>=0.14.0 <= 16
+189 error peerinvalid Peer styled-components@2.3.3 wants react@>= 0.14.0 < 17.0.0-0
+189 error peerinvalid Peer prop-types-extra@1.0.1 wants react@>=0.14.0
+189 error peerinvalid Peer react-icon-base@2.1.0 wants react@*
+189 error peerinvalid Peer react-icons@2.2.7 wants react@^0.14.0 || ^15.0.0 || ^16.0.0
+189 error peerinvalid Peer react-inspector@2.2.2 wants react@^0.14.0 || ^15.0.0 || ^16.0.0
+189 error peerinvalid Peer react-overlays@0.7.4 wants react@^0.14.9 || >=15.3.0
+189 error peerinvalid Peer react-modal@3.1.10 wants react@^0.14.0 || ^15.0.0 || ^16
+189 error peerinvalid Peer react-spinner-children@1.0.8 wants react@15.x || 16.x
+189 error peerinvalid Peer react-swipeable@4.2.0 wants react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0
+189 error peerinvalid Peer react-test-renderer@16.2.0 wants react@^16.0.0
+189 error peerinvalid Peer react-treebeard@2.1.0 wants react@^15.5.4 || ^16.0.0
+189 error peerinvalid Peer react-transition-group@1.2.1 wants react@^15.0.0 || ^16.0.0
+189 error peerinvalid Peer redux-devtools@3.4.1 wants react@^0.14.9 || ^15.3.0 || ^16.0.0
+189 error peerinvalid Peer uncontrollable@4.1.0 wants react@>=0.11.0
+189 error peerinvalid Peer radium@0.19.6 wants react@^15.3.0 || ^16.0.0
+189 error peerinvalid Peer redbox-react@1.5.0 wants react@^0.14.0 || ^15.0.0 || ^16.0.0-beta || ^16.0.0
+189 error peerinvalid Peer styled-jsx@2.2.1 wants react@15.x.x || 16.x.x
+189 error peerinvalid Peer velocity-react@1.3.3 wants react@^15.3.0 || ^16.0.0
+190 error System Windows_NT 10.0.16299
+191 error command "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save" "fs"
+192 error cwd D:\Projects\nextshopnshare
+193 error node -v v8.6.0
+194 error npm -v 1.3.21
+195 error code EPEERINVALID
+196 verbose exit [ 1, true ]

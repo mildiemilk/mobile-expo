@@ -12,7 +12,7 @@ export default props =>
     <Grid>
       {props.label? 
       <CustomGrid width={props.noGrid?0:2}>
-        <Flex direction="row" height="100%" justContent="flex-end" verticleCenter><span>{props.label}</span></Flex>
+        <Flex direction="row" height="100%" justContent={props.labelFlexStart? "flex-start":"flex-end"} verticleCenter><span>{props.label}</span></Flex>
       </CustomGrid>
       :null
       }

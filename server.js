@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
 const express = require('express')
 const next = require('next')
 const cors = require('express-cors')
@@ -11,6 +14,7 @@ const app = next({
 const handle = app.getRequestHandler()
 const SECRET_KEY = process.env.OMISE_SECRET_KEY
 const EXPIRY_DATE = '2015-09-10'
+
 var omise = require('omise')({
   'secretKey': SECRET_KEY,
   'omiseVersion': EXPIRY_DATE
@@ -61,11 +65,11 @@ app.prepare()
 				productID: req.params.product_id,
 				userID: req.params.user_id
 			}
-			app.render(req, res, actualPage, queryParams)
+			app.render(req, res, actualPage, {...process.env,queryParams})
 		})
 
 		server.get('*', (req, res) => {
-			return handle(req, res)
+			return handle(req, res,'*', process.env)
 		})
 
 		server.listen(3000, (err) => {

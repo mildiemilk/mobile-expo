@@ -7,6 +7,9 @@ import { saveUser } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 
 class Home extends Component {
+	static async getInitialProps({req}){
+		console.log('context', req)
+	}
 
 	async componentDidMount() {
 			const auth = await loadFirebase('auth')
