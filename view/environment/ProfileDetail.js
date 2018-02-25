@@ -10,11 +10,7 @@ import Label from '../atoms/LabelImage'
 import BalanceModal from '../molecules/BalanceModal'
 
 
-export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail}) => <Wrapper padding="20px"
-maxWidth="320px"
-flexGrow="1"
-height= "max-content"
->
+export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail}) => <div>
   {isEdit ? null:<DivButton TextAlign="right"><Button onClick={handleEdit}>Edit</Button></DivButton>}
   <H5 margin="20px 0px" center>{profile.name}</H5>
   {isEdit 
@@ -36,4 +32,4 @@ height= "max-content"
     <H5 lineHeight="32px">Phone: {profile.phone}</H5>
   </div>
   }
-</Wrapper>
+</div>

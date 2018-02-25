@@ -12,19 +12,6 @@ import Wrapper from '../atoms/Wrapper';
 export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive}) =>
 <Flex direction="row" >
 	<Grid>
-		<Grid.Column mobile={16} tablet={16} computer={4}>
-			<ProfileDetail
-				profileImage={profileImage}
-				handleImageChange={handleImageChange}
-				handleSave={handleSave}
-				detail={detail}
-				isEdit={isEdit}
-				profile={profile}
-				handleEdit={handleEdit}
-				balance={user.wallet}
-				userUid={user.uid}
-			/>
-		</Grid.Column>
 		<Grid.Column mobile={16} tablet={16} computer={12}>
 			<ProfileTable
 				table={table}

@@ -12,6 +12,8 @@ import { setOrderStatus } from '../lib/handlers/transaction'
 import Head from '../view/environment/DefaultHead'
 import Header from '../view/environment/Header'
 import store from '../lib/store'
+import ProfileSide from '../view/molecules/ProfileSide'
+import ProfileDetail from '../view/environment/ProfileDetail'
 
 class Profile extends Component {
 	
@@ -77,7 +79,20 @@ class Profile extends Component {
 		return <div>
 			<Head/>
 			<Header/>
-				<ProfileView
+			<ProfileSide sideContent = {
+				<ProfileDetail
+					profileImage={profile.profileImage}
+					handleImageChange={this.handleImageChange}
+					handleSave={() => this.handleSave(detail)}
+					detail={detail}
+					isEdit={isEdit}
+					profile={profile}
+					handleEdit={this.handleEdit}
+					balance={user.wallet}
+					userUid={user.uid}
+				/>}
+				content = {
+					<ProfileView
 					handleImageChange={this.handleImageChange}
 					profileImage={profile.profileImage}
 					handleSave={() => this.handleSave(detail)}
@@ -96,7 +111,8 @@ class Profile extends Component {
 					getProductSponsor={getProductSponsor}
 					sponsorEmail={sponsorEmail}
 					setProductActive={setProductActive}
-				/>
+				/>}
+			/>
 			</div>
 	}
 }  
