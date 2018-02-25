@@ -15,6 +15,7 @@ ${props => props.width? `width: ${props.width};`: null}
 ${props => props.color? `color: ${props.color};`: null}
 ${props => props.maxWidth? `max-width: ${props.maxWidth};`: null}
 ${props => props.centerAll ? 'display: flex;justify-content: center;align-items: center;': null}
+${props => props.flexColumn ? 'flex-direction: column;': null}
 ${props => props.height? `height: ${props.height};`: null}
 ${props => props.minWidth? `min-width: ${props.minWidth};`: null}
 ${props => props.minHeight? `min-height: ${props.minHeight};`: null}

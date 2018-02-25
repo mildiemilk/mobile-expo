@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Image from '../atoms/Image'
 import Header from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
+import Flex from '../atoms/Flex'
 import AddStock from '../molecules/AddStocksButton'
 import Button, { ButtonGroup } from '../atoms/Button'
 import color from '../../static/json/color.json'
@@ -53,11 +54,13 @@ class ItemCard extends React.Component {
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
 		return(
-			<Wrapper bigScreenWidth="max-content">
+			<Wrapper>
 
-				<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
-					<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px"/>
-				</Link>
+				<Flex center verticleCenter>
+					<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
+						<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px"/>
+					</Link>
+				</Flex>
 				<Header>
 					{productName}
 				</Header>
