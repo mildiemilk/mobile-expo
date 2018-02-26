@@ -27,7 +27,7 @@ const ImageHomeContent = isMobile => {
 	</div>)
 }
 export default () => <div style={{ width: '100%', height: 'auto', display: 'flex', justifyContent: 'center' }}>
-	<Wrapper position='relative' noBorderRadius noBorder boxShadow='0 10px 20px rgba(0,0,0,0.10)' width='80%' maxWidth='700px'>
+	<Wrapper position='relative' noBorderRadius noBorder width='80%' maxWidth='700px'>
 		<Flex direction='row' position='relative' wrap='wrap-reverse'>
 			<MediaQuery maxDeviceWidth={700}>
 				{TextButtonHomeContent(true)}
