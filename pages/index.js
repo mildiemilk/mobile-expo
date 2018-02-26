@@ -10,7 +10,6 @@ class Home extends Component {
 
 	static async getInitialProps (props) {
 		const { query } = props;
-		console.log('query', query)
 	}
 
 	async componentDidMount() {

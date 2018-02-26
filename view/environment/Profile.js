@@ -5,9 +5,10 @@ import ItemCard from '../organisms/ItemCard'
 import UserProfile from '../organisms/UserProfile'
 import ProfileTable from '../environment/ProfileTable'
 import ProfileDetail from '../environment/ProfileDetail'
-import productimages from '../../lib/reducers/productimages';
+import productimages from '../../lib/reducers/productimages'
 import H3 from '../atoms/H3'
-import Wrapper from '../atoms/Wrapper';
+import Wrapper from '../atoms/Wrapper'
+
 
 export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive}) =>
 <Flex direction="row" >
