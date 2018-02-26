@@ -4,7 +4,7 @@ import color from '../../static/json/color.json'
 export default styled.button`
 border: none;
 display: inline-block;
-${props=> props.topRight? 'position:absolute;top:0;right:0;': null}
+${props=> props.topRight? 'position:fixed;right:0;top:0;': null}
 ${props=> props.relative? 'position:relative;': null}
 outline: 0;
 padding: ${props => props.padding? props.padding:'8px 16px'};

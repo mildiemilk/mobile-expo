@@ -3,29 +3,32 @@ import MediaQuery from 'react-responsive'
 import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
+import ManyMobile from '../../static/img/manyMobiles.svg'
+import Modal from '../molecules/Modal'
+import WebExplain from '../organisms/WebExplain'
+import color from '../../static/json/color.json'
 
 const TextButtonHomeContent = isMobile => {
-	return (<div style={{ position: 'relative', width: isMobile?'100%':'60%', textAlign:'right' }}>
-		<div style={{ position: isMobile?'relative': 'absolute', left: isMobile?'0':'120px', top: isMobile?'0':'75px' }}>
-			<h1 style={{ margin: '0' }}>ซื้อ โพสต์ รวย!</h1>
-			<ul style={{ listStyle: 'none' }}>
-				<li>ซื้อสินค้า </li>
-				<li>ใส่แล้วโพส </li>
-				<li>เพื่อนซื้อผ่านลิงค์ </li>
-				<li>เราได้ตังค์ โดยไม่ต้องขาย</li>
-			</ul>
-			<Button>สมัครเลย</Button>
-		</div>
+	return (<div style={{ position: 'relative', width: isMobile?'100%':'60%', textAlign: isMobile? 'center':'right' }}>
+			<h1 style={{ margin: '0' }}>ซื้อ แชร์ รวย!</h1>
+			<p style={{color:color.gray}}>ซื้อสินค้า แชร์สินค้า คนสั่งซื้อ รับค่าคอม
+				<Modal context={<WebExplain/>}>
+					<a>วิธีการใช้งานที่ง่ายแสนง่าย</a>
+				</Modal>
+			</p>
+			<Modal>
+				<Button width={isMobile? '100%':''}>สมัครเลย</Button>
+			</Modal>
 	</div>);
 }
 const ImageHomeContent = isMobile => {
-	return (<div style={{ width: isMobile?'100%':'40%', position: 'relative', height: '400px' }}>
-		<img style={{ width: '300px', position:isMobile?'relative': 'absolute', right: isMobile?'0':'-50px', top: '0' }} src='https://firebasestorage.googleapis.com/v0/b/sharemai-1.appspot.com/o/cover-page%2Ffrontpagephoto.png?alt=media&token=36e6cde2-c978-4f2b-96ed-9cc401110494' alt="เวปที่จะเปลี่ยนแปลงชีวิตคุณ" />
+	return (<div style={{ width: isMobile?'100%':'40%', position: 'relative', height: '400px', display:'flex', justifyContent:'center' }}>
+		<img style={{ width: '300px', position:isMobile?'relative': 'absolute', right: isMobile?'0':'-50px', top: '0' }} src='https://firebasestorage.googleapis.com/v0/b/sharemai-1.appspot.com/o/cover-page%2Ffrontpagephoto.png?alt=media&token=4777a091-b059-4b80-8d36-5d2501158ce5' alt="เวปที่จะเปลี่ยนแปลงชีวิตคุณ" />
 	</div>)
 }
 export default () => <div style={{ width: '100%', height: 'auto', display: 'flex', justifyContent: 'center' }}>
-	<Wrapper position='relative' noBorderRadius noBorder boxShadow='0 10px 20px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05)' width='80%' maxWidth='700px'>
-		<Flex direction='row' position='relative'>
+	<Wrapper position='relative' noBorderRadius noBorder width='80%' maxWidth='700px'>
+		<Flex direction='row' position='relative' wrap='wrap-reverse'>
 			<MediaQuery maxDeviceWidth={700}>
 				{TextButtonHomeContent(true)}
 				{ImageHomeContent(true)}
@@ -33,6 +36,7 @@ export default () => <div style={{ width: '100%', height: 'auto', display: 'flex
 			<MediaQuery minDeviceWidth={701}>
 				{TextButtonHomeContent(false)}
 				{ImageHomeContent(false)}
+				<ManyMobile style={{position:'absolute', bottom:'0', maxHeight:'40%', left:'0', width:'auto'}}/>
 			</MediaQuery>
 		</Flex>
 	</Wrapper>

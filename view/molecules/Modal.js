@@ -21,10 +21,10 @@ class Modal extends React.Component {
             <div>
                 <div onClick={() => this.setState({ display: true })}>{children || <Button>modal</Button>}</div>
                 <BlackOut display={this.state.display} height={height} minHeight={minHeight}>
-                    <Wrapper className="wraper-modal">
+                    <Wrapper height='fit-content'>
                         <WhiteDiv padding={padding} minWidth={minWidth}>
                             <DivButton>
-                                <Button onClick={() => this.setState({ display: false })} modalClose>x</Button>
+                                <Button topRight onClick={() => this.setState({ display: false })} modalClose>x</Button>
                             </DivButton>
                             <MediaQuery maxDeviceWidth={700}>
                                 <div style={{ padding: "0px 5px 15px 5px" }}>
