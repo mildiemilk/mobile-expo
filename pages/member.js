@@ -11,7 +11,6 @@ class Member extends React.Component {
 
 	render() {
 		return (
-			user.loggedIn?
 			<MemberView {...this.props}/>
 		)
 	}
