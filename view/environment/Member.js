@@ -9,7 +9,6 @@ import JsonTable from '../organisms/JsonTable'
 import Modal from '../molecules/Modal'
 import Flex from '../atoms/Flex'
 import TextField from '../atoms/TextField'
-import { saveMembership } from '../../lib/handlers/member'
 
 const memberHeader = {
 	"name": "Name",
@@ -30,12 +29,28 @@ const MemberRegisterForm = props =>
 <div>
 	{props.passwordconfirmationLength > 5  ?
 		props.passwordLength === props.passwordconfirmationLength && props.passwordMatch ?
-		<h3>Password match!</h3>: <h3>Password do not match</h3> : null
+		null: <h3>Password do not match</h3> : null
 	}
+	{
+		props.member.error?
+		<span>{props.member.error}</span>:null
+	}
+		<span style={{color:'red'}}>{props.member.keyIsValid ? '':'ชื่อต้องใช้ ตัวเลขหรือตัวอักษรภาษาอังกฤษเท่านั้น'}</span>
 	<TextField labelFlexStart label="Member Name" name="name"/>
 	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
 	<TextField labelFlexStart label="Password Confirmation" name="passwordconfirmation" type="password"/>
-	<Button fullWidth onClick={()=>saveMembership(props.name, props.password, props.user.uid)}>สร้างสมาชิก</Button>
+	<Button fullWidth onClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}>สร้างสมาชิก</Button>
+</div>
+
+const MemberLoginForm = props => 
+<div>
+	{
+		props.member.error?
+		<span>{props.member.error}</span>:null
+	}
+	<TextField labelFlexStart label="Member Name" name="name"/>
+	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
+	<Button fullWidth onClick={()=>props.loginMembership(props.name, props.password, props.user)}>สมัครสมาชิก</Button>	
 </div>
 
 export default props => 
@@ -54,14 +69,14 @@ export default props =>
 				</Grid.Column>
 				<Grid.Column mobile={16} tablet={16} computer={12}>
 					<Flex direction="row">
-					<h3>Your Membership:{props.user.member|| 'คุณยังไม่เป็นสมาชิก'}</h3>
-						{!props.user.member?
+					<h3>Your Membership:{props.user.membershipId|| 'คุณยังไม่เป็นสมาชิก'}</h3>
+						{!props.user.membershipId?
 							<Flex direction="row">
-								<Modal>
+								<Modal context={<MemberLoginForm {...props}/>}>
 									<Button margin="10px 0 0 0">สมัครสมาชิก</Button>
 								</Modal>
-								<Modal context={<MemberRegisterForm {...props} userUid={props.user.uid}/>}>
-									<Button margin="10px 0 0 10px" onClick={()=>saveMembership()}>สร้างสมาชิก</Button>
+								<Modal context={<MemberRegisterForm {...props} />}>
+									<Button margin="10px 0 0 10px" onClick={()=>props.saveMembership(props.member.name,props.password,props.user.uid)}>สร้างสมาชิก</Button>
 								</Modal>
 							</Flex>
 							:null

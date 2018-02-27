@@ -9,6 +9,8 @@ import { getProfile } from '../lib/handlers/profile'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import { getUserbyUid } from '../lib/handlers/user'
+import { saveMembership, regexKey, loginMembership } from '../lib/handlers/member'
+import { validateKey } from '../lib/actions/member'
 
 
 class Member extends React.Component {
@@ -26,11 +28,13 @@ class Member extends React.Component {
 		if(nextProps.user !== this.props.user){
 				await getProfile(this.props.user.uid)
 		}
+		nextProps.name !== this.props.name ? 
+			this.props.validateKey(RegExp(/[^a-z|A-Z|\s|[0-9]/g).exec(nextProps.name) === null): null
 	}
 
 	render() {
 		return (
-			<MemberView {...this.props}/>
+			<MemberView {...this.props} saveMembership={saveMembership} loginMembership={loginMembership}/>
 		)
 	}
 }
@@ -48,12 +52,14 @@ const mapStateToProps = state => ({
 	passwordconfirmationLength: selector(state,'passwordconfirmation') ? selector(state,'passwordconfirmation').length : 0,
 	passwordLength: selector(state,'password')? selector(state,'password').length: 0,
 	passwordMatch: selector(state,'password') === selector(state,'passwordconfirmation'),
-	password: selector(state,'password')
+	password: selector(state,'password'),
+	keyIsValid: state.member.keyIsValid
 })
 
 const mapDispatchToProps = {
 	saveUserPending,
-	saveUser
+	saveUser,
+	validateKey
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Member)
