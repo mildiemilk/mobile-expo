@@ -44,9 +44,11 @@ const mapStateToProps = state => ({
 	member: state.member,
 	user: state.user,
 	profile: state.profile,
+	name: selector(state,'name'),
 	passwordconfirmationLength: selector(state,'passwordconfirmation') ? selector(state,'passwordconfirmation').length : 0,
 	passwordLength: selector(state,'password')? selector(state,'password').length: 0,
-	passwordMatch: selector(state,'password') === selector(state,'passwordconfirmation')
+	passwordMatch: selector(state,'password') === selector(state,'passwordconfirmation'),
+	password: selector(state,'password')
 })
 
 const mapDispatchToProps = {

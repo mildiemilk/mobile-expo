@@ -9,6 +9,7 @@ import JsonTable from '../organisms/JsonTable'
 import Modal from '../molecules/Modal'
 import Flex from '../atoms/Flex'
 import TextField from '../atoms/TextField'
+import { saveMembership } from '../../lib/handlers/member'
 
 const memberHeader = {
 	"name": "Name",
@@ -34,7 +35,7 @@ const MemberRegisterForm = props =>
 	<TextField labelFlexStart label="Member Name" name="name"/>
 	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
 	<TextField labelFlexStart label="Password Confirmation" name="passwordconfirmation" type="password"/>
-	<Button fullWidth>สร้างสมาชิก</Button>
+	<Button fullWidth onClick={()=>saveMembership(props.name, props.password, props.user.uid)}>สร้างสมาชิก</Button>
 </div>
 
 export default props => 
@@ -59,8 +60,8 @@ export default props =>
 								<Modal>
 									<Button margin="10px 0 0 0">สมัครสมาชิก</Button>
 								</Modal>
-								<Modal context={<MemberRegisterForm {...props}/>}>
-									<Button margin="10px 0 0 10px">สร้างสมาชิก</Button>
+								<Modal context={<MemberRegisterForm {...props} userUid={props.user.uid}/>}>
+									<Button margin="10px 0 0 10px" onClick={()=>saveMembership()}>สร้างสมาชิก</Button>
 								</Modal>
 							</Flex>
 							:null
