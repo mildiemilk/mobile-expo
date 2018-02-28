@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').load();
-}
+const dotenv = require('dotenv').load();
 const express = require('express')
 const next = require('next')
 const cors = require('express-cors')

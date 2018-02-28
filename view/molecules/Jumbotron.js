@@ -1,5 +1,5 @@
 import MediaQuery from 'react-responsive'
-
+import Link from 'next/link'
 import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
@@ -16,9 +16,9 @@ const TextButtonHomeContent = isMobile => {
 					<a>วิธีการใช้งานที่ง่ายแสนง่าย</a>
 				</Modal>
 			</p>
-			<Modal>
+			<Link prefetch href="/register">
 				<Button width={isMobile? '100%':''}>สมัครเลย</Button>
-			</Modal>
+			</Link>
 	</div>);
 }
 const ImageHomeContent = isMobile => {
