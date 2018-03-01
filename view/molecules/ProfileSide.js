@@ -11,7 +11,8 @@ class ProfileSide extends Component {
 
   render() {
     const { visible } = this.state
-    const { content, sideContent } = this.props
+    const { content, sideContent, table, userUid } = this.props
+    const pending = table!==undefined&&table.length>=1? table.filter(item => (item.sellerId === userUid) && (item.status === 'pending')).length :null
     return (
       <div>
         <Sidebar.Pushable>
@@ -20,7 +21,7 @@ class ProfileSide extends Component {
               {sideContent}
               <Button round fullWidth margin='2px'>สินค้าทั้งหมด</Button>
               <Button round fullWidth margin='2px'>คำสั่งซื้อ
-                <Label circular color='red'>1112</Label>
+                <Label circular color='red'>{pending}</Label>
               </Button>
               <Button round fullWidth margin='2px'>ลงสินค้าเพิ่ม</Button>
             </Wrapper>

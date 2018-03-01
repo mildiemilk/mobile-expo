@@ -112,6 +112,8 @@ class Profile extends Component {
 					sponsorEmail={sponsorEmail}
 					setProductActive={setProductActive}
 				/>}
+				table={table}
+				userUid={user.uid} 
 			/>
 			</div>
 	}
