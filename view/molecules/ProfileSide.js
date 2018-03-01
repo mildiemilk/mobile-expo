@@ -12,7 +12,8 @@ class ProfileSide extends Component {
 
   render() {
     const { visible } = this.state
-    const { content, sideContent, handleClick } = this.props
+    const { content, sideContent, table, userUid, handleClick  } = this.props
+    const pending = table!==undefined&&table.length>=1? table.filter(item => (item.sellerId === userUid) && (item.status === 'pending')).length :null
     return (
       <div>
         <Sidebar.Pushable>
@@ -21,7 +22,7 @@ class ProfileSide extends Component {
               {sideContent}
               <Button round fullWidth margin='2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
               <Button round fullWidth margin='2px' onClick={() => handleClick('order')}>คำสั่งซื้อ
-                <Label circular color='red'>1112</Label>
+                <Label circular color='red'>{pending}</Label>
               </Button>
               <Link href="/productRegister"><Button round fullWidth margin='2px'>ลงสินค้าเพิ่ม</Button></Link>
             </Wrapper>

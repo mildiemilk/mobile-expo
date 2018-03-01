@@ -96,44 +96,42 @@ class Profile extends Component {
 		return <div>
 			<Head/>
 			<Header/>
-			<div>
-				<ProfileSide sideContent = {
-					<ProfileDetail
-						profileImage={profile.profileImage}
-						handleImageChange={this.handleImageChange}
-						handleSave={() => this.handleSave(detail)}
-						detail={detail}
-						isEdit={isEdit}
-						profile={profile}
-						handleEdit={this.handleEdit}
-						balance={user.wallet}
-						userUid={user.uid}
-					/>}
-					content = {
-						<ProfileView
-						isItemCard={isItemCard}
-						handleImageChange={this.handleImageChange}
-						profileImage={profile.profileImage}
-						handleSave={() => this.handleSave(detail)}
-						detail={detail}
-						isEdit={isEdit}
-						handleEdit={this.handleEdit}
-						profile={profile}
-						setOrderStatus={setOrderStatus}
-						userUid={user.uid} 
-						table={table}
-						user={user} 
-						userProducts={userProducts} 
-						sponsorProducts={sponsorProducts}
-						setProductStock={setProductStock}
-						setProductSponsor={setProductSponsor}
-						getProductSponsor={getProductSponsor}
-						sponsorEmail={sponsorEmail}
-						setProductActive={setProductActive}
-					/>}
-					handleClick={this.handleClick}
-				/>
-				</div>
+			<ProfileSide sideContent = {
+				<ProfileDetail
+					profileImage={profile.profileImage}
+					handleImageChange={this.handleImageChange}
+					handleSave={() => this.handleSave(detail)}
+					detail={detail}
+					isEdit={isEdit}
+					profile={profile}
+					handleEdit={this.handleEdit}
+					balance={user.wallet}
+					userUid={user.uid}
+				/>}
+				content = {
+					<ProfileView
+					handleImageChange={this.handleImageChange}
+					profileImage={profile.profileImage}
+					handleSave={() => this.handleSave(detail)}
+					detail={detail}
+					isEdit={isEdit}
+					handleEdit={this.handleEdit}
+					profile={profile}
+					setOrderStatus={setOrderStatus}
+					userUid={user.uid} 
+					table={table}
+					user={user} 
+					userProducts={userProducts} 
+					sponsorProducts={sponsorProducts}
+					setProductStock={setProductStock}
+					setProductSponsor={setProductSponsor}
+					getProductSponsor={getProductSponsor}
+					sponsorEmail={sponsorEmail}
+					setProductActive={setProductActive}
+				/>}
+				table={table}
+				userUid={user.uid} 
+			/>
 			</div>
 	}
 }
