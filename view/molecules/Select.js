@@ -31,7 +31,7 @@ class Select extends Component {
                     zIndex='10'
                     onClick={
                         ()=>{
-                            store.dispatch(change('product', 'nextDescription', Object.keys(this.props.items)[key]))
+                            store.dispatch(change(this.props.form, this.props.nextDescription, Object.keys(this.props.items)[key]))
                             this.setState({show:false})
                         }
                         
@@ -49,7 +49,7 @@ class Select extends Component {
                     padding='8px 26px 8px 8px'
                     margin='0 5px 0 0'                    
                 >
-                    {this.props.items[this.props.nextDescription]||'เพิ่มข้อมูลสินค้า'}
+                    {this.props.items[this.props.nextDescription]||this.props.default}
                     <Triangle/>
                 </Button>
                 {

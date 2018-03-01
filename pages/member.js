@@ -9,7 +9,7 @@ import { getProfile } from '../lib/handlers/profile'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import { getUserbyUid } from '../lib/handlers/user'
-import { saveMembership, regexKey, loginMembership } from '../lib/handlers/member'
+import { saveMembership, regexKey, loginMembership, setMembers, getAlianceProducts } from '../lib/handlers/member'
 import { validateKey } from '../lib/actions/member'
 
 
@@ -27,6 +27,8 @@ class Member extends React.Component {
 	async componentWillReceiveProps(nextProps){
 		if(nextProps.user !== this.props.user){
 				await getProfile(this.props.user.uid)
+				await setMembers(this.props.user.membership)
+				await getAlianceProducts(this.props.aliancesId)
 		}
 		nextProps.name !== this.props.name ? 
 			this.props.validateKey(RegExp(/[^a-z|A-Z|\s|[0-9]/g).exec(nextProps.name) === null): null

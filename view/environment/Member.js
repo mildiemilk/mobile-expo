@@ -14,8 +14,7 @@ const memberHeader = {
 	"name": "Name",
 	"email":"Email",
 	"shared":"Shared",
-	"role":"Role",
-	"action":"Action"
+	"permission":"Role",
 }
 
 const productHeader = {
@@ -53,6 +52,8 @@ const MemberLoginForm = props =>
 	<Button fullWidth onClick={()=>props.loginMembership(props.name, props.password, props.user)}>สมัครสมาชิก</Button>	
 </div>
 
+const convertObjectToArray = object => Object.keys(object).map(key => object[key])
+
 export default props => 
 	<Grid>
 		<Grid.Row>
@@ -68,24 +69,33 @@ export default props =>
 					</Wrapper>
 				</Grid.Column>
 				<Grid.Column mobile={16} tablet={16} computer={12}>
-					<Flex direction="row">
-					<h3>Your Membership:{props.user.membershipId|| 'คุณยังไม่เป็นสมาชิก'}</h3>
-						{!props.user.membershipId?
-							<Flex direction="row">
-								<Modal context={<MemberLoginForm {...props}/>}>
-									<Button margin="10px 0 0 0">สมัครสมาชิก</Button>
-								</Modal>
-								<Modal context={<MemberRegisterForm {...props} />}>
-									<Button margin="10px 0 0 10px" onClick={()=>props.saveMembership(props.member.name,props.password,props.user.uid)}>สร้างสมาชิก</Button>
-								</Modal>
-							</Flex>
-							:null
+					<Wrapper>
+						<Flex direction="row">
+						<h3>Your Membership:{props.user.membership|| 'คุณยังไม่เป็นสมาชิก'}</h3>
+							{!props.user.membership?
+								<Flex direction="row">
+									<Modal context={<MemberLoginForm {...props}/>}>
+										<Button margin="10px 0 0 0">สมัครสมาชิก</Button>
+									</Modal>
+									<Modal context={<MemberRegisterForm {...props} />}>
+										<Button margin="10px 0 0 10px" onClick={()=>props.saveMembership(props.member.name,props.password,props.user.uid)}>สร้างสมาชิก</Button>
+									</Modal>
+								</Flex>
+								:null
+							}
+						</Flex>
+						{props.user.membership?
+							<h3>Role:{props.member.members[props.user.uid]? props.member.members[props.user.uid].permission: null}</h3>:null
 						}
-					</Flex>
-					<h1>Member</h1>
-					<JsonTable headerJson={memberHeader} footer={<tr><td style={{margin:"0", padding:"0"}} colSpan="5"><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>}/>
-					<h1>Products</h1>
+					</Wrapper>
+					<Wrapper>
+					<h2>Member</h2>
+					<JsonTable headerJson={memberHeader} bodyJsonArray={convertObjectToArray(props.member.members)} footer={<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>}/>
+					</Wrapper>
+					<Wrapper>
+					<h2>Products</h2>
 					<JsonTable headerJson={productHeader} footer={<tr><td style={{margin:"0", padding:"0"}} colSpan="4"><Button margin="0" fullWidth height="100%">+ add product</Button></td></tr>}/>
+					</Wrapper>
 				</Grid.Column>
 		</Grid.Row>
 	</Grid>
