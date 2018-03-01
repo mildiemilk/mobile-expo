@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Sidebar, Segment, Container, Image, Icon, Header, Label } from 'semantic-ui-react'
+import Link from 'next/link'
 import ProfileDetail from '../environment/ProfileDetail'
 import Button from '../atoms/Button';
 import Wrapper from '../atoms/Wrapper';
@@ -11,18 +12,18 @@ class ProfileSide extends Component {
 
   render() {
     const { visible } = this.state
-    const { content, sideContent } = this.props
+    const { content, sideContent, handleClick } = this.props
     return (
       <div>
         <Sidebar.Pushable>
           <Sidebar animation='push' width='wide' visible={visible} icon='labeled' vertical inverted>
-            <Wrapper noMargin={true} noBorder={true}>
+            <Wrapper height="100%" noMargin noBorder>
               {sideContent}
-              <Button round fullWidth margin='2px'>สินค้าทั้งหมด</Button>
-              <Button round fullWidth margin='2px'>คำสั่งซื้อ
+              <Button round fullWidth margin='2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
+              <Button round fullWidth margin='2px' onClick={() => handleClick('order')}>คำสั่งซื้อ
                 <Label circular color='red'>1112</Label>
               </Button>
-              <Button round fullWidth margin='2px'>ลงสินค้าเพิ่ม</Button>
+              <Link href="/productRegister"><Button round fullWidth margin='2px'>ลงสินค้าเพิ่ม</Button></Link>
             </Wrapper>
           </Sidebar>
           <Sidebar.Pusher>

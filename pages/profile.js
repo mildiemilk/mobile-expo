@@ -20,7 +20,8 @@ class Profile extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-			isEdit : false
+			isEdit : false,
+			isItemCard : false,
 		}
 	}
 
@@ -73,49 +74,69 @@ class Profile extends Component {
 	handleEdit = () => {
 		this.setState({isEdit:true})
 	}
+
+	handleClick = string => {
+		const { isItemCard } = this.state
+		if(string==="order") {
+			this.setState({isItemCard:true})
+		}
+		else if(string==="table"){
+			this.setState({isItemCard:false})
+		}
+	}
+
+	handleChangeItemCard = state => {
+		if(!state){
+			this.setState({isItemCard: true})
+		}
+	}
 	render() {
 		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
-		const {isEdit} = this.state
+		const {isEdit, isItemCard} = this.state
 		return <div>
 			<Head/>
 			<Header/>
-			<ProfileSide sideContent = {
-				<ProfileDetail
-					profileImage={profile.profileImage}
-					handleImageChange={this.handleImageChange}
-					handleSave={() => this.handleSave(detail)}
-					detail={detail}
-					isEdit={isEdit}
-					profile={profile}
-					handleEdit={this.handleEdit}
-					balance={user.wallet}
-					userUid={user.uid}
-				/>}
-				content = {
-					<ProfileView
-					handleImageChange={this.handleImageChange}
-					profileImage={profile.profileImage}
-					handleSave={() => this.handleSave(detail)}
-					detail={detail}
-					isEdit={isEdit}
-					handleEdit={this.handleEdit}
-					profile={profile}
-					setOrderStatus={setOrderStatus}
-					userUid={user.uid} 
-					table={table}
-					user={user} 
-					userProducts={userProducts} 
-					sponsorProducts={sponsorProducts}
-					setProductStock={setProductStock}
-					setProductSponsor={setProductSponsor}
-					getProductSponsor={getProductSponsor}
-					sponsorEmail={sponsorEmail}
-					setProductActive={setProductActive}
-				/>}
-			/>
+			<div>
+				<ProfileSide sideContent = {
+					<ProfileDetail
+						profileImage={profile.profileImage}
+						handleImageChange={this.handleImageChange}
+						handleSave={() => this.handleSave(detail)}
+						detail={detail}
+						isEdit={isEdit}
+						profile={profile}
+						handleEdit={this.handleEdit}
+						balance={user.wallet}
+						userUid={user.uid}
+					/>}
+					content = {
+						<ProfileView
+						isItemCard={isItemCard}
+						handleImageChange={this.handleImageChange}
+						profileImage={profile.profileImage}
+						handleSave={() => this.handleSave(detail)}
+						detail={detail}
+						isEdit={isEdit}
+						handleEdit={this.handleEdit}
+						profile={profile}
+						setOrderStatus={setOrderStatus}
+						userUid={user.uid} 
+						table={table}
+						user={user} 
+						userProducts={userProducts} 
+						sponsorProducts={sponsorProducts}
+						setProductStock={setProductStock}
+						setProductSponsor={setProductSponsor}
+						getProductSponsor={getProductSponsor}
+						sponsorEmail={sponsorEmail}
+						setProductActive={setProductActive}
+					/>}
+					handleClick={this.handleClick}
+				/>
+				</div>
 			</div>
 	}
-}  
+}
 Profile = reduxForm({
 	form:'profileDetail',
 	enableReinitialize: true
