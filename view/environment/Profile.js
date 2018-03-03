@@ -42,7 +42,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 					return (<ItemCard 
 						key={userProductKey}
 						userUid={user.uid} 
-						Product={userProducts[userProductKey]} 
+						product={userProducts[userProductKey]} 
 						productKey={userProductKey}
 						setProductStock={setProductStock}
 						sponsorEmail={sponsorEmail}
@@ -59,14 +59,13 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 	<Wrapper>
 		<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
 		<Flex flexGrow="1" direction="row">
-		{console.log('sponsorProduct==>', sponsorProducts)}
 			{ sponsorProducts ? 
 				Object.keys(sponsorProducts).map( sponsorProductKey => {
 					return (<ItemCard 
 						key={sponsorProductKey}
 						isSponsor={true}
 						userUid={user.uid}
-						Product={sponsorProducts[sponsorProductKey]} 
+						product={sponsorProducts[sponsorProductKey]} 
 						productKey={sponsorProductKey}
 					/>)
 				}) : null

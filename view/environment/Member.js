@@ -18,8 +18,7 @@ const memberHeader = {
 }
 
 const productHeader = {
-	"name": "Name",
-	"owner": "Owner",
+	"productName": "Name",
 	"shared": "Shared",
 	"action": "Action"
 }
@@ -94,7 +93,7 @@ export default props =>
 					</Wrapper>
 					<Wrapper>
 					<h2>Products</h2>
-					<JsonTable headerJson={productHeader} footer={<tr><td style={{margin:"0", padding:"0"}} colSpan="4"><Button margin="0" fullWidth height="100%">+ add product</Button></td></tr>}/>
+					<JsonTable headerJson={productHeader} bodyJsonArray={convertObjectToArray(props.member.products)}/>
 					</Wrapper>
 				</Grid.Column>
 		</Grid.Row>

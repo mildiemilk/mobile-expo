@@ -7,11 +7,9 @@ import Image from '../atoms/Image'
 import Header from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
 import AddStock from '../molecules/AddStocksButton'
-import Button, { ButtonGroup } from '../atoms/Button'
-import color from '../../static/json/color.json'
-import FacebookProvider, { Share } from 'react-facebook'
 import AddSponsorModal from '../molecules/AddSponsorModal'
 import { validateEmail } from '../../lib/helpers/formvalidation'
+import ProductAction from '../molecules/ProductAction'
 
 class ItemCard extends React.Component {
 	constructor(props){
@@ -32,13 +30,6 @@ class ItemCard extends React.Component {
 		this.setState({ status: false })
 	}
 
-	link = (productKey, userUid) => `http://${window.location.hostname}${window.location.port?`:${window.location.port}`:''}/p/${productKey}/${userUid}`
-	
-	copyLink = (productKey, userUid) => {
-		copy(this.link(productKey,userUid))
-		alert('the link has been copied')
-	}
-
 	isExist = (sponsorEmail, sponsors) => {
 		const result = Object.keys(sponsors).map( sponsorKey => {
 			return sponsors[sponsorKey].email === sponsorEmail
@@ -47,8 +38,8 @@ class ItemCard extends React.Component {
 	}
 
 	render() {
-		const { userUid, Product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive } = this.props
-		const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = Product
+		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive } = this.props
+		const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = this.props.product
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
@@ -67,7 +58,7 @@ class ItemCard extends React.Component {
 						{ !isSponsor? 
 						<tr>
 							<td style={{textAlign:'right'}}>Active:</td>
-							<td><Checkbox toggle name="active" checked={Product.active} onClick={() => setProductActive(!Product.active, productKey)}/>
+							<td><Checkbox toggle name="active" checked={product.active} onClick={() => setProductActive(!product.active, productKey)}/>
 							</td>
 						</tr> : null }
 						<tr>
@@ -83,18 +74,18 @@ class ItemCard extends React.Component {
 						<tr>
 							<td style={{textAlign:'right'}}>Stock: </td>
 							<td>{stock}</td>
-							<td>{userUid === Product.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>
+							<td>{userUid === product.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>
 						</tr>
 						: <tr>
 							<td style={{textAlign:'right'}}>Stock: </td>
-							{!Product.active? <td style={{color:'red'}}>Out of stock</td>: <td>{stock}</td>}
+							{!product.active? <td style={{color:'red'}}>Out of stock</td>: <td>{stock}</td>}
 						</tr>
 						}
 						
 						{!isSponsor?<tr>
 							<td style={{textAlign:'right'}}>Number of distributor: </td>
 							<td>{Object.keys(sponsors).length}</td>
-							<td>{userUid === Product.userUid ? 
+							<td>{userUid === product.userUid ? 
 								<AddSponsorModal 
 									productKey={productKey} 
 									sponsors={sponsors} 
@@ -110,23 +101,7 @@ class ItemCard extends React.Component {
 						</tr>:null}
 						</tbody>
 					</table>
-					<ButtonGroup disabled={!Product.active && isSponsor}>
-						{!isSponsor?
-							userUid === Product.userUid ?
-						<Link as={`/p/edit/${productKey}/${userUid}`} href={`/productRegister?productID=${productKey}&userID=${userUid}`}>
-							<Button buttonDisabled={!Product.active && isSponsor} background="none" textColor={color.darkText} basic color='#52BE80'>Edit</Button>
-						</Link>
-						:null:null}
-						<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
-							<Button buttonDisabled={!Product.active && isSponsor} background="none" textColor={color.darkText} basic color='#45B39D'>Preview</Button>
-						</Link>
-						<Button buttonDisabled={!Product.active && isSponsor} background="none" basic color='teal' onClick={()=>this.copyLink(productKey, userUid)}  textColor={color.darkText} >GetLink</Button>	
-						<FacebookProvider appId={process.env.FACEBOOK_APP_ID}> 
-							<Share href={this.link(productKey, userUid)}>
-								<Button buttonDisabled={!Product.active && isSponsor} background="none" basic color='#3f87a6'  textColor={color.darkText} >Share <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
-							</Share>
-						</FacebookProvider>
-					</ButtonGroup>
+					<ProductAction product={product} productId={productKey} userUid={userUid} isSponsor={isSponsor} />
 				</div>
 			</Wrapper>
 		)
