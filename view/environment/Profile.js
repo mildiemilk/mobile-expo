@@ -1,6 +1,7 @@
 import { Grid } from 'semantic-ui-react'
 import Carousel from 'nuka-carousel'
 // import styled from 'styled-components'
+import Slider from 'react-slick'
 import AddProduct from '../organisms/AddProduct'
 import Flex from '../atoms/Flex'
 import ItemCard from '../organisms/ItemCard'
@@ -18,9 +19,11 @@ import Wrapper from '../atoms/Wrapper';
 // `
 const settings = {
 	dots: true,
+	slidesToShow: 3,
+	slidesToScroll: 1
 };
 export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard}) =>
-<Flex direction="row" >
+<Flex direction="row" margin="0px 7px">
 	<Grid>
 		<Grid.Column mobile={12} tablet={12} computer={12}>
 		{isItemCard
@@ -30,43 +33,45 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 				setOrderStatus={setOrderStatus}
 			/>
 			:<div>
-				<Wrapper>
+				<Wrapper maxWidth="1400px">
 					<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
-					<Carousel slidesToShow={4}  slidesToScroll={3} cellSpacing={10}  speed={200} dragging={true}>
-					{ userProducts ? 
-						Object.keys(userProducts).map( userProductKey => {
-							return (<ItemCard 
-								key={userProductKey}
-								userUid={user.uid} 
-								Product={userProducts[userProductKey]} 
-								productKey={userProductKey}
-								setProductStock={setProductStock}
-								sponsorEmail={sponsorEmail}
-								setProductSponsor={setProductSponsor}
-								getProductSponsor={getProductSponsor}
-								isSponsor={false}
-								setProductActive={setProductActive}
-							/>)
-						}) : null
-						}
-					</Carousel>
+					<Slider {...settings}>
+						{ userProducts ? 
+							Object.keys(userProducts).map( userProductKey => {
+								return (
+									<div>
+										<ItemCard 
+											key={userProductKey}
+											userUid={user.uid} 
+											Product={userProducts[userProductKey]} 
+											productKey={userProductKey}
+											setProductStock={setProductStock}
+											sponsorEmail={sponsorEmail}
+											setProductSponsor={setProductSponsor}
+											getProductSponsor={getProductSponsor}
+											isSponsor={false}
+											setProductActive={setProductActive}
+										/>
+									</div>)
+								}) : null
+							}
+					</Slider>
 				</Wrapper>
-				<Wrapper>
+				<Wrapper maxWidth="1400px">
 					<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
-					<Flex flexGrow="1" direction="row">
-					{console.log('sponsorProduct==>', sponsorProducts)}
+					<Slider {...settings}>
 						{ sponsorProducts ? 
 							Object.keys(sponsorProducts).map( sponsorProductKey => {
-								return (<ItemCard 
+								return (<div><ItemCard 
 									key={sponsorProductKey}
 									isSponsor={true}
 									userUid={user.uid}
 									Product={sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
-								/>)
+								/></div>)
 							}) : null
 							}
-					</Flex>
+					</Slider>
 				</Wrapper>
 			</div>
 			}

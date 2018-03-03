@@ -22,6 +22,7 @@ class Profile extends Component {
 		this.state = {
 			isEdit : false,
 			isItemCard : false,
+			isVisible: true
 		}
 	}
 
@@ -52,6 +53,8 @@ class Profile extends Component {
 			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
 		}
 	}
+	toggleVisibility = () => this.setState({ isVisible: !this.state.isVisible })
+
 	handleImageChange = e => {
     e.preventDefault();
     const reader = new FileReader();
@@ -85,14 +88,9 @@ class Profile extends Component {
 		}
 	}
 
-	handleChangeItemCard = state => {
-		if(!state){
-			this.setState({isItemCard: true})
-		}
-	}
 	render() {
 		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
-		const {isEdit, isItemCard} = this.state
+		const {isEdit, isItemCard, isVisible} = this.state
 		return <div>
 			<Head/>
 			<Header/>
@@ -110,6 +108,7 @@ class Profile extends Component {
 				/>}
 				content = {
 					<ProfileView
+					isItemCard={isItemCard}
 					handleImageChange={this.handleImageChange}
 					profileImage={profile.profileImage}
 					handleSave={() => this.handleSave(detail)}
@@ -129,8 +128,11 @@ class Profile extends Component {
 					sponsorEmail={sponsorEmail}
 					setProductActive={setProductActive}
 				/>}
+				isVisible={isVisible}
+				toggleVisibility={this.toggleVisibility}
 				table={table}
-				userUid={user.uid} 
+				userUid={user.uid}
+				handleClick={this.handleClick}
 			/>
 			</div>
 	}

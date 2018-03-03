@@ -6,18 +6,14 @@ import Button from '../atoms/Button';
 import Wrapper from '../atoms/Wrapper';
 
 class ProfileSide extends Component {
-  state = { visible: true }
-
-  toggleVisibility = () => this.setState({ visible: !this.state.visible })
-
+ 
   render() {
-    const { visible } = this.state
-    const { content, sideContent, table, userUid, handleClick  } = this.props
+    const { content, sideContent, table, userUid, handleClick, isVisible, toggleVisibility } = this.props
     const pending = table!==undefined&&table.length>=1? table.filter(item => (item.sellerId === userUid) && (item.status === 'pending')).length :null
     return (
       <div>
         <Sidebar.Pushable>
-          <Sidebar animation='push' width='wide' visible={visible} icon='labeled' vertical inverted>
+          <Sidebar animation='push' width='wide' visible={isVisible} icon='labeled' vertical inverted>
             <Wrapper height="100%" noMargin noBorder>
               {sideContent}
               <Button round fullWidth margin='2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
@@ -29,7 +25,7 @@ class ProfileSide extends Component {
           </Sidebar>
           <Sidebar.Pusher>
             <div style={{ display: 'flex' }}>
-              <div style={{ float: 'left', flex: '0 1 auto'}}><Button fullHeight nonMaxHeight padding='5px' onClick={this.toggleVisibility}>></Button></div>
+              <div style={{ float: 'left', flex: '0 1 auto'}}><Button fullHeight nonMaxHeight padding='5px' onClick={toggleVisibility}>></Button></div>
               {content}
             </div>
           </Sidebar.Pusher>

@@ -25,12 +25,13 @@ ${props => props.backgroundImage? `background-image: ${props.backgroundImage};`:
 ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 @media (min-width: 700px) {
         ${props => props.bigScreenWidth? `width: ${props.bigScreenWidth};`:null};
-        min-width: 340px;
+       
+        ${props => props.maxWidth? `max-width: ${props.maxWidth};`:null};
 }
 
 ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 
 @media (max-width: 700px) {
-	width: 100%;
+        ${props => props.widthSmall? `width: ${props.widthSmall};`:`width: 100%;`};
 }
 `

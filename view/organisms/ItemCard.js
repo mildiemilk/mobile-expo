@@ -55,10 +55,9 @@ class ItemCard extends React.Component {
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
 		return(
 			<Wrapper>
-
 				<Flex center verticleCenter>
 					<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
-						<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px"/>
+						<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" size="310px" />
 					</Link>
 				</Flex>
 				<Header>
