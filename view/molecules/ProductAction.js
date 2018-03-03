@@ -5,21 +5,14 @@ import FacebookProvider, { Share } from 'react-facebook'
 import copy from 'copy-to-clipboard'
 import color from '../../static/json/color.json'
 
-class ProductAction extends React.Component {
-    constructor(props){
-		super(props)
-    }
-    
-    link = (productId, userUid) => `http://${window.location.hostname}${window.location.port?`:${window.location.port}`:''}/p/${productId}/${userUid}`
+const link = (productId, userUid) => `http://${window.location.hostname}${window.location.port?`:${window.location.port}`:''}/p/${productId}/${userUid}`
 
-    copyLink = (productId, userUid) => {
-        copy(this.link(productId,userUid))
-        alert('the link has been copied')
-    }
+const copyLink = (productId, userUid) => {
+    copy(link(productId,userUid))
+    alert('the link has been copied')
+}
 
-    render() {
-    const {product, productId, userUid, isSponsor, link} = this.props
-    return (
+export default ({product, productId, userUid, isSponsor}) =>
         <ButtonGroup disabled={!product.active && isSponsor}>
         {!isSponsor?
             userUid === product.userUid ?
@@ -32,12 +25,8 @@ class ProductAction extends React.Component {
         </Link>
         <Button buttonDisabled={!product.active && isSponsor} background="none" basic color='teal' onClick={()=>this.copyLink(productId, userUid)}  textColor={color.darkText} >GetLink</Button>	
         <FacebookProvider appId={process.env.FACEBOOK_APP_ID}> 
-            <Share href={this.link(productId, userUid)}>
+            <Share href={link(productId, userUid)}>
                 <Button buttonDisabled={!product.active && isSponsor} background="none" basic color='#3f87a6'  textColor={color.darkText} >Share <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
             </Share>
         </FacebookProvider>
-        </ButtonGroup>)
-    }
-}
-
-export default ProductAction
+        </ButtonGroup>
