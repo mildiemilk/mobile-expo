@@ -10,7 +10,7 @@ import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
 
 
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, setProductMembership}) =>
 <Flex direction="row" >
 	<Grid>
 		<Grid.Column mobile={16} tablet={16} computer={4}>
@@ -49,7 +49,9 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 						setProductSponsor={setProductSponsor}
 						getProductSponsor={getProductSponsor}
 						isSponsor={false}
+						isMembership={user.membership?true:false}
 						setProductActive={setProductActive}
+						setProductMembership={setProductMembership}
 					/>)
 				}) : null
 				}

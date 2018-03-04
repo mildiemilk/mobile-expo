@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
-import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive } from '../lib/handlers/product'
+import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive, setProductMembership } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
@@ -83,6 +83,8 @@ class Profile extends Component {
 			<Header/>
 				<ProfileView
 					{...this.props}
+					setProductActive={setProductActive}
+					setProductMembership={setProductMembership}
 					handleImageChange={this.handleImageChange}
 					profileImage={this.props.profile.profileImage}
 					handleSave={() => this.handleSave(detail)}
