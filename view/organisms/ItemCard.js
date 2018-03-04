@@ -55,19 +55,21 @@ class ItemCard extends React.Component {
 				<div>
 					<table>
 						<tbody>
-						{ !isSponsor? 
-						<tr>
-							<td style={{textAlign:'right'}}>Active:</td>
-							<td><Checkbox toggle name="active" checked={product.active} onClick={() => setProductActive(!product.active, productKey)}/>
-							</td>
-						</tr> : null }
+						{ 
+							!isSponsor? 
+							<tr>
+								<td style={{textAlign:'right'}}>Active:</td>
+								<td><Checkbox toggle name="active" checked={product.active} onClick={() => setProductActive(!product.active, productKey)}/>
+								</td>
+							</tr> : null 
+						}
 						{
 							isMembership?
 							<tr>
-							<td style={{textAlign:'right'}}>Membership:</td>
-							<td><Checkbox toggle name="isMembership" checked={product.isMembership} onClick={() => setProductMembership(!product.isMembership, productKey)}/>
-							</td>
-						</tr> : null 
+								<td style={{textAlign:'right'}}>Membership:</td>
+								<td><Checkbox toggle name="isMembership" checked={product.isMembership} onClick={() => setProductMembership(!product.isMembership, productKey)}/>
+								</td>
+							</tr> : null 
 						}
 						<tr>
 							<td style={{textAlign:'right'}}>Price:</td>

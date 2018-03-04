@@ -9,6 +9,7 @@ import JsonTable from '../organisms/JsonTable'
 import Modal from '../molecules/Modal'
 import Flex from '../atoms/Flex'
 import TextField from '../atoms/TextField'
+import ProductAction from '../molecules/ProductAction';
 
 const memberHeader = {
 	"name": "Name",
@@ -50,8 +51,9 @@ const MemberLoginForm = props =>
 	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
 	<Button fullWidth onClick={()=>props.loginMembership(props.name, props.password, props.user)}>สมัครสมาชิก</Button>	
 </div>
-
-const convertObjectToArray = object => Object.keys(object).map(key => object[key])
+const constructProductArray = (userId,products) => convertObjectToArray(products).map(product=>addActionToProduct(userId,product))
+const addActionToProduct = (userId,product) => ({...product, action:<ProductAction product={product} productId={product.key} userUid={userId} isSponsor={true}/>})
+const convertObjectToArray = object => Object.keys(object).map(key => ({...object[key], key}))
 
 export default props => 
 	<Grid>
@@ -93,7 +95,7 @@ export default props =>
 					</Wrapper>
 					<Wrapper>
 					<h2>Products</h2>
-					<JsonTable headerJson={productHeader} bodyJsonArray={convertObjectToArray(props.member.products)}/>
+					<JsonTable headerJson={productHeader} bodyJsonArray={constructProductArray(props.user.uid,props.member.products)}/>
 					</Wrapper>
 				</Grid.Column>
 		</Grid.Row>
