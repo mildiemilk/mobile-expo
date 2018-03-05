@@ -28,32 +28,66 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 			:<div>
 				<Wrapper maxWidth="1350px">
 					<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
-					<Slider {...settings}>
-						{ userProducts ? 
+					{Object.keys(userProducts).length <= 3 
+						?	userProducts ? 
 							Object.keys(userProducts).map( userProductKey => {
-								return (
-									<div>
-										<ItemCard 
-											key={userProductKey}
-											userUid={user.uid} 
-											Product={userProducts[userProductKey]} 
-											productKey={userProductKey}
-											setProductStock={setProductStock}
-											sponsorEmail={sponsorEmail}
-											setProductSponsor={setProductSponsor}
-											getProductSponsor={getProductSponsor}
-											isSponsor={false}
-											setProductActive={setProductActive}
-										/>
-									</div>)
-								}) : null
-							}
-					</Slider>
+							return (
+								<div style={{display:'inline-block'}}>
+									<ItemCard 
+										key={userProductKey}
+										userUid={user.uid} 
+										Product={userProducts[userProductKey]} 
+										productKey={userProductKey}
+										setProductStock={setProductStock}
+										sponsorEmail={sponsorEmail}
+										setProductSponsor={setProductSponsor}
+										getProductSponsor={getProductSponsor}
+										isSponsor={false}
+										setProductActive={setProductActive}
+									/>
+								</div>)
+							}) : null
+					: <Slider {...settings}>
+						{ userProducts ? 
+								Object.keys(userProducts).map( userProductKey => {
+									return (
+										<div>
+											<ItemCard 
+												key={userProductKey}
+												userUid={user.uid} 
+												Product={userProducts[userProductKey]} 
+												productKey={userProductKey}
+												setProductStock={setProductStock}
+												sponsorEmail={sponsorEmail}
+												setProductSponsor={setProductSponsor}
+												getProductSponsor={getProductSponsor}
+												isSponsor={false}
+												setProductActive={setProductActive}
+											/>
+										</div>)
+									}) : null
+								}
+						</Slider>
+					}
 				</Wrapper>
 				<Wrapper maxWidth="1350px">
 					<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
-					<Slider {...settings}>
-						{ sponsorProducts ? 
+					{Object.keys(sponsorProducts).length <= 3 
+					?	sponsorProducts 
+						?
+							Object.keys(sponsorProducts).map( sponsorProductKey => {
+								return (<div style={{display:'inline-block'}}><ItemCard 
+									key={sponsorProductKey}
+									isSponsor={true}
+									userUid={user.uid}
+									Product={sponsorProducts[sponsorProductKey]} 
+									productKey={sponsorProductKey}
+								/></div>)
+							}) 
+						: null
+					: <Slider {...settings}>
+					{ sponsorProducts 
+						?
 							Object.keys(sponsorProducts).map( sponsorProductKey => {
 								return (<div><ItemCard 
 									key={sponsorProductKey}
@@ -62,9 +96,11 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 									Product={sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
 								/></div>)
-							}) : null
-							}
+							}) 
+						: null
+						}
 					</Slider>
+					}
 				</Wrapper>
 			</div>
 			}
