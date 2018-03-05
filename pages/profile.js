@@ -22,7 +22,9 @@ class Profile extends Component {
 		this.state = {
 			isEdit : false,
 			isItemCard : false,
-			isVisible: true
+			isVisible: true,
+			isView: false,
+			showView: '', // first , second
 		}
 	}
 
@@ -79,6 +81,10 @@ class Profile extends Component {
 	}
 
 	handleClick = string => {
+		this.setState({
+			isView: false,
+			showView: ''
+		})
 		const { isItemCard } = this.state
 		if(string==="order") {
 			this.setState({isItemCard:true})
@@ -88,9 +94,11 @@ class Profile extends Component {
 		}
 	}
 
+	handleClickView = name => this.setState({ isView: !this.state.isView, showView: name })
+
 	render() {
 		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
-		const {isEdit, isItemCard, isVisible} = this.state
+		const {isEdit, isItemCard, isVisible, showView, isView} = this.state
 		return <div>
 			<Head/>
 			<Header/>
@@ -127,6 +135,9 @@ class Profile extends Component {
 					getProductSponsor={getProductSponsor}
 					sponsorEmail={sponsorEmail}
 					setProductActive={setProductActive}
+					isView={isView}
+					showView={showView}
+					handleClickView={this.handleClickView}
 				/>}
 				isVisible={isVisible}
 				toggleVisibility={this.toggleVisibility}
