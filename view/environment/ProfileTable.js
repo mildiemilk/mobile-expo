@@ -8,7 +8,7 @@ export default ({table, userUid, setOrderStatus, handleClickView, isView, showVi
   const sellTable = table!==undefined&&table.length>=1? table.filter(item => item.sellerId === userUid):null
   const sponsorTable = table!==undefined&&table.length>=1? table.filter(item => item.sponsorId === userUid):null
   return (
-  <div style={{flexGrow:"2", maxWidth:"1000px"}}>
+  <div style={{flexGrow:"2"}}>
     {!isView || (showView === 'first')?
       <Wrapper>
         <h2 style={{ float: 'left' }}>คำสั่งซื้อในฐานะผู้ขาย</h2>

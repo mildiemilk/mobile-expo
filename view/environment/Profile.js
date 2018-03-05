@@ -9,29 +9,24 @@ import ProfileDetail from '../environment/ProfileDetail'
 import productimages from '../../lib/reducers/productimages';
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper';
-import Button from '../atoms/Button';
 
 const settings = {
 	dots: true,
 	slidesToShow: 3,
 	slidesToScroll: 1
 };
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isView, showView, handleClickView}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard}) =>
 <Flex direction="row" margin="0px 7px">
 	<Grid>
 		<Grid.Column mobile={12} tablet={12} computer={12}>
-		{isView? <Button onClick={() => handleClickView('')}>Back</Button> : null}
 		{isItemCard
 			?<ProfileTable
-				table={!isView? table.slice(0,3) : table}
+				table={table}
 				userUid={user.uid}
 				setOrderStatus={setOrderStatus}
-				isView={isView}
-				showView={showView}
-				handleClickView={handleClickView}
 			/>
-			:<div>
-				<Wrapper maxWidth="1350px">
+			:<div style={{flexGrow:"2"}}>
+				<Wrapper maxWidth="94vw">
 					<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
 					{Object.keys(userProducts).length <= 3 
 						?	userProducts ? 
@@ -75,7 +70,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 						</Slider>
 					}
 				</Wrapper>
-				<Wrapper maxWidth="1350px">
+				<Wrapper maxWidth="94vw">
 					<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
 					{Object.keys(sponsorProducts).length <= 3 
 					?	sponsorProducts 
