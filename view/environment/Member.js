@@ -1,4 +1,4 @@
-import { Grid } from 'semantic-ui-react'
+import { Grid, Checkbox } from 'semantic-ui-react'
 import Wrapper from '../atoms/Wrapper'
 import Field from '../atoms/TextField'
 import Button from '../atoms/Button'
@@ -9,13 +9,13 @@ import JsonTable from '../organisms/JsonTable'
 import Modal from '../molecules/Modal'
 import Flex from '../atoms/Flex'
 import TextField from '../atoms/TextField'
-import ProductAction from '../molecules/ProductAction';
+import ProductAction from '../molecules/ProductAction'
 
 const memberHeader = {
 	"name": "Name",
 	"email":"Email",
 	"shared":"Shared",
-	"permission":"Role",
+	"permission":"Admin",
 }
 
 const productHeader = {
@@ -34,7 +34,7 @@ const MemberRegisterForm = props =>
 		props.member.error?
 		<span>{props.member.error}</span>:null
 	}
-		<span style={{color:'red'}}>{props.member.keyIsValid ? '':'ชื่อต้องใช้ ตัวเลขหรือตัวอักษรภาษาอังกฤษเท่านั้น'}</span>
+	<span style={{color:'red'}}>{props.member.keyIsValid ? '':'ชื่อต้องใช้ ตัวเลขหรือตัวอักษรภาษาอังกฤษเท่านั้น'}</span>
 	<TextField labelFlexStart label="Member Name" name="name"/>
 	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
 	<TextField labelFlexStart label="Password Confirmation" name="passwordconfirmation" type="password"/>
@@ -51,6 +51,9 @@ const MemberLoginForm = props =>
 	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
 	<Button fullWidth onClick={()=>props.loginMembership(props.name, props.password, props.user)}>สมัครสมาชิก</Button>	
 </div>
+
+const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):null)
+const addActionToMember = (member, setMemberPermission) =>({...member, permission:<Checkbox toggle checked={member.permission} onClick={()=>setMemberPermission(member.userUid, !member.permission)}/>})
 const constructProductArray = (userId,products) => convertObjectToArray(products).map(product=>addActionToProduct(userId,product))
 const addActionToProduct = (userId,product) => ({...product, action:<ProductAction product={product} productId={product.key} userUid={userId} isSponsor={true}/>})
 const convertObjectToArray = object => Object.keys(object).map(key => ({...object[key], key}))
@@ -91,7 +94,7 @@ export default props =>
 					</Wrapper>
 					<Wrapper>
 					<h2>Member</h2>
-					<JsonTable headerJson={memberHeader} bodyJsonArray={convertObjectToArray(props.member.members)} footer={<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>}/>
+					<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>:null}/>
 					</Wrapper>
 					<Wrapper>
 					<h2>Products</h2>

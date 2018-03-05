@@ -9,7 +9,7 @@ import { getProfile } from '../lib/handlers/profile'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import { getUserbyUid } from '../lib/handlers/user'
-import { saveMembership, regexKey, loginMembership, setMembers } from '../lib/handlers/member'
+import { saveMembership, regexKey, loginMembership, setMembers, setMemberPermission } from '../lib/handlers/member'
 import { setMembershipProducts } from '../lib/handlers/product'
 import { validateKey } from '../lib/actions/member'
 
@@ -35,8 +35,15 @@ class Member extends React.Component {
 	}
 
 	render() {
+		const { member, user } = this.props
 		return (
-			<MemberView {...this.props} saveMembership={saveMembership} loginMembership={loginMembership}/>
+			<MemberView 
+				{...this.props} 
+				saveMembership={saveMembership} 
+				loginMembership={loginMembership} 
+				isAdmin={Object.keys(member.members).length > 0 ? member.members[user.uid].permission==="admin" : null}
+				setMemberPermission={setMemberPermission}
+			/>
 		)
 	}
 }
