@@ -8,6 +8,10 @@ import loadFirebase from '../lib/database'
 
 class Home extends Component {
 
+	static async getInitialProps (props) {
+		const { query } = props;
+	}
+
 	async componentDidMount() {
 			const auth = await loadFirebase('auth')
 			await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 

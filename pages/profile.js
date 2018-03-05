@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
-import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive } from '../lib/handlers/product'
+import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive, setProductMembership } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
@@ -49,6 +49,7 @@ class Profile extends Component {
 			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
 		}
 	}
+
 	handleImageChange = e => {
     e.preventDefault();
     const reader = new FileReader();
@@ -58,7 +59,8 @@ class Profile extends Component {
     };
 
     reader.readAsDataURL(file);
-  }
+	}
+	
 	handleSave = async(detail) => {
 		const userUid = this.props.user.uid
 		const { profileImage } = this.props.profile
@@ -68,34 +70,26 @@ class Profile extends Component {
 		await getProfile(this.props.user.uid)
 		await getTable(this.props.profile.transactionIds)
 	}
+
 	handleEdit = () => {
 		this.setState({isEdit:true})
 	}
+
 	render() {
-		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
+
 		const {isEdit} = this.state
 		return <div>
 			<Head/>
 			<Header/>
 				<ProfileView
-					handleImageChange={this.handleImageChange}
-					profileImage={profile.profileImage}
-					handleSave={() => this.handleSave(detail)}
-					detail={detail}
-					isEdit={isEdit}
-					handleEdit={this.handleEdit}
-					profile={profile}
-					setOrderStatus={setOrderStatus}
-					userUid={user.uid} 
-					table={table}
-					user={user} 
-					userProducts={userProducts} 
-					sponsorProducts={sponsorProducts}
-					setProductStock={setProductStock}
-					setProductSponsor={setProductSponsor}
-					getProductSponsor={getProductSponsor}
-					sponsorEmail={sponsorEmail}
+					{...this.props}
 					setProductActive={setProductActive}
+					setProductMembership={setProductMembership}
+					handleImageChange={this.handleImageChange}
+					profileImage={this.props.profile.profileImage}
+					handleSave={() => this.handleSave(detail)}
+					handleEdit={this.handleEdit}
+					isEdit={isEdit}
 				/>
 			</div>
 	}
@@ -108,7 +102,6 @@ Profile = reduxForm({
 const selector = formValueSelector('profileDetail')
 
 const mapStateToProps = state => ({
-	initialValues: state.profile,
 	user: state.user,
 	userProducts: state.userProducts,
 	sponsorProducts: state.sponsorProducts,

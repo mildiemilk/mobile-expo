@@ -96,7 +96,10 @@ const renderMembers = props => <div style={{width:'100%', minWidth:'320px', disp
 	<p>เขียนข้อความโดนๆ เพื่อให้ลูกค้าตัดสินใจซื้อได้ง่ายขึ้น </p>
 	<Wrapper boxShadow='0 !important' noMargin>
 		<Flex direction='row'>
-			<Select {...props} items={items} />
+			<Select {...props} items={items} form='product' value='nextDescription' default='เพิ่มข้อมูลสินค้า' onClick={()=>{
+						store.dispatch(change(props.form, props.nextDescription, Object.keys(props.items)[key]))
+						this.setState({show:false})
+				}}/>
 			<Button onClick={() => {
 				props.fields.push({
 				type:props.nextDescription,

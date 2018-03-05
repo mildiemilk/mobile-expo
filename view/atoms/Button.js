@@ -4,7 +4,6 @@ import color from '../../static/json/color.json'
 export default styled.button`
 border: none;
 display: inline-block;
-${props=> props.topRight? 'position:absolute;top:0;right:0;': null}
 ${props=> props.relative? 'position:relative;': null}
 outline: 0;
 padding: ${props => props.padding? props.padding:'8px 16px'};
@@ -22,6 +21,9 @@ ${props=> props.height? `height:${props.height};` :null}
 ${props=> props.maxWidth? `max-width:${props.maxWidth};`:null}
 ${props=> props.minWidth? `min-width:${props.minWidth};`:null}
 ${props=> props.margin? `margin:${props.margin};`:null}
+${props=> props.right? `right:${props.right};`:null}
+${props=> props.float? `float:${props.float};`:null}
+${props=> props.top? `top:${props.top};`:null}
 background: ${props => props.background? props.background : color.contrast};
 ${props => props.border ?`border: ${props.border};` : null}
 color: ${props => props.textColor? props.textColor: color.lightPrimary};
@@ -42,13 +44,13 @@ ${props => props.fullWidth ?
 		transition: 0.1s;
 		z-index:10;
 	}
-${props => props.modalClose? 'position: absolute;': null}	
 `
 export const DivButton = styled.div`
 	height: 32px;
 	display: flex;
 	justify-content: flex-end;
-
+	max-width: 32px;
+	right:0;
 `
 
 export const ButtonGroup = styled.div`
