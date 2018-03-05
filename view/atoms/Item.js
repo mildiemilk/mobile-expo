@@ -16,5 +16,7 @@ font-size: 1.2rem;
 	z-index:10;
 	border-radius: 25px;
 }
-
+&:before {
+	background: none !important;
+}
 `

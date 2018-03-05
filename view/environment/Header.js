@@ -1,13 +1,23 @@
 import React from 'react'
+import { saveUser } from '../../lib/actions/user'
+import withRedux from "next-redux-wrapper"
+import store from '../../lib/store'
+import loadFirebase from '../../lib/database'
 import HeaderDesktop from '../ecosystems/HeaderDesktop'
 import HeaderMobile from '../ecosystems/HeaderMobile'
 
 
 class Header extends React.Component {
+	async componentDidMount() {
+        const auth = await loadFirebase('auth')
+        await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
+    }
 	render(){
+		const { user } = this.props
+		console.log('user-->', user)
 		return(
 		<div>
-			<HeaderDesktop/>
+			<HeaderDesktop loggedIn={user}/>
 			<HeaderMobile/>
 		</div>)
 	
@@ -15,5 +25,13 @@ class Header extends React.Component {
 }
 
 
+const mapStateToProps = state => ({
+    user: state.user.signedIn
+})
 
-export default Header
+const mapDispatchToProps = {
+	saveUser
+}
+
+export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Header)
+

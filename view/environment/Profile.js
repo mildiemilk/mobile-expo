@@ -33,7 +33,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 				setOrderStatus={setOrderStatus}
 			/>
 			:<div>
-				<Wrapper maxWidth="1400px">
+				<Wrapper maxWidth="1350px">
 					<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
 					<Slider {...settings}>
 						{ userProducts ? 
@@ -57,7 +57,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 							}
 					</Slider>
 				</Wrapper>
-				<Wrapper maxWidth="1400px">
+				<Wrapper maxWidth="1350px">
 					<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
 					<Slider {...settings}>
 						{ sponsorProducts ? 
