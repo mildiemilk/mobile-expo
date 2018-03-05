@@ -38,6 +38,7 @@ class HeaderMobile extends React.Component{
 
 	render(){
 		const { loggedIn } = this.props
+		console.log('logg--->', loggedIn)
 		return (
 			<MediaQuery  maxDeviceWidth={700}>
 				<Sidebar sidebar={this.sidebarContent(loggedIn)}

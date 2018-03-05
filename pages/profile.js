@@ -12,10 +12,12 @@ import { getUserbyUid } from '../lib/handlers/user'
 import { setOrderStatus } from '../lib/handlers/transaction'
 import Head from '../view/environment/DefaultHead'
 import Header from '../view/environment/Header'
+import Wrapper from '../view/atoms/Wrapper'
 import store from '../lib/store'
 import ProfileSide from '../view/molecules/ProfileSide'
 import ProfileMobile from '../view/environment/ProfileMobile'
 import ProfileDetail from '../view/environment/ProfileDetail'
+import Button from '../view/atoms/Button';
 
 class Profile extends Component {
 	
@@ -27,6 +29,9 @@ class Profile extends Component {
 			isVisible: true,
 			isView: false,
 			showView: '', // first , second
+			isProfileMobile: false,
+			isItemMobile: false,
+			isTableMobile: false
 		}
 	}
 
@@ -95,15 +100,29 @@ class Profile extends Component {
 			this.setState({isItemCard:false})
 		}
 	}
-
+	handleProfileMobile = () => {
+		this.setState({
+			isProfileMobile: !this.state.isProfileMobile
+		})
+	}
+	handleItemCard = () => {
+		this.setState({
+			isItemMobile: !this.state.isItemMobile
+		})
+	}
+	handleTableMobile = () => {
+		this.setState({
+			isTableMobile: !this.state.isTableMobile
+		})
+	}
 	handleClickView = name => this.setState({ isView: !this.state.isView, showView: name })
 
 	render() {
 		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
-		const {isEdit, isItemCard, isVisible, showView, isView} = this.state
+		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
 		return <div>
 			<Head/>
-			<Header/>
+			<Header />
 			<MediaQuery  minDeviceWidth={1224}>
 				<ProfileSide sideContent = {
 					<ProfileDetail
@@ -150,12 +169,68 @@ class Profile extends Component {
 				/>
 			</MediaQuery>
 			<MediaQuery  maxDeviceWidth={1224}>
+				{isProfileMobile&&
+				<div>
+						<Wrapper height="100%" widthSmall="100vw" noMargin noBorder>
+							<ProfileDetail
+								profileImage={profile.profileImage}
+								handleImageChange={this.handleImageChange}
+								handleSave={() => this.handleSave(detail)}
+								detail={detail}
+								isEdit={isEdit}
+								profile={profile}
+								handleEdit={this.handleEdit}
+								balance={user.wallet}
+								userUid={user.uid}
+							/>
+						</Wrapper>
+						<Button onClick={this.handleProfileMobile} margin="10px 0px">Back</Button>
+				</div>
+				}
+				{isItemMobile || isTableMobile 
+				?<div>
+					<ProfileView
+						isItemCard={isItemCard}
+						isTableMobile={isTableMobile}
+						isItemMobile={isItemMobile}
+						handleImageChange={this.handleImageChange}
+						profileImage={profile.profileImage}
+						handleSave={() => this.handleSave(detail)}
+						detail={detail}
+						isEdit={isEdit}
+						handleEdit={this.handleEdit}
+						profile={profile}
+						setOrderStatus={setOrderStatus}
+						userUid={user.uid} 
+						table={table}
+						user={user} 
+						userProducts={userProducts} 
+						sponsorProducts={sponsorProducts}
+						setProductStock={setProductStock}
+						setProductSponsor={setProductSponsor}
+						getProductSponsor={getProductSponsor}
+						sponsorEmail={sponsorEmail}
+						setProductActive={setProductActive}
+						isView={isView}
+						showView={showView}
+						handleClickView={this.handleClickView}
+					/>
+				</div>: null}
+				{!isItemMobile&&!isProfileMobile&&!isTableMobile
+				?<ProfileMobile 
+					handleProfileMobile={this.handleProfileMobile}
+					handleItemCard={this.handleItemCard}
+					handleTableMobile={this.handleTableMobile}
+				/>
+				:null
+				}
 				
 			</MediaQuery>
 			
 			</div>
 	}
 }
+{/* <ProfileMobile handleProfileMobile={this.handleProfileMobile}/> */}
 Profile = reduxForm({
 	form:'profileDetail',
 	enableReinitialize: true

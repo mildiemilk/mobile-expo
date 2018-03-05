@@ -1,5 +1,6 @@
 import { Grid } from 'semantic-ui-react'
 import Slider from 'react-slick'
+import MediaQuery from 'react-responsive'
 import AddProduct from '../organisms/AddProduct'
 import Flex from '../atoms/Flex'
 import ItemCard from '../organisms/ItemCard'
@@ -15,10 +16,11 @@ const settings = {
 	slidesToShow: 3,
 	slidesToScroll: 1
 };
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile}) =>
 <Flex direction="row" margin="0px 7px">
 	<Grid>
-		<Grid.Column mobile={12} tablet={12} computer={12}>
+		<Grid.Column mobile={16} tablet={16} computer={12}>
+		<MediaQuery  minDeviceWidth={1224}>
 		{isItemCard
 			?<ProfileTable
 				table={table}
@@ -104,6 +106,56 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 				</Wrapper>
 			</div>
 			}
+		</MediaQuery>
+		<MediaQuery maxDeviceWidth={1224}>
+		{isItemMobile 
+			? <div>
+				<Wrapper widthSmall="100vw" paddingRight="30px">
+				<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
+				{userProducts ? 
+					Object.keys(userProducts).reverse().slice(0,5).map( userProductKey => {
+					return (
+						<div>
+							<ItemCard 
+								key={userProductKey}
+								userUid={user.uid} 
+								Product={userProducts[userProductKey]} 
+								productKey={userProductKey}
+								setProductStock={setProductStock}
+								sponsorEmail={sponsorEmail}
+								setProductSponsor={setProductSponsor}
+								getProductSponsor={getProductSponsor}
+								isSponsor={false}
+								setProductActive={setProductActive}
+							/>
+						</div>)
+					}) : null}
+				</Wrapper>
+				<Wrapper widthSmall="100vw" paddingRight="30px">
+					<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
+						{sponsorProducts 
+						? Object.keys(sponsorProducts).reverse().slice(0,5).map( sponsorProductKey => {
+								return (<div><ItemCard 
+									key={sponsorProductKey}
+									isSponsor={true}
+									userUid={user.uid}
+									Product={sponsorProducts[sponsorProductKey]} 
+									productKey={sponsorProductKey}
+								/></div>)
+							}) 
+						: null}
+			</Wrapper>
+		</div> : null
+		}
+		{isTableMobile&&
+			<ProfileTable
+				isTableMobile={isTableMobile}
+				table={table}
+				userUid={user.uid}
+				setOrderStatus={setOrderStatus}
+			/>
+		}
+		</MediaQuery>
 		</Grid.Column>
 	</Grid>
 </Flex>

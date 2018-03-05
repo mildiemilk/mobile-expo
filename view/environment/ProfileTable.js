@@ -4,7 +4,7 @@ import H5 from '../atoms/H5'
 import Wrapper from '../atoms/Wrapper'
 import OrderTable from '../ecosystems/OrderTable'
 
-export default ({table, userUid, setOrderStatus, handleClickView, isView, showView}) => {
+export default ({table, userUid, setOrderStatus, handleClickView, isView, showView, isTableMobile}) => {
   const sellTable = table!==undefined&&table.length>=1? table.filter(item => item.sellerId === userUid):null
   const sponsorTable = table!==undefined&&table.length>=1? table.filter(item => item.sponsorId === userUid):null
   return (

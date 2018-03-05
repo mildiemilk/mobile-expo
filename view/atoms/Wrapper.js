@@ -20,6 +20,7 @@ ${props => props.height? `height: ${props.height};`: null}
 ${props => props.minWidth? `min-width: ${props.minWidth};`: null}
 ${props => props.minHeight? `min-height: ${props.minHeight};`: null}
 ${props => props.flexGrow ? 'flex-grow: 1;':null}
+${props => props.absolute ? 'position: absolute; top: 40%;':null}
 ${props => props.backgroundColor? `background-color: ${props.backgroundColor};`: null}
 ${props => props.backgroundImage? `background-image: ${props.backgroundImage};`: null}
 ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
@@ -33,5 +34,6 @@ ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 
 @media (max-width: 700px) {
         ${props => props.widthSmall? `width: ${props.widthSmall};`:`width: 100%;`};
+        ${props => props.paddingRight? `padding-right: ${props.paddingRight};`: null}
 }
 `

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Sidebar, Segment, Container, Image, Icon, Header, Label } from 'semantic-ui-react'
+import { Sidebar,Label } from 'semantic-ui-react'
 import Link from 'next/link'
 import ProfileDetail from '../environment/ProfileDetail'
 import Button from '../atoms/Button';
