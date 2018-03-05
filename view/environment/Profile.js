@@ -1,6 +1,4 @@
 import { Grid } from 'semantic-ui-react'
-import Carousel from 'nuka-carousel'
-// import styled from 'styled-components'
 import Slider from 'react-slick'
 import AddProduct from '../organisms/AddProduct'
 import Flex from '../atoms/Flex'
@@ -12,11 +10,6 @@ import productimages from '../../lib/reducers/productimages';
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper';
 
-// const CarouselEdit = styled(Carousel)`
-// 	&&&{
-// 		height: 700px;
-// 	}
-// `
 const settings = {
 	dots: true,
 	slidesToShow: 3,
