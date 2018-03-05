@@ -9,21 +9,26 @@ import ProfileDetail from '../environment/ProfileDetail'
 import productimages from '../../lib/reducers/productimages';
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper';
+import Button from '../atoms/Button';
 
 const settings = {
 	dots: true,
 	slidesToShow: 3,
 	slidesToScroll: 1
 };
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, handleClickView, isView, showView}) =>
 <Flex direction="row" margin="0px 7px">
 	<Grid>
 		<Grid.Column mobile={12} tablet={12} computer={12}>
+		{isView? <Button onClick={() => handleClickView('')}>Back</Button> : null}
 		{isItemCard
 			?<ProfileTable
-				table={table}
+				table={!isView? table.slice(0,3) : table}
 				userUid={user.uid}
 				setOrderStatus={setOrderStatus}
+				isView={isView}
+				showView={showView}
+				handleClickView={handleClickView}
 			/>
 			:<div style={{flexGrow:"2"}}>
 				<Wrapper maxWidth="94vw">
