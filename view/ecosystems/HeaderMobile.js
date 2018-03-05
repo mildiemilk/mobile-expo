@@ -16,17 +16,31 @@ class HeaderMobile extends React.Component{
       sidebarOpen: false
     }
   }
-
+	sidebarContent = loggedIn => 	(
+		<Menu height="100%">
+		<img src="../../static/img/logo.png" width="50" height="50" />
+			<div>
+			{loggedIn
+				?	menu.map( ({link, text}, key) => 
+					<Item key={key} onClick={()=>Router.push(link)}>{text}</Item> 
+				)
+				: menu.slice(0,3).map( ({link, text}, key) => 
+					<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
+				)
+				}
+			</div>
+		</Menu>
+	)
 
 	onSetSidebarOpen = open => {
 		this.setState({sidebarOpen: open});
 	}
 
 	render(){
-		
+		const { loggedIn } = this.props
 		return (
 			<MediaQuery  maxDeviceWidth={700}>
-				<Sidebar sidebar={sidebarContent}
+				<Sidebar sidebar={this.sidebarContent(loggedIn)}
 					open={this.state.sidebarOpen}
 					onSetOpen={this.onSetSidebarOpen}
 				>
@@ -38,14 +52,5 @@ class HeaderMobile extends React.Component{
 	}
 }
 
-const sidebarContent = 	
-<Menu height="100%">
-<img src="../../static/img/logo.png" width="50" height="50" />
-	<div>
-		{
-			menu.map( ({link, text}, key) => <Item key={key} onClick={()=>Router.push(link)}>{text}</Item> )
-		}
-	</div>
-</Menu>
 
 export default HeaderMobile

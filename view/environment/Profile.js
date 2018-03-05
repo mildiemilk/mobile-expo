@@ -1,5 +1,4 @@
 import { Grid } from 'semantic-ui-react'
-// import styled from 'styled-components'
 import Slider from 'react-slick'
 import AddProduct from '../organisms/AddProduct'
 import Flex from '../atoms/Flex'
@@ -12,11 +11,6 @@ import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper';
 import Button from '../atoms/Button';
 
-// const CarouselEdit = styled(Carousel)`
-// 	&&&{
-// 		height: 700px;
-// 	}
-// `
 const settings = {
 	dots: true,
 	slidesToShow: 3,
@@ -37,7 +31,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 				handleClickView={handleClickView}
 			/>
 			:<div>
-				<Wrapper maxWidth="1400px">
+				<Wrapper maxWidth="1350px">
 					<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
 					<Slider {...settings}>
 						{ userProducts ? 
@@ -61,7 +55,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 							}
 					</Slider>
 				</Wrapper>
-				<Wrapper maxWidth="1400px">
+				<Wrapper maxWidth="1350px">
 					<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
 					<Slider {...settings}>
 						{ sponsorProducts ? 
