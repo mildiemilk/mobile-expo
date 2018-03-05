@@ -170,22 +170,19 @@ class Profile extends Component {
 			</MediaQuery>
 			<MediaQuery  maxDeviceWidth={1224}>
 				{isProfileMobile&&
-				<div>
-						<Wrapper height="100%" widthSmall="100vw" noMargin noBorder>
-							<ProfileDetail
-								profileImage={profile.profileImage}
-								handleImageChange={this.handleImageChange}
-								handleSave={() => this.handleSave(detail)}
-								detail={detail}
-								isEdit={isEdit}
-								profile={profile}
-								handleEdit={this.handleEdit}
-								balance={user.wallet}
-								userUid={user.uid}
-							/>
-						</Wrapper>
-						<Button onClick={this.handleProfileMobile} margin="10px 0px">Back</Button>
-				</div>
+					<ProfileDetail
+						handleProfileMobile={this.handleProfileMobile}
+						isProfileMobile={isProfileMobile}
+						profileImage={profile.profileImage}
+						handleImageChange={this.handleImageChange}
+						handleSave={() => this.handleSave(detail)}
+						detail={detail}
+						isEdit={isEdit}
+						profile={profile}
+						handleEdit={this.handleEdit}
+						balance={user.wallet}
+						userUid={user.uid}
+					/>
 				}
 				{isItemMobile || isTableMobile 
 				?<div>
