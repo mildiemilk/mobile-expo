@@ -10,6 +10,7 @@ import Modal from '../molecules/Modal'
 import Flex from '../atoms/Flex'
 import TextField from '../atoms/TextField'
 import ProductAction from '../molecules/ProductAction'
+import Select from '../molecules/Select'
 
 const memberHeader = {
 	"name": "Name",
@@ -22,6 +23,12 @@ const productHeader = {
 	"productName": "Name",
 	"shared": "Shared",
 	"action": "Action"
+}
+
+const selectItem = {
+	"admin":"admin",
+	"member":"member",
+	"freeze":"freeze"
 }
 
 const MemberRegisterForm = props => 
@@ -52,8 +59,15 @@ const MemberLoginForm = props =>
 	<Button fullWidth onClick={()=>props.loginMembership(props.name, props.password, props.user)}>สมัครสมาชิก</Button>	
 </div>
 
+const PermissionOption = props => 
+<select value={props.member.permission} onChange={event=>props.setMemberPermission(props.member.userId, event.target.value)}>
+	<option value="admin">Admin</option>
+	<option value="member">Member</option>
+	<option value="freeze">Freeze</option>
+</select>
+
 const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):null)
-const addActionToMember = (member, setMemberPermission) =>({...member, permission:<Checkbox toggle checked={member.permission} onClick={()=>setMemberPermission(member.userUid, !member.permission)}/>})
+const addActionToMember = (member, setMemberPermission) =>({...member, permission:<PermissionOption member={member} setMemberPermission={setMemberPermission}/>})
 const constructProductArray = (userId,products) => convertObjectToArray(products).map(product=>addActionToProduct(userId,product))
 const addActionToProduct = (userId,product) => ({...product, action:<ProductAction product={product} productId={product.key} userUid={userId} isSponsor={true}/>})
 const convertObjectToArray = object => Object.keys(object).map(key => ({...object[key], key}))

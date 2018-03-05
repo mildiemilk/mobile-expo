@@ -28,14 +28,11 @@ class Select extends Component {
     render(){
         const Options = () => this.props.items? Object.keys(this.props.items).map((item, key)=>
                 <Button 
-                    zIndex='10'
-                    onClick={
-                        ()=>{
-                            store.dispatch(change(this.props.form, this.props.nextDescription, Object.keys(this.props.items)[key]))
-                            this.setState({show:false})
-                        }
-                        
-                    } 
+                    zIndex='100'
+                    onClick={()=>{
+                        onClick()
+                        this.setState({show:false})
+                    }}
                     key={key} 
                     textAlign='left'
                 >{this.props.items[item]}</Button>
@@ -47,7 +44,8 @@ class Select extends Component {
                     onClick={()=>this.setState({...this.state, show:!this.state.show})} 
                     relative 
                     padding='8px 26px 8px 8px'
-                    margin='0 5px 0 0'                    
+                    margin='0 5px 0 0'    
+                    zIndex='10'                
                 >
                     {this.props.items[this.props.nextDescription]||this.props.default}
                     <Triangle/>
