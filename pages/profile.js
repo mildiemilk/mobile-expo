@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid } from 'semantic-ui-react'
+import MediaQuery from 'react-responsive'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
@@ -13,6 +14,7 @@ import Head from '../view/environment/DefaultHead'
 import Header from '../view/environment/Header'
 import store from '../lib/store'
 import ProfileSide from '../view/molecules/ProfileSide'
+import ProfileMobile from '../view/environment/ProfileMobile'
 import ProfileDetail from '../view/environment/ProfileDetail'
 
 class Profile extends Component {
@@ -102,49 +104,55 @@ class Profile extends Component {
 		return <div>
 			<Head/>
 			<Header/>
-			<ProfileSide sideContent = {
-				<ProfileDetail
-					profileImage={profile.profileImage}
-					handleImageChange={this.handleImageChange}
-					handleSave={() => this.handleSave(detail)}
-					detail={detail}
-					isEdit={isEdit}
-					profile={profile}
-					handleEdit={this.handleEdit}
-					balance={user.wallet}
-					userUid={user.uid}
-				/>}
-				content = {
-					<ProfileView
-					isItemCard={isItemCard}
-					handleImageChange={this.handleImageChange}
-					profileImage={profile.profileImage}
-					handleSave={() => this.handleSave(detail)}
-					detail={detail}
-					isEdit={isEdit}
-					handleEdit={this.handleEdit}
-					profile={profile}
-					setOrderStatus={setOrderStatus}
-					userUid={user.uid} 
+			<MediaQuery  minDeviceWidth={1224}>
+				<ProfileSide sideContent = {
+					<ProfileDetail
+						profileImage={profile.profileImage}
+						handleImageChange={this.handleImageChange}
+						handleSave={() => this.handleSave(detail)}
+						detail={detail}
+						isEdit={isEdit}
+						profile={profile}
+						handleEdit={this.handleEdit}
+						balance={user.wallet}
+						userUid={user.uid}
+					/>}
+					content = {
+						<ProfileView
+						isItemCard={isItemCard}
+						handleImageChange={this.handleImageChange}
+						profileImage={profile.profileImage}
+						handleSave={() => this.handleSave(detail)}
+						detail={detail}
+						isEdit={isEdit}
+						handleEdit={this.handleEdit}
+						profile={profile}
+						setOrderStatus={setOrderStatus}
+						userUid={user.uid} 
+						table={table}
+						user={user} 
+						userProducts={userProducts} 
+						sponsorProducts={sponsorProducts}
+						setProductStock={setProductStock}
+						setProductSponsor={setProductSponsor}
+						getProductSponsor={getProductSponsor}
+						sponsorEmail={sponsorEmail}
+						setProductActive={setProductActive}
+						isView={isView}
+						showView={showView}
+						handleClickView={this.handleClickView}
+					/>}
+					isVisible={isVisible}
+					toggleVisibility={this.toggleVisibility}
 					table={table}
-					user={user} 
-					userProducts={userProducts} 
-					sponsorProducts={sponsorProducts}
-					setProductStock={setProductStock}
-					setProductSponsor={setProductSponsor}
-					getProductSponsor={getProductSponsor}
-					sponsorEmail={sponsorEmail}
-					setProductActive={setProductActive}
-					isView={isView}
-					showView={showView}
-					handleClickView={this.handleClickView}
-				/>}
-				isVisible={isVisible}
-				toggleVisibility={this.toggleVisibility}
-				table={table}
-				userUid={user.uid}
-				handleClick={this.handleClick}
-			/>
+					userUid={user.uid}
+					handleClick={this.handleClick}
+				/>
+			</MediaQuery>
+			<MediaQuery  maxDeviceWidth={1224}>
+				
+			</MediaQuery>
+			
 			</div>
 	}
 }
