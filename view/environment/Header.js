@@ -14,11 +14,10 @@ class Header extends React.Component {
     }
 	render(){
 		const { user } = this.props
-		console.log('user-->', user)
 		return(
 		<div>
 			<HeaderDesktop loggedIn={user}/>
-			<HeaderMobile/>
+			<HeaderMobile loggedIn={user} />
 		</div>)
 	
 	}
