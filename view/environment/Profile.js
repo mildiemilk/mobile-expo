@@ -17,13 +17,12 @@ const settings = {
 	slidesToShow: 3,
 	slidesToScroll: 1
 };
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile}) =>
 <Flex direction="row" margin="0px 7px">
 	<Grid>
 		<Grid.Column mobile={16} tablet={16} computer={12}>
 		<MediaQuery  minDeviceWidth={1224}>
 		{isView? <Button onClick={() => handleClickView('')}>Back</Button> : null}
-		
 		{isItemCard
 			?<ProfileTable
 				table={!isView? table.slice(0,3) : table}
@@ -39,7 +38,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 						<H3>สินค้าที่คุณเป็นเจ้าของ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a> : null}</H3>
 						{Object.keys(userProducts).length <= 3 || isView
 							?	userProducts ? 
-								Object.keys(userProducts).map( userProductKey => {
+								Object.keys(userProducts).reverse().map( userProductKey => {
 								return (
 									<div style={{display:'inline-block'}}>
 										<ItemCard 
@@ -58,7 +57,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 								}) : null
 						: <Slider {...settings}>
 							{ userProducts ? 
-									Object.keys(userProducts).map( userProductKey => {
+									Object.keys(userProducts).reverse().map( userProductKey => {
 										return (
 											<div>
 												<ItemCard 
@@ -87,7 +86,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 						{Object.keys(sponsorProducts).length <= 3 || isView
 						?	sponsorProducts 
 							?
-								Object.keys(sponsorProducts).map( sponsorProductKey => {
+								Object.keys(sponsorProducts).reverse().map( sponsorProductKey => {
 									return (<div style={{display:'inline-block'}}><ItemCard 
 										key={sponsorProductKey}
 										isSponsor={true}
@@ -100,7 +99,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 						: <Slider {...settings}>
 						{ sponsorProducts 
 							?
-								Object.keys(sponsorProducts).map( sponsorProductKey => {
+								Object.keys(sponsorProducts).reverse().map( sponsorProductKey => {
 									return (<div><ItemCard 
 										key={sponsorProductKey}
 										isSponsor={true}
@@ -120,32 +119,68 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 			}
 		</MediaQuery>
 		<MediaQuery maxDeviceWidth={1224}>
+		{isView? <Button onClick={() => handleClickView('')}>Back</Button> : null}
 		{isItemMobile 
 			? <div>
+				{!isView || (showView === 'first')?
 				<Wrapper widthSmall="100vw" paddingRight="30px">
-				<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
-				{userProducts ? 
-					Object.keys(userProducts).reverse().slice(0,5).map( userProductKey => {
-					return (
-						<div>
-							<ItemCard 
-								key={userProductKey}
-								userUid={user.uid} 
-								Product={userProducts[userProductKey]} 
-								productKey={userProductKey}
-								setProductStock={setProductStock}
-								sponsorEmail={sponsorEmail}
-								setProductSponsor={setProductSponsor}
-								getProductSponsor={getProductSponsor}
-								isSponsor={false}
-								setProductActive={setProductActive}
-							/>
-						</div>)
-					}) : null}
+					<H3>สินค้าที่คุณเป็นเจ้าของ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a> : null}</H3>
+						{isView
+						?userProducts ? 
+						Object.keys(userProducts).reverse().map( userProductKey => {
+						return (
+							<div>
+								<ItemCard 
+									key={userProductKey}
+									userUid={user.uid} 
+									Product={userProducts[userProductKey]} 
+									productKey={userProductKey}
+									setProductStock={setProductStock}
+									sponsorEmail={sponsorEmail}
+									setProductSponsor={setProductSponsor}
+									getProductSponsor={getProductSponsor}
+									isSponsor={false}
+									setProductActive={setProductActive}
+								/>
+							</div>)
+						}) : null
+						:userProducts ? 
+						Object.keys(userProducts).reverse().slice(0,5).map( userProductKey => {
+						return (
+							<div>
+								<ItemCard 
+									key={userProductKey}
+									userUid={user.uid} 
+									Product={userProducts[userProductKey]} 
+									productKey={userProductKey}
+									setProductStock={setProductStock}
+									sponsorEmail={sponsorEmail}
+									setProductSponsor={setProductSponsor}
+									getProductSponsor={getProductSponsor}
+									isSponsor={false}
+									setProductActive={setProductActive}
+								/>
+							</div>)
+						}) : null
+						}
 				</Wrapper>
+				: null}
+				{!isView || (showView === 'second')?
 				<Wrapper widthSmall="100vw" paddingRight="30px">
-					<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
-						{sponsorProducts 
+					<H3>สินค้าที่คุณเป็นผู้แนะนำ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('second')}>View all</a> : null}</H3>
+						{isView
+						?sponsorProducts 
+							? Object.keys(sponsorProducts).reverse().map( sponsorProductKey => {
+								return (<div><ItemCard 
+									key={sponsorProductKey}
+									isSponsor={true}
+									userUid={user.uid}
+									Product={sponsorProducts[sponsorProductKey]} 
+									productKey={sponsorProductKey}
+								/></div>)
+							}) 
+						: null
+						:sponsorProducts 
 						? Object.keys(sponsorProducts).reverse().slice(0,5).map( sponsorProductKey => {
 								return (<div><ItemCard 
 									key={sponsorProductKey}
@@ -156,16 +191,24 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 								/></div>)
 							}) 
 						: null}
-			</Wrapper>
+				</Wrapper>
+				: null}
+				<Button onClick={handleItemCard} margin="10px 0px">Back</Button>
 		</div> : null
 		}
 		{isTableMobile&&
-			<ProfileTable
-				isTableMobile={isTableMobile}
-				table={table}
-				userUid={user.uid}
-				setOrderStatus={setOrderStatus}
-			/>
+			<div>
+				<ProfileTable
+					isView={isView}
+					showView={showView}
+					handleClickView={handleClickView}
+					table={!isView? table.slice(0,3) : table}
+					table={table}
+					userUid={user.uid}
+					setOrderStatus={setOrderStatus}
+				/>
+				<Button onClick={handleTableMobile} margin="10px 0px">Back</Button>
+			</div>
 		}
 		</MediaQuery>
 		</Grid.Column>

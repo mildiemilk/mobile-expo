@@ -190,6 +190,8 @@ class Profile extends Component {
 				{isItemMobile || isTableMobile 
 				?<div>
 					<ProfileView
+						handleTableMobile={this.handleTableMobile}
+						handleItemCard={this.handleItemCard}
 						isItemCard={isItemCard}
 						isTableMobile={isTableMobile}
 						isItemMobile={isItemMobile}
