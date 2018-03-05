@@ -14,7 +14,7 @@ import Head from '../view/environment/DefaultHead'
 import Header from '../view/environment/Header'
 import store from '../lib/store'
 import ProfileSide from '../view/molecules/ProfileSide'
-import ProfileMobile from '../view/environment/ProfileMobile'
+// import ProfileMobile from '../view/environment/ProfileMobile'
 import ProfileDetail from '../view/environment/ProfileDetail'
 
 class Profile extends Component {

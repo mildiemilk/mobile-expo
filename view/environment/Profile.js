@@ -31,82 +31,88 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 				handleClickView={handleClickView}
 			/>
 			:<div style={{flexGrow:"2"}}>
-				<Wrapper maxWidth="94vw">
-					<H3>สินค้าที่คุณเป็นเจ้าของ</H3>
-					{Object.keys(userProducts).length <= 3 
-						?	userProducts ? 
-							Object.keys(userProducts).map( userProductKey => {
-							return (
-								<div style={{display:'inline-block'}}>
-									<ItemCard 
-										key={userProductKey}
-										userUid={user.uid} 
-										Product={userProducts[userProductKey]} 
-										productKey={userProductKey}
-										setProductStock={setProductStock}
-										sponsorEmail={sponsorEmail}
-										setProductSponsor={setProductSponsor}
-										getProductSponsor={getProductSponsor}
-										isSponsor={false}
-										setProductActive={setProductActive}
-									/>
-								</div>)
-							}) : null
-					: <Slider {...settings}>
-						{ userProducts ? 
+				{!isView || (showView === 'first')?
+					<Wrapper maxWidth="94vw" bigScreenWidth="70vw">
+						<H3>สินค้าที่คุณเป็นเจ้าของ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a> : null}</H3>
+						{Object.keys(userProducts).length <= 3 || isView
+							?	userProducts ? 
 								Object.keys(userProducts).map( userProductKey => {
-									return (
-										<div>
-											<ItemCard 
-												key={userProductKey}
-												userUid={user.uid} 
-												Product={userProducts[userProductKey]} 
-												productKey={userProductKey}
-												setProductStock={setProductStock}
-												sponsorEmail={sponsorEmail}
-												setProductSponsor={setProductSponsor}
-												getProductSponsor={getProductSponsor}
-												isSponsor={false}
-												setProductActive={setProductActive}
-											/>
-										</div>)
-									}) : null
-								}
-						</Slider>
-					}
-				</Wrapper>
-				<Wrapper maxWidth="94vw">
-					<H3>สินค้าที่คุณเป็นผู้แนะนำ</H3>
-					{Object.keys(sponsorProducts).length <= 3 
-					?	sponsorProducts 
-						?
-							Object.keys(sponsorProducts).map( sponsorProductKey => {
-								return (<div style={{display:'inline-block'}}><ItemCard 
-									key={sponsorProductKey}
-									isSponsor={true}
-									userUid={user.uid}
-									Product={sponsorProducts[sponsorProductKey]} 
-									productKey={sponsorProductKey}
-								/></div>)
-							}) 
-						: null
-					: <Slider {...settings}>
-					{ sponsorProducts 
-						?
-							Object.keys(sponsorProducts).map( sponsorProductKey => {
-								return (<div><ItemCard 
-									key={sponsorProductKey}
-									isSponsor={true}
-									userUid={user.uid}
-									Product={sponsorProducts[sponsorProductKey]} 
-									productKey={sponsorProductKey}
-								/></div>)
-							}) 
-						: null
+								return (
+									<div style={{display:'inline-block'}}>
+										<ItemCard 
+											key={userProductKey}
+											userUid={user.uid} 
+											Product={userProducts[userProductKey]} 
+											productKey={userProductKey}
+											setProductStock={setProductStock}
+											sponsorEmail={sponsorEmail}
+											setProductSponsor={setProductSponsor}
+											getProductSponsor={getProductSponsor}
+											isSponsor={false}
+											setProductActive={setProductActive}
+										/>
+									</div>)
+								}) : null
+						: <Slider {...settings}>
+							{ userProducts ? 
+									Object.keys(userProducts).map( userProductKey => {
+										return (
+											<div>
+												<ItemCard 
+													key={userProductKey}
+													userUid={user.uid} 
+													Product={userProducts[userProductKey]} 
+													productKey={userProductKey}
+													setProductStock={setProductStock}
+													sponsorEmail={sponsorEmail}
+													setProductSponsor={setProductSponsor}
+													getProductSponsor={getProductSponsor}
+													isSponsor={false}
+													setProductActive={setProductActive}
+												/>
+											</div>)
+										}) : null
+									}
+							</Slider>
 						}
-					</Slider>
-					}
-				</Wrapper>
+					</Wrapper>
+					:null
+				}
+				{!isView || (showView === 'second')?
+					<Wrapper maxWidth="94vw" bigScreenWidth="70vw">
+						<H3>สินค้าที่คุณเป็นผู้แนะนำ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('second')}>View all</a> : null}</H3>
+						{Object.keys(sponsorProducts).length <= 3 || isView
+						?	sponsorProducts 
+							?
+								Object.keys(sponsorProducts).map( sponsorProductKey => {
+									return (<div style={{display:'inline-block'}}><ItemCard 
+										key={sponsorProductKey}
+										isSponsor={true}
+										userUid={user.uid}
+										Product={sponsorProducts[sponsorProductKey]} 
+										productKey={sponsorProductKey}
+									/></div>)
+								}) 
+							: null
+						: <Slider {...settings}>
+						{ sponsorProducts 
+							?
+								Object.keys(sponsorProducts).map( sponsorProductKey => {
+									return (<div><ItemCard 
+										key={sponsorProductKey}
+										isSponsor={true}
+										userUid={user.uid}
+										Product={sponsorProducts[sponsorProductKey]} 
+										productKey={sponsorProductKey}
+									/></div>)
+								}) 
+							: null
+							}
+						</Slider>
+						}
+					</Wrapper>
+					:null
+				}
 			</div>
 			}
 		</Grid.Column>
