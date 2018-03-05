@@ -30,7 +30,7 @@ class Select extends Component {
                 <Button 
                     zIndex='100'
                     onClick={()=>{
-                        onClick()
+                        store.dispatch(change('product', 'nextDescription', Object.keys(this.props.items)[key]))
                         this.setState({show:false})
                     }}
                     key={key} 
