@@ -66,8 +66,9 @@ const PermissionOption = props =>
 	<option value="freeze">Freeze</option>
 </select>
 
-const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):null)
+const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):addPermissionToMember(member))
 const addActionToMember = (member, setMemberPermission) =>({...member, permission:<PermissionOption member={member} setMemberPermission={setMemberPermission}/>})
+const addPermissionToMember = (member) =>({...member, permission:<p>{member.permission}</p>})
 const constructProductArray = (userId,products) => convertObjectToArray(products).map(product=>addActionToProduct(userId,product))
 const addActionToProduct = (userId,product) => ({...product, action:<ProductAction product={product} productId={product.key} userUid={userId} isSponsor={true}/>})
 const convertObjectToArray = object => Object.keys(object).map(key => ({...object[key], key}))
@@ -108,6 +109,7 @@ export default props =>
 					</Wrapper>
 					<Wrapper>
 					<h2>Member</h2>
+					{console.log('members', props.member.members)}
 					<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>:null}/>
 					</Wrapper>
 					<Wrapper>
