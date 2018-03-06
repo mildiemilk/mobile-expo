@@ -1,7 +1,7 @@
 import React from 'react'
 import store from '../lib/store'
 import withRedux from 'next-redux-wrapper'
-import { getAllPendingTransactions} from '../lib/handlers/transaction'
+import { getAllPendingTransactions, getAllPendingPaymentTransactions} from '../lib/handlers/transaction'
 import {getAllDisputes} from '../lib/handlers/dispute'
 import transaction from '../lib/reducers/transaction'
 import AdminTable from '../view/environment/AdminTable'
@@ -10,9 +10,16 @@ import Wrapper from '../view/atoms/Wrapper'
 import { checkPassword } from '../lib/actions/admin'
 
 class Admin extends React.Component {
-	componentDidMount() {
-		getAllPendingTransactions();
-		getAllDisputes();
+
+	fetchInfos = async () => {
+		await getAllPendingTransactions()
+		await getAllDisputes()
+		await getAllPendingPaymentTransactions()
+	}
+
+	componentWillReceiveProps(nextProps){
+		nextProps.admin !== this.props.admin && nextProps.admin? 
+			this.fetchInfos() : null
 	}
 
 	render() {
