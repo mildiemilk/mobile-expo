@@ -38,14 +38,12 @@ class HeaderMobile extends React.Component{
 
 	render(){
 		const { loggedIn } = this.props
-		console.log('logg--->', loggedIn)
 		return (
 			<MediaQuery  maxDeviceWidth={700}>
 				<Sidebar sidebar={this.sidebarContent(loggedIn)}
 					open={this.state.sidebarOpen}
 					onSetOpen={this.onSetSidebarOpen}
-				>
-
+				><div></div>
 				</Sidebar>
 				<MenuButton onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></MenuButton>
 			</MediaQuery>

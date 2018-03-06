@@ -10,6 +10,8 @@ import InputText from '../atoms/TextField'
 import DivImage from '../atoms/DivImage'
 import Label from '../atoms/LabelImage'
 import BalanceModal from '../molecules/BalanceModal'
+import ProfileDetailDisplay from '../organisms/ProfileDetailDisplay'
+import ProfileDetailEdit from '../organisms/ProfileDetailEdit'
 
 const EditGrid = styled(Grid.Column)`
   padding-right: 0px !important;

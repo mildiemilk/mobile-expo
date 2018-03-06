@@ -7,7 +7,7 @@ import ItemCard from '../organisms/ItemCard'
 import UserProfile from '../organisms/UserProfile'
 import ProfileTable from '../environment/ProfileTable'
 import ProfileDetail from '../environment/ProfileDetail'
-import productimages from '../../lib/reducers/productimages';
+import productimages from '../../lib/reducers/productimages'
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper';
 import Button from '../atoms/Button';
@@ -44,7 +44,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 										<ItemCard 
 											key={userProductKey}
 											userUid={user.uid} 
-											Product={userProducts[userProductKey]} 
+											product={userProducts[userProductKey]} 
 											productKey={userProductKey}
 											setProductStock={setProductStock}
 											sponsorEmail={sponsorEmail}
@@ -63,7 +63,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 												<ItemCard 
 													key={userProductKey}
 													userUid={user.uid} 
-													Product={userProducts[userProductKey]} 
+													product={userProducts[userProductKey]} 
 													productKey={userProductKey}
 													setProductStock={setProductStock}
 													sponsorEmail={sponsorEmail}
@@ -91,7 +91,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 										key={sponsorProductKey}
 										isSponsor={true}
 										userUid={user.uid}
-										Product={sponsorProducts[sponsorProductKey]} 
+										product={sponsorProducts[sponsorProductKey]} 
 										productKey={sponsorProductKey}
 									/></div>)
 								}) 
@@ -104,7 +104,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 										key={sponsorProductKey}
 										isSponsor={true}
 										userUid={user.uid}
-										Product={sponsorProducts[sponsorProductKey]} 
+										product={sponsorProducts[sponsorProductKey]} 
 										productKey={sponsorProductKey}
 									/></div>)
 								}) 
@@ -133,7 +133,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 								<ItemCard 
 									key={userProductKey}
 									userUid={user.uid} 
-									Product={userProducts[userProductKey]} 
+									product={userProducts[userProductKey]} 
 									productKey={userProductKey}
 									setProductStock={setProductStock}
 									sponsorEmail={sponsorEmail}
@@ -151,7 +151,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 								<ItemCard 
 									key={userProductKey}
 									userUid={user.uid} 
-									Product={userProducts[userProductKey]} 
+									product={userProducts[userProductKey]} 
 									productKey={userProductKey}
 									setProductStock={setProductStock}
 									sponsorEmail={sponsorEmail}
@@ -175,7 +175,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 									key={sponsorProductKey}
 									isSponsor={true}
 									userUid={user.uid}
-									Product={sponsorProducts[sponsorProductKey]} 
+									product={sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
 								/></div>)
 							}) 
@@ -186,14 +186,17 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 									key={sponsorProductKey}
 									isSponsor={true}
 									userUid={user.uid}
-									Product={sponsorProducts[sponsorProductKey]} 
+									product={sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
 								/></div>)
 							}) 
 						: null}
 				</Wrapper>
 				: null}
-				<Button onClick={handleItemCard} margin="10px 0px">Back</Button>
+				{!isView
+				?	<Button onClick={handleItemCard} margin="10px 0px">Back</Button>
+				: null
+				}	
 		</div> : null
 		}
 		{isTableMobile&&
@@ -207,7 +210,10 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 					userUid={user.uid}
 					setOrderStatus={setOrderStatus}
 				/>
-				<Button onClick={handleTableMobile} margin="10px 0px">Back</Button>
+				{!isView
+				?<Button onClick={handleTableMobile} margin="10px 0px">Back</Button>
+				:null
+				}
 			</div>
 		}
 		</MediaQuery>

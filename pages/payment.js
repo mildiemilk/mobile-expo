@@ -20,26 +20,28 @@ class Payment extends React.Component{
 		} 
 
 	render() { 
+		const {validateCreditCard, startedUploadImage, pending, transaction, image} = this.props
 		const card = {
-			name : 'john doe', 
-			cardNumber : '4242424242424242', 
-			securityCode:'123', 
-			expiryMonth:'7', 
-			expiryYear:'2019'
+			name : process.env.NODE_ENV === 'production'? '' :'john doe', 
+			cardNumber : process.env.NODE_ENV === 'production'? '' :'4242424242424242', 
+			securityCode:process.env.NODE_ENV === 'production'? '' :'123', 
+			expiryMonth:process.env.NODE_ENV === 'production'? '' :'7', 
+			expiryYear:process.env.NODE_ENV === 'production'? '' :'2019'
 		}
-		const {cardDetail, total, transaction, validateCreditCard} = this.props
 		return <PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
 				validateCreditCard={validateCreditCard}
 				addPayment={addPayment}
 				imageUpload={transaction.payment.paymentDetail}
+				startedUploadImage={startedUploadImage}
+				pending={pending}
+				image= {image}
 			/>
 	}
 }
 
 Payment = reduxForm({form: 'payment'})(Payment)
-
 
 const selector = formValueSelector('payment')
 const mapStateToProps = state =>({
@@ -49,7 +51,10 @@ const mapStateToProps = state =>({
 	cart : state.cart,
 	user: state.user,
 	transaction: state.transaction,
-	validateCreditCard: validateCreditCard(selector(state, 'cardNumber'), selector(state, 'month'), selector(state,'year'))
+	validateCreditCard: validateCreditCard(selector(state, 'cardNumber'), selector(state, 'month'), selector(state,'year')),
+	startedUploadImage: state.payment.startedUploadImage,
+	pending: state.payment.pending,
+	image: state.payment.paymentImage
 })
 
 const mapDispatchToProps = {addProductTransaction}

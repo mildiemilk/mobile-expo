@@ -15,7 +15,7 @@ export default ({
 	page,
 	loggedIn,
 	formValue,
-	status,
+	status ='',
 	helperText
 }) => {
 	return (<div>

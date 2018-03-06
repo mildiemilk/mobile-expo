@@ -10,11 +10,7 @@ font-size: 1.2rem;
 	font-size:1.2rem !important;
 }
 &:hover {
-	transition-timing-function: ease-in;
-	transition: 0.25s;
-	background: ${color.contrastHighlight} !important;
-	z-index:10;
-	border-radius: 25px;
+	background: ${color.contrast} !important;
 }
 &:before {
 	background: none !important;

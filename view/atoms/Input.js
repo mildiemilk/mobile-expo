@@ -22,7 +22,7 @@ ${props => props.width? `width:${props.width};` : null}
 ${props => props.maxWidth? `max-width:${props.maxWidth};`:null}
 ${props => props.flexGrow? `flexgrow:1;`:null}
 &:focus{
-	border: 1px solid ${color.primary1};
+	border: 1px solid ${color.primary};
 }
 &:not:focus{
 	padding-top:2px;
