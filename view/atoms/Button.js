@@ -7,7 +7,7 @@ display: inline-block;
 ${props=> props.relative? 'position:relative;': null}
 outline: 0;
 padding: ${props => props.padding? props.padding:'8px 16px'};
-max-height: 50px;
+${props=> props.nonMaxHeight?  null:`max-height:50px;`}
 vertical-align: middle;
 overflow: hidden;
 text-decoration: none;
@@ -30,6 +30,8 @@ color: ${props => props.textColor? props.textColor: color.lightPrimary};
 ${props=> props.buttonDisabled ? `background:darkgray !important;`:null}
 ${props => props.fullWidth ? 
 	'width:100%;' : null}
+${props => props.fullHeight ? 
+	'height:100%;' : null}
 	${props => props.big ?
 		'padding:20px;' :null
 	}
