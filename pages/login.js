@@ -30,8 +30,8 @@ class Login extends React.Component {
                 loggedIn={user.signedIn}
                 onSubmitEmail={signInWithEmail}
                 formValue={loginValues}
-                status={status}
-                helperText={[ ...validateEmailResult.errorText, ...validatePasswordResult.errorText]}
+                status={'success'}
+                helperText={''}
             />
         )
     }

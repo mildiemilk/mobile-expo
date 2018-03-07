@@ -1,11 +1,4 @@
 {
-	"presets": [ "next/babel" ],
-  "env": {
-    "development": {
-      "plugins": ["inline-dotenv", "inline-react-svg"]
-    },
-    "production": {
-      "plugins": ["transform-inline-environment-variables", "inline-react-svg"]
-    }
-  }
+  "presets": [ "next/babel" ],
+  "plugins": ["inline-react-svg","inline-dotenv"]
 }

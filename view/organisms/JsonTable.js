@@ -1,13 +1,13 @@
 import Table from '../atoms/Table'
 
-export default ({headerJson, bodyJsonArray, width, display, height}) => 
+export default ({headerJson, bodyJsonArray, width, display, height, footer}) => 
     <Table>
         <thead>
             <tr>
             {
                 headerJson?
                     Object.keys(headerJson).map( (headerKey, key) => 
-                        <th>{headerJson[headerKey]}</th>
+                        <th key={key}>{headerJson[headerKey]}</th>
                     )
                 :null
             }
@@ -22,6 +22,9 @@ export default ({headerJson, bodyJsonArray, width, display, height}) =>
                 </tr>
                 )
                 :null
+            }
+            {
+                footer? footer:null
             }
         </tbody>
     </Table>
