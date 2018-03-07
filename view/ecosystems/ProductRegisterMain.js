@@ -1,3 +1,4 @@
+import GridColumn, { Grid } from 'semantic-ui-react'
 import AddedImages from '../organisms/AddedImages'
 import ProductRegisterText from '../organisms/ProductRegisterText'
 import ComissionInput from '../organisms/ComissionInput'
@@ -36,20 +37,22 @@ const DetailMobile = props => [
 ]
 
 export default props=> 
-<div>
-    <Flex direction='row' width='100%' onlyDesktop>
-        <AddedImages {...props} />
-        <Multitab tabs={Detail(props)}
-        footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-        />
-        <br/>
-        <br/>
-    </Flex>
-    <Flex direction='row' width='100%' onlyMobile>
-        <Multitab tabs={DetailMobile(props)}
-        footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-        />
-        <br/>
-        <br/>
-    </Flex>
-</div>
+<Grid>
+	<Grid.Column mobile={16} tablet={16} computer={16}>
+		<Flex direction='row' width='100%' onlyDesktop>
+				<AddedImages {...props} />
+				<Multitab tabs={Detail(props)}
+				footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+				/>
+				<br/>
+				<br/>
+		</Flex>
+		<Flex direction='row' width='100%' onlyMobile>
+				<Multitab tabs={DetailMobile(props)}
+				footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+				/>
+				<br/>
+				<br/>
+		</Flex>
+	</Grid.Column>
+</Grid>
