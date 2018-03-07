@@ -3,10 +3,9 @@ import ProductView from '../view/environment/Product'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import { getProductFromID, getUserProducts } from '../lib/handlers/product'
-import { addQuantity, minusQuantity } from '../lib/handlers/cart'
 import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
-import { addProductDetail, addSponsorId, addSellerId, addProductId, addBuyerId } from '../lib/actions/transaction'
+import { addProductDetail, addSponsorId, addSellerId, addProductId, addBuyerId, addQuantity, minusQuantity } from '../lib/actions/transaction'
 import { addProductTransaction } from '../lib/handlers/transaction'
 
 class Product extends React.Component{
@@ -40,10 +39,13 @@ class Product extends React.Component{
 	}
 
 	render(){
-		const { productSSR, product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
+		const { productSSR, product, url, minusQuantity, addQuantity, addProductTransaction, transaction } = this.props
 		return( <ProductView 
 			product={productSSR||product} 
-			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.queryParams.productID] || 1 }
+			minusQuantity={minusQuantity} 
+			addQuantity={addQuantity} 
+			productUid={url.query.productID} 
+			quantity={transaction.quantity || 1 }
 			addProductTransaction={addProductTransaction}
 			/>)
 	}
@@ -51,7 +53,6 @@ class Product extends React.Component{
 
 const mapStateToProps = state => ({
 	product: state.product,
-	cart : state.cart,
 	user : state.user,
 	transaction : state.transaction
 })

@@ -10,16 +10,20 @@ class Checkout extends React.Component{
 
 	componentDidMount() {
 		let total = 0 
-		const { products, cart, setTotal } = this.props
-		cart.addedIds.map( (key, count) =>{
-			total += cart.quantityById[key] * products[key].price
-		})
+		const { products, transaction, setTotal } = this.props
+		total = transaction.quantity * transaction.price
 		setTotal(total)
 	}
 
 	render() {
-		const { cart, products, product, payment, addDeliveryDetail, name, address1, address2, province, postalCode, phoneNumber, email} = this.props
-		return <CheckoutView cart={cart} products={products} product={product} total={payment.total} addDeliveryDetail={()=>this.props.addDeliveryDetail(name, phoneNumber, email, address1, address2, province, postalCode)}/>
+		const { transaction,products, product, payment, addDeliveryDetail, name, address1, address2, province, postalCode, phoneNumber, email} = this.props
+		return <CheckoutView 
+				products={products} 
+				transaction = {transaction}
+				product={product} 
+				total={payment.total} 
+				addDeliveryDetail={()=>this.props.addDeliveryDetail(name, phoneNumber, email, address1, address2, province, postalCode)}
+			/>
 	}
 } 
 
@@ -30,10 +34,10 @@ Checkout = reduxForm({
 const selector = formValueSelector('address')
 
 const mapStateToProps = state => ({
-	cart: state.cart,
 	products: state.userProducts,
 	product: state.product,
 	payment: state.payment,
+	transaction: state.transaction,
 	name: selector(state, 'name'),
 	phoneNumber: selector(state, 'phoneNumber'),
 	email: selector(state, 'email'),
