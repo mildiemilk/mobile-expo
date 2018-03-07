@@ -10,8 +10,8 @@ export default styled.table `
 	width: 100%;
 	table-layout: fixed;
 	th {
-		background: ${color.primary};
-		color: ${color.white};
+		background: white;
+		color: ${color.primary};
 		padding: 10px 6px;
 	
 	}

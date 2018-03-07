@@ -12,5 +12,7 @@ font-size: 1.2rem;
 &:hover {
 	background: ${color.contrast} !important;
 }
-
+&:before {
+	background: none !important;
+}
 `

@@ -20,21 +20,26 @@ ${props => props.width? `width: ${props.width};`: null}
 ${props => props.color? `color: ${props.color};`: null}
 ${props => props.maxWidth? `max-width: ${props.maxWidth};`: null}
 ${props => props.centerAll ? 'display: flex;justify-content: center;align-items: center;': null}
+${props => props.flexColumn ? 'flex-direction: column;': null}
 ${props => props.height? `height: ${props.height};`: null}
 ${props => props.minWidth? `min-width: ${props.minWidth};`: null}
 ${props => props.minHeight? `min-height: ${props.minHeight};`: null}
 ${props => props.flexGrow ? 'flex-grow: 1;':null}
+${props => props.absolute ? 'position: absolute; top: 40%;':null}
 ${props => props.backgroundColor? `background-color: ${props.backgroundColor};`: null}
 ${props => props.backgroundImage? `background-image: ${props.backgroundImage};`: null}
 ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 @media (min-width: 700px) {
         ${props => props.bigScreenWidth? `width: ${props.bigScreenWidth};`:null};
-        min-width: 340px;
+       
+        ${props => props.maxWidth? `max-width: ${props.maxWidth};`:null};
 }
 
 ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
-@media (max-width: 480px) {
-        width: 98%;
+
+@media (max-width: 700px) {
+        ${props => props.widthSmall? `width: ${props.widthSmall};`:`width: 98%;`};
+        ${props => props.paddingRight? `padding-right: ${props.paddingRight};`: null}
         ${props => props.padding? `padding: ${props.padding};`: 'padding: 5px 5px;'}
         margin:5px auto;
         .wraper-modal{

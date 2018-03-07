@@ -6,6 +6,6 @@ export default styled(Menu)`
 background: ${color.primary} !important;
 width: 100%;
 display: flex;
-justify-content: space-evenly;
+justify-content:${props=>props.justifyContent};
 ${props=> props.height? `height: ${props.height};`:null}
 `
