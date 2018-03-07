@@ -23,10 +23,10 @@ class Admin extends React.Component {
 	}
 
 	render() {
-		const { transactions,disputes, admin, password, checkPassword } = this.props
+		const { transactions,disputes, admin, password, checkPassword, pendingPaymentTransactions } = this.props
 		return (
 			admin?
-			<AdminTable transactions={transactions} disputes={disputes} />:
+			<AdminTable transactions={transactions} disputes={disputes} pendingPaymentTransactions={pendingPaymentTransactions}/>:
 			<Wrapper>
 				<Field name="password" id="password" component="input" type="password"/>
 				<button onClick={()=>checkPassword(password)} > submit</button>
@@ -46,7 +46,8 @@ const selector = formValueSelector(admin)
 
 const mapStateToProps = state => ({
 	admin: state.admin,
-	transactions: state.transactions,
+	transactions: state.transactions.pendingTransactions,
+	pendingPaymentTransactions: state.transactions.pendingPaymentTransactions,
 	disputes:state.disputes,
 	password: selector(state,'password')
 })

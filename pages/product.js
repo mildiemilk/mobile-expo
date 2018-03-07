@@ -9,8 +9,6 @@ import { saveUser, setSeller } from '../lib/actions/user'
 import { addProductDetail, addSponsorId, addSellerId, addProductId, addBuyerId } from '../lib/actions/transaction'
 import { addProductTransaction } from '../lib/handlers/transaction'
 
-const userUid = "IRg5vCrWI1gpat8OwFo5Cxo2IDS2"
-
 class Product extends React.Component{
 
 	static async getInitialProps(ctx) {
@@ -22,10 +20,8 @@ class Product extends React.Component{
 			.then(snapshot => snapshot.val())
 		return {productSSR}
 	}
-	async componentWillMount() {
-		getProductFromID(this.props.url.query.productID)
-	}
 	async componentDidMount() {
+		getProductFromID(this.props.url.query.queryParams.productID)
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		this.props.addSponsorId(this.props.url.query.userID)
@@ -47,7 +43,7 @@ class Product extends React.Component{
 		const { productSSR, product, url, minusQuantity, addQuantity, cart, addProductTransaction } = this.props
 		return( <ProductView 
 			product={productSSR||product} 
-			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.productID] || 1 }
+			minusQuantity={minusQuantity} addQuantity={addQuantity} productUid={url.query.productID} productQuantity={cart.quantityById[url.query.queryParams.productID] || 1 }
 			addProductTransaction={addProductTransaction}
 			/>)
 	}
