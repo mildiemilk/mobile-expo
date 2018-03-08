@@ -27,12 +27,13 @@ ${props => props.flexGrow ? 'flex-grow: 1;':null}
 ${props => props.backgroundColor? `background-color: ${props.backgroundColor};`: null}
 ${props => props.backgroundImage? `background-image: ${props.backgroundImage};`: null}
 ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
+${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
+
 @media (min-width: 700px) {
         ${props => props.bigScreenWidth? `width: ${props.bigScreenWidth};`:null};
         min-width: 340px;
 }
 
-${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 @media (max-width: 480px) {
         width: 98%;
         ${props => props.padding? `padding: ${props.padding};`: 'padding: 5px 5px;'}

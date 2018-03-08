@@ -2,7 +2,6 @@ import Flex from '../atoms/Flex'
 import DisplayImages from '../organisms/DisplayImages'
 import DisplayProductText from '../organisms/DisplayProductText'
 import ProductDescriptionPreview from '../ecosystems/ProductDescriptionPreview'
-import { addQuantity } from '../../lib/handlers/cart'
 import MultiTab from '../molecules/Multitab'
 import AddToCart from '../organisms/AddToCart'
 
@@ -33,11 +32,12 @@ export default props =>
                 productDescription: props.product.productDescription || []
     })}
         footer={    <AddToCart
+            price = {props.product.price}
             minusQuantity = {props.minusQuantity}
             addQuantity = {props.addQuantity}
             sellerId={props.sellerId}
             productUid = {props.productUid}
-            productQuantity = {props.productQuantity}
+            productQuantity = {props.quantity}
             addProductTransaction={props.addProductTransaction}
         />}
     />
