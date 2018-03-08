@@ -32,6 +32,7 @@ export default props =>
                 productDescription: props.product.productDescription || []
     })}
         footer={    <AddToCart
+            price = {props.product.price}
             minusQuantity = {props.minusQuantity}
             addQuantity = {props.addQuantity}
             sellerId={props.sellerId}

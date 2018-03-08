@@ -23,9 +23,8 @@ class Product extends React.Component{
 		getProductFromID(this.props.url.query.queryParams.productID)
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
-		this.props.addSponsorId(this.props.url.query.userID)
-		this.props.addProductId(this.props.url.query.productID)
-		this.props.addQuantity(this.props.url.query.productID)
+		await this.props.addSponsorId(this.props.url.query.queryParams.userID)
+		await this.props.addProductId(this.props.url.query.queryParams.productID)
 	}
 
 

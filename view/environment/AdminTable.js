@@ -56,7 +56,12 @@ export default props => {
 			productName:  props.pendingPaymentTransactions[key].productName,
 			total: props.pendingPaymentTransactions[key].quantity * props.pendingPaymentTransactions[key].price,
 			paymentImage: <img style={{width:'200px', height:'auto'}} src={props.pendingPaymentTransactions[key].payment.paymentDetail} />,
-			status:props.pendingPaymentTransactions[key].paymentStatus === 'pending' ? <div><span>pending</span><Button>Approve</Button></div> : <p style={{color:'green'}}>Approved!</p>
+			status:props.pendingPaymentTransactions[key].paymentStatus === 'pending' ? <div><span>pending</span>
+					<Button onClick={()=>props.approveBankTransferTransaction(
+						 key,
+						props.pendingPaymentTransactions[key]
+					)}>Approve</Button>
+				</div> : <p style={{color:'green'}}>Approved!</p>
 		}))
 
 	const disputes_arrs = Object.keys(props.disputes).map(key=>props.disputes[key]);

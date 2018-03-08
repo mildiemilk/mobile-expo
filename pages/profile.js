@@ -95,8 +95,7 @@ class Profile extends Component {
 	}
 }  
 Profile = reduxForm({
-	form:'profileDetail',
-	enableReinitialize: true
+	form:'profileDetail'
 })(Profile)
 
 const selector = formValueSelector('profileDetail')

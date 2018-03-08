@@ -6,6 +6,7 @@ import {getAllDisputes} from '../lib/handlers/dispute'
 import transaction from '../lib/reducers/transaction'
 import AdminTable from '../view/environment/AdminTable'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
+import { approveBankTransferTransaction } from '../lib/handlers/payment'
 import Wrapper from '../view/atoms/Wrapper'
 import { checkPassword } from '../lib/actions/admin'
 
@@ -26,7 +27,7 @@ class Admin extends React.Component {
 		const { transactions,disputes, admin, password, checkPassword, pendingPaymentTransactions } = this.props
 		return (
 			admin?
-			<AdminTable transactions={transactions} disputes={disputes} pendingPaymentTransactions={pendingPaymentTransactions}/>:
+			<AdminTable transactions={transactions} disputes={disputes} pendingPaymentTransactions={pendingPaymentTransactions} approveBankTransferTransaction={approveBankTransferTransaction}/>:
 			<Wrapper>
 				<Field name="password" id="password" component="input" type="password"/>
 				<button onClick={()=>checkPassword(password)} > submit</button>
@@ -37,10 +38,7 @@ class Admin extends React.Component {
 
 const admin = 'adminForm'
 
-Admin = reduxForm({
-	form:admin,
-	destroyOnUnmount: false
-})(Admin)
+Admin = reduxForm({form:admin,destroyOnUnmount: false})(Admin)
 
 const selector = formValueSelector(admin)
 

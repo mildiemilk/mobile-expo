@@ -4,7 +4,7 @@ import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import { setTotal } from '../lib/actions/payment'
-import { addDeliveryDetail } from '../lib/handlers/transaction'
+import { addDeliveryDetail } from '../lib/actions/transaction'
 
 class Checkout extends React.Component{
 
@@ -15,21 +15,22 @@ class Checkout extends React.Component{
 		setTotal(total)
 	}
 
+	componentWillReceiveProps(nextProps){
+		this.props.deliveryDetail !== nextProps.deliveryDetail ? this.props.addDeliveryDetail(nextProps.deliveryDetail):null
+	}
+
 	render() {
-		const { transaction,products, product, payment, addDeliveryDetail, name, address1, address2, province, postalCode, phoneNumber, email} = this.props
+		const { products, transaction, product, payment} = this.props
 		return <CheckoutView 
 				products={products} 
 				transaction = {transaction}
 				product={product} 
 				total={payment.total} 
-				addDeliveryDetail={()=>this.props.addDeliveryDetail(name, phoneNumber, email, address1, address2, province, postalCode)}
 			/>
 	}
 } 
 
-Checkout = reduxForm({
-	form:'address'
-})(Checkout)
+Checkout = reduxForm({form:'address'})(Checkout)
 
 const selector = formValueSelector('address')
 
@@ -38,13 +39,15 @@ const mapStateToProps = state => ({
 	product: state.product,
 	payment: state.payment,
 	transaction: state.transaction,
-	name: selector(state, 'name'),
-	phoneNumber: selector(state, 'phoneNumber'),
-	email: selector(state, 'email'),
-	address1: selector(state, 'address1'),
-	address2: selector(state, 'address2'),
-	province: selector(state, 'province'),
-	postalCode: selector(state, 'postalCode')
+	deliveryDetail : {
+		name: selector(state, 'name') || '',
+		phoneNumber: selector(state, 'phoneNumber') || '',
+		email: selector(state, 'email') || '',
+		address1: selector(state, 'address1') || '',
+		address2: selector(state, 'address2') || '',
+		province: selector(state, 'province') || '' ,
+		postalCode: selector(state, 'postalCode') || ''
+	}
 })
 
 const mapDispatchToProps = {

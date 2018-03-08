@@ -3,9 +3,10 @@ import Button from '../atoms/Button'
 import Head from './DefaultHead'
 import Header from './Header'
 import AddressForm from '../organisms/AddressForm'
+import Link from 'next/link'
 
 let total = 0
-export default ({transaction,products={}, total=0, saveAddress, addDeliveryDetail}) => <div>
+export default ({transaction,products={}, total=0, saveAddress}) => <div>
   <Head/>
   <Header/>
   <div style={{margin:'15px'}}>
@@ -38,6 +39,8 @@ export default ({transaction,products={}, total=0, saveAddress, addDeliveryDetai
       </tbody>
     </Table>	
     <AddressForm/>
-    <Button margin="0px 0px" onClick={addDeliveryDetail}>proceed to payment</Button>
+    <Link href="/payment" prefetch >
+      <Button margin="0px 0px">proceed to payment</Button>
+    </Link>
   </div>
 </div>
