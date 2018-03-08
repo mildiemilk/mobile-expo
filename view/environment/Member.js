@@ -109,7 +109,6 @@ export default props =>
 					</Wrapper>
 					<Wrapper>
 					<h2>Member</h2>
-					{console.log('members', props.member.members)}
 					<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>:null}/>
 					</Wrapper>
 					<Wrapper>
