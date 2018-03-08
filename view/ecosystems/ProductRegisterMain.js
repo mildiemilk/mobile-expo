@@ -1,4 +1,4 @@
-import GridColumn, { Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import AddedImages from '../organisms/AddedImages'
 import ProductRegisterText from '../organisms/ProductRegisterText'
 import ComissionInput from '../organisms/ComissionInput'

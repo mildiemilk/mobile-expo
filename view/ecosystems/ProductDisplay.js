@@ -3,6 +3,7 @@ import DisplayImages from '../organisms/DisplayImages'
 import DisplayProductText from '../organisms/DisplayProductText'
 import ProductDescriptionPreview from '../ecosystems/ProductDescriptionPreview'
 import { addQuantity } from '../../lib/handlers/cart'
+import { Grid } from 'semantic-ui-react'
 import MultiTab from '../molecules/Multitab'
 import AddToCart from '../organisms/AddToCart'
 
@@ -18,28 +19,32 @@ component: <ProductDescriptionPreview productDescription={props.productDescripti
 }])
 
 export default props =>
-<Flex direction='row' center>
-    <MultiTab tabs={tabs({
-                images: props.images || [],
-                productName:props.product.productName ||'', 
-                shopName:props.product.brandName || '',
-                price:props.product.price ||'',
-                sellerId:props.product.userUid ||'',
-                minusQuantity:props.minusQuantity || null,
-                addQuantity:props.addQuantity || null,
-                productUid:props.productUid || '',
-                productQuantity:props.productQuantity ||0,
-                addProductTransaction:props.addProductTransaction || null,
-                productDescription: props.product.productDescription || []
-    })}
-        footer={    <AddToCart
-            minusQuantity = {props.minusQuantity}
-            addQuantity = {props.addQuantity}
-            sellerId={props.sellerId}
-            productUid = {props.productUid}
-            productQuantity = {props.productQuantity}
-            addProductTransaction={props.addProductTransaction}
-        />}
-    />
+<Grid>
+	<Grid.Column mobile={16} tablet={16} computer={12}>
+		<Flex direction='row' center>
+				<MultiTab tabs={tabs({
+						images: props.images || [],
+						productName:props.product.productName ||'', 
+						shopName:props.product.brandName || '',
+						price:props.product.price ||'',
+						sellerId:props.product.userUid ||'',
+						minusQuantity:props.minusQuantity || null,
+						addQuantity:props.addQuantity || null,
+						productUid:props.productUid || '',
+						productQuantity:props.productQuantity ||0,
+						addProductTransaction:props.addProductTransaction || null,
+						productDescription: props.product.productDescription || []
+					})}
+					footer={    <AddToCart
+							minusQuantity = {props.minusQuantity}
+							addQuantity = {props.addQuantity}
+							sellerId={props.sellerId}
+							productUid = {props.productUid}
+							productQuantity = {props.productQuantity}
+							addProductTransaction={props.addProductTransaction}
+				/>}
+				/>
 
-</Flex>
+		</Flex>
+	</Grid.Column>
+</Grid>
