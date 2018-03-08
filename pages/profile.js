@@ -233,8 +233,7 @@ class Profile extends Component {
 }
 {/* <ProfileMobile handleProfileMobile={this.handleProfileMobile}/> */}
 Profile = reduxForm({
-	form:'profileDetail',
-	enableReinitialize: true
+	form:'profileDetail'
 })(Profile)
 
 const selector = formValueSelector('profileDetail')

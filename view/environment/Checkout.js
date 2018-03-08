@@ -4,9 +4,10 @@ import Button from '../atoms/Button'
 import Head from './DefaultHead'
 import Header from './Header'
 import AddressForm from '../organisms/AddressForm'
+import Link from 'next/link'
 
 let total = 0
-export default ({cart = {}, products={}, total=0, saveAddress, addDeliveryDetail}) => <div>
+export default ({transaction,products={}, total=0, saveAddress}) => <div>
   <Head/>
   <Header/>
   <Grid>
