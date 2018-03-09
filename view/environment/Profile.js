@@ -55,13 +55,14 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 										/>
 									</div>)
 								}) : null
-						: <Slider {...settings}>
+						: <Slider adaptiveHeight={true} {...settings}>
+							<div style={{height:' -webkit-fill-available'}}>
 							{ userProducts ? 
 									Object.keys(userProducts).reverse().map( userProductKey => {
 										return (
 											<div>
 												<ItemCard 
-													key={userProductKey}
+													key={userPoductKey}
 													userUid={user.uid} 
 													product={userProducts[userProductKey]} 
 													productKey={userProductKey}
@@ -75,6 +76,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											</div>)
 										}) : null
 									}
+							</div>
 							</Slider>
 						}
 					</Wrapper>
