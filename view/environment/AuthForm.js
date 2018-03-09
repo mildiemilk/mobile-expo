@@ -21,24 +21,28 @@ export default ({
 	return (<div>
 		<Head />
 		<Header/>
-		<Flex center width="100vw" direction="row"> 
-		<Wrapper minWidth="" padding="25px 40px 25px 50px" maxWidth="400px">
-					{ !loggedIn ?
-						<SignInForm 	
-							onClickGoogle={onClickGoogle}
-							onClickFacebook = {onClickFacebook}
-							onSubmitEmail = {onSubmitEmail}
-							page = {page}
-							formValue = {formValue}
-						/>
-						:
-						<SignOut
-							signOut={signOut}
-						/>
-					}
-		</Wrapper>
-		<ErrorDisplay status={status} displayText={helperText} />				
-		</Flex>
+		<Grid>
+			<Grid.Column mobile={16} tablet={16} computer={12}>
+				<Flex center width="100vw" direction="row"> 
+				<Wrapper minWidth="" padding="25px 40px 25px 50px" maxWidth="400px">
+							{ !loggedIn ?
+								<SignInForm 	
+									onClickGoogle={onClickGoogle}
+									onClickFacebook = {onClickFacebook}
+									onSubmitEmail = {onSubmitEmail}
+									page = {page}
+									formValue = {formValue}
+								/>
+								:
+								<SignOut
+									signOut={signOut}
+								/>
+							}
+				</Wrapper>
+				<ErrorDisplay status={status} displayText={helperText} />				
+				</Flex>
+			</Grid.Column>
+		</Grid>
 	</div>
 	)
 }
