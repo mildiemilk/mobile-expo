@@ -3,7 +3,6 @@ import color from '../../static/json/color.json'
 
 export default styled.div`
 background-color: white;
-border: 1px solid #dddfe2;
 border-radius: 3px;
 align-self:stretch;
 ${props => props.position? `position: ${props.position};`:null}
@@ -15,7 +14,7 @@ ${props => props.bottom? `bottom: ${props.bottom};`: null}
 ${props => props.left? `left: ${props.left};`: null}
 ${props => props.right? `right: ${props.right};`: null}
 ${props => !props.noBorderRadius?'border-radius: 3px;':'border-radius: 0;'}
-${props => !props.noBorder ?`border: 1px solid ${color.lightPrimary};`: 'border: 0;'}
+${props => !props.noBorder ?`border: 1px solid ${color.lightPrimary};`: '1px solid #b0b2b4;'}
 ${props => props.width? `width: ${props.width};`: null}
 ${props => props.color? `color: ${props.color};`: null}
 ${props => props.maxWidth? `max-width: ${props.maxWidth};`: null}
@@ -37,7 +36,6 @@ ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
         ${props => props.maxWidth? `max-width: ${props.maxWidth};`:null};
 }
 
-${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 
 @media (max-width: 700px) {
         ${props => props.widthSmall? `width: ${props.widthSmall};`:`width: 98%;`};

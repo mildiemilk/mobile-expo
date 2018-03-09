@@ -5,6 +5,7 @@ export default styled.button`
 border: none;
 display: inline-block;
 ${props=> props.relative? 'position:relative;': null}
+${props=> props.position? `position:${props.position};`: null}
 outline: 0;
 padding: ${props => props.padding? props.padding:'8px 16px'};
 ${props=> props.nonMaxHeight?  null:`max-height:50px;`}
@@ -18,6 +19,7 @@ ${props=> props.noFlexGrow? `flex-grow:inherit;`:`flex-grow: 1;`}
 ${props=> props.zIndex? `z-index:${props.zIndex};`:null}
 ${props=> props.width? `width:${props.width};` :null}
 ${props=> props.height? `height:${props.height};` :null}
+${props=> props.borderRadius? `border-radius:${props.borderRadius};` :null}
 ${props=> props.maxWidth? `max-width:${props.maxWidth};`:null}
 ${props=> props.minWidth? `min-width:${props.minWidth};`:null}
 ${props=> props.margin? `margin:${props.margin};`:null}

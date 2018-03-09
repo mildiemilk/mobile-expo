@@ -20,12 +20,8 @@ class HeaderMobile extends React.Component{
 		<Menu height="100%">
 		<img src="../../static/img/logo.png" width="50" height="50" />
 			<div>
-			{loggedIn
-				?	menu.map( ({link, text}, key) => 
+				{menu.map( ({link, text}, key) => 
 					<Item key={key} onClick={()=>Router.push(link)}>{text}</Item> 
-				)
-				: menu.slice(0,3).map( ({link, text}, key) => 
-					<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
 				)
 				}
 			</div>
