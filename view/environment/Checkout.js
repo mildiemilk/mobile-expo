@@ -1,3 +1,4 @@
+import { Grid } from 'semantic-ui-react'
 import Table from '../atoms/Table'
 import Button from '../atoms/Button'
 import Head from './DefaultHead'
@@ -9,38 +10,45 @@ let total = 0
 export default ({transaction,products={}, total=0, saveAddress}) => <div>
   <Head/>
   <Header/>
-  <div style={{margin:'15px'}}>
-    <Table celled>
-      <thead>
-        <tr>
-          <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>SubTotal</th>
-        </tr>
-      </thead>
-      <tbody>
+  <Grid>
+	  <Grid.Column mobile={16} tablet={16} computer={12}>
+    <div style={{margin:'15px'}}>
+      <Table celled>
+        <thead>
           <tr>
-            <td>{transaction.productName}</td>
-            <td>{transaction.quantity}</td>
-            <td>{transaction.price}</td>
-            <td>{transaction.quantity * transaction.price}</td>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>SubTotal</th>
           </tr>
-        <tr>
-          <td/>
-          <td/>
-          <td>
-            <h3>Total</h3>
-          </td>
-          <td>
-            <h3>{total}</h3>
-          </td>
-        </tr>
-      </tbody>
-    </Table>	
-    <AddressForm/>
-    <Link href="/payment" prefetch >
-      <Button margin="0px 0px">proceed to payment</Button>
-    </Link>
-  </div>
+        </thead>
+        <tbody>
+          {cart.addedIds.map( (key, count) =>
+            <tr key={key}>
+              <td>{count+1}</td>
+              <td>{products[key].productName}</td>
+              <td>{cart.quantityById[key]}</td>
+              <td>{products[key].price}</td>
+              <td>{cart.quantityById[key] * products[key].price}</td>
+            </tr>
+          )}
+          <tr>
+            <td/>
+            <td/>
+            <td/>
+            <td>
+              <h3>Total</h3>
+            </td>
+            <td>
+              <h3>{total}</h3>
+            </td>
+          </tr>
+        </tbody>
+      </Table>	
+      <AddressForm/>
+      <Button margin="0px 0px"onClick={addDeliveryDetail}>proceed to payment</Button>
+    </div>
+    </Grid.Column>
+  </Grid>
 </div>
