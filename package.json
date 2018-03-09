@@ -69,7 +69,7 @@
   },
   "now":{
     "alias":"sharemai.com",
-    "dotenv": ".env.production"  
+    "dotenv": ".env.production"
   },
   "scripts": {
     "dev": "node server.js",
