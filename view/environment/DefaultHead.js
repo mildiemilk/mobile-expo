@@ -3,7 +3,7 @@ import Head from 'next/head'
 export default ({children, title, url, image, type, description, video, videoType}) =>   
 <Head>
 	<title>{title || 'redsnappy'}</title>
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
 	<link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
