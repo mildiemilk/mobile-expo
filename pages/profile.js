@@ -185,7 +185,7 @@ class Profile extends Component {
 							userUid={user.uid}
 						/>
 					}
-					{isItemMobile || isTableMobile &&
+					{isItemMobile || isTableMobile ?
 						<div>
 							<ProfileView
 								handleTableMobile={this.handleTableMobile}
@@ -215,7 +215,7 @@ class Profile extends Component {
 								showView={showView}
 								handleClickView={this.handleClickView}
 							/>
-						</div>}
+						</div>:null}
 					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&
 						<ProfileMobile 
 							handleProfileMobile={this.handleProfileMobile}
