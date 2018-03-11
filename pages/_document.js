@@ -4,7 +4,6 @@ import flush from 'styled-jsx/server'
 import styled from 'styled-components'
 import  Header  from '../view/environment/Header';
 import DefaultHead from '../view/environment/DefaultHead'
-// import './style.css'
 
 const BodyWithMobile = styled.body`
 
