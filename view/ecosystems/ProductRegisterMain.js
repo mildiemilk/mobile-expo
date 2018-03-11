@@ -7,6 +7,7 @@ import Button from '../atoms/Button'
 import Multitab from '../molecules/Multitab'
 import ProductDescriptionForm from './ProductDescriptionForm'
 import ProductDescriptionPreview from './ProductDescriptionPreview'
+import Link from 'next/link'
 
 const Detail = props => [
     {
@@ -37,22 +38,33 @@ const DetailMobile = props => [
 ]
 
 export default props=> 
+<div>
 <Grid>
-	<Grid.Column mobile={16} tablet={16} computer={16}>
-		<Flex direction='row' width='100%' onlyDesktop>
-				<AddedImages {...props} />
-				<Multitab tabs={Detail(props)}
-				footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-				/>
-				<br/>
-				<br/>
-		</Flex>
-		<Flex direction='row' width='100%' onlyMobile>
-				<Multitab tabs={DetailMobile(props)}
-				footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-				/>
-				<br/>
-				<br/>
-		</Flex>
-	</Grid.Column>
+    <Grid.Row>
+        <Grid.Column mobile={16} tablet={16} computer={16}>
+            <Flex direction='row' width='100vw' onlyDesktop>
+                    <AddedImages {...props} />
+                    <Multitab tabs={Detail(props)}
+                    footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+                    />
+                    <br/>
+                    <br/>
+            </Flex>
+            <Flex direction='row' width='100vw' onlyMobile>
+                    <Multitab tabs={DetailMobile(props)}
+                    footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+                    />
+                    <br/>
+                    <br/>
+            </Flex>
+        </Grid.Column>
+    </Grid.Row>
+    <Grid.Row>
+        <Grid.Column>
+            <Link href='/profile'>
+                <Button>Back</Button>
+            </Link>
+        </Grid.Column>
+    </Grid.Row>
 </Grid>
+</div>

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export default styled.div`
-    max-width: ${props => props.bigScreenWidth || '400px'};
+    max-width: ${props => props.bigScreenWidth || '100%'};
     width: 100%;
     height: auto;
     display: flex;

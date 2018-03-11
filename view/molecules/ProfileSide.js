@@ -16,11 +16,11 @@ class ProfileSide extends Component {
             <Sidebar animation='push' width='wide' visible={isVisible} icon='labeled' vertical inverted>
               <Wrapper minHeight="100vh" noMargin noBorder noBorderRadius>
                 {sideContent}
-                <Button round fullWidth margin='2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
-                <Button round fullWidth margin='2px' onClick={() => handleClick('order')}>คำสั่งซื้อ
+                <Button secondary round fullWidth margin='2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
+                <Button secondary round fullWidth margin='2px' onClick={() => handleClick('order')}>คำสั่งซื้อ
                   {pending>0? <Label circular color='red'>{pending}</Label> : null}
                 </Button>
-                <Link href="/productRegister"><Button round fullWidth margin='2px'>ลงสินค้าเพิ่ม</Button></Link>
+                <Link href="/productRegister"><Button secondary round fullWidth margin='2px'>+ ลงสินค้า</Button></Link>
               </Wrapper>
             </Sidebar>
           <Sidebar.Pusher>

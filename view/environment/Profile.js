@@ -9,8 +9,8 @@ import ProfileTable from '../environment/ProfileTable'
 import ProfileDetail from '../environment/ProfileDetail'
 import productimages from '../../lib/reducers/productimages'
 import H3 from '../atoms/H3'
-import Wrapper from '../atoms/Wrapper';
-import Button from '../atoms/Button';
+import Wrapper from '../atoms/Wrapper'
+import Button from '../atoms/Button'
 
 const settings = {
 	dots: true,
