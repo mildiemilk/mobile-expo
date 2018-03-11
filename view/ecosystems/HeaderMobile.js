@@ -1,14 +1,12 @@
 import Router from 'next/router'
 import MediaQuery from 'react-responsive'
 import styled from 'styled-components'
-// import Sidebar from 'react-sidebar'
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'  
-// import { Icon } from 'semantic-ui-react'
 import MenuButton from '../atoms/MenuButton'
-// import Menu from '../atoms/Menu'
 import Item from '../atoms/Item'
 import menu from '../../static/json/menu.json'
 import HeightDiv from '../atoms/HeightDiv'
+
 const StylePusher = styled(Sidebar.Pusher)`
 margin: 0px !important;
 `
@@ -45,10 +43,6 @@ class HeaderMobile extends React.Component{
 			</div>
 		</div>
 	)
-
-	onSetSidebarOpen = open => {
-		this.setState({sidebarOpen: open});
-	}
 
 	render(){
 		const { loggedIn, content, contentMobile } = this.props

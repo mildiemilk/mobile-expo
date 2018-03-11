@@ -12,27 +12,7 @@
 		"text": "Register"
 	},
 	{
-		"link":"/productRegister",
-		"text": "Product Register"
-	},
-	{
 		"link":"/profile",
 		"text":"Profile"
-	},
-	{
-		"link":"/checkout",
-		"text":"Check Out"
-	},
-	{
-		"link":"/payment",
-		"text":"Payment"
-	},
-	{
-		"link":"/about",
-		"text": "About"
-	},
-	{
-		"link": "/product",
-		"text": "Product"
 	}
 ]

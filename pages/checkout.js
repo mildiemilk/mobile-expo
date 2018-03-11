@@ -4,43 +4,50 @@ import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import { setTotal } from '../lib/actions/payment'
-import { addDeliveryDetail } from '../lib/handlers/transaction'
+import { addDeliveryDetail } from '../lib/actions/transaction'
 
 class Checkout extends React.Component{
 
 	componentDidMount() {
 		let total = 0 
-		const { products, cart, setTotal } = this.props
-		cart.addedIds.map( (key, count) =>{
-			total += cart.quantityById[key] * products[key].price
-		})
+		const { products, transaction, setTotal } = this.props
+		total = transaction.quantity * transaction.price
 		setTotal(total)
 	}
 
+	componentWillReceiveProps(nextProps){
+		this.props.deliveryDetail !== nextProps.deliveryDetail ? this.props.addDeliveryDetail(nextProps.deliveryDetail):null
+	}
+
 	render() {
-		const { cart, products, product, payment, addDeliveryDetail, name, address1, address2, province, postalCode, phoneNumber, email} = this.props
-		return <CheckoutView cart={cart} products={products} product={product} total={payment.total} addDeliveryDetail={()=>this.props.addDeliveryDetail(name, phoneNumber, email, address1, address2, province, postalCode)}/>
+		const { products, transaction, product, payment} = this.props
+		return <CheckoutView 
+				products={products} 
+				transaction = {transaction}
+				product={product} 
+				total={payment.total} 
+			/>
 	}
 } 
 
-Checkout = reduxForm({
-	form:'address'
-})(Checkout)
+Checkout = reduxForm({form:'address'})(Checkout)
 
 const selector = formValueSelector('address')
 
 const mapStateToProps = state => ({
-	cart: state.cart,
 	products: state.userProducts,
 	product: state.product,
 	payment: state.payment,
-	name: selector(state, 'name'),
-	phoneNumber: selector(state, 'phoneNumber'),
-	email: selector(state, 'email'),
-	address1: selector(state, 'address1'),
-	address2: selector(state, 'address2'),
-	province: selector(state, 'province'),
-	postalCode: selector(state, 'postalCode')
+	transaction: state.transaction,
+	deliveryDetail : {
+		name: selector(state, 'name') || '',
+		phoneNumber: selector(state, 'phoneNumber') || '',
+		email: selector(state, 'email') || '',
+		address1: selector(state, 'address1') || '',
+		address2: selector(state, 'address2') || '',
+		province: selector(state, 'province') || '' ,
+		postalCode: selector(state, 'postalCode') || ''
+	}
 })
 
 const mapDispatchToProps = {

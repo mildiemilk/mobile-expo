@@ -67,10 +67,6 @@
     "redux-devtools": "^3.4.1",
     "redux-devtools-extension": "^2.13.2"
   },
-  "now":{
-    "alias":"sharemai.com",
-    "dotenv": ".env.production"  
-  },
   "scripts": {
     "dev": "node server.js",
     "storybook": "start-storybook -p 9009",

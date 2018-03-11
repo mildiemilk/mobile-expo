@@ -1,3 +1,4 @@
+import { Grid } from 'semantic-ui-react'
 import Table from '../atoms/Table'
 import Button from '../atoms/Button'
 import Head from './DefaultHead'
