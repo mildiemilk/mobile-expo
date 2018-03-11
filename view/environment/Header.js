@@ -1,11 +1,12 @@
 import React from 'react'
 import { saveUser } from '../../lib/actions/user'
 import withRedux from "next-redux-wrapper"
+import MediaQuery from 'react-responsive'
 import store from '../../lib/store'
 import loadFirebase from '../../lib/database'
 import HeaderDesktop from '../ecosystems/HeaderDesktop'
 import HeaderMobile from '../ecosystems/HeaderMobile'
-
+import HeightDiv from '../atoms/HeightDiv'
 
 class Header extends React.Component {
 	async componentDidMount() {
@@ -13,13 +14,15 @@ class Header extends React.Component {
         await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
     }
 	render(){
-		const { user } = this.props
+		const { user, content, contentMobile } = this.props
 		return(
-		<div>
-			<HeaderDesktop loggedIn={user}/>
-			<HeaderMobile loggedIn={user} />
-		</div>)
-	
+		<HeightDiv>
+			<MediaQuery minDeviceWidth={1224}>
+				<HeaderDesktop loggedIn={user}/>
+				{content}
+			</MediaQuery>
+			<HeaderMobile loggedIn={user} content={content} contentMobile={contentMobile}/>
+		</HeightDiv>)
 	}
 }
 

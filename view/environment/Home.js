@@ -1,10 +1,10 @@
 import Head from './DefaultHead'
 import Header from './Header'
 import CompanyExplained from '../ecosystems/CompanyExplained'
+import HeightDiv from '../atoms/HeightDiv'
 
 export default ({changePage, user}) => 
-<div>
-  <Head title="Home" type="blog" image="../../static/img/logo.png" description="แอพลิเคชั่นที่จะเปลี่ยนลูกค้าทุกคนของคุณเป็นตัวแทนจำหน่าย"/>
-  <Header />
-  <CompanyExplained/>
-</div>
+<HeightDiv>
+  <Head title="Home" type="blog" image="../../static/img/logo.png" description="แอพลิเคชั่นที่จะเปลี่ยนลูกค้าทุกคนของคุณเป็นตัวแทนจำหน่าย"/> 
+  <Header content={<CompanyExplained/>}/>
+</HeightDiv>

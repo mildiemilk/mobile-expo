@@ -4,6 +4,7 @@ import BankAccountsForTransfer from '../ecosystems/BankAccountsForTransfer'
 import CreditCardExpandButton from '../ecosystems/CreditCardExpandButton'
 import Multitab from '../molecules/Multitab'
 import CreditCard from '../organisms/CreditCard'
+import HeightDiv from '../atoms/HeightDiv'
 
 export const Tabs = props =>  [
 	{
@@ -17,8 +18,7 @@ export const Tabs = props =>  [
 ]
 
 export default props => 
-<div>
+<HeightDiv>
 	<Head/>
-	<Header />
-	<Multitab tabs={Tabs(props)} />
-</div>
+	<Header content={<Multitab tabs={Tabs(props)} />} />
+</HeightDiv>
