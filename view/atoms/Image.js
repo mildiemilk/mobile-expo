@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export default styled.img.attrs({
-	size: props => props.size || '400px'
+	size: props => props.size || '100%'
 })`
 	max-width: ${props => props.size};
 	width: inherit;

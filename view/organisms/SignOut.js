@@ -1,16 +1,21 @@
-import { Grid, Icon, Button } from 'semantic-ui-react'
+import { Grid, Icon } from 'semantic-ui-react'
+import Link from 'next/link'
+import Button from '../atoms/Button'
 
 export default ({signOut}) =>
 <div>
-	<h3>Do you want to Signout?</h3>
 	<Grid.Row>
 		<Grid.Column>
+			<h3 style={{color:'green'}}>ล๊อกอินสำเร็จ</h3>
+			<Link href='/profile'>
+				<Button secondary margin='10px 0' >ไปที่โปรไฟล์</Button>
+			</Link>
 			<Button 
 				size='medium' 
-				color='red' 
+				background='red' 
 				onClick={()=>signOut()}>
 				<Icon name='user' /> 
-				Sign out
+				 ออกจากระบบ
 			</Button>
 		</Grid.Column>
 	</Grid.Row>
