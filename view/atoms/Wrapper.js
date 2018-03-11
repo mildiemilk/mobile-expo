@@ -7,8 +7,8 @@ border-radius: 3px;
 align-self:stretch;
 ${props => props.position? `position: ${props.position};`:null}
 ${props => !props.noMargin? 'margin: 10px;' : null }
-margin: ${props => props.margin};
-${props => props.padding? `padding: ${props.padding};`: 'padding: 10px;'}
+margin: ${props => props.margin? props.margin:'0'};
+${props => props.padding? `padding: ${props.padding};`: 'padding: 0px;'}
 ${props => props.top? `top: ${props.top};`: null}
 ${props => props.bottom? `bottom: ${props.bottom};`: null}
 ${props => props.left? `left: ${props.left};`: null}
@@ -16,6 +16,7 @@ ${props => props.right? `right: ${props.right};`: null}
 ${props => !props.noBorderRadius?'border-radius: 3px;':'border-radius: 0;'}
 ${props => !props.noBorder ?`border: 1px solid ${color.lightPrimary};`: '1px solid #b0b2b4;'}
 ${props => props.width? `width: ${props.width};`: null}
+${props => props.height? `height: ${props.height};`: null}
 ${props => props.color? `color: ${props.color};`: null}
 ${props => props.maxWidth? `max-width: ${props.maxWidth};`: null}
 ${props => props.centerAll ? 'display: flex;justify-content: center;align-items: center;': null}

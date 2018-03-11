@@ -22,7 +22,6 @@ export default class MyDocument extends Document {
     const sheet = new ServerStyleSheet()
     const main = sheet.collectStyles(<Main />)
     const styleTags = sheet.getStyleElement()
-    // const { customValue } = this.props
     return (
       <html>
         <Head>
@@ -32,7 +31,7 @@ export default class MyDocument extends Document {
               background: #E9EBEE;
             }
             body > div:first-child {
-              height: 100%;
+              height: 100vh;
             }
           `}</style>
         </Head>

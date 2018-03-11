@@ -2,10 +2,13 @@ import styled from 'styled-components'
 
 export default styled.div`
     display: flex;
+    margin:0;
+    padding:0;
     flex-direction: ${props => props.direction || 'column'};
-    justify-content: ${props => props.justContent};
     flex-wrap: ${props => props.wrap || 'wrap'};
-    ${props => props.flexGrow? `flex-grow:${props.glexGrow};`:null}
+    ${props => props.flexGrow? `flex-grow:${props.flexGrow};`:null}
+    ${props => props.flexFlow? `flex-flow:${props.flexFlow};`:null}
+    ${props => props.justifyContent? `justify-content:${props.justifyContent};`:null}
     ${props => props.center ? 'justify-content:center;':null}
     ${props => props.verticleCenter ? 'align-items:center;':null}
     ${props => props.stretch ? 'align-items:stretch;':null}

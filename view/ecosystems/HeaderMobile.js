@@ -9,12 +9,15 @@ import HeightDiv from '../atoms/HeightDiv'
 
 const StylePusher = styled(Sidebar.Pusher)`
 margin: 0px !important;
+padding:0;
 `
 const StyleSegment = styled(Segment)`
 margin: 0px !important;
+padding: 0;
 `
 const StylePushable =styled(Sidebar.Pushable)`
 margin: 0px !important
+padding:0;
 `
 class HeaderMobile extends React.Component{
   constructor(props) {
@@ -48,21 +51,19 @@ class HeaderMobile extends React.Component{
 		const { loggedIn, content, contentMobile } = this.props
 		const { visible } = this.state
 		return (
-			<MediaQuery  maxDeviceWidth={1224}>
-				<HeightDiv>
-					<MenuButton onClick={this.toggleVisibility}><Icon name='content'/></MenuButton>
-					<StylePushable as={Segment}>
-						<Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
-							{this.sidebarContent()}
-						</Sidebar>
-						<StylePusher>
-							<StyleSegment basic>
-								{contentMobile||content}
-							</StyleSegment>
-						</StylePusher>
-					</StylePushable>
-				</HeightDiv>
-			</MediaQuery>
+			<HeightDiv>
+				<MenuButton onClick={this.toggleVisibility}><Icon name='content'/></MenuButton>
+				<StylePushable as={Segment}>
+					<Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
+						{this.sidebarContent()}
+					</Sidebar>
+					<StylePusher>
+						<StyleSegment basic>
+							{contentMobile||content}
+						</StyleSegment>
+					</StylePusher>
+				</StylePushable>
+			</HeightDiv>
 		)
 	}
 }

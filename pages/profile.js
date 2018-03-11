@@ -228,7 +228,7 @@ class Profile extends Component {
 		</HeightDiv>
 	}
 }
-{/* <ProfileMobile handleProfileMobile={this.handleProfileMobile}/> */}
+
 Profile = reduxForm({
 	form:'profileDetail'
 })(Profile)
