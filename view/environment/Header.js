@@ -22,7 +22,7 @@ class Header extends React.Component {
 				<HeaderDesktop loggedIn={user} content={content}/>
 			</OnlyDesktop>
 			<OnlyMobile>
-				<HeaderMobile loggedIn={user} content={content}/>
+				<HeaderMobile loggedIn={user} content={content} contentMobile={contentMobile}/>
 			</OnlyMobile>
 		</HeightDiv>)
 	}
