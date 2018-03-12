@@ -10,5 +10,7 @@ const calcComissionPercent = value => value >= 75 ? 75 : value
 export default props => 
 <HeightDiv>
 	<Head />
-	<Header content={<ProductRegisterMain {...props} />}/>
+	<Header content={
+	<ProductRegisterMain {...props} />
+	}/>
 </HeightDiv>

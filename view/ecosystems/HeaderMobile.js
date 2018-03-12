@@ -9,15 +9,15 @@ import HeightDiv from '../atoms/HeightDiv'
 
 const StylePusher = styled(Sidebar.Pusher)`
 margin: 0px !important;
-padding:0;
+padding:0 !important;
 `
 const StyleSegment = styled(Segment)`
 margin: 0px !important;
-padding: 0;
+padding: 0 !important;
 `
 const StylePushable =styled(Sidebar.Pushable)`
-margin: 0px !important
-padding:0;
+margin: 0px !important;
+padding:0 !important;
 `
 class HeaderMobile extends React.Component{
   constructor(props) {
@@ -48,7 +48,7 @@ class HeaderMobile extends React.Component{
 	)
 
 	render(){
-		const { loggedIn, content, contentMobile } = this.props
+		const { loggedIn, content } = this.props
 		const { visible } = this.state
 		return (
 			<HeightDiv>
@@ -59,7 +59,7 @@ class HeaderMobile extends React.Component{
 					</Sidebar>
 					<StylePusher>
 						<StyleSegment basic>
-							{contentMobile||content}
+							{content}
 						</StyleSegment>
 					</StylePusher>
 				</StylePushable>
