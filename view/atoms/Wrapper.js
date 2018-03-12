@@ -4,7 +4,7 @@ import color from '../../static/json/color.json'
 export default styled.div`
 align-self:stretch;
 ${props => props.position? `position: ${props.position};`:null}
-${props => !props.noMargin? 'margin: 10px;' : null }
+${props => !props.noMargin? 'margin: 5px;' : null }
 ${props => props.padding? `padding: ${props.padding};`: 'padding: 10px;'}
 ${props => props.margin? `margin: ${props.margin};`: 'margin: 10px;'}
 ${props => props.top? `top: ${props.top};`: null}
