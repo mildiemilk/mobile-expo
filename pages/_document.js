@@ -2,6 +2,8 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import flush from 'styled-jsx/server'
 import styled from 'styled-components'
+import  Header  from '../view/environment/Header';
+import DefaultHead from '../view/environment/DefaultHead'
 
 const BodyWithMobile = styled.body`
 
@@ -20,7 +22,6 @@ export default class MyDocument extends Document {
     const sheet = new ServerStyleSheet()
     const main = sheet.collectStyles(<Main />)
     const styleTags = sheet.getStyleElement()
-
     return (
       <html>
         <Head>
@@ -29,14 +30,16 @@ export default class MyDocument extends Document {
             body { 
               background: #E9EBEE;
             }
+            body > div:first-child {
+              height: 100vh;
+            }
           `}</style>
-          
         </Head>
-        <BodyWithMobile className="custom_class">
-          {this.props.customValue}
-          <Main />
-          <NextScript />
-        </BodyWithMobile>
+        {/* {this.props.customValue} */}
+        <body>
+         {main} 
+        </body>
+        <NextScript />
       </html>
     )
   }

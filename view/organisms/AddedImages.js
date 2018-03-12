@@ -4,12 +4,7 @@ import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 
 export default ({productImages, setProductImage}) => 
-<Wrapper 
-	maxWidth='600px' 
-	minHeight='500px'
-	minWidth='320px'
-	height='fit-content'
->
+<div style={{background:'white', maxWidth:'450px'}}>
 	<AddImageSection 
 		src={productImages} 
 		number={0} 
@@ -17,9 +12,9 @@ export default ({productImages, setProductImage}) =>
 	/>
 	<Flex wrap='no-wrap' direction='row'>
 		{
-			[1,2,3,4,5].map( number => 	<SubImage 
+			[1,2,3,4].map( number => 	<SubImage 
 				size="100px" 
 				subimg number={number} setProductImage={setProductImage}src={productImages? productImages[number] : ''}/>	)
 		}
 	</Flex>
-</Wrapper>
+</div>

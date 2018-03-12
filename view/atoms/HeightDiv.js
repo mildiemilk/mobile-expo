@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
 export default styled.div`
-max-height: 406px;
+    height: 100vh;
+    background:none;
 `

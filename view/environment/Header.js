@@ -5,7 +5,9 @@ import store from '../../lib/store'
 import loadFirebase from '../../lib/database'
 import HeaderDesktop from '../ecosystems/HeaderDesktop'
 import HeaderMobile from '../ecosystems/HeaderMobile'
-
+import HeightDiv from '../atoms/HeightDiv'
+import OnlyDesktop from '../atoms/OnlyDesktop';
+import OnlyMobile from '../atoms/OnlyMobile';
 
 class Header extends React.Component {
 	async componentDidMount() {
@@ -13,13 +15,17 @@ class Header extends React.Component {
         await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
     }
 	render(){
-		const { user } = this.props
+		const { user, content, contentMobile } = this.props
 		return(
-		<div>
-			<HeaderDesktop loggedIn={user}/>
-			<HeaderMobile loggedIn={user} />
-		</div>)
-	
+		<HeightDiv>
+			<OnlyDesktop>
+				<HeaderDesktop loggedIn={user}/>
+			</OnlyDesktop>
+			<OnlyMobile>
+				<HeaderMobile loggedIn={user} content={content} contentMobile={contentMobile}/>
+			</OnlyMobile>
+				{content}
+		</HeightDiv>)
 	}
 }
 

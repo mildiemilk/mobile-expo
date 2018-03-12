@@ -18,7 +18,7 @@ import ProfileSide from '../view/molecules/ProfileSide'
 import ProfileMobile from '../view/environment/ProfileMobile'
 import ProfileDetail from '../view/environment/ProfileDetail'
 import Button from '../view/atoms/Button';
-
+import HeightDiv from '../view/atoms/HeightDiv'
 class Profile extends Component {
 	
 	constructor(props){
@@ -122,10 +122,9 @@ class Profile extends Component {
 	render() {
 		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
 		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
-		return <div>
+		return <HeightDiv>
 			<Head/>
-			<Header />
-			<MediaQuery  minDeviceWidth={1224}>
+			<Header content={
 				<ProfileSide sideContent = {
 					<ProfileDetail
 						profileImage={profile.profileImage}
@@ -169,69 +168,67 @@ class Profile extends Component {
 					userUid={user.uid}
 					handleClick={this.handleClick}
 				/>
-			</MediaQuery>
-			<MediaQuery  maxDeviceWidth={1224}>
-				{isProfileMobile&&
-					<ProfileDetail
-						handleProfileMobile={this.handleProfileMobile}
-						isProfileMobile={isProfileMobile}
-						profileImage={profile.profileImage}
-						handleImageChange={this.handleImageChange}
-						handleSave={() => this.handleSave(detail)}
-						detail={detail}
-						isEdit={isEdit}
-						profile={profile}
-						handleEdit={this.handleEdit}
-						balance={user.wallet}
-						userUid={user.uid}
-					/>
-				}
-				{isItemMobile || isTableMobile 
-				?<div>
-					<ProfileView
-						handleTableMobile={this.handleTableMobile}
-						handleItemCard={this.handleItemCard}
-						isItemCard={isItemCard}
-						isTableMobile={isTableMobile}
-						isItemMobile={isItemMobile}
-						handleImageChange={this.handleImageChange}
-						profileImage={profile.profileImage}
-						handleSave={() => this.handleSave(detail)}
-						detail={detail}
-						isEdit={isEdit}
-						handleEdit={this.handleEdit}
-						profile={profile}
-						setOrderStatus={setOrderStatus}
-						userUid={user.uid} 
-						table={table}
-						user={user} 
-						userProducts={userProducts} 
-						sponsorProducts={sponsorProducts}
-						setProductStock={setProductStock}
-						setProductSponsor={setProductSponsor}
-						getProductSponsor={getProductSponsor}
-						sponsorEmail={sponsorEmail}
-						setProductActive={setProductActive}
-						isView={isView}
-						showView={showView}
-						handleClickView={this.handleClickView}
-					/>
-				</div>: null}
-				{!isItemMobile&&!isProfileMobile&&!isTableMobile
-				?<ProfileMobile 
-					handleProfileMobile={this.handleProfileMobile}
-					handleItemCard={this.handleItemCard}
-					handleTableMobile={this.handleTableMobile}
-				/>
-				:null
-				}
-				
-			</MediaQuery>
-			
-			</div>
+			}
+				contentMobile={<HeightDiv>
+					{isProfileMobile&&
+						<ProfileDetail
+							handleProfileMobile={this.handleProfileMobile}
+							isProfileMobile={isProfileMobile}
+							profileImage={profile.profileImage}
+							handleImageChange={this.handleImageChange}
+							handleSave={() => this.handleSave(detail)}
+							detail={detail}
+							isEdit={isEdit}
+							profile={profile}
+							handleEdit={this.handleEdit}
+							balance={user.wallet}
+							userUid={user.uid}
+						/>
+					}
+					{isItemMobile || isTableMobile ?
+						<div>
+							<ProfileView
+								handleTableMobile={this.handleTableMobile}
+								handleItemCard={this.handleItemCard}
+								isItemCard={isItemCard}
+								isTableMobile={isTableMobile}
+								isItemMobile={isItemMobile}
+								handleImageChange={this.handleImageChange}
+								profileImage={profile.profileImage}
+								handleSave={() => this.handleSave(detail)}
+								detail={detail}
+								isEdit={isEdit}
+								handleEdit={this.handleEdit}
+								profile={profile}
+								setOrderStatus={setOrderStatus}
+								userUid={user.uid} 
+								table={table}
+								user={user} 
+								userProducts={userProducts} 
+								sponsorProducts={sponsorProducts}
+								setProductStock={setProductStock}
+								setProductSponsor={setProductSponsor}
+								getProductSponsor={getProductSponsor}
+								sponsorEmail={sponsorEmail}
+								setProductActive={setProductActive}
+								isView={isView}
+								showView={showView}
+								handleClickView={this.handleClickView}
+							/>
+						</div>:null}
+					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&
+						<ProfileMobile 
+							handleProfileMobile={this.handleProfileMobile}
+							handleItemCard={this.handleItemCard}
+							handleTableMobile={this.handleTableMobile}
+						/>
+					}
+				</HeightDiv>}
+			/>
+		</HeightDiv>
 	}
 }
-{/* <ProfileMobile handleProfileMobile={this.handleProfileMobile}/> */}
+
 Profile = reduxForm({
 	form:'profileDetail'
 })(Profile)

@@ -14,7 +14,7 @@ const AddImage = styled(AddImg)`
         background: #f2f2f2;
     }
     @media (max-width: 600px) {
-        max-width: ${props => (props.subimg ? '20vw' : '100vw')};
+        max-width: ${props => (props.subimg ? '20%' : '80%')};
     }
 `
 
@@ -22,7 +22,7 @@ export default ({ src, size, subimg, setProductImage, number }) => {
     return (
         <SquareWrapper maxSize={size}>
             <Dropzone size={size} onDrop={droppedImage => setProductImage(number, droppedImage)}>
-                {src && src.length > 0 ? <Image src={src} size={size || '400px'} /> : <AddImage />}
+                {src && src.length > 0 ? <Image src={src} size={size || '100%'} /> : <AddImage />}
             </Dropzone>
         </SquareWrapper>
     )

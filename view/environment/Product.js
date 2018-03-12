@@ -1,12 +1,13 @@
 import Head from './DefaultHead'
 import Header from './Header'
 import ProductDisplay from '../ecosystems/ProductDisplay'
-
-export default props => <div>
+import HeightDiv from '../atoms/HeightDiv'
+export default props => <HeightDiv>
 	<Head title={props.product.brandName} image={props.product.productImages} description={props.product.productName} />
-	<Header/>
-	<ProductDisplay 
+	<Header content={
+		<ProductDisplay 
 		{...props}
 		images={props.product.productImages} 
 	/>
-</div>
+	} />
+</HeightDiv>

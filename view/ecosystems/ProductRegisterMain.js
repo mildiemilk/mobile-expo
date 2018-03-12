@@ -7,6 +7,10 @@ import Button from '../atoms/Button'
 import Multitab from '../molecules/Multitab'
 import ProductDescriptionForm from './ProductDescriptionForm'
 import ProductDescriptionPreview from './ProductDescriptionPreview'
+import Link from 'next/link'
+import OnlyDesktop from '../atoms/OnlyDesktop'
+import OnlyMobile from '../atoms/OnlyMobile'
+import styled from 'styled-components'
 
 const Detail = props => [
     {
@@ -37,22 +41,23 @@ const DetailMobile = props => [
 ]
 
 export default props=> 
-<Grid>
-	<Grid.Column mobile={16} tablet={16} computer={16}>
-		<Flex direction='row' width='100%' onlyDesktop>
-				<AddedImages {...props} />
-				<Multitab tabs={Detail(props)}
-				footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-				/>
-				<br/>
-				<br/>
-		</Flex>
-		<Flex direction='row' width='100%' onlyMobile>
-				<Multitab tabs={DetailMobile(props)}
-				footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-				/>
-				<br/>
-				<br/>
-		</Flex>
-	</Grid.Column>
-</Grid>
+<div>
+    <Flex onlyDesktop flexFlow='row wrap' justifyContent='spread-evenly'>
+        <AddedImages {...props} />           
+        <Multitab tabs={Detail(props)}
+        footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth onClick={props.handleSubmit}>ลงขาย</Button>}
+        />
+    </Flex>
+    <br/>
+    <br/>
+    <OnlyMobile>    
+        <Multitab tabs={DetailMobile(props)}
+        footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+        />
+        <br/>
+        <br/>
+    </OnlyMobile>
+    <Link href='/profile'>
+        <Button secondary>กลับ</Button>
+    </Link>
+</div>

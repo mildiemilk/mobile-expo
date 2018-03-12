@@ -1,52 +1,69 @@
 import Router from 'next/router'
 import MediaQuery from 'react-responsive'
-import Sidebar from 'react-sidebar'
-import { Icon } from 'semantic-ui-react'
+import styled from 'styled-components'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'  
 import MenuButton from '../atoms/MenuButton'
-import Menu from '../atoms/Menu'
 import Item from '../atoms/Item'
 import menu from '../../static/json/menu.json'
+import HeightDiv from '../atoms/HeightDiv'
 
-
+const StylePusher = styled(Sidebar.Pusher)`
+margin: 0px !important;
+padding:0;
+`
+const StyleSegment = styled(Segment)`
+margin: 0px !important;
+padding: 0;
+`
+const StylePushable =styled(Sidebar.Pushable)`
+margin: 0px !important
+padding:0;
+`
 class HeaderMobile extends React.Component{
   constructor(props) {
     super(props);
 
     this.state = {
-      sidebarOpen: false
+			sidebarOpen: false,
+			visible: false
     }
-  }
-	sidebarContent = loggedIn => 	(
-		<Menu height="100%">
+	}
+
+
+  toggleVisibility = () => this.setState({ visible: !this.state.visible })
+	sidebarContent = () => 	(
+		<div height="100%">
 		<img src="../../static/img/logo.png" width="50" height="50" />
 			<div>
-			{loggedIn
+			{this.props.loggedIn
 				?	menu.map( ({link, text}, key) => 
-					<Item key={key} onClick={()=>Router.push(link)}>{text}</Item> 
+					<Menu.Item key={key} onClick={()=>Router.push(link)}>{text}</Menu.Item> 
 				)
 				: menu.slice(0,3).map( ({link, text}, key) => 
-					<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
+					<Menu.Item key={key} onClick={()=>Router.push(link)}>{text}</Menu.Item>
 				)
 				}
 			</div>
-		</Menu>
+		</div>
 	)
 
-	onSetSidebarOpen = open => {
-		this.setState({sidebarOpen: open});
-	}
-
 	render(){
-		const { loggedIn } = this.props
+		const { loggedIn, content, contentMobile } = this.props
+		const { visible } = this.state
 		return (
-			<MediaQuery  maxDeviceWidth={700}>
-				<Sidebar sidebar={this.sidebarContent(loggedIn)}
-					open={this.state.sidebarOpen}
-					onSetOpen={this.onSetSidebarOpen}
-				><div></div>
-				</Sidebar>
-				<MenuButton onClick={()=>this.onSetSidebarOpen(true)}><Icon name='content'/></MenuButton>
-			</MediaQuery>
+			<HeightDiv>
+				<MenuButton onClick={this.toggleVisibility}><Icon name='content'/></MenuButton>
+				<StylePushable as={Segment}>
+					<Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
+						{this.sidebarContent()}
+					</Sidebar>
+					<StylePusher>
+						<StyleSegment basic>
+							{contentMobile||content}
+						</StyleSegment>
+					</StylePusher>
+				</StylePushable>
+			</HeightDiv>
 		)
 	}
 }
