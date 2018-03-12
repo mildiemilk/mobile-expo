@@ -19,7 +19,7 @@ const settings = {
 };
 export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile}) =>
 <Flex direction="row" margin="0px 7px">
-	<MediaQuery  minDeviceWidth={1224}>
+	<MediaQuery  minDeviceWidth={700}>
 	{isView? <Button onClick={() => handleClickView('')}>Back</Button> : null}
 	{isItemCard
 		?<ProfileTable
@@ -116,7 +116,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 		</div>
 		}
 	</MediaQuery>
-	<MediaQuery maxDeviceWidth={1224}>
+	<MediaQuery maxDeviceWidth={700}>
 	{isView? <Button onClick={() => handleClickView('')}>Back</Button> : null}
 	{isItemMobile 
 		? <div>

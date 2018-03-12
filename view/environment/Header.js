@@ -19,12 +19,11 @@ class Header extends React.Component {
 		return(
 		<HeightDiv>
 			<OnlyDesktop>
-				<HeaderDesktop loggedIn={user}/>
+				<HeaderDesktop loggedIn={user} content={content}/>
 			</OnlyDesktop>
 			<OnlyMobile>
 				<HeaderMobile loggedIn={user} content={content} contentMobile={contentMobile}/>
 			</OnlyMobile>
-				{content}
 		</HeightDiv>)
 	}
 }

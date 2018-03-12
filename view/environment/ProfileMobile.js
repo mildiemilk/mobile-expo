@@ -16,5 +16,10 @@ export default ({ handleProfileMobile, handleItemCard, handleTableMobile }) =>
 					<Button width="30vw" margin="10px">ลงสินค้าเพิ่ม</Button>
 				</Link>
 			</div>
+			<div>
+			<Link href="/member">
+					<Button width="30vw" margin="10px">สมาชิก</Button>
+			</Link>
+			</div>
 		</Flex>
 	</Wrapper>

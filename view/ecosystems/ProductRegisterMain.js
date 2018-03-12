@@ -11,6 +11,8 @@ import Link from 'next/link'
 import OnlyDesktop from '../atoms/OnlyDesktop'
 import OnlyMobile from '../atoms/OnlyMobile'
 import styled from 'styled-components'
+import MediaQuery from 'react-responsive';
+
 
 const Detail = props => [
     {
@@ -40,23 +42,23 @@ const DetailMobile = props => [
     ...Detail(props)
 ]
 
+
 export default props=> 
-<div>
+<div style={{padding:'0',margin:'0'}}>
     <Flex onlyDesktop flexFlow='row wrap' justifyContent='spread-evenly'>
         <AddedImages {...props} />           
-        <Multitab tabs={Detail(props)}
-        footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth onClick={props.handleSubmit}>ลงขาย</Button>}
+        <Multitab 
+            tabs={Detail(props)}
+            footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth onClick={props.handleSubmit}>ลงขาย</Button>}
         />
     </Flex>
-    <br/>
-    <br/>
-    <OnlyMobile>    
-        <Multitab tabs={DetailMobile(props)}
-        footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+    <Flex onlyMobile flexFlow='row wrap' justifyContent='spread-evenly' padding='0' margin='0'>
+    
+        <Multitab 
+            tabs={DetailMobile(props)}
+            footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
         />
-        <br/>
-        <br/>
-    </OnlyMobile>
+    </Flex>
     <Link href='/profile'>
         <Button secondary>กลับ</Button>
     </Link>

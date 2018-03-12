@@ -30,12 +30,10 @@ class Multitab extends React.Component {
 								)
 							}
 						</ButtonGroup>
-						<Wrapper width="100%"  boxShadow='none'>
-							<div style={{minHeight:'320px'}}>
+						<Wrapper padding="0" margin="0" width="100%"  boxShadow='none'>
 							{
 								this.props.tabs[this.state.display].component
 							}
-							</div>
 							{
 								this.props.footer
 							}

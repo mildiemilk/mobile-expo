@@ -5,12 +5,6 @@ import styled from 'styled-components'
 import  Header  from '../view/environment/Header';
 import DefaultHead from '../view/environment/DefaultHead'
 
-const BodyWithMobile = styled.body`
-
-  @media (max-width: 700px) {
-    width: max-content;
-  } 
-`
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const { html, head, errorHtml, chunks } = renderPage()
@@ -33,7 +27,14 @@ export default class MyDocument extends Document {
             body > div:first-child {
               height: 100vh;
             }
-          `}</style>
+            * {
+              font-family: 'Athiti', sans-serif;
+            }
+            @media (max-width: 700px) {
+              width: max-content;
+            } 
+            `}
+        </style>
         </Head>
         {/* {this.props.customValue} */}
         <body>

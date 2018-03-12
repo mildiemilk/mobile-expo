@@ -5,7 +5,7 @@ import Menu from '../atoms/Menu'
 import Item from '../atoms/Item'
 import menu from '../../static/json/menu.json'
 
-export default ({loggedIn}) => 
+export default ({loggedIn, content}) => <div>
 <Nav>
 	<Menu justifyContent={!loggedIn?'normal':'space-evenly'}>
 		<img src="../../static/img/logo.png" width="50" height="50" />
@@ -19,3 +19,5 @@ export default ({loggedIn}) =>
 		}
 	</Menu>
 </Nav>
+<div>{content}</div>
+</div>

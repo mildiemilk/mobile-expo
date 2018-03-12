@@ -9,16 +9,28 @@ import HeightDiv from '../atoms/HeightDiv'
 
 const StylePusher = styled(Sidebar.Pusher)`
 margin: 0px !important;
-padding:0;
+padding:0 !important;
 `
 const StyleSegment = styled(Segment)`
 margin: 0px !important;
-padding: 0;
+padding: 0 !important;
 `
 const StylePushable =styled(Sidebar.Pushable)`
-margin: 0px !important
-padding:0;
+margin: 0px !important;
+padding:0 !important;
 `
+
+const loginMenu = [
+	menu[0], {
+		...menu[1],text:"ออกจากระบบ"
+	},
+	menu[3]
+]
+
+const nonLoginMenu = [
+	menu[0],menu[1],menu[2]
+]
+
 class HeaderMobile extends React.Component{
   constructor(props) {
     super(props);
@@ -36,10 +48,10 @@ class HeaderMobile extends React.Component{
 		<img src="../../static/img/logo.png" width="50" height="50" />
 			<div>
 			{this.props.loggedIn
-				?	menu.map( ({link, text}, key) => 
+				?	loginMenu.map( ({link, text}, key) => 
 					<Menu.Item key={key} onClick={()=>Router.push(link)}>{text}</Menu.Item> 
 				)
-				: menu.slice(0,3).map( ({link, text}, key) => 
+				: nonLoginMenu.map( ({link, text}, key) => 
 					<Menu.Item key={key} onClick={()=>Router.push(link)}>{text}</Menu.Item>
 				)
 				}
@@ -59,7 +71,7 @@ class HeaderMobile extends React.Component{
 					</Sidebar>
 					<StylePusher>
 						<StyleSegment basic>
-							{contentMobile||content}
+							{contentMobile || content}
 						</StyleSegment>
 					</StylePusher>
 				</StylePushable>

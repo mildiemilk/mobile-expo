@@ -15,12 +15,13 @@ class ProfileSide extends Component {
         <Sidebar.Pushable>
             <Sidebar animation='push' width='wide' visible={isVisible} icon='labeled' vertical inverted>
               <Wrapper minHeight="100vh" noMargin noBorder noBorderRadius>
-                {sideContent}
-                <Button secondary round fullWidth margin='2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
+                  {sideContent}
+                <Button secondary round fullWidth margin='10px 2px 2px 2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
                 <Button secondary round fullWidth margin='2px' onClick={() => handleClick('order')}>คำสั่งซื้อ
                   {pending>0? <Label circular color='red'>{pending}</Label> : null}
                 </Button>
                 <Link href="/productRegister"><Button secondary round fullWidth margin='2px'>+ ลงสินค้า</Button></Link>
+                <Link href="/member"><Button secondary round fullWidth margin='2px'>สมาชิก</Button></Link>
               </Wrapper>
             </Sidebar>
           <Sidebar.Pusher>
