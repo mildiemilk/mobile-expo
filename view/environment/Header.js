@@ -10,9 +10,9 @@ import HeightDiv from '../atoms/HeightDiv'
 
 class Header extends React.Component {
 	async componentDidMount() {
-        const auth = await loadFirebase('auth')
-        await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
-    }
+		const auth = await loadFirebase('auth')
+		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
+  }
 	render(){
 		const { user, content, contentMobile } = this.props
 		return(

@@ -32,13 +32,14 @@ ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 
 @media (min-width: 700px) {
         ${props => props.bigScreenWidth? `width: ${props.bigScreenWidth};`:null};
-       
+        ${props => props.minWidthDesktop? `min-width: ${props.minWidthDesktop};`:null};
         ${props => props.maxWidth? `max-width: ${props.maxWidth};`:null};
 }
 
 
 @media (max-width: 700px) {
         ${props => props.widthSmall? `width: ${props.widthSmall};`:`width: 98%;`};
+        ${props => props.minWidthMobile? `min-width: ${props.minWidthMobile};`:null};
         ${props => props.paddingRight? `padding-right: ${props.paddingRight};`: null}
         ${props => props.padding? `padding: ${props.padding};`: 'padding: 5px 5px;'}
         margin:5px auto;

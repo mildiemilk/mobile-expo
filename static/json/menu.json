@@ -14,5 +14,9 @@
 	{
 		"link":"/profile",
 		"text":"Profile"
+	},
+	{
+		"link":"logout",
+		"text":"Logout"
 	}
 ]
