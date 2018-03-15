@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import color from '../../static/json/color.json'
 
 export default styled.h1`
+font-family: 'Athiti', sans-serif;
 font-size: 1.5em;
 color: ${props=>props.color? props.color :color.primary};
 ${props=> props.textShadow? `text-shadow:${props.textShadow};`:null}

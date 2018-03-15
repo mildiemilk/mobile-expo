@@ -10,13 +10,28 @@ import { signOut } from '../../lib/handlers/authenticator'
 
 const StylePusher = styled(Sidebar.Pusher)`
 margin: 0px !important;
+padding:0 !important;
 `
 const StyleSegment = styled(Segment)`
 margin: 0px !important;
+padding: 0 !important;
 `
 const StylePushable =styled(Sidebar.Pushable)`
-margin: 0px !important
+margin: 0px !important;
+padding:0 !important;
 `
+
+const loginMenu = [
+	menu[0], {
+		...menu[1],text:"ออกจากระบบ"
+	},
+	menu[3]
+]
+
+const nonLoginMenu = [
+	menu[0],menu[1],menu[2]
+]
+
 class HeaderMobile extends React.Component{
   constructor(props) {
     super(props);
@@ -34,7 +49,7 @@ class HeaderMobile extends React.Component{
 		<img src="../../static/img/logo.png" width="50" height="50" />
 			<div>
 			{this.props.loggedIn
-			?	menu.filter(item => ['Log in', 'Register'].indexOf(item.text) === -1).map( ({link, text}, key) => 
+			?	menu.filter(item => ['/login', '/register'].indexOf(item.link) === -1).map( ({link, text}, key) => 
 				<Item key={key} onClick={()=>{link==='logout' ? signOut() :Router.push(link) }}>{text}</Item> 
 			)
 			: menu.slice(0,3).map( ({link, text}, key) => 
@@ -49,21 +64,19 @@ class HeaderMobile extends React.Component{
 		const { loggedIn, content, contentMobile } = this.props
 		const { visible } = this.state
 		return (
-			<MediaQuery  maxDeviceWidth={1224}>
-				<HeightDiv>
-					<MenuButton onClick={this.toggleVisibility}><Icon name='content'/></MenuButton>
-					<StylePushable as={Segment}>
-						<Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
-							{this.sidebarContent()}
-						</Sidebar>
-						<StylePusher>
-							<StyleSegment basic>
-								{contentMobile||content}
-							</StyleSegment>
-						</StylePusher>
-					</StylePushable>
-				</HeightDiv>
-			</MediaQuery>
+			<HeightDiv>
+				<MenuButton onClick={this.toggleVisibility}><Icon name='content'/></MenuButton>
+				<StylePushable as={Segment}>
+					<Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
+						{this.sidebarContent()}
+					</Sidebar>
+					<StylePusher>
+						<StyleSegment basic>
+							{contentMobile || content}
+						</StyleSegment>
+					</StylePusher>
+				</StylePushable>
+			</HeightDiv>
 		)
 	}
 }

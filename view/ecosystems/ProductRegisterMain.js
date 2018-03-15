@@ -8,6 +8,11 @@ import Multitab from '../molecules/Multitab'
 import ProductDescriptionForm from './ProductDescriptionForm'
 import ProductDescriptionPreview from './ProductDescriptionPreview'
 import Link from 'next/link'
+import OnlyDesktop from '../atoms/OnlyDesktop'
+import OnlyMobile from '../atoms/OnlyMobile'
+import styled from 'styled-components'
+import MediaQuery from 'react-responsive';
+
 
 const Detail = props => [
     {
@@ -37,34 +42,24 @@ const DetailMobile = props => [
     ...Detail(props)
 ]
 
+
 export default props=> 
-<div>
-<Grid>
-    <Grid.Row>
-        <Grid.Column mobile={16} tablet={16} computer={16}>
-            <Flex direction='row' width='100vw' onlyDesktop>
-                    <AddedImages {...props} />
-                    <Multitab tabs={Detail(props)}
-                    footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-                    />
-                    <br/>
-                    <br/>
-            </Flex>
-            <Flex direction='row' width='100vw' onlyMobile>
-                    <Multitab tabs={DetailMobile(props)}
-                    footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-                    />
-                    <br/>
-                    <br/>
-            </Flex>
-        </Grid.Column>
-    </Grid.Row>
-    <Grid.Row>
-        <Grid.Column>
-            <Link href='/profile'>
-                <Button>Back</Button>
-            </Link>
-        </Grid.Column>
-    </Grid.Row>
-</Grid>
+<div style={{padding:'0',margin:'0'}}>
+    <Flex onlyDesktop flexFlow='row wrap' justifyContent='spread-evenly'>
+        <AddedImages {...props} />           
+        <Multitab 
+            tabs={Detail(props)}
+            footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth onClick={props.handleSubmit}>ลงขาย</Button>}
+        />
+    </Flex>
+    <Flex onlyMobile flexFlow='row wrap' justifyContent='spread-evenly' padding='0' margin='0'>
+    
+        <Multitab 
+            tabs={DetailMobile(props)}
+            footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
+        />
+    </Flex>
+    <Link href='/profile'>
+        <Button secondary>กลับ</Button>
+    </Link>
 </div>

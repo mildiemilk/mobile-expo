@@ -16,11 +16,10 @@ class Multitab extends React.Component {
 
 	render(){
 		return(
-			<Grid>
-				<Grid.Column mobile={16} tablet={16} computer={16}>
-				<Wrapper bigScreenWidth='max-content' minWidth='320px'>
+			<div>
+				<Wrapper bigScreenWidth='max-content' minWidth='320px' padding='0' margin='0'>
 				{this.props.tabs?
-					<Flex center verticleCenter >
+					<Flex center verticleCenter margin='0' padding='0' >
 						<ButtonGroup>
 							{
 								this.props.tabs.map( 
@@ -31,12 +30,10 @@ class Multitab extends React.Component {
 								)
 							}
 						</ButtonGroup>
-						<Wrapper width="100%"  boxShadow='none'>
-							<div style={{minHeight:'320px'}}>
+						<Wrapper padding="0" margin="0" width="100%"  boxShadow='none'>
 							{
 								this.props.tabs[this.state.display].component
 							}
-							</div>
 							{
 								this.props.footer
 							}
@@ -45,8 +42,7 @@ class Multitab extends React.Component {
 				:null 
 				}
 				</Wrapper>
-			</Grid.Column>
-		</Grid>
+			</div>
 		)
 	}
 }

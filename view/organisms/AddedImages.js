@@ -4,7 +4,7 @@ import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 
 export default ({productImages, setProductImage}) => 
-<div style={{background:'white'}}>
+<div style={{background:'white', maxWidth:'450px'}}>
 	<AddImageSection 
 		src={productImages} 
 		number={0} 

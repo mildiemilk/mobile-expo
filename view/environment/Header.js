@@ -1,12 +1,13 @@
 import React from 'react'
 import { saveUser } from '../../lib/actions/user'
 import withRedux from "next-redux-wrapper"
-import MediaQuery from 'react-responsive'
 import store from '../../lib/store'
 import loadFirebase from '../../lib/database'
 import HeaderDesktop from '../ecosystems/HeaderDesktop'
 import HeaderMobile from '../ecosystems/HeaderMobile'
 import HeightDiv from '../atoms/HeightDiv'
+import OnlyDesktop from '../atoms/OnlyDesktop';
+import OnlyMobile from '../atoms/OnlyMobile';
 
 class Header extends React.Component {
 	async componentDidMount() {
@@ -17,11 +18,12 @@ class Header extends React.Component {
 		const { user, content, contentMobile } = this.props
 		return(
 		<HeightDiv>
-			<MediaQuery minDeviceWidth={1224}>
-				<HeaderDesktop loggedIn={user}/>
-				{content}
-			</MediaQuery>
-			<HeaderMobile loggedIn={user} content={content} contentMobile={contentMobile}/>
+			<OnlyDesktop>
+				<HeaderDesktop loggedIn={user} content={content}/>
+			</OnlyDesktop>
+			<OnlyMobile>
+				<HeaderMobile loggedIn={user} content={content} contentMobile={contentMobile}/>
+			</OnlyMobile>
 		</HeightDiv>)
 	}
 }

@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 export default styled.div`
-    height: 100vh;
-    background:none;
-    padding:0;
     margin:0;
+    padding:0;
+    @media (min-width: 700px) {
+        display: none;
+    }
 `

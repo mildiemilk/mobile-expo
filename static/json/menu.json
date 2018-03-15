@@ -1,19 +1,19 @@
 [
 	{
 		"link": "/",
-		"text":"Home"
+		"text":"หน้าหลัก"
 	},
 	{
 		"link": "/login",
-		"text":"Log in"
+		"text":"ล๊อกอิน"
 	},
 	{
 		"link": "/register",
-		"text": "Register"
+		"text": "สมัครบริการ"
 	},
 	{
 		"link":"/profile",
-		"text":"Profile"
+		"text":"โปรไฟล์"
 	},
 	{
 		"link":"logout",

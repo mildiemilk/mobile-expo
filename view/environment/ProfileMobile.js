@@ -4,7 +4,7 @@ import Button from '../atoms/Button'
 import Flex from '../atoms/Flex'
 
 export default ({ handleProfileMobile, handleItemCard, handleTableMobile }) => 
-	<Wrapper absolute widthSmall="100vw" noMargin>
+	<Wrapper absolute widthSmall="100vw" noMargin  height="100vh">
 		<Flex verticleCenter>
 			<div>
 				<Button width="30vw" margin="10px" onClick={handleProfileMobile}>ข้อมูลส่วนตัว</Button>
@@ -15,6 +15,11 @@ export default ({ handleProfileMobile, handleItemCard, handleTableMobile }) =>
 				<Link href="/productRegister">
 					<Button width="30vw" margin="10px">ลงสินค้าเพิ่ม</Button>
 				</Link>
+			</div>
+			<div>
+			<Link href="/member">
+					<Button width="30vw" margin="10px">สมาชิก</Button>
+			</Link>
 			</div>
 		</Flex>
 	</Wrapper>
