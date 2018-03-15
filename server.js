@@ -3,6 +3,7 @@ const next = require('next')
 const cors = require('express-cors')
 const bodyParser = require('body-parser')
 const axios = require('axios')
+require('dotenv').config()
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({
@@ -40,6 +41,23 @@ app.prepare()
 					customer: customer.id 
 				})
 			}).then(function (charge) {
+				res.status(200).send(JSON.stringify(charge))
+			}).error(function (err) {
+				console.log('error:', err)
+			}).done()
+
+		})
+
+		server.post('/api/charges/internet-banking', (req, res) => {
+			const { amount, currency, offsite, return_uri } = req.body
+			console.log(offsite)
+			return omise.charges.create({
+				amount,
+				currency,
+				offsite,
+				return_uri
+			}).then(function (charge) {
+				// console.log(charge)
 				res.status(200).send(JSON.stringify(charge))
 			}).error(function (err) {
 				console.log('error:', err)

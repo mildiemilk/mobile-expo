@@ -5,8 +5,9 @@ import Head from './DefaultHead'
 import Header from './Header'
 import AddressForm from '../organisms/AddressForm'
 import HeightDiv from '../atoms/HeightDiv'
+import Link from 'next/link'
 let total = 0
-export default ({cart = {}, products={}, total=0, saveAddress, addDeliveryDetail}) => <HeightDiv>
+export default ({transaction = {}, products={}, total=0, saveAddress, addDeliveryDetail}) => <HeightDiv>
   <Head/>
   <Header content={
     <div style={{margin:'15px'}}>
@@ -21,16 +22,14 @@ export default ({cart = {}, products={}, total=0, saveAddress, addDeliveryDetail
          </tr>
        </thead>
        <tbody>
-         {cart.addedIds.map( (key, count) =>
-           <tr key={key}>
-             <td>{count+1}</td>
-             <td>{products[key].productName}</td>
-             <td>{cart.quantityById[key]}</td>
-             <td>{products[key].price}</td>
-             <td>{cart.quantityById[key] * products[key].price}</td>
-           </tr>
-         )}
-         <tr>
+          <tr>
+            <td>1</td>
+            <td>{products.productName}</td>
+            <td>{transaction.quantity}</td>
+            <td>{transaction.price}</td>
+            <td>{transaction.quantity * transaction.price}</td>
+          </tr>
+          <tr>
            <td/>
            <td/>
            <td/>
@@ -45,6 +44,9 @@ export default ({cart = {}, products={}, total=0, saveAddress, addDeliveryDetail
      </Table>	
      <AddressForm/>
      <Button margin="0px 0px"onClick={addDeliveryDetail}>proceed to payment</Button>
+     <Link prefetch href='/payment'>
+        <Button margin="2px 0 0 0">จ่ายเลย</Button>
+     </Link>
    </div>
   }/>
 
