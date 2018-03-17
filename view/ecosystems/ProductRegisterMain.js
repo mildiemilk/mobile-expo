@@ -37,34 +37,37 @@ const DetailMobile = props => [
     ...Detail(props)
 ]
 
-export default props=> 
-<div>
-<Grid>
-    <Grid.Row>
-        <Grid.Column mobile={16} tablet={16} computer={16}>
-            <Flex direction='row' width='100vw' onlyDesktop>
-                    <AddedImages {...props} />
-                    <Multitab tabs={Detail(props)}
-                    footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-                    />
-                    <br/>
-                    <br/>
-            </Flex>
-            <Flex direction='row' width='100vw' onlyMobile>
-                    <Multitab tabs={DetailMobile(props)}
-                    footer= {<Button {...props} buttonDisabled={!props.comissionWithinLimit} disabled={!props.comissionWithinLimit} fullWidth mobileFixedButtom onClick={props.handleSubmit}>ลงขาย</Button>}
-                    />
-                    <br/>
-                    <br/>
-            </Flex>
-        </Grid.Column>
-    </Grid.Row>
-    <Grid.Row>
-        <Grid.Column>
-            <Link href='/profile'>
-                <Button>Back</Button>
-            </Link>
-        </Grid.Column>
-    </Grid.Row>
-</Grid>
-</div>
+export default props=> {
+	const { handleSubmit, comissionCash, comissionPercent, comissionWithinLimit, price, productImages, productName } = props
+	const conditionButton = !comissionCash||!comissionPercent||!comissionWithinLimit||!price||(productImages.length==0)||!productName
+	return(
+		<Grid>
+			<Grid.Row>
+				<Grid.Column mobile={16} tablet={16} computer={16}>
+					<Flex direction='row' width='100vw' onlyDesktop>
+						<AddedImages {...props} />
+						<Multitab tabs={Detail(props)}
+						footer= {<Button {...props} buttonDisabled={conditionButton} disabled={conditionButton} fullWidth mobileFixedButtom onClick={handleSubmit}>ลงขาย</Button>}
+						/>
+						<br/>
+						<br/>
+					</Flex>
+					<Flex direction='row' width='100vw' onlyMobile>
+						<Multitab tabs={DetailMobile(props)}
+						footer= {<Button {...props} buttonDisabled={conditionButton} disabled={conditionButton}>ลงขาย</Button>}
+						/>
+						<br/>
+						<br/>
+					</Flex>
+				</Grid.Column>
+			</Grid.Row>
+			<Grid.Row>
+				<Grid.Column>
+					<Link href='/profile'>
+						<Button>Back</Button>
+					</Link>
+				</Grid.Column>
+			</Grid.Row>
+		</Grid>
+	)
+}
