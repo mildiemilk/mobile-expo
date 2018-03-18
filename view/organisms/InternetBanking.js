@@ -15,7 +15,7 @@ class InternetBanking extends React.Component {
 
 	render () {
 		const { check } = this.state
-		const { createPaymentInternetBanking } = this.props
+		const { createPaymentInternetBanking, transaction, total } = this.props
 		return <div>
 		<List divided relaxed>
 			{banks.map(bank => 
@@ -35,7 +35,7 @@ class InternetBanking extends React.Component {
 				</List.Item>
 			)}
 		</List>
-		<Button fullWidth onClick={() => createPaymentInternetBanking(4000,'thb',check)}>เลือก</Button>
+		<Button fullWidth onClick={() => createPaymentInternetBanking(total,'thb',check, transaction)}>เลือก</Button>
 	</div>
 	}
 }

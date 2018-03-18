@@ -7,7 +7,7 @@ import AddressForm from '../organisms/AddressForm'
 import HeightDiv from '../atoms/HeightDiv'
 import Link from 'next/link'
 let total = 0
-export default ({transaction = {}, products={}, total=0, saveAddress, addDeliveryDetail}) => <HeightDiv>
+export default ({transaction = {}, products={}, total=0, saveAddress}) => <HeightDiv>
   <Head/>
   <Header content={
     <div style={{margin:'15px'}}>
@@ -43,9 +43,8 @@ export default ({transaction = {}, products={}, total=0, saveAddress, addDeliver
        </tbody>
      </Table>	
      <AddressForm/>
-     <Button margin="0px 0px"onClick={addDeliveryDetail}>proceed to payment</Button>
      <Link prefetch href='/payment'>
-        <Button margin="2px 0 0 0">จ่ายเลย</Button>
+        <Button margin="0px 0px">proceed to payment</Button>
      </Link>
    </div>
   }/>

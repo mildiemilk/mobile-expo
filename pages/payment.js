@@ -7,13 +7,15 @@ import { createPayment, savePaymentImage } from '../lib/handlers/payment'
 import { addProductTransaction, addPayment, addBankTransfer } from '../lib/actions/transaction'
 import { calculateComission } from '../lib/handlers/transaction'
 import { validateCreditCard } from '../lib/helpers/formvalidation'
-import { createPaymentInternetBanking } from '../lib/handlers/payment'
+import { createPaymentInternetBanking, savePaymentInternetBanking } from '../lib/handlers/payment'
 
 class Payment extends React.Component{
 	componentDidMount() {
-			const { transaction } = this.props
-				let comission = calculateComission(transaction.price, transaction.comissionCash, transaction.comissionPercent)
-		} 
+		if(this.props.url.query.queryParams)
+			savePaymentInternetBanking(this.props.url.query.queryParams.transactionID)
+		const { transaction } = this.props
+			let comission = calculateComission(transaction.price, transaction.comissionCash, transaction.comissionPercent)
+	} 
 
 	render() { 
 		const {validateCreditCard, startedUploadImage, pending, transaction, image, addPayment, addBankTransfer} = this.props
@@ -36,6 +38,8 @@ class Payment extends React.Component{
 				image= {image}
 				addBankTransfer={addBankTransfer}
 				createPaymentInternetBanking={createPaymentInternetBanking}
+				transaction={transaction}
+				total={total}
 			/>
 	}
 }

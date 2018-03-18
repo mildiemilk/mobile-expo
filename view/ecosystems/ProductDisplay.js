@@ -30,7 +30,7 @@ export default props =>
 						minusQuantity:props.minusQuantity || null,
 						addQuantity:props.addQuantity || null,
 						productUid:props.productUid || '',
-						productQuantity:props.productQuantity ||0,
+						productQuantity:props.quantity ||0,
 						addProductTransaction:props.addProductTransaction || null,
 						productDescription: props.product.productDescription || []
 					})}
@@ -39,8 +39,9 @@ export default props =>
 							addQuantity = {props.addQuantity}
 							sellerId={props.sellerId}
 							productUid = {props.productUid}
-							productQuantity = {props.productQuantity}
+							productQuantity = {props.quantity}
 							addProductTransaction={props.addProductTransaction}
+							price = {props.product.price}
 				/>}
 				/>
 
