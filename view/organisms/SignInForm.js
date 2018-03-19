@@ -43,7 +43,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 				style={{width:'100%', marginLeft:'10px'}}				
 				onClick={()=>onClickFacebook()}>
 				<Icon name='facebook' /> 
-				Sign in with facebook
+				{page === 'login' ?'Sign in with facebook':'Sign up with facebook'}
 			</Button>
 	<Divider horizontal>Or</Divider>					
 			<Button 
@@ -52,6 +52,6 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 				color='google plus'  
 				onClick={()=>onClickGoogle()}>
 				<Icon name='google plus' /> 
-				Sign in with google
+				{page === 'login' ?'Sign in with google':'Sign up with google'}
 			</Button>
 </div>
