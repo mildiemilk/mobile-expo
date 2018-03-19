@@ -6,6 +6,7 @@ import MenuButton from '../atoms/MenuButton'
 import Item from '../atoms/Item'
 import menu from '../../static/json/menu.json'
 import HeightDiv from '../atoms/HeightDiv'
+import { signOut } from '../../lib/handlers/authenticator'
 
 const StylePusher = styled(Sidebar.Pusher)`
 margin: 0px !important;
@@ -48,13 +49,13 @@ class HeaderMobile extends React.Component{
 		<img src="../../static/img/logo.png" width="50" height="50" />
 			<div>
 			{this.props.loggedIn
-				?	loginMenu.map( ({link, text}, key) => 
-					<Menu.Item key={key} onClick={()=>Router.push(link)}>{text}</Menu.Item> 
-				)
-				: nonLoginMenu.map( ({link, text}, key) => 
-					<Menu.Item key={key} onClick={()=>Router.push(link)}>{text}</Menu.Item>
-				)
-				}
+			?	menu.filter(item => ['/login', '/register'].indexOf(item.link) === -1).map( ({link, text}, key) => 
+				<Item key={key} onClick={()=>{link==='logout' ? signOut() :Router.push(link) }}>{text}</Item> 
+			)
+			: menu.slice(0,3).map( ({link, text}, key) => 
+				<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
+			)
+			}
 			</div>
 		</div>
 	)

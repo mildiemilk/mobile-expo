@@ -1,25 +1,24 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {reduxForm} from 'redux-form'
+import Router from 'next/router'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import loadFirebase from '../lib/database'
 import LoginForm from '../view/environment/AuthForm'
-import {signinWithFacebook, signinWithGoogle, signOut, registerWithEmail} from '../lib/handlers/authenticator'
+import {signinWithFacebook, signinWithGoogle, signOut, registerWithEmail, addUserToDatabaseAndStore} from '../lib/handlers/authenticator'
 import {saveUser} from '../lib/actions/user'
 import {validateEmail, validatePassword, validatePasswordConfirmation} from '../lib/helpers/formvalidation'
 
 class Login extends React.Component {
-    async componentDidMount() {
-        const auth = await loadFirebase('auth')
-        await auth.onAuthStateChanged(user => {
-            user
-                ? this
-                    .props
-                    .saveUser(user)
-                : null
-        })
-    }
+	async componentDidMount() {
+		const auth = await loadFirebase('auth')
+		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
+		// if(this.props.user.uid === '') {
+		// 	const loginUser = await auth.getRedirectResult()
+		// 	await addUserToDatabaseAndStore(loginUser.user.displayName, loginUser.user.uid, loginUser.user.displayName, loginUser.user.email, loginUser.user.photoURL)
+		// }
+	}
 
     render() {
         const {user, loginValues} = this.props
