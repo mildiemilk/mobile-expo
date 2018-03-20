@@ -3,6 +3,7 @@ const next = require('next')
 const cors = require('express-cors')
 const bodyParser = require('body-parser')
 const axios = require('axios')
+require('dotenv').config()
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({
@@ -45,6 +46,37 @@ app.prepare()
 				console.log('error:', err)
 			}).done()
 
+		})
+
+		server.post('/api/charges/internet-banking', (req, res) => {
+			const { amount, currency, offsite, return_uri } = req.body
+			return omise.charges.create({
+				amount,
+				currency,
+				offsite,
+				return_uri
+			}).then(function (charge) {
+				res.status(200).send(JSON.stringify(charge))
+			}).error(function (err) {
+				console.log('error:', err)
+			}).done()
+		})
+
+		server.get('/api/charges/internet-banking/:chargeId', (req, res) => {
+			const { chargeId } = req.params
+			return omise.charges.retrieve(chargeId, function(error, charge) {
+				if(!error)
+					res.status(200).send(JSON.stringify(charge))
+				else console.log('error:', error)
+			});
+		}) 
+
+		server.get('/payment/:transaction_id', (req, res) => {
+			const actualPage = '/payment'
+			const queryParams = {
+				transactionID: req.params.transaction_id,
+			}
+			app.render(req, res, actualPage, {...process.env,queryParams})
 		})
 
 		server.get('/p/edit/:product_id/:user_id', (req, res) => {
