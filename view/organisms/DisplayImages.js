@@ -21,7 +21,7 @@ class DisplayImages extends React.Component {
         const { imageIndex } = this.state
         return (<Wrapper center>
             <ImageWrap minSize="375px">
-                <ImageDisplay size="100%" src={images[imageIndex]} />
+                <ImageDisplay size="100%" src={images[imageIndex]} height="375px"/>
             </ImageWrap>            
             <SubImageWrapper>
             <Flex width="100%" justContent="center" direction="row" margin="25px 0px">
