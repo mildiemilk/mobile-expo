@@ -14,9 +14,12 @@ class Modal extends React.Component {
     closeModal() {
         this.setState({ display: false })
     }
-
+    handleButton = async() => {
+        await this.props.handleClick()
+        this.closeModal()
+    }
     render() {
-        const { buttonText, children, context, padding, minWidth, height, minHeight } = this.props
+        const { buttonText, children, context, padding, minWidth, height, minHeight, textButton } = this.props
         return (
             <div>
                 <div onClick={() => this.setState({ display: true })}>{children || <Button>modal</Button>}</div>
@@ -34,6 +37,7 @@ class Modal extends React.Component {
                                     {context || 'put some context'}
                                 </div>
                             </MediaQuery>
+                            {textButton && <Button fullWidth onClick={this.handleButton}>{textButton}</Button>}
                         </WhiteDiv>
                     </Wrapper>
                 </BlackOut>

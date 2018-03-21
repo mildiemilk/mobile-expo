@@ -18,14 +18,15 @@ class Member extends React.Component {
 
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		const user = await auth.onAuthStateChanged(user => {
+		const user = await auth.onAuthStateChanged(async user => {
 			this.props.saveUserPending()
-			getUserbyUid(user.uid);
-			return user ? this.props.saveUser(user) : null
+			await getUserbyUid(user.uid)
+			user ? this.props.saveUser(user) : null
 		})
 	}
 
 	async componentWillReceiveProps(nextProps){
+		await getUserbyUid(this.props.user.uid)
 		if(nextProps.user !== this.props.user){
 				await getProfile(this.props.user.uid)
 				await setMembers(this.props.user.membership)
@@ -41,7 +42,7 @@ class Member extends React.Component {
 				{...this.props} 
 				saveMembership={saveMembership} 
 				loginMembership={loginMembership} 
-				isAdmin={Object.keys(member.members).length > 0 ? member.members[user.uid].permission==="admin" : null}
+				isAdmin={member&&Object.keys(member.members).length > 0 ? member.members[user.uid].permission==="admin" : null}
 				setMemberPermission={setMemberPermission}
 			/>
 		)

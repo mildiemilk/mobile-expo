@@ -11,6 +11,9 @@ import Flex from '../atoms/Flex'
 import TextField from '../atoms/TextField'
 import ProductAction from '../molecules/ProductAction'
 import Select from '../molecules/Select'
+import HeightDiv from '../atoms/HeightDiv'
+import Head from './DefaultHead'
+import Header from './Header'
 
 const memberHeader = {
 	"name": "Name",
@@ -45,7 +48,6 @@ const MemberRegisterForm = props =>
 	<TextField labelFlexStart label="Member Name" name="name"/>
 	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
 	<TextField labelFlexStart label="Password Confirmation" name="passwordconfirmation" type="password"/>
-	<Button fullWidth onClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}>สร้างสมาชิก</Button>
 </div>
 
 const MemberLoginForm = props => 
@@ -56,7 +58,6 @@ const MemberLoginForm = props =>
 	}
 	<TextField labelFlexStart label="Member Name" name="name"/>
 	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
-	<Button fullWidth onClick={()=>props.loginMembership(props.name, props.password, props.user)}>สมัครสมาชิก</Button>	
 </div>
 
 const PermissionOption = props => 
@@ -74,47 +75,64 @@ const addActionToProduct = (userId,product) => ({...product, action:<ProductActi
 const convertObjectToArray = object => Object.keys(object).map(key => ({...object[key], key}))
 
 export default props => 
-	<Grid>
-		<Grid.Row>
-				<Grid.Column mobile={16} tablet={16} computer={4}>
-					<Wrapper>
-						<ProfileDetailDisplay
-							profileImage={props.profile.profileImage}
-							detail={props.detail}
-							profile={props.profile}
-							balance={props.user.wallet}
-							userUid={props.user.uid}
-							/>
-					</Wrapper>
-				</Grid.Column>
-				<Grid.Column mobile={16} tablet={16} computer={12}>
-					<Wrapper>
-						<Flex direction="row">
-						<h3>Your Membership:{props.user.membership|| 'คุณยังไม่เป็นสมาชิก'}</h3>
-							{!props.user.membership?
+	<HeightDiv>
+		<Head/>
+		<Header 
+			content={
+				<Grid>
+					<Grid.Row>
+						<Grid.Column mobile={16} tablet={16} computer={4}>
+							<Wrapper>
+								<ProfileDetailDisplay
+									profileImage={props.profile.profileImage}
+									detail={props.detail}
+									profile={props.profile}
+									balance={props.user.wallet}
+									userUid={props.user.uid}
+									/>
+							</Wrapper>
+						</Grid.Column>
+						<Grid.Column mobile={16} tablet={16} computer={12}>
+							<Wrapper>
 								<Flex direction="row">
-									<Modal context={<MemberLoginForm {...props}/>}>
-										<Button margin="10px 0 0 0">สมัครสมาชิก</Button>
-									</Modal>
-									<Modal context={<MemberRegisterForm {...props} />}>
-										<Button margin="10px 0 0 10px" onClick={()=>props.saveMembership(props.member.name,props.password,props.user.uid)}>สร้างสมาชิก</Button>
-									</Modal>
-								</Flex>
-								:null
-							}
-						</Flex>
-						{props.user.membership?
-							<h3>Role:{props.member.members[props.user.uid]? props.member.members[props.user.uid].permission: null}</h3>:null
-						}
-					</Wrapper>
-					<Wrapper>
-					<h2>Member</h2>
-					<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>:null}/>
-					</Wrapper>
-					<Wrapper>
-					<h2>Products</h2>
-					<JsonTable headerJson={productHeader} bodyJsonArray={constructProductArray(props.user.uid,props.member.products)}/>
-					</Wrapper>
-				</Grid.Column>
-		</Grid.Row>
-	</Grid>
+									<h3>Your Membership:{props.user.membership|| 'คุณยังไม่เป็นสมาชิก'}</h3>
+										{!props.user.membership?
+											<Flex direction="row">
+												<Modal context={<MemberLoginForm {...props} /> }
+												handleClick={()=>props.loginMembership(props.name, props.password, props.user)}
+												textButton="สมัครสมาชิก"
+												>
+													<Button margin="0px 0 0 10px">สมัครสมาชิก</Button>
+												</Modal>
+												<Modal context=
+														{<MemberRegisterForm {...props} />}
+														handleClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}
+														textButton="สร้างสมาชิก"
+														>
+													<Button margin="0px 0 0 10px">สร้างสมาชิก</Button>
+												</Modal>
+											</Flex>
+											:null
+										}
+									</Flex>
+									{props.user.membership&& 
+									<h3>Role:{props.member.members[props.user.uid]? props.member.members[props.user.uid].permission: null}</h3>
+									}
+								</Wrapper>
+								<Wrapper>
+								<h2>Member</h2>
+								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>:null}/>
+								</Wrapper>
+								<Wrapper>
+								<h2>Products</h2>
+								<JsonTable headerJson={productHeader} bodyJsonArray={constructProductArray(props.user.uid,props.member.products)}/>
+								</Wrapper>
+						</Grid.Column>
+				</Grid.Row>
+			</Grid>
+			}
+			/>
+
+	
+	</HeightDiv>
+
