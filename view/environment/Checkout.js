@@ -24,7 +24,7 @@ export default ({transaction = {}, products={}, total=0, saveAddress}) => <Heigh
        <tbody>
           <tr>
             <td>1</td>
-            <td>{products.productName}</td>
+            <td>{transaction.productName}</td>
             <td>{transaction.quantity}</td>
             <td>{transaction.price}</td>
             <td>{transaction.quantity * transaction.price}</td>
