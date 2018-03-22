@@ -61,15 +61,17 @@ export default ({status, setOrderStatus, transactionInfo}) => (
 			height='null'
 			minHeight='100vh'
 			padding="0px"
+			widthDesktop="73vw"
+			maxWidthDesktop="98vw"
 				context={
 					<Grid reversed='mobile' columns='equal' stackable>
-						<Grid.Column>
+						<Grid.Column computer={8}>
 							<Wrapper color="black">
 							<H3 color="black" left>รายละเอียดการสั่งซื้อ</H3>
 								{<DetailTable transactionInfo={[transactionInfo]} />}
 						</Wrapper>
 						</Grid.Column>
-						<Grid.Column>
+						<Grid.Column computer={8}>
 							<Wrapper padding="10px 5vh">
 								<H1 color="black" left>ที่อยู่การจัดส่ง</H1>
 								<H5 color="black" left>{transactionInfo.name}</H5>
