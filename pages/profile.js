@@ -44,18 +44,20 @@ class Profile extends Component {
 		})
 		this.props.user? this.props.user.uid ? getUserProducts(this.props.user.uid) : null : null
 		this.props.user? this.props.user.uid ? getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null : null
-	
+		this.props.user? this.props.user.uid ? getProfile(this.props.user.uid) : null : null
 	}
 
 	async componentWillReceiveProps(nextProps){
-		if(nextProps.user !== this.props.user){
-				await	getUserProducts(this.props.user.uid)
-				await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
-				await getProfile(this.props.user.uid)
+		if(this.props.user !== nextProps.user ){
+			await	getUserProducts(this.props.user.uid)
+			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
+			await getProfile(this.props.user.uid)
 		}		
-		if(this.props.profile.transactionIds.length>=1 && (JSON.stringify(this.props.profile) !== JSON.stringify(nextProps.profile))){
-			if(typeof this.props.profile.transactionIds[0] == "string") {
-				getTable(this.props.profile.transactionIds)
+		if(this.props.profile.transactionIds !==undefined) {
+			if(this.props.profile.transactionIds.length>=1 && (JSON.stringify(this.props.profile) !== JSON.stringify(nextProps.profile))){
+				if(typeof this.props.profile.transactionIds[0] == "string") {
+					getTable(this.props.profile.transactionIds)
+				}
 			}
 		}
 		if(nextProps.userProducts !== this.props.userProducts) {
@@ -228,7 +230,7 @@ class Profile extends Component {
 		</HeightDiv>
 	}
 }
-{/* <ProfileMobile handleProfileMobile={this.handleProfileMobile}/> */}
+
 Profile = reduxForm({
 	form:'profileDetail'
 })(Profile)

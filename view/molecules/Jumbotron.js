@@ -7,13 +7,14 @@ import ManyMobile from '../../static/img/manyMobiles.svg'
 import Modal from '../molecules/Modal'
 import WebExplain from '../organisms/WebExplain'
 import color from '../../static/json/color.json'
+import H1 from '../atoms/H1'
 
 const TextButtonHomeContent = isMobile => {
 	return (<div style={{ position: 'relative', width: isMobile?'100%':'60%', textAlign: isMobile? 'center':'right' }}>
-			<h1 style={{ margin: '0' }}>ซื้อ แชร์ รวย!</h1>
+			<H1 margin='0' padding='0'>ซื้อ แชร์ รวย!</H1>
 			<p style={{color:color.gray}}>ซื้อสินค้า แชร์สินค้า คนสั่งซื้อ รับค่าคอม
 				<Modal context={<WebExplain/>}>
-					<a>วิธีการใช้งานที่ง่ายแสนง่าย</a>
+					<Button secondary>วิธีการใช้งาน</Button>
 				</Modal>
 			</p>
 			<Link prefetch href="/register">

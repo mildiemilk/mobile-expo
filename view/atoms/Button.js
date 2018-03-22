@@ -61,17 +61,20 @@ export const DivButton = styled.div`
 `
 
 export const ButtonGroup = styled.div`
+	padding:0;
+	margin:0;
 	display:flex;
-	justify-content: center;
-	flex-wrap: wrap;
+	flex-flow:row wrap;
 	button:not(:last-child) {
 		border-right: 0px;
 	}
 	button:first-child {
 		border-radius: 5px 0px 0px 5px;
+		margin-left:0;
 	}
-	button: last-child {
+	button:last-child {
 		border-radius: 0px 5px 5px 0px;
+		margin-right:0;
 	}
 	${props => props.disabled? 'pointer-events: none;': null}
 `

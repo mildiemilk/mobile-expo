@@ -8,6 +8,11 @@ import Multitab from '../molecules/Multitab'
 import ProductDescriptionForm from './ProductDescriptionForm'
 import ProductDescriptionPreview from './ProductDescriptionPreview'
 import Link from 'next/link'
+import OnlyDesktop from '../atoms/OnlyDesktop'
+import OnlyMobile from '../atoms/OnlyMobile'
+import styled from 'styled-components'
+import MediaQuery from 'react-responsive';
+
 
 const Detail = props => [
     {
