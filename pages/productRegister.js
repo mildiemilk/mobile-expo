@@ -61,6 +61,7 @@ class ProductRegister extends Component {
 			comissionPercent = {comissionPercent}
 			comissionWithinLimit = {comissionWithinLimit}
 			handleSubmit={()=> !productID ? registerProduct({
+				active: true,
 				productName, 
 				brandName, 
 				userUid,
@@ -70,10 +71,13 @@ class ProductRegister extends Component {
 				comissionCash,
 				productDescription,
 				productImages,
-				shortDescription
+				shortDescription,
+				nextDescription,
+				stock
 			})
 			: updateProduct(productID,
 				{
+				active: true,
 				productName, 
 				brandName, 
 				userUid,
@@ -83,7 +87,9 @@ class ProductRegister extends Component {
 				comissionCash,
 				productDescription,
 				productImages,
-				shortDescription
+				shortDescription,
+				nextDescription,
+				stock
 			})} 
 		/>)
 	}
