@@ -46,7 +46,7 @@ export default ({backgroundColor, accountNumber, accountName, bankName, bankName
 	<img style={{width:'80px', height:'80px', position:'absolute', top:'0', right:'0'}} src={logo || ""} alt="bank image" />
 	<H3 color="white" zIndex="10">{accountNumberFormat(accountNumber)}</H3>
 	<H3 color="white">ชื่อ {accountName}</H3>
-	<Modal context={ModalContext({savePaymentImage, pending, startedUploadImage, image, bankNameEng})}>
+	<Modal context={ModalContext({savePaymentImage, pending, startedUploadImage, image, bankNameEng})} redirectUrl='/'>
 		<Button background="none" textColor="white" border="2px solid white" hoverBg="black" onClick={()=>addBankTransfer(bankNameEng)}>ส่งหลักฐานการโอน</Button>
 	</Modal>
 </Wrapper>

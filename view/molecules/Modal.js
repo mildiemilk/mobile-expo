@@ -1,4 +1,5 @@
 import React from 'react'
+import Router from 'next/router'
 import Button, { DivButton } from '../atoms/Button'
 import WhiteDiv from '../atoms/WhiteDiv'
 import BlackOut from '../atoms/BlackOut'
@@ -8,7 +9,7 @@ import MediaQuery from 'react-responsive'
 class Modal extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { display: false }
+        this.state = { display: props.display? props.display : false }
     }
 
     closeModal() {
@@ -17,6 +18,12 @@ class Modal extends React.Component {
     handleButton = async() => {
         await this.props.handleClick()
         this.closeModal()
+        
+    }
+    handleClose = () => {
+        this.setState({ display: false })
+        if(this.props.redirectUrl)
+            Router.push(this.props.redirectUrl)
     }
     render() {
         const { buttonText, children, context, padding, minWidth, height, minHeight, textButton } = this.props
@@ -25,7 +32,7 @@ class Modal extends React.Component {
                 <div onClick={() => this.setState({ display: true })}>{children || <Button>modal</Button>}</div>
                 <BlackOut display={this.state.display} height={height} minHeight={minHeight}>
                     <Wrapper position="relative" top="0" right="0" height='fit-content'>
-                        <Button onClick={() => this.setState({ display: false })} modalClose>x</Button>
+                        <Button onClick={this.handleClose} modalClose>x</Button>
                         <WhiteDiv padding={padding} minWidth={minWidth}>
                             <MediaQuery maxDeviceWidth={700}>
                                 <div style={{ padding: "0px 5px 15px 5px" }}>
