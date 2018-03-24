@@ -1,5 +1,6 @@
 import React from 'react'
-import Button, { DivButton } from '../atoms/Button'
+import Button from '../atoms/Button'
+import DivButton from '../atoms/TextAlign'
 import Flex from '../atoms/Flex'
 import H3 from '../atoms/H3'
 import H5 from '../atoms/H5'
@@ -82,40 +83,38 @@ class BalanceModal extends React.Component {
         return <Flex direction="row" verticleCenter >
             <H5 margin="0px 10px 0px 0px" lineHeight="32px">จำนวนเงิน: {this.props.balance||0} บาท</H5>
             <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
-            <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} style={{
-                position: 'fixed'
-            }}  >
-                <Wrapper>
+            <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} widthDesktop="49vh">
+                <Wrapper width='100%'>
                     <WhiteDiv padding={'10px'} style={{
-                        width: '400px'
+                        width: '100%'
                     }}>
-                        <DivButton>
+                        <DivButton TextAlign="left">
                             <Button onClick={() => this.setState({ disputing: false })} modalClose>x</Button>
                         </DivButton>
                         <div style={{ padding: "0px 10px 30px 10px" }}>
-                            <h3>Bank</h3>
+                            <h3>ธนาคาร</h3>
                             <select onChange={(e) => this.handleChangeBankName(e)} >
-                                <option value="bangkokbank">Bangkok Bank</option>
-                                <option value="ktb">Krung thai Bank</option>
-                                <option value="krungsri">Bank of Ayutthaya</option>
-                                <option value="kasikornbank">Kasikorn Bank</option>
-                                <option value="scb">Siam commercial Bank</option>
+                                <option value="bangkokbank">ธนาคารกรุงเทพ</option>
+                                <option value="ktb">ธนาคารกรุงไทย</option>
+                                <option value="krungsri">ธนาคารกรุงศรีอยุธยา</option>
+                                <option value="kasikornbank">ธนาคารกสิกรไทย</option>
+                                <option value="scb">ธนาคารไทยพาณิชย์</option>
                             </select>
-                            <h3>Account Number</h3>
+                            <h3>เลขบัญชีธนาคาร</h3>
                             <input type="text" value={this.state.dispute.bankAccountNumber} onChange={(e) => this.setState({
                                 dispute: {
                                     ...this.state.dispute,
                                     bankAccountNumber: e.target.value
                                 }
                             })} />
-                            <h3>Account Name</h3>
+                            <h3>ชื่อบัญชี</h3>
                             <input type="text" value={this.state.dispute.bankAccountName} onChange={(e) => this.setState({
                                 dispute: {
                                     ...this.state.dispute,
                                     bankAccountName: e.target.value
                                 }
                             })} />
-                            <h3>Amount({this.state.balanceDisplay.toLocaleString()})</h3>
+                            <h3>จำนวนเงิน({this.state.balanceDisplay.toLocaleString()})</h3>
                             <input type="text" onChange={(e) => {
                                 this.setState({
                                     dispute: {
