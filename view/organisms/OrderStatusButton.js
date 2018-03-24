@@ -47,6 +47,22 @@ const colorStatus = (status, current) => {
 	}
 	else return color.disabled
 }
+const PrintElem = elem => 
+{
+	var mywindow =  window.open('', '', 'left=0,top=0,width=750,height=400,toolbar=0,scrollbars=0,status=0');
+	var prtContent = document.getElementById(elem)
+	mywindow.document.write('<html><head><title>Sharemai</title>');
+	mywindow.document.write('</head><body >');
+	mywindow.document.write(prtContent.innerHTML);
+	mywindow.document.write('</body></html>');
+
+	mywindow.document.close(); // necessary for IE >= 10
+	mywindow.focus(); // necessary for IE >= 10*/
+
+	mywindow.print();
+	mywindow.close();
+	return true;
+}
 export default ({status, setOrderStatus, transactionInfo}) => (
 	<div style={{display:'flex', flexDirection:'column', alignItems:'flex-end'}}>
 		{buttonJson(status).map(button=>
@@ -73,13 +89,15 @@ export default ({status, setOrderStatus, transactionInfo}) => (
 						</Grid.Column>
 						<Grid.Column computer={8}>
 							<Wrapper padding="10px 5vh">
-								<H1 color="black" left>ที่อยู่การจัดส่ง</H1>
-								<H5 color="black" left>{transactionInfo.name}</H5>
-								<H5 color="black" left>{transactionInfo.phoneNumber}</H5>
-								<H5 color="black" left>{transactionInfo.address1}</H5>
-								<H5 color="black" left>{transactionInfo.address2}</H5>
-								<H5 color="black" left>{transactionInfo.province} {transactionInfo.postalCode} </H5>
-								<Button color="orange"><H1 color="white">พิมพ์</H1></Button>
+								<div id="print-section">
+									<H1 color="black" left>ที่อยู่การจัดส่ง</H1>
+									<H5 color="black" left>{transactionInfo.name}</H5>
+									<H5 color="black" left>{transactionInfo.phoneNumber}</H5>
+									<H5 color="black" left>{transactionInfo.address1}</H5>
+									<H5 color="black" left>{transactionInfo.address2}</H5>
+									<H5 color="black" left>{transactionInfo.province} {transactionInfo.postalCode} </H5>
+								</div>
+								<Button color="orange" onClick={() => PrintElem('print-section')}><H1 color="white">พิมพ์</H1></Button>
 								<H1 color="black" left padding="0" margin="0">สถานะ:</H1>
 								<Flex direction="inherit" wrap="nowrap">
 									<Table textAlign="center" marginTop="10px">
