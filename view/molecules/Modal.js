@@ -4,6 +4,7 @@ import Button, { DivButton } from '../atoms/Button'
 import WhiteDiv from '../atoms/WhiteDiv'
 import BlackOut from '../atoms/BlackOut'
 import Wrapper from '../atoms/Wrapper'
+import DivForButton from '../atoms/TextAlign'
 import MediaQuery from 'react-responsive'
 
 class Modal extends React.Component {
@@ -26,13 +27,13 @@ class Modal extends React.Component {
             Router.push(this.props.redirectUrl)
     }
     render() {
-        const { buttonText, children, context, padding, minWidth, height, minHeight, textButton } = this.props
+        const { buttonText, children, context, padding, minWidth, height, minHeight, textButton, widthDesktop, maxWidthDesktop } = this.props
         return (
             <div>
                 <div onClick={() => this.setState({ display: true })}>{children || <Button>modal</Button>}</div>
-                <BlackOut display={this.state.display} height={height} minHeight={minHeight}>
+                <BlackOut display={this.state.display} height={height} minHeight={minHeight} widthDesktop={widthDesktop} maxWidthDesktop={maxWidthDesktop}>
                     <Wrapper position="relative" top="0" right="0" height='fit-content'>
-                        <Button onClick={this.handleClose} modalClose>x</Button>
+                    <DivForButton TextAlign="right"><Button onClick={this.handleClose} modalClose>x</Button></DivForButton>
                         <WhiteDiv padding={padding} minWidth={minWidth}>
                             <MediaQuery maxDeviceWidth={700}>
                                 <div style={{ padding: "0px 5px 15px 5px" }}>
