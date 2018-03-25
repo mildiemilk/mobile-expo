@@ -38,7 +38,7 @@ class Payment extends React.Component{
 		}
 		const { total } = this.props
 		return this.props.url.query.queryParams?
-			<Modal context={this.ModalContext(pending)} redirectUrl='/' display={true}></Modal>
+			<Modal context={this.ModalContext(pending)} redirectUrl='/' display={true}>Payment result</Modal>
 			:
 			<PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
