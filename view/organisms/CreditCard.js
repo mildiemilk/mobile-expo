@@ -7,6 +7,10 @@ import TextField from '../atoms/TextField'
 import Flex from '../atoms/Flex'
 import styled from 'styled-components'
 import Button from '../atoms/Button'
+import Modal from '../molecules/Modal'
+import Wrapper from '../atoms/Wrapper'
+import H3 from '../atoms/H3'
+import WebExplain from '../organisms/WebExplain'
 
 const CardLabel = styled.span`
 font-family: Avenir;
@@ -14,6 +18,12 @@ font-size: 12px;
 font-weight: 300;
 text-align: center;
 `
+
+const ModalContext = (pending) => 
+<Wrapper>
+	{pending? <H3>กำลังทำรายการ</H3>:<H3>ทำรายการเรียบร้อย</H3>}
+	<WebExplain/>
+</Wrapper>
 
 export default props =>
 <CreditCardBg>
@@ -37,5 +47,7 @@ export default props =>
 			</tr>
 		</tbody>
 	</table>
-	<Button fullWidth disabled={!props.validateCreditCard} buttonDisabled={!props.validateCreditCard} onClick={props.onCheckOut}>จ่ายเลย</Button>
+	<Modal context={ModalContext(props.pending)} redirectUrl='/'>
+		<Button fullWidth disabled={!props.validateCreditCard} buttonDisabled={!props.validateCreditCard} onClick={props.onCheckOut}>จ่ายเลย</Button>
+	</Modal>
 </CreditCardBg>

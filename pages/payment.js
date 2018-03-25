@@ -8,6 +8,10 @@ import { addProductTransaction, addPayment, addBankTransfer } from '../lib/actio
 import { calculateComission } from '../lib/handlers/transaction'
 import { validateCreditCard } from '../lib/helpers/formvalidation'
 import { createPaymentInternetBanking, savePaymentInternetBanking } from '../lib/handlers/payment'
+import Modal from '../view/molecules/Modal'
+import Wrapper from '../view/atoms/Wrapper'
+import H3 from '../view/atoms/H3'
+import WebExplain from '../view/organisms/WebExplain'
 
 class Payment extends React.Component{
 	componentDidMount() {
@@ -16,6 +20,12 @@ class Payment extends React.Component{
 		const { transaction } = this.props
 			let comission = calculateComission(transaction.price, transaction.comissionCash, transaction.comissionPercent)
 	} 
+
+	ModalContext = (pending) => 
+		<Wrapper>
+			{pending? <H3>กำลังทำรายการ</H3>:<H3>ทำรายการเรียบร้อย</H3>}
+			<WebExplain/>
+		</Wrapper>
 
 	render() { 
 		const {validateCreditCard, startedUploadImage, pending, transaction, image, addPayment, addBankTransfer} = this.props
@@ -27,7 +37,10 @@ class Payment extends React.Component{
 			expiryYear:process.env.NODE_ENV === 'production'? '' :'2019'
 		}
 		const { total } = this.props
-		return <PaymentView 
+		return this.props.url.query.queryParams?
+			<Modal context={this.ModalContext(pending)} redirectUrl='/' display={true}></Modal>
+			:
+			<PaymentView 
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
 				validateCreditCard={validateCreditCard}
