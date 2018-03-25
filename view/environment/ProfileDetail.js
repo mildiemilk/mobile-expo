@@ -27,18 +27,18 @@ export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageCha
         {profileImage ?<Image src={profileImage?profileImage:'/static/img/noimg.png'} />:<Button noFlexGrow>Upload</Button>}
         <Label for="buttonImg"><input style={{display:"none"}} name="image" onChange={e => handleImageChange(e)} id="buttonImg" type="file" /></Label>
         </DivImage>
-        <H5 margin="15px 0px 0px 0px" lineHeight="20px">Balance: {profile.wallet||0} บาท</H5> 
-        <H5 lineHeight="37px" margin="5px 0px">Address: <InputText noGrid name="address" maxWidth="300px" width="100%"/></H5>
-        <H5 lineHeight="37px" margin="5px 0px">Email: <InputText noGrid name="email" maxWidth="300px" width="100%"/></H5>
-        <H5 lineHeight="37px" margin="5px 0px">Phone: <InputText noGrid name="phone" maxWidth="300px" width="100%"/></H5>
+        <H5 margin="15px 0px 0px 0px" lineHeight="20px">จำนวนเงิน: {profile.wallet||0} บาท</H5> 
+        <H5 lineHeight="37px" margin="5px 0px">ที่อยู่: <InputText noGrid name="address" maxWidth="300px" width="100%"/></H5>
+        <H5 lineHeight="37px" margin="5px 0px">อีเมล: <InputText noGrid name="email" maxWidth="300px" width="100%"/></H5>
+        <H5 lineHeight="37px" margin="5px 0px">เบอร์โทรศัพท์: <InputText noGrid name="phone" maxWidth="300px" width="100%"/></H5>
         <DivButton TextAlign="right" MarginTop="20px"><Button onClick={handleSave}>Save</Button></DivButton>
       </div>
       :<div>
         <Image block margin="auto" size="150px" maxHeight="150px" src={profileImage?profileImage:'https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png'} />
         <BalanceModal balance={balance} userUid={userUid} />
-        <H5 lineHeight="32px">Address: {profile.address}</H5>
-        <H5 lineHeight="32px">Email: {profile.email}</H5>
-        <H5 lineHeight="32px">Phone: {profile.phone}</H5>
+        <H5 lineHeight="32px">ที่อยู่: {profile.address}</H5>
+        <H5 lineHeight="32px">อีเมล: {profile.email}</H5>
+        <H5 lineHeight="32px">เบอร์โทรศัพท์: {profile.phone}</H5>
       </div>
       }
     </Wrapper>
