@@ -35,7 +35,7 @@ app.prepare()
 			}).then( function(customer){
 				return omise.charges.create({
 					description: req.body.description,
-					amount: req.body.amount,
+					amount: req.body.amount * 100,
 					currency: req.body.currency,
 					capture: req.body.capture,
 					customer: customer.id 
@@ -51,7 +51,7 @@ app.prepare()
 		server.post('/api/charges/internet-banking', (req, res) => {
 			const { amount, currency, offsite, return_uri } = req.body
 			return omise.charges.create({
-				amount,
+				amount: amount * 100,
 				currency,
 				offsite,
 				return_uri
