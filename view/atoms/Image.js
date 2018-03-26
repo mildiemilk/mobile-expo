@@ -10,7 +10,11 @@ export default styled.img.attrs({
 	max-height: ${props => props.maxHeight||'-webkit-fill-available'};
 	display: ${props => props.block? 'block': null};
 	margin: ${props => props.margin};
-	@media (max-width: 700px) {
+	@media only screen and (max-width: 360px) and (min-width: 330px){
 		${props => props.smallScreen || null}
+		height: ${props => props.mobileHeight||'-webkit-fill-available'};
+	}
+	@media only screen and (max-width: 320px) {
+		height: ${props => props.mobileHeightSmall||'-webkit-fill-available'};
 	}
 `
