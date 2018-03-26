@@ -21,7 +21,8 @@ flex-flow: column nowrap;
 
 const PriceWrap = styled.div`
     border: 2px solid ${color.contrast};
-    color: ${color.contrast};
+		color: ${color.contrast};
+		background: white;
     margin: 15px 0 5px 0;
     display: flex;
     justify-content: center;
