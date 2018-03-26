@@ -45,12 +45,6 @@ const DetailMobile = props => [
 export default props=> {
 	const { handleSubmit, comissionCash, comissionPercent, comissionWithinLimit, price, productImages, productName } = props
 	const validateProductValues = (comissionCash > 0 || comissionPercent > 0 ) && comissionWithinLimit && price > 0 && productImages.length > 0 && productName
-	console.log('comissionCash = ', comissionCash > 0 || comissionPercent > 0 )
-	console.log('comissionWithinLimit= ', comissionWithinLimit)
-	console.log('price= ', price > 0)
-	console.log('productImages', productImages)
-	console.log('product Name = ', productName)
-	console.log('validateProductval', validateProductValues? 'true' : 'false')
 	return(
 		<Grid>
 			<Grid.Row>
