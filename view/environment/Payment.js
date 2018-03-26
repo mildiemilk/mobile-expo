@@ -13,17 +13,19 @@ export const Tabs = props =>  {
 		{
 			buttonLabel:'โอนผ่านธนาคาร',
 			component:<BankAccountsForTransfer {...props}/>
-		},
-		{
-			buttonLabel: 'จ่ายผ่านบัตรเครดิต/เดบิต',
-			component: <CreditCard {...props}/>
 		}
 	]
-	if(props.transaction.price >= 2000) 
-		tabs.push({
-			buttonLabel: 'Internet Banking',
-			component: <InternetBanking {...props}/>
-		})
+	if(props.transaction.price >= 20)
+		tabs.push(
+			{
+				buttonLabel: 'จ่ายผ่านบัตรเครดิต/เดบิต',
+				component: <CreditCard {...props}/>
+			},
+			{
+				buttonLabel: 'Internet Banking',
+				component: <InternetBanking {...props}/>
+			}
+		)
 	return tabs
 }
 
