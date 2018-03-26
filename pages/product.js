@@ -12,13 +12,11 @@ class Product extends React.Component{
 
 	static async getInitialProps(ctx) {
 		const { req } = ctx
-		console.log('CTX', ctx)
 		const database = await loadFirebase('database')
 		const productSSR = await database
 			.ref("products/"+ req.params.product_id)
 			.once('value')
 			.then(snapshot => snapshot.val())
-		console.log('productSSR-->', productSSR)
 		return {productSSR}
 	}
 	async componentDidMount() {
@@ -41,7 +39,6 @@ class Product extends React.Component{
 
 	render(){
 		const { productSSR, product, url, minusQuantity, addQuantity, addProductTransaction, transaction } = this.props
-		console.log('Prrrrr', productSSR, product)
 		return( <ProductView 
 			product={productSSR||product} 
 			minusQuantity={minusQuantity} 
