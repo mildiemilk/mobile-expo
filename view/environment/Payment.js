@@ -9,6 +9,7 @@ import HeightDiv from '../atoms/HeightDiv'
 import Button from '../atoms/Button';
 
 export const Tabs = props =>  {
+	const { price, quantity } = props.transaction
 	let tabs = [
 		{
 			buttonLabel:'โอนผ่านธนาคาร',
@@ -19,7 +20,7 @@ export const Tabs = props =>  {
 			component: <CreditCard {...props}/>
 		}
 	]
-	if(props.transaction.price >= 2000) 
+	if(price*quantity >= 2000) 
 		tabs.push({
 			buttonLabel: 'Internet Banking',
 			component: <InternetBanking {...props}/>
