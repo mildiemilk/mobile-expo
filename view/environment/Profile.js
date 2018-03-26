@@ -30,7 +30,7 @@ const settings = {
 export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile}) =>
 <Flex direction="column" margin="0px 7px">
 	<MediaQuery  minDeviceWidth={1224}>
-		{isView? <Button width="70px" onClick={() => handleClickView('')}>Back</Button> : null}
+		{isView? <Button secondary width="70px" onClick={() => handleClickView('')}>Back</Button> : null}
 			{isItemCard
 			?<ProfileTable
 				table={table !== undefined ?!isView? table.slice(0,3) : table: undefined}
