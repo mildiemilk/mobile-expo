@@ -44,7 +44,13 @@ const DetailMobile = props => [
 
 export default props=> {
 	const { handleSubmit, comissionCash, comissionPercent, comissionWithinLimit, price, productImages, productName } = props
-	const conditionButton = !comissionCash||!comissionPercent||!comissionWithinLimit||!price||(productImages.length==0)||!productName
+	const validateProductValues = (comissionCash > 0 || comissionPercent > 0 ) && comissionWithinLimit && price > 0 && productImages.length > 0 && productName
+	console.log('comissionCash = ', comissionCash > 0 || comissionPercent > 0 )
+	console.log('comissionWithinLimit= ', comissionWithinLimit)
+	console.log('price= ', price > 0)
+	console.log('productImages', productImages)
+	console.log('product Name = ', productName)
+	console.log('validateProductval', validateProductValues? 'true' : 'false')
 	return(
 		<Grid>
 			<Grid.Row>
@@ -52,14 +58,14 @@ export default props=> {
 					<Flex direction='row' width='100vw' onlyDesktop>
 						<AddedImages {...props} />
 						<Multitab tabs={Detail(props)}
-						footer= {<Button {...props} buttonDisabled={conditionButton} disabled={conditionButton} fullWidth mobileFixedButtom onClick={handleSubmit}>ลงขาย</Button>}
+						footer= {<Button {...props} buttonDisabled={!validateProductValues} disabled={!validateProductValues} fullWidth mobileFixedButtom onClick={handleSubmit}>ลงขาย</Button>}
 						/>
 						<br/>
 						<br/>
 					</Flex>
 					<Flex direction='row' width='100vw' onlyMobile>
 						<Multitab tabs={DetailMobile(props)}
-						footer= {<Button {...props} buttonDisabled={conditionButton} disabled={conditionButton}>ลงขาย</Button>}
+						footer= {<Button {...props} buttonDisabled={!validateProductValues} disabled={!validateProductValues}>ลงขาย</Button>}
 						/>
 						<br/>
 						<br/>

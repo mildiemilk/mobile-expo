@@ -40,7 +40,8 @@ class ProductRegister extends Component {
 			userEmail,
 			productImages,
 			shortDescription,
-			nextDescription
+			nextDescription, 
+			stock
 		} = this.props
 		const productID =  this.props.url.query.productID
 		let comissionWithinLimit = parseInt(price) * 0.7 > parseInt(price) * parseInt(comissionPercent || 0) / 100 + parseInt(comissionCash || 0)
