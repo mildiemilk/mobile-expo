@@ -39,7 +39,7 @@ class ItemCard extends React.Component {
 	}
 
 	render() {
-		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership } = this.props
+		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership, isUserMembership } = this.props
 		const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = this.props.product
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
@@ -60,42 +60,42 @@ class ItemCard extends React.Component {
 						{ 
 							!isSponsor? 
 							<tr>
-								<td style={{textAlign:'right'}}>Active:</td>
+								<td style={{textAlign:'right'}}>เปิดขาย:</td>
 								<td><Checkbox toggle name="active" checked={product.active} onClick={() => setProductActive(!product.active, productKey)}/>
 								</td>
 							</tr> : null 
 						}
 						{
-							isMembership?
+							isUserMembership?
 							<tr>
-								<td style={{textAlign:'right'}}>Membership:</td>
+								<td style={{textAlign:'right'}}>สมาชิก:</td>
 								<td><Checkbox toggle name="isMembership" checked={product.isMembership} onClick={() => setProductMembership(!product.isMembership, productKey)}/>
 								</td>
 							</tr> : null 
 						}
 						<tr>
-							<td style={{textAlign:'right'}}>Price:</td>
-							<td>{price} baht</td>
+							<td style={{textAlign:'right'}}>ราคา:</td>
+							<td>{price} บาท</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td style={{textAlign:'right'}}>Comission:</td>
+							<td style={{textAlign:'right'}}>ค่าคอม:</td>
 							<td>{comissionPercent} % & {comissionCash || '0.00'} บาท </td>
 						</tr>
 						{!isSponsor? 
 						<tr>
-							<td style={{textAlign:'right'}}>Stock: </td>
+							<td style={{textAlign:'right'}}>สต๊อก: </td>
 							<td>{stock}</td>
 							<td>{userUid === product.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>
 						</tr>
 						: <tr>
-							<td style={{textAlign:'right'}}>Stock: </td>
-							{!product.active? <td style={{color:'red'}}>Out of stock</td>: <td>{stock}</td>}
+							<td style={{textAlign:'right'}}>สต๊อก: </td>
+							{!product.active? <td style={{color:'red'}}>สินค้าหมด</td>: <td>{stock}</td>}
 						</tr>
 						}
 						
 						{!isSponsor?<tr>
-							<td style={{textAlign:'right'}}>Number of distributor: </td>
+							<td style={{textAlign:'right'}}>จำนวนผู้ขาย: </td>
 							<td>{Object.keys(sponsors).length}</td>
 							<td>{userUid === product.userUid ? 
 								<AddSponsorModal 

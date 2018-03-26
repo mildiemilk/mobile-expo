@@ -27,7 +27,7 @@ const settings = {
 	slidesToShow: 3,
 	slidesToScroll: 1
 };
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership}) =>
 <Flex direction="column" margin="0px 7px">
 	<MediaQuery  minDeviceWidth={1224}>
 		{isView? <Button width="70px" onClick={() => handleClickView('')}>Back</Button> : null}
@@ -61,6 +61,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											getProductSponsor={getProductSponsor}
 											isSponsor={false}
 											setProductActive={setProductActive}
+											isUserMembership={isUserMembership}
+											setProductMembership={setProductMembership}
 										/>
 									</div>)
 								}) : null

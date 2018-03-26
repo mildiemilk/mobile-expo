@@ -19,6 +19,7 @@ import ProfileMobile from '../view/environment/ProfileMobile'
 import ProfileDetail from '../view/environment/ProfileDetail'
 import Button from '../view/atoms/Button';
 import HeightDiv from '../view/atoms/HeightDiv'
+import { setMembers } from '../lib/handlers/member'
 class Profile extends Component {
 	
 	constructor(props){
@@ -49,9 +50,10 @@ class Profile extends Component {
 
 	async componentWillReceiveProps(nextProps){
 		if(this.props.user !== nextProps.user ){
-			await	getUserProducts(this.props.user.uid)
+			await getUserProducts(this.props.user.uid)
 			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
 			await getProfile(this.props.user.uid)
+			await setMembers(this.props.user.membership)
 		}		
 		if(this.props.profile.transactionIds !==undefined) {
 			if(this.props.profile.transactionIds.length>=1 && (JSON.stringify(this.props.profile) !== JSON.stringify(nextProps.profile))){
@@ -122,8 +124,9 @@ class Profile extends Component {
 	handleClickView = name => this.setState({ isView: !this.state.isView, showView: name })
 
 	render() {
-		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts} = this.props
+		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts, isUserMembership} = this.props
 		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
+		console.log('isuser membership', isUserMembership)
 		return <HeightDiv>
 			<Head/>
 			<Header content={
@@ -141,6 +144,7 @@ class Profile extends Component {
 					/>}
 					content = {
 						<ProfileView
+						isUserMembership={isUserMembership}
 						isItemCard={isItemCard}
 						handleImageChange={this.handleImageChange}
 						profileImage={profile.profileImage}
@@ -158,6 +162,7 @@ class Profile extends Component {
 						setProductStock={setProductStock}
 						setProductSponsor={setProductSponsor}
 						getProductSponsor={getProductSponsor}
+						setProductMembership={setProductMembership}
 						sponsorEmail={sponsorEmail}
 						setProductActive={setProductActive}
 						isView={isView}
@@ -190,6 +195,7 @@ class Profile extends Component {
 					{isItemMobile || isTableMobile ?
 						<div>
 							<ProfileView
+								isUserMembership={isUserMembership}
 								handleTableMobile={this.handleTableMobile}
 								handleItemCard={this.handleItemCard}
 								isItemCard={isItemCard}
@@ -211,6 +217,7 @@ class Profile extends Component {
 								setProductStock={setProductStock}
 								setProductSponsor={setProductSponsor}
 								getProductSponsor={getProductSponsor}
+								setProductMembership={setProductMembership}								
 								sponsorEmail={sponsorEmail}
 								setProductActive={setProductActive}
 								isView={isView}
@@ -244,7 +251,8 @@ const mapStateToProps = state => ({
 	profile: state.profile,
 	detail: selector(state,'address', 'email', 'phone', 'image'),
 	sponsorEmail: selector(state, 'sponsorEmail'),
-	table: state.profile.transactionIds
+	table: state.profile.transactionIds,
+	isUserMembership: state.user.membership
 })
 
 const mapDispatchToProps = {
