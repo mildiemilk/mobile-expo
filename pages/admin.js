@@ -8,6 +8,7 @@ import AdminTable from '../view/environment/AdminTable'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { approveBankTransferTransaction } from '../lib/handlers/payment'
 import Wrapper from '../view/atoms/Wrapper'
+import { addDisputeImageHandlers } from '../lib/handlers/dispute'
 import { checkPassword } from '../lib/actions/admin'
 
 class Admin extends React.Component {
@@ -22,12 +23,24 @@ class Admin extends React.Component {
 		nextProps.admin !== this.props.admin && nextProps.admin? 
 			this.fetchInfos() : null
 	}
+	handleImageChange = (key, index, e) => {
+		console.log('dddsfs')
+    e.preventDefault();
+    const reader = new FileReader();
+    const file = e.target.files[0];
+    reader.onloadend = () => {
+			addDisputeImageHandlers(key, index, file)
+    };
 
+    reader.readAsDataURL(file);
+	}
 	render() {
-		const { transactions,disputes, admin, password, checkPassword, pendingPaymentTransactions } = this.props
+		const { transactions, disputes, admin, password, checkPassword, pendingPaymentTransactions } = this.props
+		console.log('dispute', disputes)
 		return (
 			admin?
-			<AdminTable transactions={transactions} disputes={disputes} pendingPaymentTransactions={pendingPaymentTransactions} approveBankTransferTransaction={approveBankTransferTransaction}/>:
+			<AdminTable transactions={transactions} disputes={disputes} pendingPaymentTransactions={pendingPaymentTransactions} approveBankTransferTransaction={approveBankTransferTransaction}
+			handleImageChange={this.handleImageChange}/>:
 			<Wrapper>
 				<Field name="password" id="password" component="input" type="password"/>
 				<button onClick={()=>checkPassword(password)} > submit</button>

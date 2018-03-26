@@ -1,11 +1,24 @@
+import styled from 'styled-components'
+
 import Table from '../atoms/Table';
 import JsonTable from '../organisms/JsonTable'
 import transaction from '../../lib/reducers/transaction';
 import {updateStatusTransactions, getAllPendingTransactions} from '../../lib/handlers/transaction'
 import {updateStatusDisputes, getAllDisputes} from '../../lib/handlers/dispute'
 import Button, {ButtonGroup} from '../atoms/Button'
+import Label from '../atoms/LabelImage'
 import Modal from '../molecules/Modal'
+import Image from '../atoms/Image'
+import Flex from '../atoms/Flex'
+import color from '../../static/json/color.json'
 
+const ButtonStyle = styled.label`
+background: ${props => props.background? props.background : color.contrast};
+${props => props.border ?`border: ${props.border};` : null}
+color: ${props => props.textColor? props.textColor: color.lightPrimary};
+padding: 10px;
+font-size: 13px;
+`
 const disputeHeader = {
 	DateAndTime: 'Date and Time',
 	amount: 'Amount',
@@ -13,6 +26,7 @@ const disputeHeader = {
 	bankAccountNumber: 'Account Number',
 	bankName: 'Bank Name',
 	status: 'Status',
+	paymentImage: 'Payment',
 	userUid: 'user uid'
 }
 
@@ -48,6 +62,20 @@ const clearLoading = res => {
 	}
 }
 
+const handlePaymentImage = (image, key, index, handleImageChange) => {
+	let result = [];
+	if(image) {
+		return <Flex verticleCenter direction="row"><img src={image} width="50px" />
+					<ButtonStyle for="buttonImg"><input name="image" style={{display:'none'}} onChange={e => handleImageChange(key, index, e)} id="buttonImg" type="file" />upload</ButtonStyle>
+					</Flex>
+	}
+	else {
+		return <ButtonStyle for="buttonImg"><input name="image" style={{display:'none'}} onChange={e => handleImageChange(key, index, e)} id="buttonImg" type="file" />upload</ButtonStyle>
+	}
+	// result.push(<label for="buttonImg"><input name="image" style={{display:'none'}} onChange={e => handleImageChange(key, index, e)} id="buttonImg" type="file" /></label>)
+	// return result
+}
+
 export default props => {
 
 	const pendingPaymentTransactionsArray = Object.keys(props.pendingPaymentTransactions)
@@ -65,26 +93,18 @@ export default props => {
 		}))
 
 	const disputes_arrs = Object.keys(props.disputes).map(key=>props.disputes[key]);
-
-	const disputeArray = props.disputes
-		? disputes_arrs.map(dispute => ({
+		const disputeArray = props.disputes
+		? disputes_arrs.map((dispute, index) => ({
 			...dispute,
-			status: <select
-					value={dispute.status}
-					onChange={(e) => {
-					if (confirm('Are you change status?')) {
-						updateStatusDisputes(dispute.key, e.target.value, (res) => {
-							getAllDisputes();
-							alert(res);
-						})
-					}
-				}}>
-					<option value="pending">Pending</option>
-					<option value="send">Send</option>
-				</select>
+			status: dispute.status === 'pending' ? <div><span>pending</span>
+			<Button onClick={()=>updateStatusDisputes(
+				dispute.key,
+				index
+			)}>Approve</Button>
+		</div> : <p style={{color:'green'}}>Approved!</p>,
+			paymentImage: <div>{handlePaymentImage(dispute.disputeImage, dispute.key, index, props.handleImageChange)}</div>,
 		}))
 		: null
-
 
 
 	const transactions_arrs = Object.keys(props.transactions).map(key=>props.transactions[key])
