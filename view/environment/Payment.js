@@ -16,7 +16,7 @@ export const Tabs = props =>  {
 			component:<BankAccountsForTransfer {...props}/>
 		}
 	]
-	if(props.transaction.price >= 20)
+	if(price * quantity >= 20)
 		tabs.push(
 			{
 				buttonLabel: 'จ่ายผ่านบัตรเครดิต/เดบิต',
