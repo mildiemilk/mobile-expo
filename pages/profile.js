@@ -126,7 +126,6 @@ class Profile extends Component {
 	render() {
 		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts, isUserMembership} = this.props
 		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
-		console.log('isuser membership', isUserMembership)
 		return <HeightDiv>
 			<Head/>
 			<Header content={
