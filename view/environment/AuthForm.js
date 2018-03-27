@@ -1,5 +1,5 @@
 import Head from './DefaultHead'
-import { Button, Icon, Grid, Form, Divider } from 'semantic-ui-react'
+import { Button, Grid, Form, Divider } from 'semantic-ui-react'
 import Header from './Header'
 import SignInForm from '../organisms/SignInForm'
 import SignOut from '../organisms/SignOut'

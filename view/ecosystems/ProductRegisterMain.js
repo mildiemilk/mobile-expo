@@ -16,8 +16,7 @@ import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
 
 export default props=> {
-	const { handleSubmit, comissionCash, comissionPercent, comissionWithinLimit, price, productImages, productName } = props
-	const validateProductValues = (comissionCash > 0 || comissionPercent > 0 ) && comissionWithinLimit && price > 0 && productImages.length > 0 && productName
+	const validateProductValues = (props.comissionCash > 0 || props.comissionPercent > 0 ) && props.comissionWithinLimit && props.price > 0 && props.productImages.length > 0 && props.productName
 	return(
 		<Grid>
 			<Grid.Row>
@@ -45,7 +44,7 @@ export default props=> {
 					<Wrapper height="100%">
 						<H3>ค่าคอมมิสชั่น (4/4) </H3>
 						<ComissionInput {...props}/>
-						<Button {...props} buttonDisabled={!validateProductValues} disabled={!validateProductValues} fullWidth onClick={handleSubmit}>ลงขาย</Button>
+						<Button {...props} buttonDisabled={!validateProductValues} disabled={!validateProductValues} fullWidth onClick={props.handleSubmit}>ลงขาย</Button>
 					</Wrapper>
 				</Grid.Column>
 			</Grid.Row>

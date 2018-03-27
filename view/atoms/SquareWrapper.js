@@ -8,6 +8,7 @@ export default styled.div.attrs({
 	max-height: ${props => props.maxSize};
 	width: ${props => props.maxSize};
 	height:  auto;
+	position: relative;
 	@media (max-width: 600px) {
 		 max-width: 100vw;
 	}
