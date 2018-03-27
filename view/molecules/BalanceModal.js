@@ -16,7 +16,7 @@ class BalanceModal extends React.Component {
         super(props);
         this.state = {
             disputing: false,
-            balanceDisplay:0,
+            balanceDisplay: props.balance || 0,
             dispute: {
                 userUid: props.userUid,
                 amount: 0,
@@ -27,6 +27,18 @@ class BalanceModal extends React.Component {
             }
         }
     }
+
+    componentWillReceiveProps(nextProps){
+		nextProps.balance !== this.props.balance && nextProps.balance? 
+            this.setState({ balanceDisplay: nextProps.balance }) : null
+		nextProps.userUid !== this.props.userUid && nextProps.userUid? 
+            this.setState({ 
+                dispute: {
+                    ...this.state.dispute,
+                    userUid: nextProps.userUid
+                }
+            }) : null
+	}
 
     handleChangeBankName = event => {
         this.setState({
@@ -79,10 +91,37 @@ class BalanceModal extends React.Component {
             saveDispute(disputeArr,(res)=>_this.handleDisputeCallback(res));
         })
     }
+
+    handleChange = (e) => {
+        const { value } = e.target
+        if(value <= this.props.balance) {
+            this.setState({
+                dispute: {
+                    ...this.state.dispute,
+                    amount: value
+                },
+                balanceDisplay:value!==''?this.props.balance-value:this.props.balance
+            })
+        }
+    }
+
+    canClick = () => {
+        const { dispute } = this.state
+        const { amount, bankAccountNumber, bankAccountName } = dispute
+        if(amount !== 0 && amount !== '0' && amount !== '' && bankAccountName !== '' && bankAccountNumber !== '') 
+            return true
+        return false
+    }
+
     render() {
+        const { balance } = this.props
+        const canClick = this.canClick()
         return <Flex direction="row" verticleCenter >
             <H5 margin="0px 10px 0px 0px" lineHeight="32px">จำนวนเงิน: {this.props.balance||0} บาท</H5>
-            <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'Cancel' : 'Dispute'} </Button>
+            {balance > 0 ?
+                <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'ยกเลิก' : 'ถอนเงิน'} </Button>
+                :null
+            }
             <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} widthDesktop="49vh">
                 <Wrapper width='100%'>
                     <WhiteDiv padding={'10px'} style={{
@@ -114,20 +153,13 @@ class BalanceModal extends React.Component {
                                     bankAccountName: e.target.value
                                 }
                             })} />
-                            <h3>จำนวนเงิน({this.state.balanceDisplay.toLocaleString()})</h3>
-                            <input type="text" onChange={(e) => {
-                                this.setState({
-                                    dispute: {
-                                        ...this.state.dispute,
-                                        amount: e.target.value
-                                    },
-                                    balanceDisplay:e.target.value!==''?this.props.balance-e.target.value:this.props.balance
-                                })
-                            }}
+                            <h3>จำนวนเงิน({this.state.balanceDisplay})</h3>
+                            <input type="number" onChange={this.handleChange}
                                 onBlur={(e) => this.handleCheckAmount(e)}
                                 value={this.state.dispute.amount} />
                             <br /><br />
-                            <Button fullWidth onClick={() => this.handleSetDataDispute()} >Confirm</Button>
+                            <Button fullWidth onClick={() => this.handleSetDataDispute()} buttonDisabled={!canClick} >ยืนยัน</Button>
+                            {!canClick? <span style={{ color: 'red'}}>กรุณากรอกข้อมูลให้ครบถ้วน</span> : null}
                         </div>
                     </WhiteDiv>
                 </Wrapper>
