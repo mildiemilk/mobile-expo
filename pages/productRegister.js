@@ -3,7 +3,7 @@ import { reduxForm, formValueSelector } from 'redux-form'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import ProductForm from '../view/environment/ProductForm'
-import { addProductDescription } from '../lib/actions/product'
+import { addProductDescription, removeProductImage } from '../lib/actions/product'
 import { registerProduct,setProductImage, updateProduct, saveProductDescriptionImage, saveProductDescriptionVideo } from '../lib/handlers/product'
 import { getProductFromID } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
@@ -41,7 +41,8 @@ class ProductRegister extends Component {
 			productImages,
 			shortDescription,
 			nextDescription, 
-			stock
+			stock,
+			removeProductImage
 		} = this.props
 		const productID =  this.props.url.query.productID
 		let comissionWithinLimit = parseInt(price) * 0.7 > parseInt(price) * parseInt(comissionPercent || 0) / 100 + parseInt(comissionCash || 0)
@@ -56,6 +57,7 @@ class ProductRegister extends Component {
 			productImages = {productImages}
 			shortDescription={shortDescription}
 			setProductImage = {setProductImage}
+			removeProductImage={removeProductImage}
 			productName = {productName}
             price = {price}
 			comissionCash = {comissionCash}
@@ -121,8 +123,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-		addProductDescription,
-		saveUser
-	}
+	addProductDescription,
+	saveUser,
+	removeProductImage
+}
 
 export default withRedux(() => store, mapStateToProps, mapDispatchToProps)(ProductRegister)

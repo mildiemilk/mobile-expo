@@ -1,4 +1,4 @@
-import { Icon, Checkbox } from 'semantic-ui-react'
+import { Checkbox } from 'semantic-ui-react'
 import React from 'react'
 import Link from 'next/link'
 import copy from 'copy-to-clipboard'
