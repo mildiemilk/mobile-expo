@@ -39,7 +39,7 @@ class ItemCard extends React.Component {
 	}
 
 	render() {
-		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership, isUserMembership } = this.props
+		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership, isUserMembership, membershipProductsNumber } = this.props
 		const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = this.props.product
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
@@ -66,12 +66,12 @@ class ItemCard extends React.Component {
 							</tr> : null 
 						}
 						{
-							isUserMembership?
+							isUserMembership  ? !(membershipProductsNumber >= 5 && !product.isMembership)? 
 							<tr>
 								<td style={{textAlign:'right'}}>สมาชิก:</td>
 								<td><Checkbox toggle name="isMembership" checked={product.isMembership} onClick={() => setProductMembership(!product.isMembership, productKey)}/>
 								</td>
-							</tr> : null 
+							</tr> : null :null
 						}
 						<tr>
 							<td style={{textAlign:'right'}}>ราคา:</td>

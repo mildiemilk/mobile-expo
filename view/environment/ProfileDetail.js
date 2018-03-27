@@ -16,7 +16,7 @@ import ProfileDetailEdit from '../organisms/ProfileDetailEdit'
 const EditGrid = styled(Grid.Column)`
   padding-right: 0px !important;
 `
-export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile}) => 
+export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber}) => 
 <Grid>
   <EditGrid mobile={16} tablet={16} computer={16}>
     <Wrapper height="100%" widthSmall="100vw" noMargin noBorder noBorderRadius style={{border:'none'}}>
@@ -39,6 +39,12 @@ export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageCha
         <H5 lineHeight="32px">ที่อยู่: {profile.address}</H5>
         <H5 lineHeight="32px">อีเมล: {profile.email}</H5>
         <H5 lineHeight="32px">เบอร์โทรศัพท์: {profile.phone}</H5>
+        {
+          isUserMembership? <H5 lineHeight="32px">สินค้าสมาชิก: {membershipProductsNumber} รายการ</H5>: null
+        }
+        {
+          isUserMembership && membershipProductsNumber >= 5 ? <H5 color="red"> ลงสินค้าแบบสมาชิกครบ5รายการแล้ว</H5>:null
+        }
       </div>
       }
     </Wrapper>

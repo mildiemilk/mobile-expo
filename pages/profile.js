@@ -32,7 +32,7 @@ class Profile extends Component {
 			showView: '', // first , second
 			isProfileMobile: false,
 			isItemMobile: false,
-			isTableMobile: false
+			isTableMobile: false,
 		}
 	}
 
@@ -122,10 +122,12 @@ class Profile extends Component {
 		})
 	}
 	handleClickView = name => this.setState({ isView: !this.state.isView, showView: name })
-
+	countMembershipProducts = products => Object.keys(products).filter( key => products[key].isMembership ).length
+	
 	render() {
 		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts, isUserMembership} = this.props
 		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
+		const membershipProductsNumber = this.countMembershipProducts(userProducts)
 		return <HeightDiv>
 			<Head/>
 			<Header content={
@@ -140,6 +142,8 @@ class Profile extends Component {
 						handleEdit={this.handleEdit}
 						balance={user.wallet}
 						userUid={user.uid}
+						isUserMembership={isUserMembership}
+						membershipProductsNumber={membershipProductsNumber}
 					/>}
 					content = {
 						<ProfileView
@@ -167,6 +171,8 @@ class Profile extends Component {
 						isView={isView}
 						showView={showView}
 						handleClickView={this.handleClickView}
+						membershipProductsNumber={membershipProductsNumber}							
+						
 					/>}
 					isVisible={isVisible}
 					toggleVisibility={this.toggleVisibility}
@@ -189,6 +195,7 @@ class Profile extends Component {
 							handleEdit={this.handleEdit}
 							balance={user.wallet}
 							userUid={user.uid}
+							membershipProductsNumber={membershipProductsNumber}							
 						/>
 					}
 					{isItemMobile || isTableMobile ?
@@ -222,6 +229,7 @@ class Profile extends Component {
 								isView={isView}
 								showView={showView}
 								handleClickView={this.handleClickView}
+								membershipProductsNumber={membershipProductsNumber}															
 							/>
 						</div>:null}
 					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&

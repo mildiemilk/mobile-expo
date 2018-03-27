@@ -12,6 +12,7 @@ import productimages from '../../lib/reducers/productimages'
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
 import Button from '../atoms/Button'
+import member from '../../lib/reducers/member';
 
 const DivNoContent = styled.div`
 	background-color: #f2f2f2;
@@ -27,7 +28,7 @@ const settings = {
 	slidesToShow: 3,
 	slidesToScroll: 1
 };
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership, membershipProductsNumber}) =>
 <Flex direction="column" margin="0px 7px">
 	<MediaQuery  minDeviceWidth={1224}>
 		{isView? <Button width="70px" onClick={() => handleClickView('')}>Back</Button> : null}
@@ -63,6 +64,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											setProductActive={setProductActive}
 											isUserMembership={isUserMembership}
 											setProductMembership={setProductMembership}
+											membershipProductsNumber={membershipProductsNumber}
 										/>
 									</div>)
 								}) : null
