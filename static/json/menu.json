@@ -17,6 +17,10 @@
 	},
 	{
 		"link":"logout",
-		"text":"Logout"
+		"text":"ออกจากระบบ"
+	},
+	{
+		"link":"/productRegister",
+		"text":"ลงสินค้า"
 	}
 ]
