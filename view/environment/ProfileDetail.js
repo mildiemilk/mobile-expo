@@ -20,7 +20,7 @@ export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageCha
 <Grid>
   <EditGrid mobile={16} tablet={16} computer={16}>
     <Wrapper height="100%" widthSmall="100vw" noMargin noBorder noBorderRadius style={{border:'none'}}>
-      {isEdit ? null:<DivButton TextAlign="right"><Button margin="0px 10px" onClick={handleEdit}>Edit</Button></DivButton>}
+      {isEdit ? null:<DivButton TextAlign="right"><Button secondary margin="0px 10px" onClick={handleEdit}>Edit</Button></DivButton>}
       <H5 margin="20px 0px" center>{profile.name}</H5>
       {isEdit 
       ?<div><DivImage center>

@@ -69,7 +69,7 @@ export default props=> {
 			<Grid.Row>
 				<Grid.Column>
 					<Link href='/profile'>
-						<Button>Back</Button>
+						<Button secondary>Back</Button>
 					</Link>
 				</Grid.Column>
 			</Grid.Row>
