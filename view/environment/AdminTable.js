@@ -72,8 +72,6 @@ const handlePaymentImage = (image, key, index, handleImageChange) => {
 	else {
 		return <ButtonStyle for="buttonImg"><input name="image" style={{display:'none'}} onChange={e => handleImageChange(key, index, e)} id="buttonImg" type="file" />upload</ButtonStyle>
 	}
-	// result.push(<label for="buttonImg"><input name="image" style={{display:'none'}} onChange={e => handleImageChange(key, index, e)} id="buttonImg" type="file" /></label>)
-	// return result
 }
 
 export default props => {
