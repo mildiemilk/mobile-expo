@@ -24,7 +24,6 @@ class Admin extends React.Component {
 			this.fetchInfos() : null
 	}
 	handleImageChange = (key, index, e) => {
-		console.log('dddsfs')
     e.preventDefault();
     const reader = new FileReader();
     const file = e.target.files[0];
@@ -36,7 +35,6 @@ class Admin extends React.Component {
 	}
 	render() {
 		const { transactions, disputes, admin, password, checkPassword, pendingPaymentTransactions } = this.props
-		console.log('dispute', disputes)
 		return (
 			admin?
 			<AdminTable transactions={transactions} disputes={disputes} pendingPaymentTransactions={pendingPaymentTransactions} approveBankTransferTransaction={approveBankTransferTransaction}
