@@ -44,6 +44,13 @@ export default props=> {
 					<Wrapper height="100%">
 						<H3>ค่าคอมมิสชั่น (4/4) </H3>
 						<ComissionInput {...props}/>
+						{!validateProductValues? <H3>กรุณาใส่ข้อมูลให้ครบ</H3>:null}
+						<ul style={{color:'red'}}>
+							{!props.productName? <li>ใส่ชื่อสินค้า</li>:null}
+							{props.productImages.length ==0? <li>ใส่รูปภาพ</li>:null}
+							{props.price <= 0 ? <li>ใส่ราคาสินค้า </li>:null}
+							{!(props.comissionCash > 0 || props.comissionPercent > 0 )?<li>ใส่ค่าคอมมิสชั่น</li>:null}
+						</ul>
 						<Button {...props} buttonDisabled={!validateProductValues} disabled={!validateProductValues} fullWidth onClick={props.handleSubmit}>ลงขาย</Button>
 					</Wrapper>
 				</Grid.Column>

@@ -1,4 +1,5 @@
 import { Field, FieldArray, reduxForm } from 'redux-form'
+import { Icon } from 'semantic-ui-react'
 import DescriptionOption from '../molecules/DescriptionOption'
 import Dropzone from '../atoms/Dropzone'
 import Button from '../atoms/Button'
@@ -106,18 +107,12 @@ const renderMembers = props => <div style={{width:'100%', minWidth:'320px', disp
 	</Wrapper>
 	{
 		props.fields.map((member,index) => (
-			<Wrapper key={index} style={{position:'relative'}} boxShadow='none' margin='5px 0'>
-				<Button 
-					width="25px"
-					height="25px"
-					borderRadius="12.5px"
-					background="#2c2c2d" 
-					padding="0"
-					margin="0"
-					top="0" 
-					right="0" 
-					position="absolute" 
-					onClick={()=>props.fields.remove(index)}>x</Button>
+			<Wrapper key={index} style={{position:'relative'}} boxShadow='none' margin='5px 0' zIndex='0'>
+				<div 
+					style={{top:"0",right:"0",position:"absolute" }}
+					onClick={()=>props.fields.remove(index)}>
+                    <Icon link name='close' size='large' color='grey'/>					
+					</div>
 				<Field index={index} name={`${member}.context`} type="text" component={renderField} type={props.fields.getAll()[index].type} fields={props.fields}/>
 			</Wrapper>
 		))
