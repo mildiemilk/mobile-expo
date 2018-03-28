@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Sidebar,Label } from 'semantic-ui-react'
+import { Sidebar,Label, Icon } from 'semantic-ui-react'
 import Link from 'next/link'
 import ProfileDetail from '../environment/ProfileDetail'
 import Button from '../atoms/Button';
@@ -8,7 +8,7 @@ import Wrapper from '../atoms/Wrapper';
 class ProfileSide extends Component {
  
   render() {
-    const { content, sideContent, table, userUid, handleClick, isVisible, toggleVisibility } = this.props
+    const { content, sideContent, table, userUid, handleClick, isVisible, toggleVisibility, userPending } = this.props
     const pending = table!==undefined&&table.length>=1? table.filter(item => (item.sellerId === userUid) && (item.status === 'pending')).length :0
     return (
       <div style={{height:'100vh'}}>

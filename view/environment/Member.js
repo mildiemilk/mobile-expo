@@ -14,6 +14,7 @@ import Select from '../molecules/Select'
 import HeightDiv from '../atoms/HeightDiv'
 import Head from './DefaultHead'
 import Header from './Header'
+import H3 from '../atoms/H3'
 
 const memberHeader = {
 	"name": "Name",
@@ -66,6 +67,12 @@ const PermissionOption = props =>
 	<option value="member">Member</option>
 	<option value="freeze">Freeze</option>
 </select>
+
+const addMember = props => <Wrapper>
+	<H3>เพิ่มสมาชิก</H3>
+	<TextField placeholder="user@email.com" name="newMemberEmail"/>
+	<Button>+เพิ่ม</Button>
+</Wrapper>
 
 const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):addPermissionToMember(member))
 const addActionToMember = (member, setMemberPermission) =>({...member, permission:<PermissionOption member={member} setMemberPermission={setMemberPermission}/>})
@@ -121,7 +128,7 @@ export default props =>
 								</Wrapper>
 								<Wrapper>
 								<h2>Member</h2>
-								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>:null}/>
+								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Modal context={addMember(props)}><Button margin="0" fullWidth height="100%">+ add member</Button></Modal></td></tr>:null}/>
 								</Wrapper>
 								<Wrapper>
 								<h2>Products</h2>

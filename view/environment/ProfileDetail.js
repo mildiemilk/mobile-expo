@@ -1,4 +1,4 @@
-import { Grid } from 'semantic-ui-react'
+import { Grid, Icon } from 'semantic-ui-react'
 import styled from 'styled-components'
 import H3 from '../atoms/H3'
 import Image from '../atoms/Image'
@@ -16,9 +16,10 @@ import ProfileDetailEdit from '../organisms/ProfileDetailEdit'
 const EditGrid = styled(Grid.Column)`
   padding-right: 0px !important;
 `
-export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber}) => 
+export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending}) => 
 <Grid>
   <EditGrid mobile={16} tablet={16} computer={16}>
+    {userPending?<Wrapper><H3>Loading...</H3><Icon loading name='spinner' size="big" /></Wrapper>:null}
     <Wrapper height="100%" widthSmall="100vw" noMargin noBorder noBorderRadius style={{border:'none'}}>
       {isEdit ? null:<DivButton TextAlign="right"><Button secondary margin="0px 10px" onClick={handleEdit}>Edit</Button></DivButton>}
       <H5 margin="20px 0px" center>{profile.name}</H5>

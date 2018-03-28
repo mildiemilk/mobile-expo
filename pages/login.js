@@ -18,7 +18,7 @@ class Login extends React.Component {
 	}
 
 	render() {
-		const { user, loginValues } = this.props
+		const { user, loginValues, pending } = this.props
 		let validateEmailResult = validateEmail(loginValues ? loginValues.email : null)
 		let validatePasswordResult = validatePassword(loginValues ? loginValues.password : null)
 		let statusArray = [validateEmailResult.status, validatePasswordResult.status]
@@ -34,6 +34,7 @@ class Login extends React.Component {
 				formValue={loginValues}
 				status={'success'}
 				helperText={''}
+				pending={pending}
 			/>
 		)
 	}
@@ -44,7 +45,8 @@ Login = reduxForm({
 
 const mapStateToProps = state => ({
     loginValues : state.form.login ? state.form.login.values : null,
-    user: state.user
+	user: state.user,
+	pending: state.user? state.user.pending: false
 })
 
 const mapDispatchToProps = {
