@@ -71,7 +71,12 @@ const PermissionOption = props =>
 const addMember = props => <Wrapper>
 	<H3>เพิ่มสมาชิก</H3>
 	<TextField placeholder="user@email.com" name="newMemberEmail"/>
-	<Button>+เพิ่ม</Button>
+	<Button onClick={()=>props.addMemberByEmail(props.newMembershipEmail,props.user.membership)}>+เพิ่ม</Button>
+	<ul>
+	{
+		props.member.addByEmail.map( email => <li>{email}</li> )
+	}
+	</ul>
 </Wrapper>
 
 const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):addPermissionToMember(member))

@@ -9,10 +9,9 @@ import { getProfile } from '../lib/handlers/profile'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import { getUserbyUid } from '../lib/handlers/user'
-import { saveMembership, regexKey, loginMembership, setMembers, setMemberPermission, addMemberByEmail } from '../lib/handlers/member'
+import { saveMembership, regexKey, loginMembership, setMembers, setMemberPermission, addMemberByEmail, getMemberByEmails } from '../lib/handlers/member'
 import { setMembershipProducts } from '../lib/handlers/product'
 import { validateKey } from '../lib/actions/member'
-
 
 class Member extends React.Component {
 
@@ -23,6 +22,7 @@ class Member extends React.Component {
 			await getUserbyUid(user.uid)
 			user ? this.props.saveUser(user) : null
 		})
+		await getMemberByEmails(user.membership)
 	}
 
 	async componentWillReceiveProps(nextProps){
@@ -30,8 +30,9 @@ class Member extends React.Component {
 		if(nextProps.user !== this.props.user){
 				await getProfile(this.props.user.uid)
 				await setMembers(this.props.user.membership)
+				await getMemberByEmails(this.props.user.membership)				
 		}
-		nextProps.name !== this.props.name ? 
+		nextProps.name !== this.props.name ?
 			this.props.validateKey(RegExp(/[^a-z|A-Z|\s|[0-9]/g).exec(nextProps.name) === null): null
 	}
 
@@ -40,6 +41,7 @@ class Member extends React.Component {
 		return (
 			<MemberView 
 				{...this.props} 
+				addMemberByEmail={addMemberByEmail}
 				saveMembership={saveMembership} 
 				loginMembership={loginMembership} 
 				isAdmin={member&&Object.keys(member.members).length > 0 && member.members[user.uid]? member.members[user.uid].permission==="admin" : null}
@@ -63,7 +65,8 @@ const mapStateToProps = state => ({
 	passwordLength: selector(state,'password')? selector(state,'password').length: 0,
 	passwordMatch: selector(state,'password') === selector(state,'passwordconfirmation'),
 	password: selector(state,'password'),
-	keyIsValid: state.member.keyIsValid
+	keyIsValid: state.member.keyIsValid,
+	newMembershipEmail: selector(state,'newMemberEmail')
 })
 
 const mapDispatchToProps = {
