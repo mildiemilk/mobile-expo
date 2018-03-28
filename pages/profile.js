@@ -5,6 +5,7 @@ import withRedux from "next-redux-wrapper"
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
 import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive, setProductMembership } from '../lib/handlers/product'
+import { getMemberByEmailsByEmail, saveRequestedByEmailUserMembership } from '../lib/handlers/member'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
@@ -29,7 +30,7 @@ class Profile extends Component {
 			isItemCard : false,
 			isVisible: true,
 			isView: false,
-			showView: '', // first , second
+			showView: '',
 			isProfileMobile: false,
 			isItemMobile: false,
 			isTableMobile: false,
@@ -44,9 +45,10 @@ class Profile extends Component {
 			getUserbyUid(user.uid);
 			return user ? this.props.saveUser(user) : null
 		})
-		this.props.user? this.props.user.uid ? getUserProducts(this.props.user.uid) : null : null
-		this.props.user? this.props.user.uid ? getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null : null
-		this.props.user? this.props.user.uid ? getProfile(this.props.user.uid) : null : null
+		this.props.user? this.props.user.uid ? await getUserProducts(this.props.user.uid) : null : null
+		this.props.user? this.props.user.uid ? await getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null : null
+		this.props.user? this.props.user.uid ? await getProfile(this.props.user.uid) : null : null
+		this.props.user? this.props.user.email ? await getMemberByEmailsByEmail(this.props.user.email) : null : null
 	}
 
 	async componentWillReceiveProps(nextProps){
@@ -54,8 +56,11 @@ class Profile extends Component {
 			await getUserProducts(this.props.user.uid)
 			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
 			await getProfile(this.props.user.uid)
-			await setMembers(this.props.user.membership)
-		}		
+			this.props.user.membership?
+				await setMembers(this.props.user.membership) : null
+			this.props.user.email?
+				await getMemberByEmailsByEmail(this.props.user.email) : null
+		}
 		if(this.props.profile.transactionIds !==undefined) {
 			if(this.props.profile.transactionIds.length>=1 && (JSON.stringify(this.props.profile) !== JSON.stringify(nextProps.profile))){
 				if(typeof this.props.profile.transactionIds[0] == "string") {
@@ -126,7 +131,7 @@ class Profile extends Component {
 	countMembershipProducts = products => Object.keys(products).filter( key => products[key].isMembership ).length
 	
 	render() {
-		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts, isUserMembership, userPending} = this.props
+		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts, isUserMembership, userPending, requestMembership} = this.props
 		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
 		const membershipProductsNumber = this.countMembershipProducts(userProducts)
 		return <HeightDiv>
@@ -149,7 +154,9 @@ class Profile extends Component {
 					/>}
 					content = {
 						<ProfileView
+						saveRequestedByEmailUserMembership={saveRequestedByEmailUserMembership}
 						isUserMembership={isUserMembership}
+						requestMembership={requestMembership}
 						isItemCard={isItemCard}
 						handleImageChange={this.handleImageChange}
 						profileImage={profile.profileImage}
@@ -204,6 +211,8 @@ class Profile extends Component {
 					{isItemMobile || isTableMobile ?
 						<div>
 							<ProfileView
+								saveRequestedByEmailUserMembership={saveRequestedByEmailUserMembership}
+								requestMembership={requestMembership}
 								isUserMembership={isUserMembership}
 								handleTableMobile={this.handleTableMobile}
 								handleItemCard={this.handleItemCard}
@@ -262,8 +271,9 @@ const mapStateToProps = state => ({
 	detail: selector(state,'address', 'email', 'phone', 'image'),
 	sponsorEmail: selector(state, 'sponsorEmail'),
 	table: state.profile.transactionIds,
-	isUserMembership: state.user.membership,
+	isUserMembership: state.user.membership || false,
 	userPending: state.user? state.user.pending : false,
+	requestMembership: state.member.requestMembership
 })
 
 const mapDispatchToProps = {
