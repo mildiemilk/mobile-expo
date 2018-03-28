@@ -3,7 +3,7 @@ import { reduxForm, formValueSelector } from 'redux-form'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import ProductForm from '../view/environment/ProductForm'
-import { addProductDescription, removeProductImage } from '../lib/actions/product'
+import { addProductDescription, removeProductImage, clearProductImages } from '../lib/actions/product'
 import { registerProduct,setProductImage, updateProduct, saveProductDescriptionImage, saveProductDescriptionVideo } from '../lib/handlers/product'
 import { getProductFromID } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
@@ -12,11 +12,12 @@ import { bindActionCreators } from 'redux'
 
 class ProductRegister extends Component {
     async componentDidMount() {
-        const auth = await loadFirebase('auth')
-        const { productID } = this.props.url.query
-        const { user, getUserProducts } = this.props
-        productID ? getProductFromID(productID) : null
-        await auth.onAuthStateChanged(user => (user ? this.props.saveUser(user) : null))
+			const auth = await loadFirebase('auth')
+			const { productID } = this.props.url.query
+			const { user, getUserProducts } = this.props
+			productID ? getProductFromID(productID) : null
+			await auth.onAuthStateChanged(user => (user ? this.props.saveUser(user) : null))
+			this.props.clearProductImages()
     }
 
     async componentWillReceiveProps(nextProps) {
@@ -125,7 +126,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
 	addProductDescription,
 	saveUser,
-	removeProductImage
+	removeProductImage,
+	clearProductImages
 }
 
 export default withRedux(() => store, mapStateToProps, mapDispatchToProps)(ProductRegister)

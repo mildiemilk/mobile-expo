@@ -38,7 +38,7 @@ class Select extends Component {
                 >{this.props.items[item]}</Button>
             ) : null
         return(
-            <div style={{position:'relative'}}>
+            <div style={{position:'relative', zIndex:'100'}}>
                 <Button 
                     width='120px' 
                     onClick={()=>this.setState({...this.state, show:!this.state.show})} 
@@ -52,7 +52,7 @@ class Select extends Component {
                 </Button>
                 {
                     this.state.show?
-                        <Flex position='absolute'>
+                        <Flex position='absolute' zIndex='100'>
                             <Options/>
                         </Flex>:null
                 }

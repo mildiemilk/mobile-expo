@@ -7,6 +7,7 @@ export default styled.div`
     flex-direction: ${props => props.direction || 'column'};
     flex-wrap: ${props => props.wrap || 'wrap'};
     ${props => props.flexGrow? `flex-grow:${props.flexGrow};`:null}
+    ${props => props.zIndex? `z-index:${props.zIndex};`:null}
     ${props => props.flexFlow? `flex-flow:${props.flexFlow};`:null}
     ${props => props.justifyContent? `justify-content:${props.justifyContent};`:null}
     ${props => props.center ? 'justify-content:center;':null}
