@@ -18,7 +18,7 @@ class AddStocksButton extends React.Component {
 			<Modal 
 				context={<AddStocksInput setProductStock={setProductStock} productKey={productKey} currentStock={stock}/>}
 			>
-					<Button fullWidth>Add Stock</Button>
+					<Button fullWidth secondary>Add Stock</Button>
 			</Modal>
 		)
 	}
