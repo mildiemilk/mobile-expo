@@ -7,7 +7,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 		<TextField
 			type="email"
 			name="email"
-			label="email"
+			label="อีเมล"
 			placeholder="example@example.com"
 			width="100%"
 		/>
@@ -15,7 +15,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 			<TextField
 				type="password"
 				name="password"
-				label="password"
+				label="รหัสผ่าน"
 				placeholder="password"
 				width="100%"
 			/>
@@ -25,7 +25,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 			<TextField
 				type="password"
 				name="passwordConfirm"
-				label="password confirmation"
+				label="ยืนยันรหัสผ่าน"
 				placeholder="password confirmation"
 				width="100%"
 			/>
@@ -34,7 +34,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 
 			<Button style={{width:'100%', marginLeft:'10px'}} size='medium' primary onClick={()=>onSubmitEmail(formValue? formValue.email : null, formValue? formValue.password: null)}>
 				<Icon name='user'></Icon> 
-				{page === 'login' ? <span>Sign in</span> : <span>Register</span>}
+				{page === 'login' ? <span>ล๊อกอิน</span> : <span>สมัครบริการ</span>}
 			</Button>
 	<Divider horizontal>Or</Divider>
 			<Button 
@@ -43,7 +43,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 				style={{width:'100%', marginLeft:'10px'}}				
 				onClick={()=>onClickFacebook()}>
 				<Icon name='facebook' /> 
-				{page === 'login' ?'Sign in with facebook':'Sign up with facebook'}
+				{page === 'login' ?'ล๊อกอินด้วย facebook':'สมัครด้วย with facebook'}
 			</Button>
 	<Divider horizontal>Or</Divider>					
 			<Button 
@@ -52,6 +52,6 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 				color='google plus'  
 				onClick={()=>onClickGoogle()}>
 				<Icon name='google plus' /> 
-				{page === 'login' ?'Sign in with google':'Sign up with google'}
+				{page === 'login' ?'ล๊อกอินด้วย google':'สมัครด้วย google'}
 			</Button>
 </div>

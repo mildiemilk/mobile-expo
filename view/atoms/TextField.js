@@ -11,12 +11,12 @@ export default props =>
   <div style={{margin:'20px'}}>
     <Grid>
       {props.label? 
-      <CustomGrid width={props.noGrid?0:2}>
+      <CustomGrid width={props.noGrid?2:4}>
         <Flex direction="row" height="100%" justContent={props.labelFlexStart? "flex-start":"flex-end"} verticleCenter><span>{props.label}</span></Flex>
       </CustomGrid>
       :null
       }
-      <CustomGrid width={14}>
+      <CustomGrid width={props.noGrid?14:12}>
       <Field
         {...props} component={Input}
         fontSize="1.2em" 

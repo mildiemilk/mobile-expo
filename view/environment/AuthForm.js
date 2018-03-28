@@ -39,7 +39,7 @@ export default ({
 					/>
 				</Wrapper>
 				<ErrorDisplay status={status} displayText={helperText} />	
-			</Flex>:<H3>Log in เรียบร้อยแล้ว</H3>
+			</Flex>:<H3>Log in เรียบร้อยแล้ว รอสักครู่เพื่อไปยังโปรไฟล์ :)</H3>
 		}/>
 	</HeightDiv>
 	)
