@@ -42,7 +42,7 @@ class Member extends React.Component {
 				{...this.props} 
 				saveMembership={saveMembership} 
 				loginMembership={loginMembership} 
-				isAdmin={member&&Object.keys(member.members).length > 0 ? member.members[user.uid].permission==="admin" : null}
+				isAdmin={member&&Object.keys(member.members).length > 0 && member.members[user.uid]? member.members[user.uid].permission==="admin" : null}
 				setMemberPermission={setMemberPermission}
 			/>
 		)
