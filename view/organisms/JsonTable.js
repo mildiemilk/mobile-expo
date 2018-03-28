@@ -18,7 +18,7 @@ export default ({headerJson, bodyJsonArray, width, display, height, footer}) =>
                 bodyJsonArray ? 
                 bodyJsonArray.map( bodyJson => 
                 <tr>
-                    {Object.keys(headerJson).map( key => <td>{bodyJson[key]}</td>)}
+                    {Object.keys(headerJson).map( key => <td style={{overflow:'hidden'}}>{bodyJson[key]}</td>)}
                 </tr>
                 )
                 :null

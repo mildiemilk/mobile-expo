@@ -58,7 +58,8 @@ const mapStateToProps = state => ({
     loginValues: state.form.login
         ? state.form.login.values
         : null,
-    pending: state.user ? state.user.pending : false
+    pending: state.user ? state.user.pending : false,
+    user: state.user
 })
 
 const mapDispatchToProps = {

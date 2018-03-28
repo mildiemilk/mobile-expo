@@ -28,9 +28,27 @@ const settings = {
 	slidesToShow: 3,
 	slidesToScroll: 1
 };
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership, membershipProductsNumber}) =>
+
+const requestedMembershipView = (members, saveRequestedByEmailUserMembership, user) => <Wrapper>
+	<H3>มีคนขอร้องให้คุณเป็นสมาชิก!</H3>
+	<h4>คลิกที่สมาชิกเพื่อทำการเข้าร่วมการเป็นสมาชิก</h4>
+	{
+		members.map(member => <Button onClick={()=>saveRequestedByEmailUserMembership(user, member)}>{member}</Button>)
+	}
+</Wrapper>
+
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership, membershipProductsNumber, requestMembership, saveRequestedByEmailUserMembership}) =>
 <Flex direction="column" margin="0px 7px">
 	<MediaQuery  minDeviceWidth={1224}>
+		{!isUserMembership? 
+			<div>
+				{
+				requestMembership.length > 0 ?
+					requestedMembershipView(requestMembership, saveRequestedByEmailUserMembership, user)
+					:null
+				}
+			</div>:null}
+
 		{isView? <Button secondary width="70px" onClick={() => handleClickView('')}>Back</Button> : null}
 			{isItemCard
 			?<ProfileTable
