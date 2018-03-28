@@ -9,7 +9,7 @@ import { getProfile } from '../lib/handlers/profile'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import { getUserbyUid } from '../lib/handlers/user'
-import { saveMembership, regexKey, loginMembership, setMembers, setMemberPermission } from '../lib/handlers/member'
+import { saveMembership, regexKey, loginMembership, setMembers, setMemberPermission, addMemberByEmail } from '../lib/handlers/member'
 import { setMembershipProducts } from '../lib/handlers/product'
 import { validateKey } from '../lib/actions/member'
 

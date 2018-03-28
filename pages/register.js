@@ -14,14 +14,10 @@ class Login extends React.Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
-		// if(this.props.user.uid === '') {
-		// 	const loginUser = await auth.getRedirectResult()
-		// 	await addUserToDatabaseAndStore(loginUser.user.displayName, loginUser.user.uid, loginUser.user.displayName, loginUser.user.email, loginUser.user.photoURL)
-		// }
 	}
 
     render() {
-        const {user, loginValues} = this.props
+        const {user, loginValues, pending} = this.props
         let validateEmailResult = validateEmail(loginValues
             ? loginValues.email
             : null)
@@ -47,6 +43,7 @@ class Login extends React.Component {
             loggedIn={user.signedIn}
             formValue={loginValues}
             status={status}
+            pending={pending}
             helperText={[
             ...validateEmailResult.errorText,
             ...validatePasswordResult.errorText,
@@ -61,7 +58,7 @@ const mapStateToProps = state => ({
     loginValues: state.form.login
         ? state.form.login.values
         : null,
-    user: state.user
+    pending: state.user ? state.user.pending : false
 })
 
 const mapDispatchToProps = {

@@ -33,7 +33,7 @@ class Modal extends React.Component {
                 <div onClick={() => this.setState({ display: true })}>{children || <Button>modal</Button>}</div>
                 <BlackOut display={this.state.display} height={height} minHeight={minHeight} widthDesktop={widthDesktop} maxWidthDesktop={maxWidthDesktop}>
                     <Wrapper position="relative" top="0" right="0" height='fit-content'>
-                    <DivForButton TextAlign="right"><Button onClick={this.handleClose} modalClose>x</Button></DivForButton>
+                    <DivForButton TextAlign="right"><Button secondary onClick={this.handleClose} modalClose>x</Button></DivForButton>
                         <WhiteDiv padding={padding} minWidth={minWidth}>
                             <MediaQuery maxDeviceWidth={700}>
                                 <div style={{ padding: "0px 5px 15px 5px" }}>

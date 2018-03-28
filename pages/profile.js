@@ -37,9 +37,10 @@ class Profile extends Component {
 	}
 
 	async componentDidMount() {
+		
+		this.props.saveUserPending()
 		const auth = await loadFirebase('auth')
 		const user = await auth.onAuthStateChanged(user => {
-			this.props.saveUserPending()
 			getUserbyUid(user.uid);
 			return user ? this.props.saveUser(user) : null
 		})
@@ -125,7 +126,7 @@ class Profile extends Component {
 	countMembershipProducts = products => Object.keys(products).filter( key => products[key].isMembership ).length
 	
 	render() {
-		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts, isUserMembership} = this.props
+		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts, isUserMembership, userPending} = this.props
 		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
 		const membershipProductsNumber = this.countMembershipProducts(userProducts)
 		return <HeightDiv>
@@ -144,6 +145,7 @@ class Profile extends Component {
 						userUid={user.uid}
 						isUserMembership={isUserMembership}
 						membershipProductsNumber={membershipProductsNumber}
+						userPending={userPending}
 					/>}
 					content = {
 						<ProfileView
@@ -179,6 +181,7 @@ class Profile extends Component {
 					table={table}
 					userUid={user.uid}
 					handleClick={this.handleClick}
+					userPending={userPending}
 				/>
 			}
 				contentMobile={<HeightDiv>
@@ -259,7 +262,8 @@ const mapStateToProps = state => ({
 	detail: selector(state,'address', 'email', 'phone', 'image'),
 	sponsorEmail: selector(state, 'sponsorEmail'),
 	table: state.profile.transactionIds,
-	isUserMembership: state.user.membership
+	isUserMembership: state.user.membership,
+	userPending: state.user? state.user.pending : false,
 })
 
 const mapDispatchToProps = {
