@@ -121,7 +121,13 @@ export default props =>
 								</Wrapper>
 								<Wrapper>
 								<h2>Member</h2>
-								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Button margin="0" fullWidth height="100%">+ add member</Button></td></tr>:null}/>
+								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={
+									props.isAdmin?
+										<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}>
+										<Modal>
+											<Button margin="0" fullWidth height="100%">+ add member</Button>
+										</Modal></td></tr>:null
+								}/>
 								</Wrapper>
 								<Wrapper>
 								<h2>Products</h2>
