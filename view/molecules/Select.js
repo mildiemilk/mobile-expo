@@ -16,7 +16,7 @@ width: 0;
 height: 0; 
 border-left: 6px solid transparent;
 border-right: 6px solid transparent;
-border-top: 10px solid ${color.lightPrimary};
+border-top: 10px solid ${color.contrast};
 `
 
 class Select extends Component {
@@ -35,6 +35,7 @@ class Select extends Component {
                     }}
                     key={key} 
                     textAlign='left'
+                    secondary
                 >{this.props.items[item]}</Button>
             ) : null
         return(
@@ -45,7 +46,8 @@ class Select extends Component {
                     relative 
                     padding='8px 26px 8px 8px'
                     margin='0 5px 0 0'    
-                    zIndex='10'                
+                    zIndex='10'         
+                    secondary       
                 >
                     {this.props.items[this.props.nextDescription]||this.props.default}
                     <Triangle/>

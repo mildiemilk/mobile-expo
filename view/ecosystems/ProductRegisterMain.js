@@ -14,6 +14,17 @@ import styled from 'styled-components'
 import MediaQuery from 'react-responsive'
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
+import Modal from '../molecules/Modal'
+import DisplayImages from '../organisms/DisplayImages'
+import DisplayProductText from '../organisms/DisplayProductText'
+
+const ProductPreview = props => <Wrapper>
+	<H3>ตัวอย่าง</H3>
+	<DisplayImages images={props.productImages} />
+	<DisplayProductText {...props} />
+	<ProductDescriptionPreview {...props} />
+	<Button fullWidth onClick={props.handleSubmit}>ลงขาย</Button>
+</Wrapper>
 
 export default props=> {
 	const validateProductValues = (props.comissionCash > 0 || props.comissionPercent > 0 ) && props.comissionWithinLimit && props.price > 0 && props.productImages.length > 0 && props.productName
@@ -51,7 +62,9 @@ export default props=> {
 							{props.price <= 0 ? <li>ใส่ราคาสินค้า </li>:null}
 							{!(props.comissionCash > 0 || props.comissionPercent > 0 )?<li>ใส่ค่าคอมมิสชั่น</li>:null}
 						</ul>
-						<Button {...props} buttonDisabled={!validateProductValues} disabled={!validateProductValues} fullWidth onClick={props.handleSubmit}>ลงขาย</Button>
+						<Modal context={<ProductPreview {...props}/>}>
+							<Button buttonDisabled={!validateProductValues} disabled={!validateProductValues} fullWidth >ลงขาย</Button>
+						</Modal>
 					</Wrapper>
 				</Grid.Column>
 			</Grid.Row>
