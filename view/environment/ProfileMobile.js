@@ -2,24 +2,19 @@ import Link from 'next/link'
 import Wrapper from '../atoms/Wrapper'
 import Button from '../atoms/Button'
 import Flex from '../atoms/Flex'
+import { Icon } from 'semantic-ui-react'
 
 export default ({ handleProfileMobile, handleItemCard, handleTableMobile }) => 
-	<Wrapper absolute widthSmall="100vw" noMargin  height="100vh">
-		<Flex verticleCenter>
-			<div>
-				<Button width="30vw" margin="10px" onClick={handleProfileMobile}>ข้อมูลส่วนตัว</Button>
-				<Button width="30vw" margin="10px" onClick={handleItemCard}>สินค้า</Button>
-			</div>
-			<div>
-				<Button width="30vw" margin="10px" onClick={handleTableMobile}>คำสั่งซื้อ</Button>
+	<Wrapper widthSmall="100vw" noMargin  height="100vh">
+		<Flex verticleCenter height="100vh" >
+				<Button fullWidth margin="10px" onClick={handleProfileMobile}><Icon name='user' size='large' />ข้อมูลส่วนตัว</Button>
+				<Button fullWidth margin="10px" onClick={handleItemCard}><Icon name='shopping cart' size='large' />สินค้า</Button>
+				<Button fullWidth margin="10px" onClick={handleTableMobile}><Icon name='list layout' size='large' />คำสั่งซื้อ</Button>
 				<Link href="/productRegister">
-					<Button width="30vw" margin="10px">ลงสินค้าเพิ่ม</Button>
+					<Button fullWidth margin="10px"><Icon name='plus' size='large' />ลงสินค้าเพิ่ม</Button>
 				</Link>
-			</div>
-			<div>
 			<Link href="/member">
-					<Button width="30vw" margin="10px">สมาชิก</Button>
+					<Button fullWidth margin="10px"><Icon name='users' size='large' />สมาชิก</Button>
 			</Link>
-			</div>
 		</Flex>
 	</Wrapper>
