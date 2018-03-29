@@ -4,7 +4,7 @@ import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
 import ManyMobile from '../../static/img/manyMobiles.svg'
-import Modal from '../molecules/Modal'
+import { Modal } from 'semantic-ui-react'
 import WebExplain from '../organisms/WebExplain'
 import color from '../../static/json/color.json'
 import H1 from '../atoms/H1'
@@ -12,14 +12,20 @@ import H1 from '../atoms/H1'
 const TextButtonHomeContent = isMobile => {
 	return (<div style={{ position: 'relative', width: isMobile?'100%':'60%', textAlign: isMobile? 'center':'right' }}>
 			<H1 margin='0' padding='0'>ซื้อ แชร์ รวย!</H1>
-			<p style={{color:color.gray}}>ซื้อสินค้า แชร์สินค้า คนสั่งซื้อ รับค่าคอม
-				<Modal context={<WebExplain/>}>
-					<Button secondary>วิธีการใช้งาน</Button>
+			<p style={{color:color.gray}}>ซื้อสินค้า แชร์สินค้า คนสั่งซื้อ รับค่าคอม</p>
+			<Flex>
+				<Modal trigger={<Button secondary>วิธีการใช้งาน</Button>}>
+					<Modal.Header>วิธีการใช้งาน</Modal.Header>
+					<Modal.Content>
+						<Modal.Description>
+							<WebExplain />
+						</Modal.Description>
+					</Modal.Content>
 				</Modal>
-			</p>
-			<Link prefetch href="/register">
-				<Button width={isMobile? '100%':''}>สมัครเลย</Button>
-			</Link>
+				<Link prefetch href="/register">
+					<Button width={isMobile? '100%':''}>สมัครเลย</Button>
+				</Link>
+			</Flex>
 	</div>);
 }
 const ImageHomeContent = isMobile => {

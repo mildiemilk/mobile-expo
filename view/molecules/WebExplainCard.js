@@ -9,7 +9,7 @@ import Button from '../atoms/Button'
 import Link from 'next/link'
 
 export default ({ header, description, img }) =>
-	<Wrapper margin='20px 0' padding='0' minWidth='320px' maxWidth='700px' className='wraper-modal-item'>
+	<Wrapper margin='20px 0' padding='0' width='100%' maxWidth='700px' className='wraper-modal-item'>
 		<div style={{ height: '300px', display: 'flex', alignItems: 'flex-end' }}>
 			{img}
 		</div>
