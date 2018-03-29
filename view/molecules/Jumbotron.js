@@ -14,7 +14,7 @@ const TextButtonHomeContent = isMobile => {
 			<H1 margin='0' padding='0'>ซื้อ แชร์ รวย!</H1>
 			<p style={{color:color.gray}}>ซื้อสินค้า แชร์สินค้า คนสั่งซื้อ รับค่าคอม</p>
 			<Flex>
-				<Modal trigger={<Button secondary>วิธีการใช้งาน</Button>}>
+				<Modal closeIcon trigger={<Button secondary>วิธีการใช้งาน</Button>}>
 					<Modal.Header>วิธีการใช้งาน</Modal.Header>
 					<Modal.Content>
 						<Modal.Description>
