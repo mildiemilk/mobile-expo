@@ -27,7 +27,7 @@ const ProductPreview = props => <Wrapper>
 </Wrapper>
 
 export default props=> {
-	const validateProductValues = (props.comissionCash > 0 || props.comissionPercent > 0 ) && props.comissionWithinLimit && props.price > 0 && props.productImages.length > 0 && props.productName
+	const validateProductValues = (props.comissionCash > 0 ) && props.comissionWithinLimit && props.price > 0 && props.productImages.length > 0 && props.productName
 	return(
 		<Grid>
 			<Grid.Row>
@@ -60,7 +60,7 @@ export default props=> {
 							{!props.productName? <li>ใส่ชื่อสินค้า</li>:null}
 							{props.productImages.length ==0? <li>ใส่รูปภาพ</li>:null}
 							{props.price <= 0 ? <li>ใส่ราคาสินค้า </li>:null}
-							{!(props.comissionCash > 0 || props.comissionPercent > 0 )?<li>ใส่ค่าคอมมิสชั่น</li>:null}
+							{!(props.comissionCash > 0 )?<li>ใส่ค่าคอมมิสชั่น</li>:null}
 						</ul>
 						<ProductPreview {...props}/>
 					</Wrapper>

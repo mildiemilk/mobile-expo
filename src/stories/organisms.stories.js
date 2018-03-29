@@ -48,7 +48,6 @@ storiesOf('ComissionInput', module)
 const userProduct = {
 	brandName : "Peak brand",
 	comissionCash : 300,
-	comissionPercent: 50,
 	price: 2000,
 	productDescription: 'test test',
 	productName: 'blue shirt',

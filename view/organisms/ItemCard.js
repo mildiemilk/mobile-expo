@@ -40,7 +40,7 @@ class ItemCard extends React.Component {
 
 	render() {
 		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership, isUserMembership, membershipProductsNumber } = this.props
-		const { brandName, comissionCash, comissionPercent, price, productDescription, productName, productImages, stock} = this.props.product
+		const { brandName, comissionCash, price, productDescription, productName, productImages, stock} = this.props.product
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
@@ -80,7 +80,7 @@ class ItemCard extends React.Component {
 						</tr>
 						<tr>
 							<td style={{textAlign:'right'}}>ค่าคอม:</td>
-							<td>{comissionPercent} % & {comissionCash || '0.00'} บาท </td>
+							<td>{comissionCash || '0.00'} บาท </td>
 						</tr>
 						{!isSponsor? 
 						<tr>

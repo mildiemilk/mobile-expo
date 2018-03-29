@@ -9,8 +9,5 @@ export default ({comissionWithinLimit}) =>
     <Input format={formatInt} name="comissionCash" placeholder="10">
         คอมมิสชั่นเป็นเงินสด
     </Input>
-    <Input format={formatPercent} name="comissionPercent" placeholder="20%">
-        คอมมิสชั่นเป็น % ของราคาสินค้า
-    </Input>
     <span>{!comissionWithinLimit ? "คอมมิสชั่นรวมต้องน้อยกว่า 70% ของราคาสินค้า": " "} </span>
 </div>

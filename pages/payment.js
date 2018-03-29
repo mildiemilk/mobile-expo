@@ -18,7 +18,7 @@ class Payment extends React.Component{
 		if(this.props.url.query.queryParams)
 			savePaymentInternetBanking(this.props.url.query.queryParams.transactionID)
 		const { transaction } = this.props
-			let comission = calculateComission(transaction.price, transaction.comissionCash, transaction.comissionPercent)
+			let comission = calculateComission(transaction.price, transaction.comissionCash)
 	} 
 
 	ModalContext = (pending) => 
