@@ -5,6 +5,7 @@ import ProductDescriptionPreview from '../ecosystems/ProductDescriptionPreview'
 import { Grid } from 'semantic-ui-react'
 import MultiTab from '../molecules/Multitab'
 import AddToCart from '../organisms/AddToCart'
+import Wrapper from '../atoms/Wrapper';
 
 const tabs = props => ([{
     buttonLabel: 'รูปภาพ', 
@@ -20,30 +21,21 @@ component: <ProductDescriptionPreview productDescription={props.productDescripti
 export default props =>
 <Grid>
 	<Grid.Column mobile={16} tablet={16} computer={16}>
-		<Flex direction='row' center>
-			<MultiTab tabs={tabs({
-				images: props.images || [],
-				productName:props.product.productName ||'', 
-				shopName:props.product.brandName || '',
-				price:props.product.price ||'',
-				sellerId:props.product.userUid ||'',
-				minusQuantity:props.minusQuantity || null,
-				addQuantity:props.addQuantity || null,
-				productUid:props.productUid || '',
-				productQuantity:props.quantity ||0,
-				addProductTransaction:props.addProductTransaction || null,
-				productDescription: props.product.productDescription || []
-			})}
-			footer={    <AddToCart
-				minusQuantity = {props.minusQuantity}
-				addQuantity = {props.addQuantity}
-				sellerId={props.sellerId}
-				productUid = {props.productUid}
-				productQuantity = {props.quantity}
-				addProductTransaction={props.addProductTransaction}
-				price = {props.product.price}
-			/>}
+		<Wrapper>
+			<Flex direction='row' center>
+			<DisplayImages images={props.images} />
+			<DisplayProductText {...props.product} />
+			<ProductDescriptionPreview productDescription={props.product.productDescription} />
+			<AddToCart
+					minusQuantity = {props.minusQuantity}
+					addQuantity = {props.addQuantity}
+					sellerId={props.sellerId}
+					productUid = {props.productUid}
+					productQuantity = {props.quantity}
+					addProductTransaction={props.addProductTransaction}
+					price = {props.product.price}
 			/>
-		</Flex>
+			</Flex>
+		</Wrapper>
 	</Grid.Column>
 </Grid>
