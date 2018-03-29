@@ -13,7 +13,7 @@ export default styled.div`
 
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 1000;
     transition: 1s;
     background-color: rgba(0,0,0,0.7);
 
