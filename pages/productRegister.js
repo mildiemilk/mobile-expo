@@ -43,11 +43,11 @@ class ProductRegister extends Component {
 			shortDescription,
 			nextDescription, 
 			stock,
-			removeProductImage
+			removeProductImage,
+			productImagePending
 		} = this.props
 		const productID =  this.props.url.query.productID
 		let comissionWithinLimit = parseInt(price) * 0.7 > parseInt(price) * parseInt(comissionPercent || 0) / 100 + parseInt(comissionCash || 0)
-
 		return (<ProductForm 
 			nextDescription={nextDescription}
 			productDescription={productDescription} 
@@ -58,9 +58,10 @@ class ProductRegister extends Component {
 			productImages = {productImages}
 			shortDescription={shortDescription}
 			setProductImage = {setProductImage}
+			productImagePending={productImagePending}
 			removeProductImage={removeProductImage}
 			productName = {productName}
-            price = {price}
+      price = {price}
 			comissionCash = {comissionCash}
 			comissionPercent = {comissionPercent}
 			comissionWithinLimit = {comissionWithinLimit}
@@ -100,8 +101,7 @@ class ProductRegister extends Component {
 }	
 
 ProductRegister = reduxForm({
-    form: 'product',
-    enableReinitialize: true
+    form: 'product'
 })(ProductRegister)
 
 const selector = formValueSelector('product')
@@ -120,7 +120,8 @@ const mapStateToProps = state => ({
     nextDescription: selector(state,'nextDescription'),
     userUid: state.user.uid,
     userEmail: state.user.email,
-    productImages: state.productImages
+		productImages: state.productImages,
+		productImagePending: state.main.productImagePending
 })
 
 const mapDispatchToProps = {
