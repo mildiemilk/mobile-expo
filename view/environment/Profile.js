@@ -23,10 +23,35 @@ const DivNoContent = styled.div`
 	border-radius: 8px;
 	font-size: 15px;
 `
+
+function SampleNextArrow(props) {
+  const {className, style, onClick} = props
+  return (
+    <div
+      className={className}
+      style={{...style, display: 'block', background: 'gray', color:'gray', borderRadius:'10px'}}
+      onClick={onClick}
+    ></div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const {className, style, onClick} = props
+  return (
+    <div
+      className={className}
+      style={{...style, display: 'block', background: 'gray', color:'gray', borderRadius:'10px'}}
+      onClick={onClick}
+    ></div>
+  );
+}
+
 const settings = {
 	dots: true,
 	slidesToShow: 3,
-	slidesToScroll: 1
+	slidesToScroll: 3,
+	nextArrow: <SampleNextArrow />,
+	prevArrow: <SamplePrevArrow />
 };
 
 const requestedMembershipView = (members, saveRequestedByEmailUserMembership, user) => <Wrapper>

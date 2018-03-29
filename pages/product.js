@@ -29,7 +29,7 @@ class Product extends React.Component{
 
 
 	async componentWillReceiveProps(nextProps) {
-		const {productName, comissionCash, comissionPercent, price, userUid} = this.props.product
+		const {productName, comissionCash, price, userUid} = this.props.product
 		const {uid} = this.props.user
 
 		nextProps.product !== this.props.product ? await getUserProducts( nextProps.product.userUid ) : null
