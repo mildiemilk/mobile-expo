@@ -62,18 +62,8 @@ export default props=> {
 							{props.price <= 0 ? <li>ใส่ราคาสินค้า </li>:null}
 							{!(props.comissionCash > 0 || props.comissionPercent > 0 )?<li>ใส่ค่าคอมมิสชั่น</li>:null}
 						</ul>
-						<Modal context={<ProductPreview {...props}/>}>
-							<Button buttonDisabled={!validateProductValues} disabled={!validateProductValues} fullWidth >ลงขาย</Button>
-						</Modal>
+						<ProductPreview {...props}/>
 					</Wrapper>
-				</Grid.Column>
-			</Grid.Row>
-			<Grid.Row>
-				<Grid.Column mobile={16} tablet={8} computer={8}>
-				<Wrapper height="100%">
-					<H3>ภาพตัวอย่าง</H3>
-					<ProductDescriptionPreview {...props} />				
-				</Wrapper>
 				</Grid.Column>
 			</Grid.Row>
 			<Grid.Row>
