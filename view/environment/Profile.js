@@ -128,6 +128,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 													isUserMembership={isUserMembership}													
 													isSponsor={false}
 													setProductActive={setProductActive}
+													setProductMembership={setProductMembership}
+													membershipProductsNumber={membershipProductsNumber}
 												/>
 											</div>)
 										}) : null
@@ -151,6 +153,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											userUid={user.uid}
 											product={sponsorProducts[sponsorProductKey]} 
 											productKey={sponsorProductKey}
+											setProductMembership={setProductMembership}											
 										/></div>)
 									}) 
 								: null
@@ -164,7 +167,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											userUid={user.uid}
 											product={sponsorProducts[sponsorProductKey]} 
 											productKey={sponsorProductKey}
-											isUserMembership={isUserMembership}																								
+											isUserMembership={isUserMembership}	
+											setProductMembership={setProductMembership}																																		
 										/></div>)
 									}) 
 								: null
@@ -202,6 +206,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 												isSponsor={false}
 												isUserMembership={isUserMembership}																									
 												setProductActive={setProductActive}
+												setProductMembership={setProductMembership}												
 											/>
 										</div>)
 									}) 
@@ -222,6 +227,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											isSponsor={false}
 											isUserMembership={isUserMembership}																								
 											setProductActive={setProductActive}
+											setProductMembership={setProductMembership}											
 										/>
 									</div>)
 								}) : null
@@ -242,6 +248,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 									userUid={user.uid}
 									product={sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
+									setProductMembership={setProductMembership}									
 								/></div>)
 							}) 
 						: null
@@ -253,6 +260,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 									userUid={user.uid}
 									product={sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
+									setProductMembership={setProductMembership}									
 								/></div>)
 							}) 
 						: null
