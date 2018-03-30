@@ -35,12 +35,14 @@ const selectItem = {
 	"freeze":"freeze"
 }
 
+const PasswordMatch = props =>	props.passwordconfirmationLength > 5  ?
+	props.passwordLength === props.passwordconfirmationLength && props.passwordMatch ?
+	null: <h3>Password do not match</h3> : null
+
+
 const MemberRegisterForm = props => 
 <div>
-	{props.passwordconfirmationLength > 5  ?
-		props.passwordLength === props.passwordconfirmationLength && props.passwordMatch ?
-		null: <h3>Password do not match</h3> : null
-	}
+	<PasswordMatch {...props} />
 	{
 		props.member.error?
 		<span>{props.member.error}</span>:null
@@ -98,6 +100,19 @@ const DeleteMembershipConfirm = props =>   <SemanticModal trigger={<a style={{pa
 </SemanticModal.Actions>
 </SemanticModal>
 
+const ChangeMembershipPassword = props => <SemanticModal trigger={<a style={{padding:"3px 0 0 10px"}} href="#">เปลี่ยนรหัสสมาชิก</a>} closeIcon>
+<SemanticHeader icon='warning sign' content='เปลี่ยนพาสเวิด'/>
+<SemanticModal.Content>
+	<PasswordMatch {...props} />	
+	<H3>ใส่รหัสใหม่ที่คุณต้องการเปลี่ยน(คนที่เป็นสมาชิกอยู่แล้วไม่ต้องใส่รหัสใหม่)</H3>
+	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
+	<TextField labelFlexStart label="Password Confirmation" name="passwordconfirmation" type="password"/>
+</SemanticModal.Content>
+<SemanticModal.Actions>
+	<Button onClick={()=>props.setNewMembershipPassword(props.user.membership, props.password)}>ยืนยัน</Button>
+</SemanticModal.Actions>
+</SemanticModal>
+
 const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):addPermissionToMember(member))
 const addActionToMember = (member, setMemberPermission) =>({...member, permission:<PermissionOption member={member} setMemberPermission={setMemberPermission}/>})
 const addPermissionToMember = (member) =>({...member, permission:<p>{member.permission}</p>})
@@ -131,7 +146,7 @@ export default props =>
 								{ !props.user.pending?
 								<Flex direction="row">
 									{props.signinMembershipSuccess? <h3>สมัครสมาชิกสำเร็จ</h3>:null}
-									<H3>คุณเป็นสมาชิกของ:{props.user.membership|| 'คุณยังไม่เป็นสมาชิก'}</H3>
+									<H3>คุณเป็น{props.allMemberships[props.user.membership] ? props.allMemberships[props.user.membership].creatorUid=== props.user.uid?'เจ้าของสมาชิก':'สมาชิกของ':null}:{props.user.membership|| 'คุณยังไม่เป็นสมาชิก'}</H3>
 										{!props.user.membership?
 											<Flex direction="row">
 												<Modal context={<MemberLoginForm {...props} /> }
@@ -149,6 +164,10 @@ export default props =>
 												</Modal>
 											</Flex>
 											:<DeleteMembershipConfirm {...props}/>
+										}
+										{
+											props.allMemberships[props.user.membership] && props.allMemberships[props.user.membership].creatorUid=== props.user.uid?
+											<ChangeMembershipPassword {...props}/>:null
 										}
 									</Flex>:
 									<Icon loading name='spinner' size='large'/>

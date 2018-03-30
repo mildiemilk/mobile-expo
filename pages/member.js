@@ -9,7 +9,16 @@ import { getProfile } from '../lib/handlers/profile'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import { getUserbyUid } from '../lib/handlers/user'
-import { saveMembership, regexKey, loginMembership, setMembers, setMemberPermission, addMemberByEmail, getMemberByEmailsByMembership, getAllMemberships, removeUserMembership } from '../lib/handlers/member'
+import { saveMembership, 
+	regexKey, 
+	loginMembership, 
+	setMembers, 
+	setMemberPermission, 
+	addMemberByEmail, 
+	getMemberByEmailsByMembership, 
+	getAllMemberships, 
+	removeUserMembership, 
+	setNewMembershipPassword } from '../lib/handlers/member'
 import { setMembershipProducts } from '../lib/handlers/product'
 import { validateKey } from '../lib/actions/member'
 import { setChosenMembership, resetMembershipSuccess } from '../lib/actions/memberships'
@@ -23,13 +32,8 @@ class Member extends React.Component {
 			await getUserbyUid(user.uid)
 			user ? this.props.saveUser(user) : null
 		})
-		if(this.props.user.membership !== ''){
-			await setMembers(this.props.user.membership)
-			await getMemberByEmailsByMembership(this.props.user.membership)
-		}
-		await getMemberByEmailsByMembership(user.membership)
-		await getAllMemberships()
 		resetMembershipSuccess()
+		getAllMemberships()
 	}
 
 	async componentWillReceiveProps(nextProps){
@@ -37,6 +41,10 @@ class Member extends React.Component {
 		if(nextProps.user !== this.props.user){
 			await getProfile(this.props.user.uid)
 		}
+		if(nextProps.user.membership !== this.props.user.membership){
+			await setMembers(this.props.user.membership)
+			await getMemberByEmailsByMembership(this.props.user.membership)
+		}		
 		nextProps.name !== this.props.name ?
 			this.props.validateKey(RegExp(/[^a-z|A-Z|\s|[0-9]/g).exec(nextProps.name) === null): null
 	}
@@ -52,6 +60,7 @@ class Member extends React.Component {
 				isAdmin={member&&Object.keys(member.members).length > 0 && member.members[user.uid]? member.members[user.uid].permission==="admin" : null}
 				setMemberPermission={setMemberPermission}
 				removeUserMembership={removeUserMembership}
+				setNewMembershipPassword={setNewMembershipPassword}
 			/>
 		)
 	}
