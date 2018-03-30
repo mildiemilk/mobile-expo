@@ -6,17 +6,11 @@ import Link from 'next/link'
 import color from '../../static/json/color.json'
 
 const CheckoutWrap = styled.div`
+padding-top:20px;
 width: -webkit-fill-available;
 max-width: 400px;
 display: flex; 
 flex-flow: column nowrap;
-@media (max-width: 700px) {
-	position: fixed;
-	bottom: 0px;
-	left: 0px;
-	max-width: 100%;
-	width: 100%;
-}
 `
 
 const PriceWrap = styled.div`
