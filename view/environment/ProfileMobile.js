@@ -5,7 +5,7 @@ import Flex from '../atoms/Flex'
 import { Icon } from 'semantic-ui-react'
 
 export default ({ handleProfileMobile, handleItemCard, handleTableMobile }) => 
-	<Wrapper widthSmall="100vw" noMargin  height="100vh">
+	<Wrapper widthSmall="100vw" noMargin>
 		<Flex verticleCenter height="100vh" >
 				<Button fullWidth margin="10px" onClick={handleProfileMobile}><Icon name='user' size='large' />ข้อมูลส่วนตัว</Button>
 				<Button fullWidth margin="10px" onClick={handleItemCard}><Icon name='shopping cart' size='large' />สินค้า</Button>

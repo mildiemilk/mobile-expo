@@ -175,10 +175,9 @@ class Profile extends Component {
 						/>
 					}
 					{isItemMobile || isTableMobile ?
-						<div>
 							<ProfileView
-								{...state}
 								{...props}
+								{...state}
 								handleTableMobile={this.handleTableMobile}
 								handleItemCard={this.handleItemCard}
 								handleImageChange={this.handleImageChange}
@@ -186,7 +185,7 @@ class Profile extends Component {
 								handleEdit={this.handleEdit}
 								handleClickView={this.handleClickView}														
 							/>
-						</div>:null}
+						:null}
 					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&
 						<ProfileMobile 
 							handleProfileMobile={this.handleProfileMobile}

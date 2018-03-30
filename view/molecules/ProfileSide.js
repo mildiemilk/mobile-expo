@@ -11,10 +11,10 @@ class ProfileSide extends Component {
     const { content, sideContent, table, userUid, handleClick, isVisible, toggleVisibility, userPending } = this.props
     const pending = table!==undefined&&table.length>=1? table.filter(item => (item.sellerId === userUid) && (item.status === 'pending')).length :0
     return (
-      <div style={{height:'100vh'}}>
+      <div>
         <Sidebar.Pushable>
             <Sidebar animation='push' width='wide' visible={isVisible} icon='labeled' vertical inverted>
-              <Wrapper minHeight="100vh" noMargin noBorder noBorderRadius>
+              <Wrapper noMargin noBorder noBorderRadius>
                   {sideContent}
                 <Button secondary round fullWidth margin='10px 2px 2px 2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
                 <Button secondary round fullWidth margin='2px' onClick={() => handleClick('order')}>คำสั่งซื้อ

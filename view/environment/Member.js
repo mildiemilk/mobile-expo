@@ -37,11 +37,8 @@ const PasswordMatch = props =>	props.passwordconfirmationLength > 5  ?
 const randomAnArray = array =>{
 	let randomArray = []
 	while(array.length > 0){
-		console.log('array',array)
 		let randomNumber = Math.floor(Math.random()*array.length)
 		randomArray.push(array[randomNumber])
-		console.log('random number=', randomNumber)
-		console.log('random array = ', randomArray)
 		array = [].concat(array.slice(0,randomNumber)).concat(array.slice(randomNumber+1,array.length))
 	}
 	return randomArray

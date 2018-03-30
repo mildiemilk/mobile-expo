@@ -93,7 +93,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 							?	userProducts ? 
 								Object.keys(userProducts).reverse().map( userProductKey => {
 								return (
-									<div style={{display:'inline-block'}}>
+									<div style={{display:'inline-block'}} key={userProductKey}>
 										<ItemCard 
 											key={userProductKey}
 											userUid={user.uid} 
@@ -125,6 +125,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 													sponsorEmail={sponsorEmail}
 													setProductSponsor={setProductSponsor}
 													getProductSponsor={getProductSponsor}
+													isUserMembership={isUserMembership}													
 													isSponsor={false}
 													setProductActive={setProductActive}
 												/>
