@@ -5,6 +5,6 @@ export default props=> <BankAccount
     bankName="ธนาคารกสิกร" 
     bankNameEng="Kasikorn" 
     backgroundColor="#128426"
-    accountNumber="7302890379"
-    accountName="ปิยภูมิ ศรไพศาล"
+    accountNumber="0383832543"
+    accountName="บจก. แชไหม"
     />
