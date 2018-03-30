@@ -2,7 +2,7 @@ import React from 'react'
 import ProductView from '../view/environment/Product'
 import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
-import { getProductFromID, getUserProducts } from '../lib/handlers/product'
+import { getProductFromID, getUserProducts, setProductActive } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
 import { addProductDetail, addSponsorId, addSellerId, addProductId, addBuyerId, addQuantity, minusQuantity } from '../lib/actions/transaction'
@@ -48,6 +48,7 @@ class Product extends React.Component{
 			productUid={url.query.productID} 
 			quantity={transaction.quantity || 1 }
 			addProductTransaction={addProductTransaction}
+			setProductActive={setProductActive}
 			/>)
 	}
 }

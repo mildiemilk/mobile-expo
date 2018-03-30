@@ -161,6 +161,7 @@ class Profile extends Component {
 							handleEdit={this.handleEdit}						
 							handleClickView={this.handleClickView}
 							setProductMembership={setProductMembership}
+							setProductActive={setProductActive}
 						/>}
 					/>
 				}
@@ -174,6 +175,7 @@ class Profile extends Component {
 							handleSave={() => this.handleSave(detail)}
 							handleEdit={this.handleEdit}
 							setProductMembership={setProductMembership}
+							setProductActive={setProductActive}
 						/>
 					}
 					{isItemMobile || isTableMobile ?
@@ -186,7 +188,8 @@ class Profile extends Component {
 								handleSave={() => this.handleSave(detail)}
 								handleEdit={this.handleEdit}
 								handleClickView={this.handleClickView}	
-								setProductMembership={setProductMembership}													
+								setProductMembership={setProductMembership}	
+								setProductActive={setProductActive}												
 							/>
 						:null}
 					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&

@@ -153,7 +153,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											userUid={user.uid}
 											product={sponsorProducts[sponsorProductKey]} 
 											productKey={sponsorProductKey}
-											setProductMembership={setProductMembership}											
+											setProductMembership={setProductMembership}	
+											setProductActive={setProductActive}																					
 										/></div>)
 									}) 
 								: null
@@ -168,7 +169,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											product={sponsorProducts[sponsorProductKey]} 
 											productKey={sponsorProductKey}
 											isUserMembership={isUserMembership}	
-											setProductMembership={setProductMembership}																																		
+											setProductMembership={setProductMembership}	
+											setProductActive={setProductActive}																																												
 										/></div>)
 									}) 
 								: null
@@ -248,7 +250,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 									userUid={user.uid}
 									product={sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
-									setProductMembership={setProductMembership}									
+									setProductMembership={setProductMembership}		
+									setProductActive={setProductActive}																
 								/></div>)
 							}) 
 						: null
@@ -260,7 +263,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 									userUid={user.uid}
 									product={sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
-									setProductMembership={setProductMembership}									
+									setProductMembership={setProductMembership}	
+									setProductActive={setProductActive}																	
 								/></div>)
 							}) 
 						: null
