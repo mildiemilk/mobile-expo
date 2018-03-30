@@ -7,14 +7,14 @@ import store from '../lib/store'
 import loadFirebase from '../lib/database'
 import LoginForm from '../view/environment/AuthForm'
 import { signinWithFacebook, signinWithGoogle, signOut, signInWithEmail, addUserToDatabaseAndStore} from '../lib/handlers/authenticator'
-import { saveUser } from '../lib/actions/user'
+import { saveUser, resetPending } from '../lib/actions/user'
 import { validateEmail, validatePassword } from '../lib/helpers/formvalidation'
 
 class Login extends React.Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
-	
+		this.props.resetPending()
 	}
 
 	render() {
@@ -50,7 +50,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-	saveUser
+	saveUser,
+	resetPending
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Login)

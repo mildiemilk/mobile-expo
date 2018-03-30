@@ -22,6 +22,7 @@ import { saveMembership,
 import { setMembershipProducts } from '../lib/handlers/product'
 import { validateKey } from '../lib/actions/member'
 import { setChosenMembership, resetMembershipSuccess } from '../lib/actions/memberships'
+import Router from 'next/router'
 
 class Member extends React.Component {
 
@@ -29,8 +30,13 @@ class Member extends React.Component {
 		const auth = await loadFirebase('auth')
 		const user = await auth.onAuthStateChanged(async user => {
 			this.props.saveUserPending()
+			if(user){
 			await getUserbyUid(user.uid)
-			user ? this.props.saveUser(user) : null
+			this.props.saveUser(user) 
+			} else {
+				alert('ต้องล๊อกอินก่อนถึงจะใช้ส่วนของสมาชิกได้')
+				Router.push('/login')
+			}
 		})
 		resetMembershipSuccess()
 		getAllMemberships()
