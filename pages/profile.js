@@ -45,8 +45,8 @@ class Profile extends Component {
 			getUserbyUid(user.uid);
 			return user ? this.props.saveUser(user) : null
 		})
-		this.props.user? this.props.user.uid ? await getUserProducts(this.props.user.uid) : null : null
-		this.props.user? this.props.user.uid ? await getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null : null
+		this.props.user && this.props.user.uid ? await getUserProducts(this.props.user.uid) : null
+		this.props.user && this.props.user.uid ? await getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null 
 		this.props.user? this.props.user.uid ? await getProfile(this.props.user.uid) : null : null
 		this.props.user? this.props.user.email ? await getMemberByEmailsByEmail(this.props.user.email) : null : null
 	}
@@ -131,117 +131,60 @@ class Profile extends Component {
 	countMembershipProducts = products => Object.keys(products).filter( key => products[key].isMembership ).length
 	
 	render() {
-		const {user, userProducts, profile, table, detail, sponsorEmail, sponsorProducts, isUserMembership, userPending, requestMembership} = this.props
+		const {props,state} = this
+		const {userProducts, isUserMembership} = this.props
 		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
 		const membershipProductsNumber = this.countMembershipProducts(userProducts)
 		return <HeightDiv>
 			<Head/>
-			<Header content={
-				<ProfileSide sideContent = {
-					<ProfileDetail
-						profileImage={profile.profileImage}
-						handleImageChange={this.handleImageChange}
-						handleSave={() => this.handleSave(detail)}
-						detail={detail}
-						isEdit={isEdit}
-						profile={profile}
-						handleEdit={this.handleEdit}
-						balance={user.wallet}
-						userUid={user.uid}
-						isUserMembership={isUserMembership}
-						membershipProductsNumber={membershipProductsNumber}
-						userPending={userPending}
-					/>}
-					content = {
-						<ProfileView
-						saveRequestedByEmailUserMembership={saveRequestedByEmailUserMembership}
-						isUserMembership={isUserMembership}
-						requestMembership={requestMembership}
-						isItemCard={isItemCard}
-						handleImageChange={this.handleImageChange}
-						profileImage={profile.profileImage}
-						handleSave={() => this.handleSave(detail)}
-						detail={detail}
-						isEdit={isEdit}
-						handleEdit={this.handleEdit}
-						profile={profile}
-						setOrderStatus={setOrderStatus}
-						userUid={user.uid} 
-						table={table}
-						user={user} 
-						userProducts={userProducts} 
-						sponsorProducts={sponsorProducts}
-						setProductStock={setProductStock}
-						setProductSponsor={setProductSponsor}
-						getProductSponsor={getProductSponsor}
-						setProductMembership={setProductMembership}
-						sponsorEmail={sponsorEmail}
-						setProductActive={setProductActive}
-						isView={isView}
-						showView={showView}
-						handleClickView={this.handleClickView}
-						membershipProductsNumber={membershipProductsNumber}							
-						
-					/>}
-					isVisible={isVisible}
-					toggleVisibility={this.toggleVisibility}
-					table={table}
-					userUid={user.uid}
-					handleClick={this.handleClick}
-					userPending={userPending}
-				/>
-			}
+			<Header 
+				content={
+					<ProfileSide 
+						{...props}
+						{...state}
+						toggleVisibility={this.toggleVisibility}
+						handleClick={this.handleClick}
+						sideContent = {
+							<ProfileDetail
+								{...props}
+								{...state}
+								handleImageChange={this.handleImageChange}
+								handleSave={() => this.handleSave(detail)}
+								handleEdit={this.handleEdit}
+							/>}
+						content = {
+							<ProfileView
+							{...props}
+							{...state}
+							handleImageChange={this.handleImageChange}
+							handleSave={() => this.handleSave(detail)}
+							handleEdit={this.handleEdit}						
+							handleClickView={this.handleClickView}
+						/>}
+					/>
+				}
 				contentMobile={<HeightDiv>
 					{isProfileMobile&&
 						<ProfileDetail
+							{...props}
+							{...state}
 							handleProfileMobile={this.handleProfileMobile}
-							isProfileMobile={isProfileMobile}
-							profileImage={profile.profileImage}
 							handleImageChange={this.handleImageChange}
 							handleSave={() => this.handleSave(detail)}
-							detail={detail}
-							isEdit={isEdit}
-							profile={profile}
 							handleEdit={this.handleEdit}
-							balance={user.wallet}
-							userUid={user.uid}
-							membershipProductsNumber={membershipProductsNumber}							
 						/>
 					}
 					{isItemMobile || isTableMobile ?
 						<div>
 							<ProfileView
-								saveRequestedByEmailUserMembership={saveRequestedByEmailUserMembership}
-								requestMembership={requestMembership}
-								isUserMembership={isUserMembership}
+								{...state}
+								{...props}
 								handleTableMobile={this.handleTableMobile}
 								handleItemCard={this.handleItemCard}
-								isItemCard={isItemCard}
-								isTableMobile={isTableMobile}
-								isItemMobile={isItemMobile}
 								handleImageChange={this.handleImageChange}
-								profileImage={profile.profileImage}
 								handleSave={() => this.handleSave(detail)}
-								detail={detail}
-								isEdit={isEdit}
 								handleEdit={this.handleEdit}
-								profile={profile}
-								setOrderStatus={setOrderStatus}
-								userUid={user.uid} 
-								table={table}
-								user={user} 
-								userProducts={userProducts} 
-								sponsorProducts={sponsorProducts}
-								setProductStock={setProductStock}
-								setProductSponsor={setProductSponsor}
-								getProductSponsor={getProductSponsor}
-								setProductMembership={setProductMembership}								
-								sponsorEmail={sponsorEmail}
-								setProductActive={setProductActive}
-								isView={isView}
-								showView={showView}
-								handleClickView={this.handleClickView}
-								membershipProductsNumber={membershipProductsNumber}															
+								handleClickView={this.handleClickView}														
 							/>
 						</div>:null}
 					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&
@@ -273,7 +216,10 @@ const mapStateToProps = state => ({
 	table: state.profile.transactionIds,
 	isUserMembership: state.user.membership || false,
 	userPending: state.user? state.user.pending : false,
-	requestMembership: state.member.requestMembership
+	requestMembership: state.member.requestMembership,
+	balance: state.user.wallet,
+	userUid: state.user.uid,
+	profileImage: state.profile.profileImage
 })
 
 const mapDispatchToProps = {
