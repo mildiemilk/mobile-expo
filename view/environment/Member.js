@@ -34,6 +34,18 @@ const PasswordMatch = props =>	props.passwordconfirmationLength > 5  ?
 	props.passwordLength === props.passwordconfirmationLength && props.passwordMatch ?
 	null: <h3>Password do not match</h3> : null
 
+const randomAnArray = array =>{
+	let randomArray = []
+	while(array.length > 0){
+		console.log('array',array)
+		let randomNumber = Math.floor(Math.random()*array.length)
+		randomArray.push(array[randomNumber])
+		console.log('random number=', randomNumber)
+		console.log('random array = ', randomArray)
+		array = [].concat(array.slice(0,randomNumber)).concat(array.slice(randomNumber+1,array.length))
+	}
+	return randomArray
+}
 
 const MemberRegisterForm = props => 
 <div>
@@ -197,7 +209,7 @@ export default props =>
 								<h2>สินค้าของสมาชิก</h2>
 								<Grid stackable stretched columns={3}>
 								{
-									Object.keys(props.member.products).map(key => <Grid.Column><ProductCard {...props.member.products[key]} key={key} userUid={props.user.uid} productId={key}/></Grid.Column>)
+									randomAnArray(Object.keys(props.member.products)).map(key => <Grid.Column><ProductCard {...props.member.products[key]} key={key} userUid={props.user.uid} productId={key}/></Grid.Column>)
 								}
 								</Grid>
 								</Wrapper>
