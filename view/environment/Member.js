@@ -1,4 +1,4 @@
-import { Grid, Checkbox, Dropdown, Modal as SemanticModal, Icon, Header as SemanticHeader } from 'semantic-ui-react'
+import { Grid, Checkbox, Dropdown, Modal as SemanticModal, Icon, Header as SemanticHeader, Card } from 'semantic-ui-react'
 import Wrapper from '../atoms/Wrapper'
 import Field from '../atoms/TextField'
 import Button from '../atoms/Button'
@@ -15,18 +15,13 @@ import HeightDiv from '../atoms/HeightDiv'
 import Head from './DefaultHead'
 import Header from './Header'
 import H3 from '../atoms/H3'
+import Image from '../atoms/Image'
 
 const memberHeader = {
 	"name": "Name",
 	"email":"Email",
 	"shared":"Shared",
 	"permission":"Admin",
-}
-
-const productHeader = {
-	"productName": "Name",
-	"shared": "Shared",
-	"action": "Action"
 }
 
 const selectItem = {
@@ -113,11 +108,29 @@ const ChangeMembershipPassword = props => <SemanticModal trigger={<a style={{pad
 </SemanticModal.Actions>
 </SemanticModal>
 
+const ProductCard = props =>   <Card>
+<Image src={props.productImages[0]} height="300px"/>
+<Card.Content>
+  <Card.Header>
+	{props.productName}
+  </Card.Header>
+  <Card.Meta>
+	<span>
+	  {props.brandName}
+	</span>
+  </Card.Meta>
+  <Card.Description>
+	<p>ราคา:{props.price}</p>
+  </Card.Description>
+</Card.Content>
+<Card.Content extra>
+<ProductAction product={props} productId={props.productId} userUid={props.userUid} isSponsor={true}/>
+</Card.Content>
+</Card>
+
 const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):addPermissionToMember(member))
 const addActionToMember = (member, setMemberPermission) =>({...member, permission:<PermissionOption member={member} setMemberPermission={setMemberPermission}/>})
 const addPermissionToMember = (member) =>({...member, permission:<p>{member.permission}</p>})
-const constructProductArray = (userId,products) => convertObjectToArray(products).map(product=>addActionToProduct(userId,product))
-const addActionToProduct = (userId,product) => ({...product, action:<ProductAction product={product} productId={product.key} userUid={userId} isSponsor={true}/>})
 const convertObjectToArray = object => Object.keys(object).map(key => ({...object[key], key}))
 
 export default props => 
@@ -182,14 +195,16 @@ export default props =>
 								</Wrapper>
 								<Wrapper>
 								<h2>สินค้าของสมาชิก</h2>
-								<JsonTable headerJson={productHeader} bodyJsonArray={constructProductArray(props.user.uid,props.member.products)}/>
+								<Grid stackable stretched columns={3}>
+								{
+									Object.keys(props.member.products).map(key => <Grid.Column><ProductCard {...props.member.products[key]} key={key} userUid={props.user.uid} productId={key}/></Grid.Column>)
+								}
+								</Grid>
 								</Wrapper>
 						</Grid.Column>
 				</Grid.Row>
 			</Grid>
 			}
-			/>
-
-	
+			/>	
 	</HeightDiv>
 
