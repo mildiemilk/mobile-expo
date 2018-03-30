@@ -164,6 +164,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											userUid={user.uid}
 											product={sponsorProducts[sponsorProductKey]} 
 											productKey={sponsorProductKey}
+											isUserMembership={isUserMembership}																								
 										/></div>)
 									}) 
 								: null
@@ -199,6 +200,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 												setProductSponsor={setProductSponsor}
 												getProductSponsor={getProductSponsor}
 												isSponsor={false}
+												isUserMembership={isUserMembership}																									
 												setProductActive={setProductActive}
 											/>
 										</div>)
@@ -218,6 +220,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											setProductSponsor={setProductSponsor}
 											getProductSponsor={getProductSponsor}
 											isSponsor={false}
+											isUserMembership={isUserMembership}																								
 											setProductActive={setProductActive}
 										/>
 									</div>)
