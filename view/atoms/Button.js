@@ -31,7 +31,7 @@ ${props=> props.top? `top:${props.top};`:null}
 background: ${props => props.background? props.background : color.contrast};
 ${props => props.border ?`border: ${props.border};` : null}
 color: ${props => props.textColor? props.textColor: color.lightPrimary};
-${props=> props.secondary? `color:${color.contrast};background:white;border:2px solid ${color.contrast};`:null}
+${props=> props.secondary? `color:${color.contrast};background:white;border:2px solid ${color.contrast};padding:6px 16px;`:null}
 ${props=> props.buttonDisabled ? `background:darkgray !important;`:null}
 ${props => props.fullWidth ? 
 	'width:100%;' : null}

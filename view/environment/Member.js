@@ -1,4 +1,4 @@
-import { Grid, Checkbox } from 'semantic-ui-react'
+import { Grid, Checkbox, Dropdown, Modal as SemanticModal, Icon, Header as SemanticHeader } from 'semantic-ui-react'
 import Wrapper from '../atoms/Wrapper'
 import Field from '../atoms/TextField'
 import Button from '../atoms/Button'
@@ -51,15 +51,22 @@ const MemberRegisterForm = props =>
 	<TextField labelFlexStart label="Password Confirmation" name="passwordconfirmation" type="password"/>
 </div>
 
-const MemberLoginForm = props => 
-<div>
+const MemberLoginForm = props => {
+	const allMemberships = Object.keys(props.allMemberships).map( key => ({key:key, value:key, text:key}))
+	return <div>
 	{
 		props.member.error?
 		<span>{props.member.error}</span>:null
 	}
-	<TextField labelFlexStart label="Member Name" name="name"/>
-	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
-</div>
+	{
+		props.signinMembershipSuccess?
+		<H3>สมัครสมาชิกสำเร็จ</H3>:null
+	}
+	<H3>ชื่อสมาชิก</H3>
+	<Dropdown onChange={e=>props.setChosenMembership(props.allMemberships[e.currentTarget.innerText])} placeholder='Membership' search selection options={allMemberships} />
+	<H3>รหัสสมาชิก</H3>
+	<TextField labelFlexStart name="password" type="password"/>
+</div>}
 
 const PermissionOption = props => 
 <select value={props.member.permission} onChange={event=>props.setMemberPermission(props.member.userId, event.target.value)}>
@@ -79,6 +86,18 @@ const addMember = props => <Wrapper>
 	</ul>
 </Wrapper>
 
+const DeleteMembershipConfirm = props =>   <SemanticModal trigger={<a style={{padding:"3px 0 0 10px"}} href="#">ยกเลิกสมาชิก</a>} closeIcon>
+<SemanticHeader icon='trash' content='ยกเลิกการเป็นสมาชิก' />
+<SemanticModal.Content>
+  <p>คุณยืนยันที่จะลบสถานะความเป็นสมาชิกของ{props.user.membership}</p>
+</SemanticModal.Content>
+<SemanticModal.Actions>
+  <Button onClick={()=>props.removeUserMembership(props.user)} margin="0 0 5px 0">
+	<Icon name='checkmark' /> ยืนยัน
+  </Button>
+</SemanticModal.Actions>
+</SemanticModal>
+
 const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(member=>isAdmin?addActionToMember(member, setMemberPermission):addPermissionToMember(member))
 const addActionToMember = (member, setMemberPermission) =>({...member, permission:<PermissionOption member={member} setMemberPermission={setMemberPermission}/>})
 const addPermissionToMember = (member) =>({...member, permission:<p>{member.permission}</p>})
@@ -95,48 +114,55 @@ export default props =>
 					<Grid.Row>
 						<Grid.Column mobile={16} tablet={16} computer={4}>
 							<Wrapper>
+								{ !props.user.pending?
 								<ProfileDetailDisplay
 									profileImage={props.profile.profileImage}
 									detail={props.detail}
 									profile={props.profile}
 									balance={props.user.wallet}
 									userUid={props.user.uid}
-									/>
+									/>:
+									<Icon loading name='spinner' size='massive'/>
+								}
 							</Wrapper>
 						</Grid.Column>
 						<Grid.Column mobile={16} tablet={16} computer={12}>
 							<Wrapper>
+								{ !props.user.pending?
 								<Flex direction="row">
-									<h3>Your Membership:{props.user.membership|| 'คุณยังไม่เป็นสมาชิก'}</h3>
+									{props.signinMembershipSuccess? <h3>สมัครสมาชิกสำเร็จ</h3>:null}
+									<H3>คุณเป็นสมาชิกของ:{props.user.membership|| 'คุณยังไม่เป็นสมาชิก'}</H3>
 										{!props.user.membership?
 											<Flex direction="row">
 												<Modal context={<MemberLoginForm {...props} /> }
-												handleClick={()=>props.loginMembership(props.name, props.password, props.user)}
+												handleClick={()=>props.loginMembership(props.chosenMembership, props.password, props.user)}
 												textButton="สมัครสมาชิก"
 												>
-													<Button margin="0px 0 0 10px">สมัครสมาชิก</Button>
+													<Button margin="0px 0 0 10px">สมัครสมาชิก</Button>												
 												</Modal>
-												<Modal context=
-														{<MemberRegisterForm {...props} />}
-														handleClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}
-														textButton="สร้างสมาชิก"
-														>
-													<Button margin="0px 0 0 10px">สร้างสมาชิก</Button>
+												<Modal 
+													context={<MemberRegisterForm {...props} />}
+													handleClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}
+													textButton="สร้างสมาชิก"
+												>
+													<Button margin="0px 0 0 10px" secondary>สร้างสมาชิก</Button>
 												</Modal>
 											</Flex>
-											:null
+											:<DeleteMembershipConfirm {...props}/>
 										}
-									</Flex>
+									</Flex>:
+									<Icon loading name='spinner' size='large'/>
+									}
 									{props.user.membership&& 
 									<h3>Role:{props.member.members[props.user.uid]? props.member.members[props.user.uid].permission: null}</h3>
 									}
 								</Wrapper>
 								<Wrapper>
-								<h2>Member</h2>
+								<h2>สมาชิก</h2>
 								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Modal context={addMember(props)}><Button margin="0" fullWidth height="100%">+ add member</Button></Modal></td></tr>:null}/>
 								</Wrapper>
 								<Wrapper>
-								<h2>Products</h2>
+								<h2>สินค้าของสมาชิก</h2>
 								<JsonTable headerJson={productHeader} bodyJsonArray={constructProductArray(props.user.uid,props.member.products)}/>
 								</Wrapper>
 						</Grid.Column>
