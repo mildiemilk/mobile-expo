@@ -1,4 +1,5 @@
-import { Checkbox } from 'semantic-ui-react'
+import { Checkbox, Card, Button, Icon } from 'semantic-ui-react'
+import Modal from '../molecules/Modal'
 import React from 'react'
 import Link from 'next/link'
 import copy from 'copy-to-clipboard'
@@ -11,6 +12,12 @@ import AddStock from '../molecules/AddStocksButton'
 import AddSponsorModal from '../molecules/AddSponsorModal'
 import { validateEmail } from '../../lib/helpers/formvalidation'
 import ProductAction from '../molecules/ProductAction'
+import H3 from '../atoms/H3';
+
+const ConfirmDeleteProduct = props => <div>
+	<H3>ลบสินค้า</H3>
+	<p>การที่คุณลบสินค้าแบบนี้คือการลบสินค้าถาวร คุณต้องการลบหรือไม่?</p>
+</div>
 
 class ItemCard extends React.Component {
 	constructor(props){
@@ -39,22 +46,26 @@ class ItemCard extends React.Component {
 	}
 
 	render() {
-		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership, isUserMembership, membershipProductsNumber } = this.props
+		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership, isUserMembership, membershipProductsNumber, deleteProduct } = this.props
 		const { brandName, comissionCash, price, productDescription, productName, productImages, stock} = this.props.product
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
 		return(
-			<Wrapper width="21vw">
-				<Flex center verticleCenter>
-					<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
-						<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" size="20vw" />
-					</Link>
-				</Flex>
-				<Header>
+			<Card style={{margin:'5px'}}>
+				{!isSponsor?
+				<Modal context={<ConfirmDeleteProduct/>} action={<Button color='red' onClick={()=>deleteProduct(productKey)}><Icon name='trash'/>ลบสินค้าถาวร</Button>}>
+					<Card.Content>
+						<Button basic Icon size='tiny' style={{position:'absolute',right:'0',top:'0'}} icon='trash'/>
+					</Card.Content>
+				</Modal>:null
+				}
+				<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" />
+				<Card.Content>
+				<Card.Header>
 					{productName}
-				</Header>
-				<div>
+				</Card.Header>
+				<Card.Description>
 					<table>
 						<tbody>
 						{ 
@@ -113,9 +124,12 @@ class ItemCard extends React.Component {
 						</tr>:null}
 						</tbody>
 					</table>
+				</Card.Description>
+				</Card.Content>
+				<Card.Content extra>
 					<ProductAction product={product} productId={productKey} userUid={userUid} isSponsor={isSponsor} />
-				</div>
-			</Wrapper>
+				</Card.Content>
+			</Card>
 		)
 	}
 }

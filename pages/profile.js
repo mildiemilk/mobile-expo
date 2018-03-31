@@ -4,7 +4,7 @@ import MediaQuery from 'react-responsive'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import ProfileView from '../view/environment/Profile'
-import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive, setProductMembership } from '../lib/handlers/product'
+import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive, setProductMembership, deleteProduct } from '../lib/handlers/product'
 import { getMemberByEmailsByEmail, saveRequestedByEmailUserMembership } from '../lib/handlers/member'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
@@ -162,6 +162,7 @@ class Profile extends Component {
 							handleClickView={this.handleClickView}
 							setProductMembership={setProductMembership}
 							setProductActive={setProductActive}
+							deleteProduct={deleteProduct}
 						/>}
 					/>
 				}
@@ -189,7 +190,8 @@ class Profile extends Component {
 								handleEdit={this.handleEdit}
 								handleClickView={this.handleClickView}	
 								setProductMembership={setProductMembership}	
-								setProductActive={setProductActive}												
+								setProductActive={setProductActive}		
+								deleteProduct={deleteProduct}										
 							/>
 						:null}
 					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&
