@@ -9,24 +9,6 @@ import MediaQuery from 'react-responsive'
 import { Modal as SMTModal} from 'semantic-ui-react'
 
 class Modal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { display: props.display? props.display : false }
-    }
-
-    closeModal() {
-        this.setState({ display: false })
-    }
-    handleButton = async() => {
-        await this.props.handleClick()
-        this.closeModal()
-        
-    }
-    handleClose = () => {
-        this.setState({ display: false })
-        if(this.props.redirectUrl)
-            Router.push(this.props.redirectUrl)
-    }
     render() {
         const { buttonText, children, context, padding, minWidth, height, minHeight, textButton, widthDesktop, maxWidthDesktop,action } = this.props
         return (

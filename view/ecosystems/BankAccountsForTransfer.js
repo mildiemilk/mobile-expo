@@ -8,8 +8,7 @@ const ControllerButton = props => <Button margin="10px" {...props} fullWidth max
 
 export default props => 
 <div width="-webkit-fill-available">
-    <BankAccountBkk {...props} accountNumber="1234567890" />
-    <BankAccountKbank {...props} accountNumber="1234567890"/>
-    <BankAccountScb {...props} accountNumber="1234567890"/>
+    <BankAccountKbank {...props}/>
+    <BankAccountScb {...props} />
 </div>
 

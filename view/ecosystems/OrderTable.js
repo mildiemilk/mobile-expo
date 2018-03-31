@@ -9,7 +9,6 @@ export default ({orders, setOrderStatus}) => {
 		status: <OrderStatusButton status={order.status} setOrderStatus={setOrderStatus} transactionInfo={order}/>,
 		key: key
 	})):null
-
 	const headerJson = {
 		buyerName: 'Name',
 		productName: 'Product',

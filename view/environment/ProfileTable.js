@@ -16,8 +16,8 @@ const DivNoContent = styled.div`
 	font-size: 15px;
 `
 export default ({table, userUid, setOrderStatus, handleClickView, isView, showView, isTableMobile}) => {
-  const sellTable = table!==undefined&&table.length>=1? table.filter(item => item.sellerId === userUid):null
-  const sponsorTable = table!==undefined&&table.length>=1? table.filter(item => item.sponsorId === userUid):null
+  const sellTable = table&&table.length>=1? table.filter(item => item.sellerId === userUid):null
+  const sponsorTable = table&&table.length>=1? table.filter(item => item.sponsorId === userUid):null
   return (
   <div style={{flexGrow:"2"}}>
     {!isView || (showView === 'first')?
@@ -27,9 +27,9 @@ export default ({table, userUid, setOrderStatus, handleClickView, isView, showVi
            <h3 style={{ float: 'left' }}>คำสั่งซื้อในฐานะผู้ขาย</h3>
            {!isView? <a style={{ cursor: 'pointer', float: 'right' }} onClick={() => handleClickView('first')}>View all</a> : null}
           </div>
-          {table
-           ? <OrderTable orders={sellTable} setOrderStatus={setOrderStatus}/>
-           :<DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>
+          {sellTable? 
+          <OrderTable orders={sellTable} setOrderStatus={setOrderStatus}/>:
+          <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>
           }
         </Flex>
       </Wrapper>
@@ -42,9 +42,9 @@ export default ({table, userUid, setOrderStatus, handleClickView, isView, showVi
             <h3 style={{ float: 'left' }}>คำสั่งซื้อในฐานะผู้แนะนำ</h3>
             {!isView? <a style={{ cursor: 'pointer', float: 'right' }} onClick={() => handleClickView('second')}>View all</a> : null}
           </div>
-          {sponsorTable
-          ? <OrderTable orders={sponsorTable} setOrderStatus={setOrderStatus}/>
-          : <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>
+          {sponsorTable? 
+          <OrderTable orders={sponsorTable} setOrderStatus={setOrderStatus}/>: 
+          <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>
           }
         </Flex>
       </Wrapper>

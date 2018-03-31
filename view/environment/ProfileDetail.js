@@ -48,9 +48,10 @@ export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageCha
         }
       </div>
       }
+      {isProfileMobile&&
+        <Button onClick={handleProfileMobile} margin="10px 0px" secondary>Back</Button>
+      }
     </Wrapper>
-    {isProfileMobile&&
-    <Button onClick={handleProfileMobile} margin="10px 0px">Back</Button>
-    }
+
   </EditGrid>
 </Grid>

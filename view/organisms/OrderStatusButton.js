@@ -74,11 +74,6 @@ export default ({status, setOrderStatus, transactionInfo}) => (
 			>
 			{button.value === 'view'
 			?<Modal
-			height='null'
-			minHeight='100vh'
-			padding="0px"
-			widthDesktop="73vw"
-			maxWidthDesktop="98vw"
 				context={
 					<Grid reversed='mobile' columns='equal' stackable>
 						<Grid.Column computer={8}>
@@ -118,8 +113,8 @@ export default ({status, setOrderStatus, transactionInfo}) => (
 						</Grid.Column>
 				</Grid> 
 				}
-				children={button.name}
 			>
+			<span>รายละเอียด</span>
 			</Modal>
 			: button.name
 			}

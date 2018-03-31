@@ -163,6 +163,7 @@ class Profile extends Component {
 							setProductMembership={setProductMembership}
 							setProductActive={setProductActive}
 							deleteProduct={deleteProduct}
+							setOrderStatus={setOrderStatus}
 						/>}
 					/>
 				}
@@ -178,6 +179,7 @@ class Profile extends Component {
 							setProductMembership={setProductMembership}
 							setProductActive={setProductActive}
 						/>
+
 					}
 					{isItemMobile || isTableMobile ?
 							<ProfileView
@@ -196,6 +198,8 @@ class Profile extends Component {
 						:null}
 					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&
 						<ProfileMobile 
+							{...props}
+							{...state}
 							handleProfileMobile={this.handleProfileMobile}
 							handleItemCard={this.handleItemCard}
 							handleTableMobile={this.handleTableMobile}

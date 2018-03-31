@@ -78,10 +78,11 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 			{isItemCard
 			?<ProfileTable
 				table={table !== undefined ?!isView? table.slice(0,3) : table: undefined}
-				userUid={user.uid}
+				userUid={userUid}
 				setOrderStatus={setOrderStatus}
 				isView={isView}
 				showView={showView}
+				isTableMobile={isTableMobile}
 				handleClickView={handleClickView}
 			/>
 			:<div style={{flexGrow:"2"}}>
@@ -286,9 +287,9 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 					showView={showView}
 					handleClickView={handleClickView}
 					table={table !== undefined ?!isView? table.slice(0,3) : table: undefined}
-					table={table}
-					userUid={user.uid}
+					userUid={userUid}
 					setOrderStatus={setOrderStatus}
+					isTableMobile={isTableMobile}
 				/>
 				{!isView
 				?<Button onClick={handleTableMobile} margin="10px 0px">Back</Button>
