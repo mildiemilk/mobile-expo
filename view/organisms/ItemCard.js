@@ -1,4 +1,4 @@
-import { Checkbox } from 'semantic-ui-react'
+import { Checkbox, Card } from 'semantic-ui-react'
 import React from 'react'
 import Link from 'next/link'
 import copy from 'copy-to-clipboard'
@@ -45,16 +45,17 @@ class ItemCard extends React.Component {
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
 		return(
-			<Wrapper width="21vw">
+			<Card style={{margin:'5px'}}>
 				<Flex center verticleCenter>
 					<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
 						<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" size="20vw" />
 					</Link>
 				</Flex>
-				<Header>
+				<Card.Content>
+				<Card.Header>
 					{productName}
-				</Header>
-				<div>
+				</Card.Header>
+				<Card.Description>
 					<table>
 						<tbody>
 						{ 
@@ -113,9 +114,12 @@ class ItemCard extends React.Component {
 						</tr>:null}
 						</tbody>
 					</table>
-					<ProductAction product={product} productId={productKey} userUid={userUid} isSponsor={isSponsor} />
-				</div>
-			</Wrapper>
+				</Card.Description>
+				</Card.Content>
+					<Card.Content extra>
+						<ProductAction product={product} productId={productKey} userUid={userUid} isSponsor={isSponsor} />
+					</Card.Content>
+			</Card>
 		)
 	}
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../atoms/Button'
+import {Button} from 'semantic-ui-react'
 import Modal from './Modal'
 import AddStocksInput from './AddStocksInput'
 
@@ -18,7 +18,7 @@ class AddStocksButton extends React.Component {
 			<Modal 
 				context={<AddStocksInput setProductStock={setProductStock} productKey={productKey} currentStock={stock}/>}
 			>
-					<Button fullWidth secondary>Add Stock</Button>
+					<Button basic size='tiny'>เพิ่มสต๊อก</Button>
 			</Modal>
 		)
 	}
