@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import {Button} from 'semantic-ui-react'
+import {Button, Icon} from 'semantic-ui-react'
 import FacebookProvider, { Share } from 'react-facebook'
 import copy from 'copy-to-clipboard'
 import color from '../../static/json/color.json'
@@ -17,16 +17,16 @@ export default ({product, productId, userUid, isSponsor}) =>
     {!isSponsor?
         userUid === product.userUid ?
     <Link as={`/p/edit/${productId}/${userUid}`} href={`/productRegister?productID=${productId}&userID=${userUid}`}>
-        <Button size='mini' disabled={!product.active && isSponsor} basic color='blue'>แก้ไข</Button>
+        <Button icon size='mini' disabled={!product.active && isSponsor} basic color='blue'>แก้ไข <Icon name='write'/></Button>
     </Link>
     :null:null}
     <Link as={`/p/${productId}/${userUid}`} href={`/product?productID=${productId}&userID=${userUid}`}>
-        <Button size='mini' disabled={!product.active && isSponsor} basic color='green'>ตัวอย่าง</Button>
+        <Button icon size='mini' disabled={!product.active && isSponsor} basic color='green'>ดู​ตัวอย่าง <Icon name='unhide'/></Button>
     </Link>
-    <Button size='mini' color='teal' basic disabled={!product.active && isSponsor} onClick={()=>!product.active && isSponsor?copyLink(productId, userUid):alert('สินค้าไม่เปิดให้แชร์')} >คัดลอกลิงค์</Button>	
+    <Button icon size='mini' color='teal' basic disabled={!product.active && isSponsor} onClick={()=>!product.active && isSponsor?copyLink(productId, userUid):alert('สินค้าไม่เปิดให้แชร์')} >ลิงค์ <Icon name='clone'/></Button>	
     <FacebookProvider appId={process.env.FACEBOOK_APP_ID}> 
         <Share href={link(productId, userUid)}>
-            <Button size='mini' disabled={!product.active && isSponsor} color='blue' >แชร์ <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
+            <Button icon size='mini' disabled={!product.active && isSponsor} color='blue' >แชร์ <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>
         </Share>
     </FacebookProvider>
 </Button.Group>

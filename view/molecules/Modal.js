@@ -28,20 +28,23 @@ class Modal extends React.Component {
             Router.push(this.props.redirectUrl)
     }
     render() {
-        const { buttonText, children, context, padding, minWidth, height, minHeight, textButton, widthDesktop, maxWidthDesktop } = this.props
+        const { buttonText, children, context, padding, minWidth, height, minHeight, textButton, widthDesktop, maxWidthDesktop,action } = this.props
         return (
             <SMTModal trigger={children || <Button>modal</Button>} closeIcon>
-                            <MediaQuery maxDeviceWidth={700}>
-                                <div style={{ padding: "0px 5px 15px 5px" }}>
-                                    {context || 'put some context'}
-                                </div>
-                            </MediaQuery>
-                            <MediaQuery minDeviceWidth={701}>
-                                <div style={{ padding: "0px 10px 30px 10px" }}>
-                                    {context || 'put some context'}
-                                </div>
-                            </MediaQuery>
-                            {textButton && <Button fullWidth onClick={this.handleButton}>{textButton}</Button>}
+                <MediaQuery maxDeviceWidth={700}>
+                    <div style={{ padding: "0px 5px 15px 5px" }}>
+                        {context || 'put some context'}
+                    </div>
+                </MediaQuery>
+                <MediaQuery minDeviceWidth={701}>
+                    <div style={{ padding: "0px 10px 30px 10px" }}>
+                        {context || 'put some context'}
+                    </div>
+                </MediaQuery>
+                {textButton && <Button fullWidth onClick={this.handleButton}>{textButton}</Button>}
+                <SMTModal.Actions>
+                    {action}
+                </SMTModal.Actions>
             </SMTModal>
         )
     }

@@ -1,4 +1,5 @@
-import { Checkbox, Card } from 'semantic-ui-react'
+import { Checkbox, Card, Button, Icon } from 'semantic-ui-react'
+import Modal from '../molecules/Modal'
 import React from 'react'
 import Link from 'next/link'
 import copy from 'copy-to-clipboard'
@@ -11,6 +12,12 @@ import AddStock from '../molecules/AddStocksButton'
 import AddSponsorModal from '../molecules/AddSponsorModal'
 import { validateEmail } from '../../lib/helpers/formvalidation'
 import ProductAction from '../molecules/ProductAction'
+import H3 from '../atoms/H3';
+
+const ConfirmDeleteProduct = props => <div>
+	<H3>ลบสินค้า</H3>
+	<p>การที่คุณลบสินค้าแบบนี้คือการลบสินค้าถาวร คุณต้องการลบหรือไม่?</p>
+</div>
 
 class ItemCard extends React.Component {
 	constructor(props){
@@ -46,11 +53,14 @@ class ItemCard extends React.Component {
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
 		return(
 			<Card style={{margin:'5px'}}>
-				<Flex center verticleCenter>
-					<Link as={`/p/${productKey}/${userUid}`} href={`/product?productID=${productKey}&userID=${userUid}`}>
-						<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" size="20vw" />
-					</Link>
-				</Flex>
+				{!isSponsor?
+				<Modal context={<ConfirmDeleteProduct/>} action={<Button color='red' onClick={()=>{}}><Icon name='trash'/>ลบสินค้าถาวร</Button>}>
+					<Card.Content>
+						<Button basic Icon size='tiny' style={{position:'absolute',right:'0',top:'0'}} icon='trash'/>
+					</Card.Content>
+				</Modal>:null
+				}
+				<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" />
 				<Card.Content>
 				<Card.Header>
 					{productName}
@@ -116,9 +126,9 @@ class ItemCard extends React.Component {
 					</table>
 				</Card.Description>
 				</Card.Content>
-					<Card.Content extra>
-						<ProductAction product={product} productId={productKey} userUid={userUid} isSponsor={isSponsor} />
-					</Card.Content>
+				<Card.Content extra>
+					<ProductAction product={product} productId={productKey} userUid={userUid} isSponsor={isSponsor} />
+				</Card.Content>
 			</Card>
 		)
 	}
