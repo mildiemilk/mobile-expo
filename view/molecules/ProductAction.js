@@ -33,7 +33,7 @@ export default ({product, productId, userUid, isSponsor}) =>
     <Modal context={<ProductPreview product={product} images={product.productImages}/>}>
         <Button icon size='mini' disabled={!product.active && isSponsor} basic color='green'>ดู​ตัวอย่าง <Icon name='unhide'/></Button>
     </Modal>
-    <Button icon size='mini' color='teal' basic disabled={!product.active && isSponsor} onClick={()=>!product.active && isSponsor?copyLink(productId, userUid):alert('สินค้าไม่เปิดให้แชร์')} >ลิงค์ <Icon name='clone'/></Button>	
+    <Button icon size='mini' color='teal' basic disabled={!product.active && isSponsor} onClick={()=>product.active?copyLink(productId, userUid):alert('สินค้าไม่เปิดให้แชร์')} >ลิงค์ <Icon name='clone'/></Button>	
     <FacebookProvider appId={process.env.FACEBOOK_APP_ID}> 
         <Share href={link(productId, userUid)}>
             <Button icon size='mini' disabled={!product.active && isSponsor} color='blue' >แชร์ <i className="fa fa-share" aria-hidden="true"  textColor={color.darkText} ></i></Button>

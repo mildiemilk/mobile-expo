@@ -9,6 +9,7 @@ import Modal from '../molecules/Modal'
 import Image from '../atoms/Image'
 import DropZone from '../atoms/Dropzone'
 import WebExplain from '../organisms/WebExplain'
+import Head from 'next/head'
 
 const accountNumberFormat = accountNumber => `${accountNumber.slice(0,3)}-${accountNumber.slice(3,4)}-${accountNumber.slice(4,9)}-${accountNumber.slice(9,10)}`
 
@@ -42,6 +43,9 @@ export default ({backgroundColor, accountNumber, accountName, bankName, bankName
 	noBorderRadius
 	position="relative"
 >
+	<Head>
+		<meta name="format-detection" content="telephone=no" />
+	</Head>
 	<H3 color="white">{bankName}</H3>
 	<img style={{width:'80px', height:'80px', position:'absolute', top:'0', right:'0'}} src={logo || ""} alt="bank image" />
 	<H3 color="white" zIndex="10">{accountNumberFormat(accountNumber)}</H3>
