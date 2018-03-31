@@ -62,7 +62,7 @@ const requestedMembershipView = (members, saveRequestedByEmailUserMembership, us
 	}
 </Wrapper>
 
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership, membershipProductsNumber, requestMembership, saveRequestedByEmailUserMembership}) =>
+export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership, membershipProductsNumber, requestMembership, saveRequestedByEmailUserMembership,deleteProduct}) =>
 <Flex direction="column" margin="0px 7px">
 	<MediaQuery  minDeviceWidth={1224}>
 		{!isUserMembership? 
@@ -108,6 +108,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											isUserMembership={isUserMembership}
 											setProductMembership={setProductMembership}
 											membershipProductsNumber={membershipProductsNumber}
+											deleteProduct={deleteProduct}
 										/>
 									</div>)
 								}) : null
@@ -130,6 +131,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 													setProductActive={setProductActive}
 													setProductMembership={setProductMembership}
 													membershipProductsNumber={membershipProductsNumber}
+													deleteProduct={deleteProduct}
 												/>
 											</div>)
 										}) : null

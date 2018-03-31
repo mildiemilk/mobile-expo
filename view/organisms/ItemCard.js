@@ -46,7 +46,7 @@ class ItemCard extends React.Component {
 	}
 
 	render() {
-		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership, isUserMembership, membershipProductsNumber } = this.props
+		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProduct, isSponsor, setProductActive, isMembership, setProductMembership, isUserMembership, membershipProductsNumber, deleteProduct } = this.props
 		const { brandName, comissionCash, price, productDescription, productName, productImages, stock} = this.props.product
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
@@ -54,7 +54,7 @@ class ItemCard extends React.Component {
 		return(
 			<Card style={{margin:'5px'}}>
 				{!isSponsor?
-				<Modal context={<ConfirmDeleteProduct/>} action={<Button color='red' onClick={()=>{}}><Icon name='trash'/>ลบสินค้าถาวร</Button>}>
+				<Modal context={<ConfirmDeleteProduct/>} action={<Button color='red' onClick={()=>deleteProduct(productKey)}><Icon name='trash'/>ลบสินค้าถาวร</Button>}>
 					<Card.Content>
 						<Button basic Icon size='tiny' style={{position:'absolute',right:'0',top:'0'}} icon='trash'/>
 					</Card.Content>
