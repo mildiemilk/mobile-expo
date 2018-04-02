@@ -44,7 +44,7 @@ Login = reduxForm({
 })(Login)
 
 const mapStateToProps = state => ({
-    loginValues : state.form.login ? state.form.login.values : null,
+  loginValues : state.form.login ? state.form.login.values : null,
 	user: state.user,
 	pending: state.user? state.user.pending: false
 })

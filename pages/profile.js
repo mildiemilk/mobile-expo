@@ -21,6 +21,9 @@ import ProfileDetail from '../view/environment/ProfileDetail'
 import Button from '../view/atoms/Button';
 import HeightDiv from '../view/atoms/HeightDiv'
 import { setMembers } from '../lib/handlers/member'
+import H3 from '../view/atoms/H3'
+import login from './login'
+import Router from 'next/router'
 class Profile extends Component {
 	
 	constructor(props){
@@ -137,6 +140,7 @@ class Profile extends Component {
 		const membershipProductsNumber = this.countMembershipProducts(userProducts)
 		return <HeightDiv>
 			<Head/>
+			{props.user.uid?
 			<Header 
 				content={
 					<ProfileSide 
@@ -179,7 +183,6 @@ class Profile extends Component {
 							setProductMembership={setProductMembership}
 							setProductActive={setProductActive}
 						/>
-
 					}
 					{isItemMobile || isTableMobile ?
 							<ProfileView
@@ -206,7 +209,17 @@ class Profile extends Component {
 						/>
 					}
 				</HeightDiv>}
+			/>:
+			<Header
+					content={
+						<div>
+							<H3>คุณต้อง
+								<a href="#" onClick={()=>Router.push('/login')}>ล๊อกอิน</a>ก่อนใช้แอพ
+							</H3>
+						</div>
+					}
 			/>
+			}
 		</HeightDiv>
 	}
 }

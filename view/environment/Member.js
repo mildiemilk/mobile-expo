@@ -172,15 +172,13 @@ export default props =>
 										{!props.user.membership?
 											<Flex direction="row">
 												<Modal context={<MemberLoginForm {...props} /> }
-												handleClick={()=>props.loginMembership(props.chosenMembership, props.password, props.user)}
-												textButton="สมัครสมาชิก"
+												action={<Button onClick={()=>props.loginMembership(props.chosenMembership, props.password, props.user)}>สมัครสมาชิก</Button>}
 												>
 													<Button margin="0px 0 0 10px">สมัครสมาชิก</Button>												
 												</Modal>
 												<Modal 
 													context={<MemberRegisterForm {...props} />}
-													handleClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}
-													textButton="สร้างสมาชิก"
+													action={<Button onClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}>สมัครสมาชิก</Button>}
 												>
 													<Button margin="0px 0 0 10px" secondary>สร้างสมาชิก</Button>
 												</Modal>

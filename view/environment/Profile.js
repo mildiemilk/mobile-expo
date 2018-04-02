@@ -68,7 +68,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 		{!isUserMembership? 
 			<div>
 				{
-				requestMembership.length > 0 ?
+				requestMembership && requestMembership.length > 0 ?
 					requestedMembershipView(requestMembership, saveRequestedByEmailUserMembership, user)
 					:null
 				}
