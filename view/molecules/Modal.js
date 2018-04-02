@@ -10,7 +10,7 @@ import { Modal as SMTModal} from 'semantic-ui-react'
 
 class Modal extends React.Component {
     render() {
-        const { buttonText, children, context, padding, minWidth, height, minHeight, textButton, widthDesktop, maxWidthDesktop,action } = this.props
+        const { buttonText, children, context, padding, minWidth, height, minHeight, widthDesktop, maxWidthDesktop,action } = this.props
         return (
             <SMTModal trigger={children || <Button>modal</Button>} closeIcon>
                 <MediaQuery maxDeviceWidth={700}>
@@ -23,7 +23,6 @@ class Modal extends React.Component {
                         {context || 'put some context'}
                     </div>
                 </MediaQuery>
-                {textButton && <Button fullWidth onClick={this.handleButton}>{textButton}</Button>}
                 <SMTModal.Actions>
                     {action}
                 </SMTModal.Actions>
