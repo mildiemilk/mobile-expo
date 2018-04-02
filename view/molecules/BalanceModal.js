@@ -10,8 +10,10 @@ import Wrapper from '../atoms/Wrapper'
 import Modal from '../molecules/Modal'
 import { saveDispute } from '../../lib/handlers/dispute'
 import { subUserWallet } from '../../lib/handlers/user'
+import { updateUserBankAccount } from '../../lib/handlers/profile'
 
 class BalanceModal extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -28,14 +30,47 @@ class BalanceModal extends React.Component {
         }
     }
 
+    componentDidMount(){
+        if(
+            this.props.user&&
+            this.props.user.bankName &&
+            this.props.user.bankAccountNumber &&
+            this.props.user.bankAccountName ){
+                const{bankName, bankAccountNumber, bankAccountName } = this.props.user
+                this.setState({
+                    dispute:{
+                        ...this.state.dispute,
+                        bankAccountNumber,
+                        bankAccountName,
+                        bankName
+                    }
+                })
+        }
+    }
+
     componentWillReceiveProps(nextProps){
+        if(
+            this.props.user&& 
+            this.props.user.bankName &&
+            this.props.user.bankAccountNumber &&
+            this.props.user.bankAccountName ){
+            const{bankName, bankAccountNumber, bankAccountName } = this.props.user        
+        }
 		nextProps.balance !== this.props.balance && nextProps.balance? 
             this.setState({ balanceDisplay: nextProps.balance }) : null
-		nextProps.userUid !== this.props.userUid && nextProps.userUid? 
+        this.props.user&&
+        nextProps.userUid !== this.props.userUid && 
+        nextProps.userUid &&
+        this.props.user.bankName &&
+        this.props.user.bankAccountNumber &&
+        this.props.user.bankAccountName? 
             this.setState({ 
                 dispute: {
                     ...this.state.dispute,
-                    userUid: nextProps.userUid
+                    userUid: nextProps.userUid,
+                    bankAccountNumber,
+                    bankAccountName,
+                    bankName
                 }
             }) : null
 	}
@@ -83,13 +118,15 @@ class BalanceModal extends React.Component {
         }
     }
 
-    handleSetDataDispute = () => {
+    handleSetDataDispute = async () => {
         let _this = this;
-        subUserWallet(this.state.dispute.userUid, this.state.dispute.amount, () => {
+        const {userUid, amount, bankAccountName, bankAccountNumber, bankName} = this.state.dispute
+        await subUserWallet(userUid, amount, () => {
             let disputeArr = _this.state.dispute;
             disputeArr.DateAndTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
             saveDispute(disputeArr,(res)=>_this.handleDisputeCallback(res));
         })
+        await updateUserBankAccount(userUid, bankName, bankAccountName, bankAccountNumber)
     }
 
     handleChange = (e) => {
@@ -114,7 +151,7 @@ class BalanceModal extends React.Component {
     }
 
     render() {
-        const { balance } = this.props
+        const { balance,user } = this.props
         const canClick = this.canClick()
         return <Flex direction="row" verticleCenter >
             <H5 margin="0px 10px 0px 0px" lineHeight="32px">จำนวนเงิน: {this.props.balance||0} บาท</H5>
@@ -158,7 +195,7 @@ class BalanceModal extends React.Component {
                                 onBlur={(e) => this.handleCheckAmount(e)}
                                 value={this.state.dispute.amount} />
                             <br /><br />
-                            <Button fullWidth onClick={() => this.handleSetDataDispute()} buttonDisabled={!canClick} >ยืนยัน</Button>
+                            <Button fullWidth onClick={() => this.handleSetDataDispute()} buttonDisabled={!canClick} disabled={!canClick}>ยืนยัน</Button>
                             {!canClick? <span style={{ color: 'red'}}>กรุณากรอกข้อมูลให้ครบถ้วน</span> : null}
                         </div>
                     </WhiteDiv>

@@ -4,7 +4,7 @@ import withRedux from 'next-redux-wrapper'
 import store from '../lib/store'
 import ProductForm from '../view/environment/ProductForm'
 import { addProductDescription, removeProductImage, clearProductImages } from '../lib/actions/product'
-import { registerProduct,setProductImage, updateProduct, saveProductDescriptionImage, saveProductDescriptionVideo } from '../lib/handlers/product'
+import { registerProduct,setProductImage, updateProduct, saveProductDescriptionImage, saveProductDescriptionVideo, setInitialProductValue } from '../lib/handlers/product'
 import { getProductFromID } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser } from '../lib/actions/user'
@@ -22,8 +22,11 @@ class ProductRegister extends Component {
 
     async componentWillReceiveProps(nextProps) {
         ;(await nextProps.url.query.productID)
-            ? getProductFromID(nextProps.url.query.productID)
-            : null
+					? getProductFromID(nextProps.url.query.productID)
+					: null
+				;(await nextProps.url.query.productID)
+					? setInitialProductValue(this.props.product)
+					: null
     }
 
 
@@ -116,7 +119,8 @@ const mapStateToProps = state => ({
     userUid: state.user.uid,
     userEmail: state.user.email,
 		productImages: state.productImages,
-		productImagePending: state.main.productImagePending
+		productImagePending: state.main.productImagePending,
+		product: state.product
 })
 
 const mapDispatchToProps = {

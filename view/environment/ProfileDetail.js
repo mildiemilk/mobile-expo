@@ -16,7 +16,7 @@ import ProfileDetailEdit from '../organisms/ProfileDetailEdit'
 const EditGrid = styled(Grid.Column)`
   padding-right: 0px !important;
 `
-export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending}) => 
+export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending,user}) => 
 <Grid>
   <EditGrid mobile={16} tablet={16} computer={16}>
     {userPending?<Wrapper><H3>Loading...</H3><Icon loading name='spinner' size="big" /></Wrapper>:null}
@@ -36,7 +36,7 @@ export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageCha
       </div>
       :<div>
         <Image block margin="auto" size="150px" maxHeight="150px" src={profileImage?profileImage:'https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png'} />
-        <BalanceModal balance={balance} userUid={userUid} />
+        <BalanceModal balance={balance} userUid={userUid} user={user}/>
         <H5 lineHeight="32px">ที่อยู่: {profile.address}</H5>
         <H5 lineHeight="32px">อีเมล: {profile.email}</H5>
         <H5 lineHeight="32px">เบอร์โทรศัพท์: {profile.phone}</H5>
