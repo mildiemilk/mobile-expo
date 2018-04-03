@@ -21,6 +21,7 @@ background: -webkit-linear-gradient(135deg, #ff9966 0%,#ff5e62 100%);
 background: linear-gradient(135deg, #ff9966 0%,#ff5e62 100%);`
 
 const Subtitle = styled.p`
+font-family: 'Athiti', sans-serif;
 color:white;
 padding-left:20px;
 max-width:100vw;
@@ -115,6 +116,7 @@ margin:10px;
 border-radius: 10px;
 max-width: 200px;
 width:40%;
+font-family: 'Athiti', sans-serif;
 font-weight:bold;
 @media (max-width: 700px){
 	font-size:120%;
