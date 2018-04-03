@@ -1,7 +1,7 @@
 {
 	"primary":"#25282A",
 	"lightPrimary": "#fbfbfc",
-	"contrast": "#FE5000",
+	"contrast": "#ff902b",
 	"darkText": "#25282A",
 	"warning": "#F79E02",
 	"error":"#F76C6C",

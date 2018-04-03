@@ -7,7 +7,7 @@ export default ({children, title, url, image, type, description, video, videoTyp
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css' />
 	<link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-	<link href="https://fonts.googleapis.com/css?family=Athiti:300,400&amp;subset=thai" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500|Athiti:300,400,600&amp;subset=thai" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
 	<link href="https://fonts.googleapis.com/css?family=Kanit|Prompt" rel="stylesheet" />
 	<link rel="icon" type="image/png" sizes="512x512" href="../../static/img/logo.png" />

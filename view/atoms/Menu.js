@@ -3,9 +3,11 @@ import { Menu  } from 'semantic-ui-react'
 import color from '../../static/json/color.json'
 
 export default styled(Menu)`
-background: ${color.primary} !important;
 width: 100%;
 display: flex;
+align-items:center;
+padding:10px 0;
+margin:0 !important;
 justify-content:${props=>props.justifyContent};
 ${props=> props.height? `height: ${props.height};`:null}
 `

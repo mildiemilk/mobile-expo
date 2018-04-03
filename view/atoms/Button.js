@@ -6,11 +6,11 @@ export default styled.button`
 border: none;
 display: inline-block;
 ${props=> props.relative? 'position:relative;': null}
-${props=> props.fontWeight? `font-weight:${props.fontWeight};`: null}
-${props=> props.fontSize? `font-size:${props.fontSize};`: null}
+${props=> props.fontWeight? `font-weight:${props.fontWeight};`: 'font-weight:600;'}
+${props=> props.fontSize? `font-size:${props.fontSize};`: 'font-size:140%;'}
 ${props=> props.position? `position:${props.position};`: null}
 outline: 0;
-padding: ${props => props.padding? props.padding:'8px 16px'};
+padding: ${props => props.padding? props.padding:'16px 16px'};
 ${props=> props.nonMaxHeight?  null:`max-height:50px;`}
 vertical-align: middle;
 overflow: hidden;
