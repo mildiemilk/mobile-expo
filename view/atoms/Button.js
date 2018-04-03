@@ -2,9 +2,12 @@ import styled from 'styled-components'
 import color from '../../static/json/color.json'
 
 export default styled.button`
+
 border: none;
 display: inline-block;
 ${props=> props.relative? 'position:relative;': null}
+${props=> props.fontWeight? `font-weight:${props.fontWeight};`: null}
+${props=> props.fontSize? `font-size:${props.fontSize};`: null}
 ${props=> props.position? `position:${props.position};`: null}
 outline: 0;
 padding: ${props => props.padding? props.padding:'8px 16px'};
@@ -26,13 +29,11 @@ ${props=> props.margin? `margin:${props.margin};`:null}
 ${props=> props.right? `right:${props.right};`:null}
 ${props=> props.float? `float:${props.float};`:null}
 ${props=> props.top? `top:${props.top};`:null}
-
-
 background: ${props => props.background? props.background : color.contrast};
 ${props => props.border ?`border: ${props.border};` : null}
+${props=> props.buttonDisabled ? `background:darkgray !important;`:null}
 color: ${props => props.textColor? props.textColor: color.lightPrimary};
 ${props=> props.secondary? `color:${color.contrast};background:white;border:2px solid ${color.contrast};padding:6px 16px;`:null}
-${props=> props.buttonDisabled ? `background:darkgray !important;`:null}
 ${props => props.fullWidth ? 
 	'width:100%;' : null}
 ${props => props.fullHeight ? 
@@ -51,6 +52,12 @@ ${props => props.round? 'border-radius: 18px;': null}
 	transition: 0.1s;
 	z-index:10;
 }
+${props => props.boxShadow ? `
+-webkit-box-shadow: ${props.boxShadow};
+-moz-box-shadow: ${props.boxShadow};
+box-shadow: ${props.boxShadow};
+`:null}
+
 `
 export const DivButton = styled.div`
 	height: 32px;

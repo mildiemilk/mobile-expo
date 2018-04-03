@@ -29,6 +29,8 @@ ${props => props.backgroundImage? `background-image: ${props.backgroundImage};`:
 ${props => props.boxShadow? `box-shadow: ${props.boxShadow};`:null}
 ${props => props.hover?`&:hover{background: ${color.lightPrimary};}`: null }
 ${props => props.zIndex?`z-index: ${props.zIndex};}`: null }
+${props => props.background?`${props.background}`: null }
+
 @media (min-width: 700px) {
         ${props => props.bigScreenWidth? `width: ${props.bigScreenWidth};`:null};
         ${props => props.minWidthDesktop? `min-width: ${props.minWidthDesktop};`:null};
