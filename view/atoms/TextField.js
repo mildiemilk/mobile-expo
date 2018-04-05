@@ -7,18 +7,26 @@ import styled from 'styled-components'
 const CustomGrid = styled(Grid.Column)`
   padding: 0px !important;
 `
+
+const Label = styled.span`
+  color:${props=>props.color?props.color:'gray'};
+  font-size:180%;
+`
+
 export default props => 
   <div style={{margin:'20px'}}>
     <Grid>
       {props.label? 
       <CustomGrid width={props.noGrid?2:4}>
-        <Flex direction="row" height="100%" justContent={props.labelFlexStart? "flex-start":"flex-end"} verticleCenter><span>{props.label}</span></Flex>
+        <Flex direction="row" height="100%" justifyContent={props.labelFlexStart? "flex-start":"flex-end"} verticleCenter><Label color={props.color}>{props.label}</Label></Flex>
       </CustomGrid>
       :null
       }
       <CustomGrid width={props.noGrid?14:12}>
       <Field
-        {...props} component={Input}
+        {...props} 
+        component={Input}
+        width="none"
         fontSize="1.2em" 
         placeholder={props.placeholder}
         format={props.format}

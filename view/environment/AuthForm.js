@@ -28,7 +28,7 @@ export default ({
 		<Header content= {
 		!loggedIn ?
 			<Flex center width="100vw" direction="row"> 
-				<Wrapper minWidth="" padding="25px 40px 25px 50px" maxWidth="400px">
+				<Wrapper minWidth="" padding="25px 40px 25px 50px" maxWidth="600px">
 					{pending?<Wrapper><H3>Loading...</H3><Icon loading name='spinner' size="big" /></Wrapper>:null}
 					<SignInForm 	
 						onClickGoogle={onClickGoogle}

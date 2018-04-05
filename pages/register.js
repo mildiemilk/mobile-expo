@@ -1,5 +1,4 @@
 import React from 'react'
-import {bindActionCreators} from 'redux'
 import {reduxForm} from 'redux-form'
 import Router from 'next/router'
 import withRedux from "next-redux-wrapper"
@@ -10,7 +9,7 @@ import {signinWithFacebook, signinWithGoogle, signOut, registerWithEmail, addUse
 import {saveUser} from '../lib/actions/user'
 import {validateEmail, validatePassword, validatePasswordConfirmation} from '../lib/helpers/formvalidation'
 
-class Login extends React.Component {
+class Register extends React.Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
@@ -52,7 +51,7 @@ class Login extends React.Component {
             onSubmitEmail={registerWithEmail}/>)
     }
 }
-Login = reduxForm({form: 'login'})(Login)
+Register = reduxForm({form: 'login'})(Register)
 
 const mapStateToProps = state => ({
     loginValues: state.form.login
@@ -66,4 +65,4 @@ const mapDispatchToProps = {
     saveUser
 }
 
-export default withRedux(() => store, mapStateToProps, mapDispatchToProps)(Login)
+export default withRedux(() => store, mapStateToProps, mapDispatchToProps)(Register)

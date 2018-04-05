@@ -17,7 +17,7 @@ export default styled.div`
     transition: 1s;
     background-color: rgba(0,0,0,0.7);
 
-    display: ${props => props.display!==false ? 'flex':'none'};
+    display: ${props => props.display? 'flex':'none'};
     justify-content: center;
     align-items: center;
     overflow-x: scroll;

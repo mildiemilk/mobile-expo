@@ -5,6 +5,8 @@ import HomeView from '../view/environment/Home'
 import store from '../lib/store'
 import { saveUser } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
+import {reduxForm} from 'redux-form'
+import {signinWithFacebook, signinWithGoogle, signOut, registerWithEmail, addUserToDatabaseAndStore} from '../lib/handlers/authenticator'
 
 class Home extends Component {
 
@@ -18,11 +20,34 @@ class Home extends Component {
 	}
 
 	render() {
-		return <HomeView />
+		const {user, loginValues, pending} = this.props
+		return <div>
+			<HomeView 
+                page="register"
+                onClickFacebook={signinWithFacebook}
+                onClickGoogle={signinWithGoogle}
+                signOut={signOut}
+                loggedIn={user.signedIn}
+                formValue={loginValues}
+                pending={pending}
+                onSubmitEmail={registerWithEmail}
+            />
+			</div>
 	}
 }
 
+Home = reduxForm({form: 'login'})(Home)
+
+const mapStateToProps = state => ({
+    loginValues: state.form.login
+        ? state.form.login.values
+        : null,
+    pending: state.user ? state.user.pending : false,
+    user: state.user
+})
+
 const mapDispatchToProps = {
-	saveUser
+    saveUser
 }
-export default withRedux(()=>store, null, mapDispatchToProps)(Home)
+
+export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Home)
