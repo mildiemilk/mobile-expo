@@ -12,12 +12,14 @@ import Label from '../atoms/LabelImage'
 import BalanceModal from '../molecules/BalanceModal'
 import ProfileDetailDisplay from '../organisms/ProfileDetailDisplay'
 import ProfileDetailEdit from '../organisms/ProfileDetailEdit'
+import Flex from '../atoms/Flex'
 
 const EditGrid = styled(Grid.Column)`
   padding-right: 0px !important;
 `
-export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending,user}) => 
-<Grid>
+
+  
+export default({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending,user, cancelEdit}) => <Grid>
   <EditGrid mobile={16} tablet={16} computer={16}>
     {userPending?<Wrapper><H3>Loading...</H3><Icon loading name='spinner' size="big" /></Wrapper>:null}
     <Wrapper height="100%" widthSmall="100vw" noMargin noBorder noBorderRadius style={{border:'none'}}>
@@ -29,10 +31,14 @@ export default ({profile, handleEdit, isEdit, detail, handleSave, handleImageCha
         <Label for="buttonImg"><input style={{display:"none"}} name="image" onChange={e => handleImageChange(e)} id="buttonImg" type="file" /></Label>
         </DivImage>
         <H5 margin="15px 0px 0px 0px" lineHeight="20px">จำนวนเงิน: {profile.wallet||0} บาท</H5> 
-        <H5 lineHeight="37px" margin="5px 0px">ที่อยู่: <InputText noGrid name="address" maxWidth="300px" width="100%"/></H5>
-        <H5 lineHeight="37px" margin="5px 0px">อีเมล: <InputText noGrid name="email" maxWidth="300px" width="100%"/></H5>
-        <H5 lineHeight="37px" margin="5px 0px">เบอร์โทรศัพท์: <InputText noGrid name="phone" maxWidth="300px" width="100%"/></H5>
-        <DivButton TextAlign="right" MarginTop="20px"><Button onClick={handleSave}>Save</Button></DivButton>
+        <H5 lineHeight="37px" margin="5px 0px">ชื่อ: <InputText placeholder={profile.name} noGrid name="name" maxWidth="300px" width="100%"/></H5>
+        <H5 lineHeight="37px" margin="5px 0px">ที่อยู่: <InputText placeholder={profile.address} noGrid name="address" maxWidth="300px" width="100%"/></H5>
+        <H5 lineHeight="37px" margin="5px 0px">อีเมล: <InputText placeholder={profile.email} noGrid name="email" maxWidth="300px" width="100%"/></H5>
+        <H5 lineHeight="37px" margin="5px 0px">เบอร์โทรศัพท์: <InputText placeholder={profile.phone} noGrid name="phone" maxWidth="300px" width="100%"/></H5>
+        <Flex direction="row" >
+          <Button margin="0 5px 0 0" onClick={()=>cancelEdit()} secondary>cancel</Button>
+          <Button margin="0 0 0 5px" onClick={handleSave} secondary>Save</Button>
+        </Flex>
       </div>
       :<div>
         <Image block margin="auto" size="150px" maxHeight="150px" src={profileImage?profileImage:'https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png'} />

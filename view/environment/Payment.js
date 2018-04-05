@@ -8,30 +8,8 @@ import InternetBanking from '../organisms/InternetBanking'
 import HeightDiv from '../atoms/HeightDiv'
 import Button from '../atoms/Button';
 
-export const Tabs = props =>  {
-	const { price, quantity } = props.transaction
-	let tabs = [
-		{
-			buttonLabel:'โอนผ่านธนาคาร',
-			component:<BankAccountsForTransfer {...props}/>
-		}
-	]
-	if(price * quantity >= 20)
-		tabs.push(
-			{
-				buttonLabel: 'จ่ายผ่านบัตรเครดิต/เดบิต',
-				component: <CreditCard {...props}/>
-			},
-			{
-				buttonLabel: 'Internet Banking',
-				component: <InternetBanking {...props}/>
-			}
-		)
-	return tabs
-}
-
 export default props => 
 <HeightDiv>
 	<Head/>
-	<Header content={<Multitab tabs={Tabs(props)} />} />
+	<Header content={<BankAccountsForTransfer {...props}/>} />
 </HeightDiv>

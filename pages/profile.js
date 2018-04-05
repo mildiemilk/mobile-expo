@@ -24,6 +24,7 @@ import { setMembers } from '../lib/handlers/member'
 import H3 from '../view/atoms/H3'
 import login from './login'
 import Router from 'next/router'
+
 class Profile extends Component {
 	
 	constructor(props){
@@ -102,6 +103,10 @@ class Profile extends Component {
 		this.setState({isEdit:true})
 	}
 
+	cancelEdit = () => {
+		this.setState({isEdit:false})
+	}
+
 	handleClick = string => {
 		this.setState({
 			isView: false,
@@ -153,15 +158,16 @@ class Profile extends Component {
 								{...props}
 								{...state}
 								handleImageChange={this.handleImageChange}
-								handleSave={() => this.handleSave(detail)}
+								handleSave={() => this.handleSave(this.props.detail)}
 								handleEdit={this.handleEdit}
+								cancelEdit={this.cancelEdit}
 							/>}
 						content = {
 							<ProfileView
 							{...props}
 							{...state}
 							handleImageChange={this.handleImageChange}
-							handleSave={() => this.handleSave(detail)}
+							handleSave={() => this.handleSave(this.props.detail)}
 							handleEdit={this.handleEdit}						
 							handleClickView={this.handleClickView}
 							setProductMembership={setProductMembership}
@@ -178,10 +184,11 @@ class Profile extends Component {
 							{...state}
 							handleProfileMobile={this.handleProfileMobile}
 							handleImageChange={this.handleImageChange}
-							handleSave={() => this.handleSave(detail)}
+							handleSave={() => this.handleSave(this.props.detail)}
 							handleEdit={this.handleEdit}
 							setProductMembership={setProductMembership}
 							setProductActive={setProductActive}
+							cancelEdit={this.cancelEdit}
 						/>
 					}
 					{isItemMobile || isTableMobile ?
@@ -191,7 +198,7 @@ class Profile extends Component {
 								handleTableMobile={this.handleTableMobile}
 								handleItemCard={this.handleItemCard}
 								handleImageChange={this.handleImageChange}
-								handleSave={() => this.handleSave(detail)}
+								handleSave={() => this.handleSave(this.props.detail)}
 								handleEdit={this.handleEdit}
 								handleClickView={this.handleClickView}	
 								setProductMembership={setProductMembership}	
@@ -235,7 +242,7 @@ const mapStateToProps = state => ({
 	userProducts: state.userProducts,
 	sponsorProducts: state.sponsorProducts,
 	profile: state.profile,
-	detail: selector(state,'address', 'email', 'phone', 'image'),
+	detail: selector(state,'name','address', 'email', 'phone', 'image'),
 	sponsorEmail: selector(state, 'sponsorEmail'),
 	table: state.profile.transactionIds,
 	isUserMembership: state.user.membership || false,

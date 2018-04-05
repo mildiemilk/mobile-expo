@@ -8,7 +8,7 @@ import Wrapper from '../atoms/Wrapper';
 class ProfileSide extends Component {
  
   render() {
-    const { content, sideContent, table, userUid, handleClick, isVisible, toggleVisibility, userPending } = this.props
+    const { content, sideContent, table, userUid, handleClick, isVisible, toggleVisibility, userPending, cancelEdit,user } = this.props
     const pending = table!==undefined&&table.length>=1? table.filter(item => (item.sellerId === userUid) && (item.status === 'pending')).length :0
     return (
       <div>
