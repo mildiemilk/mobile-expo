@@ -36,26 +36,58 @@ export default () =>
 			</ButtonWrap>
 		</TextWrapper>
 	</Wrapper>
-	<Grid>
+	<Grid centered>
 		<Grid.Row>
-			<Grid.Column mobile={16} computer={8}>
+			<BannerWrapper mobile={16} computer={8} color='teal' centered>
+				<BannerHeader>
+					เป้าหมายคอมมิสชั่น 10 ล้านบาท
+				</BannerHeader>
+				<BannerSub>
+					ร้านค้ามากมายที่ต้องการให้คุณได้ค่าตอบแทนจากการแชร์สินค้า
+				</BannerSub>
 				<Banner1/>
-			</Grid.Column>
-			<Grid.Column mobile={16} computer={8}>
+			</BannerWrapper>
+			<BannerWrapper mobile={16} computer={8} color='teal' centered>
+				<BannerHeader>
+					เป้าหมายสินค้า 1000 รายการ
+				</BannerHeader>
+				<BannerSub>
+					เจ้าของร้านค้าไม่จำเป็นต้องหาตัวแทนที่ไหนอีกแล้วเพราะที่นี่ลูกค้าทุกคนคือตัวแทนของคุณ!
+				</BannerSub>
 				<Banner2/>
-			</Grid.Column>
+			</BannerWrapper>
 		</Grid.Row>
 	</Grid>
 </Section1>
 
-const BannerWrapper = styled.div`
-	display:flex;
+const BannerWrapper = styled(Grid.Column)`
+display: flex !important;
+flex-direction: column !important;
+align-items: center;
 `
 
-const colorPink='#ff2b30'
-const colorOrange='#ff902b'
+const colorPink='#ff5e62'
+const colorOrange='#ff9966'
 
-const Banner1 = styled(Banner01)`
+const Banner1 = styled(Banner01)``
+
+const BannerHeader = styled.h2`
+font-family: 'Athiti',sans-serif;
+color: white;
+font-size: 300%;
+font-weight: 200;
+padding-top:10px;
+margin:0;
+padding:0;
+`
+const BannerSub = styled.h3`
+font-family: 'Athiti',sans-serif;
+color: #FEFEFA;
+font-size: 150%;
+font-weight: 200;
+width:539px;
+padding:0;
+margin:0;
 `
 
 const Banner2 = styled(Banner02)``
@@ -64,12 +96,10 @@ const Wrapper = styled.div`
 display: flex;
 flex-flow: row wrap-reverse;
 margin-top:0px;
-padding-bottom:60px;
 background: ${colorOrange}; 
 background: -moz-linear-gradient(135deg, ${colorOrange} 0%, ${colorPink} 100%); 
 background: -webkit-linear-gradient(135deg, ${colorOrange} 0%,${colorPink} 100%); 
 background: linear-gradient(135deg, ${colorOrange} 0%,${colorPink} 100%);
-justify-content:center;
 `
 
 const Subtitle = styled.p`

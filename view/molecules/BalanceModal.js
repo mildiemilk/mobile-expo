@@ -159,7 +159,7 @@ class BalanceModal extends React.Component {
                 <Button round maxWidth="76px"  onClick={() => this.setState({ disputing: !this.state.disputing })}> {this.state.disputing ? 'ยกเลิก' : 'ถอนเงิน'} </Button>
                 :null
             }
-            <BlackOut display={this.state.disputing} height={this.state.wh + 'px'} widthDesktop="49vh">
+            <BlackOut display={this.state.disputing? 1:0} height={this.state.wh + 'px'} widthDesktop="49vh">
                 <Wrapper width='100%'>
                     <WhiteDiv padding={'10px'} style={{
                         width: '100%'

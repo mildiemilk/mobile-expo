@@ -8,6 +8,6 @@ display: flex;
 align-items:center;
 padding:10px 0;
 margin:0 !important;
-justify-content:${props=>props.justifyContent};
+justify-content:space-between;
 ${props=> props.height? `height: ${props.height};`:null}
 `

@@ -19,7 +19,7 @@ margin-bottom:0;
 `
 
 export default ({loggedIn, content}) => <div>
-<Menu justifyContent={!loggedIn?'normal':'space-between'}>
+<Menu>
 	<Logo>sharemai</Logo>
 	{loggedIn
 	?	menu.filter(item => ['/login', '/register'].indexOf(item.link) === -1).map( ({link, text}, key) => 

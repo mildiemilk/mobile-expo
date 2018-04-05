@@ -13,7 +13,7 @@ class ProfileSide extends Component {
     return (
       <div>
         <Sidebar.Pushable>
-            <Sidebar animation='push' width='wide' visible={isVisible} icon='labeled' vertical inverted>
+            <Sidebar animation='push' width='wide' visible={isVisible} icon='labeled'>
               <Wrapper noMargin noBorder noBorderRadius>
                   {sideContent}
                 <Button secondary round fullWidth margin='10px 2px 2px 2px' onClick={() => handleClick('table')}>สินค้าทั้งหมด</Button>
