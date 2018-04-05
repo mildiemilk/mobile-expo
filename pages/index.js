@@ -6,10 +6,7 @@ import store from '../lib/store'
 import { saveUser } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import {reduxForm} from 'redux-form'
-import SignInForm from '../view/organisms/SignInForm'
 import {signinWithFacebook, signinWithGoogle, signOut, registerWithEmail, addUserToDatabaseAndStore} from '../lib/handlers/authenticator'
-
-
 
 class Home extends Component {
 
@@ -25,16 +22,16 @@ class Home extends Component {
 	render() {
 		const {user, loginValues, pending} = this.props
 		return <div>
-			<HomeView />
-			<SignInForm
-            page="register"
-            onClickFacebook={signinWithFacebook}
-            onClickGoogle={signinWithGoogle}
-            signOut={signOut}
-            loggedIn={user.signedIn}
-            formValue={loginValues}
-            pending={pending}
-            onSubmitEmail={registerWithEmail}/>
+			<HomeView 
+                page="register"
+                onClickFacebook={signinWithFacebook}
+                onClickGoogle={signinWithGoogle}
+                signOut={signOut}
+                loggedIn={user.signedIn}
+                formValue={loginValues}
+                pending={pending}
+                onSubmitEmail={registerWithEmail}
+            />
 			</div>
 	}
 }

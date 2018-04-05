@@ -10,9 +10,9 @@ import H1 from '../atoms/H1'
 import styled from 'styled-components'
 import Banner01 from '../../static/banner/banner_12.svg'
 import Banner02 from '../../static/banner/banner_22.svg'
+import SignInForm from '../organisms/SignInForm'
 
-
-export default () => 
+export default ({...props}) => 
 <Section1>
 	<Wrapper>
 		<div>
@@ -58,7 +58,13 @@ export default () =>
 			</BannerWrapper>
 		</Grid.Row>
 	</Grid>
+	<RegisterWrapper centered doubling columns={2} >
+		<Grid.Column>
+			<SignInForm {...props} color="white"/>	
+		</Grid.Column>	
+	</RegisterWrapper>
 </Section1>
+
 
 const BannerWrapper = styled(Grid.Column)`
 display: flex !important;
@@ -69,7 +75,21 @@ align-items: center;
 const colorPink='#ff5e62'
 const colorOrange='#ff9966'
 
-const Banner1 = styled(Banner01)``
+const RegisterWrapper = styled(Grid)`
+	background: ${colorOrange}  !important; 
+	background: -moz-linear-gradient(135deg, ${colorOrange} 0%, orange 100%) !important; 
+	background: -webkit-linear-gradient(135deg, ${colorOrange} 0%,orange 100%) !important; 
+	background: linear-gradient(135deg, ${colorOrange} 0%,orange 100%) !important;
+`
+
+
+const Banner1 = styled(Banner01)`
+	width:100%
+`
+
+const Banner2 = styled(Banner02)`
+width:100%
+`
 
 const BannerHeader = styled.h2`
 font-family: 'Athiti',sans-serif;
@@ -90,7 +110,7 @@ padding:0;
 margin:0;
 `
 
-const Banner2 = styled(Banner02)``
+
 
 const Wrapper = styled.div`
 display: flex;

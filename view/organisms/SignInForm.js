@@ -1,10 +1,19 @@
 import { Button, Icon, Divider, Form } from 'semantic-ui-react'
 import TextField from '../atoms/TextField'
+import styled from 'styled-components'
 
-export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) =>
+const Header = styled.h1`
+font-family: 'Athiti',sans-serif;
+font-weight:300;
+font-size:300%;
+color:${props=>props.color?props.color:'black'};
+`
+
+export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue, color}) =>
 <div>
-		<h2 style={{marginLeft:'10px'}}>{ page === 'login'? 'Login':'Registration'}</h2>
+		<Header color={color}>{ page === 'login'? 'ล๊อกอิน':'สมัครเลย!'}</Header>
 		<TextField
+			color={color}
 			type="email"
 			name="email"
 			label="อีเมล"
@@ -13,6 +22,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 		/>
 
 			<TextField
+				color={color}
 				type="password"
 				name="password"
 				label="รหัสผ่าน"
@@ -23,6 +33,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 		{
 			page !== 'login' ?
 			<TextField
+				color={color}
 				type="password"
 				name="passwordConfirm"
 				label="ยืนยันรหัสผ่าน"
@@ -32,7 +43,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 			:null
 		}
 
-			<Button style={{width:'100%', marginLeft:'10px'}} size='medium' primary onClick={()=>onSubmitEmail(formValue? formValue.email : null, formValue? formValue.password: null)}>
+			<Button style={{width:'100%'}} size='medium' primary onClick={()=>onSubmitEmail(formValue? formValue.email : null, formValue? formValue.password: null)}>
 				<Icon name='user'></Icon> 
 				{page === 'login' ? <span>ล๊อกอิน</span> : <span>สมัครบริการ</span>}
 			</Button>
@@ -40,7 +51,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 			<Button 
 				size='medium' 
 				color='facebook' 
-				style={{width:'100%', marginLeft:'10px'}}				
+				style={{width:'100%'}}				
 				onClick={()=>onClickFacebook()}>
 				<Icon name='facebook' /> 
 				{page === 'login' ?'ล๊อกอินด้วย facebook':'สมัครด้วย with facebook'}
@@ -48,7 +59,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue}) 
 	<Divider horizontal>Or</Divider>					
 			<Button 
 				size='medium' 
-				style={{width:'100%', marginLeft:'10px'}}
+				style={{width:'100%'}}
 				color='google plus'  
 				onClick={()=>onClickGoogle()}>
 				<Icon name='google plus' /> 
