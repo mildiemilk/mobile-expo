@@ -2,12 +2,14 @@ import MediaQuery from 'react-responsive'
 import Link from 'next/link'
 import Flex from '../atoms/Flex'
 import ManyMobile from '../../static/img/manyMobiles.svg'
-import { Modal } from 'semantic-ui-react'
+import { Modal, Grid } from 'semantic-ui-react'
 import Button from '../atoms/Button'
 import WebExplain from '../organisms/WebExplain'
 import color from '../../static/json/color.json'
 import H1 from '../atoms/H1'
 import styled from 'styled-components'
+import Banner01 from '../../static/banner/banner_12.svg'
+import Banner02 from '../../static/banner/banner_22.svg'
 
 
 export default () => 
@@ -34,11 +36,29 @@ export default () =>
 			</ButtonWrap>
 		</TextWrapper>
 	</Wrapper>
+	<Grid>
+		<Grid.Row>
+			<Grid.Column mobile={16} computer={8}>
+				<Banner1/>
+			</Grid.Column>
+			<Grid.Column mobile={16} computer={8}>
+				<Banner2/>
+			</Grid.Column>
+		</Grid.Row>
+	</Grid>
 </Section1>
 
+const BannerWrapper = styled.div`
+	display:flex;
+`
 
 const colorPink='#ff2b30'
 const colorOrange='#ff902b'
+
+const Banner1 = styled(Banner01)`
+`
+
+const Banner2 = styled(Banner02)``
 
 const Wrapper = styled.div`
 display: flex;
