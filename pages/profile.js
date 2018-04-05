@@ -158,7 +158,7 @@ class Profile extends Component {
 								{...props}
 								{...state}
 								handleImageChange={this.handleImageChange}
-								handleSave={() => this.handleSave(detail)}
+								handleSave={() => this.handleSave(this.props.detail)}
 								handleEdit={this.handleEdit}
 								cancelEdit={this.cancelEdit}
 							/>}
@@ -167,7 +167,7 @@ class Profile extends Component {
 							{...props}
 							{...state}
 							handleImageChange={this.handleImageChange}
-							handleSave={() => this.handleSave(detail)}
+							handleSave={() => this.handleSave(this.props.detail)}
 							handleEdit={this.handleEdit}						
 							handleClickView={this.handleClickView}
 							setProductMembership={setProductMembership}
@@ -184,7 +184,7 @@ class Profile extends Component {
 							{...state}
 							handleProfileMobile={this.handleProfileMobile}
 							handleImageChange={this.handleImageChange}
-							handleSave={() => this.handleSave(detail)}
+							handleSave={() => this.handleSave(this.props.detail)}
 							handleEdit={this.handleEdit}
 							setProductMembership={setProductMembership}
 							setProductActive={setProductActive}
@@ -198,7 +198,7 @@ class Profile extends Component {
 								handleTableMobile={this.handleTableMobile}
 								handleItemCard={this.handleItemCard}
 								handleImageChange={this.handleImageChange}
-								handleSave={() => this.handleSave(detail)}
+								handleSave={() => this.handleSave(this.props.detail)}
 								handleEdit={this.handleEdit}
 								handleClickView={this.handleClickView}	
 								setProductMembership={setProductMembership}	
