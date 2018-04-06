@@ -196,21 +196,9 @@ class BalanceModal extends React.Component {
                             component={SelectField}
                             label="ชื่อธนาคาร"
                         />
-                        <TextField label='เลขบัญชีธนาคาร' name="bankAccountNumber" type="text" value={this.state.dispute.bankAccountNumber} onChange={(e) => this.setState({
-                            dispute: {
-                                ...this.state.dispute,
-                                bankAccountNumber: e.target.value
-                            }
-                        })} />
-                        <TextField label="ชื่อบัญชี" name="bankAccountName" type="text" value={this.state.dispute.bankAccountName} onChange={(e) => this.setState({
-                            dispute: {
-                                ...this.state.dispute,
-                                bankAccountName: e.target.value
-                            }
-                        })} />
-                        <TextField label={'จำนวนเงิน('+this.state.balanceDisplay+')'} name="amount" type="number" onChange={this.handleChange}
-                            onBlur={(e) => this.handleCheckAmount(e)}
-                            value={this.state.dispute.amount} />
+                        <TextField label='เลขบัญชีธนาคาร' name="bankAccountNumber" type="text"/>
+                        <TextField label="ชื่อบัญชี" name="bankAccountName" type="text" />
+                        <TextField label={'จำนวนเงิน('+this.state.balanceDisplay+')'} name="amount" type="number" />
                         <br /><br />
                         <Modal.Actions>
                             <Button fullWidth onClick={() => this.handleSetDataDispute()} buttonDisabled={!canClick} disabled={!canClick}>ยืนยัน</Button>

@@ -19,7 +19,7 @@ const EditGrid = styled(Grid.Column)`
 `
 
   
-export default({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending,user, cancelEdit}) => <Grid>
+export default({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending,user, cancelEdit,initialProps}) => <Grid>
   <EditGrid mobile={16} tablet={16} computer={16}>
     {userPending?<Wrapper><H3>Loading...</H3></Wrapper>:null}
     <Wrapper height="100%" widthSmall="100vw" noMargin noBorder noBorderRadius style={{border:'none'}}>

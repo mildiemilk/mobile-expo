@@ -41,7 +41,7 @@ class Select extends Component {
         return(
             <div style={{position:'relative', zIndex:'100'}}>
                 <Button 
-                    width='120px' 
+                    width='160px' 
                     onClick={()=>this.setState({...this.state, show:!this.state.show})} 
                     relative 
                     padding='8px 26px 8px 8px'

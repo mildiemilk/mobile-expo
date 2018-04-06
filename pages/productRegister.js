@@ -100,7 +100,9 @@ class ProductRegister extends Component {
 }	
 
 ProductRegister = reduxForm({
-    form: 'product'
+    form: 'product',
+		enableReinitialize:true, //this has to enable so that it load value of productstate to edit
+		keepDirtyOnReinitialize:true
 })(ProductRegister)
 
 const selector = formValueSelector('product')
@@ -120,7 +122,7 @@ const mapStateToProps = state => ({
     userEmail: state.user.email,
 		productImages: state.productImages,
 		productImagePending: state.main.productImagePending,
-		product: state.product
+		product: state.product,
 })
 
 const mapDispatchToProps = {

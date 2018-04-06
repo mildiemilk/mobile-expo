@@ -24,6 +24,7 @@ export default props =>
       }
       <CustomGrid width={props.noGrid?14:12}>
       <Field
+        value="test"
         {...props} 
         component={Input}
         width="none"

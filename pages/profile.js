@@ -49,20 +49,21 @@ class Profile extends Component {
 			getUserbyUid(user.uid);
 			return user ? this.props.saveUser(user) : null
 		})
-		this.props.user && this.props.user.uid ? await getUserProducts(this.props.user.uid) : null
-		this.props.user && this.props.user.uid ? await getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null 
-		this.props.user? this.props.user.uid ? await getProfile(this.props.user) : null : null
-		this.props.user? this.props.user.email ? await getMemberByEmailsByEmail(this.props.user.email) : null : null
+		if(this.props.user) {
+			await getUserProducts(this.props.user.uid)
+			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
+			await getProfile(this.props.user)
+			await getMemberByEmailsByEmail(this.props.user.email)
+		}
 	}
-
 	async componentWillReceiveProps(nextProps){
 		if(this.props.user !== nextProps.user ){
 			await getUserProducts(this.props.user.uid)
 			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
 			await getProfile(this.props.user)
-			this.props.user.membership?
+			this.props.user.membership !== nextProps.user.membership?
 				await setMembers(this.props.user.membership) : null
-			this.props.user.email?
+			this.props.user.email !== nextProps.user.email?
 				await getMemberByEmailsByEmail(this.props.user.email) : null
 		}
 		if(this.props.profile.transactionIds !==undefined) {
@@ -232,7 +233,9 @@ class Profile extends Component {
 }
 
 Profile = reduxForm({
-	form:'profile'
+	form:'profile',
+	enableReinitialize:true,
+	keepDirtyOnReinitialize:true
 })(Profile)
 
 const selector = formValueSelector('profile')
@@ -252,7 +255,7 @@ const mapStateToProps = state => ({
 	balance: state.user.wallet,
 	userUid: state.user.uid,
 	profileImage: state.profile.profileImage,
-	initialValues: state.user
+	initialValues: state.profile
 })
 
 const mapDispatchToProps = {
