@@ -246,7 +246,7 @@ const mapStateToProps = state => ({
 	sponsorProducts: state.sponsorProducts,
 	profile: state.profile,
 	detail: selector(state,'name','address', 'email', 'phone', 'image'),
-	userBankDetail: {bankAccountName:state.user.bankAccountName, bankAccountNumber:state.user.bankAccountNumber, bankName: state.user.bankName, amount: selector(state,'amount')},
+	userBankDetail: selector(state,'bankAccountName', 'bankAccountNumber','bankName', 'amount'),
 	sponsorEmail: selector(state, 'sponsorEmail'),
 	table: state.profile.transactionIds,
 	isUserMembership: state.user.membership || false,

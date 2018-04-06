@@ -66,51 +66,6 @@ class BalanceModal extends React.Component {
         }
     }
 
-    componentDidMount(){
-        if(
-            this.props.user&&
-            this.props.user.bankName &&
-            this.props.user.bankAccountNumber &&
-            this.props.user.bankAccountName ){
-                const{bankName, bankAccountNumber, bankAccountName } = this.props.user
-                this.setState({
-                    dispute:{
-                        ...this.state.dispute,
-                        bankAccountNumber,
-                        bankAccountName,
-                        bankName
-                    }
-                })
-        }
-    }
-
-    componentWillReceiveProps(nextProps){
-        if(
-            this.props.user&& 
-            this.props.user.bankName &&
-            this.props.user.bankAccountNumber &&
-            this.props.user.bankAccountName ){
-            const{bankName, bankAccountNumber, bankAccountName } = this.props.user        
-        }
-		nextProps.balance !== this.props.balance && nextProps.balance? 
-            this.setState({ balanceDisplay: nextProps.balance }) : null
-        this.props.user&&
-        nextProps.userUid !== this.props.userUid && 
-        nextProps.userUid &&
-        this.props.user.bankName &&
-        this.props.user.bankAccountNumber &&
-        this.props.user.bankAccountName? 
-            this.setState({ 
-                dispute: {
-                    ...this.state.dispute,
-                    userUid: nextProps.userUid,
-                    bankAccountNumber,
-                    bankAccountName,
-                    bankName
-                }
-            }) : null
-	}
-
     handleChangeBankName = (event,data) => {
         this.setState({
             dispute: {
@@ -136,23 +91,19 @@ class BalanceModal extends React.Component {
     }
     handleDisputeCallback = res => {
         if (res === 'success') {
-            alert('Dispute Success');
-            this.setState({dispute:{...this.state.dispute, amount:0}})
+            alert('ถอนเงินสำเร็จ ทางเราจะโอนเงินให้ภายใน1-3 วันทำการ');
             Router.push('/profile')
-        } else {
-            alert('Try Again');
         }
     }
 
-    handleSetDataDispute = async () => {
+    handleSetDataDispute =async( props) => {
         let _this = this;
-        const {userUid, amount, bankAccountName, bankAccountNumber, bankName} = this.state.dispute
-        await subUserWallet(userUid, amount, () => {
-            let disputeArr = _this.state.dispute;
-            disputeArr.DateAndTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        const {uid, amount, bankAccountName, bankAccountNumber, bankName} = props.user
+        await subUserWallet(uid, props.userBankDetail.amount, () => {
+            let disputeArr = { ...props.userBankDetail, DateAndTime:new Date().toISOString().slice(0, 19).replace('T', ' ')}
             saveDispute(disputeArr,(res)=>_this.handleDisputeCallback(res));
         })
-        await updateUserBankAccount(userUid, bankName, bankAccountName, bankAccountNumber)
+        await updateUserBankAccount(uid, bankName, bankAccountName, bankAccountNumber)
     }
 
     handleChange = (e) => {
@@ -168,24 +119,23 @@ class BalanceModal extends React.Component {
         }
     }
 
-    canClick = userBankDetail => {
+    canClick = (userBankDetail) => {
         let bankDetail = {
             amount:0,
             bankAccountName:'',
             bankAccountNumber:'',
-            bankAccountName:'',
             ...userBankDetail
         }
-        const { amount, bankAccountNumber, bankAccountName } = bankDetail
-        if(amount && amount !== 0 && amount !== '0' && amount !== '' && bankAccountName !== '' && bankAccountNumber !== '') 
+        const { amount, bankAccountNumber, bankAccountName, bankName } = bankDetail
+
+        if(parseInt(amount) > 0 && bankAccountName !== '' && bankAccountNumber !== '') 
             return true
         return false
     }
 
     render() {
         const { balance,user, userBankDetail } = this.props
-        const canClick = this.canClick()
-
+        const canClick = this.canClick(userBankDetail)
         return <Flex direction="row" verticleCenter >
             <H5 margin="0px 10px 0px 0px" lineHeight="32px">จำนวนเงิน: {this.props.balance||0} บาท</H5>
             {balance > 0 ?
@@ -204,10 +154,10 @@ class BalanceModal extends React.Component {
                         />
                         <TextField label='เลขบัญชีธนาคาร' name="bankAccountNumber" type="text"/>
                         <TextField label="ชื่อบัญชี" name="bankAccountName" type="text" />
-                        <TextField label={'จำนวนเงิน('+this.state.balanceDisplay+')'} name="amount" type="number" />
-                        <br /><br />
+                        <TextField label='จำนวนเงิน' name="amount" type="number" format={value=>parseInt(value)>parseInt(balance)? balance:value}/>
                         <Modal.Actions>
-                            <Button fullWidth onClick={() => this.handleSetDataDispute()} buttonDisabled={()=>!canClick(userBankDetail)} disabled={()=>!canClick(userBankDetail)}>ยืนยัน</Button>
+                            <p>จำนวนเงินคงเหลือ : {Math.floor(balance-(userBankDetail.amount||0))}</p>
+                            <Button fullWidth onClick={() => this.handleSetDataDispute({user,userBankDetail})} buttonDisabled={!canClick} disabled={!canClick}>ยืนยัน</Button>
                             {!canClick? <span style={{ color: 'red'}}>กรุณากรอกข้อมูลให้ครบถ้วน</span> : null}
                         </Modal.Actions>
                     </Modal.Content>
