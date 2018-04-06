@@ -168,16 +168,22 @@ class BalanceModal extends React.Component {
         }
     }
 
-    canClick = () => {
-        const { dispute } = this.state
-        const { amount, bankAccountNumber, bankAccountName } = dispute
-        if(amount !== 0 && amount !== '0' && amount !== '' && bankAccountName !== '' && bankAccountNumber !== '') 
+    canClick = userBankDetail => {
+        let bankDetail = {
+            amount:0,
+            bankAccountName:'',
+            bankAccountNumber:'',
+            bankAccountName:'',
+            ...userBankDetail
+        }
+        const { amount, bankAccountNumber, bankAccountName } = bankDetail
+        if(amount && amount !== 0 && amount !== '0' && amount !== '' && bankAccountName !== '' && bankAccountNumber !== '') 
             return true
         return false
     }
 
     render() {
-        const { balance,user } = this.props
+        const { balance,user, userBankDetail } = this.props
         const canClick = this.canClick()
 
         return <Flex direction="row" verticleCenter >
@@ -201,7 +207,7 @@ class BalanceModal extends React.Component {
                         <TextField label={'จำนวนเงิน('+this.state.balanceDisplay+')'} name="amount" type="number" />
                         <br /><br />
                         <Modal.Actions>
-                            <Button fullWidth onClick={() => this.handleSetDataDispute()} buttonDisabled={!canClick} disabled={!canClick}>ยืนยัน</Button>
+                            <Button fullWidth onClick={() => this.handleSetDataDispute()} buttonDisabled={()=>!canClick(userBankDetail)} disabled={()=>!canClick(userBankDetail)}>ยืนยัน</Button>
                             {!canClick? <span style={{ color: 'red'}}>กรุณากรอกข้อมูลให้ครบถ้วน</span> : null}
                         </Modal.Actions>
                     </Modal.Content>
