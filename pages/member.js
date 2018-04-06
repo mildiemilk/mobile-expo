@@ -45,7 +45,7 @@ class Member extends React.Component {
 	async componentWillReceiveProps(nextProps){
 		await getUserbyUid(this.props.user.uid)
 		if(nextProps.user !== this.props.user){
-			await getProfile(this.props.user.uid)
+			await getProfile(this.props.user)
 		}
 		if(nextProps.user.membership !== this.props.user.membership){
 			await setMembers(this.props.user.membership)

@@ -51,7 +51,7 @@ class Profile extends Component {
 		})
 		this.props.user && this.props.user.uid ? await getUserProducts(this.props.user.uid) : null
 		this.props.user && this.props.user.uid ? await getProductToSponsorTable(this.props.user.uid, this.props.user.email) : null 
-		this.props.user? this.props.user.uid ? await getProfile(this.props.user.uid) : null : null
+		this.props.user? this.props.user.uid ? await getProfile(this.props.user) : null : null
 		this.props.user? this.props.user.email ? await getMemberByEmailsByEmail(this.props.user.email) : null : null
 	}
 
@@ -59,7 +59,7 @@ class Profile extends Component {
 		if(this.props.user !== nextProps.user ){
 			await getUserProducts(this.props.user.uid)
 			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
-			await getProfile(this.props.user.uid)
+			await getProfile(this.props.user)
 			this.props.user.membership?
 				await setMembers(this.props.user.membership) : null
 			this.props.user.email?
@@ -95,7 +95,7 @@ class Profile extends Component {
 		const profileDetail = {...detail, profileImage}
 		addProfileDetail(profileDetail, userUid)
 		this.setState({isEdit:false})
-		await getProfile(this.props.user.uid)
+		await getProfile(this.props.user)
 		await getTable(this.props.profile.transactionIds)
 	}
 
