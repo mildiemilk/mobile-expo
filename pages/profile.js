@@ -232,10 +232,10 @@ class Profile extends Component {
 }
 
 Profile = reduxForm({
-	form:'profileDetail'
+	form:'profile'
 })(Profile)
 
-const selector = formValueSelector('profileDetail')
+const selector = formValueSelector('profile')
 
 const mapStateToProps = state => ({
 	user: state.user,
@@ -243,6 +243,7 @@ const mapStateToProps = state => ({
 	sponsorProducts: state.sponsorProducts,
 	profile: state.profile,
 	detail: selector(state,'name','address', 'email', 'phone', 'image'),
+	userBankDetail: {bankAccountName:state.user.bankAccountName, bankAccountNumber:state.user.bankAccountNumber, bankName: state.user.bankName},
 	sponsorEmail: selector(state, 'sponsorEmail'),
 	table: state.profile.transactionIds,
 	isUserMembership: state.user.membership || false,
@@ -251,6 +252,7 @@ const mapStateToProps = state => ({
 	balance: state.user.wallet,
 	userUid: state.user.uid,
 	profileImage: state.profile.profileImage,
+	initialValues: state.user
 })
 
 const mapDispatchToProps = {

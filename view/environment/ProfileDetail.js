@@ -21,7 +21,7 @@ const EditGrid = styled(Grid.Column)`
   
 export default({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending,user, cancelEdit}) => <Grid>
   <EditGrid mobile={16} tablet={16} computer={16}>
-    {userPending?<Wrapper><H3>Loading...</H3><Icon loading name='spinner' size="big" /></Wrapper>:null}
+    {userPending?<Wrapper><H3>Loading...</H3></Wrapper>:null}
     <Wrapper height="100%" widthSmall="100vw" noMargin noBorder noBorderRadius style={{border:'none'}}>
       {isEdit ? null:<DivButton TextAlign="right"><Button secondary margin="0px 10px" onClick={handleEdit}>Edit</Button></DivButton>}
       <H5 margin="20px 0px" center>{profile.name}</H5>
