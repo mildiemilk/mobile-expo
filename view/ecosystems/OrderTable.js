@@ -6,12 +6,14 @@ export default ({orders, setOrderStatus}) => {
 		buyerName: order.name,
 		productName: order.productName,
 		total: order.quantity * order.price,
+		variety: order.variety,
 		status: <OrderStatusButton status={order.status} setOrderStatus={setOrderStatus} transactionInfo={order}/>,
 		key: key
 	})):null
 	const headerJson = {
-		buyerName: 'Name',
-		productName: 'Product',
+		buyerName: 'ชื่อผู้ซื้อ',
+		productName: 'สินค้า',
+		variety: 'แบบ',
 		total: 'Total',
 		status: 'Status'
 	}

@@ -4,6 +4,7 @@ import Table from '../atoms/Table'
 const headerJson = {
   productName: 'ชื่อสินค้า',
   price: 'ราคา',
+  variety: 'แบบ',
   quantity: 'จำนวน',
   total: 'รวม'
 }
@@ -13,7 +14,8 @@ const transactionJsonArray = products => products ? products.map( product => {
     productName: product.productName,
     price: product.price,
     quantity: product.quantity,
-    total: product.quantity * product.price
+    total: product.quantity * product.price,
+    variety: product.variety
   })
 }):null
 
