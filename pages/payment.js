@@ -4,6 +4,7 @@ import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import { reduxForm, formValues, formValueSelector } from 'redux-form'
 import { createPayment, savePaymentImage } from '../lib/handlers/payment'
+import { savePaymentPending, savePaymentSuccess } from '../lib/actions/payment'
 import { addProductTransaction, addPayment, addBankTransfer } from '../lib/actions/transaction'
 import { calculateComission } from '../lib/handlers/transaction'
 import { validateCreditCard } from '../lib/helpers/formvalidation'
@@ -28,7 +29,7 @@ class Payment extends React.Component{
 		</Wrapper>
 
 	render() { 
-		const {validateCreditCard, startedUploadImage, pending, transaction, image, addPayment, addBankTransfer} = this.props
+		const {transaction} = this.props
 		const card = {
 			name : process.env.NODE_ENV === 'production'? '' :'john doe', 
 			cardNumber : process.env.NODE_ENV === 'production'? '' :'4242424242424242', 
@@ -36,23 +37,13 @@ class Payment extends React.Component{
 			expiryMonth:process.env.NODE_ENV === 'production'? '' :'7', 
 			expiryYear:process.env.NODE_ENV === 'production'? '' :'2019'
 		}
-		const { total } = this.props
 		return this.props.url.query.queryParams?
-			<Modal context={this.ModalContext(pending)} redirectUrl='/' display={true}>Payment result</Modal>
-			:
+			<Modal context={this.ModalContext(pending)} redirectUrl='/' display={true}>Payment result</Modal>:
 			<PaymentView 
+				{...this.props}
 				onCheckOut={()=>createPayment(total, card ,transaction)}
-				savePaymentImage={savePaymentImage}
-				validateCreditCard={validateCreditCard}
-				addPayment={addPayment}
 				imageUpload={transaction.payment.paymentDetail}
-				startedUploadImage={startedUploadImage}
-				pending={pending}
-				image= {image}
-				addBankTransfer={addBankTransfer}
-				createPaymentInternetBanking={createPaymentInternetBanking}
-				transaction={transaction}
-				total={total}
+				savePaymentImage={savePaymentImage}
 			/>
 	}
 }
@@ -72,6 +63,12 @@ const mapStateToProps = state =>({
 	image: state.payment.paymentImage
 })
 
-const mapDispatchToProps = {addProductTransaction, addPayment, addBankTransfer}
+const mapDispatchToProps = {
+	addProductTransaction, 
+	addPayment, 
+	addBankTransfer,
+	savePaymentPending,
+	savePaymentSuccess
+}
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Payment)
