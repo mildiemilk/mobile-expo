@@ -16,7 +16,7 @@ class Home extends Component {
 
 	async componentDidMount() {
 			const auth = await loadFirebase('auth')
-			await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
+			// await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 	}
 
 	render() {
