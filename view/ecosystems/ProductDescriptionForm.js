@@ -51,7 +51,7 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 				break
 			case 'youtube':
 			returnComponent = 
-			<div>
+				<div>
 					<H3>ลิ้งค์วิดีโอจากyoutube</H3>																	
 					<div>
 						<input style={{border:'1px solid #b0b2b4', width:'80%'}} {...input} type={type} placeholder='link youtube' />
@@ -60,6 +60,7 @@ const renderField = ({ index, fields, input, type, meta: { touched, error } }) =
 						<div style={{color: 'red'}}>error: please check youtube link format</div> : null}
 					</div>
 				</div>
+				break
 			case 'paragraph':
 			default:
 						returnComponent = 

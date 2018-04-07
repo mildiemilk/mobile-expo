@@ -24,9 +24,6 @@ class ProductRegister extends Component {
         ;(await nextProps.url.query.productID)
 					? getProductFromID(nextProps.url.query.productID)
 					: null
-				;(await nextProps.url.query.productID)
-					? setInitialProductValue(this.props.product)
-					: null
     }
 
 
@@ -46,7 +43,8 @@ class ProductRegister extends Component {
 			nextDescription, 
 			stock,
 			removeProductImage,
-			productImagePending
+			productImagePending,
+			variety
 		} = this.props
 		const productID =  this.props.url.query.productID
 		let comissionWithinLimit = parseInt(price) * 0.7 >  parseInt(comissionCash || 0)
@@ -78,10 +76,10 @@ class ProductRegister extends Component {
 				productImages,
 				shortDescription,
 				nextDescription,
-				stock
+				stock,
+				variety
 			})
-			: updateProduct(productID,
-				{
+			: updateProduct(productID,{
 				active: true,
 				productName, 
 				brandName, 
@@ -93,7 +91,8 @@ class ProductRegister extends Component {
 				productImages,
 				shortDescription,
 				nextDescription,
-				stock
+				stock,
+				variety
 			})} 
 		/>)
 	}
@@ -117,7 +116,8 @@ const mapStateToProps = state => ({
     productDescription: selector(state, 'productDescription'),
     shortDescription: selector(state, 'shortDescription'),
     stock: selector(state, 'stock'),
-    nextDescription: selector(state,'nextDescription'),
+	nextDescription: selector(state,'nextDescription'),
+	variety:selector(state,'variety'),
     userUid: state.user.uid,
     userEmail: state.user.email,
 		productImages: state.productImages,

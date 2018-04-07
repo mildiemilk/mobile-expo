@@ -10,7 +10,7 @@ const CustomGrid = styled(Grid.Column)`
 
 const Label = styled.span`
   color:${props=>props.color?props.color:'gray'};
-  font-size:180%;
+  font-size:140%;
 `
 
 export default props => 

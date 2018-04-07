@@ -5,7 +5,7 @@ import store from '../lib/store'
 import { getProductFromID, getUserProducts, setProductActive } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
-import { addProductDetail, addSponsorId, addSellerId, addProductId, addBuyerId, addQuantity, minusQuantity } from '../lib/actions/transaction'
+import { addProductDetail, addSponsorId, addSellerId, addProductId, addBuyerId, addQuantity, minusQuantity, addVariety } from '../lib/actions/transaction'
 import { addProductTransaction } from '../lib/handlers/transaction'
 
 class Product extends React.Component{
@@ -40,8 +40,9 @@ class Product extends React.Component{
 	}
 
 	render(){
-		const { product, url, minusQuantity, addQuantity, addProductTransaction, transaction } = this.props
+		const { product, url, minusQuantity, addQuantity, addProductTransaction, transaction, addVariety } = this.props
 		return( <ProductView 
+			addVariety={addVariety}
 			product={this.props.productSSR||product} 
 			minusQuantity={minusQuantity} 
 			addQuantity={addQuantity} 
@@ -69,7 +70,8 @@ const mapDispatchToProps = {
 	addSellerId,
 	addProductId,
 	addBuyerId,
-	saveUser
+	saveUser,
+	addVariety
 }
 
 export default withRedux(()=>store, mapStateToProps, mapDispatchToProps)(Product)

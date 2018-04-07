@@ -6,25 +6,29 @@ import { Grid } from 'semantic-ui-react'
 import MultiTab from '../molecules/Multitab'
 import AddToCart from '../organisms/AddToCart'
 import Wrapper from '../atoms/Wrapper';
+import ProductVarietyPreview from '../organisms/ProductVarietyPreview'
 
 export default props =>
 <Grid>
-	<Grid.Column mobile={16} tablet={16} computer={16}>
+	<Grid.Column mobile={16} tablet={16} computer={6}>
 		<Wrapper>
-			<Flex direction='row' center>
 			<DisplayImages images={props.images} />
-			<DisplayProductText {...props.product} />
-			<ProductDescriptionPreview productDescription={props.product.productDescription} />
-			<AddToCart
-					minusQuantity = {props.minusQuantity}
-					addQuantity = {props.addQuantity}
-					sellerId={props.sellerId}
-					productUid = {props.productUid}
-					productQuantity = {props.quantity}
-					addProductTransaction={props.addProductTransaction}
-					price = {props.product.price}
-			/>
-			</Flex>
+		</Wrapper>
+	</Grid.Column>
+	<Grid.Column mobile={16} tablet={16} computer={10}>
+		<Wrapper>
+		<DisplayProductText {...props.product} />
+		<ProductDescriptionPreview productDescription={props.product.productDescription} />
+		<ProductVarietyPreview addVariety={props.addVariety}  varieties={props.product.variety?props.product.variety:[]} />
+		<AddToCart
+				minusQuantity = {props.minusQuantity}
+				addQuantity = {props.addQuantity}
+				sellerId={props.sellerId}
+				productUid = {props.productUid}
+				productQuantity = {props.quantity}
+				addProductTransaction={props.addProductTransaction}
+				price = {props.product.price}
+		/>
 		</Wrapper>
 	</Grid.Column>
 </Grid>

@@ -22,7 +22,7 @@ const ModalContext = ({savePaymentImage, pending, startedUploadImage, image, ban
 		<p>จำนวนเงิน: {transaction.quantity*transaction.price}</p>
 	<h3>ขั้นตอนที่2 อัพโหลดหลักฐานโดยการคลิกที่กล่องด้านล่างนี้</h3>
 	{!startedUploadImage?
-	<DropZone onDrop={savePaymentImage} size="100%" marginTop="15px">
+	<DropZone onDrop={image=>savePaymentImage(image, transaction)} size="100%" marginTop="15px">
 		<img style={{width:'100%'}} src='/static/img/bankTransfer.svg'/>
 	</DropZone>:
 		<div>
