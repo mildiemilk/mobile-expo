@@ -13,8 +13,7 @@ import { validateEmail, validatePassword } from '../lib/helpers/formvalidation'
 class Login extends React.Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		var loginUser
-		loginUser = await auth.getRedirectResult()
+		var loginUser = await auth.getRedirectResult()
 		if(loginUser.user) {	
 			await addUserToDatabaseAndStore(loginUser.additionalUserInfo.profile.id, loginUser.credential.accessToken, loginUser.user.displayName, loginUser.user.uid, loginUser.user.email)
 		}

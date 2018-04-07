@@ -48,7 +48,6 @@ class Profile extends Component {
 		const user = await auth.onAuthStateChanged(user => 
 			getUserbyUid(user.uid)
 		)
-		console.log('getUserProfile', this.props.user)
 		if(this.props.user) {
 			await getUserProducts(this.props.user.uid)
 			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
@@ -144,7 +143,6 @@ class Profile extends Component {
 		const {userProducts, isUserMembership} = this.props
 		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
 		const membershipProductsNumber = this.countMembershipProducts(userProducts)
-		console.log('user', props.user)
 		return <HeightDiv>
 			<Head/>
 			{props.user.uid?

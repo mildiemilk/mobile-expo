@@ -16,7 +16,7 @@ class ProductRegister extends Component {
 			const { productID } = this.props.url.query
 			const { user, getUserProducts } = this.props
 			productID ? getProductFromID(productID) : null
-			// await auth.onAuthStateChanged(user => (user ? this.props.saveUser(user) : null))
+			await auth.onAuthStateChanged(user => (user ? this.props.saveUser(user) : null))
 			this.props.clearProductImages()
     }
 
