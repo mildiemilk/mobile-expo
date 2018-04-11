@@ -14,6 +14,7 @@ import Wrapper from '../view/atoms/Wrapper'
 import H3 from '../view/atoms/H3'
 import WebExplain from '../view/organisms/WebExplain'
 import fetch from 'isomorphic-fetch'
+import loadFirebase from '../lib/database'
 
 class Payment extends React.Component{
 	constructor(props){
@@ -23,7 +24,7 @@ class Payment extends React.Component{
 		}
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		if(this.props.url.query.queryParams)
 			savePaymentInternetBanking(this.props.url.query.queryParams.transactionID)
 		const { transaction } = this.props
@@ -39,10 +40,21 @@ class Payment extends React.Component{
 	sleep = n => new Promise((resolve, reject) => setTimeout(resolve, n))
 
 	onSubmit = async(e) => {
-		e.preventDefault()
-		const key = await createPaymentInternetBanking(this.props.transaction)
-		this.setState({ key }, console.log('key====>', key))
-		return true
+		// e.preventDefault()
+		// let db = await loadFirebase('database')
+		// let key = await db.ref().child('transactions').push().key
+		const key = Math.round(Math.floor(Date.now())/1000)
+		this.setState({ key })
+		console.log('key', key)
+		createPaymentInternetBanking(this.props.transaction, key)
+		// const key = '3434'
+	// 	var form = $('#ajax-contact');
+	// 	var formData = $(form).serialize();
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		url: 'https://www.thaiepay.com/epaylink/payment.aspx',
+	// 		data: formData
+	// }).done( response => console.log('res', response))
 	}
 
 	onFetch = async() => {
@@ -73,6 +85,8 @@ class Payment extends React.Component{
 	render() { 
 		const { key } = this.state
 		const {transaction} = this.props
+		// let db = await loadFirebase('database')
+		// let key = await db.ref().child('transactions').push().key
 		const card = {
 			name : process.env.NODE_ENV === 'production'? '' :'john doe', 
 			cardNumber : process.env.NODE_ENV === 'production'? '' :'4242424242424242', 
@@ -89,15 +103,15 @@ class Payment extends React.Component{
 			imageUpload={transaction.payment.paymentDetail}
 			savePaymentImage={savePaymentImage}
 		/>
-		<form method="post" action="https://www.thaiepay.com/epaylink/payment.aspx" onSubmit={this.onSubmit}>
+		<form method="post" action="https://www.thaiepay.com/epaylink/payment.aspx" onSubmit={key?true:false}>
 			<input type="hidden" name="refno" value={key}/>
 			<input type="hidden" name="merchantid" value="41911567"/>
-			<input type="hidden" name="customeremail" value="thedo.a1412@gmail.com"/>
-			<input type="hidden" name="productdetail" value="Testing Product"/>
-			<input type="hidden" name="total" value="100"/>
-			<input type="hidden" name="returnurl" value={`http://localhost:3000/payment/${key}`}/>
+			<input type="hidden" name="customeremail" value={transaction.email}/>
+			<input type="hidden" name="productdetail" value={transaction.productName}/>
+			<input type="hidden" name="total" value={transaction.price*transaction.quantity}/>
+			{/* <input type="hidden" name="returnurl" value='http://localhost:3000/payment/'/> */}
 			<br/> 
-			<input type="submit" name="Submit" value="Comfirm Order"/>
+			<label onClick={this.onSubmit}><input type="submit" name="Submit" value="Comfirm Order"/></label>
 		</form>
 		<button onClick={this.onFetch}>test</button>
 		</div>

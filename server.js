@@ -47,7 +47,10 @@ app.prepare()
 			}).done()
 
 		})
-
+		server.post('api/test-pay', (req, res) => {
+			console.log('responseSharemai', res, req)
+			});
+		 
 		server.post('/api/charges/internet-banking', (req, res) => {
 			const { amount, currency, offsite, return_uri } = req.body
 			return omise.charges.create({
