@@ -64,6 +64,7 @@ const requestedMembershipView = (members, saveRequestedByEmailUserMembership, us
 
 export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership, membershipProductsNumber, requestMembership, saveRequestedByEmailUserMembership,deleteProduct}) =>
 <Flex direction="column" margin="0px 7px">
+	{console.log('delete product in profile view', deleteProduct)}
 	<MediaQuery  minDeviceWidth={1224}>
 		{!isUserMembership? 
 			<div>
@@ -211,7 +212,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 												isSponsor={false}
 												isUserMembership={isUserMembership}																									
 												setProductActive={setProductActive}
-												setProductMembership={setProductMembership}												
+												setProductMembership={setProductMembership}	
+												deleteProduct={deleteProduct}											
 											/>
 										</div>)
 									}) 
@@ -232,7 +234,8 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											isSponsor={false}
 											isUserMembership={isUserMembership}																								
 											setProductActive={setProductActive}
-											setProductMembership={setProductMembership}											
+											setProductMembership={setProductMembership}		
+											deleteProduct={deleteProduct}																															
 										/>
 									</div>)
 								}) : null
