@@ -27,6 +27,7 @@ class DisplayImages extends React.Component {
             <SubImageWrapper>
             <Flex width="100%" justContent="center" direction="row" margin="25px 0px">
                 {images.slice(1).map((image, index) => <DisplaySubImage 
+                    key={index}
                     onMouseOver={() => this.handleImageDisplay(index+1)}
                     onMouseLeave={() => this.handleImageDisplay(0)}
                     src={image} 

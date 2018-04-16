@@ -42,7 +42,6 @@ class Payment extends React.Component{
 			<PaymentView 
 				{...this.props}
 				onCheckOut={()=>createPayment(total, card ,transaction)}
-				imageUpload={transaction.payment.paymentDetail}
 				savePaymentImage={savePaymentImage}
 			/>
 	}

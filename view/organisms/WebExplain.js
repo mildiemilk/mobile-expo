@@ -40,6 +40,6 @@ const webExplain = [{
 
 export default () => <Flex verticleCenter>
 	{
-		webExplain.map((content, index)=><WebExplainCard img={content.img} header={content.header} description={content.description}/>)
+		webExplain.map((content, index)=><WebExplainCard key={index} img={content.img} header={content.header} description={content.description}/>)
 	}
 </Flex>
