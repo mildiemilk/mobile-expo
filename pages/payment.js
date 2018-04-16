@@ -59,7 +59,7 @@ const mapStateToProps = state =>({
 	validateCreditCard: validateCreditCard(selector(state, 'cardNumber'), selector(state, 'month'), selector(state,'year')),
 	startedUploadImage: state.payment.startedUploadImage,
 	pending: state.payment.pending,
-	image: state.payment.paymentImage
+	image: state.transaction.paymentImage
 })
 
 const mapDispatchToProps = {

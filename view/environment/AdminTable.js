@@ -81,7 +81,7 @@ export default props => {
 			...props.pendingPaymentTransactions[key].paymentStatus,
 			productName:  props.pendingPaymentTransactions[key].productName,
 			total: props.pendingPaymentTransactions[key].quantity * props.pendingPaymentTransactions[key].price,
-			paymentImage: <img style={{width:'200px', height:'auto'}} src={props.pendingPaymentTransactions[key].payment.paymentImage} />,
+			paymentImage: <img style={{width:'200px', height:'auto'}} src={props.pendingPaymentTransactions[key].paymentImage} />,
 			status:props.pendingPaymentTransactions[key].paymentStatus === 'pending' ? <div><span>pending</span>
 					<Button onClick={()=>props.approveBankTransferTransaction(
 						 key,

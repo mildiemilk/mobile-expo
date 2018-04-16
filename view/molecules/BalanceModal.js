@@ -98,7 +98,7 @@ export default ({ balance,user, userBankDetail } ) => <Flex direction="row" vert
                 <TextField label="ชื่อบัญชี" name="bankAccountName" type="text" />
                 <TextField label='จำนวนเงิน' name="amount" type="number" format={value=>parseInt(value)>parseInt(balance)? balance:value}/>
                 <Modal.Actions>
-                    <p>จำนวนเงินคงเหลือ : {Math.floor(balance-(userBankDetail.amount||0))}</p>
+                    <p>จำนวนเงินคงเหลือ : {Math.floor(balance-(userBankDetail && userBankDetail.amount ? userBankDetail.amount : 0))}</p>
                     <Button fullWidth onClick={() => handleSetDataDispute({user,userBankDetail})} buttonDisabled={!canClick(userBankDetail)} disabled={!canClick(userBankDetail)}>ยืนยัน</Button>
                     {!canClick? <span style={{ color: 'red'}}>กรุณากรอกข้อมูลให้ครบถ้วน</span> : null}
                 </Modal.Actions>
