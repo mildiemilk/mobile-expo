@@ -10,9 +10,9 @@ import { Modal as SMTModal} from 'semantic-ui-react'
 
 class Modal extends React.Component {
     render() {
-        const { buttonText, children, context, padding, minWidth, height, minHeight, widthDesktop, maxWidthDesktop,action } = this.props
+        const { buttonText, children, context, padding, minWidth, height, minHeight, widthDesktop, maxWidthDesktop, action, open } = this.props
         return (
-            <SMTModal trigger={children || <Button>modal</Button>} closeIcon>
+            <SMTModal open={open} trigger={children || <Button>modal</Button>} closeIcon>
                 <MediaQuery maxDeviceWidth={700}>
                     <div style={{ padding: "0px 5px 15px 5px" }}>
                         {context || 'put some context'}
