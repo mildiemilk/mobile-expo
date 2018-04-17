@@ -16,7 +16,7 @@ export default ({ header, description, img }) =>
 		<WebExplainFooter>
 			<H3 style={{ fontSize: '20px' }} color={color.lightPrimary}>{header}</H3>
 			<p style={{ color: color.lightPrimary, fontSize: '18px' }}>{description}</p>
-			<Link href='register'>
+			<Link href='/register'>
 				<Button>สมัครเลย</Button>
 			</Link>
 		</WebExplainFooter>
