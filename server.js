@@ -4,6 +4,7 @@ const cors = require('express-cors')
 const bodyParser = require('body-parser')
 const axios = require('axios')
 import loadFirebase from './lib/database'
+import { updateUserTransaction, updateUserWallet } from './lib/handlers/payment'
 require('dotenv').config()
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -61,6 +62,9 @@ app.prepare()
 				const key = Object.keys(result)[0]
 				await db.ref().child('/transactions/'+ key).update(req.body)
 				.then(() => {
+					const { sellerId, sponsorId, buyerId, price, comissionCash } = result[key]
+					updateUserTransaction(sellerId, sponsorId, buyerId, key)
+					updateUserWallet(sellerId, sponsorId, price, comissionCash)
 					res.status(200).send("payment success")
 				})
 			} else res.status(404).send("Error: transaction not found")
