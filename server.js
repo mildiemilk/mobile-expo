@@ -54,14 +54,17 @@ app.prepare()
 			const result = await db
 				.ref("transactions")
 				.orderByChild("refno")
-				.equalTo(refno)
+				.equalTo(parseInt(refno))
 				.once('value')
 				.then(snapshot => snapshot.val())
-			const key = Object.keys(result)[0]
-			await db.ref().child('/transactions/'+ key).update(req.body)
-			.then(() => {
-				res.status(200).send("payment success")
-			})
+			if(result) {
+				const key = Object.keys(result)[0]
+				await db.ref().child('/transactions/'+ key).update(req.body)
+				.then(() => {
+					res.status(200).send("payment success")
+				})
+			} else res.status(404).send("Error: transaction not found")
+			
 		})
 		 
 		server.post('/api/charges/internet-banking', (req, res) => {
