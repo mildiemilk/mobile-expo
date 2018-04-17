@@ -3,6 +3,7 @@ const next = require('next')
 const cors = require('express-cors')
 const bodyParser = require('body-parser')
 const axios = require('axios')
+import loadFirebase from './lib/database'
 require('dotenv').config()
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -47,9 +48,21 @@ app.prepare()
 			}).done()
 
 		})
-		server.post('api/test-pay', (req, res) => {
-			console.log('responseSharemai', res, req)
-			});
+		server.post('/api/result-payment', async (req, res) => {
+			const { refno } = req.body
+			let db = await loadFirebase('database')
+			const result = await db
+				.ref("transactions")
+				.orderByChild("refno")
+				.equalTo(refno)
+				.once('value')
+				.then(snapshot => snapshot.val())
+			const key = Object.keys(result)[0]
+			await db.ref().child('/transactions/'+ key).update(req.body)
+			.then(() => {
+				res.status(200).send("payment success")
+			})
+		})
 		 
 		server.post('/api/charges/internet-banking', (req, res) => {
 			const { amount, currency, offsite, return_uri } = req.body
