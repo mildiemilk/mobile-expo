@@ -55,7 +55,7 @@ app.prepare()
 			const result = await db
 				.ref("transactions")
 				.orderByChild("refno")
-				.equalTo(parseInt(refno))
+				.equalTo(refno)
 				.once('value')
 				.then(snapshot => snapshot.val())
 			if(result) {
