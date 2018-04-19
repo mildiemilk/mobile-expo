@@ -58,18 +58,11 @@ class Payment extends React.Component{
 		<div>
 			<PaymentView 
 				{...this.props}
+				{...this.state}
 				onCheckOut={()=>createPayment(total, card ,transaction)}
 				savePaymentImage={savePaymentImage}
+				onSubmit={this.onSubmit}
 			/>
-			<form ref="formPayment" method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
-				<input type="hidden" name="refno" value={refno}/>
-				<input type="hidden" name="merchantid" value="41911567"/>
-				<input type="hidden" name="customeremail" value={transaction.email}/>
-				<input type="hidden" name="productdetail" value={transaction.productName}/>
-				<input type="hidden" name="total" value={transaction.price*transaction.quantity}/>
-				<br/> 
-				<label onClick={this.onSubmit}><input type="button" name="Submit" value="Other Payment"/></label>
-			</form>
 		</div>
 	}
 }
