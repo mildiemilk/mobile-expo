@@ -50,6 +50,7 @@ class ItemCard extends React.Component {
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
+		console.log(deleteProduct)
 		return(
 			<Card style={{margin:'5px'}}>
 				{!isSponsor?

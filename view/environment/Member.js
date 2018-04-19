@@ -19,7 +19,6 @@ import Image from '../atoms/Image'
 
 const memberHeader = {
 	"name": "Name",
-	"email":"Email",
 	"shared":"Shared",
 	"permission":"Admin",
 }
@@ -129,7 +128,8 @@ const ProductCard = props =>   <Card>
 	</span>
   </Card.Meta>
   <Card.Description>
-	<p>ราคา:{props.price}</p>
+	<p>ราคา: {props.price} บาท</p>
+	<p>ค่าคอมมิสชั่น: {props.comissionCash} บาท</p>
   </Card.Description>
 </Card.Content>
 <Card.Content extra>
@@ -204,7 +204,7 @@ export default props =>
 								<h2>สินค้าของสมาชิก</h2>
 								<Grid stackable stretched columns={3}>
 								{
-									randomAnArray(Object.keys(props.member.products)).map(key => <Grid.Column><ProductCard {...props.member.products[key]} key={key} userUid={props.user.uid} productId={key}/></Grid.Column>)
+									randomAnArray(Object.keys(props.member.products)).map(key => <Grid.Column key={key}><ProductCard {...props.member.products[key]} key={key} userUid={props.user.uid} productId={key}/></Grid.Column>)
 								}
 								</Grid>
 								</Wrapper>

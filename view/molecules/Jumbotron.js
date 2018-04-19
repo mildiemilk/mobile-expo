@@ -213,7 +213,7 @@ ${props=> props.rotate? `
 -o-transform: rotate(${props.rotate}deg);`:null}
 `
 
-const MainPageButton = Button.extend`
+const MainPageButton = styled(Button)`
 margin:10px;
 border-radius: 10px;
 max-width: 200px;
@@ -231,12 +231,12 @@ font-weight:bold;
 }
 `
 
-const RegisterButton = MainPageButton.extend`
+const RegisterButton = styled(MainPageButton)`
 box-shadow:4px 4px 0px 0px rgba(155,0,0);
 background: rgba(155,0,0,0.8);
 `
 
-const HowtoButton = MainPageButton.extend`
+const HowtoButton = styled(MainPageButton)`
 	border:none;
 	box-shadow:4px 4px 0px 0px rgba(155,0,0);
 	color:rgba(155,0,0);

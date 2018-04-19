@@ -53,7 +53,7 @@ const renderContent= ({type, context}) => {
 			case 'youtube' :
 				returnComponent= 
 					<div>
-						<iframe width="320" height="240" src={`https://www.youtube.com/embed/` + getId(context)} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						<iframe width="320" height="240" src={`https://www.youtube.com/embed/` + getId(context)} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
 					</div>
 				break
 			default:

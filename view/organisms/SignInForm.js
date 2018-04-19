@@ -43,7 +43,7 @@ export default ({onClickGoogle,onClickFacebook,onSubmitEmail, page, formValue, c
 			:null
 		}
 
-			<Button style={{width:'100%'}} size='medium' primary onClick={()=>onSubmitEmail(formValue? formValue.email : null, formValue? formValue.password: null)}>
+			<Button id='loginButton' style={{width:'100%'}} size='medium' primary onClick={()=>onSubmitEmail(formValue? formValue.email : null, formValue? formValue.password: null)}>
 				<Icon name='user'></Icon> 
 				{page === 'login' ? <span>ล๊อกอิน</span> : <span>สมัครบริการ</span>}
 			</Button>

@@ -59,7 +59,6 @@ class Payment extends React.Component{
 			<PaymentView 
 				{...this.props}
 				onCheckOut={()=>createPayment(total, card ,transaction)}
-				imageUpload={transaction.payment.paymentDetail}
 				savePaymentImage={savePaymentImage}
 			/>
 			<form ref="formPayment" method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
@@ -87,7 +86,7 @@ const mapStateToProps = state =>({
 	validateCreditCard: validateCreditCard(selector(state, 'cardNumber'), selector(state, 'month'), selector(state,'year')),
 	startedUploadImage: state.payment.startedUploadImage,
 	pending: state.payment.pending,
-	image: state.payment.paymentImage
+	image: state.transaction.paymentImage
 })
 
 const mapDispatchToProps = {

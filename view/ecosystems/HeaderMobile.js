@@ -35,7 +35,7 @@ const nonLoginMenu = [
 	menu[0],menu[1],menu[2]
 ]
 
-const MobileLogo = Logo.extend`
+const MobileLogo = styled(Logo)`
 	font-size:190%;
 	margin:0;
 `

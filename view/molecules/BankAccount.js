@@ -15,6 +15,7 @@ const accountNumberFormat = accountNumber => `${accountNumber.slice(0,3)}-${acco
 
 const ModalContext = props => 
 <Wrapper>
+	{console.log('startuplaodimage', props)}
 	<h3>ขั้นตอนที่1 โอนเงินผ่านแอพธนาคารหรือโอนเงินที่	</h3>
 		<p>ธนาคาร{props.bankName} </p>
 		<p>เลขที่บัญชี:{accountNumberFormat(props.accountNumber)} </p>
@@ -22,7 +23,7 @@ const ModalContext = props =>
 		<p>จำนวนเงิน: {props.transaction.quantity*props.transaction.price}</p>
 	<h3>ขั้นตอนที่2 อัพโหลดหลักฐานโดยการคลิกที่กล่องด้านล่างนี้</h3>
 	{!props.startedUploadImage?
-	<DropZone onDrop={image=>props.savePaymentImage(image, props.transaction)} size="100%" marginTop="15px">
+	<DropZone onDrop={image=>props.savePaymentImage(image, props.transaction)} size="100%">
 		<img style={{width:'100%'}} src='/static/img/bankTransfer.svg'/>
 	</DropZone>:
 		<div>
@@ -56,7 +57,7 @@ export default props =>
 	<img style={{width:'80px', height:'80px', position:'absolute', top:'0', right:'0'}} src={props.logo || ""} alt="bank image" />
 	<H3 color="white" zIndex="10">{accountNumberFormat(props.accountNumber)}</H3>
 	<H3 color="white">ชื่อบัญชี {props.accountName}</H3>
-	<Modal context={ModalContext(props)} redirectUrl='/'>
+		<Modal context={<ModalContext {...props}/>} redirectUrl='/'>
 		<Button 
 			background="none" 
 			textColor="white" 
