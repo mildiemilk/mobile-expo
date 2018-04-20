@@ -20,11 +20,14 @@ class Payment extends React.Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			refno : ''
+			refno : '',
+			status : ''
 		}
 	}
 
 	async componentDidMount() {
+		const { queryParams } = this.props.url.query
+		queryParams? this.setState({ status: queryParams.paymentStatus }) : null
 		const { transaction } = this.props
 			let comission = calculateComission(transaction.price, transaction.comissionCash)
 	} 
@@ -44,7 +47,7 @@ class Payment extends React.Component{
 	}
 
 	render() { 
-		const { refno } = this.state
+		const { refno, status } = this.state
 		const { transaction } = this.props
 		const card = {
 			name : process.env.NODE_ENV === 'production'? '' :'john doe', 
@@ -53,8 +56,8 @@ class Payment extends React.Component{
 			expiryMonth:process.env.NODE_ENV === 'production'? '' :'7', 
 			expiryYear:process.env.NODE_ENV === 'production'? '' :'2019'
 		}
-		return this.props.url.query.queryParams?
-		<Modal context={this.ModalContext()} redirectUrl='/' open={true}></Modal>:
+		return status === 'success'? 
+		this.ModalContext() :
 		<div>
 			<PaymentView 
 				{...this.props}

@@ -94,10 +94,10 @@ app.prepare()
 			});
 		}) 
 
-		server.get('/payment/:transaction_id', (req, res) => {
+		server.get('/payment/:payment_status', (req, res) => {
 			const actualPage = '/payment'
 			const queryParams = {
-				transactionID: req.params.transaction_id,
+				paymentStatus: req.params.payment_status,
 			}
 			app.render(req, res, actualPage, {...process.env,queryParams})
 		})
