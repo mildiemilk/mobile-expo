@@ -3,6 +3,9 @@ const next = require('next')
 const cors = require('express-cors')
 const bodyParser = require('body-parser')
 const axios = require('axios')
+const exphbs = require('express-handlebars')
+const path = require('path')
+const nodemailer = require('nodemailer')
 import loadFirebase from './lib/database'
 import { updateUserTransaction, updateUserWallet } from './lib/handlers/payment'
 require('dotenv').config()
@@ -14,11 +17,6 @@ const app = next({
 const handle = app.getRequestHandler()
 const SECRET_KEY = process.env.OMISE_SECRET_KEY
 const EXPIRY_DATE = '2015-09-10'
-
-var omise = require('omise')({
-  'secretKey': SECRET_KEY,
-  'omiseVersion': EXPIRY_DATE
-});
 
 app.prepare()
 	.then(() => {
@@ -120,9 +118,47 @@ app.prepare()
 			app.render(req, res, actualPage, {...process.env,queryParams})
 		})
 
+		server.post('/sendEmail',(req,res)=>{
+			console.log('receive request')
+			let transporter = nodemailer.createTransport({
+				host: 'smtp.office365.com',
+				port: 587,
+				secure: false, // true for 465, false for other ports
+				auth: {
+					user: 'admin@sharemai.com', // generated ethereal user
+					pass: 'Jesus28168@' // generated ethereal password
+				},
+				requireTLS:true
+			});
+			// verify connection configuration
+			transporter.verify(function(error, success) {
+				if (error) {
+					console.log(error);
+				} else {
+					console.log('Server is ready to take our messages');
+				}
+			});
+
+			let mailOptions = {
+				from: '"share mai" <admin@sharemai.com>', // sender address
+				to: 'peakdrum@gmail.com', // list of receivers
+				subject: 'node contact request', // Subject line
+				text: 'Hello world?', // plain text body
+				html: '<h1>hello</h1>'// html body
+			};
+
+			transporter.sendMail(mailOptions, (error, info) => {
+				res.send({
+					resultCode:200,
+					resultText:'email sent'
+				})
+			});
+		})
+
 		server.get('*', (req, res) => {
 			return handle(req, res,'*', process.env)
 		})
+
 
 		server.listen(3000, (err) => {
 			if (err) throw err
