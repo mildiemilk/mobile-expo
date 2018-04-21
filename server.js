@@ -79,6 +79,10 @@ app.prepare()
 			}).done()
 		})
 
+		server.get('/googlec809505135a7a04b.html', (req,res) =>{
+			res.sendFile(__dirname+'/googlec809505135a7a04b.html');
+		})
+
 		server.get('/api/charges/internet-banking/:chargeId', (req, res) => {
 			const { chargeId } = req.params
 			return omise.charges.retrieve(chargeId, function(error, charge) {
