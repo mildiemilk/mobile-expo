@@ -16,6 +16,11 @@ import fetch from 'isomorphic-fetch'
 import loadFirebase from '../lib/database'
 import { findDOMNode } from 'react-dom'
 import $ from 'jquery'
+import { Button } from 'semantic-ui-react'
+import Ipad from '../static/img/ipadpayment.svg'
+import Phone from '../static/img/cardpayment.svg'
+import styled from 'styled-components'
+
 class Payment extends React.Component{
 	constructor(props){
 		super(props)
@@ -66,6 +71,26 @@ class Payment extends React.Component{
 				savePaymentImage={savePaymentImage}
 				onSubmit={this.onSubmit}
 			/>
+				<form ref="formPayment" method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
+					<div style={{width:'100%', maxWidth:'530px', display:'flex', alignContent:'center', flexDirection:'column', backgroundColor:'teal'}}>
+						<input type="hidden" name="refno" value={refno}/>
+						<input type="hidden" name="merchantid" value="41911567"/>
+						<input type="hidden" name="customeremail" value={transaction.email}/>
+						<input type="hidden" name="productdetail" value={transaction.productName}/>
+						<input type="hidden" name="total" value={transaction.price * transaction.quantity}/>
+						<Button 
+							color='orange'
+							style={{fontSize:'120%'}}
+							onClick={this.onSubmit}
+						>
+							อินเตอร์เน็ตแบงค์กิ้ง/บัตรเครดิต
+						</Button>
+					<div style={{width:'100px', height:'auto'}}>
+						<Ipad/>
+					</div>
+				</div>
+			</form>
+
 		</div>
 	}
 }
