@@ -8,6 +8,7 @@ const path = require('path')
 const nodemailer = require('nodemailer')
 import loadFirebase from './lib/database'
 import { updateUserTransaction, updateUserWallet } from './lib/handlers/payment'
+import MailerService from './lib/services/mailer'
 require('dotenv').config()
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -118,41 +119,40 @@ app.prepare()
 			app.render(req, res, actualPage, {...process.env,queryParams})
 		})
 
-		server.post('/sendEmail',(req,res)=>{
-			console.log('receive request')
-			let transporter = nodemailer.createTransport({
-				host: 'smtp.office365.com',
-				port: 587,
-				secure: false, // true for 465, false for other ports
-				auth: {
-					user: 'admin@sharemai.com', // generated ethereal user
-					pass: '8tMX2bVjVmyMU86L' // generated ethereal password
-				},
-				requireTLS:true
-			});
-			// verify connection configuration
-			transporter.verify(function(error, success) {
-				if (error) {
-					console.log(error);
-				} else {
-					console.log('Server is ready to take our messages');
-				}
-			});
-
-			let mailOptions = {
-				from: '"share mai" <admin@sharemai.com>', // sender address
-				to: 'peakdrum@gmail.com', // list of receivers
-				subject: 'node contact request', // Subject line
-				text: 'Hello world?', // plain text body
-				html: '<h1>hello</h1>'// html body
-			};
-
-			transporter.sendMail(mailOptions, (error, info) => {
+		server.post('/send-email/transaction-detail',(req,res)=>{
+			const mailer = new MailerService()
+			const { email, detail } = req.body
+			mailer.sendMailTransactionDetail(email, detail)
+			.then(() => {
 				res.send({
-					resultCode:200,
-					resultText:'email sent'
-				})
-			});
+						resultCode:200,
+						resultText:'email sent'
+					})
+			})
+		})
+
+		server.post('/send-email/transaction-result',(req,res)=>{
+			const mailer = new MailerService()
+			const { email, text } = req.body
+			mailer.sendMailTransactionResult(email, text)
+			.then(() => {
+				res.send({
+						resultCode:200,
+						resultText:'email sent'
+					})
+			})
+		})
+
+		server.post('/send-email/withdraw-result',(req,res)=>{
+			const mailer = new MailerService()
+			const { email, text } = req.body
+			mailer.sendMailWithdrawResult(email, text)
+			.then(() => {
+				res.send({
+						resultCode:200,
+						resultText:'email sent'
+					})
+			})
 		})
 
 		server.get('*', (req, res) => {
