@@ -126,7 +126,7 @@ app.prepare()
 				secure: false, // true for 465, false for other ports
 				auth: {
 					user: 'admin@sharemai.com', // generated ethereal user
-					pass: 'Jesus28168@' // generated ethereal password
+					pass: '8tMX2bVjVmyMU86L' // generated ethereal password
 				},
 				requireTLS:true
 			});
