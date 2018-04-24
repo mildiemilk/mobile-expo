@@ -121,7 +121,6 @@ app.prepare()
 		})
 
 		server.post('/send-email/transaction-detail',(req,res)=>{
-			console.log('send transaction detail')
 			const mailer = new MailerService()
 			const { email, detail } = req.body
 			mailer.sendMailTransactionDetail(email, detail)
@@ -134,7 +133,6 @@ app.prepare()
 		})
 
 		server.post('/send-email/transaction-result',(req,res)=>{
-			console.log('send transaction result')
 			const mailer = new MailerService()
 			const { email, text } = req.body
 			mailer.sendMailTransactionResult(email, text)
@@ -147,7 +145,6 @@ app.prepare()
 		})
 
 		server.post('/send-email/dispute-result',(req,res)=>{
-			console.log('send dispute result')
 			const mailer = new MailerService()
 			const { email, text } = req.body
 			mailer.sendMailWithdrawResult(email, text)
