@@ -16,7 +16,6 @@ const app = next({
 	dev
 })
 const handle = app.getRequestHandler()
-const SECRET_KEY = process.env.OMISE_SECRET_KEY
 const EXPIRY_DATE = '2015-09-10'
 
 app.prepare()
@@ -85,6 +84,10 @@ app.prepare()
 			}).done()
 		})
 
+		server.get('/googlec809505135a7a04b.html', (req,res) =>{
+			res.sendFile(__dirname+'/googlec809505135a7a04b.html');
+		})
+
 		server.get('/api/charges/internet-banking/:chargeId', (req, res) => {
 			const { chargeId } = req.params
 			return omise.charges.retrieve(chargeId, function(error, charge) {
@@ -94,10 +97,10 @@ app.prepare()
 			});
 		}) 
 
-		server.get('/payment/:transaction_id', (req, res) => {
+		server.get('/payment/:payment_status', (req, res) => {
 			const actualPage = '/payment'
 			const queryParams = {
-				transactionID: req.params.transaction_id,
+				paymentStatus: req.params.payment_status,
 			}
 			app.render(req, res, actualPage, {...process.env,queryParams})
 		})
