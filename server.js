@@ -7,7 +7,7 @@ const exphbs = require('express-handlebars')
 const path = require('path')
 const nodemailer = require('nodemailer')
 import loadFirebase from './lib/database'
-import { updateUserTransaction, updateUserWallet } from './lib/handlers/payment'
+import { updateUserTransaction, updateUserWallet, sendEmailBuyer } from './lib/handlers/payment'
 import MailerService from './lib/services/mailer'
 require('dotenv').config()
 
@@ -60,10 +60,11 @@ app.prepare()
 			if(result) {
 				const key = Object.keys(result)[0]
 				await db.ref().child('/transactions/'+ key).update(req.body)
-				.then(() => {
-					const { sellerId, sponsorId, buyerId, price, comissionCash } = result[key]
-					updateUserTransaction(sellerId, sponsorId, buyerId, key)
-					updateUserWallet(sellerId, sponsorId, price, comissionCash)
+				.then(async () => {
+					const { sellerId, sponsorId, buyerId, price, comissionCash, email } = result[key]
+					await updateUserTransaction(sellerId, sponsorId, buyerId, key)
+					await updateUserWallet(sellerId, sponsorId, price, comissionCash)
+					await sendEmailBuyer(email, 'Transaction success.')
 					res.status(200).send("payment success")
 				})
 			} else res.status(404).send("Error: transaction not found")
@@ -120,6 +121,7 @@ app.prepare()
 		})
 
 		server.post('/send-email/transaction-detail',(req,res)=>{
+			console.log('send transaction detail')
 			const mailer = new MailerService()
 			const { email, detail } = req.body
 			mailer.sendMailTransactionDetail(email, detail)
@@ -132,6 +134,7 @@ app.prepare()
 		})
 
 		server.post('/send-email/transaction-result',(req,res)=>{
+			console.log('send transaction result')
 			const mailer = new MailerService()
 			const { email, text } = req.body
 			mailer.sendMailTransactionResult(email, text)
@@ -143,7 +146,8 @@ app.prepare()
 			})
 		})
 
-		server.post('/send-email/withdraw-result',(req,res)=>{
+		server.post('/send-email/dispute-result',(req,res)=>{
+			console.log('send dispute result')
 			const mailer = new MailerService()
 			const { email, text } = req.body
 			mailer.sendMailWithdrawResult(email, text)

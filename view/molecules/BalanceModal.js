@@ -56,10 +56,10 @@ const handleDisputeCallback = res => {
 }
 
 const handleSetDataDispute =async( props) => {
-    const {uid, amount, bankAccountName, bankAccountNumber, bankName} = props.user
+    const {uid, amount, bankAccountName, bankAccountNumber, bankName, email} = props.user
     await subUserWallet(uid, props.userBankDetail.amount, () => {
-        let disputeArr = { ...props.userBankDetail, DateAndTime:new Date().toISOString().slice(0, 19).replace('T', ' ')}
-        saveDispute(disputeArr,(res)=>handleDisputeCallback(res));
+        let disputeArr = { userUid: uid, ...props.userBankDetail, DateAndTime:new Date().toISOString().slice(0, 19).replace('T', ' ')}
+        saveDispute(email, disputeArr,(res)=>handleDisputeCallback(res));
     })
     await updateUserBankAccount(uid, bankName, bankAccountName, bankAccountNumber)
 }
