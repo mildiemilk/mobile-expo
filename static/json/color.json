@@ -1,6 +1,9 @@
 {
 	"primary":"#25282A",
 	"lightPrimary": "#fbfbfc",
+	"pastelLight":"#fefee1",
+	"primary2":"#F76C6C",
+	"blue":"#b1cce8 ",
 	"contrast": "#ff902b",
 	"darkText": "#25282A",
 	"warning": "#F79E02",

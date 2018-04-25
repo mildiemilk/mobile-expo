@@ -25,6 +25,8 @@ import {Provider} from 'react-redux'
 import store from './store'
 import Jumbotron from '../../view/molecules/Jumbotron'
 import WebExplainCard from '../../view/molecules/WebExplainCard'
+import ChatButton from '../../view/molecules/ChatButton'
+import ChatBox from '../../view/molecules/ChatBox'
 
 storiesOf('Jumbotron', module)
 .add('default', ()=> <div style={{backgroundColor:'#F7F7F7', width:'100vw', height:'100vh', display:'relative'}}>
@@ -172,3 +174,13 @@ storiesOf('Bank Account', module)
 	.add('Kasikorn Bank', ()=> <BankAccount backgroundImage="linear-gradient(135deg, #5ed130, #429321)" bankName="ธนาคารกสิกร" accountNumber="1234567890" accountName="ปิยภูมิ ศรไพศาล" />)
 	.add('SCB Bank', ()=> <BankAccount backgroundImage="radial-gradient(circle at 0 0, #8662ba, #4e3384)" bankName="ธนาคารไทยพานิชย์" accountNumber="1234567890" accountName="ปิยภูมิ ศรไพศาล" />)
 	
+storiesOf('Chat Button', module)
+	.add('default', ()=><ChatButton/>)
+	.add('with other component', ()=><div>
+		<h1>hello I am on top of you</h1>
+		<ChatButton />
+		<h1>hello I am at the bottom of you </h1>
+	</div>)
+
+storiesOf('Chat Box', module)
+	.add('default', ()=><ChatBox />)
