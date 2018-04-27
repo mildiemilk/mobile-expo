@@ -7,6 +7,7 @@ import MultiTab from '../molecules/Multitab'
 import AddToCart from '../organisms/AddToCart'
 import Wrapper from '../atoms/Wrapper';
 import ProductVarietyPreview from '../organisms/ProductVarietyPreview'
+import Chat from '../organisms/Chat';
 
 export default props =>
 <Grid>
@@ -30,5 +31,6 @@ export default props =>
 				price = {props.product.price}
 		/>
 		</Wrapper>
+		<Chat {...props}/>
 	</Grid.Column>
 </Grid>

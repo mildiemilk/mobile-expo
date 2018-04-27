@@ -116,6 +116,7 @@ const Wrapper = styled.div`
 display: flex;
 flex-flow: row wrap-reverse;
 margin-top:0px;
+min-height:90vh;
 background: ${colorOrange}; 
 background: -moz-linear-gradient(135deg, ${colorOrange} 0%, ${colorPink} 100%); 
 background: -webkit-linear-gradient(135deg, ${colorOrange} 0%,${colorPink} 100%); 
@@ -158,6 +159,7 @@ const Heading = styled.h1`
 `
 
 const MobileImage = styled.img`
+min-width:320px;
 @media (max-width: 700px) {
 	width:100%;
 }
