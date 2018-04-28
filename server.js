@@ -50,7 +50,7 @@ app.prepare()
 		server.post('/api/result-payment', async (req, res) => {
 			const { refno } = req.body
 			let db = await loadFirebase('database')
-			const result = await db
+			let result = await db
 				.ref("transactions")
 				.orderByChild("refno")
 				.equalTo(refno)
@@ -58,12 +58,15 @@ app.prepare()
 				.then(snapshot => snapshot.val())
 			if(result) {
 				const key = Object.keys(result)[0]
+				const timestamp = Date().toString()
+				req.body['timestamp'] = timestamp
 				await db.ref().child('/transactions/'+ key).update(req.body)
 				.then(async () => {
+					result[key]['timestamp'] = timestamp
 					const { sellerId, sponsorId, buyerId, price, comissionCash, email } = result[key]
 					await updateUserTransaction(sellerId, sponsorId, buyerId, key)
 					await updateUserWallet(sellerId, sponsorId, price, comissionCash)
-					await sendEmailBuyer(email, 'Transaction success.')
+					await sendEmailBuyer(result[key], 'Transaction success.')
 					res.status(200).send("payment success")
 				})
 			} else res.status(404).send("Error: transaction not found")
@@ -137,8 +140,8 @@ app.prepare()
 
 		server.post('/send-email/transaction-result',(req,res)=>{
 			const mailer = new MailerService()
-			const { email, text } = req.body
-			mailer.sendMailTransactionResult(email, text)
+			const { email, detail } = req.body
+			mailer.sendMailTransactionResult(email, detail)
 			.then(() => {
 				res.send({
 						resultCode:200,
@@ -149,8 +152,8 @@ app.prepare()
 
 		server.post('/send-email/dispute-result',(req,res)=>{
 			const mailer = new MailerService()
-			const { email, text } = req.body
-			mailer.sendMailWithdrawResult(email, text)
+			const { email, detail } = req.body
+			mailer.sendMailWithdrawResult(email, detail)
 			.then(() => {
 				res.send({
 						resultCode:200,
