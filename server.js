@@ -66,7 +66,7 @@ app.prepare()
 					const { sellerId, sponsorId, buyerId, price, comissionCash, email } = result[key]
 					await updateUserTransaction(sellerId, sponsorId, buyerId, key)
 					await updateUserWallet(sellerId, sponsorId, price, comissionCash)
-					await sendEmailBuyer(result[key], 'Transaction success.')
+					await sendEmailBuyer(result[key], 'ทำรายการสำเร็จ')
 					res.status(200).send("payment success")
 				})
 			} else res.status(404).send("Error: transaction not found")
