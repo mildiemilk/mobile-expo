@@ -28,16 +28,16 @@ class Product extends React.Component{
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		await this.props.addSponsorId(this.props.url.query.queryParams.userID)
 		await this.props.addProductId(this.props.url.query.queryParams.productID)
-		await onChangeChatroom(this.props.chat.chatId)
 	}
 
 
 	async componentWillReceiveProps(nextProps) {
 		const {productName, comissionCash, price, userUid} = this.props.product
 		const {uid} = this.props.user
-		nextProps.product !== this.props.product ? await getUserProducts( nextProps.product.userUid ) : null
-		nextProps.product.userUid !== userUid ? this.props.addSellerId(nextProps.product.userUid) : null
-		nextProps.user.uid !== uid ? this.props.addBuyerId(nextProps.user.uid) : null
+		nextProps.product !== this.props.product && await getUserProducts( nextProps.product.userUid )
+		nextProps.product.userUid !== userUid && this.props.addSellerId(nextProps.product.userUid)
+		nextProps.user.uid !== uid && this.props.addBuyerId(nextProps.user.uid)
+		this.props.chat.chatId && nextProps.chat.chats !== this.props.chat.chats && await onChangeChatroom(this.props.chat.chatId)
 	}
 
 	render(){
@@ -48,7 +48,6 @@ class Product extends React.Component{
 			productUid={url.query.productID} 
 			quantity={transaction.quantity || 1 }
 			setProductActive={setProductActive}
-			onChangeChatroom={onChangeChatroom} 
 			loadAndUpdateChatroom={loadAndUpdateChatroom} 
 			newChatroom={newChatroom}
 			updateChatroom={updateChatroom}

@@ -14,7 +14,9 @@ class Chat extends React.Component{
             <React.Fragment>
                 {
                     this.state.display ? 
-                    <Transition visible={this.state.display} animation='scale' duration={500}><ChatBox {...this.props} onClose={()=>this.setState({display:!this.state.display})}/></Transition>:
+                    <Transition visible={this.state.display} animation='scale' duration={500}>
+                        <ChatBox {...this.props} onClose={()=>this.setState({display:!this.state.display})}/>
+                    </Transition>:
                     <ChatButton onClick={()=>this.setState({display:!this.state.display})}/>
                 }
             </React.Fragment>

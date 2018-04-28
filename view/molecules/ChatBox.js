@@ -56,33 +56,34 @@ class ChatBox extends Component {
 
     render(){
         const { props } = this
-        console.log(this.props.chat)
         return(
-            <Card style={{width:'300px', position:'fixed', bottom:'0', right:'10px', zIndex:'1000', boxShadow:'0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)', maxHeight:'90vh'}}>
+            <Card style={{width:'300px', maxHeight:'60vh', position:'fixed', bottom:'0', right:'10px', zIndex:'1000', boxShadow:'0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)', maxHeight:'90vh'}}>
                 <Card.Content style={{background:color.contrast, color:'white', position:'relative', height:'50px'}}><Icon onClick={props.onClose} style={{position:'absolute', right:'0'}} size="large" name='minus'/></Card.Content>
                 <Card.Content style={{background:'#fafffe', overflow:'auto'}}>
                     <Comment.Group style={{minHeight:'300px'}}>
                         { props.chat.chats && props.chat.chats.map( 
-                            chat => chat.sender === 'buyer'? 
-                            <SenderChat {...chat}/>: 
-                            <ResponderChat {...chat}/>) 
+                            (chat, key) => chat.sender === 'buyer'? 
+                            <SenderChat key={key} {...chat}/>: 
+                            <ResponderChat key={key} {...chat}/>) 
                         }
                     </Comment.Group>
                 </Card.Content>
                 <Card.Content>
                     <Form reply>
-                    <Form.TextArea onChange={e => this.setState({text:e.target.value})} style={{maxHeight:'100px'}}/>
+                    <Form.TextArea value={this.state.text} onChange={e => this.setState({text:e.target.value})} style={{maxHeight:'100px'}}/>
                     <div style={{display:'flex', justifyContent:'flex-end'}}>
                         <Button 
+                            style={{background:color.contrast}} 
+                            content='ส่งข้อความ' 
+                            labelPosition='right' 
+                            icon='play' 
+                            primary 
                             onClick={
-                                ()=>props.chat.chatId === '' ? 
+                                async ()=>{ await props.chat.chatId === '' ? 
                                     props.newChatroom(props.transaction.productId, props.transaction.sellerId, props.transaction.sponsorId, this.state.text): 
-                                    props.updateChatroom(props.chat, this.state.text) } 
-                                    style={{background:color.contrast}} 
-                                    content='ส่งข้อความ' 
-                                    labelPosition='right' 
-                                    icon='play' 
-                                    primary 
+                                    props.updateChatroom(props.chat, this.state.text)
+                                    await this.setState({text:''})
+                                }} 
                         />
                     </div>
                     </Form>
