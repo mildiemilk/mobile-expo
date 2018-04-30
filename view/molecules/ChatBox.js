@@ -54,6 +54,14 @@ const SenderChat = props => <Comment style={{right:'0', marginRight:'10px'}}>
 class ChatBox extends Component {
     state = {text:''}
 
+    async handleSubmit(){
+        const {props} = this
+        await props.chat.chatId === '' ? 
+            props.newChatroom(props.transaction.productId, props.transaction.sellerId, props.transaction.sponsorId, this.state.text): 
+            props.updateChatroom(props.chat, this.state.text)
+        await this.setState({text:''})
+    }
+
     render(){
         const { props } = this
         return(
@@ -70,7 +78,13 @@ class ChatBox extends Component {
                 </Card.Content>
                 <Card.Content>
                     <Form reply>
-                    <Form.TextArea value={this.state.text} onChange={e => this.setState({text:e.target.value})} style={{maxHeight:'100px'}}/>
+                    <Form.TextArea 
+                        autoFocus   
+                        value={this.state.text} 
+                        onChange={e => this.setState({text:e.target.value})} 
+                        style={{maxHeight:'100px'}}
+                        onKeyPress={event=>event.key === 'Enter' && this.handleSubmit()}    
+                    />
                     <div style={{display:'flex', justifyContent:'flex-end'}}>
                         <Button 
                             style={{background:color.contrast}} 
@@ -78,12 +92,7 @@ class ChatBox extends Component {
                             labelPosition='right' 
                             icon='play' 
                             primary 
-                            onClick={
-                                async ()=>{ await props.chat.chatId === '' ? 
-                                    props.newChatroom(props.transaction.productId, props.transaction.sellerId, props.transaction.sponsorId, this.state.text): 
-                                    props.updateChatroom(props.chat, this.state.text)
-                                    await this.setState({text:''})
-                                }} 
+                            onClick={()=>this.handleSubmit()} 
                         />
                     </div>
                     </Form>

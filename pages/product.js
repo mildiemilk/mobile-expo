@@ -28,7 +28,6 @@ class Product extends React.Component{
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		await this.props.addSponsorId(this.props.url.query.queryParams.userID)
 		await this.props.addProductId(this.props.url.query.queryParams.productID)
-		await onChangeChatroom(this.props.chat.chatId)
 	}
 
 
