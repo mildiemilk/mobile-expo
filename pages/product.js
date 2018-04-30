@@ -28,6 +28,7 @@ class Product extends React.Component{
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 		await this.props.addSponsorId(this.props.url.query.queryParams.userID)
 		await this.props.addProductId(this.props.url.query.queryParams.productID)
+		await onChangeChatroom(this.props.chat.chatId)
 	}
 
 
@@ -37,7 +38,7 @@ class Product extends React.Component{
 		nextProps.product !== this.props.product && await getUserProducts( nextProps.product.userUid )
 		nextProps.product.userUid !== userUid && this.props.addSellerId(nextProps.product.userUid)
 		nextProps.user.uid !== uid && this.props.addBuyerId(nextProps.user.uid)
-		this.props.chat.chatId && nextProps.chat.chats !== this.props.chat.chats && await onChangeChatroom(this.props.chat.chatId)
+		nextProps.chat.chatId !== this.props.chat.chatId && await onChangeChatroom(this.props.chat.chatId)
 	}
 
 	render(){

@@ -42,7 +42,6 @@ class Profile extends Component {
 	}
 
 	async componentDidMount() {
-		
 		this.props.saveUserPending()
 		const auth = await loadFirebase('auth')
 		const user = await auth.onAuthStateChanged(user => {
