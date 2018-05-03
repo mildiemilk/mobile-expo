@@ -3,8 +3,12 @@ const next = require('next')
 const cors = require('express-cors')
 const bodyParser = require('body-parser')
 const axios = require('axios')
+const exphbs = require('express-handlebars')
+const path = require('path')
+const nodemailer = require('nodemailer')
 import loadFirebase from './lib/database'
-import { updateUserTransaction, updateUserWallet } from './lib/handlers/payment'
+import { updateUserTransaction, updateUserWallet, sendEmailBuyer } from './lib/handlers/payment'
+import MailerService from './lib/services/mailer'
 require('dotenv').config()
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -46,7 +50,7 @@ app.prepare()
 		server.post('/api/result-payment', async (req, res) => {
 			const { refno } = req.body
 			let db = await loadFirebase('database')
-			const result = await db
+			let result = await db
 				.ref("transactions")
 				.orderByChild("refno")
 				.equalTo(refno)
@@ -54,11 +58,15 @@ app.prepare()
 				.then(snapshot => snapshot.val())
 			if(result) {
 				const key = Object.keys(result)[0]
+				const timestamp = Date().toString()
+				req.body['timestamp'] = timestamp
 				await db.ref().child('/transactions/'+ key).update(req.body)
-				.then(() => {
-					const { sellerId, sponsorId, buyerId, price, comissionCash } = result[key]
-					updateUserTransaction(sellerId, sponsorId, buyerId, key)
-					updateUserWallet(sellerId, sponsorId, price, comissionCash)
+				.then(async () => {
+					result[key]['timestamp'] = timestamp
+					const { sellerId, sponsorId, buyerId, price, comissionCash, email } = result[key]
+					await updateUserTransaction(sellerId, sponsorId, buyerId, key)
+					await updateUserWallet(sellerId, sponsorId, price, comissionCash)
+					await sendEmailBuyer(result[key], 'ทำรายการสำเร็จ')
 					res.status(200).send("payment success")
 				})
 			} else res.status(404).send("Error: transaction not found")
@@ -118,9 +126,46 @@ app.prepare()
 			app.render(req, res, actualPage, {...process.env,queryParams})
 		})
 
+		server.post('/send-email/transaction-detail',(req,res)=>{
+			const mailer = new MailerService()
+			const { email, detail } = req.body
+			mailer.sendMailTransactionDetail(email, detail)
+			.then(() => {
+				res.send({
+						resultCode:200,
+						resultText:'email sent'
+					})
+			})
+		})
+
+		server.post('/send-email/transaction-result',(req,res)=>{
+			const mailer = new MailerService()
+			const { email, detail } = req.body
+			mailer.sendMailTransactionResult(email, detail)
+			.then(() => {
+				res.send({
+						resultCode:200,
+						resultText:'email sent'
+					})
+			})
+		})
+
+		server.post('/send-email/dispute-result',(req,res)=>{
+			const mailer = new MailerService()
+			const { email, detail } = req.body
+			mailer.sendMailWithdrawResult(email, detail)
+			.then(() => {
+				res.send({
+						resultCode:200,
+						resultText:'email sent'
+					})
+			})
+		})
+
 		server.get('*', (req, res) => {
 			return handle(req, res,'*', process.env)
 		})
+
 
 		server.listen(3000, (err) => {
 			if (err) throw err

@@ -11,6 +11,7 @@ export default ({children, title, url, image, type, description, video, videoTyp
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
 	<link href="https://fonts.googleapis.com/css?family=Kanit|Prompt" rel="stylesheet" />
 	<link rel="icon" type="image/png" sizes="512x512" href="../../static/img/logo.png" />
+	<link rel="alternate" href="https://sharemai.com" hreflang="th"/>
 	{
 		url?
 		<meta property="og:url" content={url} /> : null
