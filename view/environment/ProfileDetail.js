@@ -27,7 +27,7 @@ export default({profile, handleEdit, isEdit, detail, handleSave, handleImageChan
       <H5 margin="20px 0px" center>{profile.name}</H5>
       {isEdit 
       ?<div><DivImage center>
-        {profileImage ?<Image src={profileImage?profileImage:'/static/img/noimg.png'} />:<Button noFlexGrow>Upload</Button>}
+        {user.profileImage ?<Image src={user.profileImage?user.profileImage:'/static/img/noimg.png'} />:<Button noFlexGrow>Upload</Button>}
         <Label for="buttonImg"><input style={{display:"none"}} name="image" onChange={e => handleImageChange(e)} id="buttonImg" type="file" /></Label>
         </DivImage>
         <H5 margin="15px 0px 0px 0px" lineHeight="20px">จำนวนเงิน: {profile.wallet||0} บาท</H5> 

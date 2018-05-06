@@ -253,7 +253,6 @@ const mapStateToProps = state => ({
 	requestMembership: state.member.requestMembership,
 	balance: state.user.wallet,
 	userUid: state.user.uid,
-	profileImage: state.profile.profileImage,
 	initialValues: state.profile
 })
 
