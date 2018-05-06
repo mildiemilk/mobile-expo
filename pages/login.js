@@ -7,18 +7,21 @@ import store from '../lib/store'
 import loadFirebase from '../lib/database'
 import LoginForm from '../view/environment/AuthForm'
 import { signinWithFacebook, signinWithGoogle, signOut, signInWithEmail, addUserToDatabaseAndStore} from '../lib/handlers/authenticator'
-import { saveUser, resetPending } from '../lib/actions/user'
+import { saveUser } from '../lib/actions/user'
 import { validateEmail, validatePassword } from '../lib/helpers/formvalidation'
 
 class Login extends React.Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
+		var loginUser = await auth.getRedirectResult()
+		if(loginUser.user) {	
+			await addUserToDatabaseAndStore(loginUser.additionalUserInfo.profile.id, loginUser.credential.accessToken, loginUser.user.displayName, loginUser.user.uid, loginUser.user.email)
+		}
 		this.props.resetPending()
 	}
 
 	render() {
-		const { user, loginValues, pending } = this.props
+		const { user, loginValues } = this.props
 		let validateEmailResult = validateEmail(loginValues ? loginValues.email : null)
 		let validatePasswordResult = validatePassword(loginValues ? loginValues.password : null)
 		let statusArray = [validateEmailResult.status, validatePasswordResult.status]
@@ -34,7 +37,6 @@ class Login extends React.Component {
 				formValue={loginValues}
 				status={'success'}
 				helperText={''}
-				pending={pending}
 			/>
 		)
 	}
@@ -44,14 +46,12 @@ Login = reduxForm({
 })(Login)
 
 const mapStateToProps = state => ({
-  loginValues : state.form.login ? state.form.login.values : null,
-	user: state.user,
-	pending: state.user? state.user.pending: false
+    loginValues : state.form.login ? state.form.login.values : null,
+    user: state.user
 })
 
 const mapDispatchToProps = {
-	saveUser,
-	resetPending
+	saveUser
 }
 
 export default withRedux(()=>store,mapStateToProps, mapDispatchToProps)(Login)

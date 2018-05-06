@@ -11,7 +11,11 @@ import {validateEmail, validatePassword, validatePasswordConfirmation} from '../
 
 class Register extends React.Component {
 	async componentDidMount() {
-		const auth = await loadFirebase('auth')
+        const auth = await loadFirebase('auth')
+        var loginUser = await auth.getRedirectResult()
+		if(loginUser.user) {	
+			await addUserToDatabaseAndStore(loginUser.additionalUserInfo.profile.id, loginUser.credential.accessToken, loginUser.user.displayName, loginUser.user.uid, loginUser.user.email)
+		}
 		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
 	}
 
