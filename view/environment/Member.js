@@ -171,13 +171,30 @@ export default props =>
 										{!props.user.membership?
 											<Flex direction="row">
 												<Modal context={<MemberLoginForm {...props} /> }
-												action={<Button onClick={()=>props.loginMembership(props.chosenMembership, props.password, props.user)}>สมัครสมาชิก</Button>}
+												action={
+													<Button 
+														onClick={()=>props.loginMembership(
+															props.chosenMembership, 
+															props.password, 
+															props.user)}
+													>
+														สมัครสมาชิก
+													</Button>}
 												>
 													<Button margin="0px 0 0 10px">สมัครสมาชิก</Button>												
 												</Modal>
 												<Modal 
 													context={<MemberRegisterForm {...props} />}
-													action={<Button onClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}>สมัครสมาชิก</Button>}
+													action={
+														<Button 
+															onClick={
+																()=>props.saveMembership(
+																	props.name, 
+																	props.password, 
+																	props.user.uid)}
+														>
+															สมัครสมาชิก
+														</Button>}
 												>
 													<Button margin="0px 0 0 10px" secondary>สร้างสมาชิก</Button>
 												</Modal>
@@ -185,14 +202,16 @@ export default props =>
 											:<DeleteMembershipConfirm {...props}/>
 										}
 										{
-											props.allMemberships[props.user.membership] && props.allMemberships[props.user.membership].creatorUid=== props.user.uid?
-											<ChangeMembershipPassword {...props}/>:null
+											(props.allMemberships[props.user.membership] && 
+											props.allMemberships[props.user.membership].creatorUid=== props.user.uid)&&
+											<ChangeMembershipPassword {...props}/>
 										}
 									</Flex>:
 									<Icon loading name='spinner' size='large'/>
 									}
 									{props.user.membership&& 
-									<H3>สถานะ:{props.member.members[props.user.uid]? props.member.members[props.user.uid].permission: null}</H3>
+									<H3>สถานะ:{props.member.members[props.user.uid]&& 
+										props.member.members[props.user.uid].permission}</H3>
 									}
 								<H3>จำนวนสมาชิก: {Object.keys(props.member.members).length}</H3>
 								<H3>จำนวนสินค้า: {Object.keys(props.member.products).length}</H3>
@@ -209,7 +228,19 @@ export default props =>
 								</Wrapper>
 								<Wrapper>
 								<h2>จัดการสมาชิก</h2>
-								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Modal context={addMember(props)}><Button margin="0" fullWidth height="100%">+ add member</Button></Modal></td></tr>:null}/>
+								<JsonTable 
+									headerJson={memberHeader} 
+									bodyJsonArray={
+										constructMemberArray(
+											props.member.members, 
+											props.isAdmin, 
+											props.setMemberPermission
+											)} 
+										footer={props.isAdmin&&<tr><td style={{margin:"0", padding:"0"}} 
+										colSpan={Object.keys(memberHeader).length}>
+											<Modal context={addMember(props)}>
+												<Button margin="0" fullWidth height="100%">+ add member</Button>
+											</Modal></td></tr>}/>
 								</Wrapper>
 						</Grid.Column>
 				</Grid.Row>
