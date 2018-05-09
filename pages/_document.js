@@ -1,9 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import flush from 'styled-jsx/server'
-import styled from 'styled-components'
-import  Header  from '../view/environment/Header';
-import DefaultHead from '../view/environment/DefaultHead'
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {

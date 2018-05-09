@@ -1,29 +1,24 @@
-import React, { Component } from 'react'
-import { Grid } from 'semantic-ui-react'
-import MediaQuery from 'react-responsive'
+import { Component } from 'react'
 import withRedux from "next-redux-wrapper"
-import { reduxForm, formValues, formValueSelector } from 'redux-form'
-import ProfileView from '../view/environment/Profile'
-import { getUserProducts, setProductStock, setProductSponsor, getProductSponsor, getProductToSponsorTable, setProductActive, setProductMembership, deleteProduct } from '../lib/handlers/product'
-import { getMemberByEmailsByEmail, saveRequestedByEmailUserMembership } from '../lib/handlers/member'
+import { reduxForm, formValueSelector } from 'redux-form'
+import { getUserProducts, setProductStock, getProductToSponsorTable, setProductActive, setProductMembership, deleteProduct } from '../lib/handlers/product'
+import { getMemberByEmailsByEmail } from '../lib/handlers/member'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import { getProfile, getTable, addProfileDetail, addProfileImage } from '../lib/handlers/profile'
 import { getUserbyUid } from '../lib/handlers/user'
 import { setOrderStatus } from '../lib/handlers/transaction'
-import Head from '../view/environment/DefaultHead'
-import Header from '../view/environment/Header'
-import Wrapper from '../view/atoms/Wrapper'
 import store from '../lib/store'
-import ProfileSide from '../view/molecules/ProfileSide'
-import ProfileMobile from '../view/environment/ProfileMobile'
-import ProfileDetail from '../view/environment/ProfileDetail'
-import Button from '../view/atoms/Button';
-import HeightDiv from '../view/atoms/HeightDiv'
 import { setMembers } from '../lib/handlers/member'
-import H3 from '../view/atoms/H3'
-import login from './login'
 import Router from 'next/router'
+import Header from '../view/environment/Header'
+import Head from '../view/environment/DefaultHead'
+import HeightDiv from '../view/atoms/HeightDiv'
+import ProfileSide from '../view/molecules/ProfileSide'
+import ProfileDetail from '../view/environment/ProfileDetail'
+import ProfileView from '../view/environment/Profile'
+import ProfileMobile from '../view/environment/ProfileMobile'
+import H3 from '../view/atoms/H3'
 
 class Profile extends Component {
 	
@@ -48,7 +43,7 @@ class Profile extends Component {
 		this.setState({width:window.innerWidth})
 		this.props.saveUserPending()
 		const auth = await loadFirebase('auth')
-		const user = await auth.onAuthStateChanged(user => 
+		await auth.onAuthStateChanged(user => 
 			getUserbyUid(user.uid)
 		)
 		if(this.props.user) {
@@ -69,10 +64,11 @@ class Profile extends Component {
 				await getMemberByEmailsByEmail(this.props.user.email) : null
 		}
 		if(this.props.profile.transactionIds !==undefined) {
-			if(this.props.profile.transactionIds.length>=1 && (JSON.stringify(this.props.profile) !== JSON.stringify(nextProps.profile))){
-				if(typeof this.props.profile.transactionIds[0] == "string") {
-					getTable(this.props.profile.transactionIds)
-				}
+			if(this.props.profile.transactionIds.length>=1 
+				&& (JSON.stringify(this.props.profile) !== JSON.stringify(nextProps.profile))){
+					if(typeof this.props.profile.transactionIds[0] == "string") {
+						getTable(this.props.profile.transactionIds)
+					}
 			}
 		}
 		if(nextProps.userProducts !== this.props.userProducts) {
@@ -115,7 +111,6 @@ class Profile extends Component {
 			isView: false,
 			showView: ''
 		})
-		const { isItemCard } = this.state
 		if(string==="order") {
 			this.setState({isItemCard:true})
 		}
@@ -143,8 +138,6 @@ class Profile extends Component {
 	
 	render() {
 		const {props,state} = this
-		const {userProducts, isUserMembership} = this.props
-		const membershipProductsNumber = this.countMembershipProducts(userProducts)
 		return <HeightDiv>
 			<Head/>
 			{props.user.uid?
