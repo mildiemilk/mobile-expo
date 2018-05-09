@@ -58,118 +58,83 @@ const requestedMembershipView = (members, saveRequestedByEmailUserMembership, us
 	}
 </Wrapper>
 
-export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership, membershipProductsNumber, requestMembership, saveRequestedByEmailUserMembership,deleteProduct}) =>
+export default props =>
 <Flex direction="column" margin="0px 7px">
 	<MediaQuery  minDeviceWidth={1224}>
-		{!isUserMembership&&
+		{!props.isUserMembership&&
 			<div>
 				{
-				requestMembership && requestMembership.length > 0 &&
-					requestedMembershipView(requestMembership, saveRequestedByEmailUserMembership, user)
-					
+				props.requestMembership && props.requestMembership.length > 0 &&
+					requestedMembershipView(props.requestMembership, props.saveRequestedByEmailUserMembership, props.user)
 				}
 			</div>}
 
-		{isView? <Button secondary width="70px" onClick={() => handleClickView('')}>Back</Button> : null}
-			{isItemCard
+		{props.isView? <Button secondary width="70px" onClick={() => props.handleClickView('')}>Back</Button> : null}
+			{props.isItemCard
 			?<ProfileTable
-				table={table !== undefined ?!isView? table.slice(0,3) : table: undefined}
-				userUid={userUid}
-				setOrderStatus={setOrderStatus}
-				isView={isView}
-				showView={showView}
-				isTableMobile={isTableMobile}
-				handleClickView={handleClickView}
+			{...props}
+			table={props.table !== undefined ?!props.isView? props.table.slice(0,3) : props.table: undefined}
 			/>
 			:<div style={{flexGrow:"2"}}>
-				{!isView || (showView === 'first')?
+				{!props.isView || (props.showView === 'first')?
 					<Wrapper maxWidth="94vw" bigScreenWidth="70vw">
-						<H3>สินค้าที่คุณเป็นเจ้าของ{!isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a> }</H3>
-						{Object.keys(userProducts).length >0
-						?Object.keys(userProducts).length <= 3 || isView
-							?	userProducts ? 
-								Object.keys(userProducts).reverse().map( userProductKey => {
-								return (
+						<H3>สินค้าที่คุณเป็นเจ้าของ{!props.isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => props.handleClickView('first')}>View all</a> }</H3>
+						{Object.keys(props.userProducts).length >0
+						?Object.keys(props.userProducts).length <= 3 || props.isView
+							?	props.userProducts &&
+								Object.keys(props.userProducts).reverse().map( userProductKey => 
 									<div style={{display:'inline-block'}} key={userProductKey}>
 										<ItemCard 
-											key={userProductKey}
-											userUid={user.uid} 
-											product={userProducts[userProductKey]} 
+											{...props}
 											productKey={userProductKey}
-											setProductStock={setProductStock}
-											sponsorEmail={sponsorEmail}
-											setProductSponsor={setProductSponsor}
-											getProductSponsor={getProductSponsor}
+											key={userProductKey} 
+											product={props.userProducts[userProductKey]} 
 											isSponsor={false}
-											setProductActive={setProductActive}
-											isUserMembership={isUserMembership}
-											setProductMembership={setProductMembership}
-											membershipProductsNumber={membershipProductsNumber}
-											deleteProduct={deleteProduct}
 										/>
 									</div>)
-								}) : null
 							: <Slider {...settings}>
-							{ userProducts &&
-									Object.keys(userProducts).reverse().map( userProductKey => {
-										return (
+							{ props.userProducts &&
+									Object.keys(props.userProducts).reverse().map( userProductKey =>
 											<div style={{height:'100%'}}>
 												<ItemCard 
-													key={userProductKey}
-													userUid={user.uid} 
-													product={userProducts[userProductKey]} 
+													{...props}
+													key={userProductKey} 
 													productKey={userProductKey}
-													setProductStock={setProductStock}
-													sponsorEmail={sponsorEmail}
-													setProductSponsor={setProductSponsor}
-													getProductSponsor={getProductSponsor}
-													isUserMembership={isUserMembership}													
+													product={props.userProducts[userProductKey]} 
 													isSponsor={false}
-													setProductActive={setProductActive}
-													setProductMembership={setProductMembership}
-													membershipProductsNumber={membershipProductsNumber}
-													deleteProduct={deleteProduct}
 												/>
 											</div>)
-										})
 									}
 							</Slider>
 					: <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}		
 					</Wrapper>
 					:null
 				}
-				{!isView || (showView === 'second')?
+				{!props.isView || (props.showView === 'second')?
 					<Wrapper maxWidth="94vw" bigScreenWidth="70vw">
-						<H3>สินค้าที่คุณเป็นผู้แนะนำ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('second')}>View all</a> : null}</H3>
-						{Object.keys(sponsorProducts).length >0
-						?Object.keys(sponsorProducts).length <= 3 || isView?	
-						sponsorProducts&&
-									Object.keys(sponsorProducts).reverse().map( 
+						<H3>สินค้าที่คุณเป็นผู้แนะนำ{!props.isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => props.handleClickView('second')}>View all</a> : null}</H3>
+						{Object.keys(props.sponsorProducts).length >0
+						?Object.keys(props.sponsorProducts).length <= 3 || props.isView?	
+						props.sponsorProducts&&
+									Object.keys(props.sponsorProducts).reverse().map( 
 										sponsorProductKey => 
 											<div style={{display:'inline-block'}}><ItemCard 
+												{...props}
 												key={sponsorProductKey}
 												isSponsor={true}
-												userUid={user.uid}
-												product={sponsorProducts[sponsorProductKey]} 
+												product={props.sponsorProducts[sponsorProductKey]} 
 												productKey={sponsorProductKey}
-												setProductMembership={setProductMembership}	
-												setProductActive={setProductActive}																					
 											/></div>
 									) 
 							: <Slider {...settings}>
-							{ sponsorProducts &&
-									Object.keys(sponsorProducts).reverse().map( sponsorProductKey => {
-										return (<div><ItemCard 
+							{ props.sponsorProducts &&
+									Object.keys(props.sponsorProducts).reverse().map( sponsorProductKey => 
+									<div><ItemCard 
+											{...props}
 											key={sponsorProductKey}
 											isSponsor={true}
-											userUid={user.uid}
-											product={sponsorProducts[sponsorProductKey]} 
-											productKey={sponsorProductKey}
-											isUserMembership={isUserMembership}	
-											setProductMembership={setProductMembership}	
-											setProductActive={setProductActive}																																												
+											product={props.sponsorProducts[sponsorProductKey]} 
 										/></div>)
-									}) 
 								}
 							</Slider>
 						: <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}
@@ -180,111 +145,70 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 			}
 	</MediaQuery>
 	<MediaQuery maxDeviceWidth={1224}>
-		{isView && <Button onClick={() => handleClickView('')}>Back</Button>}
-		{isItemMobile 
-			? <div>
-				{!isView || (showView === 'first')?
+		{props.isView && <Button onClick={() => props.handleClickView('')}>Back</Button>}
+		{props.isItemMobile && <div>
+				{!props.isView || (showView === 'first')&&
 				<Wrapper widthSmall="90vw" paddingRight="30px" minWidthMobile="90vw">
-					<H3>สินค้าที่คุณเป็นเจ้าของ{!isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a>}</H3>
-						{Object.keys(userProducts).length >0?	
-						isView?
-						userProducts && 
-								Object.keys(userProducts).reverse().map( userProductKey => 
+					<H3>สินค้าที่คุณเป็นเจ้าของ{!props.isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => props.handleClickView('first')}>View all</a>}</H3>
+						{Object.keys(props.userProducts).length >0?	
+						props.isView?
+						props.userProducts && 
+								Object.keys(props.userProducts).reverse().map( userProductKey => 
 										<div>
 											<ItemCard 
-												key={userProductKey}
-												userUid={user.uid} 
-												product={userProducts[userProductKey]} 
-												productKey={userProductKey}
-												setProductStock={setProductStock}
-												sponsorEmail={sponsorEmail}
-												setProductSponsor={setProductSponsor}
-												getProductSponsor={getProductSponsor}
+												{...props}
+												key={userProductKey} 
+												product={props.userProducts[userProductKey]} 
 												isSponsor={false}
-												isUserMembership={isUserMembership}																									
-												setProductActive={setProductActive}
-												setProductMembership={setProductMembership}	
-												deleteProduct={deleteProduct}											
 											/>
 										</div>
 									) 
-							:userProducts && Object.keys(userProducts).reverse().slice(0,5).map( userProductKey => 
+							:props.userProducts && Object.keys(props.userProducts).reverse().slice(0,5).map( userProductKey => 
 									<div>
 										<ItemCard 
-											key={userProductKey}
-											userUid={user.uid} 
-											product={userProducts[userProductKey]} 
+											{...props}
+											key={userProductKey} 
+											product={props.userProducts[userProductKey]} 
 											productKey={userProductKey}
-											setProductStock={setProductStock}
-											sponsorEmail={sponsorEmail}
-											setProductSponsor={setProductSponsor}
-											getProductSponsor={getProductSponsor}
 											isSponsor={false}
-											isUserMembership={isUserMembership}																								
-											setProductActive={setProductActive}
-											setProductMembership={setProductMembership}		
-											deleteProduct={deleteProduct}																															
 										/>
 									</div>)
 						:<DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}
 				</Wrapper>
-				: null
 				}
-				{!isView || (showView === 'second')?
+				{!props.isView || (props.showView === 'second')&&
 				<Wrapper widthSmall="90vw" paddingRight="30px" minWidthMobile="90vw">
-					<H3>สินค้าที่คุณเป็นผู้แนะนำ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('second')}>View all</a> : null}</H3>
-						{Object.keys(sponsorProducts).length >0
-						?isView
-						?sponsorProducts 
-							? Object.keys(sponsorProducts).reverse().map( sponsorProductKey => {
-								return (<div><ItemCard 
+					<H3>สินค้าที่คุณเป็นผู้แนะนำ{!props.isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => props.handleClickView('second')}>View all</a>}</H3>
+						{Object.keys(props.sponsorProducts).length >0
+						?props.isView
+						?props.sponsorProducts && Object.keys(props.sponsorProducts).reverse().map( sponsorProductKey => <div><ItemCard 
 									key={sponsorProductKey}
 									isSponsor={true}
-									userUid={user.uid}
-									product={sponsorProducts[sponsorProductKey]} 
+									product={props.sponsorProducts[sponsorProductKey]}
 									productKey={sponsorProductKey}
-									setProductMembership={setProductMembership}		
-									setProductActive={setProductActive}																
+									setProductMembership={setProductMembership}
+									setProductActive={setProductActive}
 								/></div>)
-							}) 
-						: null
-						:sponsorProducts 
-						? Object.keys(sponsorProducts).reverse().slice(0,5).map( sponsorProductKey => {
-								return (<div><ItemCard 
+						:props.sponsorProducts && Object.keys(props.sponsorProducts).reverse().slice(0,5).map( 
+							sponsorProductKey => <div><ItemCard 
+									{...props}
 									key={sponsorProductKey}
 									isSponsor={true}
-									userUid={user.uid}
-									product={sponsorProducts[sponsorProductKey]} 
+									product={props.sponsorProducts[sponsorProductKey]} 
 									productKey={sponsorProductKey}
-									setProductMembership={setProductMembership}	
-									setProductActive={setProductActive}																	
-								/></div>)
-							}) 
-						: null
+								/></div>) 
 						:<DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}
-				</Wrapper>
-				: null}
-				{!isView
-				?	<Button onClick={handleItemCard} margin="10px 0px">Back</Button>
-				: null
-				}	
-		</div> : null
+				</Wrapper>}
+				{!props.isView &&	<Button onClick={props.handleItemCard} margin="10px 0px">Back</Button>}
+		</div>
 		}
-		{isTableMobile&&
+		{props.isTableMobile&&
 			<div>
 				<ProfileTable
-					isView={isView}
-					showView={showView}
-					handleClickView={handleClickView}
+					{...props}
 					table={table !== undefined ?!isView? table.slice(0,3) : table: undefined}
-					userUid={userUid}
-					setOrderStatus={setOrderStatus}
-					isTableMobile={isTableMobile}
 				/>
-				{!isView
-				?<Button onClick={handleTableMobile} margin="10px 0px">Back</Button>
-				:null
-				}
+				{!props.isView&&<Button onClick={handleTableMobile} margin="10px 0px">Back</Button>}
 			</div>
 		}
 	</MediaQuery>
