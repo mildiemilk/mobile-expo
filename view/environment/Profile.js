@@ -115,10 +115,10 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 									</div>)
 								}) : null
 							: <Slider {...settings}>
-							{ userProducts ? 
+							{ userProducts &&
 									Object.keys(userProducts).reverse().map( userProductKey => {
 										return (
-											<div>
+											<div style={{height:'100%'}}>
 												<ItemCard 
 													key={userProductKey}
 													userUid={user.uid} 
@@ -136,7 +136,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 													deleteProduct={deleteProduct}
 												/>
 											</div>)
-										}) : null
+										})
 									}
 							</Slider>
 					: <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}		

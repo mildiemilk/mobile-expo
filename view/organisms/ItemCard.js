@@ -53,12 +53,12 @@ class ItemCard extends React.Component {
 		console.log(deleteProduct)
 		return(
 			<Card style={{margin:'5px'}}>
-				{!isSponsor?
+				{!isSponsor&&
 				<Modal context={<ConfirmDeleteProduct/>} action={<Button color='red' onClick={()=>deleteProduct(productKey)}><Icon name='trash'/>ลบสินค้าถาวร</Button>}>
 					<Card.Content>
 						<Button basic Icon size='tiny' style={{position:'absolute',right:'0',top:'0'}} icon='trash'/>
 					</Card.Content>
-				</Modal>:null
+				</Modal>
 				}
 				<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" />
 				<Card.Content>
@@ -69,20 +69,20 @@ class ItemCard extends React.Component {
 					<table>
 						<tbody>
 						{ 
-							!isSponsor? 
+							!isSponsor&&
 							<tr>
 								<td style={{textAlign:'right'}}>เปิดขาย:</td>
 								<td><Checkbox toggle name="active" checked={product.active} onClick={() => setProductActive(!product.active, productKey)}/>
 								</td>
-							</tr> : null 
+							</tr>
 						}
 						{
-							isUserMembership  ? !(membershipProductsNumber >= 5 && !product.isMembership)? 
+							isUserMembership  && !(membershipProductsNumber >= 5 && !product.isMembership) &&
 							<tr>
 								<td style={{textAlign:'right'}}>สมาชิก:</td>
 								<td><Checkbox toggle name="isMembership" checked={product.isMembership} onClick={() => setProductMembership(!product.isMembership, productKey)}/>
 								</td>
-							</tr> : null :null
+							</tr> 
 						}
 						<tr>
 							<td style={{textAlign:'right'}}>ราคา:</td>
@@ -97,7 +97,7 @@ class ItemCard extends React.Component {
 						<tr>
 							<td style={{textAlign:'right'}}>สต๊อก: </td>
 							<td>{stock}</td>
-							<td>{userUid === product.userUid ? <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/>: null }</td>
+							<td>{userUid === product.userUid && <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/> }</td>
 						</tr>
 						: <tr>
 							<td style={{textAlign:'right'}}>สต๊อก: </td>
@@ -105,10 +105,10 @@ class ItemCard extends React.Component {
 						</tr>
 						}
 						
-						{!isSponsor?<tr>
+						{!isSponsor&&<tr>
 							<td style={{textAlign:'right'}}>จำนวนผู้ขาย: </td>
 							<td>{Object.keys(sponsors).length}</td>
-							<td>{userUid === product.userUid ? 
+							<td>{userUid === product.userUid &&
 								<AddSponsorModal 
 									productKey={productKey} 
 									sponsors={sponsors} 
@@ -120,8 +120,8 @@ class ItemCard extends React.Component {
 									displayText={validateEmailResult.errorText}
 									isEmailExist={isEmailExist}
 									round />
-								: null }</td>
-						</tr>:null}
+								}</td>
+						</tr>}
 						</tbody>
 					</table>
 				</Card.Description>
