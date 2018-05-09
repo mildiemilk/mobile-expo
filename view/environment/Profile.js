@@ -24,16 +24,12 @@ const DivNoContent = styled.div`
 	font-size: 15px;
 `
 
-function SampleNextArrow(props) {
-  const {className, style, onClick} = props
-  return (
+const SampleNextArrow = ({className, style, onClick} ) =>
     <div
       className={className}
       style={{...style, display: 'block', background: 'gray', color:'gray', borderRadius:'10px'}}
       onClick={onClick}
     ></div>
-  );
-}
 
 function SamplePrevArrow(props) {
   const {className, style, onClick} = props
@@ -64,16 +60,15 @@ const requestedMembershipView = (members, saveRequestedByEmailUserMembership, us
 
 export default ({user, userProducts, setProductStock, table, userUid, setOrderStatus, profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, sponsorEmail, setProductSponsor, getProductSponsor, sponsorProducts, setProductActive, isItemCard, isItemMobile, isTableMobile,  handleClickView, isView, showView, handleItemCard, handleTableMobile, isUserMembership, setProductMembership, membershipProductsNumber, requestMembership, saveRequestedByEmailUserMembership,deleteProduct}) =>
 <Flex direction="column" margin="0px 7px">
-	{console.log('delete product in profile view', deleteProduct)}
 	<MediaQuery  minDeviceWidth={1224}>
-		{!isUserMembership? 
+		{!isUserMembership&&
 			<div>
 				{
-				requestMembership && requestMembership.length > 0 ?
+				requestMembership && requestMembership.length > 0 &&
 					requestedMembershipView(requestMembership, saveRequestedByEmailUserMembership, user)
-					:null
+					
 				}
-			</div>:null}
+			</div>}
 
 		{isView? <Button secondary width="70px" onClick={() => handleClickView('')}>Back</Button> : null}
 			{isItemCard
@@ -89,7 +84,7 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 			:<div style={{flexGrow:"2"}}>
 				{!isView || (showView === 'first')?
 					<Wrapper maxWidth="94vw" bigScreenWidth="70vw">
-						<H3>สินค้าที่คุณเป็นเจ้าของ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a> : null}</H3>
+						<H3>สินค้าที่คุณเป็นเจ้าของ{!isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a> }</H3>
 						{Object.keys(userProducts).length >0
 						?Object.keys(userProducts).length <= 3 || isView
 							?	userProducts ? 
@@ -147,24 +142,22 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 					<Wrapper maxWidth="94vw" bigScreenWidth="70vw">
 						<H3>สินค้าที่คุณเป็นผู้แนะนำ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('second')}>View all</a> : null}</H3>
 						{Object.keys(sponsorProducts).length >0
-						?Object.keys(sponsorProducts).length <= 3 || isView
-							?	sponsorProducts 
-								?
-									Object.keys(sponsorProducts).reverse().map( sponsorProductKey => {
-										return (<div style={{display:'inline-block'}}><ItemCard 
-											key={sponsorProductKey}
-											isSponsor={true}
-											userUid={user.uid}
-											product={sponsorProducts[sponsorProductKey]} 
-											productKey={sponsorProductKey}
-											setProductMembership={setProductMembership}	
-											setProductActive={setProductActive}																					
-										/></div>)
-									}) 
-								: null
+						?Object.keys(sponsorProducts).length <= 3 || isView?	
+						sponsorProducts&&
+									Object.keys(sponsorProducts).reverse().map( 
+										sponsorProductKey => 
+											<div style={{display:'inline-block'}}><ItemCard 
+												key={sponsorProductKey}
+												isSponsor={true}
+												userUid={user.uid}
+												product={sponsorProducts[sponsorProductKey]} 
+												productKey={sponsorProductKey}
+												setProductMembership={setProductMembership}	
+												setProductActive={setProductActive}																					
+											/></div>
+									) 
 							: <Slider {...settings}>
-							{ sponsorProducts 
-								?
+							{ sponsorProducts &&
 									Object.keys(sponsorProducts).reverse().map( sponsorProductKey => {
 										return (<div><ItemCard 
 											key={sponsorProductKey}
@@ -177,7 +170,6 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											setProductActive={setProductActive}																																												
 										/></div>)
 									}) 
-								: null
 								}
 							</Slider>
 						: <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}
@@ -188,17 +180,16 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 			}
 	</MediaQuery>
 	<MediaQuery maxDeviceWidth={1224}>
-		{isView? <Button onClick={() => handleClickView('')}>Back</Button> : null}
+		{isView && <Button onClick={() => handleClickView('')}>Back</Button>}
 		{isItemMobile 
 			? <div>
 				{!isView || (showView === 'first')?
 				<Wrapper widthSmall="90vw" paddingRight="30px" minWidthMobile="90vw">
-					<H3>สินค้าที่คุณเป็นเจ้าของ{!isView? <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a> : null}</H3>
-						{Object.keys(userProducts).length >0
-						?	isView
-							?userProducts 
-								? Object.keys(userProducts).reverse().map( userProductKey => {
-									return (
+					<H3>สินค้าที่คุณเป็นเจ้าของ{!isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => handleClickView('first')}>View all</a>}</H3>
+						{Object.keys(userProducts).length >0?	
+						isView?
+						userProducts && 
+								Object.keys(userProducts).reverse().map( userProductKey => 
 										<div>
 											<ItemCard 
 												key={userProductKey}
@@ -215,12 +206,9 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 												setProductMembership={setProductMembership}	
 												deleteProduct={deleteProduct}											
 											/>
-										</div>)
-									}) 
-								: null
-							:userProducts 
-						? Object.keys(userProducts).reverse().slice(0,5).map( userProductKey => {
-								return (
+										</div>
+									) 
+							:userProducts && Object.keys(userProducts).reverse().slice(0,5).map( userProductKey => 
 									<div>
 										<ItemCard 
 											key={userProductKey}
@@ -238,7 +226,6 @@ export default ({user, userProducts, setProductStock, table, userUid, setOrderSt
 											deleteProduct={deleteProduct}																															
 										/>
 									</div>)
-								}) : null
 						:<DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}
 				</Wrapper>
 				: null
