@@ -1,0 +1,26 @@
+[
+	{
+		"link": "/",
+		"text":"หน้าหลัก"
+	},
+	{
+		"link": "/login",
+		"text":"ล๊อกอิน"
+	},
+	{
+		"link": "/register",
+		"text": "สมัครบริการ"
+	},
+	{
+		"link":"/profile",
+		"text":"โปรไฟล์"
+	},
+	{
+		"link":"logout",
+		"text":"ออกจากระบบ"
+	},
+	{
+		"link":"/productRegister",
+		"text":"ลงสินค้า"
+	}
+]
