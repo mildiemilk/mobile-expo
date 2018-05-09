@@ -1,16 +1,11 @@
-import { Grid, Checkbox, Dropdown, Modal as SemanticModal, Icon, Header as SemanticHeader, Card } from 'semantic-ui-react'
+import { Grid, Dropdown, Modal as SemanticModal, Icon, Header as SemanticHeader, Card } from 'semantic-ui-react'
 import Wrapper from '../atoms/Wrapper'
-import Field from '../atoms/TextField'
 import Button from '../atoms/Button'
-import UserProfile from '../organisms/UserProfile'
-import ProfileTable from '../environment/ProfileTable'
-import ProfileDetailDisplay from '../organisms/ProfileDetailDisplay'
 import JsonTable from '../organisms/JsonTable'
 import Modal from '../molecules/Modal'
 import Flex from '../atoms/Flex'
 import TextField from '../atoms/TextField'
 import ProductAction from '../molecules/ProductAction'
-import Select from '../molecules/Select'
 import HeightDiv from '../atoms/HeightDiv'
 import Head from './DefaultHead'
 import Header from './Header'
@@ -21,12 +16,6 @@ const memberHeader = {
 	"name": "Name",
 	"shared":"Shared",
 	"permission":"Admin",
-}
-
-const selectItem = {
-	"admin":"admin",
-	"member":"member",
-	"freeze":"freeze"
 }
 
 const PasswordMatch = props =>	props.passwordconfirmationLength > 5  ?
@@ -68,7 +57,13 @@ const MemberLoginForm = props => {
 		<H3>สมัครสมาชิกสำเร็จ</H3>:null
 	}
 	<H3>ชื่อสมาชิก</H3>
-	<Dropdown onChange={e=>props.setChosenMembership(props.allMemberships[e.currentTarget.innerText])} placeholder='Membership' search selection options={allMemberships} />
+	<Dropdown 
+		onChange={e=>props.setChosenMembership(props.allMemberships[e.currentTarget.innerText])} 
+		placeholder='Membership' 
+		search 
+		selection 
+		options={allMemberships} 
+	/>
 	<H3>รหัสสมาชิก</H3>
 	<TextField labelFlexStart name="password" type="password"/>
 </div>}
@@ -91,29 +86,31 @@ const addMember = props => <Wrapper>
 	</ul>
 </Wrapper>
 
-const DeleteMembershipConfirm = props =>   <SemanticModal trigger={<a style={{padding:"3px 0 0 10px"}} href="#">ยกเลิกสมาชิก</a>} closeIcon>
-<SemanticHeader icon='trash' content='ยกเลิกการเป็นสมาชิก' />
-<SemanticModal.Content>
-  <p>คุณยืนยันที่จะลบสถานะความเป็นสมาชิกของ{props.user.membership}</p>
-</SemanticModal.Content>
-<SemanticModal.Actions>
-  <Button onClick={()=>props.removeUserMembership(props.user)} margin="0 0 5px 0">
-	<Icon name='checkmark' /> ยืนยัน
-  </Button>
-</SemanticModal.Actions>
+const DeleteMembershipConfirm = props =>   
+<SemanticModal trigger={<a style={{padding:"3px 0 0 10px"}} href="#">ยกเลิกสมาชิก</a>} closeIcon>
+	<SemanticHeader icon='trash' content='ยกเลิกการเป็นสมาชิก' />
+	<SemanticModal.Content>
+		<p>คุณยืนยันที่จะลบสถานะความเป็นสมาชิกของ{props.user.membership}</p>
+	</SemanticModal.Content>
+	<SemanticModal.Actions>
+		<Button onClick={()=>props.removeUserMembership(props.user)} margin="0 0 5px 0">
+		<Icon name='checkmark' /> ยืนยัน
+		</Button>
+	</SemanticModal.Actions>
 </SemanticModal>
 
-const ChangeMembershipPassword = props => <SemanticModal trigger={<a style={{padding:"3px 0 0 10px"}} href="#">เปลี่ยนรหัสสมาชิก</a>} closeIcon>
-<SemanticHeader icon='warning sign' content='เปลี่ยนพาสเวิด'/>
-<SemanticModal.Content>
-	<PasswordMatch {...props} />	
-	<H3>ใส่รหัสใหม่ที่คุณต้องการเปลี่ยน(คนที่เป็นสมาชิกอยู่แล้วไม่ต้องใส่รหัสใหม่)</H3>
-	<TextField labelFlexStart label="Member Password" name="password" type="password"/>
-	<TextField labelFlexStart label="Password Confirmation" name="passwordconfirmation" type="password"/>
-</SemanticModal.Content>
-<SemanticModal.Actions>
-	<Button onClick={()=>props.setNewMembershipPassword(props.user.membership, props.password)}>ยืนยัน</Button>
-</SemanticModal.Actions>
+const ChangeMembershipPassword = props => 
+<SemanticModal trigger={<a style={{padding:"3px 0 0 10px"}} href="#">เปลี่ยนรหัสสมาชิก</a>} closeIcon>
+	<SemanticHeader icon='warning sign' content='เปลี่ยนพาสเวิด'/>
+	<SemanticModal.Content>
+		<PasswordMatch {...props} />	
+		<H3>ใส่รหัสใหม่ที่คุณต้องการเปลี่ยน(คนที่เป็นสมาชิกอยู่แล้วไม่ต้องใส่รหัสใหม่)</H3>
+		<TextField labelFlexStart label="Member Password" name="password" type="password"/>
+		<TextField labelFlexStart label="Password Confirmation" name="passwordconfirmation" type="password"/>
+	</SemanticModal.Content>
+	<SemanticModal.Actions>
+		<Button onClick={()=>props.setNewMembershipPassword(props.user.membership, props.password)}>ยืนยัน</Button>
+	</SemanticModal.Actions>
 </SemanticModal>
 
 const ProductCard = props =>   <Card>
