@@ -191,7 +191,7 @@ class Profile extends Component {
 							cancelEdit={this.cancelEdit}
 						/>
 					}
-					{isItemMobile || isTableMobile ?
+					{isItemMobile || isTableMobile &&
 							<ProfileView
 								{...props}
 								{...state}
@@ -204,8 +204,7 @@ class Profile extends Component {
 								setProductMembership={setProductMembership}	
 								setProductActive={setProductActive}		
 								deleteProduct={deleteProduct}										
-							/>
-						:null}
+							/>}
 					{!isItemMobile&&!isProfileMobile&&!isTableMobile &&
 						<ProfileMobile 
 							{...props}
