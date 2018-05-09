@@ -192,7 +192,7 @@ export default props =>
 									<Icon loading name='spinner' size='large'/>
 									}
 									{props.user.membership&& 
-									<h3>Role:{props.member.members[props.user.uid]? props.member.members[props.user.uid].permission: null}</h3>
+									<H3>สถานะ:{props.member.members[props.user.uid]? props.member.members[props.user.uid].permission: null}</H3>
 									}
 								<H3>จำนวนสมาชิก: {Object.keys(props.member.members).length}</H3>
 								<H3>จำนวนสินค้า: {Object.keys(props.member.products).length}</H3>
