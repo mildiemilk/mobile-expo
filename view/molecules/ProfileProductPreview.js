@@ -18,22 +18,23 @@ const SamplePrevArrow = ({className, style, onClick}) =>
       onClick={onClick}
     ></div>
 
-const settings = {
+const settings = props =>( {
 	dots: true,
-	slidesToShow:  3,
+	slidesToShow:  props.width > 1528 ? 4: 3,
 	slidesToScroll: 3,
 	nextArrow: <SampleNextArrow />,
 	prevArrow: <SamplePrevArrow />
-};
+})
 
 
 
 export default props => <Wrapper maxWidth="94vw" bigScreenWidth="70vw">
+	{console.log('width', props.width)}
 	<H3>{props.title}{!props.isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => props.handleClickView(props.page)}>View all</a> }</H3>
 	{Object.keys(props.products).length >0
-	?Object.keys(props.products).length <= 3 || props.isView
+	?Object.keys(props.products).length <= 3 || props.isView || props.width < 1324 
 		?	props.products &&
-			Object.keys(props.products).reverse().map( productKey => 
+			Object.keys(props.products).slice(0, !props.isView ? 6 : Object.keys(props.products).length).reverse().map( productKey => 
 				<div style={{display:'inline-block'}} key={productKey}>
 					<ItemCard 
 						{...props}
@@ -42,8 +43,8 @@ export default props => <Wrapper maxWidth="94vw" bigScreenWidth="70vw">
 						product={props.products[productKey]} 
 						isSponsor={props.isSponsor}
 					/>
-				</div>)
-		: <Slider {...settings}>
+				</div>) 
+		: <Slider {...settings(props)}>
 		{ props.products &&
 				Object.keys(props.products).reverse().map( productKey =>
 						<div style={{height:'100%'}}>

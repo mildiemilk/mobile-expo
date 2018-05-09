@@ -1,6 +1,6 @@
 import { Checkbox, Card, Button, Icon } from 'semantic-ui-react'
 import Modal from '../molecules/Modal'
-import React from 'react'
+import React, {Fragment} from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import Image from '../atoms/Image'
@@ -50,7 +50,6 @@ class ItemCard extends React.Component {
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
-		console.log(deleteProduct)
 		return(
 			<Card style={{margin:'5px'}}>
 				{!isSponsor&&
@@ -68,30 +67,31 @@ class ItemCard extends React.Component {
 				<Card.Description>
 					<table>
 						<tbody>
-						{ 
-							!isSponsor&&
 							<tr>
+						{ 
+							!isSponsor&& <Fragment>
 								<td style={{textAlign:'right'}}>เปิดขาย:</td>
 								<td><Checkbox toggle name="active" checked={product.active} onClick={() => setProductActive(!product.active, productKey)}/>
 								</td>
-							</tr>
+							</Fragment>
 						}
 						{
 							isUserMembership  && !(membershipProductsNumber >= 5 && !product.isMembership) &&
-							<tr>
+							<Fragment>
 								<td style={{textAlign:'right'}}>สมาชิก:</td>
 								<td><Checkbox toggle name="isMembership" checked={product.isMembership} onClick={() => setProductMembership(!product.isMembership, productKey)}/>
 								</td>
-							</tr> 
+							</Fragment>
 						}
+						</tr> 
 						<tr>
 							<td style={{textAlign:'right'}}>ราคา:</td>
-							<td>{price} บาท</td>
+							<td colSpan={2}>{price} บาท</td>
 							<td></td>
 						</tr>
 						<tr>
 							<td style={{textAlign:'right'}}>ค่าคอม:</td>
-							<td>{comissionCash || '0.00'} บาท </td>
+							<td colSpan={2}>{comissionCash || '0.00'} บาท </td>
 						</tr>
 						{!isSponsor? 
 						<tr>
@@ -101,12 +101,12 @@ class ItemCard extends React.Component {
 						</tr>
 						: <tr>
 							<td style={{textAlign:'right'}}>สต๊อก: </td>
-							{!product.active? <td style={{color:'red'}}>สินค้าหมด</td>: <td>{stock}</td>}
+							{!product.active? <td  colSpan={2} style={{color:'red'}}>สินค้าหมด</td>: <td>{stock}</td>}
 						</tr>
 						}
 						
 						{!isSponsor&&<tr>
-							<td style={{textAlign:'right'}}>จำนวนผู้ขาย: </td>
+							<td style={{textAlign:'right'}}>ผู้ขาย: </td>
 							<td>{Object.keys(sponsors).length}</td>
 							<td>{userUid === product.userUid &&
 								<AddSponsorModal 

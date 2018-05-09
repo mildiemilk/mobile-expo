@@ -37,12 +37,15 @@ class Profile extends Component {
 			showView: '',
 			isProfileMobile: false,
 			isItemMobile: false,
-			isTableMobile: false
+			isTableMobile: false,
+			width: props.width
 		}
 	}
 
+	
 	async componentDidMount() {
 		
+		this.setState({width:window.innerWidth})
 		this.props.saveUserPending()
 		const auth = await loadFirebase('auth')
 		const user = await auth.onAuthStateChanged(user => 
@@ -141,7 +144,6 @@ class Profile extends Component {
 	render() {
 		const {props,state} = this
 		const {userProducts, isUserMembership} = this.props
-		const {isEdit, isItemCard, isVisible, showView, isView, isProfileMobile, isItemMobile, isTableMobile} = this.state
 		const membershipProductsNumber = this.countMembershipProducts(userProducts)
 		return <HeightDiv>
 			<Head/>
@@ -174,11 +176,12 @@ class Profile extends Component {
 							setProductActive={setProductActive}
 							deleteProduct={deleteProduct}
 							setOrderStatus={setOrderStatus}
+							setProductStock={setProductStock}
 						/>}
 					/>
 				}
 				contentMobile={<HeightDiv>
-					{isProfileMobile&&
+					{state.isProfileMobile&&
 						<ProfileDetail
 							{...props}
 							{...state}
@@ -189,9 +192,10 @@ class Profile extends Component {
 							setProductMembership={setProductMembership}
 							setProductActive={setProductActive}
 							cancelEdit={this.cancelEdit}
+							setProductStock={setProductStock}
 						/>
 					}
-					{(isItemMobile || isTableMobile )&&
+					{(state.isItemMobile || state.isTableMobile )&&
 							<ProfileView
 								{...props}
 								{...state}
@@ -203,15 +207,17 @@ class Profile extends Component {
 								handleClickView={this.handleClickView}	
 								setProductMembership={setProductMembership}	
 								setProductActive={setProductActive}		
-								deleteProduct={deleteProduct}										
+								deleteProduct={deleteProduct}
+								setProductStock={setProductStock}
 							/>}
-					{(!isItemMobile&&!isProfileMobile&&!isTableMobile )&&
+					{(!state.isItemMobile&&!state.isProfileMobile&&!state.isTableMobile )&&
 						<ProfileMobile 
 							{...props}
 							{...state}
 							handleProfileMobile={this.handleProfileMobile}
 							handleItemCard={this.handleItemCard}
 							handleTableMobile={this.handleTableMobile}
+							setProductStock={setProductStock}
 						/>
 					}
 				</HeightDiv>}
