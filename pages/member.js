@@ -3,14 +3,11 @@ import { reduxForm, formValueSelector } from 'redux-form'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
 import MemberView from '../view/environment/Member'
-import LoginForm from '../view/environment/AuthForm'
-import { signinWithFacebook, signinWithGoogle, signOut, signInWithEmail} from '../lib/handlers/authenticator'
 import { getProfile } from '../lib/handlers/profile'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import { getUserbyUid } from '../lib/handlers/user'
 import { saveMembership, 
-	regexKey, 
 	loginMembership, 
 	setMembers, 
 	setMemberPermission, 
@@ -19,7 +16,6 @@ import { saveMembership,
 	getAllMemberships, 
 	removeUserMembership, 
 	setNewMembershipPassword } from '../lib/handlers/member'
-import { setMembershipProducts } from '../lib/handlers/product'
 import { validateKey } from '../lib/actions/member'
 import { setChosenMembership, resetMembershipSuccess } from '../lib/actions/memberships'
 import Router from 'next/router'
@@ -28,7 +24,7 @@ class Member extends React.Component {
 
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		const user = await auth.onAuthStateChanged(async user => {
+		await auth.onAuthStateChanged(async user => {
 			this.props.saveUserPending()
 			if(user){
 			await getUserbyUid(user.uid)
@@ -63,7 +59,10 @@ class Member extends React.Component {
 				addMemberByEmail={addMemberByEmail}
 				saveMembership={saveMembership} 
 				loginMembership={loginMembership} 
-				isAdmin={member&&Object.keys(member.members).length > 0 && member.members[user.uid]? member.members[user.uid].permission==="admin" : null}
+				isAdmin={
+					(member&&
+					Object.keys(member.members).length > 0 && 
+					member.members[user.uid])&&member.members[user.uid].permission==="admin"}
 				setMemberPermission={setMemberPermission}
 				removeUserMembership={removeUserMembership}
 				setNewMembershipPassword={setNewMembershipPassword}

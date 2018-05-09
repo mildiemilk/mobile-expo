@@ -151,62 +151,22 @@ export default props =>
 					<Grid.Row>
 						<Grid.Column mobile={16} tablet={16} computer={4}>
 							<Wrapper>
-								{ !props.user.pending?
-								<ProfileDetailDisplay
-									profileImage={props.profile.profileImage}
-									detail={props.detail}
-									profile={props.profile}
-									balance={props.user.wallet}
-									userUid={props.user.uid}
-									/>:
-									<Icon loading name='spinner' size='massive'/>
-								}
+								<H3>จำนวนสมาชิก: {Object.keys(props.member.members).length}</H3>
+								<H3>จำนวนสินค้า: {Object.keys(props.member.products).length}</H3>
 							</Wrapper>
 						</Grid.Column>
 						<Grid.Column mobile={16} tablet={16} computer={12}>
-							<Wrapper>
-								{ !props.user.pending?
-								<Flex direction="row">
-									{props.signinMembershipSuccess? <h3>สมัครสมาชิกสำเร็จ</h3>:null}
-									<H3>คุณเป็น{props.allMemberships[props.user.membership] ? props.allMemberships[props.user.membership].creatorUid=== props.user.uid?'เจ้าของสมาชิก':'สมาชิกของ':null}:{props.user.membership|| 'คุณยังไม่เป็นสมาชิก'}</H3>
-										{!props.user.membership?
-											<Flex direction="row">
-												<Modal context={<MemberLoginForm {...props} /> }
-												action={<Button onClick={()=>props.loginMembership(props.chosenMembership, props.password, props.user)}>สมัครสมาชิก</Button>}
-												>
-													<Button margin="0px 0 0 10px">สมัครสมาชิก</Button>												
-												</Modal>
-												<Modal 
-													context={<MemberRegisterForm {...props} />}
-													action={<Button onClick={()=>props.saveMembership(props.name, props.password, props.user.uid)}>สมัครสมาชิก</Button>}
-												>
-													<Button margin="0px 0 0 10px" secondary>สร้างสมาชิก</Button>
-												</Modal>
-											</Flex>
-											:<DeleteMembershipConfirm {...props}/>
-										}
-										{
-											props.allMemberships[props.user.membership] && props.allMemberships[props.user.membership].creatorUid=== props.user.uid?
-											<ChangeMembershipPassword {...props}/>:null
-										}
-									</Flex>:
-									<Icon loading name='spinner' size='large'/>
-									}
-									{props.user.membership&& 
-									<h3>Role:{props.member.members[props.user.uid]? props.member.members[props.user.uid].permission: null}</h3>
-									}
-								</Wrapper>
-								<Wrapper>
-								<h2>สมาชิก</h2>
-								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Modal context={addMember(props)}><Button margin="0" fullWidth height="100%">+ add member</Button></Modal></td></tr>:null}/>
-								</Wrapper>
 								<Wrapper>
 								<h2>สินค้าของสมาชิก</h2>
 								<Grid stackable stretched columns={3}>
 								{
-									randomAnArray(Object.keys(props.member.products)).map(key => <Grid.Column key={key}><ProductCard {...props.member.products[key]} key={key} userUid={props.user.uid} productId={key}/></Grid.Column>)
+									randomAnArray(Object.keys(props.member.products)).splice(0,6).map(key => <Grid.Column key={key}><ProductCard {...props.member.products[key]} key={key} userUid={props.user.uid} productId={key}/></Grid.Column>)
 								}
 								</Grid>
+								</Wrapper>
+								<Wrapper>
+								<h2>จัดการสมาชิก</h2>
+								<JsonTable headerJson={memberHeader} bodyJsonArray={constructMemberArray(props.member.members, props.isAdmin, props.setMemberPermission)} footer={props.isAdmin?<tr><td style={{margin:"0", padding:"0"}} colSpan={Object.keys(memberHeader).length}><Modal context={addMember(props)}><Button margin="0" fullWidth height="100%">+ add member</Button></Modal></td></tr>:null}/>
 								</Wrapper>
 						</Grid.Column>
 				</Grid.Row>
