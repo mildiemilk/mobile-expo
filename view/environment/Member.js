@@ -63,7 +63,7 @@ const MemberLoginForm = props => {
 const PermissionOption = props => 
 	<select 
 		value={props.member.permission} 
-		onChange={event=>props.setMemberPermission(props.member.userId, event.target.value)}
+		onChange={event=>props.setMemberPermission(props.member.userUid, event.target.value)}
 	>
 		<option value="admin">Admin</option>
 		<option value="member">Member</option>
@@ -240,7 +240,7 @@ export default props =>
 													props.isAdmin, 
 													props.setMemberPermission
 												)} 
-											footer={props.isAdmin&&<tr><td style={{margin:"0", padding:"0"}} 
+											footer={<tr><td style={{margin:"0", padding:"0"}} 
 												colSpan={Object.keys(memberHeader).length}>
 												<Modal context={addMember(props)}>
 													<Button margin="0" fullWidth height="100%">+ add member</Button>
