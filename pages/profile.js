@@ -1,7 +1,13 @@
 import { Component } from 'react'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValueSelector } from 'redux-form'
-import { getUserProducts, setProductStock, getProductToSponsorTable, setProductActive, setProductMembership, deleteProduct } from '../lib/handlers/product'
+import { 
+	getUserProducts, 
+	setProductStock, 
+	getProductToSponsorTable, 
+	setProductActive, 
+	setProductMembership, 
+	deleteProduct } from '../lib/handlers/product'
 import { getMemberByEmailsByEmail } from '../lib/handlers/member'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
