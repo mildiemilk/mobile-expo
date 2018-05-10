@@ -2,24 +2,19 @@ import React from 'react'
 import PaymentView from '../view/environment/Payment'
 import withRedux from "next-redux-wrapper"
 import store from '../lib/store'
-import { reduxForm, formValues, formValueSelector } from 'redux-form'
+import { reduxForm, formValueSelector } from 'redux-form'
 import { createPayment, savePaymentImage } from '../lib/handlers/payment'
 import { savePaymentPending, savePaymentSuccess } from '../lib/actions/payment'
 import { addProductTransaction, addPayment, addBankTransfer } from '../lib/actions/transaction'
 import { calculateComission } from '../lib/handlers/transaction'
 import { validateCreditCard } from '../lib/helpers/formvalidation'
-import Modal from '../view/molecules/Modal'
 import Wrapper from '../view/atoms/Wrapper'
 import H3 from '../view/atoms/H3'
 import WebExplain from '../view/organisms/WebExplain'
-import fetch from 'isomorphic-fetch'
-import loadFirebase from '../lib/database'
 import { findDOMNode } from 'react-dom'
 import $ from 'jquery'
 import { Button } from 'semantic-ui-react'
 import Ipad from '../static/img/ipadpayment.svg'
-import Phone from '../static/img/cardpayment.svg'
-import styled from 'styled-components'
 
 class Payment extends React.Component{
 	constructor(props){
@@ -34,7 +29,7 @@ class Payment extends React.Component{
 		const { queryParams } = this.props.url.query
 		queryParams? this.setState({ status: queryParams.paymentStatus }) : null
 		const { transaction } = this.props
-			let comission = calculateComission(transaction.price, transaction.comissionCash)
+		calculateComission(transaction.price, transaction.comissionCash)
 	} 
 
 	ModalContext = () => 
@@ -62,15 +57,15 @@ class Payment extends React.Component{
 			expiryYear:process.env.NODE_ENV === 'production'? '' :'2019'
 		}
 		return status === 'success'? 
-		this.ModalContext() :
-		<div>
-			<PaymentView 
-				{...this.props}
-				{...this.state}
-				onCheckOut={()=>createPayment(total, card ,transaction)}
-				savePaymentImage={savePaymentImage}
-				onSubmit={this.onSubmit}
-			/>
+			this.ModalContext() :
+			<div>
+				<PaymentView 
+					{...this.props}
+					{...this.state}
+					onCheckOut={()=>createPayment(total, card ,transaction)}
+					savePaymentImage={savePaymentImage}
+					onSubmit={this.onSubmit}
+				/>
 				<form ref="formPayment" method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
 					<div style={{width:'100%', maxWidth:'530px', display:'flex', alignContent:'center', flexDirection:'column', backgroundColor:'teal'}}>
 						<input type="hidden" name="refno" value={refno}/>
@@ -85,13 +80,12 @@ class Payment extends React.Component{
 						>
 							อินเตอร์เน็ตแบงค์กิ้ง/บัตรเครดิต
 						</Button>
-					<div style={{width:'100px', height:'auto'}}>
-						<Ipad/>
+						<div style={{width:'100px', height:'auto'}}>
+							<Ipad/>
+						</div>
 					</div>
-				</div>
-			</form>
-
-		</div>
+				</form>
+			</div>
 	}
 }
 
