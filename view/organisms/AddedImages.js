@@ -1,13 +1,10 @@
 import AddImageSection from '../molecules/AddImageSection'
-import SubImage from '../molecules/SubImage'
-import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
-import store from '../../lib/store'
 
 export default ({productImages, setProductImage, removeProductImage,productImagePending}) => 
 <div style={{background:'white'}}>
 	<AddImageSection 
-		src={productImages} 
+		src={productImages[0]} 
 		number={0} 
 		setProductImage={setProductImage}
 		imagePending={productImagePending[0] || false}
@@ -15,11 +12,14 @@ export default ({productImages, setProductImage, removeProductImage,productImage
 	/>
 	<Flex wrap='no-wrap' direction='row'>
 		{
-			[1,2,3,4].map( number => 	<SubImage 
-				key={number}
+			[1,2,3,4].map( number => 	<AddImageSection 
+				number={number}
+				src={productImages[number]}
 				imagePending={productImagePending[number] || false}
 				size="100px" 
-				subimg number={number} setProductImage={setProductImage}src={productImages? productImages[number] : ''}
+				subimg 
+				number={number} 
+				setProductImage={setProductImage}
 				removeProductImage={()=>removeProductImage(number)}
 				/>	)
 

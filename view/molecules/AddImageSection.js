@@ -20,21 +20,23 @@ const AddImage = styled(AddImg)`
     }
 `
 
-export default ({ src, size, subimg, setProductImage, number, removeProductImage,imagePending }) => {
+export default ({ src, size, setProductImage, number, removeProductImage,imagePending, subimg }) => {
+    console.log('src', src)
+    console.log('number', number)
     return (
-        <SquareWrapper maxSize={size}>
+        <SquareWrapper maxSize={size} style={{flexGrow:'1', flexShrink:'2'}}>
                 <div style={{position:'absolute', top:'0', right:'0'}}>
                     <Icon link name='close' size='large' color='grey' onClick={removeProductImage} />
                 </div>
             <Dropzone size={size} onDrop={droppedImage => setProductImage(number, droppedImage)}>
                 {
                     src && src.length > 0 ? 
-                    <Image src={src} size={size || '100%'} /> : 
+                    <Image src={src||null} size={size || '100%'} /> : 
                     imagePending?
                     <Flex height='400px' verticleCenter justifyContent='center'>
                         <Icon loading name='spinner' size='massive'/>
                     </Flex>:
-                    <AddImage />
+                    <AddImage subimg={subimg} />
                 }
             </Dropzone>
         </SquareWrapper>

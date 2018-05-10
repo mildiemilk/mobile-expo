@@ -1,23 +1,18 @@
-import GridColumn, { Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import AddedImages from '../organisms/AddedImages'
 import ProductRegisterText from '../organisms/ProductRegisterText'
 import ComissionInput from '../organisms/ComissionInput'
-import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
-import Multitab from '../molecules/Multitab'
 import ProductDescriptionForm from './ProductDescriptionForm'
 import ProductDescriptionPreview from './ProductDescriptionPreview'
 import Link from 'next/link'
-import OnlyDesktop from '../atoms/OnlyDesktop'
-import OnlyMobile from '../atoms/OnlyMobile'
-import styled from 'styled-components'
-import MediaQuery from 'react-responsive'
 import H3 from '../atoms/H3'
 import Wrapper from '../atoms/Wrapper'
 import Modal from '../molecules/Modal'
 import DisplayImages from '../organisms/DisplayImages'
 import DisplayProductText from '../organisms/DisplayProductText'
 import ProductVariety from '../organisms/ProductVariety'
+import Agreement from '../atoms/Agreement'
 
 const ProductPreview = props => <Wrapper>
 	<H3>ตัวอย่าง</H3>
@@ -28,7 +23,11 @@ const ProductPreview = props => <Wrapper>
 </Wrapper>
 
 export default props=> {
-	const validateProductValues = (props.comissionCash > 0 ) && props.comissionWithinLimit && props.price > 0 && props.productImages.length > 0 && props.productName
+	const validateProductValues = (props.comissionCash > 0 ) && 
+		props.comissionWithinLimit && 
+		props.price > 0 && 
+		props.productImages.length > 0 && 
+		props.productName
 	return(
 		<Grid>
 			<Grid.Row>
@@ -67,6 +66,12 @@ export default props=> {
 							{props.price <= 0 ? <li>ใส่ราคาสินค้า </li>:null}
 							{!(props.comissionCash > 0 )?<li>ใส่ค่าคอมมิสชั่น</li>:null}
 						</ul>
+						<p> ในการกดลงขายคุณได้
+							<Modal context = {<Agreement/>}>
+								<span style={{color:'blue', cursor:'pointer'}}>ยอมรับเงื่อนไข</span>
+							</Modal>
+							ของทางเว็ปไซท์
+						</p>
 						<Modal context={<ProductPreview {...props}/>}>
 							<Button buttonDisabled={!validateProductValues} disabled={!validateProductValues}>ลงขาย</Button>
 						</Modal>
