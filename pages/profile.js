@@ -1,7 +1,13 @@
 import { Component } from 'react'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValueSelector } from 'redux-form'
-import { getUserProducts, setProductStock, getProductToSponsorTable, setProductActive, setProductMembership, deleteProduct } from '../lib/handlers/product'
+import { 
+	getUserProducts, 
+	setProductStock, 
+	getProductToSponsorTable, 
+	setProductActive, 
+	setProductMembership, 
+	deleteProduct } from '../lib/handlers/product'
 import { getMemberByEmailsByEmail } from '../lib/handlers/member'
 import loadFirebase from '../lib/database'
 import { saveUser, saveUserPending } from '../lib/actions/user'
@@ -66,9 +72,9 @@ class Profile extends Component {
 		if(this.props.profile.transactionIds !==undefined) {
 			if(this.props.profile.transactionIds.length>=1 
 				&& (JSON.stringify(this.props.profile) !== JSON.stringify(nextProps.profile))){
-					if(typeof this.props.profile.transactionIds[0] == "string") {
-						getTable(this.props.profile.transactionIds)
-					}
+				if(typeof this.props.profile.transactionIds[0] == "string") {
+					getTable(this.props.profile.transactionIds)
+				}
 			}
 		}
 		if(nextProps.userProducts !== this.props.userProducts) {
@@ -78,14 +84,14 @@ class Profile extends Component {
 	toggleVisibility = () => this.setState({ isVisible: !this.state.isVisible })
 
 	handleImageChange = e => {
-    e.preventDefault();
-    const reader = new FileReader();
-    const file = e.target.files[0];
-    reader.onloadend = () => {
+		e.preventDefault();
+		const reader = new FileReader();
+		const file = e.target.files[0];
+		reader.onloadend = () => {
 			addProfileImage(file)
-    };
+		};
 
-    reader.readAsDataURL(file);
+		reader.readAsDataURL(file);
 	}
 	
 	handleSave = async(detail) => {
@@ -141,81 +147,81 @@ class Profile extends Component {
 		return <HeightDiv>
 			<Head/>
 			{props.user.uid?
-			<Header 
-				content={
-					<ProfileSide 
-						{...props}
-						{...state}
-						toggleVisibility={this.toggleVisibility}
-						handleClick={this.handleClick}
-						sideContent = {
+				<Header 
+					content={
+						<ProfileSide 
+							{...props}
+							{...state}
+							toggleVisibility={this.toggleVisibility}
+							handleClick={this.handleClick}
+							sideContent = {
+								<ProfileDetail
+									{...props}
+									{...state}
+									handleImageChange={this.handleImageChange}
+									handleSave={() => this.handleSave(this.props.detail)}
+									handleEdit={this.handleEdit}
+									cancelEdit={this.cancelEdit}
+								/>}
+							content = {
+								<ProfileView
+									{...props}
+									{...state}
+									handleImageChange={this.handleImageChange}
+									handleSave={() => this.handleSave(this.props.detail)}
+									handleEdit={this.handleEdit}						
+									handleClickView={this.handleClickView}
+									setProductMembership={setProductMembership}
+									setProductActive={setProductActive}
+									deleteProduct={deleteProduct}
+									setOrderStatus={setOrderStatus}
+									setProductStock={setProductStock}
+								/>}
+						/>
+					}
+					contentMobile={<HeightDiv>
+						{state.isProfileMobile&&
 							<ProfileDetail
 								{...props}
 								{...state}
+								handleProfileMobile={this.handleProfileMobile}
 								handleImageChange={this.handleImageChange}
 								handleSave={() => this.handleSave(this.props.detail)}
 								handleEdit={this.handleEdit}
+								setProductMembership={setProductMembership}
+								setProductActive={setProductActive}
 								cancelEdit={this.cancelEdit}
-							/>}
-						content = {
-							<ProfileView
-							{...props}
-							{...state}
-							handleImageChange={this.handleImageChange}
-							handleSave={() => this.handleSave(this.props.detail)}
-							handleEdit={this.handleEdit}						
-							handleClickView={this.handleClickView}
-							setProductMembership={setProductMembership}
-							setProductActive={setProductActive}
-							deleteProduct={deleteProduct}
-							setOrderStatus={setOrderStatus}
-							setProductStock={setProductStock}
-						/>}
-					/>
-				}
-				contentMobile={<HeightDiv>
-					{state.isProfileMobile&&
-						<ProfileDetail
-							{...props}
-							{...state}
-							handleProfileMobile={this.handleProfileMobile}
-							handleImageChange={this.handleImageChange}
-							handleSave={() => this.handleSave(this.props.detail)}
-							handleEdit={this.handleEdit}
-							setProductMembership={setProductMembership}
-							setProductActive={setProductActive}
-							cancelEdit={this.cancelEdit}
-							setProductStock={setProductStock}
-						/>
-					}
-					{(state.isItemMobile || state.isTableMobile )&&
-							<ProfileView
+								setProductStock={setProductStock}
+							/>
+						}
+						{(state.isItemMobile || state.isTableMobile )&&
+								<ProfileView
+									{...props}
+									{...state}
+									handleTableMobile={this.handleTableMobile}
+									handleItemCard={this.handleItemCard}
+									handleImageChange={this.handleImageChange}
+									handleSave={() => this.handleSave(this.props.detail)}
+									handleEdit={this.handleEdit}
+									handleClickView={this.handleClickView}	
+									setProductMembership={setProductMembership}	
+									setProductActive={setProductActive}		
+									deleteProduct={deleteProduct}
+									setProductStock={setProductStock}
+								/>}
+						{(!state.isItemMobile&&!state.isProfileMobile&&!state.isTableMobile )&&
+							<ProfileMobile 
 								{...props}
 								{...state}
-								handleTableMobile={this.handleTableMobile}
+								handleProfileMobile={this.handleProfileMobile}
 								handleItemCard={this.handleItemCard}
-								handleImageChange={this.handleImageChange}
-								handleSave={() => this.handleSave(this.props.detail)}
-								handleEdit={this.handleEdit}
-								handleClickView={this.handleClickView}	
-								setProductMembership={setProductMembership}	
-								setProductActive={setProductActive}		
-								deleteProduct={deleteProduct}
+								handleTableMobile={this.handleTableMobile}
 								setProductStock={setProductStock}
-							/>}
-					{(!state.isItemMobile&&!state.isProfileMobile&&!state.isTableMobile )&&
-						<ProfileMobile 
-							{...props}
-							{...state}
-							handleProfileMobile={this.handleProfileMobile}
-							handleItemCard={this.handleItemCard}
-							handleTableMobile={this.handleTableMobile}
-							setProductStock={setProductStock}
-						/>
-					}
-				</HeightDiv>}
-			/>:
-			<Header
+							/>
+						}
+					</HeightDiv>}
+				/>:
+				<Header
 					content={
 						<div>
 							<H3>คุณต้อง
@@ -223,7 +229,7 @@ class Profile extends Component {
 							</H3>
 						</div>
 					}
-			/>
+				/>
 			}
 		</HeightDiv>
 	}
