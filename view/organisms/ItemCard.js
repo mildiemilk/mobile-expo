@@ -50,7 +50,7 @@ class ItemCard extends React.Component {
 		const isProductOwner = product.userUid === userUid
 		return(
 			<Card style={{margin:'5px'}}>
-				{(!isSponsor&& isProductOwner || isAdmin )&&
+				{(isProductOwner || isAdmin )&&
 				<Modal 
 					context={<ConfirmDeleteProduct/>} 
 					action={<Button color='red' onClick={()=>deleteProduct(productKey)}>
@@ -72,7 +72,7 @@ class ItemCard extends React.Component {
 								{!isMember&&
 								<tr>
 									{ 
-										!isSponsor&& <Fragment>
+										isProductOwner&& <Fragment>
 											<td style={{textAlign:'right'}}>เปิดขาย:</td>
 											<td><Checkbox toggle name="active" checked={product.active} onClick={() => setProductActive(!product.active, productKey)}/>
 											</td>
@@ -98,7 +98,7 @@ class ItemCard extends React.Component {
 									<td colSpan={2}>{product.comissionCash || '0.00'} บาท </td>
 								</tr>
 								{!isMember&&<Fragment>
-									{!isSponsor? 
+									{isProductOwner? 
 										<tr>
 											<td style={{textAlign:'right'}}>สต๊อก: </td>
 											<td>{product.stock}</td>
@@ -110,7 +110,7 @@ class ItemCard extends React.Component {
 										</tr>
 									}
 
-									{!isSponsor&&<tr>
+									{isProductOwner&&<tr>
 										<td style={{textAlign:'right'}}>ผู้ขาย: </td>
 										<td>{Object.keys(sponsors).length}</td>
 										<td>{userUid === product.userUid &&
