@@ -108,27 +108,6 @@ const ChangeMembershipPassword = props =>
 		</SemanticModal.Actions>
 	</SemanticModal>
 
-const ProductCard = props =>   <Card>
-	<Image src={props.productImages[0]} height="300px"/>
-	<Card.Content>
-		<Card.Header>
-			{props.productName}
-		</Card.Header>
-		<Card.Meta>
-			<span>
-				{props.brandName}
-			</span>
-		</Card.Meta>
-		<Card.Description>
-			<p>ราคา: {props.price} บาท</p>
-			<p>ค่าคอมมิสชั่น: {props.comissionCash} บาท</p>
-		</Card.Description>
-	</Card.Content>
-	<Card.Content extra>
-		<ProductAction product={props} productId={props.productId} userUid={props.userUid} isSponsor={true}/>
-	</Card.Content>
-</Card>
-
 const constructMemberArray = (members, isAdmin, setMemberPermission) => convertObjectToArray(members).map(
 	member=>isAdmin?
 		addActionToMember(member, setMemberPermission):
