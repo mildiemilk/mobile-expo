@@ -7,6 +7,7 @@ import { getProfile } from '../lib/handlers/profile'
 import { saveUser, saveUserPending } from '../lib/actions/user'
 import loadFirebase from '../lib/database'
 import { getUserbyUid } from '../lib/handlers/user'
+import { deleteProduct } from '../lib/handlers/product'
 import { saveMembership, 
 	loginMembership, 
 	setMembers, 
@@ -27,8 +28,8 @@ class Member extends React.Component {
 		await auth.onAuthStateChanged(async user => {
 			this.props.saveUserPending()
 			if(user){
-			await getUserbyUid(user.uid)
-			this.props.saveUser(user) 
+				await getUserbyUid(user.uid)
+				this.props.saveUser(user) 
 			} else {
 				alert('ต้องล๊อกอินก่อนถึงจะใช้ส่วนของสมาชิกได้')
 				Router.push('/login')
