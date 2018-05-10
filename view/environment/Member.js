@@ -11,6 +11,7 @@ import Head from './DefaultHead'
 import Header from './Header'
 import H3 from '../atoms/H3'
 import Image from '../atoms/Image'
+import ItemCard from '../organisms/ItemCard'
 
 const memberHeader = {
 	"name": "Name",
@@ -213,7 +214,17 @@ export default props =>
 								<h2>สินค้าของสมาชิก</h2>
 								<Grid stackable stretched columns={3}>
 									{
-										randomAnArray(Object.keys(props.member.products)).splice(0,6).map(key => <Grid.Column key={key}><ProductCard {...props.member.products[key]} key={key} userUid={props.user.uid} productId={key}/></Grid.Column>)
+										randomAnArray(Object.keys(props.member.products)).splice(0,6).map(key => <Grid.Column key={key}>
+											<ItemCard 
+												{...props}
+												productKey={key}
+												isMember={true}
+												product={props.member.products[key]} 
+												key={key} 
+												userUid={props.user.uid} 
+												productId={key}
+											/>
+										</Grid.Column>)
 									}
 								</Grid>
 							</Wrapper>

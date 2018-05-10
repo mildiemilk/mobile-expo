@@ -60,6 +60,7 @@ class Member extends React.Component {
 				addMemberByEmail={addMemberByEmail}
 				saveMembership={saveMembership} 
 				loginMembership={loginMembership} 
+				deleteProduct={deleteProduct}
 				isAdmin={
 					(member&&
 					Object.keys(member.members).length > 0 && 

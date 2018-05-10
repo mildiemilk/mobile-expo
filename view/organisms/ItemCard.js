@@ -40,14 +40,17 @@ class ItemCard extends React.Component {
 	}
 
 	render() {
-		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, isSponsor, setProductActive, setProductMembership, isUserMembership, membershipProductsNumber, deleteProduct } = this.props
-		const { comissionCash, price, productName, productImages, stock} = this.props.product
+		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, isSponsor, setProductActive, setProductMembership, isUserMembership, membershipProductsNumber, deleteProduct, isMember, isAdmin } = this.props
+		if(!product){
+			return null
+		}
 		const { sponsors, status } = this.state
 		let validateEmailResult = validateEmail(sponsorEmail ? sponsorEmail : null)
 		const isEmailExist = this.isExist(sponsorEmail, sponsors)
+		const isProductOwner = product.userUid === userUid
 		return(
 			<Card style={{margin:'5px'}}>
-				{!isSponsor&&
+				{(!isSponsor&& isProductOwner || isAdmin )&&
 				<Modal 
 					context={<ConfirmDeleteProduct/>} 
 					action={<Button color='red' onClick={()=>deleteProduct(productKey)}>
@@ -58,14 +61,15 @@ class ItemCard extends React.Component {
 					</Card.Content>
 				</Modal>
 				}
-				<Image alt="242x200" src={productImages ? productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" />
+				<Image alt="242x200" src={product.productImages ? product.productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" />
 				<Card.Content>
 					<Card.Header>
-						{productName}
+						{product.productName}
 					</Card.Header>
 					<Card.Description>
 						<table>
 							<tbody>
+								{!isMember&&
 								<tr>
 									{ 
 										!isSponsor&& <Fragment>
@@ -75,7 +79,7 @@ class ItemCard extends React.Component {
 										</Fragment>
 									}
 									{
-										isUserMembership  && !(membershipProductsNumber >= 5 && !product.isMembership) &&
+										(isProductOwner && isUserMembership  && !(membershipProductsNumber >= 5 && !product.isMembership)) &&
 							<Fragment>
 								<td style={{textAlign:'right'}}>สมาชิก:</td>
 								<td><Checkbox toggle name="isMembership" checked={product.isMembership} onClick={() => setProductMembership(!product.isMembership, productKey)}/>
@@ -83,44 +87,48 @@ class ItemCard extends React.Component {
 							</Fragment>
 									}
 								</tr> 
+								}
 								<tr>
 									<td style={{textAlign:'right'}}>ราคา:</td>
-									<td colSpan={2}>{price} บาท</td>
+									<td colSpan={2}>{product.price} บาท</td>
 									<td></td>
 								</tr>
 								<tr>
 									<td style={{textAlign:'right'}}>ค่าคอม:</td>
-									<td colSpan={2}>{comissionCash || '0.00'} บาท </td>
+									<td colSpan={2}>{product.comissionCash || '0.00'} บาท </td>
 								</tr>
-								{!isSponsor? 
-									<tr>
-										<td style={{textAlign:'right'}}>สต๊อก: </td>
-										<td>{stock}</td>
-										<td>{userUid === product.userUid && <AddStock stock={stock} productKey={productKey} setProductStock={setProductStock} round/> }</td>
-									</tr>
-									: <tr>
-										<td style={{textAlign:'right'}}>สต๊อก: </td>
-										{!product.active? <td  colSpan={2} style={{color:'red'}}>สินค้าหมด</td>: <td>{stock}</td>}
-									</tr>
+								{!isMember&&<Fragment>
+									{!isSponsor? 
+										<tr>
+											<td style={{textAlign:'right'}}>สต๊อก: </td>
+											<td>{product.stock}</td>
+											<td>{userUid === product.userUid && <AddStock stock={product.stock} productKey={productKey} setProductStock={setProductStock} round/> }</td>
+										</tr>
+										: <tr>
+											<td style={{textAlign:'right'}}>สต๊อก: </td>
+											{!product.active? <td  colSpan={2} style={{color:'red'}}>สินค้าหมด</td>: <td>{product.stock}</td>}
+										</tr>
+									}
+
+									{!isSponsor&&<tr>
+										<td style={{textAlign:'right'}}>ผู้ขาย: </td>
+										<td>{Object.keys(sponsors).length}</td>
+										<td>{userUid === product.userUid &&
+									<AddSponsorModal 
+										productKey={productKey} 
+										sponsors={sponsors} 
+										sponsorEmail={sponsorEmail} 
+										setProductSponsor={setProductSponsor}
+										handleChangeStatus={this.handleChangeStatus}
+										status={status}
+										statusEmail={validateEmailResult.status}
+										displayText={validateEmailResult.errorText}
+										isEmailExist={isEmailExist}
+										round />
+										}</td>
+									</tr>}
+								</Fragment>
 								}
-						
-								{!isSponsor&&<tr>
-									<td style={{textAlign:'right'}}>ผู้ขาย: </td>
-									<td>{Object.keys(sponsors).length}</td>
-									<td>{userUid === product.userUid &&
-								<AddSponsorModal 
-									productKey={productKey} 
-									sponsors={sponsors} 
-									sponsorEmail={sponsorEmail} 
-									setProductSponsor={setProductSponsor}
-									handleChangeStatus={this.handleChangeStatus}
-									status={status}
-									statusEmail={validateEmailResult.status}
-									displayText={validateEmailResult.errorText}
-									isEmailExist={isEmailExist}
-									round />
-									}</td>
-								</tr>}
 							</tbody>
 						</table>
 					</Card.Description>
