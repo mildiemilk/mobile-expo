@@ -1,12 +1,7 @@
-import MediaQuery from 'react-responsive'
 import Link from 'next/link'
-import Flex from '../atoms/Flex'
-import ManyMobile from '../../static/img/manyMobiles.svg'
-import { Modal, Grid, Card, Icon, Image  } from 'semantic-ui-react'
+import { Modal, Grid } from 'semantic-ui-react'
 import Button from '../atoms/Button'
 import WebExplain from '../organisms/WebExplain'
-import color from '../../static/json/color.json'
-import H1 from '../atoms/H1'
 import styled from 'styled-components'
 import Banner01 from '../../static/banner/banner_12.svg'
 import Banner02 from '../../static/banner/banner_22.svg'
@@ -15,7 +10,7 @@ import SignInForm from '../organisms/SignInForm'
 export default ({...props}) => 
 <Section1>
 	<Wrapper>
-		<div>
+		<div style={{minHeight:'80vh'}}>
 			<MobileImage src='https://firebasestorage.googleapis.com/v0/b/sharemai-1.appspot.com/o/cover-page%2Ffrontpagephoto.png?alt=media&token=4777a091-b059-4b80-8d36-5d2501158ce5' alt="เวปที่จะเปลี่ยนแปลงชีวิตคุณ" />
 		</div>
 		<TextWrapper>
@@ -99,6 +94,7 @@ font-weight: 200;
 padding-top:10px;
 margin:0;
 padding:0;
+width:100%;
 `
 const BannerSub = styled.h3`
 font-family: 'Athiti',sans-serif;
@@ -108,6 +104,8 @@ font-weight: 200;
 width:539px;
 padding:0;
 margin:0;
+width:100%;
+
 `
 
 
@@ -147,17 +145,8 @@ max-width:100vw;
 -o-transform: rotate(-5deg);
 `
 
-const TitleWrapper = styled.div`
-	margin-top:14px !important;
-	background:white;
-	margin-bottom:0 !important;
-`
-
-const Heading = styled.h1`
-	text-transform: uppercase;
-`
-
 const MobileImage = styled.img`
+width:80%;
 @media (max-width: 700px) {
 	width:100%;
 }

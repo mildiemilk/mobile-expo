@@ -23,12 +23,12 @@ import {orders} from './const'
 import Form from './Form'
 import {Provider} from 'react-redux'
 import store from './store'
-import Jumbotron from '../../view/molecules/Jumbotron'
+import MainBanner from '../../view/molecules/MainBanner'
 import WebExplainCard from '../../view/molecules/WebExplainCard'
 
-storiesOf('Jumbotron', module)
+storiesOf('MainBanner', module)
 .add('default', ()=> <div style={{backgroundColor:'#F7F7F7', width:'100vw', height:'100vh', display:'relative'}}>
-	<Jumbotron/>
+	<MainBanner/>
 </div>)
 
 storiesOf('WebExplainCard',module)

@@ -1,19 +1,18 @@
 import Router from 'next/router'
-import MediaQuery from 'react-responsive'
-import Nav from '../atoms/Nav'
 import Menu from '../atoms/Menu'
 import Item from '../atoms/Item'
 import menu from '../../static/json/menu.json'
 import { signOut } from '../../lib/handlers/authenticator'
 import styled from 'styled-components'
+import color from '../../static/json/color.json'
 
 export const Logo = styled.h1`
 font-family: 'Roboto', sans-serif;
 font-weight:500;
-font-size:400%;
-color:#FF3730;
+font-size:200%;
+color:${color.theme};
 padding:10px 15px;
-border: 5px solid #FF3730 ;
+border: 3px solid ${color.theme} ;
 margin-left:10px;
 margin-bottom:0;
 `

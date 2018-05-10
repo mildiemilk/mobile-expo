@@ -5,7 +5,7 @@ import color from '../../static/json/color.json'
 export default styled(Menu.Item)`
 color: ${color.contrast} !important;
 flex-grow: 1;
-font-size: 200%;
+font-size: 150%;
 border-radius:15px;
 font-weight:600 !important;
 padding:10px 15px !important;

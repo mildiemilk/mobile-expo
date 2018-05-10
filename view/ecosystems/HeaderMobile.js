@@ -1,7 +1,6 @@
 import Router from 'next/router'
-import MediaQuery from 'react-responsive'
 import styled from 'styled-components'
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'  
+import { Sidebar, Segment, Menu, Icon } from 'semantic-ui-react'  
 import MenuButton from '../atoms/MenuButton'
 import Item from '../atoms/Item'
 import menu from '../../static/json/menu.json'
@@ -23,17 +22,6 @@ const StylePushable =styled(Sidebar.Pushable)`
 margin: 0px !important;
 padding:0 !important;
 `
-
-const loginMenu = [
-	menu[0], {
-		...menu[1],text:"ออกจากระบบ"
-	},
-	menu[3]
-]
-
-const nonLoginMenu = [
-	menu[0],menu[1],menu[2]
-]
 
 const MobileLogo = styled(Logo)`
 	font-size:190%;
@@ -68,7 +56,7 @@ class HeaderMobile extends React.Component{
 	)
 
 	render(){
-		const { loggedIn, content, contentMobile } = this.props
+		const { content, contentMobile } = this.props
 		const { visible } = this.state
 		return (
 			<HeightDiv>

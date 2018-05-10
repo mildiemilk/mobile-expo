@@ -1,4 +1,4 @@
-import Jumbotron from '../molecules/Jumbotron'
+import MainBanner from '../molecules/MainBanner'
 
-export default () => <Jumbotron />
+export default () => <MainBanner />
 
