@@ -21,8 +21,6 @@ const AddImage = styled(AddImg)`
 `
 
 export default ({ src, size, setProductImage, number, removeProductImage,imagePending, subimg }) => {
-    console.log('src', src)
-    console.log('number', number)
     return (
         <SquareWrapper maxSize={size} style={{flexGrow:'1', flexShrink:'2'}}>
                 <div style={{position:'absolute', top:'0', right:'0'}}>

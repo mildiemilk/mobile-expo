@@ -29,7 +29,6 @@ const settings = props =>( {
 
 
 export default props => <Wrapper maxWidth="94vw" bigScreenWidth="70vw">
-	{console.log('width', props.width)}
 	<H3>{props.title}{!props.isView&& <a style={{ cursor: 'pointer', float: 'right', fontSize: '14px', fontWeight: 'normal' }} onClick={() => props.handleClickView(props.page)}>View all</a> }</H3>
 	{Object.keys(props.products).length >0
 	?Object.keys(props.products).length <= 3 || props.isView || props.width < 1324 

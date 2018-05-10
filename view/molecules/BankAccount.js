@@ -1,12 +1,7 @@
-import { Grid } from 'semantic-ui-react'
-import Link from 'next/link'
 import Wrapper from '../atoms/Wrapper'
-import H1 from '../atoms/H1'
 import H3 from '../atoms/H3'
-import Flex from '../atoms/Flex'
 import Button from '../atoms/Button'
 import Modal from '../molecules/Modal'
-import Image from '../atoms/Image'
 import DropZone from '../atoms/Dropzone'
 import WebExplain from '../organisms/WebExplain'
 import Head from 'next/head'
@@ -15,7 +10,6 @@ const accountNumberFormat = accountNumber => `${accountNumber.slice(0,3)}-${acco
 
 const ModalContext = props => 
 <Wrapper>
-	{console.log('startuplaodimage', props)}
 	<h3>ขั้นตอนที่1 โอนเงินผ่านแอพธนาคารหรือโอนเงินที่	</h3>
 		<p>ธนาคาร{props.bankName} </p>
 		<p>เลขที่บัญชี:{accountNumberFormat(props.accountNumber)} </p>

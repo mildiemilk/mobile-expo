@@ -1,4 +1,3 @@
-import React from 'react'
 import Dropzone from 'react-dropzone'
 
 export const FILE_FIELD_NAME = 'files'

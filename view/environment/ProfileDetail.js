@@ -1,4 +1,4 @@
-import { Grid, Icon } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import styled from 'styled-components'
 import H3 from '../atoms/H3'
 import Image from '../atoms/Image'
@@ -10,8 +10,6 @@ import InputText from '../atoms/TextField'
 import DivImage from '../atoms/DivImage'
 import Label from '../atoms/LabelImage'
 import BalanceModal from '../molecules/BalanceModal'
-import ProfileDetailDisplay from '../organisms/ProfileDetailDisplay'
-import ProfileDetailEdit from '../organisms/ProfileDetailEdit'
 import Flex from '../atoms/Flex'
 
 const EditGrid = styled(Grid.Column)`
@@ -19,15 +17,18 @@ const EditGrid = styled(Grid.Column)`
 `
 
   
-export default({profile, handleEdit, isEdit, detail, handleSave, handleImageChange, profileImage, balance, userUid, sponsorEmail, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending,user, cancelEdit,initialProps,userBankDetail}) => <Grid>
+export default({profile, handleEdit, isEdit, handleSave, handleImageChange, balance, userUid, isProfileMobile, handleProfileMobile, isUserMembership, membershipProductsNumber, userPending,user, cancelEdit,userBankDetail}) => <Grid>
   <EditGrid mobile={16} tablet={16} computer={16}>
     {userPending?<Wrapper><H3>Loading...</H3></Wrapper>:null}
     <Wrapper height="100%" widthSmall="100vw" noMargin noBorder noBorderRadius style={{border:'none'}}>
-      {isEdit ? null:<DivButton TextAlign="right"><Button secondary margin="0px 10px" onClick={handleEdit}>Edit</Button></DivButton>}
+      {!isEdit &&<DivButton TextAlign="right"><Button secondary margin="0px 10px" onClick={handleEdit}>Edit</Button></DivButton>}
       <H5 margin="20px 0px" center>{profile.name}</H5>
       {isEdit 
       ?<div><DivImage center>
-        {user.profileImage ?<Image src={user.profileImage?user.profileImage:'/static/img/noimg.png'} />:<Button noFlexGrow>Upload</Button>}
+        {profile.profileImage ?
+          <Image src={profile.profileImage?profile.profileImage:'/static/img/noimg.png'} />:
+          <Button noFlexGrow>Upload</Button>
+        }
         <Label for="buttonImg"><input style={{display:"none"}} name="image" onChange={e => handleImageChange(e)} id="buttonImg" type="file" /></Label>
         </DivImage>
         <H5 margin="15px 0px 0px 0px" lineHeight="20px">จำนวนเงิน: {profile.wallet||0} บาท</H5> 
@@ -41,7 +42,7 @@ export default({profile, handleEdit, isEdit, detail, handleSave, handleImageChan
         </Flex>
       </div>
       :<div>
-        <Image block margin="auto" size="150px" maxHeight="150px" src={profileImage?profileImage:'https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png'} />
+        <Image block margin="auto" size="150px" maxHeight="150px" src={profile.profileImage?profile.profileImage:'https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png'} />
         <BalanceModal balance={balance} userUid={userUid} user={user} userBankDetail={userBankDetail}/>
         <H5 lineHeight="32px">ที่อยู่: {profile.address}</H5>
         <H5 lineHeight="32px">อีเมล: {profile.email}</H5>
