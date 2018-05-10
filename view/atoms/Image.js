@@ -11,7 +11,6 @@ export default styled.img.attrs({
 	display: ${props => props.block? 'block': null};
 	margin: ${props => props.margin};
 	@media only screen and (max-width: 360px) and (min-width: 330px){
-		${props => props.smallScreen || null}
 		height: ${props => props.mobileHeight||'-webkit-fill-available'};
 	}
 	@media only screen and (max-width: 320px) {

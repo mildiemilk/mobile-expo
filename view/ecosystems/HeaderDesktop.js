@@ -18,16 +18,16 @@ margin-bottom:0;
 `
 
 export default ({loggedIn, content}) => <div>
-<Menu>
-	<Logo>sharemai</Logo>
-	{loggedIn
-	?	menu.filter(item => ['/login', '/register'].indexOf(item.link) === -1).map( ({link, text}, key) => 
-		<Item key={key} onClick={()=>{link==='logout' ? signOut() :Router.push(link) }}>{text}</Item> 
-	)
-	: menu.slice(0,3).map( ({link, text}, key) => 
-		<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
-	)
-	}
-</Menu>
-<div>{content}</div>
+	<Menu>
+		<Logo>sharemai</Logo>
+		{loggedIn
+			?	menu.filter(item => ['/login', '/register'].indexOf(item.link) === -1).map( ({link, text}, key) => 
+				<Item key={key} onClick={()=>{link==='logout' ? signOut() :Router.push(link) }}>{text}</Item> 
+			)
+			: menu.slice(0,3).map( ({link, text}, key) => 
+				<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
+			)
+		}
+	</Menu>
+	<div>{content}</div>
 </div>

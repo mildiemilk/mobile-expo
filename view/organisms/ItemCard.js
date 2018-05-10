@@ -61,7 +61,7 @@ class ItemCard extends React.Component {
 					</Card.Content>
 				</Modal>
 				}
-				<Image alt="242x200" src={product.productImages ? product.productImages[0]: '/static/img/noimg.png'} smallScreen="display:none;" maxHeight="200px" />
+				<Image alt="242x200" src={product.productImages ? product.productImages[0]: '/static/img/noimg.png'} maxHeight="200px" />
 				<Card.Content>
 					<Card.Header>
 						{product.productName}
@@ -73,7 +73,7 @@ class ItemCard extends React.Component {
 								<tr>
 									{ 
 										isProductOwner&& <Fragment>
-											<td style={{textAlign:'right'}}>เปิดขาย:</td>
+											<td colSpan={2} style={{textAlign:'right'}}>เปิดขาย:</td>
 											<td><Checkbox toggle name="active" checked={product.active} onClick={() => setProductActive(!product.active, productKey)}/>
 											</td>
 										</Fragment>
@@ -89,29 +89,29 @@ class ItemCard extends React.Component {
 								</tr> 
 								}
 								<tr>
-									<td style={{textAlign:'right'}}>ราคา:</td>
+									<td colSpan={2} style={{textAlign:'right'}}>ราคา:</td>
 									<td colSpan={2}>{product.price} บาท</td>
 									<td></td>
 								</tr>
 								<tr>
-									<td style={{textAlign:'right'}}>ค่าคอม:</td>
+									<td colSpan={2} style={{textAlign:'right'}}>ค่าคอม:</td>
 									<td colSpan={2}>{product.comissionCash || '0.00'} บาท </td>
 								</tr>
 								{!isMember&&<Fragment>
 									{isProductOwner? 
 										<tr>
-											<td style={{textAlign:'right'}}>สต๊อก: </td>
+											<td colSpan={2} style={{textAlign:'right'}}>สต๊อก: </td>
 											<td>{product.stock}</td>
 											<td>{userUid === product.userUid && <AddStock stock={product.stock} productKey={productKey} setProductStock={setProductStock} round/> }</td>
 										</tr>
 										: <tr>
-											<td style={{textAlign:'right'}}>สต๊อก: </td>
+											<td colSpan={2} style={{textAlign:'right'}}>สต๊อก: </td>
 											{!product.active? <td  colSpan={2} style={{color:'red'}}>สินค้าหมด</td>: <td>{product.stock}</td>}
 										</tr>
 									}
 
 									{isProductOwner&&<tr>
-										<td style={{textAlign:'right'}}>ผู้ขาย: </td>
+										<td colSpan={2} style={{textAlign:'right'}}>ผู้ขาย: </td>
 										<td>{Object.keys(sponsors).length}</td>
 										<td>{userUid === product.userUid &&
 									<AddSponsorModal 

@@ -12,19 +12,19 @@ import OnlyMobile from '../atoms/OnlyMobile';
 class Header extends React.Component {
 	async componentDidMount() {
 		const auth = await loadFirebase('auth')
-		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null}) 
-  }
+		await auth.onAuthStateChanged( user => {user? this.props.saveUser(user): null})
+	}
 	render(){
 		const { user, content, contentMobile } = this.props
 		return(
-		<HeightDiv>
-			<OnlyDesktop>
-				<HeaderDesktop loggedIn={user} content={content}/>
-			</OnlyDesktop>
-			<OnlyMobile>
-				<HeaderMobile loggedIn={user} content={content} contentMobile={contentMobile}/>
-			</OnlyMobile>
-		</HeightDiv>)
+			<HeightDiv>
+				<OnlyDesktop>
+					<HeaderDesktop loggedIn={user} content={content}/>
+				</OnlyDesktop>
+				<OnlyMobile>
+					<HeaderMobile loggedIn={user} content={content} contentMobile={contentMobile}/>
+				</OnlyMobile>
+			</HeightDiv>)
 	}
 }
 
