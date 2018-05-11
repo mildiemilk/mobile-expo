@@ -49,16 +49,11 @@ class Profile extends Component {
 		this.setState({width:window.innerWidth})
 		this.props.saveUserPending()
 		const auth = await loadFirebase('auth')
-		await auth.onAuthStateChanged(user => 
-			getUserbyUid(user.uid)
-		)
-		if(this.props.user) {
-			await getUserProducts(this.props.user.uid)
-			await getProductToSponsorTable(this.props.user.uid, this.props.user.email)
-			await getProfile(this.props.user)
-			await getMemberByEmailsByEmail(this.props.user.email)
-		}
+		await auth.onAuthStateChanged( async(user) => {
+			await getUserbyUid(user.uid)
+		})
 	}
+
 	async componentWillReceiveProps(nextProps){
 		if(this.props.user !== nextProps.user ){
 			await getUserProducts(this.props.user.uid)

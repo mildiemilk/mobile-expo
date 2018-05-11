@@ -23,10 +23,10 @@ export default props =>
 			</div>}
 
 		{props.isView? <Button secondary width="70px" onClick={() => props.handleClickView('')}>Back</Button> : null}
-			{props.isItemCard
-			?<ProfileTable
-			{...props}
-			table={props.table !== undefined ?!props.isView? props.table.slice(0,3) : props.table: undefined}
+		{props.isItemCard?
+			<ProfileTable
+				{...props}
+				table={props.table !== undefined ?!props.isView? props.table.slice(0,3) : props.table: undefined}
 			/>
 			:<div style={{flexGrow:"2"}}>
 				{(!props.isView || (props.showView === 'first'))&&<ProfileProductOwnerPreview {...props}/>}

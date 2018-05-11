@@ -1,8 +1,6 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
 import { reduxForm } from 'redux-form'
 import withRedux from "next-redux-wrapper"
-import Router from 'next/router'
 import store from '../lib/store'
 import loadFirebase from '../lib/database'
 import LoginForm from '../view/environment/AuthForm'
