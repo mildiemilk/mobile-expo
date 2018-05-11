@@ -17,7 +17,7 @@ export default ({...props}) =>
 			<Title rotate='-5'>ซื้อ แชร์ รวย!</Title>
 			<Subtitle>ซื้อสินค้า แชร์สินค้า คนสั่งซื้อ รับค่าคอม</Subtitle>
 			<ButtonWrap>
-				<Modal closeIcon trigger={<HowtoButton secondary>วิธีการใช้งาน</HowtoButton>}>
+				<Modal closeIcon trigger={<SecondaryButton secondary>วิธีการใช้งาน</SecondaryButton>}>
 					<Modal.Header>วิธีการใช้งาน</Modal.Header>
 					<Modal.Content>
 						<Modal.Description>
@@ -25,8 +25,11 @@ export default ({...props}) =>
 						</Modal.Description>
 					</Modal.Content>
 				</Modal>
+				<Link prefetch href="/login">
+					<SecondaryButton secondary>ล๊อกอิน</SecondaryButton>
+				</Link>
 				<Link prefetch href="/register">
-					<RegisterButton>สมัครเลย</RegisterButton>
+					<PrimaryButton>สมัครเลย</PrimaryButton>
 				</Link>
 			</ButtonWrap>
 		</TextWrapper>
@@ -203,10 +206,10 @@ ${props=> props.rotate? `
 `
 
 const MainPageButton = styled(Button)`
-margin:10px;
+margin:5px;
 border-radius: 10px;
-max-width: 200px;
-width:40%;
+max-width: 180px;
+width:30%;
 font-family: 'Athiti', sans-serif;
 font-weight:bold;
 @media (max-width: 700px){
@@ -220,12 +223,12 @@ font-weight:bold;
 }
 `
 
-const RegisterButton = styled(MainPageButton)`
+const PrimaryButton = styled(MainPageButton)`
 box-shadow:4px 4px 0px 0px rgba(155,0,0);
 background: rgba(155,0,0,0.8);
 `
 
-const HowtoButton = styled(MainPageButton)`
+const SecondaryButton = styled(MainPageButton)`
 	border:none;
 	box-shadow:4px 4px 0px 0px rgba(155,0,0);
 	color:rgba(155,0,0);
