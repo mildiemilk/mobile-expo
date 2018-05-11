@@ -8,10 +8,6 @@ import { validateEmail } from '../../lib/helpers/formvalidation'
 import ProductAction from '../molecules/ProductAction'
 import H3 from '../atoms/H3';
 
-const ConfirmDeleteProduct = () => <div>
-	<H3>ลบสินค้า</H3>
-	<p>การที่คุณลบสินค้าแบบนี้คือการลบสินค้าถาวร คุณต้องการลบหรือไม่?</p>
-</div>
 
 class ItemCard extends React.Component {
 	constructor(props){
@@ -39,6 +35,11 @@ class ItemCard extends React.Component {
 		return result.indexOf(true) !== -1
 	}
 
+	ConfirmDeleteProduct = () => <div>
+		<H3>ลบสินค้า</H3>
+		<p>การที่คุณลบสินค้าแบบนี้คือการลบสินค้าถาวร คุณต้องการลบหรือไม่?</p>
+	</div>
+
 	render() {
 		const { userUid, product, productKey, setProductStock, sponsorEmail, setProductSponsor, isSponsor, setProductActive, setProductMembership, isUserMembership, membershipProductsNumber, deleteProduct, isMember, isAdmin } = this.props
 		if(!product){
@@ -52,12 +53,16 @@ class ItemCard extends React.Component {
 			<Card style={{margin:'5px'}}>
 				{(isProductOwner || isAdmin )&&
 				<Modal 
-					context={<ConfirmDeleteProduct/>} 
-					action={<Button color='red' onClick={()=>deleteProduct(productKey)}>
+					context={<this.ConfirmDeleteProduct/>} 
+					action={<Button color='red' onClick={()=>{
+						this.setState({status:false})
+						deleteProduct(productKey)}
+					}>
 						<Icon name='trash'/>ลบสินค้าถาวร</Button>}
+					open={this.state.status}
 				>
 					<Card.Content>
-						<Button basic Icon size='tiny' style={{position:'absolute',right:'0',top:'0'}} icon='trash'/>
+						<Button onClick={()=>this.setState({status: true})} basic Icon size='tiny' style={{position:'absolute',right:'0',top:'0'}} icon='trash'/>
 					</Card.Content>
 				</Modal>
 				}
