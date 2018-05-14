@@ -15,40 +15,40 @@ import loadFirebase from '../lib/database'
 import { saveUser } from '../lib/actions/user'
 
 class ProductRegister extends Component {
-    async componentDidMount() {
-			const auth = await loadFirebase('auth')
-			const { productID } = this.props.url.query
-			productID ? getProductFromID(productID) : null
-			await auth.onAuthStateChanged(user => (user ? this.props.saveUser(user) : null))
-			this.props.clearProductImages()
-    }
+	async componentDidMount() {
+		const auth = await loadFirebase('auth')
+		const { productID } = this.props.url.query
+		productID ? getProductFromID(productID) : null
+		await auth.onAuthStateChanged(user => (user ? this.props.saveUser(user) : null))
+		this.props.clearProductImages()
+	}
 
-    async componentWillReceiveProps(nextProps) {
-        ;(await nextProps.url.query.productID)
-					? getProductFromID(nextProps.url.query.productID)
-					: null
-    }
+	async componentWillReceiveProps(nextProps) {
+		;(await nextProps.url.query.productID)
+			? getProductFromID(nextProps.url.query.productID)
+			: null
+	}
 
 
 	render(){
 		const 
-		{
-			productName, 
-			addProductDescription, 
-			productDescription, 
-			brandName, 
-			price, 
-			comissionCash,
-			userUid,
-			userEmail,
-			productImages,
-			shortDescription,
-			nextDescription, 
-			stock,
-			removeProductImage,
-			productImagePending,
-			variety
-		} = this.props
+			{
+				productName, 
+				addProductDescription, 
+				productDescription, 
+				brandName, 
+				price, 
+				comissionCash,
+				userUid,
+				userEmail,
+				productImages,
+				shortDescription,
+				nextDescription, 
+				stock,
+				removeProductImage,
+				productImagePending,
+				variety
+			} = this.props
 		const productID =  this.props.url.query.productID
 		let comissionWithinLimit = parseInt(price) * 0.7 >  parseInt(comissionCash || 0)
 		return (<ProductForm 
@@ -64,7 +64,7 @@ class ProductRegister extends Component {
 			productImagePending={productImagePending}
 			removeProductImage={removeProductImage}
 			productName = {productName}
-      price = {price}
+			price = {price}
 			comissionCash = {comissionCash}
 			comissionWithinLimit = {comissionWithinLimit}
 			handleSubmit={()=> !productID ? registerProduct({
@@ -82,50 +82,50 @@ class ProductRegister extends Component {
 				stock,
 				variety
 			})
-			: updateProduct(productID,{
-				active: true,
-				productName, 
-				brandName, 
-				userUid,
-				userEmail,
-				price, 
-				comissionCash,
-				productDescription,
-				productImages,
-				shortDescription,
-				nextDescription,
-				stock,
-				variety
-			})} 
+				: updateProduct(productID,{
+					active: true,
+					productName, 
+					brandName, 
+					userUid,
+					userEmail,
+					price, 
+					comissionCash,
+					productDescription,
+					productImages,
+					shortDescription,
+					nextDescription,
+					stock,
+					variety
+				})} 
 		/>)
 	}
 }	
 
 ProductRegister = reduxForm({
-    form: 'product',
-		enableReinitialize:true, //this has to enable so that it load value of productstate to edit
-		keepDirtyOnReinitialize:true
+	form: 'product',
+	enableReinitialize:true, //this has to enable so that it load value of productstate to edit
+	keepDirtyOnReinitialize:true
 })(ProductRegister)
 
 const selector = formValueSelector('product')
 
 
 const mapStateToProps = state => ({
-    initialValues: state.product,
-    productName: selector(state, 'productName'),
-    brandName: selector(state, 'brandName'),
-    price: selector(state, 'price'),
-    comissionCash: selector(state, 'comissionCash'),
-    productDescription: selector(state, 'productDescription'),
-    shortDescription: selector(state, 'shortDescription'),
-    stock: selector(state, 'stock'),
+	initialValues: state.product,
+	productName: selector(state, 'productName'),
+	brandName: selector(state, 'brandName'),
+	price: selector(state, 'price'),
+	comissionCash: selector(state, 'comissionCash'),
+	productDescription: selector(state, 'productDescription'),
+	shortDescription: selector(state, 'shortDescription'),
+	stock: selector(state, 'stock'),
 	nextDescription: selector(state,'nextDescription'),
 	variety:selector(state,'variety'),
-    userUid: state.user.uid,
-    userEmail: state.user.email,
-		productImages: state.productImages,
-		productImagePending: state.main.productImagePending,
-		product: state.product,
+	userUid: state.user.uid,
+	userEmail: state.user.email,
+	productImages: state.productImages,
+	productImagePending: state.main.productImagePending,
+	product: state.product,
 })
 
 const mapDispatchToProps = {

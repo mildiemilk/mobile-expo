@@ -8,8 +8,6 @@ import HeightDiv from '../atoms/HeightDiv'
 import { signOut } from '../../lib/handlers/authenticator'
 import { Logo } from './HeaderDesktop'
 
-
-
 const StylePusher = styled(Sidebar.Pusher)`
 margin: 0px !important;
 padding:0 !important;
@@ -29,28 +27,28 @@ const MobileLogo = styled(Logo)`
 `
 
 class HeaderMobile extends React.Component{
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
+		this.state = {
 			sidebarOpen: false,
 			visible: false
-    }
+		}
 	}
 
-  toggleVisibility = () => this.setState({ visible: !this.state.visible })
+	toggleVisibility = () => this.setState({ visible: !this.state.visible })
 	sidebarContent = () => 	(
 		<div height="100%">
 			<MobileLogo>sharemai</MobileLogo>
 			<div>
-			{this.props.loggedIn
-			?	menu.filter(item => ['/login', '/register'].indexOf(item.link) === -1).map( ({link, text}, key) => 
-				<Item key={key} onClick={()=>{link==='logout' ? signOut() :Router.push(link) }}>{text}</Item> 
-			)
-			: menu.slice(0,3).map( ({link, text}, key) => 
-				<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
-			)
-			}
+				{this.props.loggedIn
+					?	menu.filter(item => ['/login', '/register'].indexOf(item.link) === -1).map( ({link, text}, key) => 
+						<Item key={key} onClick={()=>{link==='logout' ? signOut() :Router.push(link) }}>{text}</Item> 
+					)
+					: menu.slice(0,3).map( ({link, text}, key) => 
+						<Item key={key} onClick={()=>Router.push(link)}>{text}</Item>
+					)
+				}
 			</div>
 		</div>
 	)

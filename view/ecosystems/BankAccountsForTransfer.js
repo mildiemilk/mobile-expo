@@ -1,15 +1,14 @@
-import styled from 'styled-components'
-import BankAccountBkk from '../organisms/BankAccountBkk'
 import BankAccountKbank from '../organisms/BankAccountKbank'
-import BankAccountScb from '../organisms/BankAccountScb'
-import {Button} from 'semantic-ui-react'
-import Wrapper from '../atoms/Wrapper'
-import Flex from '../atoms/Flex'
 import H3 from '../atoms/H3'
+import H5 from '../atoms/H5'
 
 export default props => 
-<div width="-webkit-fill-available">
-    <BankAccountKbank {...props}/>
-    <BankAccountScb {...props} />
-
-</div>
+	<div>
+		<div style={{border:'1px solid teal', padding:'10px', marginBottom:'20px'}}>
+			<H3>วิธีชำระผ่านการโอนเงิน</H3>
+			<H5>1. โอนเงินมาที่บัญชีนี้ </H5>
+			<H5>2. เมื่อโอนเงินเรียบร้อยแล้วกรุณากดส่งหลักฐานการชำระเงิน</H5> 
+			<BankAccountKbank {...props}/>
+		</div>
+		{props.children}
+	</div>

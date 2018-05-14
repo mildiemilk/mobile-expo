@@ -10,11 +10,18 @@ import { calculateComission } from '../lib/handlers/transaction'
 import { validateCreditCard } from '../lib/helpers/formvalidation'
 import Wrapper from '../view/atoms/Wrapper'
 import H3 from '../view/atoms/H3'
+import H5 from '../view/atoms/H5'
 import WebExplain from '../view/organisms/WebExplain'
 import { findDOMNode } from 'react-dom'
 import $ from 'jquery'
 import { Button } from 'semantic-ui-react'
 import Ipad from '../static/img/ipadpayment.svg'
+import styled from 'styled-components'
+import color from '../static/json/color.json'
+
+const IpadStyled = styled(Ipad)`
+	width:100%;
+`
 
 class Payment extends React.Component{
 	constructor(props){
@@ -58,38 +65,44 @@ class Payment extends React.Component{
 		}
 		return status === 'success'? 
 			this.ModalContext() :
-			<div>
+			<Wrapper>
 				<PaymentView 
 					{...this.props}
 					{...this.state}
 					onCheckOut={()=>createPayment(total, card ,transaction)}
 					savePaymentImage={savePaymentImage}
 					onSubmit={this.onSubmit}
-				/>
-				<form ref="formPayment" method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
-					<div style={{width:'100%', maxWidth:'530px', display:'flex', alignContent:'center', flexDirection:'column', backgroundColor:'teal'}}>
-						<input type="hidden" name="refno" value={refno}/>
-						<input type="hidden" name="merchantid" value="41911567"/>
-						<input type="hidden" name="customeremail" value={transaction.email}/>
-						<input type="hidden" name="productdetail" value={transaction.productName}/>
-						<input type="hidden" name="total" value={transaction.price * transaction.quantity}/>
-						<Button 
-							color='orange'
-							style={{fontSize:'120%'}}
-							onClick={this.onSubmit}
-						>
-							อินเตอร์เน็ตแบงค์กิ้ง/บัตรเครดิต
-						</Button>
-						<div style={{width:'100px', height:'auto'}}>
-							<Ipad/>
-						</div>
+				>
+					<div style={{border:'1px solid teal', padding:'10px'}}>
+						<form ref="formPayment" method="post" action="https://www.thaiepay.com/epaylink/payment.aspx">
+							<H3>วิธีการชำระเงินแบบบัตรเครดิต / อินเตอร์เน็ตแบงค์กิ้ง</H3>
+							<H5>กดที่ปุ่มด้านล่างได้เลย</H5>
+							<div style={{width:'100%', maxWidth:'530px', display:'flex', alignContent:'center', flexDirection:'column', backgroundColor:'teal'}}>
+								<input type="hidden" name="refno" value={refno}/>
+								<input type="hidden" name="merchantid" value="41911567"/>
+								<input type="hidden" name="customeremail" value={transaction.email}/>
+								<input type="hidden" name="productdetail" value={transaction.productName}/>
+								<input type="hidden" name="total" value={transaction.price * transaction.quantity}/>
+								<Button 
+									color='orange'
+									style={{fontSize:'120%'}}
+									onClick={this.onSubmit}
+								>
+									อินเตอร์เน็ตแบงค์กิ้ง/บัตรเครดิต
+								</Button>
+								<div style={{widht:'100%',height:'auto'}}>
+									<IpadStyled/>
+								</div>
+							</div>
+						</form>
 					</div>
-				</form>
-			</div>
+				</PaymentView>
+			</Wrapper>
 	}
 }
 
 Payment = reduxForm({form: 'payment'})(Payment)
+
 
 const selector = formValueSelector('payment')
 const mapStateToProps = state =>({

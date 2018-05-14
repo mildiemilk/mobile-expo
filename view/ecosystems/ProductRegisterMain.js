@@ -54,28 +54,28 @@ export default props=> {
 				</Grid.Column>
 				<Grid.Column mobile={16} tablet={8} computer={8}>
 					<div>
-					<Wrapper>
-						<H3>แบบสินค้า (4/4) </H3>
-						<ProductVariety {...props}/>
-					</Wrapper>
-					<Wrapper>
-						{!validateProductValues? <H3>กรุณาใส่ข้อมูลให้ครบ</H3>:null}
-						<ul style={{color:'red'}}>
-							{!props.productName? <li>ใส่ชื่อสินค้า</li>:null}
-							{props.productImages.length ==0? <li>ใส่รูปภาพ</li>:null}
-							{props.price <= 0 ? <li>ใส่ราคาสินค้า </li>:null}
-							{!(props.comissionCash > 0 )?<li>ใส่ค่าคอมมิสชั่น</li>:null}
-						</ul>
-						<p> ในการกดลงขายคุณได้
-							<Modal context = {<Agreement/>}>
-								<span style={{color:'blue', cursor:'pointer'}}>ยอมรับเงื่อนไข</span>
+						<Wrapper>
+							<H3>แบบสินค้า (4/4) </H3>
+							<ProductVariety {...props}/>
+						</Wrapper>
+						<Wrapper>
+							{!validateProductValues? <H3>กรุณาใส่ข้อมูลให้ครบ</H3>:null}
+							<ul style={{color:'red'}}>
+								{!props.productName? <li>ใส่ชื่อสินค้า</li>:null}
+								{props.productImages.length ==0? <li>ใส่รูปภาพ</li>:null}
+								{props.price <= 0 ? <li>ใส่ราคาสินค้า </li>:null}
+								{!(props.comissionCash > 0 )?<li>ใส่ค่าคอมมิสชั่น</li>:null}
+							</ul>
+							<p> ในการกดลงขายคุณได้
+								<Modal context = {<Agreement/>}>
+									<span style={{color:'blue', cursor:'pointer'}}>ยอมรับเงื่อนไข</span>
+								</Modal>
+								ของทางเว็ปไซท์
+							</p>
+							<Modal context={<ProductPreview {...props}/>}>
+								<Button buttonDisabled={!validateProductValues} disabled={!validateProductValues}>ลงขาย</Button>
 							</Modal>
-							ของทางเว็ปไซท์
-						</p>
-						<Modal context={<ProductPreview {...props}/>}>
-							<Button buttonDisabled={!validateProductValues} disabled={!validateProductValues}>ลงขาย</Button>
-						</Modal>
-					</Wrapper>
+						</Wrapper>
 					</div>
 				</Grid.Column>
 			</Grid.Row>
