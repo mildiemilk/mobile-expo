@@ -38,7 +38,7 @@ const webExplain = [{
 	description:'เพียงแค่สมัครครั้งเดียวคุณสามารถเป็นผู้แนะนำสินค้าได้อย่างไม่จะกัด!'
 }]
 
-export default () => <Flex verticleCenter>
+export default () => <Flex verticleCenter center direction='column' width='100%'>
 	{
 		webExplain.map((content, index)=><WebExplainCard key={index} img={content.img} header={content.header} description={content.description}/>)
 	}
