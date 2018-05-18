@@ -37,7 +37,7 @@ export default ({transaction = {}, total=0}) => <HeightDiv>
 							<h3>Total</h3>
 						</td>
 						<td>
-							<h3>{total}</h3>
+							<h3>{transaction.quantity * transaction.price}</h3>
 						</td>
 					</tr>
 				</tbody>
