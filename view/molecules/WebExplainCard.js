@@ -1,7 +1,4 @@
-import MediaQuery from 'react-responsive'
-
 import Wrapper from '../atoms/Wrapper'
-import Image from '../atoms/Image'
 import H3 from '../atoms/H3'
 import WebExplainFooter from './WebExplainFooter'
 import color from '../../static/json/color'

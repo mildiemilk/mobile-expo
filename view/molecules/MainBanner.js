@@ -8,60 +8,59 @@ import Banner02 from '../../static/banner/banner_22.svg'
 import SignInForm from '../organisms/SignInForm'
 
 export default ({...props}) => 
-<Section1>
-	<Wrapper>
-		<div style={{minHeight:'80vh'}}>
-			<MobileImage src='https://firebasestorage.googleapis.com/v0/b/sharemai-1.appspot.com/o/cover-page%2Ffrontpagephoto.png?alt=media&token=4777a091-b059-4b80-8d36-5d2501158ce5' alt="เวปที่จะเปลี่ยนแปลงชีวิตคุณ" />
-		</div>
-		<TextWrapper>
-			<Title rotate='-5'>ซื้อ แชร์ รวย!</Title>
-			<Subtitle>ซื้อสินค้า แชร์สินค้า คนสั่งซื้อ รับค่าคอม</Subtitle>
-			<ButtonWrap>
-				<Modal closeIcon trigger={<SecondaryButton secondary>วิธีการใช้งาน</SecondaryButton>}>
-					<Modal.Header>วิธีการใช้งาน</Modal.Header>
-					<Modal.Content>
-						<Modal.Description>
-							<WebExplain />
-						</Modal.Description>
-					</Modal.Content>
-				</Modal>
-				<Link prefetch href="/login">
-					<SecondaryButton secondary>ล๊อกอิน</SecondaryButton>
-				</Link>
-				<Link prefetch href="/register">
-					<PrimaryButton>สมัครเลย</PrimaryButton>
-				</Link>
-			</ButtonWrap>
-		</TextWrapper>
-	</Wrapper>
-	<Grid centered>
-		<Grid.Row>
-			<BannerWrapper mobile={16} computer={8} color='teal' centered>
-				<BannerHeader>
-					เป้าหมายคอมมิสชั่น 10 ล้านบาท
-				</BannerHeader>
-				<BannerSub>
-					ร้านค้ามากมายที่ต้องการให้คุณได้ค่าตอบแทนจากการแชร์สินค้า
-				</BannerSub>
-				<Banner1/>
-			</BannerWrapper>
-			<BannerWrapper mobile={16} computer={8} color='teal' centered>
-				<BannerHeader>
-					เป้าหมายสินค้า 1000 รายการ
-				</BannerHeader>
-				<BannerSub>
-					เจ้าของร้านค้าไม่จำเป็นต้องหาตัวแทนที่ไหนอีกแล้วเพราะที่นี่ลูกค้าทุกคนคือตัวแทนของคุณ!
-				</BannerSub>
-				<Banner2/>
-			</BannerWrapper>
-		</Grid.Row>
-	</Grid>
-	<RegisterWrapper centered doubling columns={2} >
-		<Grid.Column>
-			<SignInForm {...props} color="white"/>	
-		</Grid.Column>	
-	</RegisterWrapper>
-</Section1>
+	<Section>
+		<Wrapper>
+			<div style={{minHeight:'80vh'}}>
+				<MobileImage src='https://firebasestorage.googleapis.com/v0/b/sharemai-1.appspot.com/o/cover-page%2Ffrontpagephoto.png?alt=media&token=4777a091-b059-4b80-8d36-5d2501158ce5' alt="เวปที่จะเปลี่ยนแปลงชีวิตคุณ" />
+			</div>
+			<TextWrapper>
+				<Title rotate='-5'>ซื้อ แชร์ รวย!</Title>
+				<Subtitle>ซื้อสินค้า แชร์สินค้า คนสั่งซื้อ รับค่าคอม</Subtitle>
+				<ButtonWrap>
+					<Link prefetch href="/login">
+						<SecondaryButton secondary>ล๊อกอิน</SecondaryButton>
+					</Link>
+					<Link prefetch href="/register">
+						<PrimaryButton>สมัครเลย</PrimaryButton>
+					</Link>
+				</ButtonWrap>
+			</TextWrapper>
+		</Wrapper>
+		<Grid columns={3} centered style={{background:'#66b2b2'}}>
+			<Grid.Row>
+				<Grid.Column mobile={16} tablet={16} computer={8}>
+					<WebExplain/>
+				</Grid.Column>
+			</Grid.Row>
+		</Grid>
+		<Grid centered>
+			<Grid.Row>
+				<BannerWrapper mobile={16} computer={8} color='teal' centered>
+					<BannerHeader>
+						เป้าหมายคอมมิสชั่น 10 ล้านบาท
+					</BannerHeader>
+					<BannerSub>
+						ร้านค้ามากมายที่ต้องการให้คุณได้ค่าตอบแทนจากการแชร์สินค้า
+					</BannerSub>
+					<Banner1/>
+				</BannerWrapper>
+				<BannerWrapper mobile={16} computer={8} color='teal' centered>
+					<BannerHeader>
+						เป้าหมายสินค้า 1000 รายการ
+					</BannerHeader>
+					<BannerSub>
+						เจ้าของร้านค้าไม่จำเป็นต้องหาตัวแทนที่ไหนอีกแล้วเพราะที่นี่ลูกค้าทุกคนคือตัวแทนของคุณ!
+					</BannerSub>
+					<Banner2/>
+				</BannerWrapper>
+			</Grid.Row>
+		</Grid>
+		<RegisterWrapper centered doubling columns={2} >
+			<Grid.Column>
+				<SignInForm {...props} color="white"/>	
+			</Grid.Column>	
+		</RegisterWrapper>
+	</Section>
 
 
 const BannerWrapper = styled(Grid.Column)`
@@ -116,6 +115,7 @@ width:100%;
 const Wrapper = styled.div`
 display: flex;
 flex-flow: row wrap-reverse;
+width:100%;
 margin-top:0px;
 background: ${colorOrange}; 
 background: -moz-linear-gradient(135deg, ${colorOrange} 0%, ${colorPink} 100%); 
@@ -155,7 +155,7 @@ width:80%;
 }
 `
 
-const Section1 = styled.div`
+const Section = styled.div`
 	max-width:100vw;
 `
 
