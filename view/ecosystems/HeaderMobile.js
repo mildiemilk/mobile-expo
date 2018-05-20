@@ -22,7 +22,7 @@ padding:0 !important;
 `
 
 const MobileLogo = styled(Logo)`
-	font-size:190%;
+	font-size:130%;
 	margin:0;
 `
 
@@ -38,8 +38,8 @@ class HeaderMobile extends React.Component{
 
 	toggleVisibility = () => this.setState({ visible: !this.state.visible })
 	sidebarContent = () => 	(
-		<div height="100%">
-			<MobileLogo>sharemai</MobileLogo>
+		<div style={{minHeight:'100vh', height:'100%', minWidth:'40%'}}>
+			<MobileLogo>sharemai</MobileLogo>						
 			<div>
 				{this.props.loggedIn
 					?	menu.filter(item => ['/login', '/register'].indexOf(item.link) === -1).map( ({link, text}, key) => 
@@ -58,14 +58,21 @@ class HeaderMobile extends React.Component{
 		const { visible } = this.state
 		return (
 			<HeightDiv>
-				<MenuButton onClick={this.toggleVisibility}><Icon name='content'/></MenuButton>
+				<div style={{display:'flex', justifyContent:'space-between', background:'white'}}>
+					<MenuButton onClick={this.toggleVisibility}><Icon name='content'/></MenuButton>
+					<div/>
+				</div>
 				<StylePushable as={Segment}>
 					<Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical>
-						{this.sidebarContent()}
+						<div style={{minHeight:'100vh', height:'100%', background:'#000a0a', opacity:'0.9'}}>
+							{this.sidebarContent()}
+						</div>
 					</Sidebar>
 					<StylePusher>
 						<StyleSegment basic>
-							{contentMobile || content}
+							<div style={{minHeight:'100vh', height:'100%'}}>						
+								{contentMobile || content}
+							</div>
 						</StyleSegment>
 					</StylePusher>
 				</StylePushable>

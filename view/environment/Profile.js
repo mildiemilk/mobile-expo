@@ -32,6 +32,7 @@ export default props =>
 			:<div style={{flexGrow:"2"}}>
 				{(!props.isView || (props.showView === 'first'))&&<ProfileProductOwnerPreview {...props}/>}
 				{(!props.isView || (props.showView === 'second'))&&<ProfileProductSponsorPreview {...props} />}
+				<Button secondary width="70px" onClick={() => handleProfileMobile}>Back</Button>					
 			</div>
 			}
 </Flex>

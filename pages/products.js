@@ -1,8 +1,7 @@
 import { Component, Fragment } from 'react'
 import withRedux from "next-redux-wrapper"
 import { reduxForm, formValueSelector } from 'redux-form'
-import { 
-	getUserProducts,getProductToSponsorTable  } from '../lib/handlers/product'
+import { getUserProducts,getProductToSponsorTable  } from '../lib/handlers/product'
 import loadFirebase from '../lib/database'
 import store from '../lib/store'
 import ItemCardMobile from '../view/organisms/ItemCardMobile'

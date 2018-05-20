@@ -163,6 +163,7 @@ class Profile extends Component {
 									{...props}
 									{...state}
 									handleImageChange={this.handleImageChange}
+									handleProfileMobile={this.handleProfileMobile}									
 									handleSave={() => this.handleSave(this.props.detail)}
 									handleEdit={this.handleEdit}						
 									handleClickView={this.handleClickView}
@@ -190,20 +191,21 @@ class Profile extends Component {
 							/>
 						}
 						{(state.isItemMobile || state.isTableMobile )&&
-								<ProfileView
-									{...props}
-									{...state}
-									handleTableMobile={this.handleTableMobile}
-									handleItemCard={this.handleItemCard}
-									handleImageChange={this.handleImageChange}
-									handleSave={() => this.handleSave(this.props.detail)}
-									handleEdit={this.handleEdit}
-									handleClickView={this.handleClickView}	
-									setProductMembership={setProductMembership}	
-									setProductActive={setProductActive}		
-									deleteProduct={deleteProduct}
-									setProductStock={setProductStock}
-								/>}
+							<ProfileView
+								{...props}
+								{...state}
+								handleTableMobile={this.handleTableMobile}
+								handleItemCard={this.handleItemCard}
+								handleImageChange={this.handleImageChange}
+								handleSave={() => this.handleSave(this.props.detail)}
+								handleEdit={this.handleEdit}
+								handleClickView={this.handleClickView}	
+								handleProfileMobile={this.handleProfileMobile}								
+								setProductMembership={setProductMembership}	
+								setProductActive={setProductActive}		
+								deleteProduct={deleteProduct}
+								setProductStock={setProductStock}
+							/>}
 						{(!state.isItemMobile&&!state.isProfileMobile&&!state.isTableMobile )&&
 							<ProfileMobile 
 								{...props}

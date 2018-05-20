@@ -3,6 +3,7 @@ import H3 from '../atoms/H3'
 import Slider from 'react-slick'
 import ItemCard from '../organisms/ItemCard'
 import DivNoContent from '../organisms/DivNoContent'
+import Button from '../atoms/Button'
 
 const SampleNextArrow = ({className, style, onClick} ) =>
     <div
@@ -57,5 +58,5 @@ export default props => <Wrapper maxWidth="94vw" bigScreenWidth="70vw">
 						</div>)
 				}
 		</Slider>
-: <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}		
+: <DivNoContent>ยังไม่มีข้อมูลสินค้า</DivNoContent>}	
 </Wrapper>
