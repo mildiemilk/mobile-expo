@@ -2,8 +2,10 @@ import { Fragment} from 'react'
 import ItemCard from '../organisms/ItemCard'
 import DivNoContent from '../organisms/DivNoContent'
 import Wrapper from '../atoms/Wrapper'
-import ProfileProductSponsorPreview from './ProfileProductSponsorPreview';
-import ProfileProductMobileView from '../molecules/ProfileProductMobileView';
+import ProfileProductSponsorPreview from './ProfileProductSponsorPreview'
+import ProfileProductMobileView from '../molecules/ProfileProductMobileView'
+import ProfileTable from '../environment/ProfileTable'
+
 
 export default props => <Fragment>{props.isView && <Button onClick={() => props.handleClickView('')}>Back</Button>}
 {props.isItemMobile && <div>

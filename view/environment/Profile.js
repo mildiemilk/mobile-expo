@@ -3,6 +3,7 @@ import Wrapper from '../atoms/Wrapper'
 import Button from '../atoms/Button'
 import ProfileProductOwnerPreview from '../organisms/ProfileProductOwnerPreview'
 import ProfileProductSponsorPreview from '../organisms/ProfileProductSponsorPreview';
+import ProfileTable from '../environment/ProfileTable'
 
 const requestedMembershipView = (members, saveRequestedByEmailUserMembership, user) => <Wrapper>
 	<H3>มีคนขอร้องให้คุณเป็นสมาชิก!</H3>
