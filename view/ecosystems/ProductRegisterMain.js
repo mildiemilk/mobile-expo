@@ -1,4 +1,4 @@
-import { Grid } from 'semantic-ui-react'
+import { Grid, Icon } from 'semantic-ui-react'
 import AddedImages from '../organisms/AddedImages'
 import ProductRegisterText from '../organisms/ProductRegisterText'
 import ComissionInput from '../organisms/ComissionInput'
@@ -13,6 +13,9 @@ import DisplayImages from '../organisms/DisplayImages'
 import DisplayProductText from '../organisms/DisplayProductText'
 import ProductVariety from '../organisms/ProductVariety'
 import Agreement from '../atoms/Agreement'
+import Flex from '../atoms/Flex'
+import H5 from '../atoms/H5'
+import Image from '../atoms/Image'
 
 const ProductPreview = props => <Wrapper>
 	<H3>ตัวอย่าง</H3>
@@ -21,6 +24,16 @@ const ProductPreview = props => <Wrapper>
 	<ProductDescriptionPreview {...props} />
 	<Button fullWidth onClick={props.handleSubmit}>ลงขาย</Button>
 </Wrapper>
+
+const ProductImageTip = () => <div style={{padding:'20px'}}>
+	<H3>เคล็ดลับการลงรูป</H3>
+	<H5>รูปแรกควรเป็นรูป Landscape เพื่อให้รูปออกมาสวยงามเมื่อถูกแชร์บนเฟสบุ๊คหรือ social media อื่นๆ </H5>
+	<p>รูปแบบ Landscape เวลา แชร์ </p>
+	<Image height="auto" src="https://firebasestorage.googleapis.com/v0/b/sharemai-1.appspot.com/o/web-explain-svg%2F1.PNG?alt=media&token=13d7364f-6555-4e79-a895-2b38c0d309c0"/>
+	<H5>แต่ถ้าอยากได้ช้อความเยอะๆให้ใส่รูปเป็ร portrait</H5>
+	<p>รูปแบบ Potrait เวลาแชร์</p>
+	<Image height="auto" src="https://firebasestorage.googleapis.com/v0/b/sharemai-1.appspot.com/o/web-explain-svg%2F2.PNG?alt=media&token=aebfb7a5-97c8-4942-a19c-53da2d5772c3"/>
+</div>
 
 export default props=> {
 	const validateProductValues = (props.comissionCash > 0 ) && 
@@ -33,7 +46,12 @@ export default props=> {
 			<Grid.Row>
 				<Grid.Column mobile={16} tablet={8} computer={6}>
 					<Wrapper height="100%">
-						<H3>รูปภาพสินค้า (1/4)</H3>
+						<Flex direction='row'>
+							<H3>รูปภาพสินค้า (1/4)</H3>
+							<Modal context={<ProductImageTip/>}>
+								<Icon fitted name="help circle" />
+							</Modal>
+						</Flex>
 						<AddedImages {...props} />
 					</Wrapper>
 				</Grid.Column>
