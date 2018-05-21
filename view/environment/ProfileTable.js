@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import H3 from '../atoms/H3'
 import Image from '../atoms/Image'
 import H5 from '../atoms/H5'
+import Button from '../atoms/Button'
 import Wrapper from '../atoms/Wrapper'
 import Flex from '../atoms/Flex'
 import OrderTable from '../ecosystems/OrderTable'
@@ -15,7 +16,7 @@ const DivNoContent = styled.div`
 	border-radius: 8px;
 	font-size: 15px;
 `
-export default ({table, userUid, setOrderStatus, handleClickView, isView, showView, isTableMobile}) => {
+export default ({table, userUid, setOrderStatus, handleClickView, isView, showView, isTableMobile, handleTableMobile}) => {
   const sellTable = table&&table.length>=1? table.filter(item => item.sellerId === userUid):null
   const sponsorTable = table&&table.length>=1? table.filter(item => item.sponsorId === userUid):null
   return (
@@ -50,5 +51,8 @@ export default ({table, userUid, setOrderStatus, handleClickView, isView, showVi
       </Wrapper>
       : null
     }
+    {isTableMobile&&!isView &&
+      <Button secondary width="70px" onClick={handleTableMobile}>Back</Button>
+    }	
 </div>)
 }
