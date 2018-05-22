@@ -61,14 +61,14 @@ app.prepare()
 				const timestamp = Date().toString()
 				req.body['timestamp'] = timestamp
 				await db.ref().child('/transactions/'+ key).update(req.body)
-				.then(async () => {
-					result[key]['timestamp'] = timestamp
-					const { sellerId, sponsorId, buyerId, price, comissionCash, email } = result[key]
-					await updateUserTransaction(sellerId, sponsorId, buyerId, key)
-					await updateUserWallet(sellerId, sponsorId, price, comissionCash)
-					await sendEmailBuyer(result[key], 'ทำรายการสำเร็จ')
-					res.status(200).send("payment success")
-				})
+					.then(async () => {
+						result[key]['timestamp'] = timestamp
+						const { sellerId, sponsorId, buyerId, price, comissionCash, email } = result[key]
+						await updateUserTransaction(sellerId, sponsorId, buyerId, key)
+						await updateUserWallet(sellerId, sponsorId, price, comissionCash)
+						await sendEmailBuyer(result[key], 'ทำรายการสำเร็จ')
+						res.status(200).send("payment success")
+					})
 			} else res.status(404).send("Error: transaction not found")
 			
 		})

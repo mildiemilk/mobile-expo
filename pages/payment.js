@@ -17,7 +17,6 @@ import $ from 'jquery'
 import { Button } from 'semantic-ui-react'
 import Ipad from '../static/img/ipadpayment.svg'
 import styled from 'styled-components'
-import color from '../static/json/color.json'
 
 const IpadStyled = styled(Ipad)`
 	width:100%;
