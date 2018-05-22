@@ -3,21 +3,20 @@ import H3 from '../atoms/H3'
 import Slider from 'react-slick'
 import ItemCard from '../organisms/ItemCard'
 import DivNoContent from '../organisms/DivNoContent'
-import Button from '../atoms/Button'
 
 const SampleNextArrow = ({className, style, onClick} ) =>
-    <div
-      className={className}
-      style={{...style, display: 'block', background: 'gray', color:'gray', borderRadius:'10px'}}
-      onClick={onClick}
-    ></div>
+	<div
+		className={className}
+		style={{...style, display: 'block', background: 'gray', color:'gray', borderRadius:'10px'}}
+		onClick={onClick}
+	></div>
 
 const SamplePrevArrow = ({className, style, onClick}) => 
-    <div
-      className={className}
-      style={{...style, display: 'block', background: 'gray', color:'gray', borderRadius:'10px'}}
-      onClick={onClick}
-    ></div>
+	<div
+		className={className}
+		style={{...style, display: 'block', background: 'gray', color:'gray', borderRadius:'10px'}}
+		onClick={onClick}
+	></div>
 
 const settings = props =>( {
 	dots: true,
