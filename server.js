@@ -48,6 +48,7 @@ app.prepare()
 
 		})
 		server.post('/api/result-payment', async (req, res) => {
+			req.body['refno'] = parseInt(req.body.refno)
 			const { refno } = req.body
 			let db = await loadFirebase('database')
 			console.log('Payment-reqBody', req.body)
