@@ -51,29 +51,28 @@ app.prepare()
 			req.body['refno'] = parseInt(req.body.refno)
 			const { refno } = req.body
 			let db = await loadFirebase('database')
-			console.log('Payment-reqBody', req.body)
 			let result = await db
 				.ref("transactions")
 				.orderByChild("refno")
 				.equalTo(refno)
 				.once('value')
 				.then(snapshot => snapshot.val())
-			console.log('Payment-result', result)
 			if(result) {
 				const key = Object.keys(result)[0]
-				console.log('key', key, req.body)
-				const timestamp = Date().toString()
-				req.body['timestamp'] = timestamp
-				console.log('Payment-resultBody', req.body)
-				await db.ref().child('/transactions/'+ key).update(req.body)
-					.then(async () => {
-						result[key]['timestamp'] = timestamp
-						const { sellerId, sponsorId, buyerId, price, comissionCash } = result[key]
-						await updateUserTransaction(sellerId, sponsorId, buyerId, key)
-						await updateUserWallet(sellerId, sponsorId, price, comissionCash)
-						await sendEmailBuyer(result[key], 'ทำรายการสำเร็จ')
-						res.status(200).send("payment success")
-					})
+				if(result[key].status === 'pending') {
+					const timestamp = Date().toString()
+					req.body['timestamp'] = timestamp
+					await db.ref().child('/transactions/'+ key).update(req.body)
+						.then(async () => {
+							result[key]['timestamp'] = timestamp
+							const { sellerId, sponsorId, buyerId, price, comissionCash } = result[key]
+							await updateUserTransaction(sellerId, sponsorId, buyerId, key)
+							await updateUserWallet(sellerId, sponsorId, price, comissionCash)
+							await sendEmailBuyer(result[key], 'ทำรายการสำเร็จ')
+							res.status(200).send("payment success")
+						})
+				}
+				else res.status(404).send("transaction is already successful")
 			} else res.status(404).send("Error: transaction not found")
 		
 		})
