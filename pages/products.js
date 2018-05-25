@@ -9,6 +9,8 @@ import Header from '../view/environment/Header'
 import Head from '../view/environment/DefaultHead'
 import styled from 'styled-components'
 import Flex from '../view/atoms/Flex'
+import { getUserbyUid } from '../lib/handlers/user';
+import { setMembers } from '../lib/handlers/member'
 
 class Products extends Component {
 	
@@ -17,7 +19,13 @@ class Products extends Component {
 		await auth.onAuthStateChanged(async (user) => {
 			await getUserProducts(user.uid)
 			await getProductToSponsorTable(user.uid, user.email)
+			await getUserbyUid(user.uid)
 		})
+	}
+
+	async componentWillReceiveProps(nextProps){
+		nextProps.user.membership !== this.props.user.membership ?
+			await setMembers(nextProps.user.membership) : null
 	}
 
 	render() {
@@ -48,6 +56,16 @@ class Products extends Component {
 							)
 
 						}
+						{
+							Object.keys(props.memberProducts).map( key => 
+								<ItemCardMobile
+									product = {props.memberProducts[key]}
+									productKey = {key}
+									key={key}
+									userUid={props.user.uid}
+								/>
+							)
+						}
 					</Flex>
 				}
 			/>
@@ -70,6 +88,7 @@ const mapStateToProps = state => ({
 	profile: state.profile,
 	sponsorEmail: selector(state, 'sponsorEmail'),
 	table: state.profile.transactionIds,
+	memberProducts: state.member.products
 })
 
 
