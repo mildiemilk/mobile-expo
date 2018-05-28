@@ -1,0 +1,13 @@
+{
+	"primary":"#25282A",
+	"theme":"#FF3730",
+	"lightPrimary": "#fbfbfc",
+	"contrast": "#66b2b2",
+	"darkText": "#25282A",
+	"warning": "#F79E02",
+	"error":"#F76C6C",
+	"success": "#00ba4c",
+	"disabled": "#C4BCB7",
+	"gray": "#a4a6ae",
+	"white": "white"
+}

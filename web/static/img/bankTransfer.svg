@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="662px" height="383px" viewBox="0 0 662 383" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Bank Transfer</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <text id="สามารถลากรูปหลักฐานก" fill="#000000" font-family="Thonburi-Light, Thonburi" font-size="36" font-weight="300">
+            <tspan x="81.9320313" y="66.5859375">สามารถลากรูปหลักฐานการโอน</tspan>
+            <tspan x="180.777344" y="115.990845">มาบริเวณนี้ได้เลย</tspan>
+        </text>
+        <rect id="path-10" fill="#3E3E3E" x="65" y="192" width="532" height="132"></rect>
+        <rect id="path-1" stroke="#979797" stroke-width="2" x="1" y="1" width="660" height="381" rx="5"></rect>
+        <text id="อัพโหลด" fill="#FFFFFF" font-family="Thonburi-Light, Thonburi" font-size="36" font-weight="300">
+            <tspan x="258" y="248">อัพโหลด</tspan>
+        </text>
+        <text id="หลักฐานการโอนเงิน" fill="#FFFFFF" font-family="Thonburi-Light, Thonburi" font-size="36" font-weight="300">
+            <tspan x="179" y="297">หลักฐานการโอนเงิน</tspan>
+        </text>
+    </g>
+</svg>
