@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Font } from 'expo'
+import { Provider } from 'react-redux'
 import styled from 'styled-components/native'
 import Button from './components/base/Button'
 import { Card } from './components/base/Card'
@@ -10,6 +11,7 @@ import { StackNavigator } from 'react-navigation'
 import Auth from './navigation/Auth'
 import ChatLists from './navigation/ChatLists'
 import Chatroom from './navigation/Chatroom'
+import store from './store'
 
 const Stack =  StackNavigator({
   Auth: {
@@ -39,7 +41,9 @@ export default class App extends React.Component {
   render() {
     return (
       this.state.fontLoaded &&
-      <Stack/>
+      <Provider store={store}>
+        <Stack/>
+      </Provider>
     )
   }
 }
