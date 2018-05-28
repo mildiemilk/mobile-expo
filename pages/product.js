@@ -7,6 +7,7 @@ import loadFirebase from '../lib/database'
 import { saveUser, setSeller } from '../lib/actions/user'
 import { addProductDetail, addSponsorId, addSellerId, addProductId, addBuyerId, addQuantity, minusQuantity, addVariety } from '../lib/actions/transaction'
 import { addProductTransaction } from '../lib/handlers/transaction'
+import { onChangeChatroom, loadAndUpdateChatroom, newChatroom, updateChatroom} from '../lib/handlers/chat'
 
 class Product extends React.Component{
 
@@ -33,23 +34,23 @@ class Product extends React.Component{
 	async componentWillReceiveProps(nextProps) {
 		const {userUid} = this.props.product
 		const {uid} = this.props.user
-
-		nextProps.product !== this.props.product ? await getUserProducts( nextProps.product.userUid ) : null
-		nextProps.product.userUid !== userUid ? this.props.addSellerId(nextProps.product.userUid) : null
-		nextProps.user.uid !== uid ? this.props.addBuyerId(nextProps.user.uid) : null
+		nextProps.product !== this.props.product && await getUserProducts( nextProps.product.userUid )
+		nextProps.product.userUid !== userUid && this.props.addSellerId(nextProps.product.userUid)
+		nextProps.user.uid !== uid && this.props.addBuyerId(nextProps.user.uid)
+		nextProps.chat.chatId !== this.props.chat.chatId && await onChangeChatroom(this.props.chat.chatId)
 	}
 
 	render(){
-		const { product, url, minusQuantity, addQuantity, addProductTransaction, transaction, addVariety } = this.props
+		const { product, url, transaction } = this.props
 		return( <ProductView 
-			addVariety={addVariety}
+			{...this.props}
 			product={this.props.productSSR||product} 
-			minusQuantity={minusQuantity} 
-			addQuantity={addQuantity} 
 			productUid={url.query.productID} 
 			quantity={transaction.quantity || 1 }
-			addProductTransaction={addProductTransaction}
 			setProductActive={setProductActive}
+			loadAndUpdateChatroom={loadAndUpdateChatroom} 
+			newChatroom={newChatroom}
+			updateChatroom={updateChatroom}
 			/>)
 	}
 }
@@ -57,7 +58,8 @@ class Product extends React.Component{
 const mapStateToProps = state => ({
 	product: state.product,
 	user : state.user,
-	transaction : state.transaction
+	transaction : state.transaction,
+	chat: state.chat
 })
 
 const mapDispatchToProps = {

@@ -117,6 +117,7 @@ display: flex;
 flex-flow: row wrap-reverse;
 width:100%;
 margin-top:0px;
+min-height:90vh;
 background: ${colorOrange}; 
 background: -moz-linear-gradient(135deg, ${colorOrange} 0%, ${colorPink} 100%); 
 background: -webkit-linear-gradient(135deg, ${colorOrange} 0%,${colorPink} 100%); 
@@ -149,7 +150,7 @@ max-width:100vw;
 `
 
 const MobileImage = styled.img`
-width:80%;
+min-width:320px;
 @media (max-width: 700px) {
 	width:100%;
 }

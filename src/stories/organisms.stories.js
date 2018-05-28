@@ -17,6 +17,7 @@ import CreditCard from '../../view/organisms/CreditCard'
 import JsonTable from '../../view/organisms/JsonTable'
 import OrderStatusButton from '../../view/organisms/OrderStatusButton'
 import WebExplain from '../../view/organisms/WebExplain';
+import Chat from '../../view/organisms/Chat';
 
 storiesOf('AddedImages', module)
 	.add('no image', ()=> (
@@ -143,3 +144,40 @@ storiesOf('OrderStatusButton', module)
 
 storiesOf('WebExplain', module)
 	.add('default', ()=><WebExplain/>)
+
+const chatProps = {
+	chatroom: {
+		sellerId: 'sellerId',
+		sponsorId: 'sponsorId',
+		productId: 'productId',
+		chats:[
+			{
+				sender:'buyer',
+				message:'hello',
+				timestamp: '2018-01-01 00:00:00',
+				type:'string'
+			},
+			{
+				sender:'sponsor',
+				message:'how are you?',
+				timestamp: '2018-01-01 00:00:00',
+				type:'string'
+			},			
+			{
+				sender:'buyer',
+				message:'มีสินค้าไหม',
+				timestamp: '2018-01-01 00:00:00',
+				type:'string'
+			},
+			{
+				sender:'sponsor',
+				message:'มีครับ',
+				timestamp: '2018-01-01 00:00:00',
+				type:'string'
+			}
+		]
+	}
+}
+
+storiesOf('Chat', module)
+	.add('default', ()=><Chat {...chatProps} />)
