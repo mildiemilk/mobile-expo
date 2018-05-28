@@ -1,0 +1,26 @@
+[
+	{
+		"name": "ธนาคารไทยพาณิชย์",
+		"nameEng": "internet_banking_scb",
+		"logo": "http://www.scb.co.th/images/header/logo_scb.png",
+		"fee": 10
+	},
+	{
+		"name": "ธนาคารกรุงไทย",
+		"nameEng": "internet_banking_ktb",
+		"logo": "https://creativedistrictbangkok.com/wp-content/uploads/2017/05/Create_finance_0003_Krungthai-Bank.jpg",
+		"fee": 10
+	},
+	{
+		"name": "ธนาคารกรุงศรี",
+		"nameEng": "internet_banking_bay",
+		"logo": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/e1/67/65/e16765a5-fd79-b780-21f3-12dea0d3550b/AppIcons-1x_U007emarketing-85-220-1.png/1200x630bb.jpg",
+		"fee": 10
+	},
+	{
+		"name": "ธนาคารกรุงเทพ",
+		"nameEng": "internet_banking_bbl",
+		"logo": "https://f.ptcdn.info/801/022/000/1409170288-b60f8c1e0e-o.png",
+		"fee": 10
+	}
+]

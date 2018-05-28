@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+		"max-len": [1, 120, 2, {"ignoreComments": true}],
+		"semi": ["off", "always"],
+    "no-unused-vars": 2,
+    "react/jsx-uses-vars": [2],
+    "indent": ["error", "tab"]
+  }
+}
