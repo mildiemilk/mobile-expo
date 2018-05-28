@@ -1,4 +1,0 @@
-{
-  "key": "ctrl+n", // "cmd+n" on mac
-  "command": "extension.advancedNewFile",
-}
