@@ -7,7 +7,6 @@ import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
 import { TextStyle } from '../components/base/TextStyle'
 import { StackNavigator } from 'react-navigation'
-import { signinWithFacebook, signinWithGoogle} from '../web/lib/handlers/authenticator'
 
 export default props =><View>
 <Flex justifyContent="space-between" height="100%">
@@ -17,8 +16,7 @@ export default props =><View>
     </Flex>
   </Card>
   <View style={styles.container}>
-    {/* <Button color="#4065b3" onPress={()=> props.navigation.navigate('ChatLists')}>ล๊อคอิน facebook </Button> */}
-    <Button color="#4065b3" onPress={()=> props.signinWithFacebook('ChatLists')}>ล๊อคอิน facebook </Button>
+    <Button color="#4065b3" onPress={()=> props.navigation.navigate('ChatLists')}>ล๊อคอิน facebook </Button>
     <Button color="#d0021b">ล๊อคอิน gmail </Button>
     <Button color="#9013fe">ล๊อคอิน email </Button>
   </View>
