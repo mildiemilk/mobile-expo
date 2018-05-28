@@ -12,6 +12,12 @@ import Auth from './navigation/Auth'
 import ChatLists from './navigation/ChatLists'
 import Chatroom from './navigation/Chatroom'
 import store from './store'
+import firebase from 'firebase'
+import config from './database/config.json'
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
 
 const Stack =  StackNavigator({
   Auth: {
@@ -37,7 +43,14 @@ export default class App extends React.Component {
       'SukhumvitSet-Text': require('./assets/SukhumvitSet-Text.ttf'),
     })
     this.setState({ fontLoaded: true });
+    
+    firebase.auth().onAuthStateChanged((user=>{
+      if(user!==null){
+        console.log(user)
+      }
+    }))
   }
+
   render() {
     return (
       this.state.fontLoaded &&
