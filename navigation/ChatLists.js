@@ -1,36 +1,32 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
+import firebase from 'firebase'
+import config from '../database/config.json'
+
+if (!firebase.apps.length) {
+    console.log('initialize')
+  firebase.initializeApp(config);
+}
+
+class ChatLists extends Component {
+    componentDidMount(){
+        firebase.auth().onAuthStateChanged((user=>{
+            console.log('userchange state')
+            console.log('user',user)
+            if(user!==null){
+              console.log('success')
+            }
+          }))
+    }
+
+    render(){
+        return (
+            <View>
+                <Text>Chat Screen </Text> 
+            </View>
+        )
+    }
+}
 
 
-export default props => <View>
-  <Text>Chat Screen </Text> 
-  <TouchableHighlight 
-        onPress={()=>props.navigation.navigate('Chatroom', {
-            chatId: 'chatid1',
-            sellerId:'sellerId',
-            buyerId: 'buyerId',
-            chats: [
-                {
-                    key:'1',
-                    sender:'buyer',
-                    message:'สวัสดีจ้า',
-                    timestamp: '2018-05-01 00:00:00',
-                    messageType:'string'
-                },
-                {
-                    key:'2',
-                    sender:'seller',
-                    message:'ดีครับ',
-                    timestamp: '2018-05-01 00:00:00',
-                    messageType:'string'
-                },
-                {
-                    key:'3',
-                    sender:'buyer',
-                    message:'สนใจคะ',
-                    timestamp: '2018-05-01 00:00:00',
-                    messageType:'string'
-                }
-            ]
-  })}><Text>To ChatRoom</Text></TouchableHighlight>
-</View>
+export default ChatLists

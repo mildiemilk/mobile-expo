@@ -7,7 +7,7 @@ import Button from './components/base/Button'
 import { Card } from './components/base/Card'
 import { Flex } from './components/base/Flex'
 import { TextStyle } from './components/base/TextStyle'
-import { StackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 import Auth from './navigation/Auth'
 import ChatLists from './navigation/ChatLists'
 import Chatroom from './navigation/Chatroom'
@@ -19,7 +19,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-const Stack =  StackNavigator({
+const Stack =  createStackNavigator({
   Auth: {
     screen: Auth,
   },
