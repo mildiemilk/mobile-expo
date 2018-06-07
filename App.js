@@ -7,7 +7,7 @@ import Button from './components/base/Button'
 import { Card } from './components/base/Card'
 import { Flex } from './components/base/Flex'
 import { TextStyle } from './components/base/TextStyle'
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
 import Auth from './navigation/Auth'
 import ChatLists from './navigation/ChatLists'
 import Chatroom from './navigation/Chatroom'
@@ -19,16 +19,10 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-const Stack =  createStackNavigator({
-  Auth: {
-    screen: Auth,
-  },
-  ChatLists: {
-    screen: ChatLists
-  },
-  Chatroom: {
-    screen: Chatroom
-  }
+const Stack =  createSwitchNavigator({
+  Auth,
+  ChatLists,
+  Chatroom,
 },
 {
   initialRouteName: 'Auth'
@@ -43,12 +37,6 @@ export default class App extends React.Component {
       'SukhumvitSet-Text': require('./assets/SukhumvitSet-Text.ttf'),
     })
     this.setState({ fontLoaded: true });
-    
-    firebase.auth().onAuthStateChanged((user=>{
-      if(user!==null){
-        console.log(user)
-      }
-    }))
   }
 
   render() {

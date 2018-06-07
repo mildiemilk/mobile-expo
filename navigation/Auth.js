@@ -26,7 +26,7 @@ class Auth extends Component{
       console.log('userchange state!!')
       console.log('user',user)
       if(user!==null){
-        console.log('success')
+        console.log('successful')
         // NavigationActions.navigate({routeName: 'ChatLists'})
         this.props.navigation.navigate('ChatLists')
       }

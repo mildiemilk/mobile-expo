@@ -32,3 +32,13 @@ export const loginWithFacebook = async () => {
     }
   }))
 }
+
+export const logoutFacebook = () => {
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+    console.log('logout success')
+  }, (error) => {
+    // An error happened.
+    console.log('logout fail', error)
+  });
+}
