@@ -15,13 +15,20 @@ firebase.auth().onAuthStateChanged((user) => {
   // Do other things
 });
 
-export const  loginWithFacebook = async () => {
-    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
-      '400894103694409',
+export const loginWithFacebook = async () => {
+   return Expo.Facebook.logInWithReadPermissionsAsync(
+      '139659809933718',
       { permissions: ['public_profile'] }
-    );
+    ).then((
+       ({type, token} ) => {
     if (type === 'success') {
-      const credential = await firebase.auth.FacebookAuthProvider.credential(token)
-      firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {});
+      console.log('auth successseiei')
+      const credential = firebase.auth.FacebookAuthProvider.credential(token)
+      return firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
+        console.log('loginWithFacebook error', error)
+      });
+    } else {
+      throw new Error()
     }
-  }
+  }))
+}

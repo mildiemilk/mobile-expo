@@ -23,13 +23,14 @@ class Auth extends Component{
   componentDidMount() {
     
     firebase.auth().onAuthStateChanged((user=>{
-      console.log('userchange state')
+      console.log('userchange state!!')
       console.log('user',user)
       if(user!==null){
         console.log('success')
         // NavigationActions.navigate({routeName: 'ChatLists'})
+        this.props.navigation.navigate('ChatLists')
       }
-      // this.props.navigation.push('ChatLists')
+      
     }))
   }
 

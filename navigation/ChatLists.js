@@ -11,10 +11,10 @@ if (!firebase.apps.length) {
 class ChatLists extends Component {
     componentDidMount(){
         firebase.auth().onAuthStateChanged((user=>{
-            console.log('userchange state')
+            console.log('userchange state - ChatList')
             console.log('user',user)
             if(user!==null){
-              console.log('success')
+              console.log('successChatList')
             }
           }))
     }
