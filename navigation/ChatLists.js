@@ -4,7 +4,7 @@ import firebase from 'firebase'
 import config from '../database/config.json'
 import Button from '../components/base/Button'
 import { Flex } from '../components/base/Flex'
-import { loginWithFacebook, logoutFacebook } from '../handlers/auth'
+import { logout } from '../handlers/auth'
 
 if (!firebase.apps.length) {
     console.log('initialize')
@@ -28,7 +28,7 @@ class ChatLists extends Component {
         return (
             <Flex justifyContent="center" height="100%" style={styles.container}>
                 <Text>Chat Screen </Text> 
-                <Button color="#4065b3" onPress={logoutFacebook}>logout</Button>
+                <Button color="#4065b3" onPress={logout}>logout</Button>
             </Flex>
         )
     }

@@ -11,7 +11,7 @@ import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
 import { TextStyle } from '../components/base/TextStyle'
 import { StackNavigator } from 'react-navigation'
-import { loginWithFacebook } from '../handlers/auth'
+import { loginWithFacebook, signInWithGoogleAsync } from '../handlers/auth'
 import config from '../database/config.json'
 
 if (!firebase.apps.length) {
@@ -44,7 +44,7 @@ class Auth extends Component{
       </Card>
       <View style={styles.container}>
         <Button color="#4065b3" onPress={()=>loginWithFacebook()}>ล๊อคอิน facebook </Button>
-        <Button color="#d0021b">ล๊อคอิน gmail </Button>
+        <Button color="#d0021b" onPress={()=>signInWithGoogleAsync()}>ล๊อคอิน gmail </Button>
       </View>
     </Flex>
     </View>

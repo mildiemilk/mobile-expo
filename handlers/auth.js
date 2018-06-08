@@ -42,3 +42,25 @@ export const logoutFacebook = () => {
     console.log('logout fail', error)
   });
 }
+
+export const signInWithGoogleAsync = () => {
+    try {
+      const { type, user } = await Expo.Google.logInAsync({
+        androidClientId: YOUR_CLIENT_ID_HERE,
+        iosClientId: YOUR_CLIENT_ID_HERE,
+        scopes: ['profile', 'email'],
+      });
+
+      if (type === 'success') {
+        const credential = firebase.auth.GoogleAuthProvider.credential(accessToken)
+        return firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
+          console.log('firebaseloginWithGoogle error', error)
+        });
+      } else {
+        throw new Error();
+      }
+    } catch(e) {
+      console.log('loginWithGoogle error', e);
+    }
+
+}
