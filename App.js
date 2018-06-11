@@ -1,27 +1,28 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Font } from 'expo'
+import { Provider } from 'react-redux'
 import styled from 'styled-components/native'
-// import { signinWithFacebook } from '../nextshopnshare/lib/handlers/authenticator'
 import Button from './components/base/Button'
 import { Card } from './components/base/Card'
 import { Flex } from './components/base/Flex'
 import { TextStyle } from './components/base/TextStyle'
-import { StackNavigator } from 'react-navigation'
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
 import Auth from './navigation/Auth'
 import ChatLists from './navigation/ChatLists'
 import Chatroom from './navigation/Chatroom'
+import store from './store'
+import firebase from 'firebase'
+import config from './database/config.json'
 
-const Stack =  StackNavigator({
-  Auth: {
-    screen: Auth,
-  },
-  ChatLists: {
-    screen: ChatLists
-  },
-  Chatroom: {
-    screen: Chatroom
-  }
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
+
+const Stack =  createSwitchNavigator({
+  Auth,
+  ChatLists,
+  Chatroom,
 },
 {
   initialRouteName: 'Auth'
@@ -37,10 +38,13 @@ export default class App extends React.Component {
     })
     this.setState({ fontLoaded: true });
   }
+
   render() {
     return (
       this.state.fontLoaded &&
-      <Stack/>
+      <Provider store={store}>
+        <Stack/>
+      </Provider>
     )
   }
 }
