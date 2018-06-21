@@ -3,9 +3,10 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Font } from 'expo'
 import firebase from 'firebase'
 import { connect } from 'react-redux'
-import styled from 'styled-components/native'
+// import styled from 'styled-components/native'
 import { NavigationActions } from 'react-navigation'
 
+import { setUserName } from '../actions/user'
 import Button from '../components/base/Button'
 import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
@@ -28,7 +29,11 @@ class Auth extends Component{
       if(user!==null){
         console.log('successful')
         // NavigationActions.navigate({routeName: 'ChatLists'})
-        this.props.navigation.navigate('ChatLists')
+        const displayName = user.displayName
+        const uid = user.uid
+        this.props.setUserName({displayName, uid})
+        console.log('uid', user.uid)
+        this.props.navigation.navigate('ChatUI')
       }
       
     }))
@@ -57,11 +62,14 @@ const styles = StyleSheet.create({
       marginBottom: '10%',
     }
   })
-
+const mapDispatchToProps = dispatch => {
+    return {
+      setUserName: ({displayName, uid}) => dispatch(setUserName({displayName, uid}))}
+}
 const mapStateToProps = state => {
-  return ({
+  return {
     user: state.user
-  })
+  }
 }
 
-export default connect(mapStateToProps)(Auth)
+export default connect(mapStateToProps, mapDispatchToProps)(Auth)

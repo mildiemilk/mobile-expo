@@ -1,6 +1,6 @@
 import firebase from 'firebase'
 import store from '../store'
-import { saveUser } from '../lib/actions/user'
+// import { saveUser } from '../lib/actions/user'
 import config from '../database/config.json'
 
 if (!firebase.apps.length) {
@@ -43,7 +43,7 @@ export const logout = () => {
   });
 }
 
-export const signInWithGoogleAsync = () => {
+export const signInWithGoogleAsync = async() => {
     try {
       const { type, user } = await Expo.Google.logInAsync({
         androidClientId: YOUR_CLIENT_ID_HERE,
