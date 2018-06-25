@@ -9,15 +9,29 @@ import {
 
 import config from '../database/config.json'
 import Button from '../components/base/Button'
-import { Flex } from '../components/base/Flex'
 import { logout } from '../handlers/auth'
 import { loadMessage } from '../handlers/message'
+// import { Card } from '../components/base/Card'
+import { Flex } from '../components/base/Flex'
+// import { TextStyle } from '../components/base/TextStyle'
 
 if (!firebase.apps.length) {
 	console.log('initialize')
   firebase.initializeApp(config);
 }
-
+const Message = ({ msg }) => (
+	<Row>
+			{/* <Image styleName="small-avatar top"
+						 source={{ uri:'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'}} /> */}
+			<View styleName="vertical">
+					<View styleName="horizontal space-between">
+							<Subtitle>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Subtitle>
+							<Caption>stock: {msg.detailProduct.stock}</Caption>
+					</View>
+					<TextStyle styleName="multiline">{msg.chats[msg.chats.length-1].message}</TextStyle>
+			</View>
+	</Row>
+);
 class ChatLists extends Component {
 	componentDidMount(){
 		firebase.auth().onAuthStateChanged((user=>{
@@ -30,41 +44,65 @@ class ChatLists extends Component {
 		console.log('ChatList is called.')
 		this.props.loadMessage(this.props.user)
 	}
-	List = ( list ) => {
-		console.log('list--->', list)
-    return <Row>
-        <Image styleName="small-avatar top"
-               source={{ uri:'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'}} />
-        <View styleName="vertical">
-            <View styleName="horizontal space-between">
-                <Subtitle>AAAA</Subtitle>
-                {/* <Caption>{moment(msg.timestamp).from(Date.now())}</Caption> */}
-            </View>
-            <TextStyle styleName="multiline">stock : {list.sponsorId}</TextStyle>
-        </View>
-    </Row>
-	};
+
+	// const List = ( list ) => {
+	// 	console.log('list--->', list)
+	// 	return <Row>
+	// 			{/* <Image styleName="small-avatar top"
+	// 						 source={{uri:list.detailProduct.productImages[0]}} /> */}
+	// 			<View styleName="vertical">
+	// 					<View styleName="horizontal space-between">
+	// 							<Subtitle>AAAA</Subtitle>
+	// 							{/* <Caption>{moment(msg.timestamp).from(Date.now())}</Caption> */}
+	// 					</View>
+	// 					<TextStyle styleName="multiline">stock : {list.sponsorId}</TextStyle>
+	
+	// 			<Button color="#4065b3" onPress={logout}>{list.detailProduct.stock}</Button>
+	// 			</View>
+	// 	</Row>
+	// };
+
 	render(){
 		const { messages } = this.props
 		console.log('chat list is rendered !!')
 		console.log('message->', messages)
 		return (
-			<Flex style={styles.container} height="100%">
-				{messages&&<ListView data={messages}
-					autoHideHeader={true}
-					renderRow={list => this.List(list)}
-					// onLayout={onLayout}
-				/>}
+			// <Flex style={styles.container} height="100%"  justifyContent="center" alignItems="center">
+			// 	{/* {messages&&<ListView data={messages}
+			// 		autoHideHeader={true}
+			// 		renderRow={list => List(list)}
+			// 		// onLayout={onLayout}
+			// 	/>} */}
+			// 	{messages && messages.map((value,index) => {
+			// 		return <TouchableHighlight key={index}>
+			// 			<Flex>
+			// 				<Card backgroundColor="#f76444"><TextStyle color="black" fontSize="24px">{value.detailProduct.productName}</TextStyle></Card>
+			// 			</Flex>
+			// 		</TouchableHighlight>
+			// 	})}
 
-				<Button color="#4065b3" onPress={logout}>logout</Button>
-				{/* {messages && messages.map(value => <view>{value}</view>)} */}
-			</Flex>
+			// </Flex>
+			<View style={styles.ListStyle}>
+			{messages && messages.map((value,index) => {
+				return <TouchableHighlight key={index}>
+						{/* <Card backgroundColor="#f76444"><TextStyle color="black" fontSize="24px">{value.detailProduct.productName}</TextStyle></Card> */}
+						<Flex>
+							<ListView data={messages}
+											autoHideHeader={true}
+											renderRow={msg => <Message msg={msg} />}
+											// onLayout={onLayout}
+											/>
+						</Flex>
+				</TouchableHighlight>
+			}) }
+			</View>
 		)
 	}
 }
 
 const styles = StyleSheet.create({
-	container: {
+	ListStyle: {
+		marginTop: '40%',
 		alignItems: 'center',
 	}
 })

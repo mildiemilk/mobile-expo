@@ -18,18 +18,15 @@ export const loadMessage = (user) => async(dispatch) => {
 	console.log('FetchCurrent', currentChatroom, Object.values(currentChatroom))
 	// const A = await searchProduct('-LD5py9G2yMMRUexJxLn')
 	let result = []
-	await Object.values(currentChatroom).map( async value => {
+	await Promise.all(Object.values(currentChatroom).map( async value => {
 		let data = value
 		const detailProduct = await searchProduct(value.productId)
-		console.log('detailProduct', detailProduct)
-		data = {...data, detailProduct}
-		console.log('data', result, data)
+ 		data = {...data, detailProduct}
 		result.push(data)
-		console.log('result--->', result, result.length)
-	}
+	})
 	)
 	// promise = promise.then(result => results.push(result))
-	console.log('result AA', result)
+	console.log('result AA ---->', result)
 	Promise.all(result).then(res => dispatch(loadMessageAction(res)))
 }
 
