@@ -45,23 +45,6 @@ class ChatLists extends Component {
 		this.props.loadMessage(this.props.user)
 	}
 
-	// const List = ( list ) => {
-	// 	console.log('list--->', list)
-	// 	return <Row>
-	// 			{/* <Image styleName="small-avatar top"
-	// 						 source={{uri:list.detailProduct.productImages[0]}} /> */}
-	// 			<View styleName="vertical">
-	// 					<View styleName="horizontal space-between">
-	// 							<Subtitle>AAAA</Subtitle>
-	// 							{/* <Caption>{moment(msg.timestamp).from(Date.now())}</Caption> */}
-	// 					</View>
-	// 					<TextStyle styleName="multiline">stock : {list.sponsorId}</TextStyle>
-	
-	// 			<Button color="#4065b3" onPress={logout}>{list.detailProduct.stock}</Button>
-	// 			</View>
-	// 	</Row>
-	// };
-
 	render(){
 		const { messages } = this.props
 		console.log('chat list is rendered !!')
