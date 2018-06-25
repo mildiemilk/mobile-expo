@@ -33,7 +33,7 @@ class Auth extends Component{
         const uid = user.uid
         this.props.setUserName({displayName, uid})
         console.log('uid', user.uid)
-        this.props.navigation.navigate('ChatUI')
+        this.props.navigation.navigate('ChatLists')
       }
       
     }))

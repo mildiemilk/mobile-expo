@@ -23,7 +23,8 @@ const messages = (state = [], action) => {
 				}
 		case 'LOAD_MESSAGE':
 		console.log('eieei', action)
-			return {
+		console.log('state : ', state)
+		return {
 				...state,
 				lists: action.payload,
 			}

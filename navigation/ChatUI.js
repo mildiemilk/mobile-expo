@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 import ReactNative from 'react-native';
 
 import firebase from 'firebase'
-import { View, Title, Screen } from '@shoutem/ui';
+import { Title, Screen } from '@shoutem/ui';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { logout } from '../handlers/auth'
 import Button from '../components/base/Button'
 import Messages from '../components/containers/messages';
 import Input from '../components/containers/Input';
-import { sendMessage, loadMessage, fetchMessages, updateMessagesHeight } from '../actions/message';
+import { sendMessage, fetchMessages, updateMessagesHeight, searchProduct } from '../handlers/message';
 
 class ChatUI extends Component {
     state = {
         scrollViewHeight: 0,
-        inputHeight: 0
+				inputHeight: 0,
     }
 
-    componentDidMount() {
+   	async componentDidMount() {
 			this.scrollToBottom(false);
 			firebase.auth().onAuthStateChanged((user => {
 				console.log('userchange state - ChatList')
@@ -26,7 +26,7 @@ class ChatUI extends Component {
 					this.props.navigation.navigate('Auth')
 				}
 			}))
-			this.props.loadMessage(this.props.user)
+			this.props.searchProduct(this.props.user)
 		}
 		// componentWillReceiveProps(NextProps) {
 		// 	if(this.props.messages !== NextProps.messages) {
@@ -76,13 +76,15 @@ class ChatUI extends Component {
     }
 
     render() {
-			const { messages, updateMessagesHeight } = this.props
-			console.log('messages props', messages)
+			const { messages, updateMessagesHeight, product} = this.props
+			console.log('messages props', product)
         return (
-            <Screen>
+						<Screen>
+						{product&& 
                 <Title styleName="h-center" style={{paddingTop: '30%'}}>
-                    Global Chatroom
+                    {product.productName}({product.stock})
                 </Title>
+						}
                 <KeyboardAwareScrollView ref="scroll"
                                          onLayout={this.onScrollViewLayout}>
                     {messages && <Messages messages={this.props.messages} updateMessagesHeight={updateMessagesHeight}/> }
@@ -104,11 +106,12 @@ class ChatUI extends Component {
 const mapStateToProps = (state) => ({
 		chatHeight: state.chatroom.meta.height,
 		messages: state.chatroom.messages.lists,
-    user: state.user
+		user: state.user,
+		product: state.user.product
 });
 const mapDispatchToProps = (dispatch) => ({
 		sendMessage: ({text, user}) => dispatch(sendMessage({text,user})),
-		loadMessage: (user) => dispatch(loadMessage(user)),
+		searchProduct: (user) => dispatch(searchProduct(user)),
 		updateMessagesHeight: (e) => dispatch(updateMessagesHeight(e))
 })
 

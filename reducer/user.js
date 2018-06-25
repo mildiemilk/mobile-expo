@@ -3,7 +3,8 @@ const initialState = {
   userUid: null,
   avatar: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png',
   authorizing: false,
-  authorized: false
+  authorized: false,
+  product: {}
 };
 
 const user = (state = initialState, action) => {
@@ -33,7 +34,10 @@ const user = (state = initialState, action) => {
               authorizing: false,
               authorized: false
           });
-
+      case 'SET_PRODUCT':
+          return Object.assign({}, state, {
+            product: action.payload
+        });
       default:
           return state
   }
