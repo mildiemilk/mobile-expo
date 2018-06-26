@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import { StyleSheet, TouchableHighlight } from 'react-native'
+import { StyleSheet, TouchableHighlight, View } from 'react-native'
 import firebase from 'firebase'
 import {
 	ListView, Text as TextStyle, Row, Image,
-	View, Subtitle, Caption,
+ Subtitle, Caption,
 } from '@shoutem/ui';
 
 import config from '../database/config.json'
@@ -13,26 +13,31 @@ import { logout } from '../handlers/auth'
 import { loadMessage } from '../handlers/message'
 // import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
+import ChatUI from './ChatUI';
 // import { TextStyle } from '../components/base/TextStyle'
 
 if (!firebase.apps.length) {
 	console.log('initialize')
   firebase.initializeApp(config);
 }
-const Message = ({ msg }) => (
+const Message = ({ msg, handleState, isDisplayChat}) => (
 	<Row>
-			{/* <Image styleName="small-avatar top"
-						 source={{ uri:'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'}} /> */}
+		<TouchableHighlight onPress={() => handleState(msg)}>
 			<View styleName="vertical">
-					<View styleName="horizontal space-between">
-							<Subtitle>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Subtitle>
-							<Caption>stock: {msg.detailProduct.stock}</Caption>
-					</View>
-					<TextStyle styleName="multiline">{msg.chats[msg.chats.length-1].message}</TextStyle>
+				<View styleName="horizontal space-between">
+					<Subtitle>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Subtitle>
+					<Caption>stock: {msg.detailProduct.stock}</Caption>
+				</View>
+				<TextStyle styleName="multiline">{msg.chats[msg.chats.length-1].message}</TextStyle>
 			</View>
+		</TouchableHighlight>
 	</Row>
 );
 class ChatLists extends Component {
+	state = {
+		isDisplayChat: false,
+		msgObj: {},
+	}
 	componentDidMount(){
 		firebase.auth().onAuthStateChanged((user=>{
 			console.log('userchange state - ChatList')
@@ -44,49 +49,33 @@ class ChatLists extends Component {
 		console.log('ChatList is called.')
 		this.props.loadMessage(this.props.user)
 	}
-
+	handleState = (msgObj) => {
+		console.log('handleStateeee')
+		this.setState({isDisplayChat: true, msgObj})
+	}
 	render(){
 		const { messages } = this.props
+		const { isDisplayChat, msgObj } = this.state
 		console.log('chat list is rendered !!')
 		console.log('message->', messages)
 		return (
-			// <Flex style={styles.container} height="100%"  justifyContent="center" alignItems="center">
-			// 	{/* {messages&&<ListView data={messages}
-			// 		autoHideHeader={true}
-			// 		renderRow={list => List(list)}
-			// 		// onLayout={onLayout}
-			// 	/>} */}
-			// 	{messages && messages.map((value,index) => {
-			// 		return <TouchableHighlight key={index}>
-			// 			<Flex>
-			// 				<Card backgroundColor="#f76444"><TextStyle color="black" fontSize="24px">{value.detailProduct.productName}</TextStyle></Card>
-			// 			</Flex>
-			// 		</TouchableHighlight>
-			// 	})}
-
-			// </Flex>
-			<View style={styles.ListStyle}>
-			{messages && messages.map((value,index) => {
-				return <TouchableHighlight key={index}>
-						{/* <Card backgroundColor="#f76444"><TextStyle color="black" fontSize="24px">{value.detailProduct.productName}</TextStyle></Card> */}
-						<Flex>
-							<ListView data={messages}
-											autoHideHeader={true}
-											renderRow={msg => <Message msg={msg} />}
-											// onLayout={onLayout}
-											/>
-						</Flex>
-				</TouchableHighlight>
-			}) }
+			<View  style={styles.container}>
+				<Flex>
+					{messages&& <ListView data={messages}
+						autoHideHeader={true}
+						renderRow={msg => <Message msg={msg} isDisplayChat={isDisplayChat} handleState={this.handleState} />}
+					/>}
+				</Flex>
+				{isDisplayChat && <ChatUI messages={msgObj} />}
 			</View>
 		)
 	}
 }
 
+
 const styles = StyleSheet.create({
-	ListStyle: {
-		marginTop: '40%',
-		alignItems: 'center',
+	container: {
+		marginTop: '20%'
 	}
 })
 
