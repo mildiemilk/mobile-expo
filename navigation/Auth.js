@@ -11,7 +11,6 @@ import Button from '../components/base/Button'
 import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
 import { TextStyle } from '../components/base/TextStyle'
-import { StackNavigator } from 'react-navigation'
 import { loginWithFacebook, signInWithGoogleAsync } from '../handlers/auth'
 import config from '../database/config.json'
 
@@ -33,7 +32,7 @@ class Auth extends Component{
         const uid = user.uid
         this.props.setUserName({displayName, uid})
         console.log('uid', user.uid)
-        this.props.navigation.navigate('ChatLists')
+        this.props.navigation.navigate('ChatLists', {navigation:this.props.navigation})
       }
       
     }))

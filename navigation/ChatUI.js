@@ -70,17 +70,18 @@ class ChatUI extends Component {
 	}
 
 	render() {
-		const { updateMessagesHeight, messages} = this.props
-		console.log('messages props--->', messages)
+		const { updateMessagesHeight, navigation} = this.props
+    const messagesParam = navigation.getParam('messages', 'NO-DATA');
+		console.log('messages props--->', messagesParam)
 			return (
 				<Screen>
-				{messages&& 
-					<Title styleName="h-center" style={{paddingTop: '30%'}}>
-							{messages.detailProduct.productName}({messages.detailProduct.stock})
+				{messagesParam&& 
+					<Title styleName="h-center">
+							{messagesParam.detailProduct.productName}({messagesParam.detailProduct.stock})
 					</Title>
 				}
 					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout}>
-						<Messages messages={this.props.messages.chats} updateMessagesHeight={updateMessagesHeight}/>
+						<Messages messages={messagesParam.chats} updateMessagesHeight={updateMessagesHeight}/>
 						<Input 
 						onLayout={this.onInputLayout}
 						onFocus={this._scrollToInput}

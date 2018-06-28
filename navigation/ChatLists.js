@@ -20,9 +20,9 @@ if (!firebase.apps.length) {
 	console.log('initialize')
   firebase.initializeApp(config);
 }
-const Message = ({ msg, handleState, isDisplayChat}) => (
+const Message = ({ msg, handleState, isDisplayChat, navigation}) => (
 	<Row>
-		<TouchableHighlight onPress={() => handleState(msg)}>
+		<TouchableHighlight onPress={() => navigation.navigate('ChatUI', { messages: msg})}>
 			<View styleName="vertical">
 				<View styleName="horizontal space-between">
 					<Subtitle>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Subtitle>
@@ -54,7 +54,7 @@ class ChatLists extends Component {
 		this.setState({isDisplayChat: true, msgObj})
 	}
 	render(){
-		const { messages } = this.props
+		const { messages, navigation } = this.props
 		const { isDisplayChat, msgObj } = this.state
 		console.log('chat list is rendered !!')
 		console.log('message->', messages)
@@ -63,7 +63,7 @@ class ChatLists extends Component {
 				<Flex>
 					{messages&& <ListView data={messages}
 						autoHideHeader={true}
-						renderRow={msg => <Message msg={msg} isDisplayChat={isDisplayChat} handleState={this.handleState} />}
+						renderRow={msg => <Message msg={msg} isDisplayChat={isDisplayChat} handleState={this.handleState} navigation={navigation}/>}
 					/>}
 				</Flex>
 				{isDisplayChat && <ChatUI messages={msgObj} />}
@@ -75,7 +75,6 @@ class ChatLists extends Component {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: '20%'
 	}
 })
 

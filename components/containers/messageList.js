@@ -13,9 +13,9 @@ const Message = ({ msg }) => {
         <View styleName="vertical">
             <View styleName="horizontal space-between">
                 <Subtitle>UNKNOWN</Subtitle>
-                {/* <Caption>{moment(msg.timestamp).from(Date.now())}</Caption> */}
+                <Caption>{moment(msg.timestamp).from(Date.now())}</Caption>
             </View>
-            {/* <Text styleName="multiline">{msg.message}</Text> */}
+            <Text styleName="multiline">{msg.message}</Text>
         </View>
     </Row>
 }

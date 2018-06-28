@@ -19,7 +19,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-const Stack =  createSwitchNavigator({
+const Stack =  createStackNavigator({
   Auth,
   ChatLists,
   ChatUI,
