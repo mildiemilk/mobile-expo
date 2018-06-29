@@ -35,7 +35,6 @@ const Message = ({ msg, handleState, isDisplayChat, navigation}) => (
 );
 class ChatLists extends Component {
 	state = {
-		isDisplayChat: false,
 		msgObj: {},
 	}
 	componentDidMount(){
@@ -49,10 +48,7 @@ class ChatLists extends Component {
 		console.log('ChatList is called.')
 		this.props.loadMessage(this.props.user)
 	}
-	handleState = (msgObj) => {
-		console.log('handleStateeee')
-		this.setState({isDisplayChat: true, msgObj})
-	}
+
 	render(){
 		const { messages, navigation } = this.props
 		const { isDisplayChat, msgObj } = this.state
@@ -63,10 +59,9 @@ class ChatLists extends Component {
 				<Flex>
 					{messages&& <ListView data={messages}
 						autoHideHeader={true}
-						renderRow={msg => <Message msg={msg} isDisplayChat={isDisplayChat} handleState={this.handleState} navigation={navigation}/>}
+						renderRow={msg => <Message msg={msg} navigation={navigation}/>}
 					/>}
 				</Flex>
-				{isDisplayChat && <ChatUI messages={msgObj} />}
 			</View>
 		)
 	}

@@ -66,7 +66,8 @@ class ChatUI extends Component {
 
 
 	sendMessage = (text) => {
-		return sendMessage(text, this.props.user)
+		const messagesParam = this.props.navigation.getParam('messages', 'NO-DATA');
+		return sendMessage(text, this.props.user, messagesParam.chatId)
 	}
 
 	render() {

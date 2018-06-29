@@ -30,8 +30,8 @@ export const loadMessage = (user) => async(dispatch) => {
 	Promise.all(result).then(res => dispatch(loadMessageAction(res)))
 }
 
-export const sendMessage = (message, user) => async (dispatch) =>{
-	console.log('send', message, user)
+export const sendMessage = (message, user, chatId) => async (dispatch) =>{
+	console.log('send', message, chatId)
 
 	const currentChatroom = await firebase.database()
 	.ref("chatrooms")
@@ -39,32 +39,30 @@ export const sendMessage = (message, user) => async (dispatch) =>{
 	.equalTo(user.userUid)
 	.once('value')
 	.then(snapshot =>  snapshot.val())
-  console.log('current', currentChatroom, Object.values(currentChatroom)[0].chats)
-
+  console.log('current-->', currentChatroom, Object.values(currentChatroom))
+	let data = Object.values(currentChatroom).filter(value => value.chatId === chatId)
+	console.log('data Room', data)
 	const newChatText = {
 		sender:'seller',
 		message,
-		timestamp:now()
-	}
-	console.log('newChatText--->', Object.values(currentChatroom)[0], newChatText)
-	const nextChatroom = {
-		...Object.values(currentChatroom)[0],
-		chats: [...Object.values(currentChatroom)[0].chats, newChatText]
-	}
-	console.log('newChatText eiie', nextChatroom)
-	let updates = {}
-
-	updates[`/chatrooms/${Object.values(currentChatroom)[0].chatId}`] = nextChatroom
-	firebase.database().ref().update(updates)
-
-	let msg = {
-		...newChatText,
 		author: {
 			name: user.name,
 			avatar: user.avatar
-		}
-	};
-	dispatch(addMessage(msg));
+		},
+		timestamp:now()
+	}
+	console.log('newChatText--->', data,Object.values(data)[0], newChatText)
+	const nextChatroom = {
+		...Object.values(data)[0],
+		chats: [...Object.values(data)[0].chats, newChatText]
+	}
+	console.log('newChatText eiie', nextChatroom, chatId)
+	let updates = {}
+
+	updates[`/chatrooms/${chatId}`] = JSON.parse( JSON.stringify(nextChatroom ) )
+	firebase.database().ref().update(updates)
+
+	dispatch(addMessage(nextChatroom));
 };
 
 export const updateMessagesHeight = (event) => {
