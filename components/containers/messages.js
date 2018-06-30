@@ -10,9 +10,8 @@ import MessageList from './messageList';
 const Messages = ({ messages, isFetching, updateMessagesHeight }) => {
 	if (isFetching) {
 		return (
-				<View style={{paddingTop: 50,
-											paddingBottom: 50}}>
-						<Spinner />
+				<View style={{paddingTop: 50, paddingBottom: 50}}>
+					<Spinner />
 				</View>
 		)
 	}else{

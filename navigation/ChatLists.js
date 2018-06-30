@@ -13,15 +13,15 @@ import { logout } from '../handlers/auth'
 import { loadMessage } from '../handlers/message'
 // import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
-import ChatUI from './ChatUI';
 // import { TextStyle } from '../components/base/TextStyle'
 
 if (!firebase.apps.length) {
 	console.log('initialize')
   firebase.initializeApp(config);
 }
-const Message = ({ msg, navigation}) => (
-	<Row>
+const Message = ({ msg, navigation}) => {
+	console.log('msg Renderrrrr ChatList', msg)
+	return (<Row>
 		<TouchableOpacity onPress={() => navigation.navigate('ChatUI', { messages: msg})}>
 			<View styleName="vertical">
 				<View styleName="horizontal space-between">
@@ -32,13 +32,11 @@ const Message = ({ msg, navigation}) => (
 			</View>
 		</TouchableOpacity>
 	</Row>
-);
+	)}
 class ChatLists extends Component {
 
 	componentDidMount(){
 		firebase.auth().onAuthStateChanged((user=>{
-			console.log('userchange state - ChatList')
-			console.log('user',user)
 			if(user===null){
 				this.props.navigation.navigate('Auth')
 			}

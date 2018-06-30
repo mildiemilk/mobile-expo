@@ -5,7 +5,6 @@ import firebase from 'firebase'
 import { loadMessageAction, addMessage } from '../actions/message'
 import { setProduct } from '../actions/product'
 
-
 const now = () => moment(new Date()).format("YYYY/MM/DD hh:mm:ss A");
 
 export const loadMessage = (user) => async(dispatch) => {
@@ -76,4 +75,11 @@ export const searchProduct = async productKey => {
 	.then(snapshot =>  snapshot.val())
 	return product
 	
+}
+
+export const searchChatRoom = async chatId => {
+
+	const currentChatroom = await firebase.database()
+	.ref("chatrooms")
+	.orderByChild("sellerId")
 }

@@ -6,7 +6,7 @@ import {
 import moment from 'moment';
 
 const Message = ({ msg }) => {
-  console.log('msg---->', msg)
+  console.log('msg messageList---->', msg)
   return <Row>
 		<Image styleName="small-avatar top"
 					source={{ uri:'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'}} />
@@ -21,7 +21,7 @@ const Message = ({ msg }) => {
 }
 
 const MessageList = ({ messages, onLayout }) => {
-	console.log('UI--->', messages)
+	console.log('UI messageList--->', messages)
 	return <ListView data={messages}
 					autoHideHeader={true}
 					renderRow={msg => <Message msg={msg}/>}

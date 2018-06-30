@@ -9,8 +9,7 @@ import { logout } from '../handlers/auth'
 import Button from '../components/base/Button'
 import Messages from '../components/containers/messages';
 import Input from '../components/containers/Input';
-import { sendMessage, fetchMessages, updateMessagesHeight } from '../handlers/message';
-import messages from '../reducer/messages';
+import { sendMessage, updateMessagesHeight, loadMessage, searchChatRoom } from '../handlers/message';
 
 class ChatUI extends Component {
 	state = {
@@ -21,14 +20,22 @@ class ChatUI extends Component {
 	async componentDidMount() {
 		this.scrollToBottom(false);
 		firebase.auth().onAuthStateChanged((user => {
-			console.log('userchange state - ChatList')
 			console.log('user',user)
 			if(user === null){
 				this.props.navigation.navigate('Auth')
 			}
 		}))
+		const messagesParam = this.props.navigation.getParam('messages', 'NO-DATA');
+	//	searchChatRoom(messagesParam.chatId)
 	}
-			
+		componentWillReceiveProps(nextProps) {
+			const { messages, user, loadMessage } = this.props
+			console.log('messssssss', messages, nextProps.messages)
+			if( JSON.stringify(nextProps.messages) !==  JSON.stringify(messages)) {
+				loadMessage(user)
+				
+			}
+		}			
 	componentDidUpdate() {
 		this.scrollToBottom();
 	}
@@ -71,9 +78,9 @@ class ChatUI extends Component {
 	}
 
 	render() {
-		const { updateMessagesHeight, navigation} = this.props
-    const messagesParam = navigation.getParam('messages', 'NO-DATA');
-		console.log('messages props CHAI UI--->', messagesParam)
+		const { updateMessagesHeight, navigation, messages} = this.props
+		const messagesParam = navigation.getParam('messages', 'NO-DATA');
+		console.log('messages props CHAI UI--->', messagesParam, messages)
 			return (
 				<Screen>
 				{messagesParam&& 
@@ -99,10 +106,12 @@ class ChatUI extends Component {
 const mapStateToProps = (state) => ({
 	chatHeight: state.chatroom.meta.height,
 	user: state.user,
+	messages: state.chatroom.messages.lists,
 });
 const mapDispatchToProps = (dispatch) => ({
 	sendMessage: ({text, user}) => dispatch(sendMessage({text,user})),
-	updateMessagesHeight: (e) => dispatch(updateMessagesHeight(e))
+	updateMessagesHeight: (e) => dispatch(updateMessagesHeight(e)),
+	searchChatRoom: (chatId) => dispatch(searchChatRoom(chatId)),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(ChatUI);

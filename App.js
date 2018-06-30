@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 // import { Card } from './components/base/Card'
 // import { Flex } from './components/base/Flex'
 // import { TextStyle } from './components/base/TextStyle'
-import { createStackNavigator, createSwitchNavigator } from 'react-navigation'
+import { createStackNavigator, createSwitchNavigator, mapNavigationStateParamsToProps } from 'react-navigation'
 import Auth from './navigation/Auth'
 import ChatLists from './navigation/ChatLists'
 import ChatUI from './navigation/ChatUI'
@@ -22,7 +22,10 @@ if (!firebase.apps.length) {
 const Stack =  createStackNavigator({
   Auth,
   ChatLists,
-  ChatUI,
+  ChatUI : {
+    screen: ChatUI,
+  }
+
 },
 {
   initialRouteName: 'Auth'
