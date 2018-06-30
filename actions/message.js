@@ -3,13 +3,13 @@ import moment from 'moment'
 
 const now = () => moment(new Date()).format("YYYY/MM/DD hh:mm:ss A");
 
-export const addMessage = (msg) => ({
+export const addMessage = (msg) => {
+	return {
   type: 'ADD_MESSAGE',
-	...msg
-});
+	payload : msg
+}};
 
 export const loadMessageAction = (arrMsg) => { 
-	console.log('arrMsg-->>', arrMsg)
 	return {
 	type: 'LOAD_MESSAGE',
 	payload: arrMsg

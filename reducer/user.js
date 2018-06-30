@@ -8,7 +8,6 @@ const initialState = {
 };
 
 const user = (state = initialState, action) => {
-    console.log('action-->', action.payload)
   switch (action.type) {
       case 'SET_USER_NAME':
       console.log('SET_USER_NAME-->', action.payload)

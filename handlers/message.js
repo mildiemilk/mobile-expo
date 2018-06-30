@@ -15,23 +15,18 @@ export const loadMessage = (user) => async(dispatch) => {
 		.equalTo(user.userUid)
 		.once('value')
 		.then(snapshot =>  snapshot.val())
-	console.log('FetchCurrent', currentChatroom, Object.values(currentChatroom))
-	// const A = await searchProduct('-LD5py9G2yMMRUexJxLn')
 	let result = []
 	await Promise.all(Object.values(currentChatroom).map( async value => {
 		let data = value
 		const detailProduct = await searchProduct(value.productId)
- 		data = {...data, detailProduct}
+		 data = {...data, detailProduct}
 		result.push(data)
 	})
 	)
-	// promise = promise.then(result => results.push(result))
-	console.log('result AA ---->', result)
 	Promise.all(result).then(res => dispatch(loadMessageAction(res)))
 }
 
 export const sendMessage = (message, user, chatId) => async (dispatch) =>{
-	console.log('send', message, chatId)
 
 	const currentChatroom = await firebase.database()
 	.ref("chatrooms")
@@ -39,9 +34,8 @@ export const sendMessage = (message, user, chatId) => async (dispatch) =>{
 	.equalTo(user.userUid)
 	.once('value')
 	.then(snapshot =>  snapshot.val())
-  console.log('current-->', currentChatroom, Object.values(currentChatroom))
 	let data = Object.values(currentChatroom).filter(value => value.chatId === chatId)
-	console.log('data Room', data)
+	const detailProduct = await searchProduct(Object.values(data)[0].productId)
 	const newChatText = {
 		sender:'seller',
 		message,
@@ -51,18 +45,19 @@ export const sendMessage = (message, user, chatId) => async (dispatch) =>{
 		},
 		timestamp:now()
 	}
-	console.log('newChatText--->', data,Object.values(data)[0], newChatText)
 	const nextChatroom = {
 		...Object.values(data)[0],
 		chats: [...Object.values(data)[0].chats, newChatText]
 	}
-	console.log('newChatText eiie', nextChatroom, chatId)
 	let updates = {}
 
 	updates[`/chatrooms/${chatId}`] = JSON.parse( JSON.stringify(nextChatroom ) )
 	firebase.database().ref().update(updates)
-
-	dispatch(addMessage(nextChatroom));
+	const updateMessage = {
+		...nextChatroom,
+		detailProduct,
+	}
+	await dispatch(addMessage(updateMessage));
 };
 
 export const updateMessagesHeight = (event) => {

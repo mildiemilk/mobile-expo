@@ -9,7 +9,7 @@ import { logout } from '../handlers/auth'
 import Button from '../components/base/Button'
 import Messages from '../components/containers/messages';
 import Input from '../components/containers/Input';
-import { sendMessage, fetchMessages, updateMessagesHeight, searchProduct } from '../handlers/message';
+import { sendMessage, fetchMessages, updateMessagesHeight } from '../handlers/message';
 import messages from '../reducer/messages';
 
 class ChatUI extends Component {
@@ -27,7 +27,7 @@ class ChatUI extends Component {
 				this.props.navigation.navigate('Auth')
 			}
 		}))
-			}
+	}
 			
 	componentDidUpdate() {
 		this.scrollToBottom();
@@ -73,7 +73,7 @@ class ChatUI extends Component {
 	render() {
 		const { updateMessagesHeight, navigation} = this.props
     const messagesParam = navigation.getParam('messages', 'NO-DATA');
-		console.log('messages props--->', messagesParam)
+		console.log('messages props CHAI UI--->', messagesParam)
 			return (
 				<Screen>
 				{messagesParam&& 
@@ -102,7 +102,6 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
 	sendMessage: ({text, user}) => dispatch(sendMessage({text,user})),
-	searchProduct: (user) => dispatch(searchProduct(user)),
 	updateMessagesHeight: (e) => dispatch(updateMessagesHeight(e))
 })
 

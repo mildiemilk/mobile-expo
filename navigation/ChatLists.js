@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import { StyleSheet, TouchableHighlight, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import firebase from 'firebase'
 import {
 	ListView, Text as TextStyle, Row, Image,
@@ -20,9 +20,9 @@ if (!firebase.apps.length) {
 	console.log('initialize')
   firebase.initializeApp(config);
 }
-const Message = ({ msg, handleState, isDisplayChat, navigation}) => (
+const Message = ({ msg, navigation}) => (
 	<Row>
-		<TouchableHighlight onPress={() => navigation.navigate('ChatUI', { messages: msg})}>
+		<TouchableOpacity onPress={() => navigation.navigate('ChatUI', { messages: msg})}>
 			<View styleName="vertical">
 				<View styleName="horizontal space-between">
 					<Subtitle>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Subtitle>
@@ -30,13 +30,11 @@ const Message = ({ msg, handleState, isDisplayChat, navigation}) => (
 				</View>
 				<TextStyle styleName="multiline">{msg.chats[msg.chats.length-1].message}</TextStyle>
 			</View>
-		</TouchableHighlight>
+		</TouchableOpacity>
 	</Row>
 );
 class ChatLists extends Component {
-	state = {
-		msgObj: {},
-	}
+
 	componentDidMount(){
 		firebase.auth().onAuthStateChanged((user=>{
 			console.log('userchange state - ChatList')
@@ -48,12 +46,17 @@ class ChatLists extends Component {
 		console.log('ChatList is called.')
 		this.props.loadMessage(this.props.user)
 	}
-
+	// componentWillReceiveProps(nextProps) {
+	// 	const { messages, user, loadMessage } = this.props
+	// 	console.log('messssssss', messages, nextProps.messages)
+	// 	if( JSON.stringify(nextProps.messages) !==  JSON.stringify(messages)) {
+	// 		loadMessage(user)
+	// 	}
+	// }
 	render(){
 		const { messages, navigation } = this.props
-		const { isDisplayChat, msgObj } = this.state
 		console.log('chat list is rendered !!')
-		console.log('message->', messages)
+		console.log('message ChatList->', messages)
 		return (
 			<View  style={styles.container}>
 				<Flex>

@@ -1,29 +1,31 @@
-const message = (state, action) => {
-	console.log('actionMessage', action)
-	return {
-			id: action.id,
-			message: action.message,
-			timestamp: action.timestamp,
-			author: action.author||{
-				name: 'unKnown',
-				avatar: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png',
-		},
-	}
-}
+import _ from 'lodash'
+
+// const message = (state, data) => {
+// 	console.log('actionMessage', data)
+// 	return {
+// 			...data,
+// 			chats: [...data.chats,
+// 				id: data.id,
+// 			message: data.message,
+// 			timestamp: data.timestamp,
+// 			author: data.author||{
+// 				name: 'unKnown',
+// 				avatar: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png',
+// 		}],
+// 	}
+// }
 
 
 
 const messages = (state = [], action) => {
-	console.log('action--->', action)
   switch (action.type) {
 		case 'ADD_MESSAGE':
-				return {
+			let index = _.findIndex(state.lists, {chatId: action.payload.chatId})
+			state.lists.splice(index, 1, action.payload);
+			return {
 				...state,
-				lists: [...state.lists, message(undefined, action)]
-				}
+			}
 		case 'LOAD_MESSAGE':
-		console.log('eieei', action)
-		console.log('state : ', state)
 		return {
 				...state,
 				lists: action.payload,
