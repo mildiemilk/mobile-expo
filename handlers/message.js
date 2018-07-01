@@ -2,7 +2,7 @@
 import moment from 'moment'
 import firebase from 'firebase'
 
-import { loadMessageAction, addMessage } from '../actions/message'
+import { loadMessageAction, fetchMessage } from '../actions/message'
 import { setProduct } from '../actions/product'
 
 const now = () => moment(new Date()).format("YYYY/MM/DD hh:mm:ss A");
@@ -34,7 +34,6 @@ export const sendMessage = (message, user, chatId) => async (dispatch) =>{
 	.once('value')
 	.then(snapshot =>  snapshot.val())
 	let data = Object.values(currentChatroom).filter(value => value.chatId === chatId)
-	const detailProduct = await searchProduct(Object.values(data)[0].productId)
 	const newChatText = {
 		sender:'seller',
 		message,
@@ -52,11 +51,14 @@ export const sendMessage = (message, user, chatId) => async (dispatch) =>{
 
 	updates[`/chatrooms/${chatId}`] = JSON.parse( JSON.stringify(nextChatroom ) )
 	firebase.database().ref().update(updates)
+	const detailProduct = await searchProduct(Object.values(currentChatroom)[0].productId)
+
 	const updateMessage = {
 		...nextChatroom,
 		detailProduct,
 	}
-	await dispatch(addMessage(updateMessage));
+	await dispatch(fetchMessage(updateMessage));
+
 };
 
 export const updateMessagesHeight = (event) => {
@@ -77,9 +79,18 @@ export const searchProduct = async productKey => {
 	
 }
 
-export const searchChatRoom = async chatId => {
+export const searchChatRoom = chatId => async (dispatch) =>{
 
 	const currentChatroom = await firebase.database()
 	.ref("chatrooms")
-	.orderByChild("sellerId")
+	.orderByChild("chatId")
+	.equalTo(chatId)
+	.once('value')
+	.then(snapshot => snapshot.val())
+	const detailProduct = await searchProduct(Object.values(currentChatroom)[0].productId)
+	const updateMessage = {
+		...Object.values(currentChatroom)[0],
+		detailProduct,
+	}
+	await dispatch(fetchMessage(updateMessage));
 }

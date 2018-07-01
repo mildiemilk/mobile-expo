@@ -6,14 +6,15 @@ import {
 import moment from 'moment';
 
 const Message = ({ msg }) => {
-  console.log('msg messageList---->', msg)
+	console.log('msg messageList---->', msg)
+
   return <Row>
 		<Image styleName="small-avatar top"
 					source={{ uri:'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'}} />
 		<View styleName="vertical">
 			<View styleName="horizontal space-between">
 					<Subtitle>UNKNOWN</Subtitle>
-					<Caption>{moment(msg.timestamp).from(Date.now())}</Caption>
+					<Caption>{moment(msg.timestamp, "YYYY/MM/DD hh:mm:ss A").from(moment())}</Caption>
 			</View>
 			<Text styleName="multiline">{msg.message}</Text>
 		</View>
@@ -25,7 +26,7 @@ const MessageList = ({ messages, onLayout }) => {
 	return <ListView data={messages}
 					autoHideHeader={true}
 					renderRow={msg => <Message msg={msg}/>}
-					onLayout={onLayout}
+					// onLayout={onLayout}
 					/>
 };
 

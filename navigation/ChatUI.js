@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactNative from 'react-native';
+import _ from 'lodash'
 
 import firebase from 'firebase'
 import { Title, Screen } from '@shoutem/ui';
@@ -25,17 +26,16 @@ class ChatUI extends Component {
 				this.props.navigation.navigate('Auth')
 			}
 		}))
-		const messagesParam = this.props.navigation.getParam('messages', 'NO-DATA');
-	//	searchChatRoom(messagesParam.chatId)
+		// searchChatRoom(this.props.chatId)
 	}
-		componentWillReceiveProps(nextProps) {
-			const { messages, user, loadMessage } = this.props
-			console.log('messssssss', messages, nextProps.messages)
-			if( JSON.stringify(nextProps.messages) !==  JSON.stringify(messages)) {
-				loadMessage(user)
-				
-			}
-		}			
+	componentWillReceiveProps(nextProps) {
+		const { messages, chatId } = this.props
+		console.log('messssssss', messages, nextProps.messages)
+		if( JSON.stringify(nextProps.messages) !==  JSON.stringify(messages)) {
+			// searchChatRoom(chatId)
+		}
+	}
+
 	componentDidUpdate() {
 		this.scrollToBottom();
 	}
@@ -73,23 +73,26 @@ class ChatUI extends Component {
 
 
 	sendMessage = (text) => {
-		const messagesParam = this.props.navigation.getParam('messages', 'NO-DATA');
-		return sendMessage(text, this.props.user, messagesParam.chatId)
+		const { user, chatId } = this.props
+		return sendMessage(text, user, chatId)
 	}
 
 	render() {
-		const { updateMessagesHeight, navigation, messages} = this.props
-		const messagesParam = navigation.getParam('messages', 'NO-DATA');
-		console.log('messages props CHAI UI--->', messagesParam, messages)
+		const { updateMessagesHeight, messages, chatId} = this.props
+		console.log('messages in Render', this.props, messages, chatId)
+		let index
+		if(messages) {
+			index = _.findIndex(messages, {chatId})
+		}
 			return (
 				<Screen>
-				{messagesParam&& 
+				{ messages[index]&& 
 					<Title styleName="h-center">
-							{messagesParam.detailProduct.productName}({messagesParam.detailProduct.stock})
+							{ messages[index].detailProduct.productName}({ messages[index].detailProduct.stock})
 					</Title>
 				}
 					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout}>
-						<Messages messages={messagesParam.chats} updateMessagesHeight={updateMessagesHeight}/>
+						<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
 						<Input 
 						onLayout={this.onInputLayout}
 						onFocus={this._scrollToInput}
@@ -98,15 +101,17 @@ class ChatUI extends Component {
 						placeholder="Say something cool ..."
 					/>
 					</KeyboardAwareScrollView>
+					{/* <Button color="#4065b3" onPress={() => this.sendMessage('eeee')}>update </Button> */}
 				</Screen>
 			)
 	}
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
 	chatHeight: state.chatroom.meta.height,
 	user: state.user,
 	messages: state.chatroom.messages.lists,
+	chatId: props.navigation.state.params.chatId,
 });
 const mapDispatchToProps = (dispatch) => ({
 	sendMessage: ({text, user}) => dispatch(sendMessage({text,user})),

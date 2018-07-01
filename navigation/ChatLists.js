@@ -22,7 +22,7 @@ if (!firebase.apps.length) {
 const Message = ({ msg, navigation}) => {
 	console.log('msg Renderrrrr ChatList', msg)
 	return (<Row>
-		<TouchableOpacity onPress={() => navigation.navigate('ChatUI', { messages: msg})}>
+		<TouchableOpacity onPress={() => navigation.navigate('ChatUI', { chatId: msg.chatId})}>
 			<View styleName="vertical">
 				<View styleName="horizontal space-between">
 					<Subtitle>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Subtitle>
