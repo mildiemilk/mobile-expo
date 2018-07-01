@@ -2,7 +2,7 @@
 import moment from 'moment'
 import firebase from 'firebase'
 
-import { loadMessageAction, fetchMessage } from '../actions/message'
+import { loadMessageAction, addMessage } from '../actions/message'
 import { setProduct } from '../actions/product'
 
 const now = () => moment(new Date()).format("YYYY/MM/DD hh:mm:ss A");
@@ -18,11 +18,11 @@ export const loadMessage = (user) => async(dispatch) => {
 	await Promise.all(Object.values(currentChatroom).map( async value => {
 		let data = value
 		const detailProduct = await searchProduct(value.productId)
-		 data = {...data, detailProduct}
+		data = {...data, detailProduct}
 		result.push(data)
 	})
 	)
-	Promise.all(result).then(res => dispatch(loadMessageAction(res)))
+	dispatch(loadMessageAction(result))
 }
 
 export const sendMessage = (message, user, chatId) => async (dispatch) =>{
@@ -57,7 +57,7 @@ export const sendMessage = (message, user, chatId) => async (dispatch) =>{
 		...nextChatroom,
 		detailProduct,
 	}
-	await dispatch(fetchMessage(updateMessage));
+	await dispatch(addMessage(updateMessage));
 
 };
 
@@ -79,18 +79,18 @@ export const searchProduct = async productKey => {
 	
 }
 
-export const searchChatRoom = chatId => async (dispatch) =>{
+// export const searchChatRoom = chatId => async (dispatch) =>{
 
-	const currentChatroom = await firebase.database()
-	.ref("chatrooms")
-	.orderByChild("chatId")
-	.equalTo(chatId)
-	.once('value')
-	.then(snapshot => snapshot.val())
-	const detailProduct = await searchProduct(Object.values(currentChatroom)[0].productId)
-	const updateMessage = {
-		...Object.values(currentChatroom)[0],
-		detailProduct,
-	}
-	await dispatch(fetchMessage(updateMessage));
-}
+// 	const currentChatroom = await firebase.database()
+// 	.ref("chatrooms")
+// 	.orderByChild("chatId")
+// 	.equalTo(chatId)
+// 	.once('value')
+// 	.then(snapshot => snapshot.val())
+// 	const detailProduct = await searchProduct(Object.values(currentChatroom)[0].productId)
+// 	const updateMessage = {
+// 		...Object.values(currentChatroom)[0],
+// 		detailProduct,
+// 	}
+// 	await dispatch(addMessage(updateMessage));
+// }

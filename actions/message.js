@@ -3,9 +3,9 @@ import moment from 'moment'
 
 const now = () => moment(new Date()).format("YYYY/MM/DD hh:mm:ss A");
 
-export const fetchMessage = (msg) => {
+export const addMessage = (msg) => {
 	return {
-  type: 'FETCH_MESSAGE',
+  type: 'ADD_MESSAGE',
 	payload : msg
 }};
 

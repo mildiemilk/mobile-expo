@@ -94,8 +94,8 @@ class ChatUI extends Component {
 					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout}>
 						<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
 						<Input 
-						onLayout={this.onInputLayout}
-						onFocus={this._scrollToInput}
+						// onLayout={this.onInputLayout}
+						// onFocus={this._scrollToInput}
 						submitAction={this.sendMessage}
 						ref="input"
 						placeholder="Say something cool ..."
