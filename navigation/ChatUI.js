@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactNative from 'react-native';
+import ReactNative, { StyleSheet} from 'react-native';
 import _ from 'lodash'
 
 import firebase from 'firebase'
@@ -93,20 +93,26 @@ class ChatUI extends Component {
 				}
 					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout}>
 						<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
-						<Input 
+					</KeyboardAwareScrollView>
+					{/* <Button color="#4065b3" onPress={() => this.sendMessage('eeee')}>update </Button> */}
+					<Input 
 						// onLayout={this.onInputLayout}
 						// onFocus={this._scrollToInput}
+						style={styles.container}
 						submitAction={this.sendMessage}
 						ref="input"
 						placeholder="Say something cool ..."
 					/>
-					</KeyboardAwareScrollView>
-					{/* <Button color="#4065b3" onPress={() => this.sendMessage('eeee')}>update </Button> */}
 				</Screen>
 			)
 	}
 }
-
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    marginBottom: '10%',
+  },
+})
 const mapStateToProps = (state, props) => ({
 	chatHeight: state.chatroom.meta.height,
 	user: state.user,
