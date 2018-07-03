@@ -78,19 +78,3 @@ export const searchProduct = async productKey => {
 	return product
 	
 }
-
-// export const searchChatRoom = chatId => async (dispatch) =>{
-
-// 	const currentChatroom = await firebase.database()
-// 	.ref("chatrooms")
-// 	.orderByChild("chatId")
-// 	.equalTo(chatId)
-// 	.once('value')
-// 	.then(snapshot => snapshot.val())
-// 	const detailProduct = await searchProduct(Object.values(currentChatroom)[0].productId)
-// 	const updateMessage = {
-// 		...Object.values(currentChatroom)[0],
-// 		detailProduct,
-// 	}
-// 	await dispatch(addMessage(updateMessage));
-// }

@@ -22,7 +22,6 @@ export const loginWithFacebook = async () => {
     ).then((
        ({type, token} ) => {
     if (type === 'success') {
-      console.log('auth successseiei')
       const credential = firebase.auth.FacebookAuthProvider.credential(token)
       return firebase.auth().signInAndRetrieveDataWithCredential(credential).catch((error) => {
         console.log('loginWithFacebook error', error)

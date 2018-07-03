@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 // import styled from 'styled-components/native'
 import { NavigationActions } from 'react-navigation'
 
-import { setUserName } from '../actions/user'
+import { setUserName, setUserAvatar } from '../actions/user'
 import Button from '../components/base/Button'
 import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
@@ -27,12 +27,12 @@ class Auth extends Component{
       console.log('user',user)
       if(user!==null){
         console.log('successful')
-        // NavigationActions.navigate({routeName: 'ChatLists'})
-        const displayName = user.displayName
-        const uid = user.uid
+        const { displayName, uid } = user
+
+        console.log('uid', user)
         this.props.setUserName({displayName, uid})
-        console.log('uid', user.uid)
-        this.props.navigation.navigate('ChatLists', {navigation:this.props.navigation})
+        this.props.setUserAvatar(user)
+        this.props.navigation.navigate('ChatLists')
       }
       
     }))
@@ -62,9 +62,10 @@ const styles = StyleSheet.create({
     }
   })
 const mapDispatchToProps = dispatch => {
-    return {
-      setUserName: ({displayName, uid}) => dispatch(setUserName({displayName, uid}))}
-}
+  return {
+    setUserName: ({displayName, uid}) => dispatch(setUserName({displayName, uid})),
+    setUserAvatar: user => dispatch(setUserAvatar(user))
+}}
 const mapStateToProps = state => {
   return {
     user: state.user

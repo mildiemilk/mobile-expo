@@ -10,10 +10,12 @@ const Message = ({ msg }) => {
 
   return <Row>
 		<Image styleName="small-avatar top"
-					source={{ uri:'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'}} />
+ 			source={{uri: msg.author?msg.author.avatar:'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'}} 
+			style={{ height: 20, width: 20 }}
+		/>
 		<View styleName="vertical">
 			<View styleName="horizontal space-between">
-					<Subtitle>UNKNOWN</Subtitle>
+					<Subtitle>{msg.author? msg.author.name:'UNKNOWN'}</Subtitle>
 					<Caption>{moment(msg.timestamp, "YYYY/MM/DD hh:mm:ss A").from(moment())}</Caption>
 			</View>
 			<Text styleName="multiline">{msg.message}</Text>

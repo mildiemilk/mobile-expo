@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 import Auth from './navigation/Auth'
 import ChatLists from './navigation/ChatLists'
 import ChatUI from './navigation/ChatUI'
 
-export const Navigator = new StackNavigator({
+export const Navigator = new createStackNavigator({
   Auth,
   ChatLists,
   ChatUI : {

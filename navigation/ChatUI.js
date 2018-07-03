@@ -26,14 +26,6 @@ class ChatUI extends Component {
 				this.props.navigation.navigate('Auth')
 			}
 		}))
-		// searchChatRoom(this.props.chatId)
-	}
-	componentWillReceiveProps(nextProps) {
-		const { messages, chatId } = this.props
-		console.log('messssssss', messages, nextProps.messages)
-		if( JSON.stringify(nextProps.messages) !==  JSON.stringify(messages)) {
-			// searchChatRoom(chatId)
-		}
 	}
 
 	componentDidUpdate() {
