@@ -44,13 +44,13 @@ class ChatLists extends Component {
 		console.log('ChatList is called.')
 		this.props.loadMessage(this.props.user)
 	}
-	// componentWillReceiveProps(nextProps) {
-	// 	const { messages, user, loadMessage } = this.props
-	// 	console.log('messssssss', messages, nextProps.messages)
-	// 	if( JSON.stringify(nextProps.messages) !==  JSON.stringify(messages)) {
-	// 		loadMessage(user)
-	// 	}
-	// }
+	componentWillReceiveProps(nextProps) {
+		const { messages, user, loadMessage } = this.props
+		console.log('messssssss', messages, nextProps.messages)
+		if( JSON.stringify(nextProps.messages) !==  JSON.stringify(messages)) {
+			loadMessage(user)
+		}
+	}
 	render(){
 		const { messages, navigation } = this.props
 		console.log('chat list is rendered !!')
