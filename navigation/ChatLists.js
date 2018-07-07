@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import firebase from 'firebase'
 import {
 	ListView, Text as TextStyle, Row, Image,
- Subtitle, Caption,
+ Subtitle, Caption, View as ViewStyle
 } from '@shoutem/ui';
 
 import config from '../database/config.json'
@@ -23,13 +23,12 @@ const Message = ({ msg, navigation}) => {
 	console.log('msg Renderrrrr ChatList', msg)
 	return (<Row>
 		<TouchableOpacity onPress={() => navigation.navigate('ChatUI', { chatId: msg.chatId})}>
-			<View styleName="vertical">
-				<View styleName="horizontal space-between">
-					<Subtitle>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Subtitle>
-					<Caption>stock: {msg.detailProduct.stock}</Caption>
-				</View>
-				<TextStyle styleName="multiline">{msg.chats[msg.chats.length-1].message}</TextStyle>
-			</View>
+		<ViewStyle styleName="vertical stretch space-between">
+			<Subtitle>{msg.chats[msg.chats.length-1].message}</Subtitle>
+			<ViewStyle styleName="horizontal space-between">
+				<Caption>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Caption>
+			</ViewStyle>
+  	</ViewStyle>
 		</TouchableOpacity>
 	</Row>
 	)}

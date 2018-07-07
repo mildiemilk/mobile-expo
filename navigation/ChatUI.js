@@ -4,7 +4,7 @@ import ReactNative, { StyleSheet} from 'react-native';
 import _ from 'lodash'
 
 import firebase from 'firebase'
-import { Title, Screen } from '@shoutem/ui';
+import { Title, Screen, NavigationBar } from '@shoutem/ui';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { logout } from '../handlers/auth'
 import Button from '../components/base/Button'
@@ -53,15 +53,14 @@ class ChatUI extends Component {
 					{ chatHeight } = this.props;
 
 		const scrollTo = chatHeight - scrollViewHeight + inputHeight;
-
 		if (scrollTo > 0) {
 			this.refs.scroll.scrollToPosition(0, scrollTo, animate)
 		}
 	}
 
-	_scrollToInput = (reactRef) => {
-		this.refs.scroll.scrollToFocusedInput(ReactNative.findNodeHandle(reactRef));
-	}
+	// _scrollToInput = (reactRef) => {
+	// 	this.refs.scroll.scrollToFocusedInput(ReactNative.findNodeHandle(reactRef));
+	// }
 
 
 	sendMessage = (text) => {
@@ -78,15 +77,15 @@ class ChatUI extends Component {
 		}
 			return (
 				<Screen>
-				{ messages[index]&& 
-					<Title styleName="h-center">
-							{ messages[index].detailProduct.productName}({ messages[index].detailProduct.stock})
-					</Title>
-				}
+					{ messages[index]&& 
+					<NavigationBar
+						styleName="inline"
+						title={ `${messages[index].detailProduct.productName}(${ messages[index].detailProduct.stock})`} 
+					/>
+					}
 					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout}>
 						<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
 					</KeyboardAwareScrollView>
-					{/* <Button color="#4065b3" onPress={() => this.sendMessage('eeee')}>update </Button> */}
 					<Input 
 						// onLayout={this.onInputLayout}
 						// onFocus={this._scrollToInput}
