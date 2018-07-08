@@ -21,7 +21,6 @@ class ChatUI extends Component {
 	async componentDidMount() {
 		this.scrollToBottom(false);
 		firebase.auth().onAuthStateChanged((user => {
-			console.log('user',user)
 			if(user === null){
 				this.props.navigation.navigate('Auth')
 			}
@@ -53,14 +52,15 @@ class ChatUI extends Component {
 					{ chatHeight } = this.props;
 
 		const scrollTo = chatHeight - scrollViewHeight + inputHeight;
+		console.log('scorlll', chatHeight, scrollViewHeight, inputHeight, scrollTo)
 		if (scrollTo > 0) {
 			this.refs.scroll.scrollToPosition(0, scrollTo, animate)
 		}
 	}
 
-	// _scrollToInput = (reactRef) => {
-	// 	this.refs.scroll.scrollToFocusedInput(ReactNative.findNodeHandle(reactRef));
-	// }
+	_scrollToInput = (reactNode) => {
+		this.refs.scroll.scrollToFocusedInput(reactNode);
+	}
 
 
 	sendMessage = (text) => {
@@ -70,7 +70,6 @@ class ChatUI extends Component {
 
 	render() {
 		const { updateMessagesHeight, messages, chatId} = this.props
-		console.log('messages in Render', this.props, messages, chatId)
 		let index
 		if(messages) {
 			index = _.findIndex(messages, {chatId})
@@ -83,13 +82,12 @@ class ChatUI extends Component {
 						title={ `${messages[index].detailProduct.productName}(${ messages[index].detailProduct.stock})`} 
 					/>
 					}
-					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout}>
+					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout} innerRef={animated => {this.scrollToEnd = animated}}>
 						<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
 					</KeyboardAwareScrollView>
 					<Input 
-						// onLayout={this.onInputLayout}
-						// onFocus={this._scrollToInput}
-						style={styles.container}
+						onLayout={this.onInputLayout}
+						onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
 						submitAction={this.sendMessage}
 						ref="input"
 						placeholder="Say something cool ..."

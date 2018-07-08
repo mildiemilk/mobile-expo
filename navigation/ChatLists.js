@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import firebase from 'firebase'
 import {
 	ListView, Text as TextStyle, Row, Image,
- Subtitle, Caption, View as ViewStyle
+	NavigationBar, Subtitle, Caption, View as ViewStyle
 } from '@shoutem/ui';
 
 import config from '../database/config.json'
@@ -20,7 +20,6 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 const Message = ({ msg, navigation}) => {
-	console.log('msg Renderrrrr ChatList', msg)
 	return (<Row>
 		<TouchableOpacity onPress={() => navigation.navigate('ChatUI', { chatId: msg.chatId})}>
 		<ViewStyle styleName="vertical stretch space-between">
@@ -40,27 +39,27 @@ class ChatLists extends Component {
 				this.props.navigation.navigate('Auth')
 			}
 		}))
-		console.log('ChatList is called.')
 		this.props.loadMessage(this.props.user)
 	}
 	componentWillReceiveProps(nextProps) {
 		const { messages, user, loadMessage } = this.props
-		console.log('messssssss', messages, nextProps.messages)
 		if( JSON.stringify(nextProps.messages) !==  JSON.stringify(messages)) {
 			loadMessage(user)
 		}
 	}
 	render(){
 		const { messages, navigation } = this.props
-		console.log('chat list is rendered !!')
-		console.log('message ChatList->', messages)
 		return (
 			<View  style={styles.container}>
 				<Flex>
-					{messages&& <ListView data={messages}
+					{messages&& messages.length > 0? <ListView data={messages}
 						autoHideHeader={true}
 						renderRow={msg => <Message msg={msg} navigation={navigation}/>}
-					/>}
+					/>: <NavigationBar
+						styleName="inline"
+						title="No Message" 
+					/>
+					}
 				</Flex>
 			</View>
 		)

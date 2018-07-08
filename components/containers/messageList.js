@@ -7,7 +7,6 @@ import {
 import moment from 'moment';
 
 const Message = ({ msg }) => {
-	console.log('msg messageList---->', msg)
 
   return <Row>
 		{/* <Image styleName="small-avatar top"
@@ -23,12 +22,11 @@ const Message = ({ msg }) => {
 	</Row>
 }
 
-const MessageList = ({ messages }) => {
-	console.log('UI messageList--->', messages)
+const MessageList = ({ messages, onLayout }) => {
 	return <ListView data={messages}
-					// autoHideHeader={true}
+					autoHideHeader={true}
 					renderRow={msg => <Message msg={msg}/>}
-					// onLayout={onLayout}
+					onLayout={onLayout}
 					/>
 };
 

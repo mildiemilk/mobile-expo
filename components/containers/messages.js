@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Spinner } from '@shoutem/ui';
 
 import MessageList from './messageList';
-// import { updateMessagesHeight } from '../../actions/message';
 
 
 
@@ -14,10 +13,9 @@ const Messages = ({ messages, isFetching, updateMessagesHeight }) => {
 				</View>
 		)
 	}else{
-		console.log('messagesList', messages)
 		return <MessageList messages={messages}
 						style={{minHeight: 100}}
-						// onLayout={(event) => updateMessagesHeight(event)} 
+						onLayout={(event) => updateMessagesHeight(event)} 
 						/>
 	}
 };
