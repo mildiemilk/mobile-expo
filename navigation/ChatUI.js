@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactNative, { StyleSheet, Text, KeyboardAvoidingView} from 'react-native';
+import ReactNative, { StyleSheet, Text, KeyboardAvoidingView, View} from 'react-native';
 import _ from 'lodash'
 
 import firebase from 'firebase'
@@ -10,30 +10,40 @@ import { logout } from '../handlers/auth'
 import Button from '../components/base/Button'
 import Messages from '../components/containers/messages';
 import Input from '../components/containers/Input';
-import { sendMessage, updateMessagesHeight, searchChatRoom } from '../handlers/message';
+import { sendMessage, updateMessagesHeight, searchChatRoom, searchProduct } from '../handlers/message';
 import { loadMessageAction } from '../actions/message'
 
 class ChatUI extends Component {
 	state = {
 		scrollViewHeight: 0,
 		inputHeight: 0,
+		messagesInChatRoom: {},
 	}
 
 	async componentDidMount() {
+		const { messages, navigation, chatId } = this.props
 		this.updateChatUI()
 		this.scrollToBottom(false);
 		firebase.auth().onAuthStateChanged((user => {
 			if(user === null){
-				this.props.navigation.navigate('Auth')
+				navigation.navigate('Auth')
 			}
 		}))
+		if(messages) {
+			const index = _.findIndex(messages, {chatId})
+			this.setState({messagesInChatRoom: messages[index]})
+		}
 	}
-
-	updateChatUI = () => {
+	
+	updateChatUI = async () => {
 		firebase
-			.database()
-			.ref(`chatrooms/${this.props.chatId}`)
-			.on('value', snapshot => console.log(snapshot.val().chats))
+		.database()
+		.ref(`chatrooms/${this.props.chatId}`)
+		.on('value', async snapshot => {
+			const data = snapshot.val()
+			const detailProduct = await searchProduct(data.productId)
+			this.setState({messagesInChatRoom: {...data, detailProduct}})
+		})
 		this.scrollToBottom();
 	}
 
@@ -58,7 +68,6 @@ class ChatUI extends Component {
 					{ chatHeight } = this.props;
 
 		const scrollTo = chatHeight - scrollViewHeight + inputHeight;
-		console.log('scorll', chatHeight, scrollViewHeight, inputHeight, scrollTo)
 		if (scrollTo > 0) {
 			this.refs.scroll.scrollToPosition(0, scrollTo, animate)
 		}
@@ -76,6 +85,7 @@ class ChatUI extends Component {
 
 	render() {
 		const { updateMessagesHeight, messages, chatId} = this.props
+		const { messagesInChatRoom } = this.state
 		let index
 		if(messages) {
 			index = _.findIndex(messages, {chatId})
@@ -83,24 +93,26 @@ class ChatUI extends Component {
 		return (
 			<Screen>
 				<Text> Chat UI </Text>
-				{ messages[index]&& 
-				<NavigationBar
-					styleName="inline"
-					title={ `${messages[index].detailProduct.productName}(${ messages[index].detailProduct.stock})`} 
-				/>
-				}
-				<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout} innerRef={animated => {this.scrollToEnd = animated}}>
-					<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
-				</KeyboardAwareScrollView>
-				<KeyboardAvoidingView enabled  behavior="position" >
-					<Input 
-						onLayout={this.onInputLayout}
-						onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
-						submitAction={this.sendMessage}
-						ref="input"
-						placeholder="Say something cool ..."
+				{ !_.isEmpty(messagesInChatRoom)&& 
+				<View>
+					<NavigationBar
+						styleName="inline"
+						title={ `${messagesInChatRoom.detailProduct.productName}(${messagesInChatRoom.detailProduct.stock})`} 
 					/>
-				</KeyboardAvoidingView>
+					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout} innerRef={animated => {this.scrollToEnd = animated}}>
+						<Messages messages={ messagesInChatRoom.chats} updateMessagesHeight={updateMessagesHeight}/>
+					</KeyboardAwareScrollView>
+					<KeyboardAvoidingView enabled  behavior="position" >
+						<Input 
+							onLayout={this.onInputLayout}
+							onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+							submitAction={this.sendMessage}
+							ref="input"
+							placeholder="Say something cool ..."
+						/>
+					</KeyboardAvoidingView>
+				</View>
+				}
 			</Screen>
 		)
 	}
@@ -121,7 +133,8 @@ const mapDispatchToProps = {
 	sendMessage,
 	updateMessagesHeight,
 	searchChatRoom,
-	loadMessageAction
+	loadMessageAction,
+	searchProduct
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(ChatUI);
