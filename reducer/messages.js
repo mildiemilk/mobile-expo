@@ -14,11 +14,6 @@ const messages = (state = [], action) => {
 				...state,
 				lists: action.payload,
 			}
-		case 'SEND_MESSAGE':
-			return [
-					...state,
-					message(undefined, action)
-			]
 		default:
 			return state
   }

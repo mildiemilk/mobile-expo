@@ -3,7 +3,6 @@ import moment from 'moment'
 import firebase from 'firebase'
 import _ from 'lodash'
 import { loadMessageAction, addMessage } from '../actions/message'
-import { setProduct } from '../actions/product'
 
 const now = () => moment(new Date()).format("YYYY/MM/DD hh:mm:ss A");
 
