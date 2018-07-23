@@ -26,7 +26,6 @@ export const receivedMessages = () => ({
 });
 
 export const fetchMessages = (userUid) => {
-    console.log('fetch userUid', userUid)
   return function (dispatch) {
       dispatch(startFetchingMessages());
       console.log('fetch ID', userUid)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactNative, { StyleSheet} from 'react-native';
+import ReactNative, { StyleSheet, Text} from 'react-native';
 import _ from 'lodash'
 
 import firebase from 'firebase'
@@ -10,7 +10,8 @@ import { logout } from '../handlers/auth'
 import Button from '../components/base/Button'
 import Messages from '../components/containers/messages';
 import Input from '../components/containers/Input';
-import { sendMessage, updateMessagesHeight, loadMessage, searchChatRoom } from '../handlers/message';
+import { sendMessage, updateMessagesHeight, searchChatRoom } from '../handlers/message';
+import { loadMessageAction } from '../actions/message'
 
 class ChatUI extends Component {
 	state = {
@@ -19,6 +20,7 @@ class ChatUI extends Component {
 	}
 
 	async componentDidMount() {
+		this.updateChatUI()
 		this.scrollToBottom(false);
 		firebase.auth().onAuthStateChanged((user => {
 			if(user === null){
@@ -27,7 +29,11 @@ class ChatUI extends Component {
 		}))
 	}
 
-	componentDidUpdate() {
+	updateChatUI = () => {
+		firebase
+			.database()
+			.ref(`chatrooms/${this.props.chatId}`)
+			.on('value', snapshot => this.props.loadMessageAction(snapshot.val().chats))
 		this.scrollToBottom();
 	}
 
@@ -76,6 +82,7 @@ class ChatUI extends Component {
 		}
 			return (
 				<Screen>
+					<Text> Chat UI </Text>
 					{ messages[index]&& 
 					<NavigationBar
 						styleName="inline"
@@ -108,10 +115,11 @@ const mapStateToProps = (state, props) => ({
 	messages: state.chatroom.messages.lists,
 	chatId: props.navigation.state.params.chatId,
 });
-const mapDispatchToProps = (dispatch) => ({
-	sendMessage: ({text, user}) => dispatch(sendMessage({text,user})),
-	updateMessagesHeight: (e) => dispatch(updateMessagesHeight(e)),
-	searchChatRoom: (chatId) => dispatch(searchChatRoom(chatId)),
-})
+const mapDispatchToProps = {
+	sendMessage,
+	updateMessagesHeight,
+	searchChatRoom,
+	loadMessageAction
+}
 
 export default connect(mapStateToProps,mapDispatchToProps)(ChatUI);

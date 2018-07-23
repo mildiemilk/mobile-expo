@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native'
 import firebase from 'firebase'
 import {
 	ListView, Text as TextStyle, Row, Image,
@@ -11,9 +11,7 @@ import config from '../database/config.json'
 import Button from '../components/base/Button'
 import { logout } from '../handlers/auth'
 import { loadMessage } from '../handlers/message'
-// import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
-// import { TextStyle } from '../components/base/TextStyle'
 
 if (!firebase.apps.length) {
 	console.log('initialize')
@@ -21,19 +19,26 @@ if (!firebase.apps.length) {
 }
 const Message = ({ msg, navigation}) => {
 	return (<Row>
-		<TouchableOpacity onPress={() => navigation.navigate('ChatUI', { chatId: msg.chatId})}>
+		<TouchableOpacity style={{width:'100%', height:'100%'}} onPress={() => navigation.navigate('ChatUI', { chatId: msg.chatId})}>
 		<ViewStyle styleName="vertical stretch space-between">
 			<Subtitle>{msg.chats[msg.chats.length-1].message}</Subtitle>
 			<ViewStyle styleName="horizontal space-between">
 				<Caption>{msg.detailProduct.brandName}: {msg.detailProduct.productName}</Caption>
 			</ViewStyle>
-  	</ViewStyle>
+		</ViewStyle>
 		</TouchableOpacity>
 	</Row>
 	)}
 class ChatLists extends Component {
 
+	state = {
+		chatroom: {
+			chats: []
+		}
+	}
+
 	componentDidMount(){
+		console.log('hello')
 		firebase.auth().onAuthStateChanged((user=>{
 			if(user===null){
 				this.props.navigation.navigate('Auth')
@@ -51,6 +56,7 @@ class ChatLists extends Component {
 		const { messages, navigation } = this.props
 		return (
 			<View  style={styles.container}>
+				<Text>Chat List </Text>
 				<Flex>
 					{messages&& messages.length > 0? <ListView data={messages}
 						autoHideHeader={true}
@@ -77,8 +83,8 @@ const mapStateToProps = (state) => ({
 	messages: state.chatroom.messages.lists,
 	user: state.user,
 });
-const mapDispatchToProps = (dispatch) => ({
-	loadMessage: (user) => dispatch(loadMessage(user)),
-})
+const mapDispatchToProps = {
+	loadMessage,
+}
 
 export default connect(mapStateToProps,mapDispatchToProps)(ChatLists);
