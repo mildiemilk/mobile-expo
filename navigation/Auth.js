@@ -5,13 +5,12 @@ import firebase from 'firebase'
 import { connect } from 'react-redux'
 // import styled from 'styled-components/native'
 import { NavigationActions } from 'react-navigation'
-
 import { setUserName, setUserAvatar } from '../actions/user'
 import Button from '../components/base/Button'
 import { Card } from '../components/base/Card'
 import { Flex } from '../components/base/Flex'
 import { TextStyle } from '../components/base/TextStyle'
-import { loginWithFacebook, signInWithGoogleAsync } from '../handlers/auth'
+import { loginWithFacebook, signInWithGoogleAsync, saveUserNotificationKey } from '../handlers/auth'
 import config from '../database/config.json'
 
 if (!firebase.apps.length) {
@@ -20,19 +19,16 @@ if (!firebase.apps.length) {
 
 class Auth extends Component{
 
-  componentDidMount() {
+  componentDidMount = async () => {
     
-    firebase.auth().onAuthStateChanged((user=>{
-      console.log('userchange state!!')
-      console.log('user',user)
+    firebase.auth().onAuthStateChanged(( async (user)=>{
       if(user!==null){
-        console.log('successful')
         const { displayName, uid } = user
 
-        console.log('uid', user)
         this.props.setUserName({displayName, uid})
         this.props.setUserAvatar(user)
         this.props.navigation.navigate('ChatLists')
+
       }
       
     }))

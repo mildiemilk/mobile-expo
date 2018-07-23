@@ -62,3 +62,7 @@ export const signInWithGoogleAsync = async() => {
     }
 
 }
+
+export const saveUserNotificationKey = async (userUid, notificationKey) => {
+  firebase.database().ref(`/users/${userUid}/notificationKey`).set(notificationKey)
+}

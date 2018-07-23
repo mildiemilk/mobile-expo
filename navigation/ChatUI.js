@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactNative, { StyleSheet, Text} from 'react-native';
+import ReactNative, { StyleSheet, Text, KeyboardAvoidingView} from 'react-native';
 import _ from 'lodash'
 
 import firebase from 'firebase'
@@ -92,13 +92,15 @@ class ChatUI extends Component {
 				<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout} innerRef={animated => {this.scrollToEnd = animated}}>
 					<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
 				</KeyboardAwareScrollView>
-				<Input 
-					onLayout={this.onInputLayout}
-					onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
-					submitAction={this.sendMessage}
-					ref="input"
-					placeholder="Say something cool ..."
-				/>
+				<KeyboardAvoidingView enabled  behavior="position" >
+					<Input 
+						onLayout={this.onInputLayout}
+						onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+						submitAction={this.sendMessage}
+						ref="input"
+						placeholder="Say something cool ..."
+					/>
+				</KeyboardAvoidingView>
 			</Screen>
 		)
 	}

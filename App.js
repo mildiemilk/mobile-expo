@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Font } from 'expo'
 import { Provider } from 'react-redux'
 import { Navigator } from './Navigator'
-
 import store from './store'
 import firebase from 'firebase'
 import config from './database/config.json'

@@ -6,12 +6,13 @@ import {
 	ListView, Text as TextStyle, Row, Image,
 	NavigationBar, Subtitle, Caption, View as ViewStyle
 } from '@shoutem/ui';
-
+import { Permissions, Notifications } from 'expo'
 import config from '../database/config.json'
 import Button from '../components/base/Button'
 import { logout } from '../handlers/auth'
 import { loadMessage } from '../handlers/message'
 import { Flex } from '../components/base/Flex'
+import { saveUserNotificationKey } from '../handlers/auth'
 
 if (!firebase.apps.length) {
 	console.log('initialize')
@@ -37,13 +38,18 @@ class ChatLists extends Component {
 		}
 	}
 
-	componentDidMount(){
-		console.log('hello')
-		firebase.auth().onAuthStateChanged((user=>{
+	async componentDidMount(){
+		firebase.auth().onAuthStateChanged(async (user)=>{
 			if(user===null){
 				this.props.navigation.navigate('Auth')
+			} else {
+				let {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS)
+				if (status === 'granted'){
+				let token   = await Notifications.getExpoPushTokenAsync()
+				saveUserNotificationKey(user.uid, token)
+				}
 			}
-		}))
+		})
 		this.props.loadMessage(this.props.user)
 	}
 	componentWillReceiveProps(nextProps) {

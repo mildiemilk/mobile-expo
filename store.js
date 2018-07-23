@@ -12,7 +12,7 @@ const store = createStore(
     composeWithDevTools(
         applyMiddleware(
             thunkMiddleware,
-            loggerMiddleware
+            // loggerMiddleware
         )
     )
 );
