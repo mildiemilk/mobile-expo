@@ -9,9 +9,6 @@ import moment from 'moment';
 const Message = ({ msg }) => {
 
   return <Row>
-		{/* <Image styleName="small-avatar top"
- 			source={{uri: msg.author?msg.author.avatar:'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_400x400.png'}}
-		/> */}
 		<View styleName="vertical">
 			<View styleName="horizontal space-between">
 					<Subtitle>{msg.author? msg.author.name:'UNKNOWN'}: {msg.sender}</Subtitle>

@@ -33,7 +33,7 @@ class ChatUI extends Component {
 		firebase
 			.database()
 			.ref(`chatrooms/${this.props.chatId}`)
-			.on('value', snapshot => this.props.loadMessageAction(snapshot.val().chats))
+			.on('value', snapshot => console.log(snapshot.val().chats))
 		this.scrollToBottom();
 	}
 
@@ -58,7 +58,7 @@ class ChatUI extends Component {
 					{ chatHeight } = this.props;
 
 		const scrollTo = chatHeight - scrollViewHeight + inputHeight;
-		console.log('scorlll', chatHeight, scrollViewHeight, inputHeight, scrollTo)
+		console.log('scorll', chatHeight, scrollViewHeight, inputHeight, scrollTo)
 		if (scrollTo > 0) {
 			this.refs.scroll.scrollToPosition(0, scrollTo, animate)
 		}
@@ -80,27 +80,27 @@ class ChatUI extends Component {
 		if(messages) {
 			index = _.findIndex(messages, {chatId})
 		}
-			return (
-				<Screen>
-					<Text> Chat UI </Text>
-					{ messages[index]&& 
-					<NavigationBar
-						styleName="inline"
-						title={ `${messages[index].detailProduct.productName}(${ messages[index].detailProduct.stock})`} 
-					/>
-					}
-					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout} innerRef={animated => {this.scrollToEnd = animated}}>
-						<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
-					</KeyboardAwareScrollView>
-					<Input 
-						onLayout={this.onInputLayout}
-						onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
-						submitAction={this.sendMessage}
-						ref="input"
-						placeholder="Say something cool ..."
-					/>
-				</Screen>
-			)
+		return (
+			<Screen>
+				<Text> Chat UI </Text>
+				{ messages[index]&& 
+				<NavigationBar
+					styleName="inline"
+					title={ `${messages[index].detailProduct.productName}(${ messages[index].detailProduct.stock})`} 
+				/>
+				}
+				<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout} innerRef={animated => {this.scrollToEnd = animated}}>
+					<Messages messages={ messages[index].chats} updateMessagesHeight={updateMessagesHeight}/>
+				</KeyboardAwareScrollView>
+				<Input 
+					onLayout={this.onInputLayout}
+					onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+					submitAction={this.sendMessage}
+					ref="input"
+					placeholder="Say something cool ..."
+				/>
+			</Screen>
+		)
 	}
 }
 const styles = StyleSheet.create({

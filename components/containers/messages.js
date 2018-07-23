@@ -1,7 +1,6 @@
-import React from 'react';
-import { View, Spinner } from '@shoutem/ui';
-
-import MessageList from './messageList';
+import React from 'react'
+import { View, Spinner } from '@shoutem/ui'
+import MessageList from './messageList'
 
 
 
