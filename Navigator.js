@@ -3,15 +3,14 @@ import { connect } from 'react-redux'
 import { createStackNavigator } from 'react-navigation'
 import Auth from './navigation/Auth'
 import ChatLists from './navigation/ChatLists'
-import ChatUI from './navigation/ChatUI'
+import ChatMessages from './navigation/ChatMessages'
 
 export const Navigator = new createStackNavigator({
   Auth,
   ChatLists,
-  ChatUI : {
-    screen: ChatUI,
+  ChatMessages : {
+    screen: ChatMessages,
   }
-
 },
 {
   initialRouteName: 'Auth'

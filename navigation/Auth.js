@@ -18,7 +18,12 @@ if (!firebase.apps.length) {
 }
 
 class Auth extends Component{
-
+  constructor() {
+    super()
+    console.ignoredYellowBox = [
+      'Setting a timer'
+  ]
+  }
   componentDidMount = async () => {
     
     firebase.auth().onAuthStateChanged(( async (user)=>{

@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactNative, { StyleSheet, Text, KeyboardAvoidingView, View} from 'react-native';
+import ReactNative,{ SafeAreaView, StyleSheet, KeyboardAvoidingView, TextInput, ScrollView, View, Text } from 'react-native';
 import _ from 'lodash'
-
 import firebase from 'firebase'
 import { Title, Screen, NavigationBar } from '@shoutem/ui';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { logout } from '../handlers/auth'
-import Button from '../components/base/Button'
-import Messages from '../components/containers/messages';
-import Input from '../components/containers/Input';
+
 import { sendMessage, updateMessagesHeight, searchChatRoom, searchProduct } from '../handlers/message';
 import { loadMessageAction } from '../actions/message'
+import Messages from '../components/containers/messages';
+import Input from '../components/containers/Input';
 
-class ChatUI extends Component {
-	state = {
+class ChatMessages extends Component {
+  state = {
 		scrollViewHeight: 0,
 		inputHeight: 0,
 		messagesInChatRoom: {},
 	}
-
 	async componentDidMount() {
 		const { messages, navigation, chatId } = this.props
 		this.updateChatUI()
-		this.scrollToBottom(false);
+		// this.scrollToBottom(false);
 		firebase.auth().onAuthStateChanged((user => {
 			if(user === null){
 				navigation.navigate('Auth')
@@ -34,8 +31,7 @@ class ChatUI extends Component {
 			this.setState({messagesInChatRoom: messages[index]})
 		}
 	}
-	
-	updateChatUI = async () => {
+  updateChatUI = async () => {
 		firebase
 		.database()
 		.ref(`chatrooms/${this.props.chatId}`)
@@ -45,8 +41,8 @@ class ChatUI extends Component {
 			this.setState({messagesInChatRoom: {...data, detailProduct}})
 		})
 		this.scrollToBottom();
-	}
-
+  }
+  
 	onScrollViewLayout = (event) => {
 		const layout = event.nativeEvent.layout;
 
@@ -82,47 +78,43 @@ class ChatUI extends Component {
 		const { user, chatId } = this.props
 		return sendMessage(text, user, chatId)
 	}
-
-	render() {
-		const { updateMessagesHeight, messages, chatId} = this.props
-		const { messagesInChatRoom } = this.state
-		let index
-		if(messages) {
-			index = _.findIndex(messages, {chatId})
-		}
-		return (
-			<Screen>
-				<Text> Chat UI </Text>
-				{ !_.isEmpty(messagesInChatRoom)&& 
-				<View>
-					<NavigationBar
-						styleName="inline"
-						title={ `${messagesInChatRoom.detailProduct.productName}(${messagesInChatRoom.detailProduct.stock})`} 
-					/>
-					<KeyboardAwareScrollView ref="scroll" onLayout={this.onScrollViewLayout} innerRef={animated => {this.scrollToEnd = animated}}>
-						<Messages messages={ messagesInChatRoom.chats} updateMessagesHeight={updateMessagesHeight}/>
-					</KeyboardAwareScrollView>
-					<KeyboardAvoidingView enabled  behavior="position" >
-						<Input 
-							onLayout={this.onInputLayout}
-							onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
-							submitAction={this.sendMessage}
-							ref="input"
-							placeholder="Say something cool ..."
-						/>
-					</KeyboardAvoidingView>
-				</View>
-				}
-			</Screen>
-		)
-	}
+  render() {
+    const { updateMessagesHeight } = this.props
+    const { messagesInChatRoom } = this.state
+    return (
+      <Screen>
+        { !_.isEmpty(messagesInChatRoom)&&
+          <SafeAreaView style={styles.container}>
+            <NavigationBar
+              styleName="inline"
+              title={ `${messagesInChatRoom.detailProduct.productName}(${messagesInChatRoom.detailProduct.stock})`} 
+            />
+            <KeyboardAvoidingView style={styles.container} behavior="padding" keyboardVerticalOffset={30}>
+              <ScrollView style={{flex: 1}} onLayout={this.onScrollViewLayout} >
+                <Messages messages={ messagesInChatRoom.chats} updateMessagesHeight={updateMessagesHeight}/>
+              </ScrollView>
+              <Input 
+                style={{height: 40, width: '100%', backgroundColor: '#fff', paddingLeft: 10, justifySelf: 'flex-end', color: 'back'}}
+                onLayout={this.onInputLayout}
+                // onFocus={(event) => this._scrollToInput(ReactNative.findNodeHandle(event.target))}
+                submitAction={this.sendMessage}
+                ref="input"
+                placeholder="Say something cool ..."
+              />
+            </KeyboardAvoidingView>
+          </SafeAreaView>
+        }
+      </Screen>
+    );
+  }
 }
+
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    marginBottom: '10%',
-  },
-})
+    flex: 1
+  }
+});
+
 const mapStateToProps = (state, props) => ({
 	chatHeight: state.chatroom.meta.height,
 	user: state.user,
@@ -137,4 +129,4 @@ const mapDispatchToProps = {
 	searchProduct
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(ChatUI);
+export default connect(mapStateToProps,mapDispatchToProps)(ChatMessages);

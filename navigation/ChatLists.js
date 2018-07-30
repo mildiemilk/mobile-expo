@@ -20,7 +20,7 @@ if (!firebase.apps.length) {
 }
 const Message = ({ msg, navigation}) => {
 	return (<Row>
-		<TouchableOpacity style={{width:'100%', height:'100%'}} onPress={() => navigation.navigate('ChatUI', { chatId: msg.chatId})}>
+		<TouchableOpacity style={{width:'100%', height:'100%'}} onPress={() => navigation.navigate('ChatMessages', { chatId: msg.chatId})}>
 		<ViewStyle styleName="vertical stretch space-between">
 			<Subtitle>{msg.chats[msg.chats.length-1].message}</Subtitle>
 			<ViewStyle styleName="horizontal space-between">
